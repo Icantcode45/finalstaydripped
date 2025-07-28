@@ -11,7 +11,50 @@ const server = http.createServer((req, res) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridex - Premium Car Rental Service</title>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" onerror="this.onerror=null; this.src='https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js';"></script>
+    <script>
+        // Fallback icons if Lucide fails to load
+        window.fallbackIcons = {
+            'user': '👤', 'arrow-right': '→', 'menu': '☰', 'x': '✕', 'map-pin': '📍',
+            'calendar': '📅', 'search': '🔍', 'shield': '🛡️', 'clock': '🕒', 'award': '🏆',
+            'dollar-sign': '$', 'zap': '⚡', 'settings': '⚙️', 'facebook': 'f', 'twitter': 't',
+            'instagram': 'i', 'linkedin': 'in', 'phone': '📞', 'mail': '✉️', 'heart': '♥',
+            'fuel': '⛽', 'users': '👥', 'car': '🚗', 'star': '⭐', 'star-half': '⭐'
+        };
+
+        // Try to load Lucide from multiple CDNs
+        function loadLucide() {
+            const scripts = [
+                'https://unpkg.com/lucide@latest/dist/umd/lucide.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js',
+                'https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js'
+            ];
+
+            let scriptIndex = 0;
+
+            function tryLoadScript() {
+                if (scriptIndex >= scripts.length) {
+                    console.warn('Lucide failed to load, using fallback icons');
+                    window.lucide = { createIcons: function() {} };
+                    return;
+                }
+
+                const script = document.createElement('script');
+                script.src = scripts[scriptIndex];
+                script.onload = function() {
+                    console.log('Lucide loaded successfully');
+                };
+                script.onerror = function() {
+                    scriptIndex++;
+                    tryLoadScript();
+                };
+                document.head.appendChild(script);
+            }
+
+            tryLoadScript();
+        }
+
+        loadLucide();
+    </script>
     <style>
         * {
             margin: 0;
