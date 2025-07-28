@@ -983,8 +983,8 @@ const server = http.createServer((req, res) => {
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Find Your Perfect Ride</h1>
-                <p>Discover premium car rentals with unmatched comfort, style, and reliability. Your journey starts here.</p>
+                <h1>Premium Mobile IV Therapy</h1>
+                <p>Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring wellness directly to you. Professional, convenient, and effective.</p>
                 <div class="search-section">
                     <div class="search-form">
                         <div class="form-group">
