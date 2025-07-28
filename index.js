@@ -183,8 +183,8 @@ const server = http.createServer((req, res) => {
             color: white;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), 
-                        url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff2c45894cc9548b7b2ffb21ee76f74a2?alt=media&token=867b4b8c-9961-473a-a12a-79f66e61a9dc&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                        url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb89394712c7344c8b110d19ff9a1157a?alt=media&token=65804092-fa18-4862-91d3-27dde5b0907a&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
             background-attachment: fixed;
         }
 
