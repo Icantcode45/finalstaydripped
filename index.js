@@ -218,7 +218,7 @@ const server = http.createServer((req, res) => {
             font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
