@@ -966,8 +966,9 @@ const server = http.createServer((req, res) => {
                 <ul>
                     <li><a href="#home" onclick="scrollToSection('home'); toggleMenu();">Home</a></li>
                     <li><a href="#cars" onclick="scrollToSection('cars'); toggleMenu();">Cars</a></li>
-                    <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Services</a></li>
+                    <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Wellness</a></li>
                     <li><a href="#about" onclick="scrollToSection('about'); toggleMenu();">About</a></li>
+                    <li><a href="#" onclick="showFAQ(); toggleMenu();">FAQ</a></li>
                     <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 </ul>
                 <div style="margin-top: 1rem; display: flex; gap: 1rem;">
