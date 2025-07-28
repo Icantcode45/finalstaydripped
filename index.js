@@ -933,8 +933,9 @@ const server = http.createServer((req, res) => {
             <ul class="nav-links">
                 <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
                 <li><a href="#cars" onclick="scrollToSection('cars')">Cars</a></li>
-                <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
+                <li><a href="#services" onclick="scrollToSection('services')">Wellness</a></li>
                 <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
+                <li><a href="#" onclick="showFAQ()">FAQ</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
             <div class="auth-buttons">
