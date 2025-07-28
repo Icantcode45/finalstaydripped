@@ -1081,49 +1081,49 @@ const server = http.createServer((req, res) => {
     <!-- Features Section -->
     <section class="features" id="services">
         <div class="container">
-            <h2>Why Choose Ridex?</h2>
+            <h2>Why Choose Stay Dripped IV & Wellness Co.?</h2>
             <div class="features-grid">
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        🛡️
+                        👨‍⚕️
                     </div>
-                    <h3>Fully Insured</h3>
-                    <p>All our vehicles come with comprehensive insurance coverage for your peace of mind during every journey.</p>
+                    <h3>Licensed Professionals</h3>
+                    <p>All our IV therapies are administered by licensed medical professionals ensuring safety and efficacy.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        🕒
+                        🏠
                     </div>
-                    <h3>24/7 Support</h3>
-                    <p>Round-the-clock customer support to assist you whenever you need help, wherever you are.</p>
-                </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
-                        🏆
-                    </div>
-                    <h3>Premium Quality</h3>
-                    <p>Meticulously maintained fleet of premium vehicles ensuring comfort, safety, and reliability.</p>
-                </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
-                        💲
-                    </div>
-                    <h3>Best Prices</h3>
-                    <p>Competitive pricing with transparent fees and no hidden charges. Get the best value for your money.</p>
+                    <h3>Mobile Service</h3>
+                    <p>We come to you! Experience premium IV therapy in the comfort of your home, office, or hotel.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
                         ⚡
                     </div>
-                    <h3>Instant Booking</h3>
-                    <p>Quick and easy booking process with instant confirmation. Reserve your car in just a few clicks.</p>
+                    <h3>Fast Relief</h3>
+                    <p>Feel better quickly with our high-quality IV treatments designed for rapid absorption and results.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        ⚙️
+                        🛡️
                     </div>
-                    <h3>Easy Management</h3>
-                    <p>Manage your bookings, view history, and modify reservations through our user-friendly platform.</p>
+                    <h3>Safe & Sterile</h3>
+                    <p>We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
+                </div>
+                <div class="feature-card slide-in">
+                    <div class="feature-icon">
+                        📱
+                    </div>
+                    <h3>Easy Booking</h3>
+                    <p>Simple online booking system with flexible scheduling to fit your busy lifestyle.</p>
+                </div>
+                <div class="feature-card slide-in">
+                    <div class="feature-icon">
+                        🎯
+                    </div>
+                    <h3>Customized Treatments</h3>
+                    <p>Personalized IV formulations tailored to your specific health and wellness goals.</p>
                 </div>
             </div>
         </div>
@@ -1855,7 +1855,7 @@ const server = http.createServer((req, res) => {
             }
             
             if (hasHalfStar) {
-                stars += '⭐';
+                stars += '��';
             }
             
             const emptyStars = 5 - Math.ceil(rating);
