@@ -11,50 +11,6 @@ const server = http.createServer((req, res) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridex - Premium Car Rental Service</title>
-    <script>
-        // Fallback icons if Lucide fails to load
-        window.fallbackIcons = {
-            'user': '👤', 'arrow-right': '→', 'menu': '☰', 'x': '✕', 'map-pin': '📍',
-            'calendar': '📅', 'search': '🔍', 'shield': '🛡️', 'clock': '🕒', 'award': '🏆',
-            'dollar-sign': '$', 'zap': '⚡', 'settings': '⚙️', 'facebook': 'f', 'twitter': 't',
-            'instagram': 'i', 'linkedin': 'in', 'phone': '📞', 'mail': '✉️', 'heart': '♥',
-            'fuel': '⛽', 'users': '👥', 'car': '🚗', 'star': '⭐', 'star-half': '⭐'
-        };
-
-        // Try to load Lucide from multiple CDNs
-        function loadLucide() {
-            const scripts = [
-                'https://unpkg.com/lucide@latest/dist/umd/lucide.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js',
-                'https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.js'
-            ];
-
-            let scriptIndex = 0;
-
-            function tryLoadScript() {
-                if (scriptIndex >= scripts.length) {
-                    console.warn('Lucide failed to load, using fallback icons');
-                    window.lucide = { createIcons: function() {} };
-                    return;
-                }
-
-                const script = document.createElement('script');
-                script.src = scripts[scriptIndex];
-                script.onload = function() {
-                    console.log('Lucide loaded successfully');
-                };
-                script.onerror = function() {
-                    scriptIndex++;
-                    tryLoadScript();
-                };
-                document.head.appendChild(script);
-            }
-
-            tryLoadScript();
-        }
-
-        loadLucide();
-    </script>
     <style>
         * {
             margin: 0;
@@ -227,7 +183,7 @@ const server = http.createServer((req, res) => {
             color: white;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), 
                         url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff2c45894cc9548b7b2ffb21ee76f74a2?alt=media&token=867b4b8c-9961-473a-a12a-79f66e61a9dc&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
             background-attachment: fixed;
         }
@@ -360,6 +316,7 @@ const server = http.createServer((req, res) => {
             justify-content: center;
             margin: 0 auto 1rem;
             color: white;
+            font-size: 2rem;
         }
 
         .feature-card h3 {
@@ -436,7 +393,7 @@ const server = http.createServer((req, res) => {
         .car-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
                         url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -958,6 +915,14 @@ const server = http.createServer((req, res) => {
         .hidden {
             display: none !important;
         }
+
+        /* Icon replacements */
+        .icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -975,17 +940,17 @@ const server = http.createServer((req, res) => {
             <div class="auth-buttons">
                 <div id="authSection">
                     <button class="btn btn-secondary" onclick="showLogin()">
-                        <i data-lucide="user"></i>
+                        <span class="icon">👤</span>
                         Login
                     </button>
                     <button class="btn btn-primary" onclick="showSignup()">
                         Sign Up
-                        <i data-lucide="arrow-right"></i>
+                        <span class="icon">→</span>
                     </button>
                 </div>
                 <div id="userSection" class="hidden">
                     <div class="user-info">
-                        <i data-lucide="user"></i>
+                        <span class="icon">👤</span>
                         <span id="userWelcome">Welcome, User!</span>
                         <button class="btn btn-secondary" onclick="logout()" style="margin-left: 1rem;">
                             Logout
@@ -994,7 +959,7 @@ const server = http.createServer((req, res) => {
                 </div>
             </div>
             <button class="mobile-menu" onclick="toggleMenu()">
-                <i data-lucide="menu" id="menuIcon"></i>
+                <span class="icon" id="menuIcon">☰</span>
             </button>
             <div class="mobile-nav" id="mobileNav">
                 <ul>
@@ -1022,21 +987,21 @@ const server = http.createServer((req, res) => {
                     <div class="search-form">
                         <div class="form-group">
                             <label for="pickup-location">
-                                <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                                <span class="icon">📍</span>
                                 Pickup Location
                             </label>
                             <input type="text" id="pickup-location" placeholder="Enter city or airport">
                         </div>
                         <div class="form-group">
                             <label for="pickup-date">
-                                <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                                <span class="icon">📅</span>
                                 Pickup Date
                             </label>
                             <input type="date" id="pickup-date">
                         </div>
                         <div class="form-group">
                             <label for="return-date">
-                                <i data-lucide="calendar" style="width: 16px; height: 16px;"></i>
+                                <span class="icon">📅</span>
                                 Return Date
                             </label>
                             <input type="date" id="return-date">
@@ -1053,7 +1018,7 @@ const server = http.createServer((req, res) => {
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" onclick="searchCars()" style="width: 100%; margin-top: 1.5rem;">
-                                <i data-lucide="search"></i>
+                                <span class="icon">🔍</span>
                                 Search Cars
                             </button>
                         </div>
@@ -1072,7 +1037,7 @@ const server = http.createServer((req, res) => {
                         Experience Luxury <br>Like Never Before
                     </h2>
                     <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                        Our premium fleet features the latest models with cutting-edge technology,
+                        Our premium fleet features the latest models with cutting-edge technology, 
                         unmatched comfort, and superior performance. Every journey becomes an unforgettable experience.
                     </p>
                     <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
@@ -1091,12 +1056,12 @@ const server = http.createServer((req, res) => {
                     </div>
                     <button class="btn btn-primary" onclick="scrollToSection('cars')" style="padding: 1rem 2rem; font-size: 1rem;">
                         Explore Our Fleet
-                        <i data-lucide="arrow-right"></i>
+                        <span class="icon">→</span>
                     </button>
                 </div>
                 <div class="showcase-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
-                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f"
-                         alt="Premium car showcase"
+                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f" 
+                         alt="Premium car showcase" 
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                     <div style="position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: #667eea;">
                         Premium Collection
@@ -1113,42 +1078,42 @@ const server = http.createServer((req, res) => {
             <div class="features-grid">
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="shield"></i>
+                        🛡️
                     </div>
                     <h3>Fully Insured</h3>
                     <p>All our vehicles come with comprehensive insurance coverage for your peace of mind during every journey.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="clock"></i>
+                        🕒
                     </div>
                     <h3>24/7 Support</h3>
                     <p>Round-the-clock customer support to assist you whenever you need help, wherever you are.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="award"></i>
+                        🏆
                     </div>
                     <h3>Premium Quality</h3>
                     <p>Meticulously maintained fleet of premium vehicles ensuring comfort, safety, and reliability.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="dollar-sign"></i>
+                        💲
                     </div>
                     <h3>Best Prices</h3>
                     <p>Competitive pricing with transparent fees and no hidden charges. Get the best value for your money.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="zap"></i>
+                        ⚡
                     </div>
                     <h3>Instant Booking</h3>
                     <p>Quick and easy booking process with instant confirmation. Reserve your car in just a few clicks.</p>
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        <i data-lucide="settings"></i>
+                        ⚙️
                     </div>
                     <h3>Easy Management</h3>
                     <p>Manage your bookings, view history, and modify reservations through our user-friendly platform.</p>
@@ -1212,10 +1177,10 @@ const server = http.createServer((req, res) => {
                     <h3>Ridex</h3>
                     <p>Premium car rental service providing comfortable, reliable, and affordable transportation solutions worldwide.</p>
                     <div class="social-links">
-                        <a href="#"><i data-lucide="facebook"></i></a>
-                        <a href="#"><i data-lucide="twitter"></i></a>
-                        <a href="#"><i data-lucide="instagram"></i></a>
-                        <a href="#"><i data-lucide="linkedin"></i></a>
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                        <a href="#">💼</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -1241,10 +1206,10 @@ const server = http.createServer((req, res) => {
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><i data-lucide="phone"></i> +1 (555) 123-4567</li>
-                        <li><i data-lucide="mail"></i> info@ridex.com</li>
-                        <li><i data-lucide="map-pin"></i> 123 Business Ave, City, State 12345</li>
-                        <li><i data-lucide="clock"></i> 24/7 Customer Support</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>✉️ info@ridex.com</li>
+                        <li>📍 123 Business Ave, City, State 12345</li>
+                        <li>🕒 24/7 Customer Support</li>
                     </ul>
                 </div>
             </div>
@@ -1390,56 +1355,15 @@ const server = http.createServer((req, res) => {
         let currentFilter = 'all';
         let currentUser = null;
 
-        // Safe icon initialization
-        function initializeIcons() {
-            let attempts = 0;
-            const maxAttempts = 10;
-
-            function tryInitIcons() {
-                attempts++;
-                if (typeof window.lucide !== 'undefined' && window.lucide.createIcons) {
-                    try {
-                        window.lucide.createIcons();
-                        console.log('Icons initialized successfully');
-                        return true;
-                    } catch (error) {
-                        console.warn('Error initializing icons:', error);
-                    }
-                }
-
-                if (attempts < maxAttempts) {
-                    setTimeout(tryInitIcons, 100);
-                } else {
-                    console.warn('Failed to initialize icons after', maxAttempts, 'attempts');
-                }
-                return false;
-            }
-
-            tryInitIcons();
-        }
-
         // Initialize the page
         function initializePage() {
             loadCars();
             setMinDate();
             checkUserSession();
-            initializeIcons();
         }
 
-        // Use multiple initialization methods for maximum compatibility
+        // Use DOMContentLoaded for initialization
         document.addEventListener('DOMContentLoaded', initializePage);
-
-        // Backup initialization
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializePage);
-        } else {
-            setTimeout(initializePage, 10);
-        }
-
-        // Final fallback
-        window.addEventListener('load', function() {
-            initializeIcons();
-        });
 
         // Set minimum date to today for date inputs
         function setMinDate() {
@@ -1464,17 +1388,6 @@ const server = http.createServer((req, res) => {
                 const carCard = createCarCard(car);
                 carsGrid.appendChild(carCard);
             });
-
-            // Safely initialize Lucide icons
-            setTimeout(() => {
-                if (typeof window.lucide !== 'undefined' && window.lucide.createIcons) {
-                    try {
-                        window.lucide.createIcons();
-                    } catch (error) {
-                        console.warn('Error in loadCars icon initialization:', error);
-                    }
-                }
-            }, 10);
         }
 
         // Create car card element
@@ -1493,7 +1406,7 @@ const server = http.createServer((req, res) => {
                         \${carTypeIcons[car.type] || '🚗'}
                     </div>
                     <button class="favorite-btn \${car.favorite ? 'active' : ''}" onclick="toggleFavorite(\${car.id})" style="z-index: 2;">
-                        <i data-lucide="heart"></i>
+                        ♥
                     </button>
                 </div>
                 <div class="car-info">
@@ -1503,7 +1416,7 @@ const server = http.createServer((req, res) => {
                             <p class="car-year">\${car.year}</p>
                         </div>
                         <div class="car-price">
-                            \${car.price}
+                            $\${car.price}
                             <small>per day</small>
                         </div>
                     </div>
@@ -1515,19 +1428,19 @@ const server = http.createServer((req, res) => {
                     </div>
                     <div class="car-specs">
                         <div class="spec-item">
-                            <i data-lucide="settings"></i>
+                            <span class="icon">⚙️</span>
                             \${car.transmission}
                         </div>
                         <div class="spec-item">
-                            <i data-lucide="fuel"></i>
+                            <span class="icon">⛽</span>
                             \${car.fuel}
                         </div>
                         <div class="spec-item">
-                            <i data-lucide="users"></i>
+                            <span class="icon">👥</span>
                             \${car.seats} Seats
                         </div>
                         <div class="spec-item">
-                            <i data-lucide="car"></i>
+                            <span class="icon">🚗</span>
                             \${car.doors} Doors
                         </div>
                     </div>
@@ -1553,16 +1466,16 @@ const server = http.createServer((req, res) => {
             let stars = '';
             
             for (let i = 0; i < fullStars; i++) {
-                stars += '<i data-lucide="star" style="fill: currentColor;"></i>';
+                stars += '⭐';
             }
             
             if (hasHalfStar) {
-                stars += '<i data-lucide="star-half" style="fill: currentColor;"></i>';
+                stars += '⭐';
             }
             
             const emptyStars = 5 - Math.ceil(rating);
             for (let i = 0; i < emptyStars; i++) {
-                stars += '<i data-lucide="star"></i>';
+                stars += '☆';
             }
             
             return stars;
@@ -1730,21 +1643,10 @@ const server = http.createServer((req, res) => {
             mobileNav.classList.toggle('active');
             
             if (mobileNav.classList.contains('active')) {
-                menuIcon.setAttribute('data-lucide', 'x');
+                menuIcon.textContent = '✕';
             } else {
-                menuIcon.setAttribute('data-lucide', 'menu');
+                menuIcon.textContent = '☰';
             }
-
-            // Safely initialize Lucide icons
-            setTimeout(() => {
-                if (typeof window.lucide !== 'undefined' && window.lucide.createIcons) {
-                    try {
-                        window.lucide.createIcons();
-                    } catch (error) {
-                        console.warn('Error in toggleMenu icon initialization:', error);
-                    }
-                }
-            }, 10);
         }
 
         // Close modal when clicking outside
