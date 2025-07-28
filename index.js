@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ridex - Premium Car Rental Service</title>
+    <title>Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness Services</title>
     <style>
         * {
             margin: 0;
