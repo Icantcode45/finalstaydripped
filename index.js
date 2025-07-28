@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridex - Premium Car Rental Service</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" onerror="this.onerror=null; this.src='https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js';"></script>
     <style>
         * {
             margin: 0;
