@@ -1041,37 +1041,37 @@ const server = http.createServer((req, res) => {
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px;">
                 <div class="showcase-content" style="z-index: 2; position: relative;">
                     <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #333; line-height: 1.2;">
-                        Experience Luxury <br>Like Never Before
+                        Premium Mobile IV Therapy <br>Delivered to You
                     </h2>
                     <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                        Our premium fleet features the latest models with cutting-edge technology, 
-                        unmatched comfort, and superior performance. Every journey becomes an unforgettable experience.
+                        Our licensed medical professionals bring high-quality IV therapy directly to your location.
+                        Experience the convenience of premium wellness treatments in the comfort of your home, office, or hotel.
                     </p>
                     <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
                         <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">500+</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Premium Cars</p>
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">1000+</h3>
+                            <p style="color: #666; font-size: 0.9rem;">Happy Clients</p>
                         </div>
                         <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">50+</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Locations</p>
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">24/7</h3>
+                            <p style="color: #666; font-size: 0.9rem;">Availability</p>
                         </div>
                         <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">4.9</h3>
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">5.0</h3>
                             <p style="color: #666; font-size: 0.9rem;">Rating</p>
                         </div>
                     </div>
-                    <button class="btn btn-primary" onclick="scrollToSection('cars')" style="padding: 1rem 2rem; font-size: 1rem;">
-                        Explore Our Fleet
+                    <button class="btn btn-primary" onclick="scrollToSection('services')" style="padding: 1rem 2rem; font-size: 1rem;">
+                        View Our Services
                         <span class="icon">→</span>
                     </button>
                 </div>
                 <div class="showcase-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
-                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f" 
-                         alt="Premium car showcase" 
+                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb89394712c7344c8b110d19ff9a1157a?alt=media&token=65804092-fa18-4862-91d3-27dde5b0907a&apiKey=d86ad443e90f49f6824eddb927a8e06f"
+                         alt="Mobile IV therapy service"
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                     <div style="position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: #667eea;">
-                        Premium Collection
+                        Mobile IV Therapy
                     </div>
                 </div>
             </div>
