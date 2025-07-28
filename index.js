@@ -1007,6 +1007,49 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
+    <!-- Premium Showcase Section -->
+    <section class="premium-showcase" style="padding: 4rem 0; background: #fff; position: relative; overflow: hidden;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px;">
+                <div class="showcase-content" style="z-index: 2; position: relative;">
+                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #333; line-height: 1.2;">
+                        Experience Luxury <br>Like Never Before
+                    </h2>
+                    <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
+                        Our premium fleet features the latest models with cutting-edge technology,
+                        unmatched comfort, and superior performance. Every journey becomes an unforgettable experience.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="text-align: center;">
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">500+</h3>
+                            <p style="color: #666; font-size: 0.9rem;">Premium Cars</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">50+</h3>
+                            <p style="color: #666; font-size: 0.9rem;">Locations</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">4.9</h3>
+                            <p style="color: #666; font-size: 0.9rem;">Rating</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="scrollToSection('cars')" style="padding: 1rem 2rem; font-size: 1rem;">
+                        Explore Our Fleet
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </div>
+                <div class="showcase-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f"
+                         alt="Premium car showcase"
+                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                    <div style="position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: #667eea;">
+                        Premium Collection
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features" id="services">
         <div class="container">
