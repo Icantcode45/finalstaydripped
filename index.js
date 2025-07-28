@@ -1340,6 +1340,75 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
+    <!-- Treatment Process Section -->
+    <section class="treatment-process" style="padding: 4rem 0; background: #fff;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">How You Get Your Treatments</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                After becoming a member, you will onboard and have a consultation with a licensed provider.
+                During this consultation, you can discuss your goals and explore all treatments available.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Select Program and Labs</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Choose the membership and labs that are best tailored to your unique health needs and goals.</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Meet With Provider</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Have a virtual 1-on-1 with a licensed provider, at your convenience, to review your health history.</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Begin Treatment</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Your prescriptions will be promptly shipped from our U.S.-based pharmacies in discreet packaging.</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Monitor, Adjust, Optimize</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Your provider will be there with personalized quarterly check-ins included in your membership.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Benefits Section -->
+    <section class="wellness-benefits" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">One Simple Process. A Lifetime of Benefits.</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
+                Whether you're looking to unlock your body's full potential, elevate your fitness, or reclaim your confidence,
+                we're here to guide and support you every step of the way.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Personalized Treatment Plans</h3>
+                    <p style="color: #666; line-height: 1.6;">Tailored wellness solutions designed specifically for your health goals and travel lifestyle.</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍⚕️</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Licensed Medical Professionals</h3>
+                    <p style="color: #666; line-height: 1.6;">All treatments supervised by qualified healthcare providers ensuring safety and efficacy.</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚚</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Convenient Delivery</h3>
+                    <p style="color: #666; line-height: 1.6;">Discreet, direct-to-door shipping with express delivery options for busy travelers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Customer Testimonials -->
     <section class="testimonials" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
         <div class="container">
