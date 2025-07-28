@@ -393,7 +393,8 @@ const server = http.createServer((req, res) => {
         .car-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+                        url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -404,9 +405,13 @@ const server = http.createServer((req, res) => {
         }
 
         .car-image::before {
-            content: '🚗';
-            font-size: 4rem;
-            opacity: 0.8;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .favorite-btn {
