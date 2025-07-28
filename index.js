@@ -848,6 +848,19 @@ const server = http.createServer((req, res) => {
                 flex-direction: column;
                 align-items: center;
             }
+
+            .premium-showcase .container > div {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .showcase-image {
+                height: 300px !important;
+            }
+
+            .showcase-content h2 {
+                font-size: 2rem !important;
+            }
         }
 
         /* Loading Animation */
