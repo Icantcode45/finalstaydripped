@@ -1466,9 +1466,15 @@ const server = http.createServer((req, res) => {
             });
 
             // Safely initialize Lucide icons
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            }
+            setTimeout(() => {
+                if (typeof window.lucide !== 'undefined' && window.lucide.createIcons) {
+                    try {
+                        window.lucide.createIcons();
+                    } catch (error) {
+                        console.warn('Error in loadCars icon initialization:', error);
+                    }
+                }
+            }, 10);
         }
 
         // Create car card element
