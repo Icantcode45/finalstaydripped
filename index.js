@@ -1907,6 +1907,82 @@ const server = http.createServer((req, res) => {
                 }
             }
         });
+
+        // Newsletter signup functionality
+        function handleNewsletterSignup() {
+            const emailInput = document.getElementById('newsletter-email');
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Simulate newsletter signup
+            alert('Thank you for subscribing to our newsletter!');
+            emailInput.value = '';
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // FAQ functionality
+        const faqs = [
+            {
+                question: "How does the wellness program work with car rentals?",
+                answer: "Our integrated approach combines premium transportation with comprehensive wellness solutions. You can access health consultations, wellness programs, and recovery treatments alongside your car rental service."
+            },
+            {
+                question: "Are the wellness treatments safe?",
+                answer: "Yes, all our wellness treatments are supervised by licensed medical professionals and follow strict safety protocols. We only offer clinically proven treatments."
+            },
+            {
+                question: "Can I use wellness services without renting a car?",
+                answer: "Absolutely! Our wellness programs are available as standalone services. However, our integrated packages offer the best value for frequent travelers."
+            }
+        ];
+
+        function showFAQ() {
+            const existingModal = document.querySelector('.faq-overlay');
+            if (existingModal) {
+                existingModal.remove();
+                return;
+            }
+
+            const faqContainer = document.createElement('div');
+            faqContainer.className = 'faq-overlay';
+            faqContainer.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 2rem;';
+
+            let faqHTML = '<div style="background: white; border-radius: 20px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 2rem;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;"><h2 style="margin: 0; color: #333;">Frequently Asked Questions</h2><button onclick="this.closest(\\".faq-overlay\\").remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button></div>';
+
+            faqs.forEach((faq, index) => {
+                faqHTML += '<div style="border-bottom: 1px solid #eee; margin-bottom: 1rem; padding-bottom: 1rem;"><h3 style="color: #667eea; margin-bottom: 0.5rem; cursor: pointer;" onclick="toggleFAQ(' + index + ')">' + faq.question + ' <span id="faq-icon-' + index + '">+</span></h3><div id="faq-answer-' + index + '" style="display: none; color: #666; line-height: 1.6;">' + faq.answer + '</div></div>';
+            });
+
+            faqHTML += '</div>';
+            faqContainer.innerHTML = faqHTML;
+            document.body.appendChild(faqContainer);
+        }
+
+        function toggleFAQ(index) {
+            const answer = document.getElementById('faq-answer-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+                icon.textContent = '-';
+            } else {
+                answer.style.display = 'none';
+                icon.textContent = '+';
+            }
+        }
     </script>
 </body>
 </html>`;
