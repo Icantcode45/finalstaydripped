@@ -929,11 +929,11 @@ const server = http.createServer((req, res) => {
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <div class="logo">Ridex</div>
+            <div class="logo">Stay Dripped IV & Wellness Co.</div>
             <ul class="nav-links">
                 <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-                <li><a href="#cars" onclick="scrollToSection('cars')">Cars</a></li>
-                <li><a href="#services" onclick="scrollToSection('services')">Wellness</a></li>
+                <li><a href="#services" onclick="scrollToSection('services')">IV Therapy</a></li>
+                <li><a href="#wellness" onclick="scrollToSection('wellness')">Wellness</a></li>
                 <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
                 <li><a href="#" onclick="showFAQ()">FAQ</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
