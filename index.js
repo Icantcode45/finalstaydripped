@@ -1386,9 +1386,18 @@ const server = http.createServer((req, res) => {
         function createCarCard(car) {
             const card = document.createElement('div');
             card.className = 'car-card fade-in';
+            const carTypeIcons = {
+                'sedan': '🚗',
+                'suv': '🚙',
+                'luxury': '🏎️',
+                'compact': '🚘'
+            };
             card.innerHTML = \`
-                <div class="car-image">
-                    <button class="favorite-btn \${car.favorite ? 'active' : ''}" onclick="toggleFavorite(\${car.id})">
+                <div class="car-image" style="position: relative;">
+                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; z-index: 1;">
+                        \${carTypeIcons[car.type] || '🚗'}
+                    </div>
+                    <button class="favorite-btn \${car.favorite ? 'active' : ''}" onclick="toggleFavorite(\${car.id})" style="z-index: 2;">
                         <i data-lucide="heart"></i>
                     </button>
                 </div>
