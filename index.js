@@ -1390,31 +1390,56 @@ const server = http.createServer((req, res) => {
         let currentFilter = 'all';
         let currentUser = null;
 
+        // Safe icon initialization
+        function initializeIcons() {
+            let attempts = 0;
+            const maxAttempts = 10;
+
+            function tryInitIcons() {
+                attempts++;
+                if (typeof window.lucide !== 'undefined' && window.lucide.createIcons) {
+                    try {
+                        window.lucide.createIcons();
+                        console.log('Icons initialized successfully');
+                        return true;
+                    } catch (error) {
+                        console.warn('Error initializing icons:', error);
+                    }
+                }
+
+                if (attempts < maxAttempts) {
+                    setTimeout(tryInitIcons, 100);
+                } else {
+                    console.warn('Failed to initialize icons after', maxAttempts, 'attempts');
+                }
+                return false;
+            }
+
+            tryInitIcons();
+        }
+
         // Initialize the page
         function initializePage() {
             loadCars();
             setMinDate();
             checkUserSession();
-
-            // Initialize Lucide icons if available
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            } else {
-                // Fallback: try again after a short delay
-                setTimeout(() => {
-                    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                        lucide.createIcons();
-                    }
-                }, 100);
-            }
+            initializeIcons();
         }
 
-        // Use DOMContentLoaded instead of window.onload for faster initialization
+        // Use multiple initialization methods for maximum compatibility
+        document.addEventListener('DOMContentLoaded', initializePage);
+
+        // Backup initialization
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializePage);
         } else {
-            initializePage();
+            setTimeout(initializePage, 10);
         }
+
+        // Final fallback
+        window.addEventListener('load', function() {
+            initializeIcons();
+        });
 
         // Set minimum date to today for date inputs
         function setMinDate() {
