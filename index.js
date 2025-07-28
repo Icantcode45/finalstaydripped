@@ -1396,8 +1396,11 @@ const server = http.createServer((req, res) => {
                 const carCard = createCarCard(car);
                 carsGrid.appendChild(carCard);
             });
-            
-            lucide.createIcons();
+
+            // Safely initialize Lucide icons
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
         }
 
         // Create car card element
