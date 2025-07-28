@@ -1139,13 +1139,246 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
+    <!-- Wellness Section -->
+    <section class="wellness-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: #333;">Complete Wellness Experience</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px; margin-bottom: 3rem;">
+                <div class="wellness-content">
+                    <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #333;">
+                        Travel Better, <span style="color: #667eea;">Feel Better</span>
+                    </h3>
+                    <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
+                        Your journey doesn't end with premium transportation. Discover our comprehensive wellness programs designed to enhance your travel experience and overall well-being.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🧘‍♂️ Travel Wellness</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">💊 Health Solutions</h4>
+                            <p style="color: #666; font-size: 0.9rem;">Convenient healthcare on-the-go</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">
+                        Explore Wellness
+                        <span class="icon">→</span>
+                    </button>
+                </div>
+                <div class="wellness-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
+                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F582c53edf9ad408e849c4a3b19f126c0?alt=media&token=eb3e2ece-0a84-4573-a9a6-58d401ee1713&apiKey=d86ad443e90f49f6824eddb927a8e06f"
+                         alt="Wellness experience"
+                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                    <div style="position: absolute; top: 20px; left: 20px; background: rgba(102, 126, 234, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: white;">
+                        Premium Wellness
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Experts Section -->
+    <section class="health-experts" style="padding: 4rem 0; background: #fff;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Backed by Health Experts</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Our wellness programs are developed and supervised by licensed medical professionals and health experts.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                        👨‍⚕️
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Robert Lieske</h3>
+                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Chief Medical Officer</p>
+                        <p style="color: #666; font-size: 0.9rem;">Anti-aging and Hormone specialist with decades of experience in wellness medicine.</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                        👩‍⚕️
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
+                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Chief of Dermatology</p>
+                        <p style="color: #666; font-size: 0.9rem;">Dermatologist and Advanced Skin-Care Specialist focused on travel wellness.</p>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                        👨‍⚕️
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Daniel Bryan</h3>
+                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Medical Advisor</p>
+                        <p style="color: #666; font-size: 0.9rem;">Specialized in travel medicine and wellness optimization for frequent travelers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wellness Categories -->
+    <section class="wellness-categories" style="padding: 4rem 0; background: #f8f9ff;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: #333;">Complete Wellness Solutions</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F245d596b8190417a9d9c08b8abe228e4?alt=media&token=32301967-14aa-4c71-b5e2-1727a52b1b0f&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover; position: relative;">
+                        <div style="position: absolute; inset: 0; background: rgba(102, 126, 234, 0.8); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            🧬 Anti-Aging
+                        </div>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Anti-Aging Solutions</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Science-backed therapies to help you look and feel younger, longer. Perfect for maintaining vitality during travel.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">NAD+ Therapy</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Peptides</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Supplements</span>
+                        </div>
+                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                        🧠 Cognitive Health
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Cognitive Enhancement</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Optimize mental clarity and focus for peak performance during business travel and demanding schedules.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Nootropics</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Brain Training</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Memory</span>
+                        </div>
+                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                        💪 Wellness Recovery
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Travel Recovery</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Advanced treatments to help you recover from jet lag, travel fatigue, and maintain peak energy levels.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">IV Therapy</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Recovery</span>
+                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Energy</span>
+                        </div>
+                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">What Our Customers Say</h2>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
+                    <span style="font-size: 1.1rem;">4.9 out of 5 stars</span>
+                </div>
+                <p style="opacity: 0.9;">From 10,000+ verified customers</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            👨‍💼
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-weight: 600;">Jonathan M.</h4>
+                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Business Traveler</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1rem; font-style: italic;">"The combination of premium car service and wellness support has transformed my business travel experience. I arrive refreshed and ready to perform."</p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
+                    </div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            👩‍💼
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-weight: 600;">Ashley P.</h4>
+                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Frequent Traveler</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1rem; font-style: italic;">"Amazing service! The wellness programs help me maintain my energy and health despite constant travel. The car service is just the cherry on top."</p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
+                    </div>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            👨
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-weight: 600;">Brad O.</h4>
+                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Executive</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1rem; font-style: italic;">"The complete package - luxury transportation and cutting-edge wellness solutions. This is the future of premium travel services."</p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter" style="padding: 4rem 0; background: #fff;">
+        <div class="container">
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Stay Connected</h2>
+                <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
+                    Get the latest updates on new wellness programs, travel tips, and exclusive offers delivered to your inbox.
+                </p>
+                <div style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto;">
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        style="flex: 1; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;"
+                        id="newsletter-email"
+                    >
+                    <button
+                        onclick="handleNewsletterSignup()"
+                        style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; white-space: nowrap;"
+                    >
+                        Subscribe
+                    </button>
+                </div>
+                <p style="color: #999; font-size: 0.8rem; margin-top: 1rem;">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="features" id="about" style="background: #f8f9ff;">
         <div class="container">
             <h2>About Ridex</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
-                    Founded in 2020, Ridex has become the leading premium car rental service, trusted by thousands of customers worldwide. We're committed to providing exceptional vehicles and outstanding customer service for all your transportation needs.
+                    Founded in 2020, Ridex has evolved from a premium car rental service into a comprehensive lifestyle platform. We're committed to providing exceptional transportation and wellness solutions for the modern traveler.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
                     <div style="text-align: center;">
