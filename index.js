@@ -1348,12 +1348,30 @@ const server = http.createServer((req, res) => {
         let currentUser = null;
 
         // Initialize the page
-        window.onload = function() {
-            lucide.createIcons();
+        function initializePage() {
             loadCars();
             setMinDate();
             checkUserSession();
-        };
+
+            // Initialize Lucide icons if available
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            } else {
+                // Fallback: try again after a short delay
+                setTimeout(() => {
+                    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                        lucide.createIcons();
+                    }
+                }, 100);
+            }
+        }
+
+        // Use DOMContentLoaded instead of window.onload for faster initialization
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            initializePage();
+        }
 
         // Set minimum date to today for date inputs
         function setMinDate() {
