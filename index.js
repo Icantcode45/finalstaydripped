@@ -1660,8 +1660,11 @@ const server = http.createServer((req, res) => {
             } else {
                 menuIcon.setAttribute('data-lucide', 'menu');
             }
-            
-            lucide.createIcons();
+
+            // Safely initialize Lucide icons
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
         }
 
         // Close modal when clicking outside
