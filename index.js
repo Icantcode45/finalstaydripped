@@ -1155,7 +1155,7 @@ const server = http.createServer((req, res) => {
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">����‍♂️ Travel Wellness</h4>
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🧘‍♂️ Travel Wellness</h4>
                             <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
@@ -1200,7 +1200,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👩��⚕️
+                        👩‍⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
@@ -2088,11 +2088,39 @@ const server = http.createServer((req, res) => {
             },
             {
                 question: "Are the wellness treatments safe?",
-                answer: "Yes, all our wellness treatments are supervised by licensed medical professionals and follow strict safety protocols. We only offer clinically proven treatments."
+                answer: "Yes, all our wellness treatments are supervised by licensed medical professionals and follow strict safety protocols. We only offer clinically proven treatments backed by scientific research."
             },
             {
                 question: "Can I use wellness services without renting a car?",
                 answer: "Absolutely! Our wellness programs are available as standalone services. However, our integrated packages offer the best value for frequent travelers."
+            },
+            {
+                question: "What wellness treatments do you offer?",
+                answer: "We offer a comprehensive range of treatments including Sexual Wellness, Weight Loss programs, Anti-Aging therapies, Cognitive Health enhancement, Hair Loss treatment, and Travel Recovery solutions. All treatments are supervised by licensed medical professionals."
+            },
+            {
+                question: "How do I get started with a wellness program?",
+                answer: "Getting started is simple: 1) Select your program and labs, 2) Meet with a licensed provider for consultation, 3) Begin your personalized treatment, 4) Monitor progress with quarterly check-ins. Your provider will guide you through every step."
+            },
+            {
+                question: "Are the treatments covered by insurance?",
+                answer: "Coverage varies by insurance provider and treatment type. We recommend checking with your insurance company. Many of our members find the programs cost-effective even without coverage due to our competitive pricing."
+            },
+            {
+                question: "How quickly will I see results?",
+                answer: "Results vary depending on the treatment and individual factors. Many members report improvements within 2-4 weeks, with significant results typically seen within 2-3 months. Your provider will set realistic expectations during your consultation."
+            },
+            {
+                question: "Do you ship treatments discreetly?",
+                answer: "Yes, all treatments are shipped in discreet packaging directly to your door via express delivery from our U.S.-based pharmacies. Your privacy and convenience are our priorities."
+            },
+            {
+                question: "Can I travel while on a wellness program?",
+                answer: "Absolutely! Our programs are designed specifically for travelers. Many treatments are portable, and our Travel Recovery services help you maintain optimal health while on the road."
+            },
+            {
+                question: "What makes your medical professionals qualified?",
+                answer: "All our medical professionals are licensed healthcare providers with specialized training in their respective fields. Our team includes hormone specialists, dermatologists, and travel medicine experts with years of experience."
             }
         ];
 
