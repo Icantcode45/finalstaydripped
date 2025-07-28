@@ -1155,7 +1155,7 @@ const server = http.createServer((req, res) => {
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🧘‍♂️ Travel Wellness</h4>
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">����‍♂️ Travel Wellness</h4>
                             <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
@@ -1200,7 +1200,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👩‍⚕️
+                        👩��⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
@@ -1470,31 +1470,50 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
-    <!-- Newsletter Signup -->
-    <section class="newsletter" style="padding: 4rem 0; background: #fff;">
-        <div class="container">
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Stay Connected</h2>
-                <p style="color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
-                    Get the latest updates on new wellness programs, travel tips, and exclusive offers delivered to your inbox.
+    <!-- Enhanced Newsletter Signup -->
+    <section class="newsletter" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"white\" opacity=\"0.05\"><circle cx=\"20\" cy=\"20\" r=\"2\"/><circle cx=\"80\" cy=\"20\" r=\"2\"/><circle cx=\"20\" cy=\"80\" r=\"2\"/><circle cx=\"80\" cy=\"80\" r=\"2\"/><circle cx=\"50\" cy=\"50\" r=\"3\"/></svg>'); pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; color: white;">Never Miss a Deal or Update</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1.2rem; line-height: 1.6;">
+                    Subscribe to our newsletter to stay in front of all the future deals, promotions and new treatments.
+                    Stay up-to-date with the future you.
                 </p>
-                <div style="display: flex; gap: 1rem; max-width: 400px; margin: 0 auto;">
+                <div style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 50px; backdrop-filter: blur(10px);">
                     <input
                         type="email"
-                        placeholder="Enter your email address"
-                        style="flex: 1; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1rem;"
+                        placeholder="Enter your e-mail address"
+                        style="flex: 1; padding: 1rem 1.5rem; border: none; border-radius: 25px; font-size: 1rem; background: white; outline: none;"
                         id="newsletter-email"
                     >
                     <button
                         onclick="handleNewsletterSignup()"
-                        style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; white-space: nowrap;"
+                        style="background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)'"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'"
                     >
-                        Subscribe
+                        Sign Up Now
                     </button>
                 </div>
-                <p style="color: #999; font-size: 0.8rem; margin-top: 1rem;">
-                    We respect your privacy. Unsubscribe at any time.
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 1.5rem;">
+                    Join 10,000+ members receiving exclusive wellness tips and travel health insights.
+                    <br>Unsubscribe at any time.
                 </p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.2rem;">✓</span>
+                        <span style="font-size: 0.9rem;">Exclusive Deals</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.2rem;">✓</span>
+                        <span style="font-size: 0.9rem;">Wellness Tips</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.2rem;">✓</span>
+                        <span style="font-size: 0.9rem;">New Treatment Updates</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
