@@ -988,40 +988,45 @@ const server = http.createServer((req, res) => {
                 <div class="search-section">
                     <div class="search-form">
                         <div class="form-group">
-                            <label for="pickup-location">
+                            <label for="service-location">
                                 <span class="icon">📍</span>
-                                Pickup Location
+                                Service Location
                             </label>
-                            <input type="text" id="pickup-location" placeholder="Enter city or airport">
+                            <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
                         </div>
                         <div class="form-group">
-                            <label for="pickup-date">
+                            <label for="service-date">
                                 <span class="icon">📅</span>
-                                Pickup Date
+                                Preferred Date
                             </label>
-                            <input type="date" id="pickup-date">
+                            <input type="date" id="service-date">
                         </div>
                         <div class="form-group">
-                            <label for="return-date">
-                                <span class="icon">📅</span>
-                                Return Date
+                            <label for="service-time">
+                                <span class="icon">🕒</span>
+                                Preferred Time
                             </label>
-                            <input type="date" id="return-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="car-type-search">Car Type</label>
-                            <select id="car-type-search">
-                                <option value="all">All Types</option>
-                                <option value="sedan">Sedan</option>
-                                <option value="suv">SUV</option>
-                                <option value="luxury">Luxury</option>
-                                <option value="compact">Compact</option>
+                            <select id="service-time">
+                                <option value="">Select Time</option>
+                                <option value="morning">Morning (8AM-12PM)</option>
+                                <option value="afternoon">Afternoon (12PM-5PM)</option>
+                                <option value="evening">Evening (5PM-8PM)</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary" onclick="searchCars()" style="width: 100%; margin-top: 1.5rem;">
-                                <span class="icon">🔍</span>
-                                Search Cars
+                            <label for="iv-type-search">IV Therapy Type</label>
+                            <select id="iv-type-search">
+                                <option value="all">All Treatments</option>
+                                <option value="hydration">Hydration</option>
+                                <option value="energy">Energy Boost</option>
+                                <option value="immunity">Immunity</option>
+                                <option value="recovery">Recovery</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
+                                <span class="icon">💉</span>
+                                Book IV Therapy
                             </button>
                         </div>
                     </div>
