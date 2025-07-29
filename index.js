@@ -1058,7 +1058,33 @@ const server = http.createServer((req, res) => {
             100% { transform: rotate(360deg); }
         }
 
-        /* Animations */
+        /* Professional Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .fade-in {
             animation: fadeIn 0.6s ease-in;
         }
