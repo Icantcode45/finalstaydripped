@@ -193,25 +193,35 @@ const server = http.createServer((req, res) => {
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-emerald), var(--primary-emerald-dark));
-            color: var(--white);
-            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
+            background: var(--e-global-color-dark-green);
+            color: var(--e-global-color-white);
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            border-radius: 2rem;
+            padding: 0.6rem 1.4rem;
+            box-shadow: 0 2px 8px rgba(44, 60, 50, 0.07);
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
         }
 
         .btn-primary:hover {
+            background: var(--e-global-color-lightgreen);
+            color: var(--e-global-color-dark-green);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
-            background: var(--white);
-            color: var(--primary-emerald);
-            border: 2px solid var(--primary-emerald);
+            background: var(--e-global-color-white);
+            color: var(--e-global-color-green);
+            border: 2px solid var(--e-global-color-green);
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            border-radius: 2rem;
         }
 
         .btn-secondary:hover {
-            background: var(--primary-emerald);
-            color: var(--white);
+            background: var(--e-global-color-green);
+            color: var(--e-global-color-white);
         }
 
         .btn-gradient {
