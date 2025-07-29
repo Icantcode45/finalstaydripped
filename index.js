@@ -1001,17 +1001,19 @@ const server = http.createServer((req, res) => {
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">Stay Dripped IV & Wellness Co.</div>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                Stay Dripped IV
+                <span class="logo-subtitle">Wellness Delivered</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-                <li><a href="#packages" onclick="scrollToSection('packages')">IV Packages</a></li>
-                <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
-                <li><a href="#wellness" onclick="scrollToSection('wellness')">Wellness</a></li>
-                <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
-                <li><a href="#" onclick="showFAQ()">FAQ</a></li>
-                <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#packages">IV Packages</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#wellness">Wellness</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="auth-buttons">
                 <div id="authSection">
@@ -1019,10 +1021,7 @@ const server = http.createServer((req, res) => {
                         <span class="icon">👤</span>
                         Login
                     </button>
-                    <button class="btn btn-primary" onclick="showSignup()">
-                        Sign Up
-                        <span class="icon">→</span>
-                    </button>
+                    <a href="#packages" class="btn btn-primary">Get Started</a>
                 </div>
                 <div id="userSection" class="hidden">
                     <div class="user-info">
@@ -1034,22 +1033,16 @@ const server = http.createServer((req, res) => {
                     </div>
                 </div>
             </div>
-            <button class="mobile-menu" onclick="toggleMenu()">
-                <span class="icon" id="menuIcon">☰</span>
-            </button>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="mobile-nav" id="mobileNav">
                 <ul>
-                    <li><a href="#home" onclick="scrollToSection('home'); toggleMenu();">Home</a></li>
-                    <li><a href="#packages" onclick="scrollToSection('packages'); toggleMenu();">IV Packages</a></li>
-                    <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Wellness</a></li>
-                    <li><a href="#about" onclick="scrollToSection('about'); toggleMenu();">About</a></li>
-                    <li><a href="#" onclick="showFAQ(); toggleMenu();">FAQ</a></li>
-                    <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
+                    <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+                    <li><a href="#packages" onclick="toggleMenu();">IV Packages</a></li>
+                    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+                    <li><a href="#wellness" onclick="toggleMenu();">Wellness</a></li>
+                    <li><a href="#about" onclick="toggleMenu();">About</a></li>
+                    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
                 </ul>
-                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <button class="btn btn-secondary" onclick="showLogin(); toggleMenu();">Login</button>
-                    <button class="btn btn-primary" onclick="showSignup(); toggleMenu();">Sign Up</button>
-                </div>
             </div>
         </nav>
     </header>
