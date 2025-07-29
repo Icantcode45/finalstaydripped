@@ -144,40 +144,69 @@ const server = http.createServer((req, res) => {
             gap: 1rem;
         }
 
+        /* Enhanced Button Styles */
         .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(135deg, var(--primary-emerald), var(--primary-emerald-dark));
+            color: var(--white);
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
+            background: var(--white);
+            color: var(--primary-emerald);
+            border: 2px solid var(--primary-emerald);
         }
 
         .btn-secondary:hover {
-            background: #667eea;
-            color: white;
+            background: var(--primary-emerald);
+            color: var(--white);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            color: var(--white);
+            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.4);
         }
 
         .mobile-menu {
