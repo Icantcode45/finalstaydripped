@@ -128,9 +128,10 @@ const server = http.createServer((req, res) => {
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--e-global-color-text);
             font-weight: 500;
             font-size: 15px;
+            font-family: 'Switzer', sans-serif;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -142,7 +143,7 @@ const server = http.createServer((req, res) => {
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-emerald);
+            background: var(--e-global-color-green);
             transition: width 0.3s ease;
         }
 
@@ -151,7 +152,7 @@ const server = http.createServer((req, res) => {
         }
 
         .nav-links a:hover {
-            color: var(--primary-emerald);
+            color: var(--e-global-color-green);
         }
 
         .auth-buttons {
