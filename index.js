@@ -1528,61 +1528,84 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
-    <!-- Customer Testimonials -->
-    <section class="testimonials" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-        <div class="container">
+    <!-- Enhanced Testimonials Section -->
+    <section class="testimonials" style="padding: 80px 0; background: white; position: relative;">
+        <!-- Background Image -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ffa81e77e45bc4c259725235c334d252b?alt=media&token=290f1b50-3f42-4a60-b6f9-dedebe3dd384&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover; opacity: 0.05; z-index: 1;"></div>
+
+        <div class="container" style="position: relative; z-index: 2;">
+            <!-- Section Header -->
             <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">What Our Customers Say</h2>
+                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
+                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">💬 Client Stories</span>
+                </div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">What Our Customers Say</h2>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
                     <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
-                    <span style="font-size: 1.1rem;">4.9 out of 5 stars</span>
+                    <span style="font-size: 1.1rem; color: #333;">4.9 out of 5 stars</span>
                 </div>
-                <p style="opacity: 0.9;">From 10,000+ verified customers</p>
+                <p style="color: #666;">From 5,000+ verified treatments</p>
             </div>
+
+            <!-- Testimonials Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+                <!-- Testimonial 1 -->
+                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            👨‍💼
-                        </div>
-                        <div>
-                            <h4 style="margin: 0; font-weight: 600;">Jonathan M.</h4>
-                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Business Traveler</p>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; font-style: italic;">"The combination of premium car service and wellness support has transformed my business travel experience. I arrive refreshed and ready to perform."</p>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
-                    </div>
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
                             👩‍💼
                         </div>
                         <div>
-                            <h4 style="margin: 0; font-weight: 600;">Ashley P.</h4>
-                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Frequent Traveler</p>
+                            <h4 style="margin: 0; font-weight: 600; color: #333;">Sarah M.</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Wellness Enthusiast</p>
                         </div>
                     </div>
-                    <p style="margin-bottom: 1rem; font-style: italic;">"Amazing service! The wellness programs help me maintain my energy and health despite constant travel. The car service is just the cherry on top."</p>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"The convenience of having professional IV therapy at home is incredible. The team is knowledgeable, professional, and made me feel completely comfortable throughout the treatment."</p>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span style="color: #ffd700;">★★★★★</span>
+                    </div>
                     <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
+                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
                     </div>
                 </div>
-                <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+
+                <!-- Testimonial 2 -->
+                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            👨
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                            👨‍💻
                         </div>
                         <div>
-                            <h4 style="margin: 0; font-weight: 600;">Brad O.</h4>
-                            <p style="margin: 0; opacity: 0.8; font-size: 0.9rem;">Executive</p>
+                            <h4 style="margin: 0; font-weight: 600; color: #333;">Mike R.</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Business Executive</p>
                         </div>
                     </div>
-                    <p style="margin-bottom: 1rem; font-style: italic;">"The complete package - luxury transportation and cutting-edge wellness solutions. This is the future of premium travel services."</p>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"After a long week of meetings, the Energy & Performance IV was exactly what I needed. I felt rejuvenated within hours and ready to tackle my weekend plans."</p>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span style="color: #ffd700;">★★★★★</span>
+                    </div>
                     <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Customer</span>
+                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
+                            👩‍⚕️
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; font-weight: 600; color: #333;">Dr. Lisa K.</h4>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Healthcare Professional</p>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"As a healthcare professional, I appreciate the quality and safety standards. The team uses proper protocols and the results speak for themselves. Highly recommended!"</p>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span style="color: #ffd700;">★★★★★</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
                     </div>
                 </div>
             </div>
