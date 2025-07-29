@@ -1459,12 +1459,12 @@ const server = http.createServer((req, res) => {
     <section class="features" id="services" style="padding: 80px 0; background: white;">
         <div class="container">
             <!-- Section Header -->
-            <div class="scroll-animate" style="text-align: center; margin-bottom: 3rem;">
-                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
-                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">🌟 Our Services</span>
+            <div class="SectionHeader_sectionHeader__TrlRm scroll-animate">
+                <div class="SectionHeader_left__8ENis">
+                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">🌟 Our Services</div>
+                    <div class="h2">Why Choose Stay Dripped IV & Wellness Co.?</div>
                 </div>
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Why Choose Stay Dripped IV & Wellness Co.?</h2>
-                <p style="color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Professional mobile IV therapy services delivered with care, expertise, and convenience directly to your location.</p>
+                <div class="SectionHeader_right__6k4ay">Professional mobile IV therapy services delivered with care, expertise, and convenience directly to your location.</div>
             </div>
 
             <!-- Service Cards Grid -->
