@@ -1130,6 +1130,30 @@ const server = http.createServer((req, res) => {
             to { opacity: 1; transform: translateX(0); }
         }
 
+        /* Vita Bella Button Styles */
+        .vitabella-button:hover {
+            background: var(--e-global-color-lightgreen) !important;
+            color: var(--e-global-color-dark-green) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 60, 50, 0.15);
+        }
+
+        .vitabella-button:hover .arrow-circle {
+            fill: var(--e-global-color-dark-green);
+        }
+
+        .vitabella-button:hover .arrow-path {
+            fill: var(--e-global-color-lightgreen);
+        }
+
+        .vitabella-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .vitabella-button:hover .vitabella-arrow {
+            transform: translateX(3px);
+        }
+
         .user-info {
             display: flex;
             align-items: center;
@@ -1598,7 +1622,7 @@ const server = http.createServer((req, res) => {
                 <!-- Weight Loss -->
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #28a745, #20c997); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        ⚖️ Weight Loss
+                        ��️ Weight Loss
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Weight Loss Options</h3>
