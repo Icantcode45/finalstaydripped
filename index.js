@@ -1129,19 +1129,24 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
-    <!-- Cars Section -->
-    <section class="cars-section" id="cars">
+    <!-- IV Therapy Packages Section -->
+    <section class="therapy-packages-section" id="packages" style="padding: 4rem 0; background: #f8f9ff;">
         <div class="container">
-            <h2>Our Premium Fleet</h2>
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">IV Therapy Packages</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Choose from our comprehensive selection of IV therapy treatments designed to boost your health, energy, and wellness.
+                All treatments are administered by licensed medical professionals.
+            </p>
             <div class="filter-controls">
-                <button class="filter-btn active" onclick="filterCars('all')">All Cars</button>
-                <button class="filter-btn" onclick="filterCars('sedan')">Sedan</button>
-                <button class="filter-btn" onclick="filterCars('suv')">SUV</button>
-                <button class="filter-btn" onclick="filterCars('luxury')">Luxury</button>
-                <button class="filter-btn" onclick="filterCars('compact')">Compact</button>
+                <button class="filter-btn active" onclick="filterPackages('all')">All Packages</button>
+                <button class="filter-btn" onclick="filterPackages('hydration')">Hydration</button>
+                <button class="filter-btn" onclick="filterPackages('energy')">Energy</button>
+                <button class="filter-btn" onclick="filterPackages('immunity')">Immunity</button>
+                <button class="filter-btn" onclick="filterPackages('recovery')">Recovery</button>
+                <button class="filter-btn" onclick="filterPackages('beauty')">Beauty</button>
             </div>
-            <div class="cars-grid" id="cars-grid">
-                <!-- Cars will be loaded here -->
+            <div class="packages-grid" id="packages-grid">
+                <!-- IV Therapy packages will be loaded here -->
             </div>
         </div>
     </section>
