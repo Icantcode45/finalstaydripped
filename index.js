@@ -323,9 +323,9 @@ const server = http.createServer((req, res) => {
             font-size: clamp(48px, 6vw, 72px);
             font-weight: 700;
             line-height: 1.1;
-            color: var(--dark-gray);
+            color: var(--e-global-color-text);
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--dark-gray), var(--primary-emerald));
+            background: linear-gradient(135deg, var(--e-global-color-text), var(--e-global-color-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -333,7 +333,8 @@ const server = http.createServer((req, res) => {
 
         .hero-subtitle {
             font-size: 18px;
-            color: var(--text-gray);
+            color: var(--e-global-color-grey2);
+            font-family: 'Switzer', sans-serif;
             margin-bottom: 32px;
             line-height: 1.7;
             max-width: 500px;
@@ -1525,7 +1526,7 @@ const server = http.createServer((req, res) => {
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👨‍⚕️
+                        ��‍⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Robert Lieske</h3>
