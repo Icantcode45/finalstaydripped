@@ -12,6 +12,27 @@ const server = http.createServer((req, res) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness Services</title>
     <style>
+        :root {
+            --primary-emerald: #10B981;
+            --primary-emerald-dark: #059669;
+            --primary-emerald-light: #6EE7B7;
+            --primary-blue: #3B82F6;
+            --primary-blue-dark: #1D4ED8;
+            --accent-purple: #8B5CF6;
+            --accent-purple-light: #C4B5FD;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --dark-gray: #1f2937;
+            --text-gray: #374151;
+            --border-gray: #e5e7eb;
+            --gold: #f59e0b;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -19,11 +40,11 @@ const server = http.createServer((req, res) => {
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
