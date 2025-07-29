@@ -1910,8 +1910,8 @@ const server = http.createServer((req, res) => {
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"white\" opacity=\"0.05\"><circle cx=\"20\" cy=\"20\" r=\"2\"/><circle cx=\"80\" cy=\"20\" r=\"2\"/><circle cx=\"20\" cy=\"80\" r=\"2\"/><circle cx=\"80\" cy=\"80\" r=\"2\"/><circle cx=\"50\" cy=\"50\" r=\"3\"/></svg>'); pointer-events: none;"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1rem; color: white;">Never Miss a Deal or Update</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1.2rem; line-height: 1.6;">
+                <h2 class="h2" style="color: white; margin-bottom: 1rem;">Never Miss a Deal or Update</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1.2rem; line-height: 1.6; font-family: 'Switzer', sans-serif;">
                     Subscribe to our newsletter to stay in front of all the future deals, promotions and new treatments.
                     Stay up-to-date with the future you.
                 </p>
