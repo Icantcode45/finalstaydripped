@@ -1586,10 +1586,10 @@ const server = http.createServer((req, res) => {
                 <div class="footer-section">
                     <h3>Services</h3>
                     <ul>
-                        <li><a href="#cars">Car Rental</a></li>
+                        <li><a href="#packages">IV Therapy</a></li>
                         <li><a href="#services">Wellness Programs</a></li>
-                        <li><a href="#services">Travel Health</a></li>
-                        <li><a href="#services">Corporate Solutions</a></li>
+                        <li><a href="#services">Mobile Services</a></li>
+                        <li><a href="#services">Health Consultations</a></li>
                         <li><a href="#" onclick="showFAQ()">FAQ</a></li>
                         <li><a href="#services">24/7 Support</a></li>
                     </ul>
