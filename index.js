@@ -1828,16 +1828,16 @@ const server = http.createServer((req, res) => {
 
         <div class="container" style="position: relative; z-index: 2;">
             <!-- Section Header -->
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
-                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">💬 Client Stories</span>
+            <div class="SectionHeader_sectionHeader__TrlRm">
+                <div class="SectionHeader_left__8ENis">
+                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">💬 Client Stories</div>
+                    <div class="h2">What Our Customers Say</div>
                 </div>
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">What Our Customers Say</h2>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
                     <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
-                    <span style="font-size: 1.1rem; color: #333;">4.9 out of 5 stars</span>
+                    <span style="font-size: 1.1rem; color: var(--e-global-color-text); font-family: 'Switzer', sans-serif; font-weight: 600;">4.9 out of 5 stars</span>
                 </div>
-                <p style="color: #666;">From 5,000+ verified treatments</p>
+                <p class="SectionHeader_right__6k4ay">From 5,000+ verified treatments</p>
             </div>
 
             <!-- Testimonials Grid -->
