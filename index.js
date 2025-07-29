@@ -1209,8 +1209,20 @@ const server = http.createServer((req, res) => {
                         Experience comprehensive wellness with our professional mobile IV therapy services in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring premium wellness directly to you with care, precision, and convenience.
                     </p>
                     <div class="hero-cta">
-                        <a href="#packages" class="btn btn-primary">Start Your Journey</a>
-                        <a href="#services" class="btn btn-gradient">Explore Services</a>
+                        <a href="#packages" class="vitabella-button" style="background:var(--e-global-color-dark-green);color:var(--e-global-color-white);font-family:Switzer, Arial, Helvetica, sans-serif;font-weight:700;font-size:16px;border:none;border-radius:2rem;padding:0.4rem 0.4rem 0.4rem 1.4rem;min-width:180px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;box-shadow:0 2px 8px rgba(44, 60, 50, 0.07);transition:background 0.18s, color 0.18s, box-shadow 0.18s;position:relative;cursor:pointer;--arrow-circle-color:var(--e-global-color-lightgreen);--arrow-path-color:var(--e-global-color-dark-green);">
+                            <span style="flex:1;text-align:left;text-decoration:none">Start Your Journey</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730.01 730.01" width="30" height="30" class="vitabella-arrow" style="margin-left:0.7em;margin-right:0.2em;width:30px;height:30px">
+                                <circle cx="365.01" cy="365.01" r="365.01" fill="var(--arrow-circle-color, var(--e-global-color-dark-green))" class="arrow-circle"></circle>
+                                <path d="M250.42,511.01l215.63-215.63v193.17h44.92V219.01H241.44v44.92h193.17l-215.63,215.63,31.45,31.45Z" fill="var(--arrow-path-color, var(--e-global-color-green))" class="arrow-path"></path>
+                            </svg>
+                        </a>
+                        <a href="#services" class="vitabella-button" style="background:var(--e-global-color-white);color:var(--e-global-color-dark-green);font-family:Switzer, Arial, Helvetica, sans-serif;font-weight:700;font-size:16px;border:2px solid var(--e-global-color-dark-green);border-radius:2rem;padding:0.4rem 0.4rem 0.4rem 1.4rem;min-width:150px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;box-shadow:0 2px 8px rgba(44, 60, 50, 0.07);transition:background 0.18s, color 0.18s, box-shadow 0.18s;position:relative;cursor:pointer;--arrow-circle-color:var(--e-global-color-dark-green);--arrow-path-color:var(--e-global-color-lightgreen);">
+                            <span style="flex:1;text-align:left;text-decoration:none">Explore Services</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730.01 730.01" width="30" height="30" class="vitabella-arrow" style="margin-left:0.7em;margin-right:0.2em;width:30px;height:30px">
+                                <circle cx="365.01" cy="365.01" r="365.01" fill="var(--arrow-circle-color, var(--e-global-color-dark-green))" class="arrow-circle"></circle>
+                                <path d="M250.42,511.01l215.63-215.63v193.17h44.92V219.01H241.44v44.92h193.17l-215.63,215.63,31.45,31.45Z" fill="var(--arrow-path-color, var(--e-global-color-green))" class="arrow-path"></path>
+                            </svg>
+                        </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
