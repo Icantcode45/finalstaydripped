@@ -1251,7 +1251,7 @@ const server = http.createServer((req, res) => {
                     </div>
                 </div>
             </div>
-            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <button class="mobile-menu-toggle" id="menuIcon" onclick="toggleMenu()">☰</button>
             <div class="mobile-nav" id="mobileNav">
                 <ul>
                     <li><a href="#home" onclick="toggleMenu();">Home</a></li>
