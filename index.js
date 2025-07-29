@@ -1361,7 +1361,7 @@ const server = http.createServer((req, res) => {
     <section class="features" id="services" style="padding: 80px 0; background: white;">
         <div class="container">
             <!-- Section Header -->
-            <div style="text-align: center; margin-bottom: 3rem;">
+            <div class="scroll-animate" style="text-align: center; margin-bottom: 3rem;">
                 <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
                     <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">🌟 Our Services</span>
                 </div>
@@ -1519,7 +1519,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👨‍⚕️
+                        👨‍⚕��
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Daniel Bryan</h3>
