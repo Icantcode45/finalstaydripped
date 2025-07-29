@@ -2095,44 +2095,44 @@ const server = http.createServer((req, res) => {
         // FAQ functionality
         const faqs = [
             {
-                question: "How does the wellness program work with car rentals?",
-                answer: "Our integrated approach combines premium transportation with comprehensive wellness solutions. You can access health consultations, wellness programs, and recovery treatments alongside your car rental service."
+                question: "What is IV therapy and how does it work?",
+                answer: "IV therapy delivers vitamins, minerals, and medications directly into your bloodstream through a small catheter. This allows for 100% absorption and faster results compared to oral supplements. Our treatments are administered by licensed medical professionals in the comfort of your chosen location."
             },
             {
-                question: "Are the wellness treatments safe?",
-                answer: "Yes, all our wellness treatments are supervised by licensed medical professionals and follow strict safety protocols. We only offer clinically proven treatments backed by scientific research."
+                question: "Is IV therapy safe?",
+                answer: "Yes, our IV therapy treatments are very safe when administered by our licensed medical professionals. We use only pharmaceutical-grade ingredients and FDA-approved medications. All equipment is sterile and single-use to ensure your safety."
             },
             {
-                question: "Can I use wellness services without renting a car?",
-                answer: "Absolutely! Our wellness programs are available as standalone services. However, our integrated packages offer the best value for frequent travelers."
+                question: "How long does an IV therapy session take?",
+                answer: "Most IV therapy sessions take between 30-60 minutes, depending on the specific treatment you choose. Our medical professional will stay with you throughout the entire process to monitor your comfort and wellbeing."
             },
             {
-                question: "What wellness treatments do you offer?",
-                answer: "We offer a comprehensive range of treatments including Sexual Wellness, Weight Loss programs, Anti-Aging therapies, Cognitive Health enhancement, Hair Loss treatment, and Travel Recovery solutions. All treatments are supervised by licensed medical professionals."
+                question: "What areas do you serve?",
+                answer: "We provide mobile IV therapy services throughout Scottsdale, AZ and surrounding areas. We come to your home, office, hotel, or any location where you're comfortable receiving treatment."
             },
             {
-                question: "How do I get started with a wellness program?",
-                answer: "Getting started is simple: 1) Select your program and labs, 2) Meet with a licensed provider for consultation, 3) Begin your personalized treatment, 4) Monitor progress with quarterly check-ins. Your provider will guide you through every step."
+                question: "Who can receive IV therapy?",
+                answer: "Most healthy adults can safely receive IV therapy. However, we require a brief health screening before each treatment. Certain medical conditions or medications may prevent you from receiving specific treatments, which our medical professionals will assess."
             },
             {
-                question: "Are the treatments covered by insurance?",
-                answer: "Coverage varies by insurance provider and treatment type. We recommend checking with your insurance company. Many of our members find the programs cost-effective even without coverage due to our competitive pricing."
+                question: "How often can I get IV therapy?",
+                answer: "The frequency depends on your specific needs and the type of treatment. Some clients receive treatments weekly for ongoing wellness, while others use our services occasionally for recovery or specific health goals. Our medical professionals will recommend the best schedule for you."
             },
             {
-                question: "How quickly will I see results?",
-                answer: "Results vary depending on the treatment and individual factors. Many members report improvements within 2-4 weeks, with significant results typically seen within 2-3 months. Your provider will set realistic expectations during your consultation."
+                question: "Do you accept insurance?",
+                answer: "Currently, most IV therapy treatments are not covered by insurance as they are considered elective wellness services. However, we offer competitive pricing and package deals to make our services accessible. We can provide receipts for potential HSA/FSA reimbursement."
             },
             {
-                question: "Do you ship treatments discreetly?",
-                answer: "Yes, all treatments are shipped in discreet packaging directly to your door via express delivery from our U.S.-based pharmacies. Your privacy and convenience are our priorities."
+                question: "What should I expect during my first treatment?",
+                answer: "Our medical professional will arrive at your location with all necessary equipment. They'll review your health history, explain the treatment, and answer any questions. The IV insertion is typically painless, and you can relax, work, or watch TV during your treatment."
             },
             {
-                question: "Can I travel while on a wellness program?",
-                answer: "Absolutely! Our programs are designed specifically for travelers. Many treatments are portable, and our Travel Recovery services help you maintain optimal health while on the road."
+                question: "Can I customize my IV treatment?",
+                answer: "Absolutely! While we offer popular pre-designed packages, our medical professionals can customize treatments based on your specific health goals, lifestyle, and needs. We'll work with you to create the perfect blend of nutrients and medications."
             },
             {
-                question: "What makes your medical professionals qualified?",
-                answer: "All our medical professionals are licensed healthcare providers with specialized training in their respective fields. Our team includes hormone specialists, dermatologists, and travel medicine experts with years of experience."
+                question: "How quickly will I feel the effects?",
+                answer: "Many clients feel the effects immediately or within a few hours of treatment. Energy boosts and hydration effects are typically felt quickly, while immune and beauty benefits may take 24-48 hours to fully manifest. Results vary by individual and treatment type."
             }
         ];
 
