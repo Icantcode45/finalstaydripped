@@ -965,7 +965,7 @@ const server = http.createServer((req, res) => {
             <div class="mobile-nav" id="mobileNav">
                 <ul>
                     <li><a href="#home" onclick="scrollToSection('home'); toggleMenu();">Home</a></li>
-                    <li><a href="#cars" onclick="scrollToSection('cars'); toggleMenu();">Cars</a></li>
+                    <li><a href="#packages" onclick="scrollToSection('packages'); toggleMenu();">IV Packages</a></li>
                     <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Wellness</a></li>
                     <li><a href="#about" onclick="scrollToSection('about'); toggleMenu();">About</a></li>
                     <li><a href="#" onclick="showFAQ(); toggleMenu();">FAQ</a></li>
@@ -1425,7 +1425,7 @@ const server = http.createServer((req, res) => {
             <div style="text-align: center; margin-bottom: 3rem;">
                 <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">What Our Customers Say</h2>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
+                    <span style="color: #ffd700; font-size: 1.5rem;">���★★★★</span>
                     <span style="font-size: 1.1rem;">4.9 out of 5 stars</span>
                 </div>
                 <p style="opacity: 0.9;">From 10,000+ verified customers</p>
