@@ -370,7 +370,7 @@ const server = http.createServer((req, res) => {
             color: white;
         }
 
-        .cars-grid {
+        .cars-grid, .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
