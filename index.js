@@ -949,9 +949,10 @@ const server = http.createServer((req, res) => {
 
         /* Footer */
         .footer {
-            background: var(--dark-gray);
-            color: var(--white);
+            background: var(--e-global-color-dark-green);
+            color: var(--e-global-color-white);
             padding: 80px 0 32px 0;
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
         }
 
         .footer-content {
@@ -965,7 +966,10 @@ const server = http.createServer((req, res) => {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 24px;
-            color: var(--primary-emerald-light);
+            color: var(--e-global-color-lightgreen);
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .footer ul {
