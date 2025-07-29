@@ -1804,72 +1804,51 @@ const server = http.createServer((req, res) => {
             });
         }
 
-        // Create car card element
-        function createCarCard(car) {
+        // Create package card element
+        function createPackageCard(pkg) {
             const card = document.createElement('div');
-            card.className = 'car-card fade-in';
-            const carTypeIcons = {
-                'sedan': '🚗',
-                'suv': '🚙',
-                'luxury': '🏎️',
-                'compact': '🚘'
+            card.className = 'car-card fade-in'; // Reusing car-card styles
+            const packageTypeIcons = {
+                'hydration': '💧',
+                'energy': '⚡',
+                'immunity': '🛡️',
+                'recovery': '🔄',
+                'beauty': '✨'
             };
-            card.innerHTML = \`
-                <div class="car-image" style="position: relative;">
-                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; z-index: 1;">
-                        \${carTypeIcons[car.type] || '🚗'}
-                    </div>
-                    <button class="favorite-btn \${car.favorite ? 'active' : ''}" onclick="toggleFavorite(\${car.id})" style="z-index: 2;">
-                        ♥
-                    </button>
-                </div>
-                <div class="car-info">
-                    <div class="car-header">
-                        <div class="car-name-year">
-                            <h3 class="car-name">\${car.name}</h3>
-                            <p class="car-year">\${car.year}</p>
-                        </div>
-                        <div class="car-price">
-                            $\${car.price}
-                            <small>per day</small>
-                        </div>
-                    </div>
-                    <div class="car-rating">
-                        <div class="stars">
-                            \${generateStars(car.rating)}
-                        </div>
-                        <span class="rating-text">\${car.rating} (\${car.reviews} reviews)</span>
-                    </div>
-                    <div class="car-specs">
-                        <div class="spec-item">
-                            <span class="icon">⚙️</span>
-                            \${car.transmission}
-                        </div>
-                        <div class="spec-item">
-                            <span class="icon">⛽</span>
-                            \${car.fuel}
-                        </div>
-                        <div class="spec-item">
-                            <span class="icon">👥</span>
-                            \${car.seats} Seats
-                        </div>
-                        <div class="spec-item">
-                            <span class="icon">🚗</span>
-                            \${car.doors} Doors
-                        </div>
-                    </div>
-                    <div class="car-features">
-                        <div class="features-list">
-                            \${car.features.map(feature => \`<span class="feature-tag">\${feature}</span>\`).join('')}
-                        </div>
-                    </div>
-                    <div class="car-actions">
-                        <button class="btn-rent" onclick="rentCar(\${car.id})">
-                            Rent Now
-                        </button>
-                    </div>
-                </div>
-            \`;
+
+            card.innerHTML =
+                '<div class="car-image" style="position: relative;">' +
+                    '<div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; z-index: 1;">' +
+                        (packageTypeIcons[pkg.type] || '💉') +
+                    '</div>' +
+                    (pkg.popular ? '<div style="position: absolute; top: 10px; left: 10px; background: #ff4757; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 2;">POPULAR</div>' : '') +
+                    '<button class="favorite-btn ' + (pkg.favorite ? 'active' : '') + '" onclick="toggleFavorite(' + pkg.id + ')" style="z-index: 2;">♥</button>' +
+                '</div>' +
+                '<div class="car-info">' +
+                    '<div class="car-header">' +
+                        '<div class="car-name-year">' +
+                            '<h3 class="car-name">' + pkg.name + '</h3>' +
+                            '<p class="car-year">' + pkg.duration + '</p>' +
+                        '</div>' +
+                        '<div class="car-price">$' + pkg.price + '<small>per session</small></div>' +
+                    '</div>' +
+                    '<div class="car-rating">' +
+                        '<div class="stars">' + generateStars(pkg.rating) + '</div>' +
+                        '<span class="rating-text">' + pkg.rating + ' (' + pkg.reviews + ' reviews)</span>' +
+                    '</div>' +
+                    '<div style="margin: 1rem 0; padding: 1rem; background: #f8f9ff; border-radius: 10px;">' +
+                        '<p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">' + pkg.description + '</p>' +
+                    '</div>' +
+                    '<div class="car-features">' +
+                        '<h4 style="font-size: 0.9rem; color: #333; margin-bottom: 0.5rem;">Key Benefits:</h4>' +
+                        '<div class="features-list">' +
+                            pkg.benefits.map(benefit => '<span class="feature-tag">' + benefit + '</span>').join('') +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="car-actions" style="margin-top: 1rem;">' +
+                        '<button class="btn-rent" onclick="bookPackage(' + pkg.id + ')">Book Now</button>' +
+                    '</div>' +
+                '</div>';
             return card;
         }
 
