@@ -107,35 +107,36 @@ const server = http.createServer((req, res) => {
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 32px;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-gray);
             font-weight: 500;
+            font-size: 15px;
             transition: all 0.3s ease;
             position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
             height: 2px;
-            background: #667eea;
+            background: var(--primary-emerald);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-emerald);
         }
 
         .auth-buttons {
