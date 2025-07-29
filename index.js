@@ -1861,49 +1861,51 @@ const server = http.createServer((req, res) => {
     <footer class="footer" id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Stay Dripped IV & Wellness Co.</h3>
-                    <p>Premier mobile IV therapy and wellness services in Scottsdale, AZ. Licensed medical professionals bringing personalized health and wellness treatments directly to you.</p>
-                    <div class="social-links">
-                        <a href="#">📘</a>
-                        <a href="#">🐦</a>
-                        <a href="#">📷</a>
-                        <a href="#">💼</a>
+                <div>
+                    <h4>STAY DRIPPED IV & WELLNESS</h4>
+                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized mobile IV therapy and wellness services in Scottsdale, AZ. Professional, convenient, and effective treatments delivered directly to you.</p>
+                    <div>
+                        <p style="margin-bottom: 8px;">📞 (480) 555-0123</p>
+                        <p style="margin-bottom: 8px;">✉️ info@staydrippediv.com</p>
+                        <p>📍 Scottsdale, AZ - Mobile Service Area</p>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
+                <div>
+                    <h4>IV THERAPY</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#packages">IV Packages</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#packages">Classic Hydration</a></li>
+                        <li><a href="#packages">Energy & Performance</a></li>
+                        <li><a href="#packages">Immunity Boost</a></li>
+                        <li><a href="#packages">Recovery & Detox</a></li>
+                        <li><a href="#packages">Beauty Glow</a></li>
+                        <li><a href="#packages">Hangover Cure</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>WELLNESS SERVICES</h4>
+                    <ul>
+                        <li><a href="#wellness">Sexual Wellness</a></li>
+                        <li><a href="#wellness">Weight Loss</a></li>
+                        <li><a href="#wellness">Anti-Aging</a></li>
+                        <li><a href="#wellness">Cognitive Health</a></li>
+                        <li><a href="#wellness">Hair Loss Treatment</a></li>
+                        <li><a href="#wellness">Travel Recovery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>COMPANY</h4>
+                    <ul>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#packages">IV Therapy</a></li>
-                        <li><a href="#services">Wellness Programs</a></li>
-                        <li><a href="#services">Mobile Services</a></li>
-                        <li><a href="#services">Health Consultations</a></li>
+                        <li><a href="#services">Our Services</a></li>
                         <li><a href="#" onclick="showFAQ()">FAQ</a></li>
-                        <li><a href="#services">24/7 Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li>📞 +1 (555) 123-4567</li>
-                        <li>✉️ info@ridex.com</li>
-                        <li>📍 123 Business Ave, City, State 12345</li>
-                        <li>🕒 24/7 Customer Support</li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Ridex. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved. | Privacy Policy | Terms of Service</p>
             </div>
         </div>
     </footer>
