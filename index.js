@@ -1577,7 +1577,7 @@ const server = http.createServer((req, res) => {
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#cars">Our Cars</a></li>
+                        <li><a href="#packages">IV Packages</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
