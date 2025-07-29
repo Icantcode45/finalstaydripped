@@ -922,48 +922,48 @@ const server = http.createServer((req, res) => {
 
         /* Footer */
         .footer {
-            background: #333;
-            color: white;
-            padding: 3rem 0 1rem;
-            text-align: center;
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 80px 0 32px 0;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-            text-align: left;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #667eea;
+        .footer h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary-emerald-light);
         }
 
-        .footer-section ul {
+        .footer ul {
             list-style: none;
         }
 
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
+        .footer li {
+            margin-bottom: 12px;
         }
 
-        .footer-section ul li a {
-            color: #ccc;
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .footer-section ul li a:hover {
-            color: #667eea;
+        .footer a:hover {
+            color: var(--primary-emerald-light);
         }
 
         .footer-bottom {
-            border-top: 1px solid #555;
-            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
             text-align: center;
-            color: #999;
+            opacity: 0.6;
         }
 
         .social-links {
