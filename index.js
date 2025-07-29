@@ -1229,7 +1229,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div class="hero-visual">
                     <div class="hero-image">
-                        <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ffa5e601cf3664f4b80afbcfe3eeb0950?alt=media&token=8d6b828d-ae63-402f-b771-0f34d31602b4&apiKey=d86ad443e90f49f6824eddb927a8e06f" alt="Professional IV Therapy">
+                        <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff96175d3016d4dcabebe3476dce4dde4?alt=media&token=f36db875-37a9-4cfd-a8f4-7dc096173254&apiKey=d86ad443e90f49f6824eddb927a8e06f" alt="Professional IV Therapy">
                     </div>
                     <div class="floating-card floating-card-1">
                         <div style="display: flex; align-items: center; gap: 12px;">
@@ -1526,7 +1526,7 @@ const server = http.createServer((req, res) => {
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        ��‍⚕️
+                        👨‍⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Robert Lieske</h3>
