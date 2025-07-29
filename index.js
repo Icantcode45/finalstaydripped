@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
             --border-radius: 20px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Switzer:wght@300;400;500;600;700;800;900&display=swap');
 
         * {
             margin: 0;
@@ -1240,7 +1240,7 @@ const server = http.createServer((req, res) => {
             <div class="search-form">
                 <div class="form-group">
                     <label for="service-location">
-                        <span class="icon">����</span>
+                        <span class="icon">📍</span>
                         Service Location
                     </label>
                     <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
@@ -1483,7 +1483,7 @@ const server = http.createServer((req, res) => {
                             <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">�� Health Solutions</h4>
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">💊 Health Solutions</h4>
                             <p style="color: #666; font-size: 0.9rem;">Convenient healthcare on-the-go</p>
                         </div>
                     </div>
