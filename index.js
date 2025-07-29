@@ -98,7 +98,7 @@ const server = http.createServer((req, res) => {
             font-family: 'Playfair Display', serif;
             font-size: 28px;
             font-weight: 700;
-            color: var(--primary-emerald);
+            color: var(--e-global-color-dark-green);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -112,9 +112,9 @@ const server = http.createServer((req, res) => {
 
         .logo-subtitle {
             font-size: 12px;
-            color: var(--text-gray);
+            color: var(--e-global-color-grey2);
             font-weight: 400;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Switzer', sans-serif;
             margin-left: 8px;
             opacity: 0.8;
         }
