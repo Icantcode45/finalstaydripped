@@ -55,10 +55,10 @@ const server = http.createServer((req, res) => {
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Switzer', 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-gray);
-            background-color: var(--white);
+            color: var(--e-global-color-text);
+            background-color: var(--e-global-color-white);
             overflow-x: hidden;
         }
 
