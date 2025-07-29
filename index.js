@@ -1425,7 +1425,7 @@ const server = http.createServer((req, res) => {
             <div style="text-align: center; margin-bottom: 3rem;">
                 <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">What Our Customers Say</h2>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #ffd700; font-size: 1.5rem;">���★★★★</span>
+                    <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
                     <span style="font-size: 1.1rem;">4.9 out of 5 stars</span>
                 </div>
                 <p style="opacity: 0.9;">From 10,000+ verified customers</p>
@@ -1434,7 +1434,7 @@ const server = http.createServer((req, res) => {
                 <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            👨‍💼
+                            ��‍💼
                         </div>
                         <div>
                             <h4 style="margin: 0; font-weight: 600;">Jonathan M.</h4>
@@ -1449,7 +1449,7 @@ const server = http.createServer((req, res) => {
                 <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            👩‍💼
+                            ���‍💼
                         </div>
                         <div>
                             <h4 style="margin: 0; font-weight: 600;">Ashley P.</h4>
@@ -1648,97 +1648,119 @@ const server = http.createServer((req, res) => {
     </div>
 
     <script>
-        // Car data
-        const cars = [
+        // IV Therapy Packages data
+        const ivPackages = [
             {
                 id: 1,
-                name: "BMW 3 Series",
-                year: 2023,
-                type: "sedan",
-                price: 89,
-                rating: 4.8,
-                reviews: 124,
-                transmission: "Automatic",
-                fuel: "Petrol",
-                seats: 5,
-                doors: 4,
-                features: ["GPS", "Bluetooth", "AC", "Leather"],
-                favorite: false
+                name: "The Classic Hydration",
+                type: "hydration",
+                price: 150,
+                duration: "30-45 mins",
+                rating: 4.9,
+                reviews: 324,
+                description: "Perfect for dehydration, hangovers, and general wellness",
+                ingredients: ["Normal Saline", "Electrolytes", "B-Complex", "Vitamin C"],
+                benefits: ["Rapid rehydration", "Hangover relief", "Energy boost", "Improved skin"],
+                favorite: false,
+                popular: true
             },
             {
                 id: 2,
-                name: "Mercedes-Benz GLC",
-                year: 2023,
-                type: "suv",
-                price: 125,
-                rating: 4.9,
-                reviews: 89,
-                transmission: "Automatic",
-                fuel: "Petrol",
-                seats: 7,
-                doors: 5,
-                features: ["GPS", "Sunroof", "AC", "Premium Audio"],
-                favorite: false
+                name: "Energy & Performance",
+                type: "energy",
+                price: 225,
+                duration: "45-60 mins",
+                rating: 4.8,
+                reviews: 198,
+                description: "Boost energy levels and enhance athletic performance",
+                ingredients: ["Amino Acids", "B-Complex", "Vitamin C", "Magnesium", "Taurine"],
+                benefits: ["Increased energy", "Enhanced focus", "Muscle recovery", "Endurance boost"],
+                favorite: false,
+                popular: false
             },
             {
                 id: 3,
-                name: "Audi A4",
-                year: 2022,
-                type: "luxury",
-                price: 110,
-                rating: 4.7,
-                reviews: 156,
-                transmission: "Automatic",
-                fuel: "Petrol",
-                seats: 5,
-                doors: 4,
-                features: ["GPS", "Bluetooth", "AC", "Premium Interior"],
-                favorite: false
+                name: "Immunity Boost",
+                type: "immunity",
+                price: 200,
+                duration: "45 mins",
+                rating: 4.9,
+                reviews: 267,
+                description: "Strengthen your immune system and fight off illness",
+                ingredients: ["High-dose Vitamin C", "Zinc", "Glutathione", "B-Complex"],
+                benefits: ["Immune support", "Antioxidant boost", "Faster recovery", "Illness prevention"],
+                favorite: false,
+                popular: true
             },
             {
                 id: 4,
-                name: "Toyota Corolla",
-                year: 2023,
-                type: "compact",
-                price: 45,
-                rating: 4.5,
-                reviews: 203,
-                transmission: "Manual",
-                fuel: "Petrol",
-                seats: 5,
-                doors: 4,
-                features: ["GPS", "AC", "Bluetooth"],
-                favorite: false
+                name: "Recovery & Detox",
+                type: "recovery",
+                price: 275,
+                duration: "60 mins",
+                rating: 4.7,
+                reviews: 156,
+                description: "Accelerate recovery and eliminate toxins",
+                ingredients: ["Glutathione", "NAD+", "Vitamin C", "B-Complex", "Magnesium"],
+                benefits: ["Cellular repair", "Toxin elimination", "Anti-aging", "Mental clarity"],
+                favorite: false,
+                popular: false
             },
             {
                 id: 5,
-                name: "Tesla Model 3",
-                year: 2023,
-                type: "luxury",
-                price: 135,
-                rating: 4.9,
-                reviews: 78,
-                transmission: "Automatic",
-                fuel: "Electric",
-                seats: 5,
-                doors: 4,
-                features: ["Autopilot", "Supercharging", "Premium Interior", "Tech Package"],
-                favorite: false
+                name: "Beauty Glow",
+                type: "beauty",
+                price: 250,
+                duration: "45 mins",
+                rating: 4.8,
+                reviews: 189,
+                description: "Enhance skin radiance and promote healthy hair and nails",
+                ingredients: ["Biotin", "Glutathione", "Vitamin C", "Collagen precursors"],
+                benefits: ["Glowing skin", "Hair growth", "Nail strength", "Anti-aging"],
+                favorite: false,
+                popular: true
             },
             {
                 id: 6,
-                name: "Honda CR-V",
-                year: 2023,
-                type: "suv",
-                price: 75,
-                rating: 4.6,
+                name: "The Executive",
+                type: "energy",
+                price: 300,
+                duration: "60 mins",
+                rating: 4.9,
                 reviews: 142,
-                transmission: "Automatic",
-                fuel: "Petrol",
-                seats: 7,
-                doors: 5,
-                features: ["GPS", "AC", "Bluetooth", "Safety Package"],
-                favorite: false
+                description: "Premium package for busy professionals",
+                ingredients: ["NAD+", "B-Complex", "Vitamin C", "Magnesium", "Amino Acids", "Glutathione"],
+                benefits: ["Mental clarity", "Stress relief", "Energy boost", "Immune support"],
+                favorite: false,
+                popular: false
+            },
+            {
+                id: 7,
+                name: "Hangover Cure",
+                type: "recovery",
+                price: 175,
+                duration: "30 mins",
+                rating: 4.8,
+                reviews: 412,
+                description: "Fast relief from hangover symptoms",
+                ingredients: ["Normal Saline", "B-Complex", "Anti-nausea medication", "Electrolytes"],
+                benefits: ["Nausea relief", "Rehydration", "Headache relief", "Energy restoration"],
+                favorite: false,
+                popular: true
+            },
+            {
+                id: 8,
+                name: "Athletic Recovery",
+                type: "recovery",
+                price: 225,
+                duration: "45 mins",
+                rating: 4.9,
+                reviews: 178,
+                description: "Optimize recovery for athletes and fitness enthusiasts",
+                ingredients: ["Amino Acids", "Magnesium", "B-Complex", "Vitamin C", "Electrolytes"],
+                benefits: ["Muscle recovery", "Reduced inflammation", "Energy restoration", "Performance enhancement"],
+                favorite: false,
+                popular: false
             }
         ];
 
