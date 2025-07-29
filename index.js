@@ -13,6 +13,16 @@ const server = http.createServer((req, res) => {
     <title>Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness Services</title>
     <style>
         :root {
+            /* Vita Bella Color System */
+            --e-global-color-dark-green: #012B27;
+            --e-global-color-green: #10B981;
+            --e-global-color-lightgreen: #6EE7B7;
+            --e-global-color-white: #ffffff;
+            --e-global-color-text: #012B27;
+            --e-global-color-grey2: #596D74;
+            --e-global-color-accent: #F8FBFF;
+
+            /* Extended palette */
             --primary-emerald: #10B981;
             --primary-emerald-dark: #059669;
             --primary-emerald-light: #6EE7B7;
@@ -29,6 +39,11 @@ const server = http.createServer((req, res) => {
             --success: #22c55e;
             --warning: #f59e0b;
             --error: #ef4444;
+
+            /* Spacing system */
+            --space-4x: 4rem;
+            --space-3x: 3rem;
+            --border-radius: 20px;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
@@ -1225,7 +1240,7 @@ const server = http.createServer((req, res) => {
             <div class="search-form">
                 <div class="form-group">
                     <label for="service-location">
-                        <span class="icon">📍</span>
+                        <span class="icon">����</span>
                         Service Location
                     </label>
                     <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
@@ -1468,7 +1483,7 @@ const server = http.createServer((req, res) => {
                             <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">💊 Health Solutions</h4>
+                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">�� Health Solutions</h4>
                             <p style="color: #666; font-size: 0.9rem;">Convenient healthcare on-the-go</p>
                         </div>
                     </div>
