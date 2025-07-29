@@ -1,20 +1,266 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 
-const server = http.createServer((req, res) => {
+// Zyte API Integration for dynamic content extraction
+const zyteApiKey = '3d9c21c386b64c48b991208269f60348';
+
+async function extractVitaBellaNavigation() {
+  try {
+    const response = await axios.post(
+      "https://api.zyte.com/v1/extract",
+      {
+        "url": "https://vitabella.com/",
+        "browserHtml": true,
+        "productNavigation": true,
+        "productNavigationOptions": {"extractFrom": "browserHtml"}
+      },
+      {
+        auth: { username: zyteApiKey }
+      }
+    );
+    
+    return {
+      browserHtml: response.data.browserHtml,
+      productNavigation: response.data.productNavigation
+    };
+  } catch (error) {
+    console.log('Zyte API extraction failed, using fallback navigation');
+    return {
+      productNavigation: {
+        categoryName: "CLINICALLY PROVEN",
+        subCategories: [
+          {
+            url: "https://vitabella.com/sexual-wellness",
+            name: "Sexual Wellness",
+            metadata: { probability: 0.9939426779747009 }
+          },
+          {
+            url: "https://vitabella.com/hormone-therapy", 
+            name: "Hormone Therapy",
+            metadata: { probability: 0.9934606552124023 }
+          },
+          {
+            url: "https://vitabella.com/weight-loss",
+            name: "Weight Loss", 
+            metadata: { probability: 0.9927549958229065 }
+          },
+          {
+            url: "https://vitabella.com/membership/",
+            name: "Start Your Treatment",
+            metadata: { probability: 0.9498394727706909 }
+          },
+          {
+            url: "https://vitabella.com/anti-aging",
+            name: "Anti-Aging",
+            metadata: { probability: 0.9283528327941895 }
+          }
+        ]
+      }
+    };
+  }
+}
+
+// Cache navigation data
+let cachedNavigation = null;
+let lastFetch = 0;
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+
+async function getNavigationData() {
+  const now = Date.now();
+  if (!cachedNavigation || (now - lastFetch) > CACHE_DURATION) {
+    cachedNavigation = await extractVitaBellaNavigation();
+    lastFetch = now;
+  }
+  return cachedNavigation;
+}
+
+const server = http.createServer(async (req, res) => {
+  // Handle API endpoint for navigation data
+  if (req.method === 'GET' && req.url === '/api/navigation') {
+    try {
+      const navData = await getNavigationData();
+      res.writeHead(200, { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      });
+      res.end(JSON.stringify(navData.productNavigation));
+      return;
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Failed to fetch navigation data' }));
+      return;
+    }
+  }
+
   // Serve the main HTML file for all routes
   if (req.method === 'GET') {
     const htmlContent = `<!DOCTYPE html>
-<html lang="en">
-<head>
+<html dir="ltr" lang="en-US" prefix="og: https://ogp.me/ns#" style="--lqd-mobile-sec-height: 0px; scroll-behavior: smooth;">
+<head itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vita Bella Health | Complete Wellness & Mobile IV Therapy</title>
-    <meta name="description" content="Experience comprehensive wellness with Vita Bella's hormone therapy, weight management, anti-aging treatments, and premium mobile IV therapy services. Book online today!">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Vita Bella Health - #1 Mobile IV Therapy in Scottsdale, AZ">
+    
+    <title>#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health</title>
+    <meta name="description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="canonical" href="https://vitabella.com/">
+    <meta name="generator" content="Vita Bella Health - Mobile IV Therapy Specialists">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Vita Bella Health - Mobile IV Therapy & Wellness">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health">
+    <meta property="og:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta property="og:url" content="https://vitabella.com/">
+    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Vita Bella Health - Premium Mobile IV Therapy">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health">
+    <meta name="twitter:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://vitabella.com/#breadcrumblist",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "@id": "https://vitabella.com/#listItem",
+                        "position": 1,
+                        "name": "Home"
+                    }
+                ]
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://vitabella.com/#organization",
+                "name": "Vita Bella Health",
+                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
+                "url": "https://vitabella.com/",
+                "telephone": "+14806020444",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                    "@id": "https://vitabella.com/#organizationLogo",
+                    "width": 1200,
+                    "height": 630
+                },
+                "image": {
+                    "@id": "https://vitabella.com/#organizationLogo"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "7014 E Camelback Rd suite b100 a",
+                    "addressLocality": "Scottsdale",
+                    "addressRegion": "AZ",
+                    "postalCode": "85251",
+                    "addressCountry": "US"
+                },
+                "areaServed": {
+                    "@type": "Place",
+                    "name": "Scottsdale, Arizona"
+                },
+                "serviceType": ["Mobile IV Therapy", "Hormone Therapy", "Weight Management", "Anti-Aging Treatments"]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://vitabella.com/#webpage",
+                "url": "https://vitabella.com/",
+                "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health",
+                "description": "Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!",
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://vitabella.com/#website"
+                },
+                "breadcrumb": {
+                    "@id": "https://vitabella.com/#breadcrumblist"
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                    "@id": "https://vitabella.com/#mainImage",
+                    "width": 1200,
+                    "height": 630
+                },
+                "primaryImageOfPage": {
+                    "@id": "https://vitabella.com/#mainImage"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://vitabella.com/#website",
+                "url": "https://vitabella.com/",
+                "name": "Vita Bella Health",
+                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
+                "inLanguage": "en-US",
+                "publisher": {
+                    "@id": "https://vitabella.com/#organization"
+                }
+            },
+            {
+                "@type": "MedicalBusiness",
+                "@id": "https://vitabella.com/#medicalbusiness",
+                "name": "Vita Bella Health - Mobile IV Therapy",
+                "image": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                "telephone": "+14806020444",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "7014 E Camelback Rd suite b100 a",
+                    "addressLocality": "Scottsdale",
+                    "addressRegion": "AZ",
+                    "postalCode": "85251",
+                    "addressCountry": "US"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 33.5027,
+                    "longitude": -111.9261
+                },
+                "url": "https://vitabella.com/",
+                "medicalSpecialty": ["IV Therapy", "Hormone Therapy", "Wellness Medicine"],
+                "serviceArea": {
+                    "@type": "Place",
+                    "name": "Scottsdale, Arizona and surrounding areas"
+                }
+            }
+        ]
+    }
+    </script>
     
     <style>
+        /* Enhanced CSS Variable System */
         :root {
+            /* Global Color System - Enhanced */
+            --e-global-color-primary: #000000;
+            --e-global-color-text: #3F4C51;
+            --e-global-color-12573a4: #FFFFFF;
+            --e-global-color-6e06d90: #000000;
+            --e-global-color-e41200d: #F5F7F9;
+            --e-global-color-34f92fa: #1A2B3B;
+            --e-global-color-ac9db47: #0000000D;
+            --e-global-color-f7d3e02: #0D0D0DCC;
+            --e-global-color-2584140: #FFFFFF;
+            --e-global-color-cbdd3a3: #D4D4D4;
+            --e-global-color-a403e49: #171717;
+            
+            /* Primary Brand Colors */
             --primary-emerald: #10B981;
             --primary-emerald-dark: #059669;
             --primary-emerald-light: #6EE7B7;
@@ -22,18 +268,34 @@ const server = http.createServer((req, res) => {
             --primary-blue-dark: #1D4ED8;
             --accent-purple: #8B5CF6;
             --accent-purple-light: #C4B5FD;
+            
+            /* IV Therapy Brand Colors */
+            --iv-primary: #3d9cd2;
+            --iv-secondary: #1A2B3B;
+            --iv-accent: #F5F7F9;
+            --iv-success: #22c55e;
+            --iv-warning: #f59e0b;
+            --iv-error: #d63939;
+            
+            /* Neutral System */
             --white: #ffffff;
             --light-gray: #f8fafc;
             --dark-gray: #1f2937;
             --text-gray: #374151;
             --border-gray: #e5e7eb;
-            --gold: #f59e0b;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --error: #ef4444;
+            
+            /* Typography Variables */
+            --e-global-typography-primary-font-family: "Instrument Sans", "Inter", sans-serif;
+            --e-global-typography-secondary-font-family: "Roboto Slab", serif;
+            --e-global-typography-text-font-family: "Rubik", sans-serif;
+            --e-global-typography-accent-font-family: "Roboto", sans-serif;
+            
+            /* Container System */
+            --container-max-width: 1100px;
+            --container-default-padding: 20px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -42,17 +304,117 @@ const server = http.createServer((req, res) => {
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-gray);
-            background-color: var(--white);
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.35em;
+            letter-spacing: 0.01em;
+            color: var(--e-global-color-text);
+            background-color: var(--e-global-color-12573a4);
             overflow-x: hidden;
         }
 
+        /* Enhanced Typography System */
+        h1, .h1 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(50px, 6vw, 84px);
+            font-weight: 600;
+            line-height: 1em;
+            letter-spacing: -1.8px;
+            margin-bottom: 24px;
+        }
+
+        h2, .h2 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(40px, 5vw, 54px);
+            font-weight: 600;
+            line-height: 1em;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        h3, .h3 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            line-height: 1.2em;
+            margin-bottom: 16px;
+        }
+
+        h4, .h4 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(20px, 3vw, 24px);
+            font-weight: 600;
+            line-height: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        h5, .h5 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1em;
+            margin-bottom: 10px;
+        }
+
+        h6, .h6 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        /* Enhanced Container System */
         .container {
-            max-width: 1400px;
+            max-width: var(--container-max-width);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--container-default-padding);
+            width: 100%;
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding: 0 var(--container-default-padding);
+        }
+
+        /* Bootstrap-inspired Grid System */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col, .col-12, .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8 {
+            position: relative;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+
+        .col-lg-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-lg-8 {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
         }
 
         /* Enhanced Header */
@@ -85,7 +447,7 @@ const server = http.createServer((req, res) => {
             font-family: 'Playfair Display', serif;
             font-size: 28px;
             font-weight: 700;
-            color: var(--primary-emerald);
+            color: var(--iv-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -93,7 +455,7 @@ const server = http.createServer((req, res) => {
         }
 
         .logo::before {
-            content: "✨";
+            content: "💉";
             font-size: 24px;
         }
 
@@ -101,7 +463,7 @@ const server = http.createServer((req, res) => {
             font-size: 12px;
             color: var(--text-gray);
             font-weight: 400;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
             margin-left: 8px;
             opacity: 0.8;
         }
@@ -129,7 +491,7 @@ const server = http.createServer((req, res) => {
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-emerald);
+            background: var(--iv-primary);
             transition: width 0.3s ease;
         }
 
@@ -138,72 +500,95 @@ const server = http.createServer((req, res) => {
         }
 
         .nav-links a:hover {
-            color: var(--primary-emerald);
+            color: var(--iv-primary);
         }
 
-        /* Enhanced Button Styles */
-        .btn {
+        /* Enhanced Button System */
+        .btn, button, input[type="button"], input[type="submit"], .elementor-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
+            padding: 12px 16px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5em;
+            letter-spacing: 0.01em;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            background-color: var(--e-global-color-f7d3e02);
+            color: var(--e-global-color-2584140);
+            border-color: var(--e-global-color-f7d3e02);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0);
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
+        .btn:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover, .elementor-button:hover {
+            background-color: var(--e-global-color-cbdd3a3);
+            color: var(--e-global-color-a403e49);
+            border-color: var(--e-global-color-cbdd3a3);
+            transform: translateY(-1px);
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
-
+        /* Button Variants */
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-emerald), var(--primary-emerald-dark));
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue-dark));
             color: var(--white);
-            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
+            border-color: var(--iv-primary);
+            box-shadow: 0 4px 14px 0 rgba(61, 156, 210, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, var(--primary-blue-dark), var(--iv-primary));
+            color: var(--white);
+            border-color: var(--primary-blue-dark);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
         }
 
         .btn-secondary {
             background: var(--white);
-            color: var(--primary-emerald);
-            border: 2px solid var(--primary-emerald);
+            color: var(--iv-primary);
+            border: 2px solid var(--iv-primary);
         }
 
         .btn-secondary:hover {
-            background: var(--primary-emerald);
+            background: var(--iv-primary);
             color: var(--white);
+            border-color: var(--iv-primary);
         }
 
         .btn-gradient {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            background: linear-gradient(135deg, var(--primary-emerald), var(--accent-purple));
             color: var(--white);
-            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
+            border-color: transparent;
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
         }
 
         .btn-gradient:hover {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-emerald));
+            box-shadow: 0 8px 25px 0 rgba(139, 92, 246, 0.4);
+        }
+
+        /* IV Therapy Specific Button */
+        .btn-iv-therapy {
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-emerald));
+            color: var(--white);
+            border-color: transparent;
+            font-weight: 600;
+            padding: 14px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px 0 rgba(61, 156, 210, 0.3);
+        }
+
+        .btn-iv-therapy:hover {
+            background: linear-gradient(135deg, var(--primary-emerald), var(--iv-primary));
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
         }
 
         /* Mobile menu */
@@ -218,19 +603,45 @@ const server = http.createServer((req, res) => {
 
         .mobile-nav {
             display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
         }
 
         /* Hero Section with enhanced animations */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg, 
-                rgba(16, 185, 129, 0.05) 0%, 
-                rgba(59, 130, 246, 0.05) 50%, 
+                rgba(61, 156, 210, 0.05) 0%, 
+                rgba(16, 185, 129, 0.05) 50%, 
                 rgba(139, 92, 246, 0.05) 100%);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 100px;
         }
 
         .hero::before {
@@ -241,8 +652,8 @@ const server = http.createServer((req, res) => {
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(61, 156, 210, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
         }
@@ -269,7 +680,7 @@ const server = http.createServer((req, res) => {
             line-height: 1.1;
             color: var(--dark-gray);
             margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--dark-gray), var(--primary-emerald));
+            background: linear-gradient(135deg, var(--dark-gray), var(--iv-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -304,7 +715,7 @@ const server = http.createServer((req, res) => {
         .stat-number {
             font-size: 32px;
             font-weight: 800;
-            color: var(--primary-emerald);
+            color: var(--iv-primary);
             display: block;
         }
 
@@ -325,7 +736,7 @@ const server = http.createServer((req, res) => {
             width: 100%;
             max-width: 500px;
             height: 600px;
-            background: linear-gradient(135deg, var(--primary-emerald), var(--primary-blue));
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
             border-radius: 24px;
             position: relative;
             overflow: hidden;
@@ -337,6 +748,12 @@ const server = http.createServer((req, res) => {
             height: 100%;
             object-fit: cover;
             border-radius: 24px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
 
         .floating-card {
@@ -364,6 +781,191 @@ const server = http.createServer((req, res) => {
         @keyframes floatCard {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        /* Search Form Styling */
+        .search-section {
+            background: white;
+            margin: -50px auto 0;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--iv-primary);
+            box-shadow: 0 0 0 3px rgba(61, 156, 210, 0.1);
+        }
+
+        /* Enhanced Service Categories */
+        .services-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--iv-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--iv-primary), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 12px;
+        }
+
+        .service-card .category-subtitle {
+            color: var(--iv-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .treatment-item {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .treatment-item:hover {
+            background: var(--iv-primary);
+            color: var(--white);
+            transform: translateY(-4px);
+            border-color: var(--iv-primary);
+        }
+
+        .treatment-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .treatment-item p {
+            font-size: 14px;
+            opacity: 0.8;
         }
 
         /* Text Shadow Effects Integration */
@@ -567,7 +1169,7 @@ const server = http.createServer((req, res) => {
             left: 0;
             border-radius: 4px;
             pointer-events: none;
-            background-color: rgba(26, 188, 156, 0.9);
+            background-color: rgba(61, 156, 210, 0.9);
             color: white;
         }
 
@@ -759,143 +1361,10 @@ const server = http.createServer((req, res) => {
             transform: rotate(315deg) translate(-0.25em,-0.25em);
         }
 
-        /* Enhanced Service Categories */
-        .services-section {
-            padding: 120px 0;
-            background: var(--light-gray);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-subtitle {
-            font-size: 16px;
-            color: var(--primary-emerald);
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 700;
-            color: var(--dark-gray);
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-
-        .section-description {
-            font-size: 18px;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-emerald), var(--primary-blue));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--dark-gray);
-            margin-bottom: 12px;
-        }
-
-        .service-card .category-subtitle {
-            color: var(--primary-emerald);
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .service-card p {
-            color: var(--text-gray);
-            line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .treatments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .treatment-item {
-            background: var(--light-gray);
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .treatment-item:hover {
-            background: var(--primary-emerald);
-            color: var(--white);
-            transform: translateY(-4px);
-        }
-
-        .treatment-item h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .treatment-item p {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
         /* IV Therapy Section */
         .iv-section {
             padding: 120px 0;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            background: linear-gradient(135deg, var(--iv-primary), var(--accent-purple));
             color: var(--white);
             position: relative;
             overflow: hidden;
@@ -943,7 +1412,7 @@ const server = http.createServer((req, res) => {
         }
 
         .iv-features li::before {
-            content: "💧";
+            content: "💉";
             margin-right: 12px;
             font-size: 20px;
         }
@@ -972,53 +1441,13 @@ const server = http.createServer((req, res) => {
             opacity: 0.9;
         }
 
-        /* Search Form Styling */
-        .search-section {
-            background: white;
-            margin: -50px auto 0;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 10;
-            max-width: 1000px;
+        /* Enhanced IV Section Image Effects */
+        .scroll-animate:hover img {
+            transform: scale(1.05);
         }
 
-        .search-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            align-items: end;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-emerald);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        .scroll-animate:hover .image-overlay {
+            opacity: 1;
         }
 
         /* Footer */
@@ -1065,146 +1494,6 @@ const server = http.createServer((req, res) => {
             padding-top: 32px;
             text-align: center;
             opacity: 0.6;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-                text-align: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .iv-content {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hover-grid li {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .hover-grid li a {
-                font-size: 35px;
-                line-height: 150px;
-            }
-            
-            .icon {
-                width: 12em;
-                height: 12em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .hero {
-                min-height: 80vh;
-                padding-top: 80px;
-            }
-
-            .hero-text h1 {
-                font-size: 40px;
-            }
-
-            .hero-cta {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .floating-card {
-                display: none;
-            }
-
-            .services-grid {
-                gap: 20px;
-                margin-top: 40px;
-            }
-
-            .service-card {
-                padding: 24px;
-            }
-
-            .treatments-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .container {
-                padding: 0 16px;
-            }
-
-            .section-header {
-                margin-bottom: 40px;
-            }
-
-            .services-section,
-            .iv-section,
-            .shadow-showcase,
-            .interactive-section,
-            .icon-section {
-                padding: 80px 0;
-            }
-
-            .shadow-text {
-                font-size: 32px;
-                padding: 40px 20px;
-            }
-
-            .search-form {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation Classes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Modal styles */
@@ -1274,7 +1563,7 @@ const server = http.createServer((req, res) => {
         }
 
         .modal input:focus {
-            border-color: var(--primary-emerald);
+            border-color: var(--iv-primary);
             outline: none;
         }
 
@@ -1288,6 +1577,266 @@ const server = http.createServer((req, res) => {
             height: 16px;
             text-align: center;
         }
+
+        /* Dynamic Navigation Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 12px 0;
+            z-index: 1000;
+            border: 1px solid var(--border-gray);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--light-gray);
+            color: var(--iv-primary);
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dynamic Treatment Grid Enhancements */
+        .dynamic-treatment {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dynamic-treatment:hover {
+            border-color: var(--iv-primary);
+            transform: translateY(-2px);
+        }
+
+        .confidence-indicator {
+            background: rgba(61, 156, 210, 0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            display: inline-block;
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Responsive Design System */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 1024px;
+                padding: 0 20px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .iv-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .hover-grid li {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hover-grid li a {
+                font-size: 35px;
+                line-height: 150px;
+            }
+            
+            .icon {
+                width: 12em;
+                height: 12em;
+            }
+
+            /* Button adjustments */
+            .btn, button, input[type="button"], input[type="submit"] {
+                font-size: 15px;
+                padding: 10px 14px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                max-width: 767px;
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding-top: 80px;
+            }
+
+            /* Mobile Typography */
+            h1, .h1 {
+                font-size: 50px;
+                letter-spacing: -1px;
+            }
+
+            h2, .h2 {
+                font-size: 40px;
+                letter-spacing: -0.5px;
+            }
+
+            .hero-cta {
+                justify-content: center;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .services-grid {
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+
+            .treatments-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .services-section,
+            .iv-section,
+            .shadow-showcase,
+            .interactive-section,
+            .icon-section {
+                padding: 60px 0;
+            }
+
+            .shadow-text {
+                font-size: 28px;
+                padding: 30px 15px;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* Mobile Button Adjustments */
+            .btn, button, input[type="button"], input[type="submit"] {
+                width: 100%;
+                justify-content: center;
+                font-size: 16px;
+                padding: 12px 16px;
+            }
+
+            .btn-iv-therapy {
+                padding: 16px 20px;
+                font-size: 17px;
+            }
+
+            /* Mobile-specific IV Therapy Enhancements */
+            .iv-features li {
+                font-size: 15px;
+                padding: 8px 0;
+            }
+
+            .treatment-item {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1296,9 +1845,9 @@ const server = http.createServer((req, res) => {
         <nav class="nav container">
             <a href="#" class="logo">
                 Vita Bella
-                <span class="logo-subtitle">Wellness Delivered</span>
+                <span class="logo-subtitle">Mobile IV Therapy & Wellness</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="mainNavLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#effects">Visual Effects</a></li>
                 <li><a href="#iv-therapy">IV Therapy</a></li>
@@ -1346,43 +1895,43 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1>Your Health, Our Priority</h1>
+                    <h1>#1 Mobile IV Therapy in Scottsdale</h1>
                     <p class="hero-subtitle">
-                        Experience comprehensive wellness with our hormone optimization, weight management, anti-aging treatments, and premium mobile IV therapy. Delivered with care, precision, and convenience.
+                        Experience premium mobile IV therapy delivered directly to your location in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring wellness to you with same-day availability.
                     </p>
                     <div class="hero-cta">
-                        <a href="#services" class="btn btn-primary">Start Your Journey</a>
-                        <a href="#iv-therapy" class="btn btn-gradient">Book IV Therapy</a>
+                        <a href="#iv-therapy" class="btn btn-iv-therapy">📱 Book Mobile IV Now</a>
+                        <a href="#services" class="btn btn-secondary">🏥 View All Services</a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">15k+</span>
-                            <span class="stat-label">Lives Transformed</span>
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">IV Treatments Delivered</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">4.9/5</span>
                             <span class="stat-label">Star Reviews</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">60%</span>
-                            <span class="stat-label">More Affordable</span>
+                            <span class="stat-number">Same Day</span>
+                            <span class="stat-label">Service Available</span>
                         </div>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-image">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=600&fit=crop&auto=format&q=80" alt="Wellness professional">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Vita Bella Health - Premium Wellness Services" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
                     </div>
                     <div class="floating-card floating-card-1">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div style="width: 12px; height: 12px; background: var(--success); border-radius: 50%;"></div>
-                            <span style="font-size: 14px; font-weight: 600;">24/7 Available</span>
+                            <div style="width: 12px; height: 12px; background: var(--iv-success); border-radius: 50%;"></div>
+                            <span style="font-size: 14px; font-weight: 600;">Same-Day Service</span>
                         </div>
                     </div>
                     <div class="floating-card floating-card-2">
                         <div style="text-align: center;">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--primary-emerald);">500+</div>
-                            <div style="font-size: 12px; opacity: 0.7;">Happy Clients</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--iv-primary);">Scottsdale</div>
+                            <div style="font-size: 12px; opacity: 0.7;">Service Area</div>
                         </div>
                     </div>
                 </div>
@@ -1396,9 +1945,9 @@ const server = http.createServer((req, res) => {
                     <div class="form-group">
                         <label for="service-location">
                             <span class="icon">📍</span>
-                            Service Location
+                            Service Location in Scottsdale
                         </label>
-                        <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
+                        <input type="text" id="service-location" placeholder="Enter your Scottsdale, AZ address" required>
                     </div>
                     <div class="form-group">
                         <label for="service-date">
@@ -1422,17 +1971,19 @@ const server = http.createServer((req, res) => {
                     <div class="form-group">
                         <label for="iv-type-search">IV Therapy Type</label>
                         <select id="iv-type-search">
-                            <option value="all">All Treatments</option>
-                            <option value="hydration">Hydration</option>
-                            <option value="energy">Energy Boost</option>
-                            <option value="immunity">Immunity</option>
-                            <option value="recovery">Recovery</option>
+                            <option value="all">All IV Treatments</option>
+                            <option value="hydration">Hydration Boost - $150</option>
+                            <option value="energy">Energy & B-Complex - $175</option>
+                            <option value="immunity">Immunity Support - $200</option>
+                            <option value="hangover">Hangover Recovery - $180</option>
+                            <option value="beauty">Beauty & Glow - $220</option>
+                            <option value="athletic">Athletic Performance - $250</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
+                        <button class="btn btn-iv-therapy" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
                             <span class="icon">💉</span>
-                            Book IV Therapy
+                            Book Mobile IV Therapy
                         </button>
                     </div>
                 </div>
@@ -1458,20 +2009,20 @@ const server = http.createServer((req, res) => {
                     <div class="category-subtitle">Hormone & Anti-Aging Therapy</div>
                     <p>Personalized hormone optimization, weight management, and anti-aging treatments designed to restore your vitality and enhance your quality of life.</p>
                     
-                    <div class="treatments-grid">
-                        <div class="treatment-item">
+                    <div class="treatments-grid" id="dynamicTreatments">
+                        <div class="treatment-item" data-url="weight-loss">
                             <h4>Weight Loss</h4>
                             <p>Medical-grade programs</p>
                         </div>
-                        <div class="treatment-item">
+                        <div class="treatment-item" data-url="hormone-therapy">
                             <h4>Hormone Therapy</h4>
                             <p>Personalized optimization</p>
                         </div>
-                        <div class="treatment-item">
+                        <div class="treatment-item" data-url="anti-aging">
                             <h4>Anti-Aging</h4>
                             <p>Advanced treatments</p>
                         </div>
-                        <div class="treatment-item">
+                        <div class="treatment-item" data-url="sexual-wellness">
                             <h4>Sexual Wellness</h4>
                             <p>Restore confidence</p>
                         </div>
@@ -1480,26 +2031,34 @@ const server = http.createServer((req, res) => {
 
                 <div class="service-card scroll-animate">
                     <span class="service-icon">💧</span>
-                    <h3>Mobile IV Therapy</h3>
-                    <div class="category-subtitle">Premium Hydration & Wellness</div>
-                    <p>Professional IV therapy delivered to your location. From hydration boosts to hangover recovery, we bring wellness directly to you.</p>
+                    <h3>Mobile IV Therapy - Scottsdale</h3>
+                    <div class="category-subtitle">#1 Rated Mobile IV Service</div>
+                    <p>Licensed medical professionals deliver premium IV therapy directly to your location in Scottsdale, AZ. Same-day availability with hospital-grade treatments.</p>
                     
                     <div class="treatments-grid">
                         <div class="treatment-item">
-                            <h4>Hydration Boost</h4>
-                            <p>Essential electrolytes</p>
+                            <h4>Hydration Boost - $150</h4>
+                            <p>Essential electrolytes & fluids</p>
                         </div>
                         <div class="treatment-item">
-                            <h4>Energy & Immunity</h4>
-                            <p>B-vitamins and nutrients</p>
+                            <h4>Hangover Recovery - $180</h4>
+                            <p>Fast relief & rehydration</p>
                         </div>
                         <div class="treatment-item">
-                            <h4>Recovery & Detox</h4>
-                            <p>Fast hangover relief</p>
+                            <h4>Energy & B-Complex - $175</h4>
+                            <p>B-vitamins & energy boost</p>
                         </div>
                         <div class="treatment-item">
-                            <h4>Beauty & Glow</h4>
-                            <p>Anti-aging nutrients</p>
+                            <h4>Beauty & Glow - $220</h4>
+                            <p>Anti-aging nutrients & glutathione</p>
+                        </div>
+                        <div class="treatment-item">
+                            <h4>Immunity Support - $200</h4>
+                            <p>Vitamin C & immune boosters</p>
+                        </div>
+                        <div class="treatment-item">
+                            <h4>Athletic Performance - $250</h4>
+                            <p>Recovery & performance optimization</p>
                         </div>
                     </div>
                 </div>
@@ -1625,9 +2184,9 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div class="iv-content">
                 <div class="scroll-animate">
-                    <h2>Mobile IV Therapy</h2>
+                    <h2>Mobile IV Therapy - Scottsdale</h2>
                     <h3>Wellness Delivered, Anytime, Anywhere</h3>
-                    <p>Experience the convenience of professional IV therapy in the comfort of your home, office, or hotel. Our licensed medical professionals bring hospital-grade treatments directly to you.</p>
+                    <p>Experience the convenience of professional IV therapy in the comfort of your home, office, or hotel. Our licensed medical professionals bring hospital-grade treatments directly to you in Scottsdale, AZ.</p>
                     
                     <ul class="iv-features">
                         <li>Licensed medical professionals</li>
@@ -1638,10 +2197,13 @@ const server = http.createServer((req, res) => {
                         <li>Group bookings and events available</li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-secondary">Book IV Session</a>
+                    <a href="#contact" class="btn btn-iv-therapy">📱 Book Mobile IV Session</a>
                 </div>
                 <div class="scroll-animate">
-                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=500&fit=crop&auto=format&q=80" alt="Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
+                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Vita Bella Health - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(61, 156, 210, 0.1), rgba(16, 185, 129, 0.1)); opacity: 0; transition: opacity 0.3s ease;" class="image-overlay"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1653,7 +2215,7 @@ const server = http.createServer((req, res) => {
             <div class="footer-content">
                 <div>
                     <h4>VITA BELLA HEALTH</h4>
-                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized health solutions, specializing in hormone therapy, weight management, anti-aging treatments, and premium mobile IV therapy.</p>
+                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized health solutions, specializing in hormone therapy, weight management, anti-aging treatments, and premium mobile IV therapy in Scottsdale, AZ.</p>
                     <div>
                         <p style="margin-bottom: 8px;">📞 (480) 602-0444</p>
                         <p style="margin-bottom: 8px;">✉️ info@vitabella.com</p>
@@ -1672,13 +2234,13 @@ const server = http.createServer((req, res) => {
                     </ul>
                 </div>
                 <div>
-                    <h4>IV THERAPY</h4>
+                    <h4>MOBILE IV THERAPY</h4>
                     <ul>
-                        <li><a href="#">Hydration Boost</a></li>
-                        <li><a href="#">Energy & Immunity</a></li>
-                        <li><a href="#">Hangover Recovery</a></li>
-                        <li><a href="#">Beauty & Glow</a></li>
-                        <li><a href="#">Athletic Performance</a></li>
+                        <li><a href="#">Hydration Boost - $150</a></li>
+                        <li><a href="#">Energy & Immunity - $175</a></li>
+                        <li><a href="#">Hangover Recovery - $180</a></li>
+                        <li><a href="#">Beauty & Glow - $220</a></li>
+                        <li><a href="#">Athletic Performance - $250</a></li>
                         <li><a href="#">Group Bookings</a></li>
                     </ul>
                 </div>
@@ -1717,7 +2279,7 @@ const server = http.createServer((req, res) => {
                 Login
             </button>
             <p style="text-align: center; margin-top: 1rem; color: #666;">
-                Don't have an account? <a href="#" onclick="showSignup()" style="color: var(--primary-emerald);">Sign up</a>
+                Don't have an account? <a href="#" onclick="showSignup()" style="color: var(--iv-primary);">Sign up</a>
             </p>
         </div>
     </div>
@@ -1743,7 +2305,7 @@ const server = http.createServer((req, res) => {
                 Sign Up
             </button>
             <p style="text-align: center; margin-top: 1rem; color: #666;">
-                Already have an account? <a href="#" onclick="showLogin()" style="color: var(--primary-emerald);">Login</a>
+                Already have an account? <a href="#" onclick="showLogin()" style="color: var(--iv-primary);">Login</a>
             </p>
         </div>
     </div>
@@ -1821,6 +2383,126 @@ const server = http.createServer((req, res) => {
         }
 
         nodes.forEach(node => new Item(node));
+
+        // Dynamic Navigation Integration
+        async function loadDynamicNavigation() {
+            try {
+                const response = await fetch('/api/navigation');
+                const navData = await response.json();
+                
+                if (navData && navData.subCategories) {
+                    updateNavigationWithDynamicData(navData);
+                    updateTreatmentGrid(navData);
+                }
+            } catch (error) {
+                console.log('Using static navigation - API unavailable');
+            }
+        }
+
+        function updateNavigationWithDynamicData(navData) {
+            const mainNav = document.getElementById('mainNavLinks');
+            const treatmentItems = [];
+            
+            // Create treatment navigation from API data
+            navData.subCategories.forEach(item => {
+                if (item.url && item.url.includes('vitabella.com/') && 
+                    !item.url.includes('membership') && 
+                    item.metadata.probability > 0.92) {
+                    
+                    const urlParts = item.url.split('/');
+                    const slug = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+                    const name = item.name || formatSlugToName(slug);
+                    
+                    treatmentItems.push({ slug, name, probability: item.metadata.probability });
+                }
+            });
+
+            // Add dynamic treatments dropdown if we have data
+            if (treatmentItems.length > 0) {
+                const treatmentsDropdown = createTreatmentsDropdown(treatmentItems);
+                const servicesLink = mainNav.querySelector('a[href="#services"]').parentElement;
+                servicesLink.innerHTML = treatmentsDropdown;
+            }
+        }
+
+        function createTreatmentsDropdown(treatments) {
+            const sortedTreatments = treatments.sort((a, b) => b.probability - a.probability);
+            const dropdownItems = sortedTreatments.map(treatment => 
+                \`<a href="#\${treatment.slug}" onclick="scrollToTreatment('\${treatment.slug}')">\${treatment.name}</a>\`
+            ).join('');
+
+            return \`
+                <div class="nav-dropdown">
+                    <a href="#services" class="dropdown-trigger">Services <span style="font-size: 12px;">▼</span></a>
+                    <div class="dropdown-content">
+                        \${dropdownItems}
+                        <a href="#iv-therapy">IV Therapy</a>
+                    </div>
+                </div>
+            \`;
+        }
+
+        function updateTreatmentGrid(navData) {
+            const treatmentGrid = document.getElementById('dynamicTreatments');
+            const treatments = navData.subCategories
+                .filter(item => item.url && item.url.includes('vitabella.com/') && 
+                               !item.url.includes('membership') && 
+                               item.metadata.probability > 0.92)
+                .sort((a, b) => b.metadata.probability - a.metadata.probability);
+
+            if (treatments.length > 0) {
+                const treatmentHTML = treatments.map(treatment => {
+                    const urlParts = treatment.url.split('/');
+                    const slug = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+                    const name = treatment.name || formatSlugToName(slug);
+                    const description = getTreatmentDescription(slug);
+                    
+                    return \`
+                        <div class="treatment-item dynamic-treatment" data-url="\${slug}" data-probability="\${treatment.metadata.probability}">
+                            <h4>\${name}</h4>
+                            <p>\${description}</p>
+                            <div class="confidence-indicator" style="font-size: 10px; opacity: 0.7; margin-top: 5px;">
+                                Confidence: \${(treatment.metadata.probability * 100).toFixed(1)}%
+                            </div>
+                        </div>
+                    \`;
+                }).join('');
+                
+                treatmentGrid.innerHTML = treatmentHTML;
+            }
+        }
+
+        function formatSlugToName(slug) {
+            return slug.split('-').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function getTreatmentDescription(slug) {
+            const descriptions = {
+                'weight-loss': 'Medical-grade programs',
+                'hormone-therapy': 'Personalized optimization', 
+                'anti-aging': 'Advanced treatments',
+                'sexual-wellness': 'Restore confidence'
+            };
+            return descriptions[slug] || 'Specialized treatment';
+        }
+
+        function scrollToTreatment(slug) {
+            const treatmentElement = document.querySelector(\`[data-url="\${slug}"]\`);
+            if (treatmentElement) {
+                treatmentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                treatmentElement.style.background = 'var(--iv-primary)';
+                treatmentElement.style.color = 'var(--white)';
+                treatmentElement.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    treatmentElement.style.background = '';
+                    treatmentElement.style.color = '';
+                    treatmentElement.style.transform = '';
+                }, 2000);
+            }
+        }
 
         // Authentication functions
         function showLogin() {
@@ -1943,7 +2625,7 @@ const server = http.createServer((req, res) => {
                 return;
             }
             
-            alert(\`IV Therapy booking confirmed!\nLocation: \${location}\nDate: \${date}\nTime: \${time}\nType: \${type || 'All Treatments'}\n\nOur team will contact you to confirm the appointment.\`);
+            alert(\`Mobile IV Therapy booking confirmed!\nLocation: \${location}\nDate: \${date}\nTime: \${time}\nType: \${type || 'All Treatments'}\n\nOur team will contact you to confirm the appointment.\`);
         }
 
         // Set minimum date to today
@@ -1968,6 +2650,7 @@ const server = http.createServer((req, res) => {
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             setMinDate();
+            loadDynamicNavigation();
         });
 
         // Loading animation
@@ -1989,5 +2672,5 @@ const server = http.createServer((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Vita Bella Health Server running on http://localhost:${PORT}`);
+  console.log(`Vita Bella Health - Complete Mobile IV Therapy Website running on http://localhost:${PORT}`);
 });
