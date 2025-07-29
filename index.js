@@ -1166,6 +1166,43 @@ const server = http.createServer((req, res) => {
             display: none !important;
         }
 
+        /* Professional Section Headers */
+        .SectionHeader_sectionHeader__TrlRm {
+            margin-bottom: 60px;
+        }
+
+        .SectionHeader_left__8ENis {
+            text-align: center;
+        }
+
+        .h2-alt {
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--e-global-color-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 50px);
+            font-weight: 700;
+            color: var(--e-global-color-text);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .SectionHeader_right__6k4ay {
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: var(--e-global-color-grey2);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         /* Icon replacements */
         .icon {
             display: inline-block;
