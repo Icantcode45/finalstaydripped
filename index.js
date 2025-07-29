@@ -942,7 +942,7 @@ const server = http.createServer((req, res) => {
             <div class="auth-buttons">
                 <div id="authSection">
                     <button class="btn btn-secondary" onclick="showLogin()">
-                        <span class="icon">👤</span>
+                        <span class="icon">����</span>
                         Login
                     </button>
                     <button class="btn btn-primary" onclick="showSignup()">
@@ -980,57 +980,100 @@ const server = http.createServer((req, res) => {
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Premium Mobile IV Therapy</h1>
-                <p>Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring wellness directly to you. Professional, convenient, and effective.</p>
-                <div class="search-section">
-                    <div class="search-form">
-                        <div class="form-group">
-                            <label for="service-location">
-                                <span class="icon">📍</span>
-                                Service Location
-                            </label>
-                            <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
-                        </div>
-                        <div class="form-group">
-                            <label for="service-date">
-                                <span class="icon">📅</span>
-                                Preferred Date
-                            </label>
-                            <input type="date" id="service-date">
-                        </div>
-                        <div class="form-group">
-                            <label for="service-time">
-                                <span class="icon">🕒</span>
-                                Preferred Time
-                            </label>
-                            <select id="service-time">
-                                <option value="">Select Time</option>
-                                <option value="morning">Morning (8AM-12PM)</option>
-                                <option value="afternoon">Afternoon (12PM-5PM)</option>
-                                <option value="evening">Evening (5PM-8PM)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="iv-type-search">IV Therapy Type</label>
-                            <select id="iv-type-search">
-                                <option value="all">All Treatments</option>
-                                <option value="hydration">Hydration</option>
-                                <option value="energy">Energy Boost</option>
-                                <option value="immunity">Immunity</option>
-                                <option value="recovery">Recovery</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
-                                <span class="icon">💉</span>
-                                Book IV Therapy
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home" style="position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F2e3af04dd37f4c6c9c2b9d49c862a751?alt=media&token=31eb084f-6b56-4f37-9235-2b53f3938134&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;">
+        <!-- Background Elements -->
+        <div style="position: absolute; top: -40px; left: 30%; width: 235px; z-index: 1; opacity: 0.25;">
+            <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F412564e7ca724dd08424d555bc9211c0?alt=media&token=c3fd4e1a-9331-4a3a-965e-24008bb9ee44&apiKey=d86ad443e90f49f6824eddb927a8e06f" alt="Background Element" style="width: 100%; filter: blur(45px);">
+        </div>
+
+        <div class="container" style="position: relative; z-index: 3;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 80vh;">
+                <!-- Left Content -->
+                <div class="hero-content fade-in">
+                    <div style="background: rgba(245, 247, 249, 0.95); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
+                        <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">🏆 #1 Mobile IV in Scottsdale</span>
+                    </div>
+                    <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; color: white; line-height: 1.1;">
+                        Premium Mobile <span style="color: #BFC1FF;">IV Therapy</span> & Wellness
+                    </h1>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; color: white; line-height: 1.6;">
+                        Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring wellness directly to you. Professional, convenient, and effective.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <button class="btn btn-primary" onclick="scrollToSection('packages')" style="background: #BFC1FF; color: #171717; border: 1px solid #D4D4D4; padding: 12px 24px;">
+                            <span class="icon">📅</span>
+                            Book Now
+                        </button>
+                        <button class="btn" onclick="showVideoModal()" style="background: #D4D4D4; color: #171717; border: 1px solid #D4D4D4; padding: 12px 20px;">
+                            <span class="icon">▶️</span>
+                            Watch Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Content with Video Play Button -->
+                <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+                    <div style="position: relative;">
+                        <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F990bc6e66ef6452fa1a3bf806a0ca6c9?alt=media&token=d8367eba-019a-463a-a567-729f2d397bfe&apiKey=d86ad443e90f49f6824eddb927a8e06f" alt="IV Therapy Professional" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+
+                        <!-- Play Button Overlay -->
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;">
+                            <button onclick="showVideoModal()" style="width: 120px; height: 120px; border-radius: 50%; background: rgba(0,0,0,0.7); border: 8px solid white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(20px);" onmouseover="this.style.background='rgba(0,0,0,0.9)'" onmouseout="this.style.background='rgba(0,0,0,0.7)'">
+                                <span style="color: white; font-size: 2rem; margin-left: 8px;">▶</span>
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Form Section -->
+        <div class="search-section" style="margin-top: 2rem;">
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="service-location">
+                        <span class="icon">📍</span>
+                        Service Location
+                    </label>
+                    <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
+                </div>
+                <div class="form-group">
+                    <label for="service-date">
+                        <span class="icon">📅</span>
+                        Preferred Date
+                    </label>
+                    <input type="date" id="service-date">
+                </div>
+                <div class="form-group">
+                    <label for="service-time">
+                        <span class="icon">🕒</span>
+                        Preferred Time
+                    </label>
+                    <select id="service-time">
+                        <option value="">Select Time</option>
+                        <option value="morning">Morning (8AM-12PM)</option>
+                        <option value="afternoon">Afternoon (12PM-5PM)</option>
+                        <option value="evening">Evening (5PM-8PM)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="iv-type-search">IV Therapy Type</label>
+                    <select id="iv-type-search">
+                        <option value="all">All Treatments</option>
+                        <option value="hydration">Hydration</option>
+                        <option value="energy">Energy Boost</option>
+                        <option value="immunity">Immunity</option>
+                        <option value="recovery">Recovery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
+                        <span class="icon">💉</span>
+                        Book IV Therapy
+                    </button>
                 </div>
             </div>
         </div>
