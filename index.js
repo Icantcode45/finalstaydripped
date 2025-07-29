@@ -987,7 +987,7 @@ const server = http.createServer((req, res) => {
         }
 
         .footer a:hover {
-            color: var(--primary-emerald-light);
+            color: var(--e-global-color-lightgreen);
         }
 
         .footer-bottom {
@@ -995,6 +995,7 @@ const server = http.createServer((req, res) => {
             padding-top: 32px;
             text-align: center;
             opacity: 0.6;
+            font-family: 'Switzer', Arial, Helvetica, sans-serif;
         }
 
         .social-links {
