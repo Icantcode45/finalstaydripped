@@ -1890,28 +1890,24 @@ const server = http.createServer((req, res) => {
             }
         }
 
-        // Search cars
-        function searchCars() {
-            const location = document.getElementById('pickup-location').value;
-            const pickupDate = document.getElementById('pickup-date').value;
-            const returnDate = document.getElementById('return-date').value;
-            const carType = document.getElementById('car-type-search').value;
-            
-            if (!location || !pickupDate || !returnDate) {
-                alert('Please fill in all search fields');
+        // Book service
+        function bookService() {
+            const location = document.getElementById('service-location').value;
+            const serviceDate = document.getElementById('service-date').value;
+            const serviceTime = document.getElementById('service-time').value;
+            const ivType = document.getElementById('iv-type-search').value;
+
+            if (!location || !serviceDate || !serviceTime) {
+                alert('Please fill in all required fields');
                 return;
             }
-            
-            if (new Date(returnDate) <= new Date(pickupDate)) {
-                alert('Return date must be after pickup date');
+
+            if (new Date(serviceDate) < new Date()) {
+                alert('Service date cannot be in the past');
                 return;
             }
-            
-            // Filter cars and scroll to cars section
-            if (carType !== 'all') {
-                filterCars(carType);
-            }
-            scrollToSection('cars');
+
+            alert('IV Therapy booking confirmed! Details: ' + location + ', ' + serviceDate + ', ' + serviceTime);
         }
 
         // Rent car
@@ -2046,21 +2042,20 @@ const server = http.createServer((req, res) => {
             });
         });
 
-        // Handle date validation
-        document.getElementById('pickup-date').addEventListener('change', function() {
-            const pickupDate = this.value;
-            const returnDateInput = document.getElementById('return-date');
-            
-            if (pickupDate) {
-                const nextDay = new Date(pickupDate);
-                nextDay.setDate(nextDay.getDate() + 1);
-                returnDateInput.min = nextDay.toISOString().split('T')[0];
-                
-                if (returnDateInput.value && returnDateInput.value <= pickupDate) {
-                    returnDateInput.value = nextDay.toISOString().split('T')[0];
+        // Handle service date validation
+        const serviceDateInput = document.getElementById('service-date');
+        if (serviceDateInput) {
+            serviceDateInput.addEventListener('change', function() {
+                const selectedDate = new Date(this.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    alert('Please select a future date for your service.');
+                    this.value = '';
                 }
-            }
-        });
+            });
+        }
 
         // Newsletter signup functionality
         function handleNewsletterSignup() {
