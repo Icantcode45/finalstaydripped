@@ -1434,7 +1434,7 @@ const server = http.createServer((req, res) => {
                 <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            ��‍💼
+                            👨‍💼
                         </div>
                         <div>
                             <h4 style="margin: 0; font-weight: 600;">Jonathan M.</h4>
@@ -1449,7 +1449,7 @@ const server = http.createServer((req, res) => {
                 <div style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ffed4e); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                            ���‍💼
+                            👩‍💼
                         </div>
                         <div>
                             <h4 style="margin: 0; font-weight: 600;">Ashley P.</h4>
@@ -1769,7 +1769,7 @@ const server = http.createServer((req, res) => {
 
         // Initialize the page
         function initializePage() {
-            loadCars();
+            loadPackages();
             setMinDate();
             checkUserSession();
         }
@@ -1786,21 +1786,21 @@ const server = http.createServer((req, res) => {
             }
         }
 
-        // Load cars into the grid
-        function loadCars() {
-            const carsGrid = document.getElementById('cars-grid');
-            const filteredCars = currentFilter === 'all' ? cars : cars.filter(car => car.type === currentFilter);
-            
-            carsGrid.innerHTML = '';
-            
-            if (filteredCars.length === 0) {
-                carsGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666;">No cars found for the selected filter.</p>';
+        // Load IV therapy packages into the grid
+        function loadPackages() {
+            const packagesGrid = document.getElementById('packages-grid');
+            const filteredPackages = currentFilter === 'all' ? ivPackages : ivPackages.filter(pkg => pkg.type === currentFilter);
+
+            packagesGrid.innerHTML = '';
+
+            if (filteredPackages.length === 0) {
+                packagesGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666;">No packages found for the selected filter.</p>';
                 return;
             }
-            
-            filteredCars.forEach(car => {
-                const carCard = createCarCard(car);
-                carsGrid.appendChild(carCard);
+
+            filteredPackages.forEach(pkg => {
+                const packageCard = createPackageCard(pkg);
+                packagesGrid.appendChild(packageCard);
             });
         }
 
@@ -1895,17 +1895,17 @@ const server = http.createServer((req, res) => {
             return stars;
         }
 
-        // Filter cars
-        function filterCars(type) {
+        // Filter IV therapy packages
+        function filterPackages(type) {
             currentFilter = type;
-            
+
             // Update active filter button
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-            
-            loadCars();
+
+            loadPackages();
         }
 
         // Toggle favorite
