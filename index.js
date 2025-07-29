@@ -1336,11 +1336,11 @@ const server = http.createServer((req, res) => {
     <section class="stats-section" style="padding: 150px 0 100px; background: white; position: relative;">
         <div class="container">
             <!-- Section Header -->
-            <div style="text-align: center; margin-bottom: 55px;">
-                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 25px;">
-                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">📊 Our Impact</span>
+            <div class="SectionHeader_sectionHeader__TrlRm" style="text-align: center; margin-bottom: 55px;">
+                <div class="SectionHeader_left__8ENis" style="margin-bottom: 20px;">
+                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px; color: var(--e-global-color-text); font-size: 14px; font-weight: 500; font-family: 'Switzer', sans-serif;">📊 Our Impact</div>
+                    <div class="h2" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 0; color: var(--e-global-color-text);">Trusted by Thousands in Scottsdale</div>
                 </div>
-                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0; color: #333;">Trusted by Thousands in Scottsdale</h2>
             </div>
 
             <!-- Stats Grid -->
@@ -1622,7 +1622,7 @@ const server = http.createServer((req, res) => {
                 <!-- Weight Loss -->
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #28a745, #20c997); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        ��️ Weight Loss
+                        ⚖️ Weight Loss
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Weight Loss Options</h3>
