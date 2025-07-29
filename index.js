@@ -1211,7 +1211,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👩‍⚕️
+                        👩‍⚕��
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
@@ -1532,23 +1532,26 @@ const server = http.createServer((req, res) => {
     <!-- About Section -->
     <section class="features" id="about" style="background: #f8f9ff;">
         <div class="container">
-            <h2>About Ridex</h2>
+            <h2>About Stay Dripped IV & Wellness Co.</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
-                    Founded in 2020, Ridex has evolved from a premium car rental service into a comprehensive lifestyle platform. We're committed to providing exceptional transportation and wellness solutions for the modern traveler.
+                    Founded in 2020, Stay Dripped IV & Wellness Co. is Scottsdale's premier mobile IV therapy and wellness service. We're committed to bringing high-quality, medically supervised treatments directly to you, wherever you need them most.
+                </p>
+                <p style="font-size: 1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
+                    Our licensed medical professionals use only pharmaceutical-grade ingredients and FDA-approved medications to ensure your safety and optimal results. Whether you're recovering from a night out, boosting your immune system, or enhancing your performance, we provide personalized wellness solutions tailored to your lifestyle.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
                     <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">10,000+</h3>
-                        <p style="color: #666;">Happy Customers</p>
+                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">5,000+</h3>
+                        <p style="color: #666;">Treatments Delivered</p>
                     </div>
                     <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">500+</h3>
-                        <p style="color: #666;">Premium Vehicles</p>
+                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">100%</h3>
+                        <p style="color: #666;">Licensed Professionals</p>
                     </div>
                     <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">50+</h3>
-                        <p style="color: #666;">Locations</p>
+                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">Scottsdale</h3>
+                        <p style="color: #666;">Service Area</p>
                     </div>
                     <div style="text-align: center;">
                         <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">24/7</h3>
