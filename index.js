@@ -932,7 +932,8 @@ const server = http.createServer((req, res) => {
             <div class="logo">Stay Dripped IV & Wellness Co.</div>
             <ul class="nav-links">
                 <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-                <li><a href="#services" onclick="scrollToSection('services')">IV Therapy</a></li>
+                <li><a href="#packages" onclick="scrollToSection('packages')">IV Packages</a></li>
+                <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
                 <li><a href="#wellness" onclick="scrollToSection('wellness')">Wellness</a></li>
                 <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
                 <li><a href="#" onclick="showFAQ()">FAQ</a></li>
@@ -1106,7 +1107,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        ��️
+                        🛡️
                     </div>
                     <h3>Safe & Sterile</h3>
                     <p>We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
