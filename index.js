@@ -1372,7 +1372,7 @@ const server = http.createServer((req, res) => {
             <!-- Service Cards Grid -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
                 <!-- Card 1 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(66, 196, 106, 0.2)'; this.querySelector('.service-icon').style.color='#42C46A'; this.querySelector('h3').style.color='#42C46A';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                <div class="feature-card scroll-animate" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(66, 196, 106, 0.2)'; this.querySelector('.service-icon').style.color='#42C46A'; this.querySelector('h3').style.color='#42C46A';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
                     <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         👨‍⚕️
                     </div>
@@ -1519,7 +1519,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👨‍⚕��
+                        👨‍⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Daniel Bryan</h3>
