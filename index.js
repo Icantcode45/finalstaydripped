@@ -1753,8 +1753,10 @@ const server = http.createServer((req, res) => {
         // Set minimum date to today for date inputs
         function setMinDate() {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('pickup-date').min = today;
-            document.getElementById('return-date').min = today;
+            const serviceDateInput = document.getElementById('service-date');
+            if (serviceDateInput) {
+                serviceDateInput.min = today;
+            }
         }
 
         // Load cars into the grid
