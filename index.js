@@ -1211,7 +1211,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👩‍⚕��
+                        👩‍⚕️
                     </div>
                     <div style="padding: 1.5rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
@@ -1567,8 +1567,8 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Ridex</h3>
-                    <p>Premium car rental service providing comfortable, reliable, and affordable transportation solutions worldwide.</p>
+                    <h3>Stay Dripped IV & Wellness Co.</h3>
+                    <p>Premier mobile IV therapy and wellness services in Scottsdale, AZ. Licensed medical professionals bringing personalized health and wellness treatments directly to you.</p>
                     <div class="social-links">
                         <a href="#">📘</a>
                         <a href="#">🐦</a>
