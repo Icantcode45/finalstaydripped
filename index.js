@@ -1430,13 +1430,11 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px;">
                 <div class="showcase-content" style="z-index: 2; position: relative;">
-                    <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
-                        <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">💫 Premium Service</span>
-                    </div>
-                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #333; line-height: 1.2;">
+                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">💫 Premium Service</div>
+                    <h2 class="h2" style="margin-bottom: 1.5rem; line-height: 1.2;">
                         Premium Mobile IV Therapy <br>Delivered to You
                     </h2>
-                    <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
+                    <p class="SectionHeader_right__6k4ay" style="font-size: 1.1rem; margin-bottom: 2rem; text-align: left; max-width: none;">
                         Our licensed medical professionals bring high-quality IV therapy directly to your location.
                         Experience the convenience of premium wellness treatments in the comfort of your home, office, or hotel.
                     </p>
