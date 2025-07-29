@@ -2223,6 +2223,85 @@ const server = http.createServer((req, res) => {
             return emailRegex.test(email);
         }
 
+        // Video modal functionality
+        function showVideoModal() {
+            const modal = document.createElement('div');
+            modal.className = 'video-modal-overlay';
+            modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 2rem;';
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = 'position: relative; max-width: 800px; width: 100%;';
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '×';
+            closeBtn.style.cssText = 'position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; z-index: 10000;';
+            closeBtn.onclick = () => modal.remove();
+
+            // Video iframe (placeholder - replace with actual video)
+            const videoFrame = document.createElement('iframe');
+            videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with actual video
+            videoFrame.style.cssText = 'width: 100%; height: 450px; border: none; border-radius: 10px;';
+            videoFrame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            videoFrame.allowFullscreen = true;
+
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(videoFrame);
+            modal.appendChild(modalContent);
+
+            // Close on background click
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+
+            document.body.appendChild(modal);
+        }
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.floor(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for counter animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe stats section when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                counterObserver.observe(statsSection);
+            }
+        });
+
         // FAQ functionality
         const faqs = [
             {
