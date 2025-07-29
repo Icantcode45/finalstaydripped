@@ -1839,7 +1839,7 @@ const server = http.createServer((req, res) => {
                     <div class="h2">What Our Customers Say</div>
                 </div>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #ffd700; font-size: 1.5rem;">★★★★★</span>
+                    <span style="color: #ffd700; font-size: 1.5rem;">���★★★★</span>
                     <span style="font-size: 1.1rem; color: var(--e-global-color-text); font-family: 'Switzer', sans-serif; font-weight: 600;">4.9 out of 5 stars</span>
                 </div>
                 <p class="SectionHeader_right__6k4ay">From 5,000+ verified treatments</p>
@@ -2463,13 +2463,20 @@ const server = http.createServer((req, res) => {
         function toggleMenu() {
             const mobileNav = document.getElementById('mobileNav');
             const menuIcon = document.getElementById('menuIcon');
-            
+
+            if (!mobileNav) {
+                console.error('Mobile nav element not found');
+                return;
+            }
+
             mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
-                menuIcon.textContent = '✕';
-            } else {
-                menuIcon.textContent = '☰';
+
+            if (menuIcon) {
+                if (mobileNav.classList.contains('active')) {
+                    menuIcon.textContent = '✕';
+                } else {
+                    menuIcon.textContent = '☰';
+                }
             }
         }
 
