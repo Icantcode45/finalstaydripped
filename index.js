@@ -1106,7 +1106,7 @@ const server = http.createServer((req, res) => {
                 </div>
                 <div class="feature-card slide-in">
                     <div class="feature-icon">
-                        🛡️
+                        ��️
                     </div>
                     <h3>Safe & Sterile</h3>
                     <p>We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
@@ -1888,11 +1888,11 @@ const server = http.createServer((req, res) => {
         }
 
         // Toggle favorite
-        function toggleFavorite(carId) {
-            const car = cars.find(c => c.id === carId);
-            if (car) {
-                car.favorite = !car.favorite;
-                loadCars();
+        function toggleFavorite(packageId) {
+            const pkg = ivPackages.find(p => p.id === packageId);
+            if (pkg) {
+                pkg.favorite = !pkg.favorite;
+                loadPackages();
             }
         }
 
@@ -1916,17 +1916,17 @@ const server = http.createServer((req, res) => {
             alert('IV Therapy booking confirmed! Details: ' + location + ', ' + serviceDate + ', ' + serviceTime);
         }
 
-        // Rent car
-        function rentCar(carId) {
+        // Book IV therapy package
+        function bookPackage(packageId) {
             if (!currentUser) {
-                alert('Please login to rent a car');
+                alert('Please login to book a treatment');
                 showLogin();
                 return;
             }
-            
-            const car = cars.find(c => c.id === carId);
-            if (car) {
-                alert(\`Booking confirmed for \${car.name}! You will be redirected to payment.\`);
+
+            const pkg = ivPackages.find(p => p.id === packageId);
+            if (pkg) {
+                alert('Booking confirmed for ' + pkg.name + '! You will be redirected to payment. Our team will contact you to schedule your appointment.');
             }
         }
 
