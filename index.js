@@ -1079,11 +1079,70 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
+    <!-- Professional Stats Section -->
+    <section class="stats-section" style="padding: 150px 0 100px; background: white; position: relative;">
+        <div class="container">
+            <!-- Section Header -->
+            <div style="text-align: center; margin-bottom: 55px;">
+                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 25px;">
+                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">📊 Our Impact</span>
+                </div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 0; color: #333;">Trusted by Thousands in Scottsdale</h2>
+            </div>
+
+            <!-- Stats Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px 0; padding: 50px 0;">
+                <!-- Stat 1 -->
+                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
+                        <span class="counter" data-target="5000">0</span>+
+                    </div>
+                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
+                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Treatments Delivered</span>
+                    </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
+                        <span class="counter" data-target="98">0</span>%
+                    </div>
+                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
+                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Client Satisfaction</span>
+                    </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
+                        <span class="counter" data-target="24">0</span>/7
+                    </div>
+                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
+                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Available</span>
+                    </div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
+                        <span class="counter" data-target="30">0</span> min
+                    </div>
+                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
+                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Average Response</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Premium Showcase Section -->
-    <section class="premium-showcase" style="padding: 4rem 0; background: #fff; position: relative; overflow: hidden;">
+    <section class="premium-showcase" style="padding: 4rem 0; background: #f8f9ff; position: relative; overflow: hidden;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px;">
                 <div class="showcase-content" style="z-index: 2; position: relative;">
+                    <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
+                        <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">💫 Premium Service</span>
+                    </div>
                     <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #333; line-height: 1.2;">
                         Premium Mobile IV Therapy <br>Delivered to You
                     </h2>
@@ -1091,27 +1150,13 @@ const server = http.createServer((req, res) => {
                         Our licensed medical professionals bring high-quality IV therapy directly to your location.
                         Experience the convenience of premium wellness treatments in the comfort of your home, office, or hotel.
                     </p>
-                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
-                        <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">1000+</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Happy Clients</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">24/7</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Availability</p>
-                        </div>
-                        <div style="text-align: center;">
-                            <h3 style="font-size: 1.8rem; color: #667eea; font-weight: 700; margin-bottom: 0.5rem;">5.0</h3>
-                            <p style="color: #666; font-size: 0.9rem;">Rating</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="scrollToSection('services')" style="padding: 1rem 2rem; font-size: 1rem;">
-                        View Our Services
+                    <button class="btn btn-primary" onclick="scrollToSection('packages')" style="padding: 1rem 2rem; font-size: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px;">
+                        View Our Packages
                         <span class="icon">→</span>
                     </button>
                 </div>
                 <div class="showcase-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
-                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb89394712c7344c8b110d19ff9a1157a?alt=media&token=65804092-fa18-4862-91d3-27dde5b0907a&apiKey=d86ad443e90f49f6824eddb927a8e06f"
+                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff7e6ef4fec9349c89da8ae7db64c41fa?alt=media&token=78858111-7b34-474d-93ff-9dcada4f51d7&apiKey=d86ad443e90f49f6824eddb927a8e06f"
                          alt="Mobile IV therapy service"
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                     <div style="position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: #667eea;">
