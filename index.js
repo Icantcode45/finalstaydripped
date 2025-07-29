@@ -942,7 +942,7 @@ const server = http.createServer((req, res) => {
             <div class="auth-buttons">
                 <div id="authSection">
                     <button class="btn btn-secondary" onclick="showLogin()">
-                        <span class="icon">����</span>
+                        <span class="icon">👤</span>
                         Login
                     </button>
                     <button class="btn btn-primary" onclick="showSignup()">
@@ -1122,52 +1122,72 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="services">
+    <!-- Enhanced Features Section -->
+    <section class="features" id="services" style="padding: 80px 0; background: white;">
         <div class="container">
-            <h2>Why Choose Stay Dripped IV & Wellness Co.?</h2>
-            <div class="features-grid">
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+            <!-- Section Header -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="background: #F5F7F9; padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">
+                    <span style="color: #1A2B3B; font-size: 14px; font-weight: 500; text-transform: capitalize;">🌟 Our Services</span>
+                </div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Why Choose Stay Dripped IV & Wellness Co.?</h2>
+                <p style="color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Professional mobile IV therapy services delivered with care, expertise, and convenience directly to your location.</p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- Card 1 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(66, 196, 106, 0.2)'; this.querySelector('.service-icon').style.color='#42C46A'; this.querySelector('h3').style.color='#42C46A';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         👨‍⚕️
                     </div>
-                    <h3>Licensed Professionals</h3>
-                    <p>All our IV therapies are administered by licensed medical professionals ensuring safety and efficacy.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Licensed Professionals</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">All our IV therapies are administered by licensed medical professionals ensuring safety and efficacy.</p>
                 </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+
+                <!-- Card 2 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(196, 116, 66, 0.15)'; this.querySelector('.service-icon').style.color='#C45B42'; this.querySelector('h3').style.color='#C45B42';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         🏠
                     </div>
-                    <h3>Mobile Service</h3>
-                    <p>We come to you! Experience premium IV therapy in the comfort of your home, office, or hotel.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Mobile Service</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">We come to you! Experience premium IV therapy in the comfort of your home, office, or hotel.</p>
                 </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+
+                <!-- Card 3 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(143, 114, 237, 0.17)'; this.querySelector('.service-icon').style.color='#8F72ED'; this.querySelector('h3').style.color='#8F72ED';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         ⚡
                     </div>
-                    <h3>Fast Relief</h3>
-                    <p>Feel better quickly with our high-quality IV treatments designed for rapid absorption and results.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Fast Relief</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Feel better quickly with our high-quality IV treatments designed for rapid absorption and results.</p>
                 </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+
+                <!-- Card 4 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(249, 223, 104, 0.22)'; this.querySelector('.service-icon').style.color='#DBBC32'; this.querySelector('h3').style.color='#DBBC32';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         🛡️
                     </div>
-                    <h3>Safe & Sterile</h3>
-                    <p>We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Safe & Sterile</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
                 </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+
+                <!-- Card 5 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(196, 66, 132, 0.15)'; this.querySelector('.service-icon').style.color='#C44284'; this.querySelector('h3').style.color='#C44284';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         📱
                     </div>
-                    <h3>Easy Booking</h3>
-                    <p>Simple online booking system with flexible scheduling to fit your busy lifestyle.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Easy Booking</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Simple online booking system with flexible scheduling to fit your busy lifestyle.</p>
                 </div>
-                <div class="feature-card slide-in">
-                    <div class="feature-icon">
+
+                <!-- Card 6 -->
+                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(47, 178, 187, 0.15)'; this.querySelector('.service-icon').style.color='#2FB2BB'; this.querySelector('h3').style.color='#2FB2BB';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
+                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
                         🎯
                     </div>
-                    <h3>Customized Treatments</h3>
-                    <p>Personalized IV formulations tailored to your specific health and wellness goals.</p>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Customized Treatments</h3>
+                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Personalized IV formulations tailored to your specific health and wellness goals.</p>
                 </div>
             </div>
         </div>
