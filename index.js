@@ -752,6 +752,24 @@ const server = http.createServer(async (req, res) => {
 
         .stat-item {
             text-align: center;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
         .stat-number {
@@ -759,12 +777,14 @@ const server = http.createServer(async (req, res) => {
             font-weight: 800;
             color: var(--iv-primary);
             display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .stat-label {
             font-size: 14px;
             color: var(--text-gray);
             opacity: 0.8;
+            margin-top: 8px;
         }
 
         .hero-visual {
@@ -2332,7 +2352,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">🍺</div>
+                            <div class="card-face">���</div>
                             <div class="card-info">
                                 <h4>Hangover Recovery - $180</h4>
                                 <p>Fast relief & rehydration with anti-nausea and headache relief.</p>
