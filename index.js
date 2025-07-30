@@ -503,14 +503,14 @@ const server = http.createServer(async (req, res) => {
             color: var(--iv-primary);
         }
 
-        /* Enhanced Button System */
+        /* Enhanced 3D Glassmorphism Button System */
         .btn, button, input[type="button"], input[type="submit"], .elementor-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 12px 16px;
-            border: 1px solid transparent;
-            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
             font-family: var(--e-global-typography-text-font-family), sans-serif;
             font-size: 16px;
             font-weight: 500;
@@ -518,21 +518,27 @@ const server = http.createServer(async (req, res) => {
             letter-spacing: 0.01em;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            background-color: var(--e-global-color-f7d3e02);
-            color: var(--e-global-color-2584140);
-            border-color: var(--e-global-color-f7d3e02);
-            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--dark-gray);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
         }
 
         .btn:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover, .elementor-button:hover {
-            background-color: var(--e-global-color-cbdd3a3);
-            color: var(--e-global-color-a403e49);
-            border-color: var(--e-global-color-cbdd3a3);
-            transform: translateY(-1px);
-            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
         /* Button Variants */
@@ -2431,7 +2437,7 @@ const server = http.createServer(async (req, res) => {
                 </div>
                 <div class="scroll-animate">
                     <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
-                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Vita Bella Health - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(61, 156, 210, 0.1), rgba(16, 185, 129, 0.1)); opacity: 0; transition: opacity 0.3s ease;" class="image-overlay"></div>
                     </div>
                 </div>
@@ -2444,7 +2450,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h4>VITA BELLA HEALTH</h4>
+                    <h4>STAY DRIPPED IV & WELLNESS CO.</h4>
                     <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized health solutions, specializing in hormone therapy, weight management, anti-aging treatments, and premium mobile IV therapy in Scottsdale, AZ.</p>
                     <div>
                         <p style="margin-bottom: 8px;">📞 (480) 602-0444</p>
@@ -2487,7 +2493,7 @@ const server = http.createServer(async (req, res) => {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Vita Bella Health. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved. | Privacy Policy | Terms of Service</p>
             </div>
         </div>
     </footer>
