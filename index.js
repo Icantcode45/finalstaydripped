@@ -1844,8 +1844,8 @@ const server = http.createServer(async (req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                Vita Bella
-                <span class="logo-subtitle">Mobile IV Therapy & Wellness</span>
+                Stay Dripped
+                <span class="logo-subtitle">IV & Wellness Co.</span>
             </a>
             <ul class="nav-links" id="mainNavLinks">
                 <li><a href="#services">Services</a></li>
