@@ -117,7 +117,7 @@ const server = http.createServer(async (req, res) => {
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health">
+    <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
     <meta property="og:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
     <meta property="og:url" content="https://vitabella.com/">
     <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
