@@ -2149,6 +2149,52 @@ const server = http.createServer(async (req, res) => {
         </div>
     </section>
 
+    <!-- Our Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h1 class="about-title">OUR TEAM</h1>
+
+            <div class="carousel-container">
+                <button class="nav-arrow left">‹</button>
+                <div class="carousel-track">
+                    <div class="card" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Emily Rodriguez - Medical Director">
+                    </div>
+                    <div class="card" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Michael Chen - Lead Physician">
+                    </div>
+                    <div class="card" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1594824771640-9c8c1f9df2a6?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sarah Johnson - Nurse Practitioner">
+                    </div>
+                    <div class="card" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. James Wilson - Wellness Specialist">
+                    </div>
+                    <div class="card" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMJA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lisa Martinez - IV Therapy Coordinator">
+                    </div>
+                    <div class="card" data-index="5">
+                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Amanda Thompson - Hormone Specialist">
+                    </div>
+                </div>
+                <button class="nav-arrow right">›</button>
+            </div>
+
+            <div class="member-info">
+                <h2 class="member-name">Dr. Emily Rodriguez</h2>
+                <p class="member-role">Medical Director</p>
+            </div>
+
+            <div class="dots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+                <div class="dot" data-index="2"></div>
+                <div class="dot" data-index="3"></div>
+                <div class="dot" data-index="4"></div>
+                <div class="dot" data-index="5"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer" id="contact">
         <div class="container">
