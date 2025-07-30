@@ -716,7 +716,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .hero-text h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: clamp(48px, 6vw, 72px);
             font-weight: 700;
             line-height: 1.1;
