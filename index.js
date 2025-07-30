@@ -2175,9 +2175,9 @@ const server = http.createServer(async (req, res) => {
         <div class="mobile-nav" id="mobileNav">
             <ul>
                 <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Services</a></li>
-                <li><a href="#effects" onclick="scrollToSection('effects'); toggleMenu();">Visual Effects</a></li>
                 <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">IV Therapy</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
+                <li><a href="#" onclick="bookService(); toggleMenu();">Book Now</a></li>
             </ul>
             <div style="margin-top: 1rem; display: flex; gap: 1rem;">
                 <button class="btn btn-secondary" onclick="showLogin(); toggleMenu();">Login</button>
