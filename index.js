@@ -1642,14 +1642,20 @@ const server = http.createServer(async (req, res) => {
         }
 
         .modal {
-            background: white;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px;
             padding: 2rem;
             max-width: 400px;
             width: 90%;
             position: relative;
             transform: scale(0.8);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
         .modal-overlay.active .modal {
