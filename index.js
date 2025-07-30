@@ -2003,13 +2003,13 @@ const server = http.createServer(async (req, res) => {
             </div>
 
             <div class="services-grid">
-                <div class="service-card scroll-animate">
+                <div class="service-card service-card-enhanced scroll-animate">
                     <span class="service-icon">🏥</span>
                     <h3>Medical Wellness</h3>
                     <div class="category-subtitle">Hormone & Anti-Aging Therapy</div>
                     <p>Personalized hormone optimization, weight management, and anti-aging treatments designed to restore your vitality and enhance your quality of life.</p>
-                    
-                    <div class="treatments-grid" id="dynamicTreatments">
+
+                    <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
                         <div class="treatment-item" data-url="weight-loss">
                             <h4>Weight Loss</h4>
                             <p>Medical-grade programs</p>
@@ -2115,7 +2115,7 @@ const server = http.createServer(async (req, res) => {
             <div class="hover-container">
                 <ul class="hover-grid">
                     <li>
-                        <a href="#" class="normal">🏥</a>
+                        <a href="#" class="normal">��</a>
                         <div class="info">
                             <h3>Medical Wellness</h3>
                             <p>Comprehensive hormone therapy and anti-aging treatments for optimal health.</p>
