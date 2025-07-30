@@ -1091,42 +1091,7 @@ const server = http.createServer(async (req, res) => {
             opacity: 0.8;
         }
 
-        /* Text Shadow Effects Integration */
-        .shadow-showcase {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
 
-        .shadow-title {
-            text-align: center;
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .shadow-description {
-            text-align: center;
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 50px auto;
-        }
-
-        .shadow-section {
-            margin-bottom: 60px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .shadow-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
 
         .shadow-text {
             font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
