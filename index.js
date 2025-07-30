@@ -758,12 +758,25 @@ const server = http.createServer(async (req, res) => {
 
         .floating-card {
             position: absolute;
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             animation: floatCard 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-card:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+            box-shadow:
+                0 15px 60px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
 
         .floating-card-1 {
