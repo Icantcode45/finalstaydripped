@@ -1601,7 +1601,7 @@ const server = http.createServer(async (req, res) => {
         .iv-section .shadow-text.deepshadow {
             color: rgba(255, 255, 255, 0.95);
             background: transparent;
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: clamp(32px, 5vw, 48px);
             letter-spacing: 0.05em;
             text-shadow:
