@@ -2048,29 +2048,47 @@ const server = http.createServer(async (req, res) => {
                     <p>Licensed medical professionals deliver premium IV therapy directly to your location in Scottsdale, AZ. Same-day availability with hospital-grade treatments.</p>
 
                     <div class="treatments-grid hover-treatment-grid">
-                        <div class="treatment-item">
-                            <h4>Hydration Boost - $150</h4>
-                            <p>Essential electrolytes & fluids</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">💧</div>
+                            <div class="card-info">
+                                <h4>Hydration Boost - $150</h4>
+                                <p>Essential electrolytes & fluids for optimal hydration and energy.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item">
-                            <h4>Hangover Recovery - $180</h4>
-                            <p>Fast relief & rehydration</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">🍺</div>
+                            <div class="card-info">
+                                <h4>Hangover Recovery - $180</h4>
+                                <p>Fast relief & rehydration with anti-nausea and headache relief.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item">
-                            <h4>Energy & B-Complex - $175</h4>
-                            <p>B-vitamins & energy boost</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">⚡</div>
+                            <div class="card-info">
+                                <h4>Energy & B-Complex - $175</h4>
+                                <p>B-vitamins & energy boost for mental clarity and physical vitality.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item">
-                            <h4>Beauty & Glow - $220</h4>
-                            <p>Anti-aging nutrients & glutathione</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">✨</div>
+                            <div class="card-info">
+                                <h4>Beauty & Glow - $220</h4>
+                                <p>Anti-aging nutrients & glutathione for radiant skin and wellness.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item">
-                            <h4>Immunity Support - $200</h4>
-                            <p>Vitamin C & immune boosters</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">🛡️</div>
+                            <div class="card-info">
+                                <h4>Immunity Support - $200</h4>
+                                <p>Vitamin C & immune boosters to strengthen your natural defenses.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item">
-                            <h4>Athletic Performance - $250</h4>
-                            <p>Recovery & performance optimization</p>
+                        <div class="treatment-item hover-card-item">
+                            <div class="card-face">🏃</div>
+                            <div class="card-info">
+                                <h4>Athletic Performance - $250</h4>
+                                <p>Recovery & performance optimization for athletes and active individuals.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
