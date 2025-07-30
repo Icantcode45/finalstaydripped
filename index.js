@@ -953,7 +953,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: clamp(36px, 5vw, 56px);
             font-weight: 700;
             color: var(--dark-gray);
