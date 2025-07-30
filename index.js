@@ -1645,6 +1645,193 @@ const server = http.createServer(async (req, res) => {
             margin-top: 5px;
         }
 
+        /* Enhanced Service Cards with Glassmorphism */
+        .service-card-enhanced {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card-enhanced:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 1px rgba(61, 156, 210, 0.2);
+        }
+
+        /* Hover Card Items Integration */
+        .hover-card-item {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            perspective: 400px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .hover-card-item .card-face {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            height: 80px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-card-item .card-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hover-card-item .card-info h4 {
+            color: white;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hover-card-item .card-info p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .hover-card-item:hover .card-info {
+            transform: rotateX(0deg);
+            opacity: 1;
+        }
+
+        .hover-card-item:hover .card-face {
+            transform: rotateX(-90deg);
+            opacity: 0;
+        }
+
+        /* Hover Treatment Grid */
+        .hover-treatment-grid {
+            gap: 15px;
+        }
+
+        .hover-treatment-grid .hover-card-item {
+            min-height: 140px;
+            border-radius: 16px;
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .hover-treatment-grid .hover-card-item:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Enhanced Section Titles with Shadow Effects */
+        .section-title.shadow-text {
+            background: linear-gradient(135deg, var(--dark-gray), var(--iv-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* IV Section Enhanced with Deep Shadow */
+        .iv-section .shadow-text.deepshadow {
+            color: rgba(255, 255, 255, 0.95);
+            background: transparent;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 0.05em;
+            text-shadow:
+                0 -1px 0 rgba(255, 255, 255, 0.8),
+                0 1px 0 rgba(0, 0, 0, 0.3),
+                0 2px 0 rgba(0, 0, 0, 0.25),
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 4px 0 rgba(0, 0, 0, 0.15),
+                0 5px 0 rgba(0, 0, 0, 0.1),
+                0 6px 0 rgba(0, 0, 0, 0.05),
+                0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Glassmorphism Buttons Enhancement */
+        .btn-iv-therapy {
+            background: linear-gradient(135deg,
+                rgba(61, 156, 210, 0.9),
+                rgba(16, 185, 129, 0.9));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-iv-therapy::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .btn-iv-therapy:hover::before {
+            animation: shine 0.6s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .btn-iv-therapy:hover {
+            background: linear-gradient(135deg,
+                rgba(16, 185, 129, 0.9),
+                rgba(61, 156, 210, 0.9));
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
         /* Animation Classes */
         @keyframes fadeInUp {
             from {
