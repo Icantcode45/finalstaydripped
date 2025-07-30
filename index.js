@@ -1037,9 +1037,9 @@ const server = http.createServer(async (req, res) => {
         }
 
         .service-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: 28px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--dark-gray);
             margin-bottom: 12px;
         }
