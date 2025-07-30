@@ -2280,7 +2280,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1 class="shadow-text retroshadow">#1 Mobile IV Therapy in Scottsdale</h1>
+                    <h1 class="trebuchet-3d">#1 Mobile IV Therapy in Scottsdale</h1>
                     <p class="hero-subtitle">
                         Experience premium mobile IV therapy delivered directly to your location in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring wellness to you with same-day availability.
                     </p>
@@ -2455,7 +2455,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">���</div>
+                            <div class="card-face">✨</div>
                             <div class="card-info">
                                 <h4>Beauty & Glow - $220</h4>
                                 <p>Anti-aging nutrients & glutathione for radiant skin and wellness.</p>
