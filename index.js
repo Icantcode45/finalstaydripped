@@ -70,7 +70,7 @@ const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
 async function getNavigationData() {
   const now = Date.now();
   if (!cachedNavigation || (now - lastFetch) > CACHE_DURATION) {
-    cachedNavigation = await extractVitaBellaNavigation();
+    cachedNavigation = await extractStayDrippedNavigation();
     lastFetch = now;
   }
   return cachedNavigation;
