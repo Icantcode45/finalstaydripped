@@ -2352,7 +2352,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">���</div>
+                            <div class="card-face">🍺</div>
                             <div class="card-info">
                                 <h4>Hangover Recovery - $180</h4>
                                 <p>Fast relief & rehydration with anti-nausea and headache relief.</p>
@@ -2392,118 +2392,7 @@ const server = http.createServer(async (req, res) => {
         </div>
     </section>
 
-    <!-- Advanced Visual Effects Showcase -->
-    <section id="effects" class="shadow-showcase">
-        <div class="container">
-            <h1 class="shadow-title">Advanced Visual Effects</h1>
-            <p class="shadow-description">Experience the power of advanced CSS with stunning text shadows, interactive hover effects, and 3D glassmorphism elements</p>
-            
-            <div class="shadow-section">
-                <h1 class="shadow-text elegantshadow">Elegant Shadow</h1>
-                <div class="effect-description">
-                    <h3>Elegant Text Shadow</h3>
-                    <p>A sophisticated multi-layered shadow effect creating depth and elegance with 28 progressive shadow layers for natural lighting simulation.</p>
-                </div>
-            </div>
 
-            <div class="shadow-section">
-                <h1 class="shadow-text deepshadow">Deep Shadow</h1>
-                <div class="effect-description">
-                    <h3>Deep 3D Shadow</h3>
-                    <p>Dramatic depth effect with multiple vertical shadow layers creating a bold, three-dimensional appearance that seems to lift off the page.</p>
-                </div>
-            </div>
-
-            <div class="shadow-section">
-                <h1 class="shadow-text insetshadow">Inset Shadow</h1>
-                <div class="effect-description">
-                    <h3>Inset Text Shadow</h3>
-                    <p>Subtle carved-in effect using carefully positioned shadows to create the illusion of text pressed into the surface.</p>
-                </div>
-            </div>
-
-            <div class="shadow-section">
-                <h1 class="shadow-text retroshadow">Retro Shadow</h1>
-                <div class="effect-description">
-                    <h3>Retro Style Shadow</h3>
-                    <p>Classic vintage look with offset shadows creating a nostalgic, old-school aesthetic perfect for retro-themed designs.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Hover Effects -->
-    <section class="interactive-section">
-        <div class="container">
-            <h2 class="interactive-title">Direction-Aware Hover Effects</h2>
-            <p class="interactive-description">Hover from different directions to see the 3D flip effect in action</p>
-            
-            <div class="hover-container">
-                <ul class="hover-grid">
-                    <li>
-                        <a href="#" class="normal">🏥</a>
-                        <div class="info">
-                            <h3>Medical Wellness</h3>
-                            <p>Comprehensive hormone therapy and anti-aging treatments for optimal health.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="normal">💧</a>
-                        <div class="info">
-                            <h3>IV Therapy</h3>
-                            <p>Premium mobile IV therapy delivered directly to your location.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="normal">🎯</a>
-                        <div class="info">
-                            <h3>Weight Management</h3>
-                            <p>Medical-grade weight loss programs tailored to your needs.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="normal">⚡</a>
-                        <div class="info">
-                            <h3>Energy Boost</h3>
-                            <p>Revitalize your energy levels with our specialized treatments.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="normal">🌟</a>
-                        <div class="info">
-                            <h3>Anti-Aging</h3>
-                            <p>Advanced treatments to restore your youthful vitality.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="normal">💪</a>
-                        <div class="info">
-                            <h3>Sexual Wellness</h3>
-                            <p>Restore confidence with our specialized wellness programs.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3D Glassmorphism Icon -->
-    <section class="icon-section">
-        <div class="icon-main">
-            <div class="icon">
-                <div class="icon__glyph">
-                    <div class="icon__glyph-part"></div>
-                    <div class="icon__glyph-part"></div>
-                    <div class="icon__glyph-part"></div>
-                    <div class="icon__glyph-part"></div>
-                </div>
-            </div>
-        </div>
-        <div class="effect-description" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px;">
-            <h3>3D Glassmorphism Icon</h3>
-            <p>A stunning 3D icon featuring layered shadows, gradients, and backdrop blur for a modern, premium appearance.</p>
-        </div>
-    </section>
 
     <!-- IV Therapy Section -->
     <section id="iv-therapy" class="iv-section">
