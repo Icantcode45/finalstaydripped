@@ -874,17 +874,28 @@ const server = http.createServer(async (req, res) => {
         .form-group input,
         .form-group select {
             padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--iv-primary);
-            box-shadow: 0 0 0 3px rgba(61, 156, 210, 0.1);
+            border-color: rgba(61, 156, 210, 0.4);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 3px rgba(61, 156, 210, 0.1);
+            transform: translateY(-1px);
         }
 
         /* Enhanced Service Categories */
