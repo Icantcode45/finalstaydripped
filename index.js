@@ -858,16 +858,30 @@ const server = http.createServer(async (req, res) => {
             50% { transform: translateY(-15px) rotate(2deg); }
         }
 
-        /* Search Form Styling */
+        /* Enhanced 3D Glassmorphism Search Form */
         .search-section {
-            background: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             margin: -50px auto 0;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
             position: relative;
             z-index: 10;
             max-width: 1000px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .search-section:hover {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 25px 100px rgba(0, 0, 0, 0.2),
+                inset 0 3px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .search-form {
