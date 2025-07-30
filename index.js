@@ -3436,6 +3436,7 @@ const server = http.createServer(async (req, res) => {
             initDirectionalHovers();
             addSparkleEffect();
             enhanceButtons();
+            enhanceVialInteractions();
             initTeamCarousel();
 
             // Staggered fade-in for hero elements
