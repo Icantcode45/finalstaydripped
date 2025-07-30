@@ -2145,9 +2145,9 @@ const server = http.createServer(async (req, res) => {
             </a>
             <ul class="nav-links" id="mainNavLinks">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#effects">Visual Effects</a></li>
                 <li><a href="#iv-therapy">IV Therapy</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="bookService()">Book Now</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="auth-buttons">
