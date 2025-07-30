@@ -207,7 +207,7 @@ const server = http.createServer(async (req, res) => {
                 "@type": "WebSite",
                 "@id": "https://vitabella.com/#website",
                 "url": "https://vitabella.com/",
-                "name": "Vita Bella Health",
+                "name": "Stay Dripped IV & Wellness Co.",
                 "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
                 "inLanguage": "en-US",
                 "publisher": {
