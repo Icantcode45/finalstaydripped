@@ -3252,6 +3252,48 @@ const server = http.createServer(async (req, res) => {
             });
         }
 
+        // Enhanced vial interactions
+        function enhanceVialInteractions() {
+            const vialHighlights = document.querySelectorAll('.vial-highlight');
+
+            const vialInfo = {
+                'amino': 'Essential amino acids for muscle recovery and energy',
+                'b-complex': 'B-vitamins for energy metabolism and brain function',
+                'glutathione': 'Master antioxidant for detox and cellular health',
+                'vitamin-b12': 'Energy boost and nervous system support'
+            };
+
+            vialHighlights.forEach(vial => {
+                vial.addEventListener('click', function() {
+                    const vialType = this.getAttribute('data-vial');
+                    const info = vialInfo[vialType];
+
+                    // Create info popup
+                    const popup = document.createElement('div');
+                    popup.className = 'vial-info-popup';
+                    popup.innerHTML = '<p>' + info + '</p>';
+                    popup.style.cssText = 'position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.9); color: white; padding: 10px 15px; border-radius: 8px; font-size: 12px; white-space: nowrap; z-index: 1000; animation: fadeInUp 0.3s ease;';
+
+                    this.style.position = 'relative';
+                    this.appendChild(popup);
+
+                    setTimeout(() => popup.remove(), 3000);
+
+                    // Add pulse effect
+                    this.style.animation = 'vialPulse 0.6s ease';
+                    setTimeout(() => this.style.animation = '', 600);
+                });
+            });
+
+            // Add vial pulse animation
+            if (!document.getElementById('vial-animation-styles')) {
+                const style = document.createElement('style');
+                style.id = 'vial-animation-styles';
+                style.textContent = '@keyframes vialPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }';
+                document.head.appendChild(style);
+            }
+        }
+
         // Team Carousel Functionality
         const teamMembers = [
             { name: "Dr. Emily Rodriguez", role: "Medical Director" },
