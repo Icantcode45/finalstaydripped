@@ -1412,7 +1412,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .iv-features li::before {
-            content: "����";
+            content: "💉";
             margin-right: 12px;
             font-size: 20px;
         }
@@ -2041,13 +2041,13 @@ const server = http.createServer(async (req, res) => {
                     </div>
                 </div>
 
-                <div class="service-card scroll-animate">
+                <div class="service-card service-card-enhanced scroll-animate">
                     <span class="service-icon">💧</span>
                     <h3>Mobile IV Therapy - Scottsdale</h3>
                     <div class="category-subtitle">#1 Rated Mobile IV Service</div>
                     <p>Licensed medical professionals deliver premium IV therapy directly to your location in Scottsdale, AZ. Same-day availability with hospital-grade treatments.</p>
-                    
-                    <div class="treatments-grid">
+
+                    <div class="treatments-grid hover-treatment-grid">
                         <div class="treatment-item">
                             <h4>Hydration Boost - $150</h4>
                             <p>Essential electrolytes & fluids</p>
