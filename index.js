@@ -6,7 +6,7 @@ const axios = require('axios');
 // Zyte API Integration for dynamic content extraction
 const zyteApiKey = '3d9c21c386b64c48b991208269f60348';
 
-async function extractVitaBellaNavigation() {
+async function extractStayDrippedNavigation() {
   try {
     const response = await axios.post(
       "https://api.zyte.com/v1/extract",
