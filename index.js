@@ -2883,10 +2883,133 @@ const server = http.createServer(async (req, res) => {
             loadDynamicNavigation();
         });
 
-        // Loading animation
+        // Enhanced scroll animations with stagger effect
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll('.scroll-animate');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        // Enhanced hover card direction detection
+        function initDirectionalHovers() {
+            const hoverCards = document.querySelectorAll('.hover-card-item');
+
+            hoverCards.forEach(card => {
+                card.addEventListener('mouseenter', function(e) {
+                    // Add subtle scale effect
+                    this.style.transform = 'scale(1.02)';
+
+                    // Add entrance animation based on hover direction
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const w = rect.width;
+                    const h = rect.height;
+
+                    // Determine direction for animation
+                    if (y < h * 0.5 && x > w * 0.25 && x < w * 0.75) {
+                        this.classList.add('hover-from-top');
+                    } else if (x > w * 0.5 && y > h * 0.25 && y < h * 0.75) {
+                        this.classList.add('hover-from-right');
+                    } else {
+                        this.classList.add('hover-from-center');
+                    }
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.classList.remove('hover-from-top', 'hover-from-right', 'hover-from-center');
+                });
+            });
+        }
+
+        // Add sparkle effect to glassmorphism elements
+        function addSparkleEffect() {
+            const glassmorphElements = document.querySelectorAll('.service-card-enhanced, .floating-card');
+
+            glassmorphElements.forEach(element => {
+                element.addEventListener('mouseenter', function(e) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle-effect';
+                    sparkle.style.cssText = 'position: absolute; top: ' + (e.offsetY - 2) + 'px; left: ' + (e.offsetX - 2) + 'px; width: 4px; height: 4px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: sparkle 0.6s ease-out forwards; z-index: 1000;';
+
+                    // Add sparkle animation if not exists
+                    if (!document.getElementById('sparkle-styles')) {
+                        const style = document.createElement('style');
+                        style.id = 'sparkle-styles';
+                        style.textContent = '@keyframes sparkle { 0% { transform: scale(0) rotate(0deg); opacity: 1; } 50% { transform: scale(1) rotate(180deg); opacity: 1; } 100% { transform: scale(0) rotate(360deg); opacity: 0; } }';
+                        document.head.appendChild(style);
+                    }
+
+                    this.style.position = 'relative';
+                    this.appendChild(sparkle);
+
+                    setTimeout(() => sparkle.remove(), 600);
+                });
+            });
+        }
+
+        // Enhanced button interactions with ripple effect
+        function enhanceButtons() {
+            const buttons = document.querySelectorAll('.btn-iv-therapy');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.className = 'ripple-effect';
+                    ripple.style.cssText = 'position: absolute; top: ' + y + 'px; left: ' + x + 'px; width: ' + size + 'px; height: ' + size + 'px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; transform: scale(0); animation: ripple 0.6s ease-out; pointer-events: none;';
+
+                    // Add ripple animation if not exists
+                    if (!document.getElementById('ripple-styles')) {
+                        const style = document.createElement('style');
+                        style.id = 'ripple-styles';
+                        style.textContent = '@keyframes ripple { to { transform: scale(2); opacity: 0; } }';
+                        document.head.appendChild(style);
+                    }
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        }
+
+        // Loading animation with enhanced effects
         window.addEventListener('load', function() {
             document.body.style.opacity = '1';
-            document.querySelector('.fade-in-up').style.animationDelay = '0.2s';
+
+            // Initialize all enhanced visual effects
+            initScrollAnimations();
+            initDirectionalHovers();
+            addSparkleEffect();
+            enhanceButtons();
+
+            // Staggered fade-in for hero elements
+            const heroElements = document.querySelectorAll('.fade-in-up');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = (0.2 + (index * 0.1)) + 's';
+            });
         });
     </script>
 </body>
