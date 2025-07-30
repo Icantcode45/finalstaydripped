@@ -1412,7 +1412,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .iv-features li::before {
-            content: "💉";
+            content: "����";
             margin-right: 12px;
             font-size: 20px;
         }
@@ -2010,21 +2010,33 @@ const server = http.createServer(async (req, res) => {
                     <p>Personalized hormone optimization, weight management, and anti-aging treatments designed to restore your vitality and enhance your quality of life.</p>
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
-                        <div class="treatment-item" data-url="weight-loss">
-                            <h4>Weight Loss</h4>
-                            <p>Medical-grade programs</p>
+                        <div class="treatment-item hover-card-item" data-url="weight-loss">
+                            <div class="card-face">🎯</div>
+                            <div class="card-info">
+                                <h4>Weight Loss</h4>
+                                <p>Medical-grade programs tailored to your specific health goals and lifestyle.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item" data-url="hormone-therapy">
-                            <h4>Hormone Therapy</h4>
-                            <p>Personalized optimization</p>
+                        <div class="treatment-item hover-card-item" data-url="hormone-therapy">
+                            <div class="card-face">⚖️</div>
+                            <div class="card-info">
+                                <h4>Hormone Therapy</h4>
+                                <p>Personalized hormone optimization for energy, vitality, and overall wellness.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item" data-url="anti-aging">
-                            <h4>Anti-Aging</h4>
-                            <p>Advanced treatments</p>
+                        <div class="treatment-item hover-card-item" data-url="anti-aging">
+                            <div class="card-face">🌟</div>
+                            <div class="card-info">
+                                <h4>Anti-Aging</h4>
+                                <p>Advanced treatments to restore your youthful vitality and appearance.</p>
+                            </div>
                         </div>
-                        <div class="treatment-item" data-url="sexual-wellness">
-                            <h4>Sexual Wellness</h4>
-                            <p>Restore confidence</p>
+                        <div class="treatment-item hover-card-item" data-url="sexual-wellness">
+                            <div class="card-face">💪</div>
+                            <div class="card-info">
+                                <h4>Sexual Wellness</h4>
+                                <p>Restore confidence with our specialized wellness programs.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2115,7 +2127,7 @@ const server = http.createServer(async (req, res) => {
             <div class="hover-container">
                 <ul class="hover-grid">
                     <li>
-                        <a href="#" class="normal">��</a>
+                        <a href="#" class="normal">🏥</a>
                         <div class="info">
                             <h3>Medical Wellness</h3>
                             <p>Comprehensive hormone therapy and anti-aging treatments for optimal health.</p>
