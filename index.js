@@ -589,15 +589,25 @@ const server = http.createServer(async (req, res) => {
         }
 
         .btn-gradient {
-            background: linear-gradient(135deg, var(--primary-emerald), var(--accent-purple));
+            background: linear-gradient(135deg,
+                rgba(16, 185, 129, 0.9),
+                rgba(139, 92, 246, 0.9));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             color: var(--white);
-            border-color: transparent;
-            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(16, 185, 129, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
         }
 
         .btn-gradient:hover {
-            background: linear-gradient(135deg, var(--accent-purple), var(--primary-emerald));
-            box-shadow: 0 8px 25px 0 rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg,
+                rgba(139, 92, 246, 0.95),
+                rgba(16, 185, 129, 0.95));
+            box-shadow:
+                0 12px 48px rgba(139, 92, 246, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
         /* IV Therapy Specific Button */
