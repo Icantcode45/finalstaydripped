@@ -1630,6 +1630,79 @@ const server = http.createServer(async (req, res) => {
             padding-left: 3px;
         }
 
+        /* Stay Dripped Vitamin Vials Showcase */
+        .iv-therapy-showcase {
+            position: relative;
+            border-radius: 24px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .vitamin-vials {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        .vitamin-vials:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .vials-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .vial-highlight {
+            position: relative;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: auto;
+            cursor: pointer;
+            font-family: "Trebuchet MS", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vial-highlight:hover {
+            background: rgba(61, 156, 210, 0.9);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(61, 156, 210, 0.4);
+        }
+
+        .iv-therapy-showcase:hover .vial-highlight {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .vial-1 { animation-delay: 0.1s; }
+        .vial-2 { animation-delay: 0.2s; }
+        .vial-3 { animation-delay: 0.3s; }
+        .vial-4 { animation-delay: 0.4s; }
+
         /* Enhanced IV Section Image Effects */
         .scroll-animate:hover img {
             transform: scale(1.05);
@@ -2633,7 +2706,7 @@ const server = http.createServer(async (req, res) => {
                     <div>
                         <p style="margin-bottom: 8px;">📞 (480) 602-0444</p>
                         <p style="margin-bottom: 8px;">✉️ info@vitabella.com</p>
-                        <p>��� 7014 E Camelback Rd suite b100 a, Scottsdale, AZ 85251</p>
+                        <p>📍 7014 E Camelback Rd suite b100 a, Scottsdale, AZ 85251</p>
                     </div>
                 </div>
                 <div>
