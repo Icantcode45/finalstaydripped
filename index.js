@@ -2116,6 +2116,65 @@ const server = http.createServer(async (req, res) => {
                 padding: 20px;
                 margin-bottom: 15px;
             }
+
+            /* Mobile Team Carousel */
+            .about-title {
+                font-size: 3.5rem;
+                top: 40px;
+            }
+
+            .carousel-container {
+                height: 350px;
+                margin-top: 60px;
+            }
+
+            .card {
+                width: 200px;
+                height: 280px;
+            }
+
+            .card.left-2 {
+                transform: translateX(-280px) scale(0.7) translateZ(-300px);
+            }
+
+            .card.left-1 {
+                transform: translateX(-140px) scale(0.85) translateZ(-100px);
+            }
+
+            .card.right-1 {
+                transform: translateX(140px) scale(0.85) translateZ(-100px);
+            }
+
+            .card.right-2 {
+                transform: translateX(280px) scale(0.7) translateZ(-300px);
+            }
+
+            .member-name::before,
+            .member-name::after {
+                width: 50px;
+            }
+
+            .member-name::before {
+                left: -70px;
+            }
+
+            .member-name::after {
+                right: -70px;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .nav-arrow.left {
+                left: 10px;
+            }
+
+            .nav-arrow.right {
+                right: 10px;
+            }
         }
     </style>
 </head>
