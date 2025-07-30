@@ -105,7 +105,7 @@ const server = http.createServer(async (req, res) => {
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Vita Bella Health - #1 Mobile IV Therapy in Scottsdale, AZ">
+    <meta name="apple-mobile-web-app-title" content="Stay Dripped IV & Wellness Co. - #1 Mobile IV Therapy in Scottsdale, AZ">
     
     <title>#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health</title>
     <meta name="description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
