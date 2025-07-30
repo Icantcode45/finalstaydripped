@@ -2220,6 +2220,7 @@ const server = http.createServer(async (req, res) => {
             <ul>
                 <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Services</a></li>
                 <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">IV Therapy</a></li>
+                <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 <li><a href="#" onclick="bookService(); toggleMenu();">Book Now</a></li>
             </ul>
