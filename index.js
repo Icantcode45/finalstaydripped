@@ -450,7 +450,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: 28px;
             font-weight: 700;
             color: var(--iv-primary);
