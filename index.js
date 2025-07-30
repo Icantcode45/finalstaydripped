@@ -894,6 +894,55 @@ const server = http.createServer(async (req, res) => {
                 inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
 
+        /* Stay Dripped IV Bag Styling */
+        .main-iv-bag {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+            animation: ivBagFloat 6s ease-in-out infinite;
+        }
+
+        .main-iv-bag:hover {
+            transform: scale(1.05) rotate(2deg);
+            filter: brightness(1.1) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .floating-iv-bag {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.2));
+        }
+
+        .floating-iv-bag:hover {
+            transform: scale(1.1) rotate(-5deg);
+            filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes ivBagFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(-1deg);
+            }
+        }
+
+        .floating-card-3 {
+            top: 60%;
+            right: -5%;
+            animation-delay: 4s;
+        }
+
         .floating-card-1 {
             top: 10%;
             right: -10%;
