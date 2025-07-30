@@ -123,7 +123,7 @@ const server = http.createServer(async (req, res) => {
     <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Vita Bella Health - Premium Mobile IV Therapy">
+    <meta property="og:image:alt" content="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
