@@ -183,7 +183,7 @@ const server = http.createServer(async (req, res) => {
                 "@type": "WebPage",
                 "@id": "https://vitabella.com/#webpage",
                 "url": "https://vitabella.com/",
-                "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Vita Bella Health",
+                "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.",
                 "description": "Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!",
                 "inLanguage": "en-US",
                 "isPartOf": {
