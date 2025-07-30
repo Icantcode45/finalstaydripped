@@ -2189,6 +2189,7 @@ const server = http.createServer(async (req, res) => {
             <ul class="nav-links" id="mainNavLinks">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#iv-therapy">IV Therapy</a></li>
+                <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#" onclick="bookService()">Book Now</a></li>
             </ul>
