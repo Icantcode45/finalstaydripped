@@ -2315,18 +2315,18 @@ const server = http.createServer(async (req, res) => {
                 </div>
                 <div class="hero-visual">
                     <div class="hero-image">
-                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Vita Bella Health - Premium Wellness Services" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F8b73c477407048d0945425bdc93ba34d%2Fa8f8166d06e24e30b4973017fdc31d5a?format=webp&width=800" alt="Stay Dripped Basic Rehydrate IV Bag" class="main-iv-bag">
                     </div>
                     <div class="floating-card floating-card-1">
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                            <div style="width: 12px; height: 12px; background: var(--iv-success); border-radius: 50%;"></div>
-                            <span style="font-size: 14px; font-weight: 600;">Same-Day Service</span>
-                        </div>
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F8b73c477407048d0945425bdc93ba34d%2F7515691aa6f44147a89e5417a07a0467?format=webp&width=800" alt="Diamondback Immune Support" class="floating-iv-bag">
                     </div>
                     <div class="floating-card floating-card-2">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F8b73c477407048d0945425bdc93ba34d%2Ff336aa65d2de4bacaa80dc821eb52007?format=webp&width=800" alt="Basic Rehydrate Plus" class="floating-iv-bag">
+                    </div>
+                    <div class="floating-card floating-card-3">
                         <div style="text-align: center;">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--iv-primary);">Scottsdale</div>
-                            <div style="font-size: 12px; opacity: 0.7;">Service Area</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--iv-primary);">Premium</div>
+                            <div style="font-size: 12px; opacity: 0.7;">IV Therapy</div>
                         </div>
                     </div>
                 </div>
