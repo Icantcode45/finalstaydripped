@@ -541,31 +541,51 @@ const server = http.createServer(async (req, res) => {
                 0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
-        /* Button Variants */
+        /* 3D Glassmorphism Button Variants */
         .btn-primary {
-            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue-dark));
+            background: linear-gradient(135deg,
+                rgba(61, 156, 210, 0.9),
+                rgba(29, 78, 216, 0.9));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             color: var(--white);
-            border-color: var(--iv-primary);
-            box-shadow: 0 4px 14px 0 rgba(61, 156, 210, 0.3);
+            border: 1px solid rgba(61, 156, 210, 0.3);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-blue-dark), var(--iv-primary));
+            background: linear-gradient(135deg,
+                rgba(29, 78, 216, 0.95),
+                rgba(61, 156, 210, 0.95));
             color: var(--white);
-            border-color: var(--primary-blue-dark);
-            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
+            border-color: rgba(29, 78, 216, 0.4);
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             color: var(--iv-primary);
-            border: 2px solid var(--iv-primary);
+            border: 2px solid rgba(61, 156, 210, 0.3);
+            box-shadow:
+                0 4px 20px rgba(61, 156, 210, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .btn-secondary:hover {
-            background: var(--iv-primary);
+            background: rgba(61, 156, 210, 0.9);
             color: var(--white);
-            border-color: var(--iv-primary);
+            border-color: rgba(61, 156, 210, 0.6);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
         }
 
         .btn-gradient {
