@@ -285,10 +285,10 @@ const server = http.createServer(async (req, res) => {
             --border-gray: #e5e7eb;
             
             /* Typography Variables */
-            --e-global-typography-primary-font-family: "Instrument Sans", "Inter", sans-serif;
-            --e-global-typography-secondary-font-family: "Roboto Slab", serif;
-            --e-global-typography-text-font-family: "Rubik", sans-serif;
-            --e-global-typography-accent-font-family: "Roboto", sans-serif;
+            --e-global-typography-primary-font-family: "Poppins", sans-serif;
+            --e-global-typography-secondary-font-family: "Source Serif Pro", serif;
+            --e-global-typography-text-font-family: "Open Sans", sans-serif;
+            --e-global-typography-accent-font-family: "Lato", sans-serif;
             
             /* Container System */
             --container-max-width: 1100px;
