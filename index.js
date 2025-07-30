@@ -151,7 +151,7 @@ const server = http.createServer(async (req, res) => {
             {
                 "@type": "Organization",
                 "@id": "https://vitabella.com/#organization",
-                "name": "Vita Bella Health",
+                "name": "Stay Dripped IV & Wellness Co.",
                 "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
                 "url": "https://vitabella.com/",
                 "telephone": "+14806020444",
