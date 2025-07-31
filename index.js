@@ -2559,7 +2559,7 @@ const server = http.createServer(async (req, res) => {
 
                     <div class="treatments-grid hover-treatment-grid">
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">💧</div>
+                            <div class="card-face">Hydration</div>
                             <div class="card-info">
                                 <h4>Hydration Boost - $150</h4>
                                 <p>Essential electrolytes & fluids for optimal hydration and energy.</p>
