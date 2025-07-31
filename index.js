@@ -714,17 +714,42 @@ const server = http.createServer(async (req, res) => {
             z-index: 2;
         }
 
-        .hero-text h1 {
-            font-family: var(--e-global-typography-primary-font-family);
-            font-size: clamp(48px, 6vw, 72px);
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--dark-gray);
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--dark-gray), var(--iv-primary));
+        /* Modern Hero Title */
+        .modern-hero-title {
+            font-family: var(--display-font);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 0.9;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            position: relative;
+            text-transform: lowercase;
+        }
+
+        .modern-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .hero-tagline {
+            font-family: var(--accent-font);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            color: var(--brand-dark);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
         }
 
         .hero-subtitle {
