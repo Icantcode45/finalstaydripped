@@ -2472,7 +2472,6 @@ const server = http.createServer(async (req, res) => {
                     </div>
                     <div class="form-group">
                         <label for="service-time">
-                            <span class="icon">🕒</span>
                             Preferred Time
                         </label>
                         <select id="service-time">
