@@ -2599,10 +2599,10 @@ const server = http.createServer(async (req, res) => {
     <section id="advanced-therapies" class="services-section">
         <div class="container">
             <div class="section-header scroll-animate">
-                <div class="section-subtitle">Expert Care</div>
+                <div class="section-subtitle">Next-Generation Wellness</div>
                 <h2 class="section-title modern-section-title">Revolutionary Health Innovations</h2>
                 <p class="section-description">
-                    Combining advanced medical treatments with convenient mobile services to support your optimal health and vitality.
+                    Pioneering the future of personalized medicine with cutting-edge therapies, precision treatments, and mobile convenience that transforms your wellness journey from ordinary to extraordinary.
                 </p>
             </div>
 
