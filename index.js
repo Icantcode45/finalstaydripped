@@ -2416,8 +2416,8 @@ const server = http.createServer(async (req, res) => {
                         Experience premium mobile IV therapy delivered directly to your location in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring wellness to you with same-day availability.
                     </p>
                     <div class="hero-cta">
-                        <a href="#iv-therapy" class="btn btn-iv-therapy">📱 Book Mobile IV Now</a>
-                        <a href="#services" class="btn btn-secondary">🏥 View All Services</a>
+                        <a href="#iv-therapy" class="btn btn-iv-therapy">Book Mobile IV Now</a>
+                        <a href="#services" class="btn btn-secondary">View All Services</a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
