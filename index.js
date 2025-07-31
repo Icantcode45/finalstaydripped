@@ -2651,45 +2651,45 @@ const server = http.createServer(async (req, res) => {
 
                     <div class="treatments-grid hover-treatment-grid">
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Hydration</div>
+                            <div class="card-face">Vital Restore</div>
                             <div class="card-info">
-                                <h4>Hydration Boost - $150</h4>
-                                <p>Essential electrolytes & fluids for optimal hydration and energy.</p>
+                                <h4>Vital Restore Protocol - $195</h4>
+                                <p>Premium electrolyte matrix with cellular hydration enhancers for optimal fluid balance and energy restoration.</p>
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Hangover</div>
+                            <div class="card-face">Recovery Elite</div>
                             <div class="card-info">
-                                <h4>Hangover Recovery - $180</h4>
-                                <p>Fast relief & rehydration with anti-nausea and headache relief.</p>
+                                <h4>Recovery Elite Formula - $225</h4>
+                                <p>Advanced detox complex with anti-inflammatory compounds and rapid symptom relief technology.</p>
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Energy</div>
+                            <div class="card-face">Cognitive Power</div>
                             <div class="card-info">
-                                <h4>Energy & B-Complex - $175</h4>
-                                <p>B-vitamins & energy boost for mental clarity and physical vitality.</p>
+                                <h4>Cognitive Power Infusion - $285</h4>
+                                <p>Nootropic-enhanced B-complex with neurocognitive boosters for enhanced mental performance and clarity.</p>
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Beauty</div>
+                            <div class="card-face">Radiance Pro</div>
                             <div class="card-info">
-                                <h4>Beauty & Glow - $220</h4>
-                                <p>Anti-aging nutrients & glutathione for radiant skin and wellness.</p>
+                                <h4>Radiance Pro Treatment - $350</h4>
+                                <p>Advanced anti-aging cocktail featuring master antioxidants, collagen precursors, and cellular renewal factors.</p>
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Immunity</div>
+                            <div class="card-face">Immune Fortress</div>
                             <div class="card-info">
-                                <h4>Immunity Support - $200</h4>
-                                <p>Vitamin C & immune boosters to strengthen your natural defenses.</p>
+                                <h4>Immune Fortress Defense - $275</h4>
+                                <p>Military-grade immune enhancement with mega-dose vitamin C, zinc, and immune-modulating compounds.</p>
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">Athletic</div>
+                            <div class="card-face">Peak Performance</div>
                             <div class="card-info">
-                                <h4>Athletic Performance - $250</h4>
-                                <p>Recovery & performance optimization for athletes and active individuals.</p>
+                                <h4>Peak Performance Protocol - $395</h4>
+                                <p>Elite athlete-grade recovery optimization with performance enhancers, muscle recovery factors, and endurance boosters.</p>
                             </div>
                         </div>
                     </div>
