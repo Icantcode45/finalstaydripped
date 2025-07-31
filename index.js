@@ -2477,7 +2477,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="section-header scroll-animate">
                 <div class="section-subtitle">Expert Care</div>
-                <h2 class="section-title modern-section-title">Advanced Wellness Solutions</h2>
+                <h2 class="section-title modern-section-title">Revolutionary Health Innovations</h2>
                 <p class="section-description">
                     Combining advanced medical treatments with convenient mobile services to support your optimal health and vitality.
                 </p>
