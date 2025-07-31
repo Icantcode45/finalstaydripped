@@ -2495,7 +2495,6 @@ const server = http.createServer(async (req, res) => {
                     </div>
                     <div class="form-group">
                         <button class="btn btn-iv-therapy" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
-                            <span class="icon">💉</span>
                             Book Mobile IV Therapy
                         </button>
                     </div>
