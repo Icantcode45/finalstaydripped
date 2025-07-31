@@ -2529,7 +2529,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" data-url="hormone-therapy">
-                            <div class="card-face">⚖️</div>
+                            <div class="card-face">Hormone Therapy</div>
                             <div class="card-info">
                                 <h4>Hormone Therapy</h4>
                                 <p>Personalized hormone optimization for energy, vitality, and overall wellness.</p>
