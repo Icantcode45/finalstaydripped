@@ -2333,11 +2333,11 @@ const server = http.createServer(async (req, res) => {
                 <span class="logo-subtitle">IV & Wellness Co.</span>
             </a>
             <ul class="nav-links" id="mainNavLinks">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#iv-therapy">IV Therapy</a></li>
+                <li><a href="#advanced-therapies">Advanced Therapies</a></li>
+                <li><a href="#booking-portal">Book Treatment</a></li>
+                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#" onclick="bookService()">Book Now</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="auth-buttons">
