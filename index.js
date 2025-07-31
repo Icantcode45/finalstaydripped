@@ -2516,7 +2516,6 @@ const server = http.createServer(async (req, res) => {
 
             <div class="services-grid">
                 <div class="service-card service-card-enhanced scroll-animate">
-                    <span class="service-icon">🏥</span>
                     <h3>Medical Wellness</h3>
                     <div class="category-subtitle">Hormone & Anti-Aging Therapy</div>
                     <p>Personalized hormone optimization, weight management, and anti-aging treatments designed to restore your vitality and enhance your quality of life.</p>
