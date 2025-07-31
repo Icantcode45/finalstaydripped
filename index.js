@@ -2354,7 +2354,8 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1>#1 Mobile IV Therapy in Scottsdale</h1>
+                    <h1 class="modern-hero-title">Wellness Redefined</h1>
+                    <div class="hero-tagline">Premium IV Therapy & Medical Wellness</div>
                     <p class="hero-subtitle">
                         Experience premium mobile IV therapy delivered directly to your location in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring wellness to you with same-day availability.
                     </p>
