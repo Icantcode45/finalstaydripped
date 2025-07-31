@@ -462,19 +462,7 @@ const server = http.createServer(async (req, res) => {
             gap: 12px;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 30px;
-            object-fit: contain;
-            margin-right: 8px;
-            transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
 
-        .logo:hover .logo-icon {
-            transform: scale(1.1) rotate(5deg);
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-        }
 
         .logo-subtitle {
             font-size: 12px;
