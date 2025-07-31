@@ -2613,32 +2613,32 @@ const server = http.createServer(async (req, res) => {
                     <p>Revolutionary precision medicine approach utilizing advanced biomarker analysis, genomic insights, and personalized protocols to optimize your unique physiological profile for peak performance and longevity.</p>
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
-                        <div class="treatment-item hover-card-item" data-url="weight-loss">
-                            <div class="card-face">Weight Loss</div>
+                        <div class="treatment-item hover-card-item" data-url="metabolic-optimization">
+                            <div class="card-face">Metabolic Optimization</div>
                             <div class="card-info">
-                                <h4>Weight Loss</h4>
-                                <p>Medical-grade programs tailored to your specific health goals and lifestyle.</p>
+                                <h4>Advanced Metabolic Optimization</h4>
+                                <p>Precision-guided body composition transformation using cutting-edge metabolic science and personalized protocols.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="hormone-therapy">
-                            <div class="card-face">Hormone Therapy</div>
+                        <div class="treatment-item hover-card-item" data-url="endocrine-enhancement">
+                            <div class="card-face">Endocrine Enhancement</div>
                             <div class="card-info">
-                                <h4>Hormone Therapy</h4>
-                                <p>Personalized hormone optimization for energy, vitality, and overall wellness.</p>
+                                <h4>Bioidentical Hormone Mastery</h4>
+                                <p>Revolutionary hormone optimization using advanced testing and precision-dosed bioidentical therapies.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="anti-aging">
-                            <div class="card-face">Anti-Aging</div>
+                        <div class="treatment-item hover-card-item" data-url="longevity-protocols">
+                            <div class="card-face">Longevity Protocols</div>
                             <div class="card-info">
-                                <h4>Anti-Aging</h4>
-                                <p>Advanced treatments to restore your youthful vitality and appearance.</p>
+                                <h4>Cellular Regeneration Therapy</h4>
+                                <p>Cutting-edge anti-aging interventions targeting cellular health, mitochondrial function, and longevity pathways.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="sexual-wellness">
-                            <div class="card-face">Sexual Wellness</div>
+                        <div class="treatment-item hover-card-item" data-url="performance-enhancement">
+                            <div class="card-face">Performance Enhancement</div>
                             <div class="card-info">
-                                <h4>Sexual Wellness</h4>
-                                <p>Restore confidence with our specialized wellness programs.</p>
+                                <h4>Elite Performance Optimization</h4>
+                                <p>Advanced therapies designed to enhance physical vitality, cognitive function, and intimate wellness.</p>
                             </div>
                         </div>
                     </div>
