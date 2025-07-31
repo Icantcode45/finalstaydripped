@@ -2710,12 +2710,14 @@ const server = http.createServer(async (req, res) => {
                     <p>Transform your wellness journey with our revolutionary mobile infusion therapy. Our board-certified medical team delivers pharmaceutical-grade treatments using cutting-edge protocols, bringing the future of personalized medicine directly to your private sanctuary.</p>
                     
                     <ul class="iv-features">
-                        <li>Licensed medical professionals</li>
-                        <li>Same-day availability in Scottsdale area</li>
-                        <li>FDA-approved medications and vitamins</li>
-                        <li>Sterile, hospital-grade equipment</li>
-                        <li>Customized treatments for your needs</li>
-                        <li>Group bookings and events available</li>
+                        <li>Board-certified physicians & advanced practitioners</li>
+                        <li>Immediate deployment with concierge scheduling</li>
+                        <li>Pharmaceutical-grade nutrients & bioactive compounds</li>
+                        <li>Medical-grade sterile compounding & delivery systems</li>
+                        <li>Precision-dosed protocols tailored to biomarkers</li>
+                        <li>Executive wellness programs & private events</li>
+                        <li>Advanced monitoring & real-time health optimization</li>
+                        <li>Luxury mobile clinic experience with privacy assurance</li>
                     </ul>
 
                     <a href="#contact" class="btn btn-iv-therapy">Book Mobile IV Session</a>
