@@ -680,10 +680,11 @@ const server = http.createServer(async (req, res) => {
         /* Hero Section with enhanced animations */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, 
-                rgba(61, 156, 210, 0.05) 0%, 
-                rgba(16, 185, 129, 0.05) 50%, 
-                rgba(139, 92, 246, 0.05) 100%);
+            background: linear-gradient(135deg,
+                rgba(255, 107, 107, 0.08) 0%,
+                rgba(78, 205, 196, 0.08) 35%,
+                rgba(69, 183, 209, 0.08) 65%,
+                rgba(139, 92, 246, 0.08) 100%);
             display: flex;
             align-items: center;
             position: relative;
