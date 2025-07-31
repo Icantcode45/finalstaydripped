@@ -260,22 +260,22 @@ const server = http.createServer(async (req, res) => {
             --e-global-color-cbdd3a3: #D4D4D4;
             --e-global-color-a403e49: #171717;
             
-            /* Primary Brand Colors */
-            --primary-emerald: #10B981;
-            --primary-emerald-dark: #059669;
-            --primary-emerald-light: #6EE7B7;
-            --primary-blue: #3B82F6;
-            --primary-blue-dark: #1D4ED8;
-            --accent-purple: #8B5CF6;
-            --accent-purple-light: #C4B5FD;
-            
-            /* IV Therapy Brand Colors */
-            --iv-primary: #3d9cd2;
-            --iv-secondary: #1A2B3B;
-            --iv-accent: #F5F7F9;
-            --iv-success: #22c55e;
-            --iv-warning: #f59e0b;
-            --iv-error: #d63939;
+            /* Modern Brand Colors */
+            --brand-primary: #FF6B6B;
+            --brand-secondary: #4ECDC4;
+            --brand-accent: #45B7D1;
+            --brand-dark: #2C3E50;
+            --brand-light: #F8F9FA;
+
+            /* Gradient System */
+            --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            --gradient-secondary: linear-gradient(135deg, #45B7D1 0%, #96CEB4 100%);
+            --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+
+            /* Therapy Colors */
+            --therapy-energy: #FFD93D;
+            --therapy-calm: #6BCF7F;
+            --therapy-focus: #4D96FF;
             
             /* Neutral System */
             --white: #ffffff;
