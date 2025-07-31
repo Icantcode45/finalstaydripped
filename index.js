@@ -2566,7 +2566,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">🍺</div>
+                            <div class="card-face">Hangover</div>
                             <div class="card-info">
                                 <h4>Hangover Recovery - $180</h4>
                                 <p>Fast relief & rehydration with anti-nausea and headache relief.</p>
