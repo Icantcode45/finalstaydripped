@@ -2705,9 +2705,9 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="iv-content">
                 <div class="scroll-animate">
-                    <h2 class="shadow-text deepshadow">Mobile IV Therapy - Scottsdale</h2>
-                    <h3>Wellness Delivered, Anytime, Anywhere</h3>
-                    <p>Experience the convenience of professional IV therapy in the comfort of your home, office, or hotel. Our licensed medical professionals bring hospital-grade treatments directly to you in Scottsdale, AZ.</p>
+                    <h2 class="shadow-text deepshadow">Revolutionary Infusion Therapy</h2>
+                    <h3>Concierge Wellness Redefined</h3>
+                    <p>Transform your wellness journey with our revolutionary mobile infusion therapy. Our board-certified medical team delivers pharmaceutical-grade treatments using cutting-edge protocols, bringing the future of personalized medicine directly to your private sanctuary.</p>
                     
                     <ul class="iv-features">
                         <li>Licensed medical professionals</li>
