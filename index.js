@@ -267,6 +267,12 @@ const server = http.createServer(async (req, res) => {
             --brand-dark: #2C3E50;
             --brand-light: #F8F9FA;
 
+            /* Enhanced Color Palette */
+            --elite-gold: #D4AF37;
+            --premium-purple: #8B5CF6;
+            --luxury-black: #0D0D0D;
+            --platinum-silver: #C0C0C0;
+
             /* Gradient System */
             --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             --gradient-secondary: linear-gradient(135deg, #45B7D1 0%, #96CEB4 100%);
