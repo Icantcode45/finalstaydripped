@@ -2536,7 +2536,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" data-url="anti-aging">
-                            <div class="card-face">🌟</div>
+                            <div class="card-face">Anti-Aging</div>
                             <div class="card-info">
                                 <h4>Anti-Aging</h4>
                                 <p>Advanced treatments to restore your youthful vitality and appearance.</p>
