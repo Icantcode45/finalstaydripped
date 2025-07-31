@@ -2573,7 +2573,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">⚡</div>
+                            <div class="card-face">Energy</div>
                             <div class="card-info">
                                 <h4>Energy & B-Complex - $175</h4>
                                 <p>B-vitamins & energy boost for mental clarity and physical vitality.</p>
