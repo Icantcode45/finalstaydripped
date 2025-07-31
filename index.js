@@ -2358,7 +2358,6 @@ const server = http.createServer(async (req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2F8b73c477407048d0945425bdc93ba34d%2F8ea3a3dec72c448882cd21f833b208a8?format=webp&width=800" alt="Stay Dripped IV Vials" class="logo-icon">
                 Stay Dripped
                 <span class="logo-subtitle">IV & Wellness Co.</span>
             </a>
