@@ -2587,7 +2587,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">🛡️</div>
+                            <div class="card-face">Immunity</div>
                             <div class="card-info">
                                 <h4>Immunity Support - $200</h4>
                                 <p>Vitamin C & immune boosters to strengthen your natural defenses.</p>
