@@ -2784,7 +2784,7 @@ const server = http.createServer(async (req, res) => {
             <div class="footer-content">
                 <div>
                     <h4>STAY DRIPPED IV & WELLNESS CO.</h4>
-                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized health solutions, specializing in hormone therapy, weight management, anti-aging treatments, and premium mobile IV therapy in Scottsdale, AZ.</p>
+                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Revolutionary wellness pioneer delivering cutting-edge precision medicine, advanced biomarker optimization, elite mobile infusion therapy, and personalized longevity protocols to discerning clients in Scottsdale, AZ.</p>
                     <div>
                         <p style="margin-bottom: 8px;">📞 (480) 602-0444</p>
                         <p style="margin-bottom: 8px;">✉️ info@vitabella.com</p>
