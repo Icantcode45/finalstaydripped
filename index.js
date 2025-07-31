@@ -2466,7 +2466,6 @@ const server = http.createServer(async (req, res) => {
                     </div>
                     <div class="form-group">
                         <label for="service-date">
-                            <span class="icon">📅</span>
                             Preferred Date
                         </label>
                         <input type="date" id="service-date">
