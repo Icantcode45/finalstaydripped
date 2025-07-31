@@ -2372,12 +2372,10 @@ const server = http.createServer(async (req, res) => {
             <div class="auth-buttons">
                 <div id="authSection">
                     <button class="btn btn-secondary" onclick="showLogin()">
-                        <span class="icon">👤</span>
                         Login
                     </button>
                     <button class="btn btn-primary" onclick="showSignup()">
                         Sign Up
-                        <span class="icon">→</span>
                     </button>
                 </div>
                 <div id="userSection" class="hidden">
