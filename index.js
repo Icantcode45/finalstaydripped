@@ -2361,11 +2361,11 @@ const server = http.createServer(async (req, res) => {
         </nav>
         <div class="mobile-nav" id="mobileNav">
             <ul>
-                <li><a href="#services" onclick="scrollToSection('services'); toggleMenu();">Services</a></li>
-                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">IV Therapy</a></li>
+                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
+                <li><a href="#booking-portal" onclick="scrollToSection('booking-portal'); toggleMenu();">Book Treatment</a></li>
+                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
-                <li><a href="#" onclick="bookService(); toggleMenu();">Book Now</a></li>
             </ul>
             <div style="margin-top: 1rem; display: flex; gap: 1rem;">
                 <button class="btn btn-secondary" onclick="showLogin(); toggleMenu();">Login</button>
