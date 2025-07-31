@@ -2543,7 +2543,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" data-url="sexual-wellness">
-                            <div class="card-face">💪</div>
+                            <div class="card-face">Sexual Wellness</div>
                             <div class="card-info">
                                 <h4>Sexual Wellness</h4>
                                 <p>Restore confidence with our specialized wellness programs.</p>
