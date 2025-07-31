@@ -2460,7 +2460,6 @@ const server = http.createServer(async (req, res) => {
                 <div class="search-form">
                     <div class="form-group">
                         <label for="service-location">
-                            <span class="icon">📍</span>
                             Service Location in Scottsdale
                         </label>
                         <input type="text" id="service-location" placeholder="Enter your Scottsdale, AZ address" required>
