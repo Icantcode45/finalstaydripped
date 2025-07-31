@@ -2608,9 +2608,9 @@ const server = http.createServer(async (req, res) => {
 
             <div class="services-grid">
                 <div class="service-card service-card-enhanced scroll-animate">
-                    <h3>Medical Wellness</h3>
-                    <div class="category-subtitle">Hormone & Anti-Aging Therapy</div>
-                    <p>Personalized hormone optimization, weight management, and anti-aging treatments designed to restore your vitality and enhance your quality of life.</p>
+                    <h3>Precision Medicine Solutions</h3>
+                    <div class="category-subtitle">Biomarker-Driven Wellness Optimization</div>
+                    <p>Revolutionary precision medicine approach utilizing advanced biomarker analysis, genomic insights, and personalized protocols to optimize your unique physiological profile for peak performance and longevity.</p>
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
                         <div class="treatment-item hover-card-item" data-url="weight-loss">
