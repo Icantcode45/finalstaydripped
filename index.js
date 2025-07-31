@@ -2792,14 +2792,14 @@ const server = http.createServer(async (req, res) => {
                     </div>
                 </div>
                 <div>
-                    <h4>WELLNESS TREATMENTS</h4>
+                    <h4>PRECISION MEDICINE</h4>
                     <ul>
-                        <li><a href="#">Hormone Therapy</a></li>
-                        <li><a href="#">Weight Loss</a></li>
-                        <li><a href="#">Anti-Aging</a></li>
-                        <li><a href="#">Sexual Wellness</a></li>
-                        <li><a href="#">Cognitive Health</a></li>
-                        <li><a href="#">Hair Loss Treatment</a></li>
+                        <li><a href="#">Endocrine Enhancement</a></li>
+                        <li><a href="#">Metabolic Optimization</a></li>
+                        <li><a href="#">Longevity Protocols</a></li>
+                        <li><a href="#">Performance Enhancement</a></li>
+                        <li><a href="#">Cognitive Optimization</a></li>
+                        <li><a href="#">Regenerative Therapies</a></li>
                     </ul>
                 </div>
                 <div>
