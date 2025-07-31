@@ -2626,7 +2626,7 @@ const server = http.createServer(async (req, res) => {
                         <li>Group bookings and events available</li>
                     </ul>
 
-                    <a href="#contact" class="btn btn-iv-therapy">📱 Book Mobile IV Session</a>
+                    <a href="#contact" class="btn btn-iv-therapy">Book Mobile IV Session</a>
                 </div>
                 <div class="scroll-animate">
                     <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
