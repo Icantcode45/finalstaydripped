@@ -2105,6 +2105,45 @@ const server = http.createServer(async (req, res) => {
             transform: translateY(0);
         }
 
+        /* Booking Portal Styles */
+        .booking-portal-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-portal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 25%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .booking-categories-grid .booking-category-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .booking-categories-grid .booking-category-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 25px 100px rgba(0, 0, 0, 0.15),
+                inset 0 3px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .booking-categories-grid .booking-category-card h3 {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
         /* Enhanced Responsive Design System */
         @media (max-width: 1024px) {
             .container {
