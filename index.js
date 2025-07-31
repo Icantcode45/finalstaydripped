@@ -2580,7 +2580,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">✨</div>
+                            <div class="card-face">Beauty</div>
                             <div class="card-info">
                                 <h4>Beauty & Glow - $220</h4>
                                 <p>Anti-aging nutrients & glutathione for radiant skin and wellness.</p>
