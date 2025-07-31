@@ -2594,7 +2594,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item">
-                            <div class="card-face">🏃</div>
+                            <div class="card-face">Athletic</div>
                             <div class="card-info">
                                 <h4>Athletic Performance - $250</h4>
                                 <p>Recovery & performance optimization for athletes and active individuals.</p>
