@@ -2380,7 +2380,6 @@ const server = http.createServer(async (req, res) => {
                 </div>
                 <div id="userSection" class="hidden">
                     <div style="display: flex; align-items: center; gap: 1rem; color: #333;">
-                        <span class="icon">👤</span>
                         <span id="userWelcome">Welcome, User!</span>
                         <button class="btn btn-secondary" onclick="logout()">
                             Logout
