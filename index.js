@@ -325,49 +325,7 @@ const server = http.createServer(async (req, res) => {
             margin-bottom: 24px;
         }
 
-        /* 3D Trebuchet MS Styles for Specific Headings */
-        .trebuchet-3d {
-            font-family: "Trebuchet MS", sans-serif !important;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #1a1a1a;
-            text-shadow:
-                1px 1px 0 #ccc,
-                2px 2px 0 #bbb,
-                3px 3px 0 #aaa,
-                4px 4px 0 #999,
-                5px 5px 0 #888,
-                6px 6px 10px rgba(0, 0, 0, 0.4),
-                8px 8px 20px rgba(0, 0, 0, 0.3);
-            transform: perspective(400px) rotateX(15deg);
-            animation: trebuchet3DPulse 3s ease-in-out infinite;
-        }
 
-        @keyframes trebuchet3DPulse {
-            0%, 100% {
-                transform: perspective(400px) rotateX(15deg) scale(1);
-                text-shadow:
-                    1px 1px 0 #ccc,
-                    2px 2px 0 #bbb,
-                    3px 3px 0 #aaa,
-                    4px 4px 0 #999,
-                    5px 5px 0 #888,
-                    6px 6px 10px rgba(0, 0, 0, 0.4),
-                    8px 8px 20px rgba(0, 0, 0, 0.3);
-            }
-            50% {
-                transform: perspective(400px) rotateX(15deg) scale(1.02);
-                text-shadow:
-                    1px 1px 0 #ddd,
-                    2px 2px 0 #ccc,
-                    3px 3px 0 #bbb,
-                    4px 4px 0 #aaa,
-                    5px 5px 0 #999,
-                    6px 6px 15px rgba(0, 0, 0, 0.5),
-                    8px 8px 25px rgba(0, 0, 0, 0.4);
-            }
-        }
 
         h2, .h2 {
             color: var(--e-global-color-6e06d90);
