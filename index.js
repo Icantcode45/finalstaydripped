@@ -2629,14 +2629,9 @@ const server = http.createServer(async (req, res) => {
                     <a href="#contact" class="btn btn-iv-therapy">📱 Book Mobile IV Session</a>
                 </div>
                 <div class="scroll-animate">
-                    <div class="iv-therapy-showcase">
-                        <img src="https://cdn.builder.io/api/v1/image/assets%2F8b73c477407048d0945425bdc93ba34d%2F8ea3a3dec72c448882cd21f833b208a8?format=webp&width=800" alt="Stay Dripped Vitamin Vials" class="vitamin-vials">
-                        <div class="vials-overlay">
-                            <div class="vial-highlight vial-1" data-vial="amino">AMINO</div>
-                            <div class="vial-highlight vial-2" data-vial="b-complex">B COMPLEX</div>
-                            <div class="vial-highlight vial-3" data-vial="glutathione">GLUTATHIONE</div>
-                            <div class="vial-highlight vial-4" data-vial="vitamin-b12">VITAMIN B12</div>
-                        </div>
+                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(61, 156, 210, 0.1), rgba(16, 185, 129, 0.1)); opacity: 0; transition: opacity 0.3s ease;" class="image-overlay"></div>
                     </div>
                 </div>
             </div>
