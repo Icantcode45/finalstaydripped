@@ -2522,7 +2522,7 @@ const server = http.createServer(async (req, res) => {
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
                         <div class="treatment-item hover-card-item" data-url="weight-loss">
-                            <div class="card-face">🎯</div>
+                            <div class="card-face">Weight Loss</div>
                             <div class="card-info">
                                 <h4>Weight Loss</h4>
                                 <p>Medical-grade programs tailored to your specific health goals and lifestyle.</p>
