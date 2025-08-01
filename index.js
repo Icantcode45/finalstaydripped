@@ -2602,7 +2602,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🍃 The Day After - Hangover relief</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=2f8be24a-d5ad-40c7-aa8c-5172eed7df3e" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Standard IV Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Standard IV Therapy</a>
                 </div>
 
                 <!-- Premium IV Therapy -->
@@ -2617,7 +2617,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=50438982-ce89-47d1-a5f9-453ea9de5e49" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Premium IV Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Premium IV Therapy</a>
                 </div>
 
                 <!-- Specialty IV Therapy -->
@@ -2632,7 +2632,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=db6a4c57-2e06-4530-a598-899f20c96a04" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
                 </div>
 
                 <!-- NAD+ IV Therapy -->
@@ -2647,7 +2647,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">💎 The "Diamond" NAD+ Formula</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=ddf30134-b441-4226-bfe9-27eed5368949" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
                 </div>
 
                 <!-- Vitamin Injection Shots -->
@@ -2662,7 +2662,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=abff01b9-9274-4984-b601-8e188086ef2f" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Vitamin Shots</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Vitamin Shots</a>
                 </div>
 
                 <!-- Membership Plans -->
@@ -2677,7 +2677,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">👑 Wellness Platinum</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=55411eac-3c23-47e3-bd15-b5357d784a85" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">View Membership Plans</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">View Membership Plans</a>
                 </div>
 
                 <!-- Peptide Therapy -->
@@ -2688,7 +2688,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--brand-accent); margin-bottom: 12px; font-size: 18px;">Advanced Therapies:</h4>
                         <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Cutting-edge peptide treatments for cellular regeneration, muscle recovery, and anti-aging optimization.</p>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=7b76bb12-b381-407c-8d7d-2f351634a4cd" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Peptide Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Peptide Therapy</a>
                 </div>
 
                 <!-- Weight Management -->
@@ -2703,7 +2703,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🎯 Personalized nutrition guidance</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=4ea1716b-d9c0-47b5-9ef4-fb1953bae01a" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Weight Management</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Weight Management</a>
                 </div>
 
                 <!-- Hormone Replacement Therapy -->
@@ -2714,7 +2714,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--therapy-focus); margin-bottom: 12px; font-size: 18px;">Comprehensive Care:</h4>
                         <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Bioidentical hormone therapy with continuous monitoring and personalized optimization protocols.</p>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=0761b369-264b-4d3e-8ead-dfe26708f4ce" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Hormone Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Hormone Therapy</a>
                 </div>
 
 
