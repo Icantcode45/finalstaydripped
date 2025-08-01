@@ -2384,6 +2384,7 @@ const server = http.createServer(async (req, res) => {
                 <li><a href="#iv-therapy">Elite IV Therapy</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="showClientPortal()">Client Portal</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="auth-buttons">
