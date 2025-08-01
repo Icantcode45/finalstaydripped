@@ -2587,7 +2587,7 @@ const server = http.createServer(async (req, res) => {
                             <li style="padding: 8px 0;">🔋 Rehydrate Plus - Enhanced electrolytes</li>
                         </ul>
                     </div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=17d0bbca-0d95-4e32-8a8b-3ae8ae2c1152" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Basic IV Therapy</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Basic IV Therapy</a>
                 </div>
 
                 <!-- Standard IV Therapy -->
