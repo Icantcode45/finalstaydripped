@@ -234,10 +234,8 @@ const server = http.createServer(async (req, res) => {
                 "telephone": "+16027610492",
                 "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "7014 E Camelback Rd suite b100 a",
                     "addressLocality": "Scottsdale",
                     "addressRegion": "AZ",
-                    "postalCode": "85251",
                     "addressCountry": "US"
                 },
                 "geo": {
