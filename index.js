@@ -94,6 +94,14 @@ const server = http.createServer(async (req, res) => {
     }
   }
 
+  // Handle the IV therapy booking page route
+  if (req.method === 'GET' && req.url === '/book-ivtherapy') {
+    const bookingPageContent = generateIVTherapyBookingPage();
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(bookingPageContent);
+    return;
+  }
+
   // Serve the main HTML file for all routes
   if (req.method === 'GET') {
     const htmlContent = `<!DOCTYPE html>
