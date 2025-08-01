@@ -2587,7 +2587,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
-                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
+                            <li style="padding: 8px 0;">��� The "Diamond-Back" Immune Boost</li>
                         </ul>
                     </div>
                     <a href="https://Staydripped.intakeq.com/booking?categoryId=db6a4c57-2e06-4530-a598-899f20c96a04" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
@@ -2969,6 +2969,53 @@ const server = http.createServer(async (req, res) => {
             <p style="text-align: center; margin-top: 1rem; color: #666;">
                 Already have an account? <a href="#" onclick="showLogin()" style="color: var(--iv-primary);">Login</a>
             </p>
+        </div>
+    </div>
+
+    <!-- Client Portal Modal -->
+    <div id="clientPortalModal" class="modal-overlay">
+        <div class="modal" style="max-width: 800px; width: 95%; max-height: 90vh; overflow-y: auto;">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--brand-dark);">Client Portal</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666; font-size: 16px;">
+                Access your appointments, treatment history, and manage your wellness journey
+            </p>
+
+            <!-- IntakeQ Client Area Widget -->
+            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(44, 62, 80, 0.2);">
+                <script>
+                (function (c) {
+                    // Clear any existing IntakeQ configuration
+                    if (window.intakeq) {
+                        delete window.intakeq;
+                        delete window.intakeqCategoryId;
+                        delete window.intakeqServiceId;
+                        delete window.intakeqClientArea;
+                    }
+
+                    window.intakeq = "68460f36bc104b6aa9da43e0";
+                    window.intakeqClientArea = true;
+
+                    var i = c.createElement("script");
+                    i.type = "text/javascript";
+                    i.async = true;
+                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
+                    i.onload = function() {
+                        console.log('IntakeQ Client Portal widget loaded');
+                    };
+                    document.head.appendChild(i);
+                })(document);
+                </script>
+                <div id="intakeq-client-portal" style="min-height: 400px; width: 100%;"></div>
+            </div>
+
+            <!-- Fallback Link -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p style="color: #666; margin-bottom: 1rem;">Having trouble? Access the full portal directly:</p>
+                <a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span>🔗</span> Open Full Client Portal
+                </a>
+            </div>
         </div>
     </div>
 
