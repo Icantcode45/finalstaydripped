@@ -2587,7 +2587,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
-                            <li style="padding: 8px 0;">��� The "Diamond-Back" Immune Boost</li>
+                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
                         </ul>
                     </div>
                     <a href="https://Staydripped.intakeq.com/booking?categoryId=db6a4c57-2e06-4530-a598-899f20c96a04" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
@@ -2630,7 +2630,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(107, 207, 127, 0.3);">
                         <h4 style="color: var(--therapy-calm); margin-bottom: 12px; font-size: 18px;">Featured Plans:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🎫 Monthly Shot Pass</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">���� Monthly Shot Pass</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Wellness Explorer</li>
                             <li style="padding: 8px 0;">👑 Wellness Platinum</li>
                         </ul>
@@ -3222,6 +3222,18 @@ const server = http.createServer(async (req, res) => {
         function showSignup() {
             closeModal();
             document.getElementById('signupModal').classList.add('active');
+        }
+
+        function showClientPortal() {
+            closeModal();
+            document.getElementById('clientPortalModal').classList.add('active');
+
+            // Initialize IntakeQ client portal widget
+            setTimeout(() => {
+                if (window.IntakeQ && window.IntakeQ.init) {
+                    window.IntakeQ.init();
+                }
+            }, 500);
         }
 
         function closeModal() {
