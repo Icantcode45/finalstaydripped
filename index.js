@@ -2717,12 +2717,7 @@ const server = http.createServer(async (req, res) => {
 
             </div>
 
-            <!-- Quick Book Now Button -->
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://Staydripped.intakeq.com/booking" target="_blank" style="display: inline-block;">
-                    <img style="height:60px; width:216px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); transition: all 0.3s ease;" height="60" width="216" src="https://intakeq.com/images/booknow.png" alt="Book Now - Stay Dripped IV Wellness" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </a>
-            </div>
+
         </div>
     </section>
 
