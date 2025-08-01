@@ -2917,9 +2917,9 @@ const server = http.createServer(async (req, res) => {
                     <h4>STAY DRIPPED IV & WELLNESS CO.</h4>
                     <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Revolutionary wellness pioneer delivering cutting-edge precision medicine, advanced biomarker optimization, elite mobile infusion therapy, and personalized longevity protocols to discerning clients in Scottsdale, AZ.</p>
                     <div>
-                        <p style="margin-bottom: 8px;">📞 (480) 602-0444</p>
-                        <p style="margin-bottom: 8px;">✉️ info@vitabella.com</p>
-                        <p>📍 7014 E Camelback Rd suite b100 a, Scottsdale, AZ 85251</p>
+                        <p style="margin-bottom: 8px;">📞 (602) 761-0492</p>
+                        <p style="margin-bottom: 8px;">✉️ info@staydrippedmobileiv.com</p>
+                        <p>📍 Scottsdale, AZ</p>
                     </div>
                 </div>
                 <div>
