@@ -2837,51 +2837,51 @@ const server = http.createServer(async (req, res) => {
                 </div>
 
                 <div class="service-card service-card-enhanced scroll-animate">
-                    <h3>Elite Mobile Infusion Therapy</h3>
-                    <div class="category-subtitle">Concierge Wellness Delivered</div>
-                    <p>Experience next-generation mobile IV therapy featuring pharmaceutical-grade nutrients, customized formulations, and luxury concierge service delivered by board-certified professionals directly to your private space.</p>
+                    <h3>Popular IV Therapy Treatments</h3>
+                    <div class="category-subtitle">Click to Book Your Treatment</div>
+                    <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
 
                     <div class="treatments-grid hover-treatment-grid">
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Vital Restore</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💧 Rehydrate IV</div>
                             <div class="card-info">
-                                <h4>Vital Restore Protocol - $195</h4>
-                                <p>Premium electrolyte matrix with cellular hydration enhancers for optimal fluid balance and energy restoration.</p>
+                                <h4>Rehydrate IV Drip - $149</h4>
+                                <p>Essential hydration therapy perfect for dehydration, exercise recovery, and general wellness boost.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Recovery Elite</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🧪 Myers' Cocktail</div>
                             <div class="card-info">
-                                <h4>Recovery Elite Formula - $225</h4>
-                                <p>Advanced detox complex with anti-inflammatory compounds and rapid symptom relief technology.</p>
+                                <h4>Myers' Cocktail IV - $249</h4>
+                                <p>Our signature vitamin and mineral infusion for total wellness, immune support, and energy enhancement.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Cognitive Power</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🤕 Hangover Relief</div>
                             <div class="card-info">
-                                <h4>Cognitive Power Infusion - $285</h4>
-                                <p>Nootropic-enhanced B-complex with neurocognitive boosters for enhanced mental performance and clarity.</p>
+                                <h4>Day After Recovery - $199</h4>
+                                <p>Fast-acting hangover relief with hydration, nausea control, and headache relief to get you back on your feet.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Radiance Pro</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🧬 NAD+ Therapy</div>
                             <div class="card-info">
-                                <h4>Radiance Pro Treatment - $350</h4>
-                                <p>Advanced anti-aging cocktail featuring master antioxidants, collagen precursors, and cellular renewal factors.</p>
+                                <h4>NAD+ Anti-Aging - $399+</h4>
+                                <p>Cutting-edge cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Immune Fortress</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🏆 Gold Recovery</div>
                             <div class="card-info">
-                                <h4>Immune Fortress Defense - $275</h4>
-                                <p>Military-grade immune enhancement with mega-dose vitamin C, zinc, and immune-modulating compounds.</p>
+                                <h4>Gold Ultimate Recovery - $399</h4>
+                                <p>Premium recovery formula with the finest vitamins, minerals, and amino acids for ultimate wellness.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item">
-                            <div class="card-face">Peak Performance</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💎 Platinum Elite</div>
                             <div class="card-info">
-                                <h4>Peak Performance Protocol - $395</h4>
-                                <p>Elite athlete-grade recovery optimization with performance enhancers, muscle recovery factors, and endurance boosters.</p>
+                                <h4>Platinum Ultimate - $499</h4>
+                                <p>Our most comprehensive treatment with premium ingredients and elite wellness support for maximum benefits.</p>
                             </div>
                         </div>
                     </div>
