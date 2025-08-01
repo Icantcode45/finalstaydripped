@@ -168,7 +168,7 @@ const server = http.createServer(async (req, res) => {
                 "name": "Stay Dripped IV & Wellness Co.",
                 "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
                 "url": "https://vitabella.com/",
-                "telephone": "+14806020444",
+                "telephone": "+16027610492",
                 "logo": {
                     "@type": "ImageObject",
                     "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
@@ -233,7 +233,7 @@ const server = http.createServer(async (req, res) => {
                 "@id": "https://vitabella.com/#medicalbusiness",
                 "name": "Stay Dripped IV & Wellness Co. - Mobile IV Therapy",
                 "image": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                "telephone": "+14806020444",
+                "telephone": "+16027610492",
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "7014 E Camelback Rd suite b100 a",
