@@ -2535,99 +2535,157 @@ const server = http.createServer(async (req, res) => {
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Basic IV Therapy Treatments</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Essential hydration and vitamin infusions for everyday wellness and recovery.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="17d0bbca-0d95-4e32-8a8b-3ae8ae2c1152"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=17d0bbca-0d95-4e32-8a8b-3ae8ae2c1152" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
+                        <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💧 Rehydrate IV Drip - Basic hydration boost</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⚡ Jr. Myers' Cocktail - Essential vitamins</li>
+                            <li style="padding: 8px 0;">🔋 Rehydrate Plus - Enhanced electrolytes</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=17d0bbca-0d95-4e32-8a8b-3ae8ae2c1152" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Basic IV Therapy</a>
                 </div>
 
                 <!-- Standard IV Therapy -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--brand-secondary); margin-bottom: 16px;">Standard IV Therapy Treatments</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Enhanced formulations with specialized vitamin blends for targeted wellness goals.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="2f8be24a-d5ad-40c7-aa8c-5172eed7df3e"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-standard" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=2f8be24a-d5ad-40c7-aa8c-5172eed7df3e" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
-                </div>
-
-                <!-- Specialty IV Therapy -->
-                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
-                    <h3 style="color: var(--brand-accent); margin-bottom: 16px;">Specialty IV Therapy Treatments</h3>
-                    <p style="margin-bottom: 24px; opacity: 0.8;">Advanced therapeutic formulations for specific health conditions and performance optimization.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="db6a4c57-2e06-4530-a598-899f20c96a04"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-specialty" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=db6a4c57-2e06-4530-a598-899f20c96a04" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(78, 205, 196, 0.3);">
+                        <h4 style="color: var(--brand-secondary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Myers' Cocktail - Complete vitamin blend</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🚀 Mega Myers' - Enhanced potency formula</li>
+                            <li style="padding: 8px 0;">🍃 The Day After - Hangover relief</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=2f8be24a-d5ad-40c7-aa8c-5172eed7df3e" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Standard IV Therapy</a>
                 </div>
 
                 <!-- Premium IV Therapy -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--therapy-energy); margin-bottom: 16px;">Premium IV Therapy Treatments</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Elite wellness protocols with premium ingredients and personalized formulations.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="50438982-ce89-47d1-a5f9-453ea9de5e49"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-premium" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=50438982-ce89-47d1-a5f9-453ea9de5e49" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
+                        <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
+                            <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=50438982-ce89-47d1-a5f9-453ea9de5e49" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Premium IV Therapy</a>
+                </div>
+
+                <!-- Specialty IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-accent); margin-bottom: 16px;">Specialty IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Advanced therapeutic formulations for specific health conditions and performance optimization.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(69, 183, 209, 0.3);">
+                        <h4 style="color: var(--brand-accent); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
+                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=db6a4c57-2e06-4530-a598-899f20c96a04" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
                 </div>
 
                 <!-- NAD+ IV Therapy -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--therapy-focus); margin-bottom: 16px;">NAD+ IV Therapy Treatments</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Revolutionary anti-aging and cellular regeneration therapy for optimal longevity.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="ddf30134-b441-4226-bfe9-27eed5368949"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-nad" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=ddf30134-b441-4226-bfe9-27eed5368949" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
-                </div>
-
-                <!-- Membership Plans -->
-                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
-                    <h3 style="color: var(--therapy-calm); margin-bottom: 16px;">Membership Plans</h3>
-                    <p style="margin-bottom: 24px; opacity: 0.8;">Exclusive membership packages with significant savings and priority scheduling.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="55411eac-3c23-47e3-bd15-b5357d784a85"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-membership" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=55411eac-3c23-47e3-bd15-b5357d784a85" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(77, 150, 255, 0.3);">
+                        <h4 style="color: var(--therapy-focus); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🧬 The Basic NAD+ IV Drip</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⛲ The "Fountain of Youth" NAD+</li>
+                            <li style="padding: 8px 0;">💎 The "Diamond" NAD+ Formula</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=ddf30134-b441-4226-bfe9-27eed5368949" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
                 </div>
 
                 <!-- Vitamin Injection Shots -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Vitamin Injection Shots</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Quick and effective vitamin injections for immediate energy and wellness benefits.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="abff01b9-9274-4984-b601-8e188086ef2f"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-shots" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=abff01b9-9274-4984-b601-8e188086ef2f" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
+                        <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
+                            <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=abff01b9-9274-4984-b601-8e188086ef2f" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Vitamin Shots</a>
+                </div>
+
+                <!-- Membership Plans -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-calm); margin-bottom: 16px;">Membership Plans</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Exclusive membership packages with significant savings and priority scheduling.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(107, 207, 127, 0.3);">
+                        <h4 style="color: var(--therapy-calm); margin-bottom: 12px; font-size: 18px;">Featured Plans:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🎫 Monthly Shot Pass</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Wellness Explorer</li>
+                            <li style="padding: 8px 0;">👑 Wellness Platinum</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=55411eac-3c23-47e3-bd15-b5357d784a85" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">View Membership Plans</a>
                 </div>
 
                 <!-- Peptide Therapy -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--brand-accent); margin-bottom: 16px;">Peptide Therapy Treatments</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Advanced peptide protocols for anti-aging, recovery, and performance enhancement.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="7b76bb12-b381-407c-8d7d-2f351634a4cd"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-peptide" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=7b76bb12-b381-407c-8d7d-2f351634a4cd" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(69, 183, 209, 0.3);">
+                        <h4 style="color: var(--brand-accent); margin-bottom: 12px; font-size: 18px;">Advanced Therapies:</h4>
+                        <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Cutting-edge peptide treatments for cellular regeneration, muscle recovery, and anti-aging optimization.</p>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=7b76bb12-b381-407c-8d7d-2f351634a4cd" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Peptide Therapy</a>
                 </div>
 
                 <!-- Weight Management -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--therapy-energy); margin-bottom: 16px;">Weight Management Therapy</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Comprehensive weight management programs with medical-grade treatments and ongoing support.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="4ea1716b-d9c0-47b5-9ef4-fb1953bae01a"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-weight" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=4ea1716b-d9c0-47b5-9ef4-fb1953bae01a" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
+                        <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Program Includes:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⚖️ Metabolism Booster IV Drip</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📊 Comprehensive metabolic analysis</li>
+                            <li style="padding: 8px 0;">🎯 Personalized nutrition guidance</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=4ea1716b-d9c0-47b5-9ef4-fb1953bae01a" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Weight Management</a>
                 </div>
 
                 <!-- Hormone Replacement Therapy -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--therapy-focus); margin-bottom: 16px;">Hormone Replacement Therapy</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Personalized hormone optimization therapy for enhanced vitality and well-being.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqCategoryId="0761b369-264b-4d3e-8ead-dfe26708f4ce"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-hormone" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?categoryId=0761b369-264b-4d3e-8ead-dfe26708f4ce" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Open Full Booking Page</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(77, 150, 255, 0.3);">
+                        <h4 style="color: var(--therapy-focus); margin-bottom: 12px; font-size: 18px;">Comprehensive Care:</h4>
+                        <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Bioidentical hormone therapy with continuous monitoring and personalized optimization protocols.</p>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?categoryId=0761b369-264b-4d3e-8ead-dfe26708f4ce" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Hormone Therapy</a>
                 </div>
 
                 <!-- Client Login Area -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
                     <h3 style="color: var(--brand-dark); margin-bottom: 16px;">Existing Client Portal</h3>
                     <p style="margin-bottom: 24px; opacity: 0.8;">Access your appointments, treatment history, and manage your wellness journey.</p>
-                    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqClientArea=true; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                    <div id="intakeq-client" style="max-width:720px; width: 100%;"></div>
-                    <a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn btn-secondary" style="margin-top: 16px; width: 100%; text-align: center;">Access Full Client Portal</a>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(44, 62, 80, 0.3);">
+                        <h4 style="color: var(--brand-dark); margin-bottom: 12px; font-size: 18px;">Client Services:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📅 Manage appointments</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📋 View treatment history</li>
+                            <li style="padding: 8px 0;">💬 Message your care team</li>
+                        </ul>
+                    </div>
+                    <a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Access Client Portal</a>
                 </div>
 
             </div>
