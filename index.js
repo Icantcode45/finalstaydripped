@@ -2475,7 +2475,7 @@ const server = http.createServer(async (req, res) => {
                         Revolutionary mobile wellness therapies combining cutting-edge medical treatments with premium IV therapy. Transform your health with our personalized approach to optimal vitality and performance.
                     </p>
                     <div class="hero-cta">
-                        <a href="#booking-portal" class="btn btn-iv-therapy">Start Your Wellness Journey</a>
+                        <a href="/book-ivtherapy" class="btn btn-iv-therapy">Start Your Wellness Journey</a>
                         <a href="#advanced-therapies" class="btn btn-secondary">Explore Treatments</a>
                     </div>
                     <div class="hero-stats">
