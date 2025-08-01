@@ -2517,7 +2517,7 @@ const server = http.createServer(async (req, res) => {
                 <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
-                <li><a href="#" onclick="showClientPortal(); toggleMenu();">Client Portal</a></li>
+                <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
             </ul>
             <div style="margin-top: 1rem; display: flex; gap: 1rem;">
                 <button class="btn btn-secondary" onclick="showLogin(); toggleMenu();">Login</button>
