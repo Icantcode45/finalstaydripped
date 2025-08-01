@@ -1775,6 +1775,34 @@ const server = http.createServer(async (req, res) => {
                 inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
+        /* Enhanced modal for client portal */
+        #clientPortalModal .modal {
+            max-width: 800px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+        }
+
+        /* Custom scrollbar for client portal modal */
+        #clientPortalModal .modal::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
         .modal-overlay.active .modal {
             transform: scale(1);
         }
@@ -2630,7 +2658,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(107, 207, 127, 0.3);">
                         <h4 style="color: var(--therapy-calm); margin-bottom: 12px; font-size: 18px;">Featured Plans:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">���� Monthly Shot Pass</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🎫 Monthly Shot Pass</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Wellness Explorer</li>
                             <li style="padding: 8px 0;">👑 Wellness Platinum</li>
                         </ul>
