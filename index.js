@@ -2855,7 +2855,7 @@ const server = http.createServer(async (req, res) => {
                         <li>Luxury mobile clinic experience with privacy assurance</li>
                     </ul>
 
-                    <a href="#booking-portal" class="btn btn-iv-therapy">Schedule Elite Treatment</a>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy">Schedule Elite Treatment</a>
                 </div>
                 <div class="scroll-animate">
                     <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
