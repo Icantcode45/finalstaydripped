@@ -2675,20 +2675,7 @@ const server = http.createServer(async (req, res) => {
                     <a href="https://Staydripped.intakeq.com/booking?categoryId=0761b369-264b-4d3e-8ead-dfe26708f4ce" target="_blank" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Hormone Therapy</a>
                 </div>
 
-                <!-- Client Login Area -->
-                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
-                    <h3 style="color: var(--brand-dark); margin-bottom: 16px;">Existing Client Portal</h3>
-                    <p style="margin-bottom: 24px; opacity: 0.8;">Access your appointments, treatment history, and manage your wellness journey.</p>
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(44, 62, 80, 0.3);">
-                        <h4 style="color: var(--brand-dark); margin-bottom: 12px; font-size: 18px;">Client Services:</h4>
-                        <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📅 Manage appointments</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📋 View treatment history</li>
-                            <li style="padding: 8px 0;">💬 Message your care team</li>
-                        </ul>
-                    </div>
-                    <a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; justify-content: center;">Access Client Portal</a>
-                </div>
+
 
             </div>
 
