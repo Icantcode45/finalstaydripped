@@ -2800,37 +2800,37 @@ const server = http.createServer(async (req, res) => {
 
             <div class="services-grid">
                 <div class="service-card service-card-enhanced scroll-animate">
-                    <h3>Precision Medicine Solutions</h3>
-                    <div class="category-subtitle">Biomarker-Driven Wellness Optimization</div>
-                    <p>Revolutionary precision medicine approach utilizing advanced biomarker analysis, genomic insights, and personalized protocols to optimize your unique physiological profile for peak performance and longevity.</p>
+                    <h3>Core IV Therapy Features</h3>
+                    <div class="category-subtitle">Why Choose Stay Dripped</div>
+                    <p>Experience the pinnacle of mobile IV therapy with our comprehensive wellness approach featuring certified medical professionals, premium formulations, and concierge-level service in Scottsdale, AZ.</p>
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
-                        <div class="treatment-item hover-card-item" data-url="metabolic-optimization">
-                            <div class="card-face">Metabolic Optimization</div>
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('team')">
+                            <div class="card-face">🏥 Licensed Professionals</div>
                             <div class="card-info">
-                                <h4>Advanced Metabolic Optimization</h4>
-                                <p>Precision-guided body composition transformation using cutting-edge metabolic science and personalized protocols.</p>
+                                <h4>Board-Certified Medical Team</h4>
+                                <p>Our licensed nurses and medical professionals bring hospital-grade care directly to your location with full safety protocols.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="endocrine-enhancement">
-                            <div class="card-face">Endocrine Enhancement</div>
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
+                            <div class="card-face">⚡ Same-Day Service</div>
                             <div class="card-info">
-                                <h4>Bioidentical Hormone Mastery</h4>
-                                <p>Revolutionary hormone optimization using advanced testing and precision-dosed bioidentical therapies.</p>
+                                <h4>Rapid Response Scheduling</h4>
+                                <p>Available 7 days a week with same-day appointments. Get the wellness boost you need when you need it most.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="longevity-protocols">
-                            <div class="card-face">Longevity Protocols</div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💎 Premium Formulations</div>
                             <div class="card-info">
-                                <h4>Cellular Regeneration Therapy</h4>
-                                <p>Cutting-edge anti-aging interventions targeting cellular health, mitochondrial function, and longevity pathways.</p>
+                                <h4>Pharmaceutical-Grade Nutrients</h4>
+                                <p>Only the highest quality vitamins, minerals, and compounds sourced from certified medical suppliers for optimal absorption.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" data-url="performance-enhancement">
-                            <div class="card-face">Performance Enhancement</div>
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
+                            <div class="card-face">🌟 5.0/5.0 Star Reviews</div>
                             <div class="card-info">
-                                <h4>Elite Performance Optimization</h4>
-                                <p>Advanced therapies designed to enhance physical vitality, cognitive function, and intimate wellness.</p>
+                                <h4>Exceptional Client Satisfaction</h4>
+                                <p>Perfect 5-star rating from hundreds of satisfied clients who trust us for their wellness needs across Scottsdale, AZ.</p>
                             </div>
                         </div>
                     </div>
