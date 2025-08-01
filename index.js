@@ -2484,7 +2484,7 @@ const server = http.createServer(async (req, res) => {
                             <span class="stat-label">IV Treatments Delivered</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">4.9/5</span>
+                            <span class="stat-number">5.0/5.0</span>
                             <span class="stat-label">Star Reviews</span>
                         </div>
                         <div class="stat-item">
