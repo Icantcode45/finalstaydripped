@@ -146,7 +146,7 @@
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 40px;
         }
         
@@ -159,6 +159,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border-radius: 24px;
             padding: 40px;
+            position: relative;
         }
         
         .service-card-enhanced:hover {
@@ -166,16 +167,57 @@
             background: rgba(255, 255, 255, 0.35);
             box-shadow: 0 20px 80px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
+
+        .service-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .iv-bag-image {
+            width: 80px;
+            height: 100px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(240,240,240,0.8) 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .service-info {
+            flex: 1;
+        }
+
+        .service-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .service-price {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
         
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 16px;
+            padding: 14px 24px;
             border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -183,23 +225,24 @@
             backdrop-filter: blur(20px);
             color: var(--dark-gray);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            margin-top: 16px;
         }
         
         .btn:hover {
             background: rgba(255, 255, 255, 0.35);
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
         
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--brand-primary);
-            border: 2px solid rgba(61, 156, 210, 0.3);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            color: white;
+            border: none;
         }
-        
-        .btn-secondary:hover {
-            background: rgba(61, 156, 210, 0.9);
-            color: var(--white);
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #e55a5a, #3d9bc1);
+            transform: translateY(-3px) scale(1.05);
         }
 
         .category-subtitle {
@@ -208,6 +251,32 @@
             text-transform: uppercase;
             font-weight: 600;
             opacity: 0.8;
+        }
+
+        .widget-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            border: 2px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        .widget-container.active {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mobile-menu-toggle {
@@ -219,6 +288,8 @@
             .mobile-menu-toggle { display: block; background: none; border: none; font-size: 24px; cursor: pointer; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .service-card-enhanced { padding: 24px; }
+            .service-header { flex-direction: column; text-align: center; }
+            .iv-bag-image { align-self: center; }
         }
     </style>
 </head>
@@ -257,131 +328,474 @@
             <div class="services-grid">
                 <!-- Rehydrate IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--brand-primary); margin-bottom: 8px; font-size: 24px;">Rehydrate IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--brand-primary);">Basic Hydration</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Essential fluid and electrolyte replacement for optimal hydration.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">💧</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--brand-primary);">Rehydrate IV Drip</h3>
+                            <div class="service-price">$149</div>
+                            <div class="category-subtitle" style="color: var(--brand-primary);">Basic Hydration</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Essential fluid and electrolyte replacement for optimal hydration. Perfect for dehydration, exercise recovery, and general wellness.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="73e00621-4069-486a-9fa8-a5a94a089618"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-rehydrate')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-rehydrate" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqRehydrate = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdRehydrate = "73e00621-4069-486a-9fa8-a5a94a089618";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?1";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-rehydrate', {
+                                            practiceId: window.intakeqRehydrate,
+                                            serviceId: window.intakeqServiceIdRehydrate
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-rehydrate" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- Rehydrate Plus IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--brand-secondary); margin-bottom: 8px; font-size: 24px;">Rehydrate Plus IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--brand-secondary);">Enhanced Hydration</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Upgraded hydration formula with enhanced electrolyte blend.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">💧✨</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--brand-secondary);">Rehydrate Plus IV Drip</h3>
+                            <div class="service-price">$179</div>
+                            <div class="category-subtitle" style="color: var(--brand-secondary);">Enhanced Hydration</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Upgraded hydration formula with enhanced electrolyte blend and added vitamins for superior recovery and energy boost.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="ae66ce7c-fa68-408c-9ab0-a04b287f6b31"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-plus" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-rehydrate-plus')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-rehydrate-plus" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqRehydratePlus = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdRehydratePlus = "ae66ce7c-fa68-408c-9ab0-a04b287f6b31";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?2";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-rehydrate-plus', {
+                                            practiceId: window.intakeqRehydratePlus,
+                                            serviceId: window.intakeqServiceIdRehydratePlus
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-rehydrate-plus" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- Jr. Myers' Cocktail IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--brand-accent); margin-bottom: 8px; font-size: 24px;">Jr. Myers' Cocktail IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--brand-accent);">Essential Vitamins</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Gentle introduction to our signature vitamin cocktail.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🧪</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--brand-accent);">Jr. Myers' Cocktail IV Drip</h3>
+                            <div class="service-price">$199</div>
+                            <div class="category-subtitle" style="color: var(--brand-accent);">Essential Vitamins</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Gentle introduction to our signature vitamin cocktail with essential B vitamins, Vitamin C, and minerals for wellness support.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="065ab682-3334-403a-9635-ea461e520a6d"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-jr" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-jr-myers')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-jr-myers" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqJrMyers = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdJrMyers = "065ab682-3334-403a-9635-ea461e520a6d";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?3";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-jr-myers', {
+                                            practiceId: window.intakeqJrMyers,
+                                            serviceId: window.intakeqServiceIdJrMyers
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-jr-myers" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- Myers' Cocktail IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--therapy-energy); margin-bottom: 8px; font-size: 24px;">Myers' Cocktail IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--therapy-energy);">Complete Wellness</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Our signature vitamin and mineral infusion for total wellness.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🧪💎</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--therapy-energy);">Myers' Cocktail IV Drip</h3>
+                            <div class="service-price">$249</div>
+                            <div class="category-subtitle" style="color: var(--therapy-energy);">Complete Wellness</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Our signature vitamin and mineral infusion for total wellness, immune support, and energy enhancement.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="c13f904a-a8d0-43b1-bd5f-570387ee77d6"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-myers" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-myers')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-myers" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqMyers = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdMyers = "c13f904a-a8d0-43b1-bd5f-570387ee77d6";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?4";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-myers', {
+                                            practiceId: window.intakeqMyers,
+                                            serviceId: window.intakeqServiceIdMyers
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-myers" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- Mega Myers' Cocktail IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--therapy-focus); margin-bottom: 8px; font-size: 24px;">Mega Myers' Cocktail IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--therapy-focus);">Maximum Potency</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">High-dose vitamin therapy for enhanced wellness benefits.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">⚡</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--therapy-focus);">Mega Myers' Cocktail IV Drip</h3>
+                            <div class="service-price">$349</div>
+                            <div class="category-subtitle" style="color: var(--therapy-focus);">Maximum Potency</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">High-dose vitamin therapy for enhanced wellness benefits, maximum energy, and superior immune support.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="e14cdb17-a9d1-47cb-90e1-d3050059bcf3"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-mega" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-mega-myers')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-mega-myers" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqMegaMyers = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdMegaMyers = "e14cdb17-a9d1-47cb-90e1-d3050059bcf3";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?5";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-mega-myers', {
+                                            practiceId: window.intakeqMegaMyers,
+                                            serviceId: window.intakeqServiceIdMegaMyers
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-mega-myers" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- The Day After Hangover Relief IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--therapy-calm); margin-bottom: 8px; font-size: 24px;">The Day After Hangover Relief IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--therapy-calm);">Recovery</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Fast-acting hangover relief with hydration and nausea control.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🤕</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--therapy-calm);">The Day After Hangover Relief</h3>
+                            <div class="service-price">$199</div>
+                            <div class="category-subtitle" style="color: var(--therapy-calm);">Recovery</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Fast-acting hangover relief with hydration, nausea control, and headache relief to get you back on your feet.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="a7d83ea1-cf5e-4865-923e-bfe2232de898"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-hangover" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-hangover')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-hangover" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqHangover = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdHangover = "a7d83ea1-cf5e-4865-923e-bfe2232de898";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?6";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-hangover', {
+                                            practiceId: window.intakeqHangover,
+                                            serviceId: window.intakeqServiceIdHangover
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-hangover" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- The "Gold" Ultimate Hydration & Recovery IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--elite-gold); margin-bottom: 8px; font-size: 24px;">The "Gold" Ultimate Hydration & Recovery IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--elite-gold);">Premium Recovery</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Gold-standard recovery formula for ultimate hydration.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🏆</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--elite-gold);">The "Gold" Ultimate Recovery</h3>
+                            <div class="service-price">$399</div>
+                            <div class="category-subtitle" style="color: var(--elite-gold);">Premium Recovery</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Gold-standard recovery formula for ultimate hydration with premium vitamins, minerals, and amino acids.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="3519d39a-31ac-4944-80c9-4eb667a13df4"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-gold" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-gold')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-gold" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqGold = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdGold = "3519d39a-31ac-4944-80c9-4eb667a13df4";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?7";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-gold', {
+                                            practiceId: window.intakeqGold,
+                                            serviceId: window.intakeqServiceIdGold
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-gold" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- The "Platinum" Ultimate Hydration & Recovery IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--platinum-silver); margin-bottom: 8px; font-size: 24px;">The "Platinum" Ultimate Hydration & Recovery IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--platinum-silver);">Elite Recovery</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Platinum-level recovery with premium ingredients.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">💎</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--platinum-silver);">The "Platinum" Ultimate Recovery</h3>
+                            <div class="service-price">$499</div>
+                            <div class="category-subtitle" style="color: var(--platinum-silver);">Elite Recovery</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Platinum-level recovery with the most premium ingredients, comprehensive vitamin profile, and elite wellness support.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="0c0c56b7-85a4-4e01-9b9c-180bc714fa94"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-platinum" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-platinum')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-platinum" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqPlatinum = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdPlatinum = "0c0c56b7-85a4-4e01-9b9c-180bc714fa94";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?8";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-platinum', {
+                                            practiceId: window.intakeqPlatinum,
+                                            serviceId: window.intakeqServiceIdPlatinum
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-platinum" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
-                <!-- Continue with more services... -->
                 <!-- The "Arizona" Detox & Cleanse IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--therapy-calm); margin-bottom: 8px; font-size: 24px;">The "Arizona" Detox & Cleanse IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--therapy-calm);">Detox</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Comprehensive detoxification and cleanse therapy.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🌵</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--therapy-calm);">The "Arizona" Detox & Cleanse</h3>
+                            <div class="service-price">$299</div>
+                            <div class="category-subtitle" style="color: var(--therapy-calm);">Detox</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Comprehensive detoxification and cleanse therapy with powerful antioxidants and liver support nutrients.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="3fb4cbbb-5e12-447c-a236-869573ef730f"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-arizona" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-arizona')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-arizona" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqArizona = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdArizona = "3fb4cbbb-5e12-447c-a236-869573ef730f";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?9";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-arizona', {
+                                            practiceId: window.intakeqArizona,
+                                            serviceId: window.intakeqServiceIdArizona
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-arizona" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
                 <!-- The Basic NAD+ IV Drip -->
                 <div class="service-card-enhanced">
-                    <h3 style="color: var(--therapy-focus); margin-bottom: 8px; font-size: 24px;">The Basic NAD+ IV Drip</h3>
-                    <div class="category-subtitle" style="color: var(--therapy-focus);">Anti-Aging</div>
-                    <p style="margin-bottom: 24px; opacity: 0.8; line-height: 1.6;">Introduction to NAD+ cellular regeneration therapy.</p>
+                    <div class="service-header">
+                        <div class="iv-bag-image">🧬</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--therapy-focus);">The Basic NAD+ IV Drip</h3>
+                            <div class="service-price">$399</div>
+                            <div class="category-subtitle" style="color: var(--therapy-focus);">Anti-Aging</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Introduction to NAD+ cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
                     
-                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(0,0,0,0.1);">
-                        <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="7c8dcca4-35b4-44bd-a242-d1fdc722ddb5"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
-                        <div id="intakeq-nad-basic" style="max-width: 100%; width: 100%; min-height: 300px;"></div>
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-nad-basic')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-nad-basic" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqNadBasic = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdNadBasic = "7c8dcca4-35b4-44bd-a242-d1fdc722ddb5";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?10";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-nad-basic', {
+                                            practiceId: window.intakeqNadBasic,
+                                            serviceId: window.intakeqServiceIdNadBasic
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-nad-basic" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
                 </div>
 
-                <!-- Add remaining services as needed - truncating for space -->
+                <!-- Advanced NAD+ IV Drip -->
+                <div class="service-card-enhanced">
+                    <div class="service-header">
+                        <div class="iv-bag-image">🧬✨</div>
+                        <div class="service-info">
+                            <h3 class="service-title" style="color: var(--premium-purple);">Advanced NAD+ IV Drip</h3>
+                            <div class="service-price">$599</div>
+                            <div class="category-subtitle" style="color: var(--premium-purple);">Enhanced Anti-Aging</div>
+                        </div>
+                    </div>
+                    <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Advanced NAD+ therapy with higher concentration for maximum cellular regeneration and longevity benefits.</p>
+                    
+                    <button class="btn btn-primary" onclick="toggleWidget('widget-nad-advanced')">
+                        Book Now 📅
+                    </button>
+                    
+                    <div id="widget-nad-advanced" class="widget-container">
+                        <script>
+                            (function(c) {
+                                window.intakeqNadAdvanced = "68460f36bc104b6aa9da43e0";
+                                window.intakeqServiceIdNadAdvanced = "f8e9d7c6-b5a4-3e2d-1c9b-8a7f6e5d4c3b";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js?11";
+                                i.onload = function() {
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.render('intakeq-nad-advanced', {
+                                            practiceId: window.intakeqNadAdvanced,
+                                            serviceId: window.intakeqServiceIdNadAdvanced
+                                        });
+                                    }
+                                };
+                                c.head.appendChild(i);
+                            })(document);
+                        </script>
+                        <div id="intakeq-nad-advanced" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
+        function toggleWidget(widgetId) {
+            // Close all other widgets first
+            const allWidgets = document.querySelectorAll('.widget-container');
+            allWidgets.forEach(widget => {
+                if (widget.id !== widgetId) {
+                    widget.classList.remove('active');
+                }
+            });
+            
+            // Toggle the clicked widget
+            const targetWidget = document.getElementById(widgetId);
+            if (targetWidget) {
+                targetWidget.classList.toggle('active');
+                
+                // Scroll to the widget if it's being opened
+                if (targetWidget.classList.contains('active')) {
+                    setTimeout(() => {
+                        targetWidget.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'nearest' 
+                        });
+                    }, 100);
+                }
+            }
+        }
+
         function showClientPortal() {
             alert('Client Portal feature will be available soon. Please use the main website for now.');
         }
