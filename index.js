@@ -524,6 +524,48 @@ const server = http.createServer(async (req, res) => {
             color: var(--iv-primary);
         }
 
+        /* Navigation Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: none;
+            z-index: 1000;
+            margin-top: 8px;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .client-portal-dropdown {
+            min-width: 400px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--brand-primary);
+        }
+
         /* Enhanced 3D Glassmorphism Button System */
         .btn, button, input[type="button"], input[type="submit"], .elementor-button {
             display: inline-flex;
