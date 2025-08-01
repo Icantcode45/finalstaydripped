@@ -96,10 +96,16 @@ const server = http.createServer(async (req, res) => {
 
   // Handle the IV therapy booking page route
   if (req.method === 'GET' && req.url === '/book-ivtherapy') {
-    const bookingPageContent = generateIVTherapyBookingPage();
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(bookingPageContent);
-    return;
+    try {
+      const bookingPageContent = fs.readFileSync(path.join(__dirname, 'pages', 'book-ivtherapy.html'), 'utf8');
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(bookingPageContent);
+      return;
+    } catch (error) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Booking page not found');
+      return;
+    }
   }
 
   // Serve the main HTML file for all routes
@@ -2651,7 +2657,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� B12 Energy Shot</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
