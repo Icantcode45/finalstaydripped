@@ -2883,7 +2883,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">��� B12 Energy Shot</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
@@ -3098,6 +3098,69 @@ const server = http.createServer(async (req, res) => {
                 <div class="dot" data-index="3"></div>
                 <div class="dot" data-index="4"></div>
                 <div class="dot" data-index="5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Our Service Area</div>
+                <h2 class="section-title">Scottsdale & Surrounding Areas</h2>
+                <p class="section-description">
+                    Stay Dripped® provides premium mobile IV therapy throughout Scottsdale, Arizona and the greater Phoenix metropolitan area. Our team brings wellness directly to your location for the ultimate convenience.
+                </p>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="location-card">
+                        <h3>📍 Primary Service Area</h3>
+                        <ul>
+                            <li>Scottsdale</li>
+                            <li>Paradise Valley</li>
+                            <li>North Phoenix</li>
+                            <li>Cave Creek</li>
+                            <li>Carefree</li>
+                            <li>Fountain Hills</li>
+                        </ul>
+                    </div>
+
+                    <div class="location-card">
+                        <h3>🏨 Service Locations</h3>
+                        <ul>
+                            <li>Private Residences</li>
+                            <li>Hotels & Resorts</li>
+                            <li>Corporate Offices</li>
+                            <li>Event Venues</li>
+                            <li>Vacation Rentals</li>
+                            <li>Wellness Centers</li>
+                        </ul>
+                    </div>
+
+                    <div class="location-card">
+                        <h3>⏰ Service Hours</h3>
+                        <ul>
+                            <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
+                            <li>Saturday: 8:00 AM - 6:00 PM</li>
+                            <li>Sunday: 9:00 AM - 5:00 PM</li>
+                            <li>Emergency Services Available</li>
+                            <li>Same-Day Appointments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d212976.0376813488!2d-112.02195913466991!3d33.48184371121143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1754155681632!5m2!1sen!2sus"
+                            width="100%"
+                            height="450"
+                            style="border:0; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
