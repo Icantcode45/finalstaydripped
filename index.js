@@ -1854,6 +1854,15 @@ const server = http.createServer(async (req, res) => {
                 inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
+        /* Enhanced modal for service bookings */
+        .service-booking-modal .modal {
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
         /* Enhanced modal for client portal */
         #clientPortalModal .modal {
             max-width: 800px;
@@ -1863,21 +1872,25 @@ const server = http.createServer(async (req, res) => {
             padding: 2.5rem;
         }
 
-        /* Custom scrollbar for client portal modal */
+        /* Custom scrollbar for modals */
+        .service-booking-modal .modal::-webkit-scrollbar,
         #clientPortalModal .modal::-webkit-scrollbar {
             width: 8px;
         }
 
+        .service-booking-modal .modal::-webkit-scrollbar-track,
         #clientPortalModal .modal::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
         }
 
+        .service-booking-modal .modal::-webkit-scrollbar-thumb,
         #clientPortalModal .modal::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 4px;
         }
 
+        .service-booking-modal .modal::-webkit-scrollbar-thumb:hover,
         #clientPortalModal .modal::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
         }
@@ -1890,11 +1903,24 @@ const server = http.createServer(async (req, res) => {
             position: absolute;
             top: 15px;
             right: 20px;
-            background: none;
+            background: rgba(255, 255, 255, 0.8);
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
             color: #666;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #333;
+            transform: scale(1.1);
         }
 
         .modal h2 {
@@ -1918,6 +1944,15 @@ const server = http.createServer(async (req, res) => {
         .modal input:focus {
             border-color: var(--iv-primary);
             outline: none;
+        }
+
+        /* Service booking widget styling */
+        .booking-widget-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 16px;
+            min-height: 400px;
         }
 
         .hidden {
