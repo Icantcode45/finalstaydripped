@@ -2591,7 +2591,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1 class="modern-hero-title">Stay Dripped Wellness</h1>
+                    <h1 class="modern-hero-title">Stay Dripped® Wellness</h1>
                     <div class="hero-tagline">Advanced Wellness Solutions at Your Doorstep</div>
                     <p class="hero-subtitle">
                         Revolutionary mobile wellness therapies combining cutting-edge medical treatments with premium IV therapy. Transform your health with our personalized approach to optimal vitality and performance.
@@ -2930,7 +2930,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" onclick="openServiceBooking('nad-therapy', 'NAD+ Anti-Aging', '73bbd812-1b77-4e60-a92e-35b64af58379')">
-                            <div class="card-face">🧬 NAD+ Therapy</div>
+                            <div class="card-face">�� NAD+ Therapy</div>
                             <div class="card-info">
                                 <h4>NAD+ Anti-Aging - $399+</h4>
                                 <p>Cutting-edge cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
