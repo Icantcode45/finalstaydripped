@@ -3569,13 +3569,22 @@ const server = http.createServer(async (req, res) => {
         function toggleMenu() {
             const mobileNav = document.getElementById('mobileNav');
             const menuToggle = document.querySelector('.mobile-menu-toggle');
-            
+
             if (mobileNav.style.display === 'block') {
                 mobileNav.style.display = 'none';
                 menuToggle.textContent = '☰';
             } else {
                 mobileNav.style.display = 'block';
                 menuToggle.textContent = '✕';
+            }
+        }
+
+        function toggleClientPortal() {
+            const dropdown = document.getElementById('clientPortalDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
             }
         }
 
