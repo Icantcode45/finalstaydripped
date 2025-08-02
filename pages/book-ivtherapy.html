@@ -75,22 +75,20 @@
         }
         
         .logo {
-            font-family: var(--primary-font);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--brand-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
-        .logo-subtitle {
-            font-size: 12px;
-            color: var(--text-gray);
-            font-weight: 400;
-            margin-left: 8px;
-            opacity: 0.8;
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
         
         .nav-links {
@@ -627,7 +625,7 @@
                 <!-- The Mental Clarity IV Drip -->
                 <div class="service-card-enhanced">
                     <div class="service-header">
-                        <div class="iv-bag-image">����</div>
+                        <div class="iv-bag-image">🧠</div>
                         <div class="service-info">
                             <h3 class="service-title" style="color: var(--therapy-focus);">The Mental Clarity IV Drip</h3>
                             <div class="category-subtitle" style="color: var(--therapy-focus);">Cognitive Enhancement</div>
@@ -792,7 +790,7 @@
                     <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Premium NAD+ formula with enhanced concentration for maximum cellular regeneration and anti-aging benefits.</p>
                     
                     <button class="btn btn-primary" onclick="toggleWidget('widget-diamond-nad')">
-                        ��� Book Now
+                        📅 Book Now
                     </button>
                     
                     <div id="widget-diamond-nad" class="widget-container">
