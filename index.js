@@ -526,32 +526,38 @@ const server = http.createServer(async (req, res) => {
         }
 
         /* Client Portal Glass Button */
+        .nav-links .client-portal-btn,
         .client-portal-btn {
-            display: inline-flex;
+            display: inline-flex !important;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            text-decoration: none;
+            padding: 12px 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-radius: 12px !important;
+            font-size: 15px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--text-gray);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            color: var(--text-gray) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
             position: relative;
         }
 
+        .nav-links .client-portal-btn:hover,
         .client-portal-btn:hover {
-            background: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
-            color: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.35) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+            color: var(--brand-primary) !important;
+        }
+
+        .nav-links .client-portal-btn::after {
+            display: none !important;
         }
 
         /* Navigation Dropdown Styles */
@@ -2787,7 +2793,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� B12 Power Pack Bundle</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
                     </div>
@@ -2893,7 +2899,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
-                            <div class="card-face">🌟 5.0/5.0 Star Reviews</div>
+                            <div class="card-face">��� 5.0/5.0 Star Reviews</div>
                             <div class="card-info">
                                 <h4>Exceptional Client Satisfaction</h4>
                                 <p>Perfect 5-star rating from hundreds of satisfied clients who trust us for their wellness needs across Scottsdale, AZ.</p>
