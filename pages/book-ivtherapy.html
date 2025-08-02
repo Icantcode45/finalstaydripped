@@ -785,10 +785,20 @@
                     // Initialize all widgets once IntakeQ is loaded
                     if (window.IntakeQ) {
                         // Load all widgets
-                        if (typeof loadSunDevilWidget === 'function') loadSunDevilWidget();
-                        if (typeof loadDBookWidget === 'function') loadDBookWidget();
-                        if (typeof loadDiamondBackWidget === 'function') loadDiamondBackWidget();
-                        // Add other widget loaders here as needed
+                        setTimeout(function() {
+                            if (typeof loadSunDevilWidget === 'function') loadSunDevilWidget();
+                            if (typeof loadDBookWidget === 'function') loadDBookWidget();
+                            if (typeof loadDiamondBackWidget === 'function') loadDiamondBackWidget();
+                            if (typeof loadScottsdaleBeautyWidget === 'function') loadScottsdaleBeautyWidget();
+                            if (typeof loadStressReliefWidget === 'function') loadStressReliefWidget();
+                            if (typeof loadMentalClarityWidget === 'function') loadMentalClarityWidget();
+                            if (typeof loadAntiInflammatoryWidget === 'function') loadAntiInflammatoryWidget();
+                            if (typeof loadStayDrippedSpecialWidget === 'function') loadStayDrippedSpecialWidget();
+                            if (typeof loadFountainYouthWidget === 'function') loadFountainYouthWidget();
+                            if (typeof loadDiamondNadWidget === 'function') loadDiamondNadWidget();
+                            if (typeof loadEliteNadWidget === 'function') loadEliteNadWidget();
+                            if (typeof loadMetabolismBoosterWidget === 'function') loadMetabolismBoosterWidget();
+                        }, 100);
                     }
                 };
                 document.head.appendChild(script);
