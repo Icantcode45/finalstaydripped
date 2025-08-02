@@ -11,7 +11,7 @@ async function extractStayDrippedNavigation() {
     const response = await axios.post(
       "https://api.zyte.com/v1/extract",
       {
-        "url": "https://vitabella.com/",
+        "url": "https://staydrippediv.com/",
         "browserHtml": true,
         "productNavigation": true,
         "productNavigationOptions": {"extractFrom": "browserHtml"}
@@ -32,27 +32,27 @@ async function extractStayDrippedNavigation() {
         categoryName: "CLINICALLY PROVEN",
         subCategories: [
           {
-            url: "https://vitabella.com/sexual-wellness",
+            url: "https://staydrippediv.com/sexual-wellness",
             name: "Sexual Wellness",
             metadata: { probability: 0.9939426779747009 }
           },
           {
-            url: "https://vitabella.com/hormone-therapy", 
+            url: "https://staydrippediv.com/hormone-therapy", 
             name: "Hormone Therapy",
             metadata: { probability: 0.9934606552124023 }
           },
           {
-            url: "https://vitabella.com/weight-loss",
+            url: "https://staydrippediv.com/weight-loss",
             name: "Weight Loss", 
             metadata: { probability: 0.9927549958229065 }
           },
           {
-            url: "https://vitabella.com/membership/",
+            url: "https://staydrippediv.com/membership/",
             name: "Start Your Treatment",
             metadata: { probability: 0.9498394727706909 }
           },
           {
-            url: "https://vitabella.com/anti-aging",
+            url: "https://staydrippediv.com/anti-aging",
             name: "Anti-Aging",
             metadata: { probability: 0.9283528327941895 }
           }
@@ -124,7 +124,7 @@ const server = http.createServer(async (req, res) => {
     <title>#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
     <meta name="robots" content="max-image-preview:large">
-    <link rel="canonical" href="https://vitabella.com/">
+    <link rel="canonical" href="https://staydrippediv.com/">
     <meta name="generator" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy Specialists">
     
     <!-- Open Graph / Facebook -->
@@ -133,7 +133,7 @@ const server = http.createServer(async (req, res) => {
     <meta property="og:type" content="website">
     <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
     <meta property="og:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
-    <meta property="og:url" content="https://vitabella.com/">
+    <meta property="og:url" content="https://staydrippediv.com/">
     <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -152,11 +152,11 @@ const server = http.createServer(async (req, res) => {
         "@graph": [
             {
                 "@type": "BreadcrumbList",
-                "@id": "https://vitabella.com/#breadcrumblist",
+                "@id": "https://staydrippediv.com/#breadcrumblist",
                 "itemListElement": [
                     {
                         "@type": "ListItem",
-                        "@id": "https://vitabella.com/#listItem",
+                        "@id": "https://staydrippediv.com/#listItem",
                         "position": 1,
                         "name": "Home"
                     }
@@ -164,20 +164,20 @@ const server = http.createServer(async (req, res) => {
             },
             {
                 "@type": "Organization",
-                "@id": "https://vitabella.com/#organization",
+                "@id": "https://staydrippediv.com/#organization",
                 "name": "Stay Dripped IV & Wellness Co.",
                 "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
-                "url": "https://vitabella.com/",
+                "url": "https://staydrippediv.com/",
                 "telephone": "+16027610492",
                 "logo": {
                     "@type": "ImageObject",
                     "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                    "@id": "https://vitabella.com/#organizationLogo",
+                    "@id": "https://staydrippediv.com/#organizationLogo",
                     "width": 1200,
                     "height": 630
                 },
                 "image": {
-                    "@id": "https://vitabella.com/#organizationLogo"
+                    "@id": "https://staydrippediv.com/#organizationLogo"
                 },
                 "address": {
                     "@type": "PostalAddress",
@@ -193,42 +193,42 @@ const server = http.createServer(async (req, res) => {
             },
             {
                 "@type": "WebPage",
-                "@id": "https://vitabella.com/#webpage",
-                "url": "https://vitabella.com/",
+                "@id": "https://staydrippediv.com/#webpage",
+                "url": "https://staydrippediv.com/",
                 "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.",
                 "description": "Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!",
                 "inLanguage": "en-US",
                 "isPartOf": {
-                    "@id": "https://vitabella.com/#website"
+                    "@id": "https://staydrippediv.com/#website"
                 },
                 "breadcrumb": {
-                    "@id": "https://vitabella.com/#breadcrumblist"
+                    "@id": "https://staydrippediv.com/#breadcrumblist"
                 },
                 "image": {
                     "@type": "ImageObject",
                     "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                    "@id": "https://vitabella.com/#mainImage",
+                    "@id": "https://staydrippediv.com/#mainImage",
                     "width": 1200,
                     "height": 630
                 },
                 "primaryImageOfPage": {
-                    "@id": "https://vitabella.com/#mainImage"
+                    "@id": "https://staydrippediv.com/#mainImage"
                 }
             },
             {
                 "@type": "WebSite",
-                "@id": "https://vitabella.com/#website",
-                "url": "https://vitabella.com/",
+                "@id": "https://staydrippediv.com/#website",
+                "url": "https://staydrippediv.com/",
                 "name": "Stay Dripped IV & Wellness Co.",
                 "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
                 "inLanguage": "en-US",
                 "publisher": {
-                    "@id": "https://vitabella.com/#organization"
+                    "@id": "https://staydrippediv.com/#organization"
                 }
             },
             {
                 "@type": "MedicalBusiness",
-                "@id": "https://vitabella.com/#medicalbusiness",
+                "@id": "https://staydrippediv.com/#medicalbusiness",
                 "name": "Stay Dripped IV & Wellness Co. - Mobile IV Therapy",
                 "image": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
                 "telephone": "+16027610492",
@@ -243,7 +243,7 @@ const server = http.createServer(async (req, res) => {
                     "latitude": 33.5027,
                     "longitude": -111.9261
                 },
-                "url": "https://vitabella.com/",
+                "url": "https://staydrippediv.com/",
                 "medicalSpecialty": ["IV Therapy", "Hormone Therapy", "Wellness Medicine"],
                 "serviceArea": {
                     "@type": "Place",
@@ -424,7 +424,6 @@ const server = http.createServer(async (req, res) => {
             flex: 0 0 33.333333%;
             max-width: 33.333333%;
         }
-
         .col-lg-6 {
             flex: 0 0 50%;
             max-width: 50%;
@@ -2147,7 +2146,6 @@ const server = http.createServer(async (req, res) => {
             50% { opacity: 1; }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
         }
-
         .btn-iv-therapy:hover {
             background: linear-gradient(135deg,
                 rgba(16, 185, 129, 0.9),
@@ -2786,7 +2784,6 @@ const server = http.createServer(async (req, res) => {
 
         </div>
     </section>
-
     <!-- Advanced Therapies Section -->
     <section id="advanced-therapies" class="services-section">
         <div class="container">
@@ -2889,7 +2886,6 @@ const server = http.createServer(async (req, res) => {
             </div>
         </div>
     </section>
-
 
 
     <!-- IV Therapy Section -->
