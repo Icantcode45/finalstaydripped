@@ -2485,16 +2485,17 @@ const server = http.createServer(async (req, res) => {
                 <span class="logo-subtitle">IV & Wellness Co.</span>
             </a>
             <ul class="nav-links" id="mainNavLinks">
+                <li><a href="/">Home</a></li>
                 <li><a href="#advanced-therapies">Advanced Therapies</a></li>
                 <li><a href="/book-ivtherapy">Book IV Therapy</a></li>
                 <li><a href="#iv-therapy">Elite IV Therapy</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-dropdown">
-                    <a href="#" class="dropdown-trigger">Client Portal <span style="font-size: 12px;">▼</span></a>
+                    <a href="#" class="client-portal-btn dropdown-trigger">👤 Client Portal</a>
                     <div class="dropdown-content client-portal-dropdown">
                         <div style="padding: 24px; min-width: 400px; max-width: 500px;">
-                            <h4 style="margin-bottom: 16px; color: var(--brand-dark);">Access Your Portal</h4>
+                            <h4 style="margin-bottom: 16px; color: var(--brand-dark); text-align: center;">Access Your Portal</h4>
                             <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
                                 <script>
                                 (function (c) {
