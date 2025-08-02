@@ -2574,7 +2574,7 @@ const server = http.createServer(async (req, res) => {
             <ul>
                 <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
                 <li><a href="/book-ivtherapy" onclick="toggleMenu();">Cocktail Menu</a></li>
-                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
+                <li><a href="#location" onclick="scrollToSection('location'); toggleMenu();">Service Area</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
