@@ -501,6 +501,11 @@ const server = http.createServer(async (req, res) => {
             position: relative;
         }
 
+        .nav-links a:not(.client-portal-btn) {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -2782,7 +2787,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
                     </div>
@@ -2867,7 +2872,7 @@ const server = http.createServer(async (req, res) => {
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
                         <div class="treatment-item hover-card-item" onclick="scrollToSection('team')">
-                            <div class="card-face">�� Licensed Professionals</div>
+                            <div class="card-face">🏥 Licensed Professionals</div>
                             <div class="card-info">
                                 <h4>Board-Certified Medical Team</h4>
                                 <p>Our licensed nurses and medical professionals bring hospital-grade care directly to your location with full safety protocols.</p>
