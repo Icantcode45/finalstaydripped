@@ -929,6 +929,15 @@
         function toggleMenu() {
             alert('Mobile menu feature will be added soon.');
         }
+
+        function toggleClientPortal() {
+            const dropdown = document.getElementById('clientPortalDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
