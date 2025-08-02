@@ -478,7 +478,7 @@ const server = http.createServer(async (req, res) => {
         }
 
         .logo-image {
-            height: 50px;
+            height: 70px;
             width: auto;
             object-fit: contain;
         }
