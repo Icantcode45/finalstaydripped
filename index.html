@@ -3973,13 +3973,24 @@
             const mobileNav = document.getElementById('mobileNav');
             const menuToggle = document.querySelector('.mobile-menu-toggle');
 
-            if (mobileNav.style.display === 'block') {
-                mobileNav.style.display = 'none';
+            if (mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
                 menuToggle.textContent = '☰';
+                document.body.style.overflow = '';
             } else {
-                mobileNav.style.display = 'block';
-                menuToggle.textContent = '✕';
+                mobileNav.classList.add('active');
+                menuToggle.textContent = '��';
+                document.body.style.overflow = 'hidden';
             }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+
+            mobileNav.classList.remove('active');
+            menuToggle.textContent = '☰';
+            document.body.style.overflow = '';
         }
 
         function toggleClientPortal() {
