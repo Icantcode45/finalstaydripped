@@ -2903,42 +2903,42 @@ const server = http.createServer(async (req, res) => {
                     <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
 
                     <div class="treatments-grid hover-treatment-grid">
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('rehydrate-iv', 'Rehydrate IV Drip', 'f6362671-bcb3-4b2b-ab08-1f3801ff5249')">
                             <div class="card-face">💧 Rehydrate IV</div>
                             <div class="card-info">
                                 <h4>Rehydrate IV Drip - $149</h4>
                                 <p>Essential hydration therapy perfect for dehydration, exercise recovery, and general wellness boost.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('myers-cocktail', 'Myers\' Cocktail IV', '65854196-73a1-4e68-a6c5-15cc88a5e346')">
                             <div class="card-face">🧪 Myers' Cocktail</div>
                             <div class="card-info">
                                 <h4>Myers' Cocktail IV - $249</h4>
                                 <p>Our signature vitamin and mineral infusion for total wellness, immune support, and energy enhancement.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('hangover-relief', 'Day After Recovery', '351c5cac-f576-418f-80d1-b8d6c0a1614f')">
                             <div class="card-face">🤕 Hangover Relief</div>
                             <div class="card-info">
                                 <h4>Day After Recovery - $199</h4>
                                 <p>Fast-acting hangover relief with hydration, nausea control, and headache relief to get you back on your feet.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('nad-therapy', 'NAD+ Anti-Aging', '73bbd812-1b77-4e60-a92e-35b64af58379')">
                             <div class="card-face">🧬 NAD+ Therapy</div>
                             <div class="card-info">
                                 <h4>NAD+ Anti-Aging - $399+</h4>
                                 <p>Cutting-edge cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
-                            <div class="card-face">🏆 Gold Recovery</div>
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('gold-recovery', 'Gold Ultimate Recovery', '9e6f536c-5907-4c69-93ea-799863fd6495')">
+                            <div class="card-face">��� Gold Recovery</div>
                             <div class="card-info">
                                 <h4>Gold Ultimate Recovery - $399</h4>
                                 <p>Premium recovery formula with the finest vitamins, minerals, and amino acids for ultimate wellness.</p>
                             </div>
                         </div>
-                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                        <div class="treatment-item hover-card-item" onclick="openServiceBooking('platinum-elite', 'Platinum Ultimate', '1af0f33f-361e-42db-8a06-a87f653a5cb1')">
                             <div class="card-face">💎 Platinum Elite</div>
                             <div class="card-info">
                                 <h4>Platinum Ultimate - $499</h4>
