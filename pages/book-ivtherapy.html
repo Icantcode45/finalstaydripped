@@ -370,7 +370,31 @@
                 <li><a href="/#iv-therapy">Elite IV Therapy</a></li>
                 <li><a href="/#team">Our Team</a></li>
                 <li><a href="/#contact">Contact</a></li>
-                <li><a href="#" onclick="showClientPortal()">Client Portal</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="client-portal-btn">👤 Client Portal</a>
+                    <div class="dropdown-content">
+                        <div style="padding: 24px; min-width: 400px; max-width: 500px;">
+                            <h4 style="margin-bottom: 16px; color: var(--brand-dark); text-align: center;">Access Your Portal</h4>
+                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
+                                <script>
+                                (function (c) {
+                                    if (window.intakeqClientPortal) return;
+                                    window.intakeq = "68460f36bc104b6aa9da43e0";
+                                    window.intakeqClientArea = true;
+                                    window.intakeqClientPortal = true;
+
+                                    var i = c.createElement("script");
+                                    i.type = "text/javascript";
+                                    i.async = true;
+                                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
+                                    document.head.appendChild(i);
+                                })(document);
+                                </script>
+                                <div id="intakeq-client-portal" style="min-height: 300px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
