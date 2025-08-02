@@ -2609,7 +2609,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1 class="modern-hero-title">Elevate Your Vitality</h1>
+                    <h1 class="modern-hero-title">Stay Dripped Wellness</h1>
                     <div class="hero-tagline">Advanced Wellness Solutions at Your Doorstep</div>
                     <p class="hero-subtitle">
                         Revolutionary mobile wellness therapies combining cutting-edge medical treatments with premium IV therapy. Transform your health with our personalized approach to optimal vitality and performance.
