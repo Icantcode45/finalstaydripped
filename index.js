@@ -2955,7 +2955,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="section-header scroll-animate">
                 <div class="section-subtitle">Next-Generation Wellness</div>
-                <h2 class="section-title modern-section-title">Revolutionary Health Innovations</h2>
+                <h2 class="section-title modern-section-title">Advanced Wellness Solutions</h2>
                 <p class="section-description">
                     Pioneering the future of personalized medicine with cutting-edge therapies, precision treatments, and mobile convenience that transforms your wellness journey from ordinary to extraordinary.
                 </p>
