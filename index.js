@@ -2539,7 +2539,7 @@ const server = http.createServer(async (req, res) => {
                 <li><a href="/">Home</a></li>
                 <li><a href="#advanced-therapies">Advanced Therapies</a></li>
                 <li><a href="/book-ivtherapy">Cocktail Menu</a></li>
-                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="#location">Service Area</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-dropdown">
@@ -2930,7 +2930,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" onclick="openServiceBooking('nad-therapy', 'NAD+ Anti-Aging', '73bbd812-1b77-4e60-a92e-35b64af58379')">
-                            <div class="card-face">�� NAD+ Therapy</div>
+                            <div class="card-face">🧬 NAD+ Therapy</div>
                             <div class="card-info">
                                 <h4>NAD+ Anti-Aging - $399+</h4>
                                 <p>Cutting-edge cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
