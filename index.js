@@ -2569,24 +2569,6 @@ const server = http.createServer(async (req, res) => {
                 </li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
-            <div class="auth-buttons">
-                <div id="authSection">
-                    <button class="btn btn-secondary" onclick="showLogin()">
-                        Login
-                    </button>
-                    <button class="btn btn-primary" onclick="showSignup()">
-                        Sign Up
-                    </button>
-                </div>
-                <div id="userSection" class="hidden">
-                    <div style="display: flex; align-items: center; gap: 1rem; color: #333;">
-                        <span id="userWelcome">Welcome, User!</span>
-                        <button class="btn btn-secondary" onclick="logout()">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
         </nav>
         <div class="mobile-nav" id="mobileNav">
             <ul>
