@@ -311,6 +311,107 @@ const server = http.createServer(async (req, res) => {
             --container-default-padding: 20px;
         }
 
+        /* Device Detection & Optimization Styles */
+        .device-mobile { --device-type: mobile; }
+        .device-iphone { --device-type: iphone; }
+        .device-ipad { --device-type: ipad; }
+        .device-tablet { --device-type: tablet; }
+        .device-desktop { --device-type: desktop; }
+
+        /* Performance Optimizations by Device */
+        .device-mobile, .device-iphone {
+            --animation-duration: 0.2s;
+            --blur-amount: 8px;
+            --shadow-intensity: 0.1;
+        }
+
+        .device-ipad, .device-tablet {
+            --animation-duration: 0.3s;
+            --blur-amount: 12px;
+            --shadow-intensity: 0.15;
+        }
+
+        .device-desktop {
+            --animation-duration: 0.4s;
+            --blur-amount: 20px;
+            --shadow-intensity: 0.2;
+        }
+
+        /* Touch-Optimized Interactions for Mobile Devices */
+        .device-mobile .btn, .device-iphone .btn {
+            min-height: 48px;
+            padding: 12px 24px;
+            font-size: 16px;
+            transform: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .device-mobile .btn:active, .device-iphone .btn:active {
+            transform: scale(0.98);
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* iPad/Tablet Optimizations */
+        .device-ipad .hero-content, .device-tablet .hero-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .device-ipad .services-grid, .device-tablet .services-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Desktop Enhancements */
+        .device-desktop .hero-content {
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .device-desktop .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, var(--shadow-intensity));
+        }
+
+        /* Reduced Motion for Performance */
+        .device-mobile *, .device-iphone * {
+            animation-duration: var(--animation-duration) !important;
+            transition-duration: var(--animation-duration) !important;
+        }
+
+        /* Font Size Optimizations */
+        .device-mobile .modern-hero-title, .device-iphone .modern-hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+        }
+
+        .device-ipad .modern-hero-title, .device-tablet .modern-hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+        }
+
+        .device-desktop .modern-hero-title {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+        }
+
+        /* Image Loading Optimization */
+        .device-mobile img, .device-iphone img {
+            loading: lazy;
+            decoding: async;
+        }
+
+        .device-desktop img {
+            loading: eager;
+            decoding: sync;
+        }
+
+        /* Backdrop Filter Optimization */
+        .device-mobile .glass-effect, .device-iphone .glass-effect,
+        .device-mobile .service-card, .device-iphone .service-card,
+        .device-mobile .location-card, .device-iphone .location-card {
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+        }
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         * {
