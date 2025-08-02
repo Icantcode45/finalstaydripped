@@ -520,6 +520,35 @@ const server = http.createServer(async (req, res) => {
             color: var(--iv-primary);
         }
 
+        /* Client Portal Glass Button */
+        .client-portal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-gray);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .client-portal-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            color: var(--brand-primary);
+        }
+
         /* Navigation Dropdown Styles */
         .nav-dropdown {
             position: relative;
@@ -539,6 +568,8 @@ const server = http.createServer(async (req, res) => {
             display: none;
             z-index: 1000;
             margin-top: 8px;
+            min-width: 400px;
+            padding: 20px;
         }
 
         .nav-dropdown:hover .dropdown-content {
