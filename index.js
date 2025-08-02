@@ -477,6 +477,12 @@ const server = http.createServer(async (req, res) => {
             gap: 12px;
         }
 
+        .logo-image {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
 
 
         .logo-subtitle {
@@ -687,6 +693,72 @@ const server = http.createServer(async (req, res) => {
             background: linear-gradient(135deg, var(--primary-emerald), var(--iv-primary));
             transform: translateY(-2px);
             box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
+        }
+
+        /* Glass Button for Client Portal */
+        .btn-glass {
+            background: rgba(61, 156, 210, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 156, 210, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px 0 rgba(61, 156, 210, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(61, 156, 210, 0.6);
+            border-color: rgba(61, 156, 210, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.3);
+        }
+
+        /* Client Portal Dropdown */
+        .client-portal-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 180px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(61, 156, 210, 0.1);
+            color: var(--iv-primary);
         }
 
         /* Mobile menu */
@@ -2453,38 +2525,24 @@ const server = http.createServer(async (req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                Stay Dripped
-                <span class="logo-subtitle">IV & Wellness Co.</span>
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F8a73786b36c64d79b0b050411ecc25ce?format=webp&width=800" alt="Stay Dripped Logo" class="logo-image">
             </a>
             <ul class="nav-links" id="mainNavLinks">
-                <li><a href="#advanced-therapies">Advanced Therapies</a></li>
-                <li><a href="/book-ivtherapy">Book IV Therapy</a></li>
-                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="#advanced-therapies">Home</a></li>
+                <li><a href="/book-ivtherapy">IV Cocktail Menu</a></li>
+                <li><a href="#iv-therapy">Peptides</a></li>
+                <li><a href="#weight-management">Weight Management</a></li>
+                <li><a href="#hormone-therapy">Hormone Therapy</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="nav-dropdown">
-                    <a href="#" class="dropdown-trigger">Client Portal <span style="font-size: 12px;">▼</span></a>
-                    <div class="dropdown-content client-portal-dropdown">
-                        <div style="padding: 24px; min-width: 400px; max-width: 500px;">
-                            <h4 style="margin-bottom: 16px; color: var(--brand-dark);">Access Your Portal</h4>
-                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
-                                <script>
-                                (function (c) {
-                                    if (window.intakeqClientPortal) return;
-                                    window.intakeq = "68460f36bc104b6aa9da43e0";
-                                    window.intakeqClientArea = true;
-                                    window.intakeqClientPortal = true;
-
-                                    var i = c.createElement("script");
-                                    i.type = "text/javascript";
-                                    i.async = true;
-                                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
-                                    document.head.appendChild(i);
-                                })(document);
-                                </script>
-                                <div id="intakeq-nav-client-portal" style="min-height: 300px; width: 100%;"></div>
-                            </div>
-                        </div>
+                <li class="client-portal-dropdown">
+                    <button class="btn-glass client-portal-btn" onclick="toggleClientPortal()">
+                        Client Portal ▼
+                    </button>
+                    <div class="dropdown-menu" id="clientPortalMenu">
+                        <a href="#login">Login</a>
+                        <a href="#signup">Sign Up</a>
+                        <a href="#portal">Portal Access</a>
                     </div>
                 </li>
             </ul>
@@ -2510,9 +2568,11 @@ const server = http.createServer(async (req, res) => {
         </nav>
         <div class="mobile-nav" id="mobileNav">
             <ul>
-                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
-                <li><a href="/book-ivtherapy" onclick="toggleMenu();">Book IV Therapy</a></li>
-                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
+                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Home</a></li>
+                <li><a href="/book-ivtherapy" onclick="toggleMenu();">IV Cocktail Menu</a></li>
+                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Peptides</a></li>
+                <li><a href="#weight-management" onclick="scrollToSection('weight-management'); toggleMenu();">Weight Management</a></li>
+                <li><a href="#hormone-therapy" onclick="scrollToSection('hormone-therapy'); toggleMenu();">Hormone Therapy</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
@@ -2672,7 +2732,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
                         <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">���� The "Gold" Ultimate Recovery</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>
@@ -3779,6 +3839,19 @@ const server = http.createServer(async (req, res) => {
                 el.style.animationDelay = (0.2 + (index * 0.1)) + 's';
             });
         });
+
+        // Client Portal Dropdown Toggle
+        function toggleClientPortal() {
+            const dropdown = document.getElementById('clientPortalMenu');
+            dropdown.classList.toggle('active');
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.client-portal-dropdown')) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>`;
