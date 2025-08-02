@@ -464,14 +464,20 @@ const server = http.createServer(async (req, res) => {
         }
 
         .logo {
-            font-family: var(--e-global-typography-primary-font-family);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--iv-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
 
@@ -2764,7 +2770,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
-                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
+                            <li style="padding: 8px 0;">�� The "Diamond-Back" Immune Boost</li>
                         </ul>
                     </div>
                     <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
@@ -2899,7 +2905,7 @@ const server = http.createServer(async (req, res) => {
                             </div>
                         </div>
                         <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
-                            <div class="card-face">��� 5.0/5.0 Star Reviews</div>
+                            <div class="card-face">🌟 5.0/5.0 Star Reviews</div>
                             <div class="card-info">
                                 <h4>Exceptional Client Satisfaction</h4>
                                 <p>Perfect 5-star rating from hundreds of satisfied clients who trust us for their wellness needs across Scottsdale, AZ.</p>
