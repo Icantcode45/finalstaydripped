@@ -2545,31 +2545,6 @@ const server = http.createServer(async (req, res) => {
                         <a href="#portal">Portal Access</a>
                     </div>
                 </li>
-                <li class="nav-dropdown">
-                    <a href="#" class="dropdown-trigger">Client Portal <span style="font-size: 12px;">▼</span></a>
-                    <div class="dropdown-content client-portal-dropdown">
-                        <div style="padding: 24px; min-width: 400px; max-width: 500px;">
-                            <h4 style="margin-bottom: 16px; color: var(--brand-dark);">Access Your Portal</h4>
-                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
-                                <script>
-                                (function (c) {
-                                    if (window.intakeqClientPortal) return;
-                                    window.intakeq = "68460f36bc104b6aa9da43e0";
-                                    window.intakeqClientArea = true;
-                                    window.intakeqClientPortal = true;
-
-                                    var i = c.createElement("script");
-                                    i.type = "text/javascript";
-                                    i.async = true;
-                                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
-                                    document.head.appendChild(i);
-                                })(document);
-                                </script>
-                                <div id="intakeq-nav-client-portal" style="min-height: 300px; width: 100%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="auth-buttons">
