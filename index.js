@@ -3102,6 +3102,19 @@ const server = http.createServer(async (req, res) => {
         </div>
     </section>
 
+    <!-- Google Reviews Section -->
+    <section class="reviews-section" style="padding: 60px 0; background: rgba(255, 255, 255, 0.02);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <div class="section-subtitle">Client Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <script defer async src='https://cdn.trustindex.io/loader.js?01478a350bf596112f86f7d885a'></script>
+            </div>
+        </div>
+    </section>
+
     <!-- Location Section -->
     <section id="location" class="location-section">
         <div class="container">
