@@ -454,23 +454,17 @@
                     
                     <div id="widget-scottsdale-beauty" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqScottsdaleBeauty = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdScottsdaleBeauty = "68503856-7b7c-487a-ac80-9f6e4aabcb08";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?4";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-scottsdale-beauty', {
-                                            practiceId: window.intakeqScottsdaleBeauty,
-                                            serviceId: window.intakeqServiceIdScottsdaleBeauty
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqScottsdaleBeauty = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdScottsdaleBeauty = "68503856-7b7c-487a-ac80-9f6e4aabcb08";
+
+                            function loadScottsdaleBeautyWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-scottsdale-beauty', {
+                                        practiceId: window.intakeqScottsdaleBeauty,
+                                        serviceId: window.intakeqServiceIdScottsdaleBeauty
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-scottsdale-beauty" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -493,23 +487,17 @@
                     
                     <div id="widget-stress-relief" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqStressRelief = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdStressRelief = "549f9f59-8bf3-4e62-a4ac-100998a40215";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?5";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-stress-relief', {
-                                            practiceId: window.intakeqStressRelief,
-                                            serviceId: window.intakeqServiceIdStressRelief
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqStressRelief = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdStressRelief = "549f9f59-8bf3-4e62-a4ac-100998a40215";
+
+                            function loadStressReliefWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-stress-relief', {
+                                        practiceId: window.intakeqStressRelief,
+                                        serviceId: window.intakeqServiceIdStressRelief
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-stress-relief" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
