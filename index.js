@@ -2737,7 +2737,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� The "Platinum" Premium Formula</li>
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>
                     </div>
@@ -3465,6 +3465,77 @@ const server = http.createServer(async (req, res) => {
             } else {
                 authSection.classList.remove('hidden');
                 userSection.classList.add('hidden');
+            }
+        }
+
+        // Service booking modal functionality
+        function openServiceBooking(serviceSlug, serviceName, serviceId) {
+            // Create modal if it doesn't exist
+            let modal = document.getElementById('service-booking-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'service-booking-modal';
+                modal.className = 'modal-overlay service-booking-modal';
+                modal.innerHTML = \`
+                    <div class="modal">
+                        <button class="modal-close" onclick="closeServiceBooking()">×</button>
+                        <h2 id="service-modal-title">Book Service</h2>
+                        <div class="booking-widget-container">
+                            <div id="intakeq-service-widget" style="min-height: 400px; width: 100%;"></div>
+                        </div>
+                    </div>
+                \`;
+                document.body.appendChild(modal);
+            }
+
+            // Update modal content
+            document.getElementById('service-modal-title').textContent = \`Book \${serviceName}\`;
+
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Load IntakeQ widget for specific service
+            const widgetContainer = document.getElementById('intakeq-service-widget');
+            widgetContainer.innerHTML = ''; // Clear previous content
+
+            // Create unique script for this service
+            const script = document.createElement('script');
+            script.innerHTML = \`
+                (function(c) {
+                    window.intakeqService\${serviceSlug.replace(/-/g, '')} = "68460f36bc104b6aa9da43e0";
+                    window.intakeqServiceId\${serviceSlug.replace(/-/g, '')} = "\${serviceId}";
+                    var i = c.createElement("script");
+                    i.type = "text/javascript";
+                    i.async = true;
+                    i.src = "https://intakeq.com/js/widget.min.js?service=" + Date.now();
+                    i.onload = function() {
+                        if (window.IntakeQ) {
+                            window.IntakeQ.render('intakeq-service-widget', {
+                                practiceId: window.intakeqService\${serviceSlug.replace(/-/g, '')},
+                                serviceId: window.intakeqServiceId\${serviceSlug.replace(/-/g, '')}
+                            });
+                        }
+                    };
+                    c.head.appendChild(i);
+                })(document);
+            \`;
+            document.head.appendChild(script);
+        }
+
+        function closeServiceBooking() {
+            const modal = document.getElementById('service-booking-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+
+                // Clear the widget container
+                setTimeout(() => {
+                    const widgetContainer = document.getElementById('intakeq-service-widget');
+                    if (widgetContainer) {
+                        widgetContainer.innerHTML = '';
+                    }
+                }, 300);
             }
         }
 
