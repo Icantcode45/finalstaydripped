@@ -2737,7 +2737,7 @@ const server = http.createServer(async (req, res) => {
                         <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">�� The "Platinum" Premium Formula</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>
                     </div>
@@ -2867,7 +2867,7 @@ const server = http.createServer(async (req, res) => {
 
                     <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
                         <div class="treatment-item hover-card-item" onclick="scrollToSection('team')">
-                            <div class="card-face">🏥 Licensed Professionals</div>
+                            <div class="card-face">�� Licensed Professionals</div>
                             <div class="card-info">
                                 <h4>Board-Certified Medical Team</h4>
                                 <p>Our licensed nurses and medical professionals bring hospital-grade care directly to your location with full safety protocols.</p>
@@ -3598,9 +3598,25 @@ const server = http.createServer(async (req, res) => {
             const modals = document.querySelectorAll('.modal-overlay');
             modals.forEach(modal => {
                 if (event.target === modal) {
-                    closeModal();
+                    if (modal.id === 'service-booking-modal') {
+                        closeServiceBooking();
+                    } else {
+                        closeModal();
+                    }
                 }
             });
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const serviceModal = document.getElementById('service-booking-modal');
+                if (serviceModal && serviceModal.classList.contains('active')) {
+                    closeServiceBooking();
+                } else {
+                    closeModal();
+                }
+            }
         });
 
         // Initialize the page
