@@ -2462,11 +2462,23 @@ const server = http.createServer(async (req, res) => {
                 <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F8a73786b36c64d79b0b050411ecc25ce?format=webp&width=800" alt="Stay Dripped Logo" class="logo-image">
             </a>
             <ul class="nav-links" id="mainNavLinks">
-                <li><a href="#advanced-therapies">Advanced Therapies</a></li>
-                <li><a href="/book-ivtherapy">Book IV Therapy</a></li>
-                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="#advanced-therapies">Home</a></li>
+                <li><a href="/book-ivtherapy">IV Cocktail Menu</a></li>
+                <li><a href="#iv-therapy">Peptides</a></li>
+                <li><a href="#weight-management">Weight Management</a></li>
+                <li><a href="#hormone-therapy">Hormone Therapy</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="client-portal-dropdown">
+                    <button class="btn-glass client-portal-btn" onclick="toggleClientPortal()">
+                        Client Portal ▼
+                    </button>
+                    <div class="dropdown-menu" id="clientPortalMenu">
+                        <a href="#login">Login</a>
+                        <a href="#signup">Sign Up</a>
+                        <a href="#portal">Portal Access</a>
+                    </div>
+                </li>
                 <li class="nav-dropdown">
                     <a href="#" class="dropdown-trigger">Client Portal <span style="font-size: 12px;">▼</span></a>
                     <div class="dropdown-content client-portal-dropdown">
@@ -2677,7 +2689,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
                         <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">���� The "Gold" Ultimate Recovery</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>

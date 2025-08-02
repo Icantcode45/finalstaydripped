@@ -315,12 +315,22 @@
             </a>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/#advanced-therapies">Advanced Therapies</a></li>
-                <li><a href="/book-ivtherapy" class="active">Book IV Therapy</a></li>
-                <li><a href="/#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="/book-ivtherapy" class="active">IV Cocktail Menu</a></li>
+                <li><a href="/#iv-therapy">Peptides</a></li>
+                <li><a href="/#weight-management">Weight Management</a></li>
+                <li><a href="/#hormone-therapy">Hormone Therapy</a></li>
                 <li><a href="/#team">Our Team</a></li>
                 <li><a href="/#contact">Contact</a></li>
-                <li><a href="#" onclick="showClientPortal()">Client Portal</a></li>
+                <li class="client-portal-dropdown">
+                    <button class="btn-glass client-portal-btn" onclick="toggleClientPortal()">
+                        Client Portal ▼
+                    </button>
+                    <div class="dropdown-menu" id="clientPortalMenu">
+                        <a href="#login">Login</a>
+                        <a href="#signup">Sign Up</a>
+                        <a href="#portal">Portal Access</a>
+                    </div>
+                </li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
