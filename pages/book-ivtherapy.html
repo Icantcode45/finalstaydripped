@@ -586,23 +586,17 @@
                     
                     <div id="widget-stay-dripped-special" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqStayDrippedSpecial = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdStayDrippedSpecial = "9e6f536c-5907-4c69-93ea-799863fd6495";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?8";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-stay-dripped-special', {
-                                            practiceId: window.intakeqStayDrippedSpecial,
-                                            serviceId: window.intakeqServiceIdStayDrippedSpecial
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqStayDrippedSpecial = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdStayDrippedSpecial = "9e6f536c-5907-4c69-93ea-799863fd6495";
+
+                            function loadStayDrippedSpecialWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-stay-dripped-special', {
+                                        practiceId: window.intakeqStayDrippedSpecial,
+                                        serviceId: window.intakeqServiceIdStayDrippedSpecial
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-stay-dripped-special" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -625,23 +619,17 @@
                     
                     <div id="widget-fountain-youth" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqFountainYouth = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdFountainYouth = "73bbd812-1b77-4e60-a92e-35b64af58379";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?9";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-fountain-youth', {
-                                            practiceId: window.intakeqFountainYouth,
-                                            serviceId: window.intakeqServiceIdFountainYouth
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqFountainYouth = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdFountainYouth = "73bbd812-1b77-4e60-a92e-35b64af58379";
+
+                            function loadFountainYouthWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-fountain-youth', {
+                                        practiceId: window.intakeqFountainYouth,
+                                        serviceId: window.intakeqServiceIdFountainYouth
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-fountain-youth" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
