@@ -1,53 +1,318 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
 
-const server = http.createServer((req, res) => {
+// Zyte API Integration for dynamic content extraction
+const zyteApiKey = '3d9c21c386b64c48b991208269f60348';
+
+async function extractStayDrippedNavigation() {
+  try {
+    const response = await axios.post(
+      "https://api.zyte.com/v1/extract",
+      {
+        "url": "https://staydrippediv.com/",
+        "browserHtml": true,
+        "productNavigation": true,
+        "productNavigationOptions": {"extractFrom": "browserHtml"}
+      },
+      {
+        auth: { username: zyteApiKey }
+      }
+    );
+    
+    return {
+      browserHtml: response.data.browserHtml,
+      productNavigation: response.data.productNavigation
+    };
+  } catch (error) {
+    console.log('Zyte API extraction failed, using fallback navigation');
+    return {
+      productNavigation: {
+        categoryName: "CLINICALLY PROVEN",
+        subCategories: [
+          {
+            url: "https://staydrippediv.com/sexual-wellness",
+            name: "Sexual Wellness",
+            metadata: { probability: 0.9939426779747009 }
+          },
+          {
+            url: "https://staydrippediv.com/hormone-therapy", 
+            name: "Hormone Therapy",
+            metadata: { probability: 0.9934606552124023 }
+          },
+          {
+            url: "https://staydrippediv.com/weight-loss",
+            name: "Weight Loss", 
+            metadata: { probability: 0.9927549958229065 }
+          },
+          {
+            url: "https://staydrippediv.com/membership/",
+            name: "Start Your Treatment",
+            metadata: { probability: 0.9498394727706909 }
+          },
+          {
+            url: "https://staydrippediv.com/anti-aging",
+            name: "Anti-Aging",
+            metadata: { probability: 0.9283528327941895 }
+          }
+        ]
+      }
+    };
+  }
+}
+
+// Cache navigation data
+let cachedNavigation = null;
+let lastFetch = 0;
+const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
+
+async function getNavigationData() {
+  const now = Date.now();
+  if (!cachedNavigation || (now - lastFetch) > CACHE_DURATION) {
+    cachedNavigation = await extractStayDrippedNavigation();
+    lastFetch = now;
+  }
+  return cachedNavigation;
+}
+
+const server = http.createServer(async (req, res) => {
+  // Handle API endpoint for navigation data
+  if (req.method === 'GET' && req.url === '/api/navigation') {
+    try {
+      const navData = await getNavigationData();
+      res.writeHead(200, { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      });
+      res.end(JSON.stringify(navData.productNavigation));
+      return;
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Failed to fetch navigation data' }));
+      return;
+    }
+  }
+
+  // Handle the IV therapy booking page route
+  if (req.method === 'GET' && req.url === '/book-ivtherapy') {
+    try {
+      const bookingPageContent = fs.readFileSync(path.join(__dirname, 'pages', 'book-ivtherapy.html'), 'utf8');
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(bookingPageContent);
+      return;
+    } catch (error) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Booking page not found');
+      return;
+    }
+  }
+
   // Serve the main HTML file for all routes
   if (req.method === 'GET') {
     const htmlContent = `<!DOCTYPE html>
-<html lang="en">
-<head>
+<html dir="ltr" lang="en-US" prefix="og: https://ogp.me/ns#" style="--lqd-mobile-sec-height: 0px; scroll-behavior: smooth;">
+<head itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness Services</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Stay Dripped IV & Wellness Co. - #1 Mobile IV Therapy in Scottsdale, AZ">
+    
+    <title>#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="canonical" href="https://staydrippediv.com/">
+    <meta name="generator" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy Specialists">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
+    <meta property="og:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta property="og:url" content="https://staydrippediv.com/">
+    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
+    <meta name="twitter:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://staydrippediv.com/#breadcrumblist",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "@id": "https://staydrippediv.com/#listItem",
+                        "position": 1,
+                        "name": "Home"
+                    }
+                ]
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://staydrippediv.com/#organization",
+                "name": "Stay Dripped IV & Wellness Co.",
+                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
+                "url": "https://staydrippediv.com/",
+                "telephone": "+16027610492",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                    "@id": "https://staydrippediv.com/#organizationLogo",
+                    "width": 1200,
+                    "height": 630
+                },
+                "image": {
+                    "@id": "https://staydrippediv.com/#organizationLogo"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Scottsdale",
+                    "addressRegion": "AZ",
+                    "addressCountry": "US"
+                },
+                "areaServed": {
+                    "@type": "Place",
+                    "name": "Scottsdale, Arizona"
+                },
+                "serviceType": ["Mobile IV Therapy", "Hormone Therapy", "Weight Management", "Anti-Aging Treatments"]
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://staydrippediv.com/#webpage",
+                "url": "https://staydrippediv.com/",
+                "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.",
+                "description": "Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!",
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@id": "https://staydrippediv.com/#website"
+                },
+                "breadcrumb": {
+                    "@id": "https://staydrippediv.com/#breadcrumblist"
+                },
+                "image": {
+                    "@type": "ImageObject",
+                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                    "@id": "https://staydrippediv.com/#mainImage",
+                    "width": 1200,
+                    "height": 630
+                },
+                "primaryImageOfPage": {
+                    "@id": "https://staydrippediv.com/#mainImage"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://staydrippediv.com/#website",
+                "url": "https://staydrippediv.com/",
+                "name": "Stay Dripped IV & Wellness Co.",
+                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
+                "inLanguage": "en-US",
+                "publisher": {
+                    "@id": "https://staydrippediv.com/#organization"
+                }
+            },
+            {
+                "@type": "MedicalBusiness",
+                "@id": "https://staydrippediv.com/#medicalbusiness",
+                "name": "Stay Dripped IV & Wellness Co. - Mobile IV Therapy",
+                "image": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
+                "telephone": "+16027610492",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Scottsdale",
+                    "addressRegion": "AZ",
+                    "addressCountry": "US"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 33.5027,
+                    "longitude": -111.9261
+                },
+                "url": "https://staydrippediv.com/",
+                "medicalSpecialty": ["IV Therapy", "Hormone Therapy", "Wellness Medicine"],
+                "serviceArea": {
+                    "@type": "Place",
+                    "name": "Scottsdale, Arizona and surrounding areas"
+                }
+            }
+        ]
+    }
+    </script>
+    
     <style>
+        /* Enhanced CSS Variable System */
         :root {
-            /* Vita Bella Color System */
-            --e-global-color-dark-green: #012B27;
-            --e-global-color-green: #10B981;
-            --e-global-color-lightgreen: #6EE7B7;
-            --e-global-color-white: #ffffff;
-            --e-global-color-text: #012B27;
-            --e-global-color-grey2: #596D74;
-            --e-global-color-accent: #F8FBFF;
+            /* Global Color System - Enhanced */
+            --e-global-color-primary: #000000;
+            --e-global-color-text: #3F4C51;
+            --e-global-color-12573a4: #FFFFFF;
+            --e-global-color-6e06d90: #000000;
+            --e-global-color-e41200d: #F5F7F9;
+            --e-global-color-34f92fa: #1A2B3B;
+            --e-global-color-ac9db47: #0000000D;
+            --e-global-color-f7d3e02: #0D0D0DCC;
+            --e-global-color-2584140: #FFFFFF;
+            --e-global-color-cbdd3a3: #D4D4D4;
+            --e-global-color-a403e49: #171717;
+            
+            /* Modern Brand Colors */
+            --brand-primary: #FF6B6B;
+            --brand-secondary: #4ECDC4;
+            --brand-accent: #45B7D1;
+            --brand-dark: #2C3E50;
+            --brand-light: #F8F9FA;
 
-            /* Extended palette */
-            --primary-emerald: #10B981;
-            --primary-emerald-dark: #059669;
-            --primary-emerald-light: #6EE7B7;
-            --primary-blue: #3B82F6;
-            --primary-blue-dark: #1D4ED8;
-            --accent-purple: #8B5CF6;
-            --accent-purple-light: #C4B5FD;
+            /* Enhanced Color Palette */
+            --elite-gold: #D4AF37;
+            --premium-purple: #8B5CF6;
+            --luxury-black: #0D0D0D;
+            --platinum-silver: #C0C0C0;
+
+            /* Gradient System */
+            --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            --gradient-secondary: linear-gradient(135deg, #45B7D1 0%, #96CEB4 100%);
+            --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+
+            /* Therapy Colors */
+            --therapy-energy: #FFD93D;
+            --therapy-calm: #6BCF7F;
+            --therapy-focus: #4D96FF;
+            
+            /* Neutral System */
             --white: #ffffff;
             --light-gray: #f8fafc;
             --dark-gray: #1f2937;
             --text-gray: #374151;
             --border-gray: #e5e7eb;
-            --gold: #f59e0b;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --error: #ef4444;
-
-            /* Spacing system */
-            --space-4x: 4rem;
-            --space-3x: 3rem;
-            --border-radius: 20px;
+            
+            /* Modern Typography Variables */
+            --primary-font: "Inter", sans-serif;
+            --display-font: "Playfair Display", serif;
+            --accent-font: "Space Grotesk", sans-serif;
+            --mono-font: "JetBrains Mono", monospace;
+            
+            /* Container System */
+            --container-max-width: 1100px;
+            --container-default-padding: 20px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&family=Switzer:wght@300;400;500;600;700;800;900&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -55,36 +320,143 @@ const server = http.createServer((req, res) => {
         }
 
         body {
-            font-family: 'Switzer', 'Inter', sans-serif;
-            line-height: 1.6;
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.35em;
+            letter-spacing: 0.01em;
             color: var(--e-global-color-text);
-            background-color: var(--e-global-color-white);
+            background-color: var(--e-global-color-12573a4);
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Enhanced Typography System */
+        h1, .h1 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(50px, 6vw, 84px);
+            font-weight: 600;
+            line-height: 1em;
+            letter-spacing: -1.8px;
+            margin-bottom: 24px;
         }
 
-        /* Enhanced Header */
+
+
+        h2, .h2 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(40px, 5vw, 54px);
+            font-weight: 600;
+            line-height: 1em;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        h3, .h3 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            line-height: 1.2em;
+            margin-bottom: 16px;
+        }
+
+        h4, .h4 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: clamp(20px, 3vw, 24px);
+            font-weight: 600;
+            line-height: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        h5, .h5 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1em;
+            margin-bottom: 10px;
+        }
+
+        h6, .h6 {
+            color: var(--e-global-color-6e06d90);
+            font-family: var(--e-global-typography-primary-font-family), sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        /* Enhanced Container System */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-default-padding);
+            width: 100%;
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding: 0 var(--container-default-padding);
+        }
+
+        /* Bootstrap-inspired Grid System */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col, .col-12, .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8 {
+            position: relative;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .col-md-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+        .col-lg-6 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .col-lg-8 {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+        }
+
+        /* Enhanced 3D Glassmorphism Header */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            border-bottom-color: rgba(255, 255, 255, 0.25);
         }
 
         .nav {
@@ -95,26 +467,23 @@ const server = http.createServer((req, res) => {
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--e-global-typography-primary-font-family);
             font-size: 28px;
             font-weight: 700;
-            color: var(--e-global-color-dark-green);
+            color: var(--iv-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .logo::before {
-            content: "💧";
-            font-size: 24px;
-        }
+
 
         .logo-subtitle {
             font-size: 12px;
-            color: var(--e-global-color-grey2);
+            color: var(--text-gray);
             font-weight: 400;
-            font-family: 'Switzer', sans-serif;
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
             margin-left: 8px;
             opacity: 0.8;
         }
@@ -128,10 +497,9 @@ const server = http.createServer((req, res) => {
 
         .nav-links a {
             text-decoration: none;
-            color: var(--e-global-color-text);
+            color: var(--text-gray);
             font-weight: 500;
             font-size: 15px;
-            font-family: 'Switzer', sans-serif;
             transition: all 0.3s ease;
             position: relative;
         }
@@ -143,7 +511,7 @@ const server = http.createServer((req, res) => {
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--e-global-color-green);
+            background: var(--iv-primary);
             transition: width 0.3s ease;
         }
 
@@ -152,141 +520,227 @@ const server = http.createServer((req, res) => {
         }
 
         .nav-links a:hover {
-            color: var(--e-global-color-green);
+            color: var(--iv-primary);
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
+        /* Navigation Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
         }
 
-        /* Enhanced Button Styles */
-        .btn {
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: none;
+            z-index: 1000;
+            margin-top: 8px;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .client-portal-dropdown {
+            min-width: 400px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--brand-primary);
+        }
+
+        /* Enhanced 3D Glassmorphism Button System */
+        .btn, button, input[type="button"], input[type="submit"], .elementor-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            border: none;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 12px;
-            font-weight: 600;
-            font-size: 14px;
+            font-family: var(--e-global-typography-text-font-family), sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5em;
+            letter-spacing: 0.01em;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--dark-gray);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
+        .btn:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover, .elementor-button:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
-
+        /* 3D Glassmorphism Button Variants */
         .btn-primary {
-            background: var(--e-global-color-dark-green);
-            color: var(--e-global-color-white);
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
-            font-weight: 700;
-            border-radius: 2rem;
-            padding: 0.6rem 1.4rem;
-            box-shadow: 0 2px 8px rgba(44, 60, 50, 0.07);
-            transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+            background: linear-gradient(135deg,
+                rgba(61, 156, 210, 0.9),
+                rgba(29, 78, 216, 0.9));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            color: var(--white);
+            border: 1px solid rgba(61, 156, 210, 0.3);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary:hover {
-            background: var(--e-global-color-lightgreen);
-            color: var(--e-global-color-dark-green);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg,
+                rgba(29, 78, 216, 0.95),
+                rgba(61, 156, 210, 0.95));
+            color: var(--white);
+            border-color: rgba(29, 78, 216, 0.4);
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.15);
         }
 
         .btn-secondary {
-            background: var(--e-global-color-white);
-            color: var(--e-global-color-green);
-            border: 2px solid var(--e-global-color-green);
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
-            font-weight: 700;
-            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: var(--iv-primary);
+            border: 2px solid rgba(61, 156, 210, 0.3);
+            box-shadow:
+                0 4px 20px rgba(61, 156, 210, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .btn-secondary:hover {
-            background: var(--e-global-color-green);
-            color: var(--e-global-color-white);
+            background: rgba(61, 156, 210, 0.9);
+            color: var(--white);
+            border-color: rgba(61, 156, 210, 0.6);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
         }
 
         .btn-gradient {
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            background: linear-gradient(135deg,
+                rgba(16, 185, 129, 0.9),
+                rgba(139, 92, 246, 0.9));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             color: var(--white);
-            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(16, 185, 129, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
         }
 
         .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg,
+                rgba(139, 92, 246, 0.95),
+                rgba(16, 185, 129, 0.95));
+            box-shadow:
+                0 12px 48px rgba(139, 92, 246, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
-        .mobile-menu {
+        /* IV Therapy Specific Button */
+        .btn-iv-therapy {
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-emerald));
+            color: var(--white);
+            border-color: transparent;
+            font-weight: 600;
+            padding: 14px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 14px 0 rgba(61, 156, 210, 0.3);
+        }
+
+        .btn-iv-therapy:hover {
+            background: linear-gradient(135deg, var(--primary-emerald), var(--iv-primary));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
             display: none;
-            cursor: pointer;
             background: none;
             border: none;
-            color: #333;
+            font-size: 24px;
+            color: var(--text-gray);
+            cursor: pointer;
         }
 
         .mobile-nav {
             display: none;
-            position: absolute;
-            top: 100%;
+            position: fixed;
+            top: 80px;
             left: 0;
             right: 0;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-        }
-
-        .mobile-nav.active {
-            display: block;
+            background: var(--white);
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
 
         .mobile-nav ul {
             list-style: none;
-            padding: 0;
+            margin-bottom: 20px;
         }
 
-        .mobile-nav ul li {
-            margin: 0.5rem 0;
+        .mobile-nav li {
+            margin-bottom: 15px;
         }
 
-        .mobile-nav ul li a {
+        .mobile-nav a {
+            color: var(--text-gray);
             text-decoration: none;
-            color: #333;
             font-weight: 500;
             display: block;
-            padding: 0.5rem;
+            padding: 10px 0;
         }
 
         /* Hero Section with enhanced animations */
         .hero {
             min-height: 100vh;
             background: linear-gradient(135deg,
-                rgba(16, 185, 129, 0.05) 0%,
-                rgba(59, 130, 246, 0.05) 50%,
-                rgba(139, 92, 246, 0.05) 100%);
+                rgba(255, 107, 107, 0.08) 0%,
+                rgba(78, 205, 196, 0.08) 35%,
+                rgba(69, 183, 209, 0.08) 65%,
+                rgba(139, 92, 246, 0.08) 100%);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px;
+            padding-top: 100px;
         }
 
         .hero::before {
@@ -296,9 +750,9 @@ const server = http.createServer((req, res) => {
             left: 0;
             right: 0;
             bottom: 0;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(61, 156, 210, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
         }
@@ -318,23 +772,47 @@ const server = http.createServer((req, res) => {
             z-index: 2;
         }
 
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 6vw, 72px);
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--e-global-color-text);
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--e-global-color-text), var(--e-global-color-green));
+        /* Modern Hero Title */
+        .modern-hero-title {
+            font-family: var(--display-font);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 0.9;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            position: relative;
+            text-transform: lowercase;
+        }
+
+        .modern-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .hero-tagline {
+            font-family: var(--accent-font);
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 500;
+            color: var(--brand-dark);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
         }
 
         .hero-subtitle {
             font-size: 18px;
-            color: var(--e-global-color-grey2);
-            font-family: 'Switzer', sans-serif;
+            color: var(--text-gray);
             margin-bottom: 32px;
             line-height: 1.7;
             max-width: 500px;
@@ -356,19 +834,39 @@ const server = http.createServer((req, res) => {
 
         .stat-item {
             text-align: center;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px) scale(1.02);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
         .stat-number {
             font-size: 32px;
             font-weight: 800;
-            color: var(--primary-emerald);
+            color: var(--iv-primary);
             display: block;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .stat-label {
             font-size: 14px;
             color: var(--text-gray);
             opacity: 0.8;
+            margin-top: 8px;
         }
 
         .hero-visual {
@@ -382,7 +880,7 @@ const server = http.createServer((req, res) => {
             width: 100%;
             max-width: 500px;
             height: 600px;
-            background: linear-gradient(135deg, var(--primary-emerald), var(--primary-blue));
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
             border-radius: 24px;
             position: relative;
             overflow: hidden;
@@ -394,16 +892,84 @@ const server = http.createServer((req, res) => {
             height: 100%;
             object-fit: cover;
             border-radius: 24px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+            filter: brightness(1.1);
         }
 
         .floating-card {
             position: absolute;
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 16px;
             padding: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             animation: floatCard 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-card:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+            box-shadow:
+                0 15px 60px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Stay Dripped IV Bag Styling */
+        .main-iv-bag {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 24px;
+            transition: all 0.4s ease;
+            animation: ivBagFloat 6s ease-in-out infinite;
+        }
+
+        .main-iv-bag:hover {
+            transform: scale(1.05) rotate(2deg);
+            filter: brightness(1.1) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .floating-iv-bag {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.2));
+        }
+
+        .floating-iv-bag:hover {
+            transform: scale(1.1) rotate(-5deg);
+            filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes ivBagFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(-1deg);
+            }
+        }
+
+        .floating-card-3 {
+            top: 60%;
+            right: -5%;
+            animation-delay: 4s;
         }
 
         .floating-card-1 {
@@ -423,16 +989,30 @@ const server = http.createServer((req, res) => {
             50% { transform: translateY(-15px) rotate(2deg); }
         }
 
-        /* Search Section */
+        /* Enhanced 3D Glassmorphism Search Form */
         .search-section {
-            background: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             margin: -50px auto 0;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
             position: relative;
             z-index: 10;
             max-width: 1000px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .search-section:hover {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 25px 100px rgba(0, 0, 0, 0.2),
+                inset 0 3px 0 rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .search-form {
@@ -459,500 +1039,713 @@ const server = http.createServer((req, res) => {
         .form-group input,
         .form-group select {
             padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: rgba(61, 156, 210, 0.4);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 3px rgba(61, 156, 210, 0.1);
+            transform: translateY(-1px);
         }
 
-        /* Features Section */
-        .features {
-            padding: 4rem 0;
-            background: white;
+        /* Enhanced Service Categories */
+        .services-section {
+            padding: 120px 0;
+            background: var(--light-gray);
         }
 
-        .features h2 {
+        .section-header {
             text-align: center;
-            font-size: 2.5rem;
+            margin-bottom: 80px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--iv-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: var(--e-global-typography-primary-font-family);
+            font-size: clamp(36px, 5vw, 56px);
             font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
+            color: var(--dark-gray);
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
 
-        .features-grid {
+        .section-description {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
         }
 
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #f8f9ff, #f0f4ff);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+        .service-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--iv-primary), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
-        .feature-icon {
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Car Grid */
-        .cars-section {
-            padding: 4rem 0;
-            background: #f8f9ff;
-        }
-
-        .cars-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .filter-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            border-color: #667eea;
-            background: #667eea;
-            color: white;
-        }
-
-        .cars-grid, .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .car-card {
-            background: white;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-icon:hover {
+            transform: translateY(-4px) scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .service-card h3 {
+            font-family: var(--e-global-typography-primary-font-family);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 12px;
+        }
+
+        .service-card .category-subtitle {
+            color: var(--iv-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .treatment-item {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
             transition: all 0.3s ease;
-            position: relative;
+            border: 2px solid transparent;
+            cursor: pointer;
         }
 
-        .car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        .treatment-item:hover {
+            background: var(--iv-primary);
+            color: var(--white);
+            transform: translateY(-4px);
+            border-color: var(--iv-primary);
         }
 
-        .car-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), 
-                        url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F0929ad20ec73438485e2a2cd329e0294?alt=media&token=6d8d55aa-c1a6-43fe-90d1-4489ea26d289&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+        .treatment-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .treatment-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+
+
+        .shadow-text {
+            font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+            font-size: clamp(32px, 6vw, 92px);
+            padding: 80px 50px;
+            text-align: center;
+            text-transform: uppercase;
+            text-rendering: optimizeLegibility;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+
+        .shadow-text:hover {
+            transform: scale(1.02);
+            cursor: default;
+        }
+
+        .shadow-text.elegantshadow {
+            color: #131313;
+            background-color: #e7e5e4;
+            letter-spacing: .15em;
+            text-shadow:
+                1px -1px 0 #767676,
+                -1px 2px 1px #737272,
+                -2px 4px 1px #767474,
+                -3px 6px 1px #787777,
+                -4px 8px 1px #7b7a7a,
+                -5px 10px 1px #7f7d7d,
+                -6px 12px 1px #828181,
+                -7px 14px 1px #868585,
+                -8px 16px 1px #8b8a89,
+                -9px 18px 1px #8f8e8d,
+                -10px 20px 1px #949392,
+                -11px 22px 1px #999897,
+                -12px 24px 1px #9e9c9c,
+                -13px 26px 1px #a3a1a1,
+                -14px 28px 1px #a8a6a6,
+                -15px 30px 1px #adabab,
+                -16px 32px 1px #b2b1b0,
+                -17px 34px 1px #b7b6b5,
+                -18px 36px 1px #bcbbba,
+                -19px 38px 1px #c1bfbf,
+                -20px 40px 1px #c6c4c4,
+                -21px 42px 1px #cbc9c8,
+                -22px 44px 1px #cfcdcd,
+                -23px 46px 1px #d4d2d1,
+                -24px 48px 1px #d8d6d5,
+                -25px 50px 1px #dbdad9,
+                -26px 52px 1px #dfdddc,
+                -27px 54px 1px #e2e0df,
+                -28px 56px 1px #e4e3e2;
+        }
+
+        .shadow-text.deepshadow {
+            color: #e0dfdc;
+            background-color: #333;
+            letter-spacing: .1em;
+            text-shadow:
+                0 -1px 0 #fff,
+                0 1px 0 #2e2e2e,
+                0 2px 0 #2c2c2c,
+                0 3px 0 #2a2a2a,
+                0 4px 0 #282828,
+                0 5px 0 #262626,
+                0 6px 0 #242424,
+                0 7px 0 #222,
+                0 8px 0 #202020,
+                0 9px 0 #1e1e1e,
+                0 10px 0 #1c1c1c,
+                0 11px 0 #1a1a1a,
+                0 12px 0 #181818,
+                0 13px 0 #161616,
+                0 14px 0 #141414,
+                0 15px 0 #121212,
+                0 22px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .shadow-text.insetshadow {
+            color: #202020;
+            background-color: #2d2d2d;
+            letter-spacing: .1em;
+            text-shadow:
+                -1px -1px 1px #111,
+                2px 2px 1px #363636;
+        }
+
+        .shadow-text.retroshadow {
+            color: #2c2c2c;
+            background-color: #d5d5d5;
+            letter-spacing: .05em;
+            text-shadow:
+                4px 4px 0px #d5d5d5,
+                7px 7px 0px rgba(0, 0, 0, 0.2);
+        }
+
+
+
+        /* IV Therapy Section */
+        .iv-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--iv-primary), var(--accent-purple));
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
 
-        .car-image::before {
+        .iv-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.1);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
         }
 
-        .favorite-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .favorite-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-
-        .favorite-btn.active {
-            color: #ff4757;
-        }
-
-        .car-info {
-            padding: 1.5rem;
-        }
-
-        .car-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-        }
-
-        .car-name-year {
-            flex: 1;
-        }
-
-        .car-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #333;
-            margin: 0;
-        }
-
-        .car-year {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .car-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #667eea;
-            text-align: right;
-        }
-
-        .car-price small {
-            font-size: 0.7rem;
-            color: #999;
-            display: block;
-        }
-
-        .car-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .stars {
-            display: flex;
-            color: #ffd700;
-        }
-
-        .rating-text {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .car-specs {
+        .iv-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #666;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .spec-item {
+        .iv-content h2 {
+            font-family: var(--e-global-typography-primary-font-family);
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .iv-features {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .iv-features li {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            padding: 12px 0;
+            font-size: 16px;
         }
 
-        .car-features {
-            margin-bottom: 1.5rem;
+        .iv-features li::before {
+            content: "💉";
+            margin-right: 12px;
+            font-size: 20px;
         }
 
-        .features-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .feature-tag {
-            background: #f0f4ff;
-            color: #667eea;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .car-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn-rent {
-            flex: 1;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        /* Enhanced effect descriptions */
+        .effect-description {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            margin: 30px;
+            border-radius: 15px;
             color: white;
-            border: none;
-            padding: 0.75rem;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .btn-rent:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .effect-description h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #fff;
         }
 
-        /* Neumorphic Modal Styles */
-        @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500&display=swap");
-
-        :root {
-            --primary: #e5e8ef;
-            --primary-dark: #e1e4ea;
-            --secondary-lime: #e1ff2d;
-            --secondary-lavender: #d3b7f8;
-            --primary-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
-                7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9,
-                inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9,
-                inset 0px 0px 0px 0px #0001;
-            --secondary-box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
-                -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-                inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
-                inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
-            --font: "Nunito Sans", sans-serif;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary);
-            display: grid;
-            place-items: center;
-            z-index: 2000;
-            font-family: "Nunito Sans", sans-serif;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            display: flex;
-            flex-direction: column;
-            padding-block: 24px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-            box-shadow: var(--primary-box-shadow);
-            height: 360px;
-            width: 300px;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #5a5a5a;
-            z-index: 101;
-        }
-
-        .modal input {
-            border: none;
-            height: 32px;
-            border-radius: 10px;
-            background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-            outline: none;
-            font-family: "Nunito Sans", sans-serif;
-        }
-
-        .modal input[type="text"],
-        .modal input[type="email"],
-        .modal input[type="password"] {
-            box-shadow: var(--secondary-box-shadow);
-            padding-inline: 20px;
-            height: 49px;
-            width: 60%;
-        }
-
-        .modal input[type="submit"] {
-            box-shadow: var(--primary-box-shadow);
-            cursor: pointer;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            height: 50px;
-            font-size: 1rem;
-            color: #5a5a5a;
-            position: relative;
-            z-index: 100;
-            width: 100%;
-        }
-
-        #title {
-            color: #5a5a5a;
-            font-weight: 800;
+        .effect-description p {
             font-size: 1.1rem;
-            line-height: 1;
-            letter-spacing: 0.8px;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
-        #linksParent {
+        /* Team Carousel Section with 3D Glassmorphism */
+        .team-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(245, 247, 249, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
             display: flex;
-            gap: 8px;
-            flex-direction: column;
             align-items: center;
         }
 
-        #linksParent > a {
-            font-family: "Nunito Sans", sans-serif;
-            font-size: 0.8rem;
-            color: gray;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .rip1,
-        .rip2 {
-            filter: blur(1px);
-            width: 100%;
+        .about-title {
+            font-size: clamp(4rem, 8vw, 7.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
             position: absolute;
-            height: 50px;
-            left: 0;
-            bottom: 0;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: var(--e-global-typography-primary-font-family);
+            background: linear-gradient(
+                to bottom,
+                rgba(61, 156, 210, 0.35) 30%,
+                rgba(255, 255, 255, 0) 76%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .rip1 {
-            box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
-            background: linear-gradient(to bottom right, #fff 0%, #c8d0e7 100%);
-            animation: waves 2s linear infinite;
-        }
-
-        .rip2 {
-            box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
-            animation: waves 2s linear 1s infinite;
-        }
-
-        @keyframes waves {
-            0% {
-                transform: scale(0.7);
-                opacity: 1;
-                border-radius: 10px;
-            }
-
-            50% {
-                opacity: 1;
-                border-radius: 15px;
-            }
-
-            100% {
-                transform: scale(2);
-                opacity: 0;
-                border-radius: 20px;
-            }
-        }
-
-        #button {
-            width: 40%;
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 450px;
             position: relative;
+            perspective: 1000px;
+            margin: 80px auto 0;
+        }
+
+        .carousel-track {
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .alert {
-            padding: 0.75rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
+        .card {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 24px;
+        }
+
+        .card.center {
+            z-index: 10;
+            transform: scale(1.1) translateZ(0);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .card.center img {
+            filter: none;
+        }
+
+        .card.left-2 {
+            z-index: 1;
+            transform: translateX(-400px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        .card.left-2 img {
+            filter: grayscale(100%);
+        }
+
+        .card.left-1 {
+            z-index: 5;
+            transform: translateX(-200px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        .card.left-1 img {
+            filter: grayscale(50%);
+        }
+
+        .card.right-1 {
+            z-index: 5;
+            transform: translateX(200px) scale(0.9) translateZ(-100px);
+            opacity: 0.9;
+        }
+
+        .card.right-1 img {
+            filter: grayscale(50%);
+        }
+
+        .card.right-2 {
+            z-index: 1;
+            transform: translateX(400px) scale(0.8) translateZ(-300px);
+            opacity: 0.7;
+        }
+
+        .card.right-2 img {
+            filter: grayscale(100%);
+        }
+
+        .card.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .member-info {
             text-align: center;
+            margin-top: 40px;
+            transition: all 0.5s ease-out;
+        }
+
+        .member-name {
+            color: var(--iv-primary);
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            font-family: var(--e-global-typography-primary-font-family);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-name::before,
+        .member-name::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--iv-primary), var(--primary-blue));
+            border-radius: 2px;
+        }
+
+        .member-name::before {
+            left: -100px;
+        }
+
+        .member-name::after {
+            right: -100px;
+        }
+
+        .member-role {
+            color: var(--text-gray);
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-weight: 500;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 10px 0;
+            margin-top: -15px;
+            position: relative;
+            font-family: var(--e-global-typography-accent-font-family);
         }
 
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 60px;
         }
 
-        .alert-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(61, 156, 210, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .dot.active {
+            background: var(--iv-primary);
+            transform: scale(1.3);
+            box-shadow:
+                0 4px 20px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(61, 156, 210, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: var(--iv-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.8rem;
+            font-weight: 600;
+            outline: none;
+            padding-bottom: 4px;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-arrow:hover {
+            background: rgba(61, 156, 210, 0.9);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-arrow.left {
+            left: 20px;
+            padding-right: 3px;
+        }
+
+        .nav-arrow.right {
+            right: 20px;
+            padding-left: 3px;
+        }
+
+        /* Stay Dripped Vitamin Vials Showcase */
+        .iv-therapy-showcase {
+            position: relative;
+            border-radius: 24px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .vitamin-vials {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+        }
+
+        .vitamin-vials:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.3));
+        }
+
+        .vials-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .vial-highlight {
+            position: relative;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: auto;
+            cursor: pointer;
+            font-family: "Trebuchet MS", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vial-highlight:hover {
+            background: rgba(61, 156, 210, 0.9);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(61, 156, 210, 0.4);
+        }
+
+        .iv-therapy-showcase:hover .vial-highlight {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .vial-1 { animation-delay: 0.1s; }
+        .vial-2 { animation-delay: 0.2s; }
+        .vial-3 { animation-delay: 0.3s; }
+        .vial-4 { animation-delay: 0.4s; }
+
+        /* Enhanced IV Section Image Effects */
+        .scroll-animate:hover img {
+            transform: scale(1.05);
+        }
+
+        .scroll-animate:hover .image-overlay {
+            opacity: 1;
         }
 
         /* Footer */
         .footer {
-            background: var(--e-global-color-dark-green);
-            color: var(--e-global-color-white);
+            background: var(--dark-gray);
+            color: var(--white);
             padding: 80px 0 32px 0;
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
         }
 
         .footer-content {
@@ -966,10 +1759,7 @@ const server = http.createServer((req, res) => {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 24px;
-            color: var(--e-global-color-lightgreen);
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--primary-emerald-light);
         }
 
         .footer ul {
@@ -987,7 +1777,7 @@ const server = http.createServer((req, res) => {
         }
 
         .footer a:hover {
-            color: var(--e-global-color-lightgreen);
+            color: var(--primary-emerald-light);
         }
 
         .footer-bottom {
@@ -995,102 +1785,378 @@ const server = http.createServer((req, res) => {
             padding-top: 32px;
             text-align: center;
             opacity: 0.6;
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
         }
 
-        .social-links {
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: #ccc;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #667eea;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .search-form {
-                grid-template-columns: 1fr;
-            }
-
-            .cars-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .car-specs {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-controls {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .premium-showcase .container > div {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-
-            .showcase-image {
-                height: 300px !important;
-            }
-
-            .showcase-content h2 {
-                font-size: 2rem !important;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: flex;
-            justify-content: center;
             align-items: center;
-            height: 200px;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .modal {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
-        /* Professional Animations */
+        /* Enhanced modal for client portal */
+        #clientPortalModal .modal {
+            max-width: 800px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+        }
+
+        /* Custom scrollbar for client portal modal */
+        #clientPortalModal .modal::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        #clientPortalModal .modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            text-align: center;
+        }
+
+        .modal .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .modal input:focus {
+            border-color: var(--iv-primary);
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+        }
+
+        /* Dynamic Navigation Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 12px 0;
+            z-index: 1000;
+            border: 1px solid var(--border-gray);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--light-gray);
+            color: var(--iv-primary);
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Dynamic Treatment Grid Enhancements */
+        .dynamic-treatment {
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dynamic-treatment:hover {
+            border-color: var(--iv-primary);
+            transform: translateY(-2px);
+        }
+
+        .confidence-indicator {
+            background: rgba(61, 156, 210, 0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            display: inline-block;
+            font-size: 10px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Enhanced Service Cards with Glassmorphism */
+        .service-card-enhanced {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .service-card-enhanced:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow:
+                0 20px 80px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 0 1px rgba(61, 156, 210, 0.2);
+        }
+
+        /* Hover Card Items Integration */
+        .hover-card-item {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            perspective: 400px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .hover-card-item .card-face {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            height: 80px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-card-item .card-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            transform: rotateX(90deg);
+            transform-origin: bottom;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hover-card-item .card-info h4 {
+            color: white;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hover-card-item .card-info p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .hover-card-item:hover .card-info {
+            transform: rotateX(0deg);
+            opacity: 1;
+        }
+
+        .hover-card-item:hover .card-face {
+            transform: rotateX(-90deg);
+            opacity: 0;
+        }
+
+        /* Hover Treatment Grid */
+        .hover-treatment-grid {
+            gap: 15px;
+        }
+
+        .hover-treatment-grid .hover-card-item {
+            min-height: 140px;
+            border-radius: 16px;
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .hover-treatment-grid .hover-card-item:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        /* Enhanced Section Titles with Shadow Effects */
+        .section-title.shadow-text {
+            background: linear-gradient(135deg, var(--dark-gray), var(--iv-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* IV Section Enhanced with Deep Shadow */
+        .iv-section .shadow-text.deepshadow {
+            color: rgba(255, 255, 255, 0.95);
+            background: transparent;
+            font-family: var(--e-global-typography-primary-font-family);
+            font-size: clamp(32px, 5vw, 48px);
+            letter-spacing: 0.05em;
+            text-shadow:
+                0 -1px 0 rgba(255, 255, 255, 0.8),
+                0 1px 0 rgba(0, 0, 0, 0.3),
+                0 2px 0 rgba(0, 0, 0, 0.25),
+                0 3px 0 rgba(0, 0, 0, 0.2),
+                0 4px 0 rgba(0, 0, 0, 0.15),
+                0 5px 0 rgba(0, 0, 0, 0.1),
+                0 6px 0 rgba(0, 0, 0, 0.05),
+                0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Glassmorphism Buttons Enhancement */
+        .btn-iv-therapy {
+            background: linear-gradient(135deg,
+                rgba(61, 156, 210, 0.9),
+                rgba(16, 185, 129, 0.9));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-iv-therapy::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .btn-iv-therapy:hover::before {
+            animation: shine 0.6s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+        .btn-iv-therapy:hover {
+            background: linear-gradient(135deg,
+                rgba(16, 185, 129, 0.9),
+                rgba(61, 156, 210, 0.9));
+            transform: translateY(-2px) scale(1.02);
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Animation Classes */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1117,103 +2183,268 @@ const server = http.createServer((req, res) => {
             transform: translateY(0);
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in;
+        /* Booking Portal Styles */
+        .booking-portal-section {
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .booking-portal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 25%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .slide-in {
-            animation: slideIn 0.8s ease-out;
+        .booking-categories-grid .booking-category-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
+        .booking-categories-grid .booking-category-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 25px 100px rgba(0, 0, 0, 0.15),
+                inset 0 3px 0 rgba(255, 255, 255, 0.4);
         }
 
-        /* Vita Bella Button Styles */
-        .vitabella-button:hover {
-            background: var(--e-global-color-lightgreen) !important;
-            color: var(--e-global-color-dark-green) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(44, 60, 50, 0.15);
-        }
-
-        .vitabella-button:hover .arrow-circle {
-            fill: var(--e-global-color-dark-green);
-        }
-
-        .vitabella-button:hover .arrow-path {
-            fill: var(--e-global-color-lightgreen);
-        }
-
-        .vitabella-arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .vitabella-button:hover .vitabella-arrow {
-            transform: translateX(3px);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Professional Section Headers */
-        .SectionHeader_sectionHeader__TrlRm {
-            margin-bottom: 60px;
-        }
-
-        .SectionHeader_left__8ENis {
-            text-align: center;
-        }
-
-        .h2-alt {
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--e-global-color-text);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-
-        .h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 4vw, 50px);
+        .booking-categories-grid .booking-category-card h3 {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
-            color: var(--e-global-color-text);
-            line-height: 1.2;
-            margin-bottom: 20px;
         }
 
-        .SectionHeader_right__6k4ay {
-            font-family: 'Switzer', Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            color: var(--e-global-color-grey2);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Enhanced Responsive Design System */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 1024px;
+                padding: 0 20px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .iv-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .hover-grid li {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hover-grid li a {
+                font-size: 35px;
+                line-height: 150px;
+            }
+            
+            .icon {
+                width: 12em;
+                height: 12em;
+            }
+
+            /* Button adjustments */
+            .btn, button, input[type="button"], input[type="submit"] {
+                font-size: 15px;
+                padding: 10px 14px;
+            }
         }
 
-        /* Icon replacements */
-        .icon {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            text-align: center;
+        @media (max-width: 767px) {
+            .container {
+                max-width: 767px;
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding-top: 80px;
+            }
+
+            /* Mobile Typography */
+            h1, .h1 {
+                font-size: 50px;
+                letter-spacing: -1px;
+            }
+
+            h2, .h2 {
+                font-size: 40px;
+                letter-spacing: -0.5px;
+            }
+
+            .hero-cta {
+                justify-content: center;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .services-grid {
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            .service-card {
+                padding: 24px;
+            }
+
+            .treatments-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .services-section,
+            .iv-section,
+            .shadow-showcase,
+            .interactive-section,
+            .icon-section {
+                padding: 60px 0;
+            }
+
+            .shadow-text {
+                font-size: 28px;
+                padding: 30px 15px;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* Mobile Button Adjustments */
+            .btn, button, input[type="button"], input[type="submit"] {
+                width: 100%;
+                justify-content: center;
+                font-size: 16px;
+                padding: 12px 16px;
+            }
+
+            .btn-iv-therapy {
+                padding: 16px 20px;
+                font-size: 17px;
+            }
+
+            /* Mobile-specific IV Therapy Enhancements */
+            .iv-features li {
+                font-size: 15px;
+                padding: 8px 0;
+            }
+
+            .treatment-item {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+
+            /* Mobile Team Carousel */
+            .about-title {
+                font-size: 3.5rem;
+                top: 40px;
+            }
+
+            .carousel-container {
+                height: 350px;
+                margin-top: 60px;
+            }
+
+            .card {
+                width: 200px;
+                height: 280px;
+            }
+
+            .card.left-2 {
+                transform: translateX(-280px) scale(0.7) translateZ(-300px);
+            }
+
+            .card.left-1 {
+                transform: translateX(-140px) scale(0.85) translateZ(-100px);
+            }
+
+            .card.right-1 {
+                transform: translateX(140px) scale(0.85) translateZ(-100px);
+            }
+
+            .card.right-2 {
+                transform: translateX(280px) scale(0.7) translateZ(-300px);
+            }
+
+            .member-name::before,
+            .member-name::after {
+                width: 50px;
+            }
+
+            .member-name::before {
+                left: -70px;
+            }
+
+            .member-name::after {
+                right: -70px;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .nav-arrow.left {
+                left: 10px;
+            }
+
+            .nav-arrow.right {
+                right: 10px;
+            }
         }
     </style>
 </head>
@@ -1222,47 +2453,75 @@ const server = http.createServer((req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                Stay Dripped IV
-                <span class="logo-subtitle">Wellness Delivered</span>
+                Stay Dripped
+                <span class="logo-subtitle">IV & Wellness Co.</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#packages">IV Packages</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#wellness">Wellness</a></li>
-                <li><a href="#about">About</a></li>
+            <ul class="nav-links" id="mainNavLinks">
+                <li><a href="#advanced-therapies">Advanced Therapies</a></li>
+                <li><a href="/book-ivtherapy">Book IV Therapy</a></li>
+                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-trigger">Client Portal <span style="font-size: 12px;">▼</span></a>
+                    <div class="dropdown-content client-portal-dropdown">
+                        <div style="padding: 24px; min-width: 400px; max-width: 500px;">
+                            <h4 style="margin-bottom: 16px; color: var(--brand-dark);">Access Your Portal</h4>
+                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
+                                <script>
+                                (function (c) {
+                                    if (window.intakeqClientPortal) return;
+                                    window.intakeq = "68460f36bc104b6aa9da43e0";
+                                    window.intakeqClientArea = true;
+                                    window.intakeqClientPortal = true;
+
+                                    var i = c.createElement("script");
+                                    i.type = "text/javascript";
+                                    i.async = true;
+                                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
+                                    document.head.appendChild(i);
+                                })(document);
+                                </script>
+                                <div id="intakeq-nav-client-portal" style="min-height: 300px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
             <div class="auth-buttons">
                 <div id="authSection">
                     <button class="btn btn-secondary" onclick="showLogin()">
-                        <span class="icon">👤</span>
                         Login
                     </button>
-                    <a href="#packages" class="btn btn-primary">Get Started</a>
+                    <button class="btn btn-primary" onclick="showSignup()">
+                        Sign Up
+                    </button>
                 </div>
                 <div id="userSection" class="hidden">
-                    <div class="user-info">
-                        <span class="icon">👤</span>
+                    <div style="display: flex; align-items: center; gap: 1rem; color: #333;">
                         <span id="userWelcome">Welcome, User!</span>
-                        <button class="btn btn-secondary" onclick="logout()" style="margin-left: 1rem;">
+                        <button class="btn btn-secondary" onclick="logout()">
                             Logout
                         </button>
                     </div>
                 </div>
             </div>
-            <button class="mobile-menu-toggle" id="menuIcon" onclick="toggleMenu()">☰</button>
-            <div class="mobile-nav" id="mobileNav">
-                <ul>
-                    <li><a href="#home" onclick="toggleMenu();">Home</a></li>
-                    <li><a href="#packages" onclick="toggleMenu();">IV Packages</a></li>
-                    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
-                    <li><a href="#wellness" onclick="toggleMenu();">Wellness</a></li>
-                    <li><a href="#about" onclick="toggleMenu();">About</a></li>
-                    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
-                </ul>
-            </div>
         </nav>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
+                <li><a href="/book-ivtherapy" onclick="toggleMenu();">Book IV Therapy</a></li>
+                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
+                <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
+                <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
+            </ul>
+            <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                <button class="btn btn-secondary" onclick="showLogin(); toggleMenu();">Login</button>
+                <button class="btn btn-primary" onclick="showSignup(); toggleMenu();">Sign Up</button>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -1270,486 +2529,92 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1>Your Health, Our Priority</h1>
+                    <h1 class="modern-hero-title">Elevate Your Vitality</h1>
+                    <div class="hero-tagline">Advanced Wellness Solutions at Your Doorstep</div>
                     <p class="hero-subtitle">
-                        Experience comprehensive wellness with our professional mobile IV therapy services in Scottsdale, AZ. From hydration boosts to hangover recovery, we bring premium wellness directly to you with care, precision, and convenience.
+                        Revolutionary mobile wellness therapies combining cutting-edge medical treatments with premium IV therapy. Transform your health with our personalized approach to optimal vitality and performance.
                     </p>
                     <div class="hero-cta">
-                        <a href="#packages" class="vitabella-button" style="background:var(--e-global-color-dark-green);color:var(--e-global-color-white);font-family:Switzer, Arial, Helvetica, sans-serif;font-weight:700;font-size:16px;border:none;border-radius:2rem;padding:0.4rem 0.4rem 0.4rem 1.4rem;min-width:180px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;box-shadow:0 2px 8px rgba(44, 60, 50, 0.07);transition:background 0.18s, color 0.18s, box-shadow 0.18s;position:relative;cursor:pointer;--arrow-circle-color:var(--e-global-color-lightgreen);--arrow-path-color:var(--e-global-color-dark-green);">
-                            <span style="flex:1;text-align:left;text-decoration:none">Start Your Journey</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730.01 730.01" width="30" height="30" class="vitabella-arrow" style="margin-left:0.7em;margin-right:0.2em;width:30px;height:30px">
-                                <circle cx="365.01" cy="365.01" r="365.01" fill="var(--arrow-circle-color, var(--e-global-color-dark-green))" class="arrow-circle"></circle>
-                                <path d="M250.42,511.01l215.63-215.63v193.17h44.92V219.01H241.44v44.92h193.17l-215.63,215.63,31.45,31.45Z" fill="var(--arrow-path-color, var(--e-global-color-green))" class="arrow-path"></path>
-                            </svg>
-                        </a>
-                        <a href="#services" class="vitabella-button" style="background:var(--e-global-color-white);color:var(--e-global-color-dark-green);font-family:Switzer, Arial, Helvetica, sans-serif;font-weight:700;font-size:16px;border:2px solid var(--e-global-color-dark-green);border-radius:2rem;padding:0.4rem 0.4rem 0.4rem 1.4rem;min-width:150px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;box-shadow:0 2px 8px rgba(44, 60, 50, 0.07);transition:background 0.18s, color 0.18s, box-shadow 0.18s;position:relative;cursor:pointer;--arrow-circle-color:var(--e-global-color-dark-green);--arrow-path-color:var(--e-global-color-lightgreen);">
-                            <span style="flex:1;text-align:left;text-decoration:none">Explore Services</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 730.01 730.01" width="30" height="30" class="vitabella-arrow" style="margin-left:0.7em;margin-right:0.2em;width:30px;height:30px">
-                                <circle cx="365.01" cy="365.01" r="365.01" fill="var(--arrow-circle-color, var(--e-global-color-dark-green))" class="arrow-circle"></circle>
-                                <path d="M250.42,511.01l215.63-215.63v193.17h44.92V219.01H241.44v44.92h193.17l-215.63,215.63,31.45,31.45Z" fill="var(--arrow-path-color, var(--e-global-color-green))" class="arrow-path"></path>
-                            </svg>
-                        </a>
+                        <a href="/book-ivtherapy" class="btn btn-iv-therapy">Start Your Wellness Journey</a>
+                        <a href="#advanced-therapies" class="btn btn-secondary">Explore Treatments</a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">5k+</span>
-                            <span class="stat-label">Treatments Delivered</span>
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">IV Treatments Delivered</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">4.9/5</span>
+                            <span class="stat-number">5.0/5.0</span>
                             <span class="stat-label">Star Reviews</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">Available</span>
+                            <span class="stat-number">Same Day</span>
+                            <span class="stat-label">Service Available</span>
                         </div>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="hero-image">
-                        <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff96175d3016d4dcabebe3476dce4dde4?alt=media&token=f36db875-37a9-4cfd-a8f4-7dc096173254&apiKey=d86ad443e90f49f6824eddb927a8e06f" alt="Professional IV Therapy">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Stay Dripped IV & Wellness Co. - Premium Wellness Services" style="width: 100%; height: 100%; object-fit: cover; border-radius: 24px;">
                     </div>
                     <div class="floating-card floating-card-1">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <div style="width: 12px; height: 12px; background: var(--success); border-radius: 50%;"></div>
-                            <span style="font-size: 14px; font-weight: 600;">24/7 Available</span>
+                            <div style="width: 12px; height: 12px; background: var(--iv-success); border-radius: 50%;"></div>
+                            <span style="font-size: 14px; font-weight: 600;">Same-Day Service</span>
                         </div>
                     </div>
                     <div class="floating-card floating-card-2">
                         <div style="text-align: center;">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--primary-emerald);">1000+</div>
-                            <div style="font-size: 12px; opacity: 0.7;">Happy Clients</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--iv-primary);">Scottsdale</div>
+                            <div style="font-size: 12px; opacity: 0.7;">Service Area</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Booking Form Section -->
-        <div class="search-section" style="margin-top: 4rem;">
-            <div class="search-form">
-                <div class="form-group">
-                    <label for="service-location">
-                        <span class="icon">📍</span>
-                        Service Location
-                    </label>
-                    <input type="text" id="service-location" placeholder="Enter your address in Scottsdale, AZ">
-                </div>
-                <div class="form-group">
-                    <label for="service-date">
-                        <span class="icon">📅</span>
-                        Preferred Date
-                    </label>
-                    <input type="date" id="service-date">
-                </div>
-                <div class="form-group">
-                    <label for="service-time">
-                        <span class="icon">🕒</span>
-                        Preferred Time
-                    </label>
-                    <select id="service-time">
-                        <option value="">Select Time</option>
-                        <option value="morning">Morning (8AM-12PM)</option>
-                        <option value="afternoon">Afternoon (12PM-5PM)</option>
-                        <option value="evening">Evening (5PM-8PM)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="iv-type-search">IV Therapy Type</label>
-                    <select id="iv-type-search">
-                        <option value="all">All Treatments</option>
-                        <option value="hydration">Hydration</option>
-                        <option value="energy">Energy Boost</option>
-                        <option value="immunity">Immunity</option>
-                        <option value="recovery">Recovery</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
-                        <span class="icon">💧</span>
-                        Book IV Therapy
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Stats Section -->
-    <section class="stats-section" style="padding: 150px 0 100px; background: white; position: relative;">
+        
+        <!-- IV Therapy Booking Form -->
         <div class="container">
-            <!-- Section Header -->
-            <div class="SectionHeader_sectionHeader__TrlRm" style="text-align: center; margin-bottom: 55px;">
-                <div class="SectionHeader_left__8ENis" style="margin-bottom: 20px;">
-                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px; color: var(--e-global-color-text); font-size: 14px; font-weight: 500; font-family: 'Switzer', sans-serif;">📊 Our Impact</div>
-                    <div class="h2" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 0; color: var(--e-global-color-text);">Trusted by Thousands in Scottsdale</div>
-                </div>
-            </div>
-
-            <!-- Stats Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px 0; padding: 50px 0;">
-                <!-- Stat 1 -->
-                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
-                        <span class="counter" data-target="5000">0</span>+
+            <div class="search-section">
+                <div class="search-form">
+                    <div class="form-group">
+                        <label for="service-location">
+                            Service Location in Scottsdale
+                        </label>
+                        <input type="text" id="service-location" placeholder="Enter your Scottsdale, AZ address" required>
                     </div>
-                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
-                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Treatments Delivered</span>
+                    <div class="form-group">
+                        <label for="service-date">
+                            Preferred Date
+                        </label>
+                        <input type="date" id="service-date">
                     </div>
-                </div>
-
-                <!-- Stat 2 -->
-                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
-                        <span class="counter" data-target="98">0</span>%
+                    <div class="form-group">
+                        <label for="service-time">
+                            Preferred Time
+                        </label>
+                        <select id="service-time">
+                            <option value="">Select Time</option>
+                            <option value="morning">Morning (8AM-12PM)</option>
+                            <option value="afternoon">Afternoon (12PM-5PM)</option>
+                            <option value="evening">Evening (5PM-8PM)</option>
+                        </select>
                     </div>
-                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
-                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Client Satisfaction</span>
+                    <div class="form-group">
+                        <label for="iv-type-search">IV Therapy Type</label>
+                        <select id="iv-type-search">
+                            <option value="all">All IV Treatments</option>
+                            <option value="hydration">Hydration Boost - $150</option>
+                            <option value="energy">Energy & B-Complex - $175</option>
+                            <option value="immunity">Immunity Support - $200</option>
+                            <option value="hangover">Hangover Recovery - $180</option>
+                            <option value="beauty">Beauty & Glow - $220</option>
+                            <option value="athletic">Athletic Performance - $250</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Stat 3 -->
-                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
-                        <span class="counter" data-target="24">0</span>/7
-                    </div>
-                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
-                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Available</span>
-                    </div>
-                </div>
-
-                <!-- Stat 4 -->
-                <div style="text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                    <div style="margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 52px; font-weight: 700; line-height: 1.8; letter-spacing: 0.1em; color: #000;">
-                        <span class="counter" data-target="30">0</span> min
-                    </div>
-                    <div style="background: #F8FBFF; padding: 5px 10px; border-radius: 8px; display: inline-block;">
-                        <span style="color: #596D74; font-size: 13px; font-weight: 500; text-transform: capitalize;">Average Response</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Showcase Section -->
-    <section class="premium-showcase" style="padding: 4rem 0; background: #f8f9ff; position: relative; overflow: hidden;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px;">
-                <div class="showcase-content" style="z-index: 2; position: relative;">
-                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">💫 Premium Service</div>
-                    <h2 class="h2" style="margin-bottom: 1.5rem; line-height: 1.2;">
-                        Premium Mobile IV Therapy <br>Delivered to You
-                    </h2>
-                    <p class="SectionHeader_right__6k4ay" style="font-size: 1.1rem; margin-bottom: 2rem; text-align: left; max-width: none;">
-                        Our licensed medical professionals bring high-quality IV therapy directly to your location.
-                        Experience the convenience of premium wellness treatments in the comfort of your home, office, or hotel.
-                    </p>
-                    <button class="btn btn-primary" onclick="scrollToSection('packages')" style="padding: 1rem 2rem; font-size: 1rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px;">
-                        View Our Packages
-                        <span class="icon">→</span>
-                    </button>
-                </div>
-                <div class="showcase-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
-                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ff7e6ef4fec9349c89da8ae7db64c41fa?alt=media&token=78858111-7b34-474d-93ff-9dcada4f51d7&apiKey=d86ad443e90f49f6824eddb927a8e06f"
-                         alt="Mobile IV therapy service"
-                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                    <div style="position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: #667eea;">
-                        Mobile IV Therapy
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Features Section -->
-    <section class="features" id="services" style="padding: 80px 0; background: white;">
-        <div class="container">
-            <!-- Section Header -->
-            <div class="SectionHeader_sectionHeader__TrlRm scroll-animate">
-                <div class="SectionHeader_left__8ENis">
-                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">🌟 Our Services</div>
-                    <div class="h2">Why Choose Stay Dripped IV & Wellness Co.?</div>
-                </div>
-                <div class="SectionHeader_right__6k4ay">Professional mobile IV therapy services delivered with care, expertise, and convenience directly to your location.</div>
-            </div>
-
-            <!-- Service Cards Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-                <!-- Card 1 -->
-                <div class="feature-card scroll-animate" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(66, 196, 106, 0.2)'; this.querySelector('.service-icon').style.color='#42C46A'; this.querySelector('h3').style.color='#42C46A';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        👨‍⚕️
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Licensed Professionals</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">All our IV therapies are administered by licensed medical professionals ensuring safety and efficacy.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(196, 116, 66, 0.15)'; this.querySelector('.service-icon').style.color='#C45B42'; this.querySelector('h3').style.color='#C45B42';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        🏠
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Mobile Service</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">We come to you! Experience premium IV therapy in the comfort of your home, office, or hotel.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(143, 114, 237, 0.17)'; this.querySelector('.service-icon').style.color='#8F72ED'; this.querySelector('h3').style.color='#8F72ED';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        ⚡
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Fast Relief</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Feel better quickly with our high-quality IV treatments designed for rapid absorption and results.</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(249, 223, 104, 0.22)'; this.querySelector('.service-icon').style.color='#DBBC32'; this.querySelector('h3').style.color='#DBBC32';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        🛡️
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Safe & Sterile</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">We use only pharmaceutical-grade ingredients and maintain strict sterile protocols for your safety.</p>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(196, 66, 132, 0.15)'; this.querySelector('.service-icon').style.color='#C44284'; this.querySelector('h3').style.color='#C44284';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        📱
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Easy Booking</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Simple online booking system with flexible scheduling to fit your busy lifestyle.</p>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="feature-card slide-in" style="text-align: center; background: #F8FBFF; padding: 30px; border-radius: 15px; transition: all 0.3s ease; border: 1px solid #e0e0e0;" onmouseover="this.style.background='rgba(47, 178, 187, 0.15)'; this.querySelector('.service-icon').style.color='#2FB2BB'; this.querySelector('h3').style.color='#2FB2BB';" onmouseout="this.style.background='#F8FBFF'; this.querySelector('.service-icon').style.color='#8EA4AF'; this.querySelector('h3').style.color='#596D74';">
-                    <div class="service-icon" style="font-size: 50px; color: #8EA4AF; margin-bottom: 15px; transition: all 0.3s ease;">
-                        🎯
-                    </div>
-                    <h3 style="font-size: 18px; font-weight: 600; color: #596D74; margin-bottom: 10px; transition: all 0.3s ease;">Customized Treatments</h3>
-                    <p style="color: #666; font-size: 15px; line-height: 1.5;">Personalized IV formulations tailored to your specific health and wellness goals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- IV Therapy Packages Section -->
-    <section class="therapy-packages-section" id="packages" style="padding: 4rem 0; background: #f8f9ff;">
-        <div class="container">
-            <div class="SectionHeader_sectionHeader__TrlRm">
-                <div class="SectionHeader_left__8ENis">
-                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">💧 Premium Treatments</div>
-                    <div class="h2">IV Therapy Packages</div>
-                </div>
-                <div class="SectionHeader_right__6k4ay">
-                    Choose from our comprehensive selection of IV therapy treatments designed to boost your health, energy, and wellness.
-                    All treatments are administered by licensed medical professionals.
-                </div>
-            </div>
-            <div class="filter-controls">
-                <button class="filter-btn active" onclick="filterPackages('all')">All Packages</button>
-                <button class="filter-btn" onclick="filterPackages('hydration')">Hydration</button>
-                <button class="filter-btn" onclick="filterPackages('energy')">Energy</button>
-                <button class="filter-btn" onclick="filterPackages('immunity')">Immunity</button>
-                <button class="filter-btn" onclick="filterPackages('recovery')">Recovery</button>
-                <button class="filter-btn" onclick="filterPackages('beauty')">Beauty</button>
-            </div>
-            <div class="packages-grid" id="packages-grid">
-                <!-- IV Therapy packages will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Wellness Section -->
-    <section class="wellness-section" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: #333;">Complete Wellness Experience</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; min-height: 400px; margin-bottom: 3rem;">
-                <div class="wellness-content">
-                    <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: #333;">
-                        Travel Better, <span style="color: #667eea;">Feel Better</span>
-                    </h3>
-                    <p style="font-size: 1.1rem; color: #666; line-height: 1.6; margin-bottom: 2rem;">
-                        Your journey doesn't end with premium transportation. Discover our comprehensive wellness programs designed to enhance your travel experience and overall well-being.
-                    </p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
-                        <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">🧘‍♂️ Travel Wellness</h4>
-                            <p style="color: #666; font-size: 0.9rem;">Maintain your health routine while traveling</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                            <h4 style="color: #667eea; margin-bottom: 0.5rem;">💊 Health Solutions</h4>
-                            <p style="color: #666; font-size: 0.9rem;">Convenient healthcare on-the-go</p>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1rem;">
-                        Explore Wellness
-                        <span class="icon">→</span>
-                    </button>
-                </div>
-                <div class="wellness-image" style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);">
-                    <img src="https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F582c53edf9ad408e849c4a3b19f126c0?alt=media&token=eb3e2ece-0a84-4573-a9a6-58d401ee1713&apiKey=d86ad443e90f49f6824eddb927a8e06f"
-                         alt="Wellness experience"
-                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                    <div style="position: absolute; top: 20px; left: 20px; background: rgba(102, 126, 234, 0.9); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; color: white;">
-                        Premium Wellness
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Health Experts Section -->
-    <section class="health-experts" style="padding: 4rem 0; background: #fff;">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">Backed by Health Experts</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Our wellness programs are developed and supervised by licensed medical professionals and health experts.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👨‍⚕️
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Robert Lieske</h3>
-                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Chief Medical Officer</p>
-                        <p style="color: #666; font-size: 0.9rem;">Anti-aging and Hormone specialist with decades of experience in wellness medicine.</p>
-                    </div>
-                </div>
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👩‍⚕️
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Brooke Blumetti</h3>
-                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Chief of Dermatology</p>
-                        <p style="color: #666; font-size: 0.9rem;">Dermatologist and Advanced Skin-Care Specialist focused on travel wellness.</p>
-                    </div>
-                </div>
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                        👨‍⚕️
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Dr. Daniel Bryan</h3>
-                        <p style="color: #667eea; font-weight: 600; margin-bottom: 0.5rem;">Medical Advisor</p>
-                        <p style="color: #666; font-size: 0.9rem;">Specialized in travel medicine and wellness optimization for frequent travelers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wellness Categories -->
-    <section class="wellness-categories" style="padding: 4rem 0; background: #f8f9ff;">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: #333;">Complete Wellness Solutions</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-                <!-- Sexual Wellness -->
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fe6c13a7f6a944f5991ab32046cd46508?alt=media&token=342f325b-a5ac-4336-bfbb-78139d14438b&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover; position: relative;">
-                        <div style="position: absolute; inset: 0; background: rgba(102, 126, 234, 0.8); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            💗 Sexual Wellness
-                        </div>
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Sexual Wellness Options</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Under proper supervision of a Vita Bella medical professional, our medicine can safely boost both mental and physical capabilities.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Hormone Therapy</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Enhancement</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Confidence</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <!-- Weight Loss -->
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #28a745, #20c997); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        ⚖️ Weight Loss
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Weight Loss Options</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Doctor-trusted solutions for sustainable weight management. Clinically-proven treatments to help you achieve your fitness goals.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">GLP-1</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Metabolism</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Fitness</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F245d596b8190417a9d9c08b8abe228e4?alt=media&token=32301967-14aa-4c71-b5e2-1727a52b1b0f&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover; position: relative;">
-                        <div style="position: absolute; inset: 0; background: rgba(102, 126, 234, 0.8); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            🧬 Anti-Aging
-                        </div>
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Anti-Aging Solutions</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Science-backed therapies to help you look and feel younger, longer. Perfect for maintaining vitality during travel.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">NAD+ Therapy</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Peptides</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Supplements</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #764ba2, #667eea); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        🧠 Cognitive Health
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Cognitive Enhancement</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Optimize mental clarity and focus for peak performance during business travel and demanding schedules.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Nootropics</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Brain Training</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Memory</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        💪 Wellness Recovery
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Travel Recovery</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Advanced treatments to help you recover from jet lag, travel fatigue, and maintain peak energy levels.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">IV Therapy</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Recovery</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Energy</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-                <!-- Hair Loss Treatment -->
-                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="height: 200px; background: linear-gradient(135deg, #6f42c1, #5a6acf); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                        💇‍♂️ Hair Loss
-                    </div>
-                    <div style="padding: 1.5rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Hair Loss Treatment</h3>
-                        <p style="color: #666; margin-bottom: 1.5rem;">Advanced hair restoration solutions to help you regain confidence and maintain a professional appearance.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Finasteride</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Growth</span>
-                            <span style="background: #f0f4ff; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Confidence</span>
-                        </div>
-                        <button style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; cursor: pointer; width: 100%;">
-                            Learn More
+                    <div class="form-group">
+                        <button class="btn btn-iv-therapy" onclick="bookService()" style="width: 100%; margin-top: 1.5rem;">
+                            Book Mobile IV Therapy
                         </button>
                     </div>
                 </div>
@@ -1757,236 +2622,346 @@ const server = http.createServer((req, res) => {
         </div>
     </section>
 
-    <!-- Treatment Process Section -->
-    <section class="treatment-process" style="padding: 4rem 0; background: #fff;">
+    <!-- Comprehensive Booking Portal -->
+    <section id="booking-portal" class="booking-portal-section" style="padding: 120px 0; background: linear-gradient(135deg, var(--brand-light) 0%, rgba(78, 205, 196, 0.1) 100%);">
         <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">How You Get Your Treatments</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                After becoming a member, you will onboard and have a consultation with a licensed provider.
-                During this consultation, you can discuss your goals and explore all treatments available.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
-                        1
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Select Program and Labs</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Choose the membership and labs that are best tailored to your unique health needs and goals.</p>
-                </div>
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
-                        2
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Meet With Provider</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Have a virtual 1-on-1 with a licensed provider, at your convenience, to review your health history.</p>
-                </div>
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
-                        3
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Begin Treatment</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Your prescriptions will be promptly shipped from our U.S.-based pharmacies in discreet packaging.</p>
-                </div>
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem; font-weight: 700;">
-                        4
-                    </div>
-                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #333; margin-bottom: 0.5rem;">Monitor, Adjust, Optimize</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Your provider will be there with personalized quarterly check-ins included in your membership.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wellness Benefits Section -->
-    <section class="wellness-benefits" style="padding: 4rem 0; background: linear-gradient(135deg, #f8f9ff 0%, #e8f4f8 100%);">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #333;">One Simple Process. A Lifetime of Benefits.</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">
-                Whether you're looking to unlock your body's full potential, elevate your fitness, or reclaim your confidence,
-                we're here to guide and support you every step of the way.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Personalized Treatment Plans</h3>
-                    <p style="color: #666; line-height: 1.6;">Tailored wellness solutions designed specifically for your health goals and travel lifestyle.</p>
-                </div>
-                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">👨‍⚕️</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Licensed Medical Professionals</h3>
-                    <p style="color: #666; line-height: 1.6;">All treatments supervised by qualified healthcare providers ensuring safety and efficacy.</p>
-                </div>
-                <div style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚚</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 600; color: #333; margin-bottom: 1rem;">Convenient Delivery</h3>
-                    <p style="color: #666; line-height: 1.6;">Discreet, direct-to-door shipping with express delivery options for busy travelers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Testimonials Section -->
-    <section class="testimonials" style="padding: 80px 0; background: white; position: relative;">
-        <!-- Background Image -->
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://cdn.builder.io/o/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ffa81e77e45bc4c259725235c334d252b?alt=media&token=290f1b50-3f42-4a60-b6f9-dedebe3dd384&apiKey=d86ad443e90f49f6824eddb927a8e06f') center/cover; opacity: 0.05; z-index: 1;"></div>
-
-        <div class="container" style="position: relative; z-index: 2;">
-            <!-- Section Header -->
-            <div class="SectionHeader_sectionHeader__TrlRm">
-                <div class="SectionHeader_left__8ENis">
-                    <div class="h2-alt" style="background: var(--e-global-color-accent); padding: 6px 15px; border-radius: 100px; display: inline-block; margin-bottom: 20px;">💬 Client Stories</div>
-                    <div class="h2">What Our Customers Say</div>
-                </div>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #ffd700; font-size: 1.5rem;">���★★★★</span>
-                    <span style="font-size: 1.1rem; color: var(--e-global-color-text); font-family: 'Switzer', sans-serif; font-weight: 600;">4.9 out of 5 stars</span>
-                </div>
-                <p class="SectionHeader_right__6k4ay">From 5,000+ verified treatments</p>
-            </div>
-
-            <!-- Testimonials Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
-                <!-- Testimonial 1 -->
-                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
-                            👩‍💼
-                        </div>
-                        <div>
-                            <h4 style="margin: 0; font-weight: 600; color: #333;">Sarah M.</h4>
-                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Wellness Enthusiast</p>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"The convenience of having professional IV therapy at home is incredible. The team is knowledgeable, professional, and made me feel completely comfortable throughout the treatment."</p>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: #ffd700;">★★★★★</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
-                            👨‍💻
-                        </div>
-                        <div>
-                            <h4 style="margin: 0; font-weight: 600; color: #333;">Mike R.</h4>
-                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Business Executive</p>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"After a long week of meetings, the Energy & Performance IV was exactly what I needed. I felt rejuvenated within hours and ready to tackle my weekend plans."</p>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: #ffd700;">★★★★★</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div style="background: #F8FBFF; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                        <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;">
-                            👩‍⚕️
-                        </div>
-                        <div>
-                            <h4 style="margin: 0; font-weight: 600; color: #333;">Dr. Lisa K.</h4>
-                            <p style="margin: 0; color: #666; font-size: 0.9rem;">Healthcare Professional</p>
-                        </div>
-                    </div>
-                    <p style="margin-bottom: 1rem; font-style: italic; color: #555; line-height: 1.6;">"As a healthcare professional, I appreciate the quality and safety standards. The team uses proper protocols and the results speak for themselves. Highly recommended!"</p>
-                    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: #ffd700;">★★★★★</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;">✓ Verified Client</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Newsletter Signup -->
-    <section class="newsletter" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"white\" opacity=\"0.05\"><circle cx=\"20\" cy=\"20\" r=\"2\"/><circle cx=\"80\" cy=\"20\" r=\"2\"/><circle cx=\"20\" cy=\"80\" r=\"2\"/><circle cx=\"80\" cy=\"80\" r=\"2\"/><circle cx=\"50\" cy=\"50\" r=\"3\"/></svg>'); pointer-events: none;"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 class="h2" style="color: white; margin-bottom: 1rem;">Never Miss a Deal or Update</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem; font-size: 1.2rem; line-height: 1.6; font-family: 'Switzer', sans-serif;">
-                    Subscribe to our newsletter to stay in front of all the future deals, promotions and new treatments.
-                    Stay up-to-date with the future you.
+            <div class="section-header scroll-animate">
+                <div class="section-subtitle">Book Your Treatment</div>
+                <h2 class="section-title">Comprehensive Wellness Booking Portal</h2>
+                <p class="section-description">
+                    Choose from our complete range of wellness treatments and book your appointment instantly through our advanced booking system.
                 </p>
-                <div style="display: flex; gap: 1rem; max-width: 500px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 50px; backdrop-filter: blur(10px);">
-                    <input
-                        type="email"
-                        placeholder="Enter your e-mail address"
-                        style="flex: 1; padding: 1rem 1.5rem; border: none; border-radius: 25px; font-size: 1rem; background: white; outline: none;"
-                        id="newsletter-email"
-                    >
-                    <button
-                        onclick="handleNewsletterSignup()"
-                        style="background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
-                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.3)'"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)'"
-                    >
-                        Sign Up Now
-                    </button>
+            </div>
+
+            <div class="booking-categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; margin-top: 80px;">
+
+                <!-- Basic IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Basic IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Essential hydration and vitamin infusions for everyday wellness and recovery.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
+                        <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💧 Rehydrate IV Drip - Basic hydration boost</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⚡ Jr. Myers' Cocktail - Essential vitamins</li>
+                            <li style="padding: 8px 0;">🔋 Rehydrate Plus - Enhanced electrolytes</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Basic IV Therapy</a>
                 </div>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 1.5rem;">
-                    Join 10,000+ members receiving exclusive wellness tips and travel health insights.
-                    <br>Unsubscribe at any time.
+
+                <!-- Standard IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-secondary); margin-bottom: 16px;">Standard IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Enhanced formulations with specialized vitamin blends for targeted wellness goals.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(78, 205, 196, 0.3);">
+                        <h4 style="color: var(--brand-secondary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Myers' Cocktail - Complete vitamin blend</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🚀 Mega Myers' - Enhanced potency formula</li>
+                            <li style="padding: 8px 0;">🍃 The Day After - Hangover relief</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Standard IV Therapy</a>
+                </div>
+
+                <!-- Premium IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-energy); margin-bottom: 16px;">Premium IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Elite wellness protocols with premium ingredients and personalized formulations.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
+                        <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
+                            <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Premium IV Therapy</a>
+                </div>
+
+                <!-- Specialty IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-accent); margin-bottom: 16px;">Specialty IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Advanced therapeutic formulations for specific health conditions and performance optimization.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(69, 183, 209, 0.3);">
+                        <h4 style="color: var(--brand-accent); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
+                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
+                </div>
+
+                <!-- NAD+ IV Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-focus); margin-bottom: 16px;">NAD+ IV Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Revolutionary anti-aging and cellular regeneration therapy for optimal longevity.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(77, 150, 255, 0.3);">
+                        <h4 style="color: var(--therapy-focus); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🧬 The Basic NAD+ IV Drip</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⛲ The "Fountain of Youth" NAD+</li>
+                            <li style="padding: 8px 0;">💎 The "Diamond" NAD+ Formula</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
+                </div>
+
+                <!-- Vitamin Injection Shots -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Vitamin Injection Shots</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Quick and effective vitamin injections for immediate energy and wellness benefits.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
+                        <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
+                            <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Vitamin Shots</a>
+                </div>
+
+                <!-- Membership Plans -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-calm); margin-bottom: 16px;">Membership Plans</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Exclusive membership packages with significant savings and priority scheduling.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(107, 207, 127, 0.3);">
+                        <h4 style="color: var(--therapy-calm); margin-bottom: 12px; font-size: 18px;">Featured Plans:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🎫 Monthly Shot Pass</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🌟 Wellness Explorer</li>
+                            <li style="padding: 8px 0;">👑 Wellness Platinum</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">View Membership Plans</a>
+                </div>
+
+                <!-- Peptide Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--brand-accent); margin-bottom: 16px;">Peptide Therapy Treatments</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Advanced peptide protocols for anti-aging, recovery, and performance enhancement.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(69, 183, 209, 0.3);">
+                        <h4 style="color: var(--brand-accent); margin-bottom: 12px; font-size: 18px;">Advanced Therapies:</h4>
+                        <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Cutting-edge peptide treatments for cellular regeneration, muscle recovery, and anti-aging optimization.</p>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Peptide Therapy</a>
+                </div>
+
+                <!-- Weight Management -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-energy); margin-bottom: 16px;">Weight Management Therapy</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Comprehensive weight management programs with medical-grade treatments and ongoing support.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
+                        <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Program Includes:</h4>
+                        <ul style="list-style: none; margin: 0; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⚖️ Metabolism Booster IV Drip</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📊 Comprehensive metabolic analysis</li>
+                            <li style="padding: 8px 0;">🎯 Personalized nutrition guidance</li>
+                        </ul>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Weight Management</a>
+                </div>
+
+                <!-- Hormone Replacement Therapy -->
+                <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
+                    <h3 style="color: var(--therapy-focus); margin-bottom: 16px;">Hormone Replacement Therapy</h3>
+                    <p style="margin-bottom: 24px; opacity: 0.8;">Personalized hormone optimization therapy for enhanced vitality and well-being.</p>
+                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(77, 150, 255, 0.3);">
+                        <h4 style="color: var(--therapy-focus); margin-bottom: 12px; font-size: 18px;">Comprehensive Care:</h4>
+                        <p style="margin: 0; padding: 12px 0; font-style: italic; color: #666;">Bioidentical hormone therapy with continuous monitoring and personalized optimization protocols.</p>
+                    </div>
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Hormone Therapy</a>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- Advanced Therapies Section -->
+    <section id="advanced-therapies" class="services-section">
+        <div class="container">
+            <div class="section-header scroll-animate">
+                <div class="section-subtitle">Next-Generation Wellness</div>
+                <h2 class="section-title modern-section-title">Revolutionary Health Innovations</h2>
+                <p class="section-description">
+                    Pioneering the future of personalized medicine with cutting-edge therapies, precision treatments, and mobile convenience that transforms your wellness journey from ordinary to extraordinary.
                 </p>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.2rem;">✓</span>
-                        <span style="font-size: 0.9rem;">Exclusive Deals</span>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card service-card-enhanced scroll-animate">
+                    <h3>Core IV Therapy Features</h3>
+                    <div class="category-subtitle">Why Choose Stay Dripped</div>
+                    <p>Experience the pinnacle of mobile IV therapy with our comprehensive wellness approach featuring certified medical professionals, premium formulations, and concierge-level service in Scottsdale, AZ.</p>
+
+                    <div class="treatments-grid hover-treatment-grid" id="dynamicTreatments">
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('team')">
+                            <div class="card-face">🏥 Licensed Professionals</div>
+                            <div class="card-info">
+                                <h4>Board-Certified Medical Team</h4>
+                                <p>Our licensed nurses and medical professionals bring hospital-grade care directly to your location with full safety protocols.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
+                            <div class="card-face">⚡ Same-Day Service</div>
+                            <div class="card-info">
+                                <h4>Rapid Response Scheduling</h4>
+                                <p>Available 7 days a week with same-day appointments. Get the wellness boost you need when you need it most.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💎 Premium Formulations</div>
+                            <div class="card-info">
+                                <h4>Pharmaceutical-Grade Nutrients</h4>
+                                <p>Only the highest quality vitamins, minerals, and compounds sourced from certified medical suppliers for optimal absorption.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="scrollToSection('contact')">
+                            <div class="card-face">🌟 5.0/5.0 Star Reviews</div>
+                            <div class="card-info">
+                                <h4>Exceptional Client Satisfaction</h4>
+                                <p>Perfect 5-star rating from hundreds of satisfied clients who trust us for their wellness needs across Scottsdale, AZ.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.2rem;">✓</span>
-                        <span style="font-size: 0.9rem;">Wellness Tips</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.2rem;">✓</span>
-                        <span style="font-size: 0.9rem;">New Treatment Updates</span>
+                </div>
+
+                <div class="service-card service-card-enhanced scroll-animate">
+                    <h3>Popular IV Therapy Treatments</h3>
+                    <div class="category-subtitle">Click to Book Your Treatment</div>
+                    <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
+
+                    <div class="treatments-grid hover-treatment-grid">
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💧 Rehydrate IV</div>
+                            <div class="card-info">
+                                <h4>Rehydrate IV Drip - $149</h4>
+                                <p>Essential hydration therapy perfect for dehydration, exercise recovery, and general wellness boost.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🧪 Myers' Cocktail</div>
+                            <div class="card-info">
+                                <h4>Myers' Cocktail IV - $249</h4>
+                                <p>Our signature vitamin and mineral infusion for total wellness, immune support, and energy enhancement.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🤕 Hangover Relief</div>
+                            <div class="card-info">
+                                <h4>Day After Recovery - $199</h4>
+                                <p>Fast-acting hangover relief with hydration, nausea control, and headache relief to get you back on your feet.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🧬 NAD+ Therapy</div>
+                            <div class="card-info">
+                                <h4>NAD+ Anti-Aging - $399+</h4>
+                                <p>Cutting-edge cellular regeneration therapy for anti-aging, mental clarity, and energy enhancement.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">🏆 Gold Recovery</div>
+                            <div class="card-info">
+                                <h4>Gold Ultimate Recovery - $399</h4>
+                                <p>Premium recovery formula with the finest vitamins, minerals, and amino acids for ultimate wellness.</p>
+                            </div>
+                        </div>
+                        <div class="treatment-item hover-card-item" onclick="window.open('/book-ivtherapy', '_self')">
+                            <div class="card-face">💎 Platinum Elite</div>
+                            <div class="card-info">
+                                <h4>Platinum Ultimate - $499</h4>
+                                <p>Our most comprehensive treatment with premium ingredients and elite wellness support for maximum benefits.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="features" id="about" style="background: #f8f9ff;">
+
+    <!-- IV Therapy Section -->
+    <section id="iv-therapy" class="iv-section">
         <div class="container">
-            <h2>About Stay Dripped IV & Wellness Co.</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
-                    Founded in 2020, Stay Dripped IV & Wellness Co. is Scottsdale's premier mobile IV therapy and wellness service. We're committed to bringing high-quality, medically supervised treatments directly to you, wherever you need them most.
-                </p>
-                <p style="font-size: 1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
-                    Our licensed medical professionals use only pharmaceutical-grade ingredients and FDA-approved medications to ensure your safety and optimal results. Whether you're recovering from a night out, boosting your immune system, or enhancing your performance, we provide personalized wellness solutions tailored to your lifestyle.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                    <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">5,000+</h3>
-                        <p style="color: #666;">Treatments Delivered</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">100%</h3>
-                        <p style="color: #666;">Licensed Professionals</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">Scottsdale</h3>
-                        <p style="color: #666;">Service Area</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h3 style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">24/7</h3>
-                        <p style="color: #666;">Customer Support</p>
+            <div class="iv-content">
+                <div class="scroll-animate">
+                    <h2 class="shadow-text deepshadow">Revolutionary Infusion Therapy</h2>
+                    <h3>Concierge Wellness Redefined</h3>
+                    <p>Transform your wellness journey with our revolutionary mobile infusion therapy. Our board-certified medical team delivers pharmaceutical-grade treatments using cutting-edge protocols, bringing the future of personalized medicine directly to your private sanctuary.</p>
+                    
+                    <ul class="iv-features">
+                        <li>Board-certified physicians & advanced practitioners</li>
+                        <li>Immediate deployment with concierge scheduling</li>
+                        <li>Pharmaceutical-grade nutrients & bioactive compounds</li>
+                        <li>Medical-grade sterile compounding & delivery systems</li>
+                        <li>Precision-dosed protocols tailored to biomarkers</li>
+                        <li>Executive wellness programs & private events</li>
+                        <li>Advanced monitoring & real-time health optimization</li>
+                        <li>Luxury mobile clinic experience with privacy assurance</li>
+                    </ul>
+
+                    <a href="/book-ivtherapy" class="btn btn-iv-therapy">Schedule Elite Treatment</a>
+                </div>
+                <div class="scroll-animate">
+                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(61, 156, 210, 0.1), rgba(16, 185, 129, 0.1)); opacity: 0; transition: opacity 0.3s ease;" class="image-overlay"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h1 class="about-title">OUR TEAM</h1>
+
+            <div class="carousel-container">
+                <button class="nav-arrow left">‹</button>
+                <div class="carousel-track">
+                    <div class="card" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Emily Rodriguez - Medical Director">
+                    </div>
+                    <div class="card" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Michael Chen - Lead Physician">
+                    </div>
+                    <div class="card" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1594824771640-9c8c1f9df2a6?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sarah Johnson - Nurse Practitioner">
+                    </div>
+                    <div class="card" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. James Wilson - Wellness Specialist">
+                    </div>
+                    <div class="card" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMJA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Lisa Martinez - IV Therapy Coordinator">
+                    </div>
+                    <div class="card" data-index="5">
+                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Amanda Thompson - Hormone Specialist">
+                    </div>
+                </div>
+                <button class="nav-arrow right">›</button>
+            </div>
+
+            <div class="member-info">
+                <h2 class="member-name">Dr. Emily Rodriguez</h2>
+                <p class="member-role">Medical Director</p>
+            </div>
+
+            <div class="dots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+                <div class="dot" data-index="2"></div>
+                <div class="dot" data-index="3"></div>
+                <div class="dot" data-index="4"></div>
+                <div class="dot" data-index="5"></div>
             </div>
         </div>
     </section>
@@ -1996,45 +2971,45 @@ const server = http.createServer((req, res) => {
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h4>STAY DRIPPED IV & WELLNESS</h4>
-                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Leading provider of personalized mobile IV therapy and wellness services in Scottsdale, AZ. Professional, convenient, and effective treatments delivered directly to you.</p>
+                    <h4>STAY DRIPPED IV & WELLNESS CO.</h4>
+                    <p style="margin-bottom: 24px; line-height: 1.6; opacity: 0.8;">Revolutionary wellness pioneer delivering cutting-edge precision medicine, advanced biomarker optimization, elite mobile infusion therapy, and personalized longevity protocols to discerning clients in Scottsdale, AZ.</p>
                     <div>
-                        <p style="margin-bottom: 8px;">📞 (480) 555-0123</p>
-                        <p style="margin-bottom: 8px;">✉️ info@staydrippediv.com</p>
-                        <p>📍 Scottsdale, AZ - Mobile Service Area</p>
+                        <p style="margin-bottom: 8px;">📞 (602) 761-0492</p>
+                        <p style="margin-bottom: 8px;">✉️ info@staydrippedmobileiv.com</p>
+                        <p>📍 Scottsdale, AZ</p>
                     </div>
                 </div>
                 <div>
-                    <h4>IV THERAPY</h4>
+                    <h4>PRECISION MEDICINE</h4>
                     <ul>
-                        <li><a href="#packages">Classic Hydration</a></li>
-                        <li><a href="#packages">Energy & Performance</a></li>
-                        <li><a href="#packages">Immunity Boost</a></li>
-                        <li><a href="#packages">Recovery & Detox</a></li>
-                        <li><a href="#packages">Beauty Glow</a></li>
-                        <li><a href="#packages">Hangover Cure</a></li>
+                        <li><a href="#">Endocrine Enhancement</a></li>
+                        <li><a href="#">Metabolic Optimization</a></li>
+                        <li><a href="#">Longevity Protocols</a></li>
+                        <li><a href="#">Performance Enhancement</a></li>
+                        <li><a href="#">Cognitive Optimization</a></li>
+                        <li><a href="#">Regenerative Therapies</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>WELLNESS SERVICES</h4>
+                    <h4>ELITE INFUSION THERAPY</h4>
                     <ul>
-                        <li><a href="#wellness">Sexual Wellness</a></li>
-                        <li><a href="#wellness">Weight Loss</a></li>
-                        <li><a href="#wellness">Anti-Aging</a></li>
-                        <li><a href="#wellness">Cognitive Health</a></li>
-                        <li><a href="#wellness">Hair Loss Treatment</a></li>
-                        <li><a href="#wellness">Travel Recovery</a></li>
+                        <li><a href="#">Vital Restore Protocol - $195</a></li>
+                        <li><a href="#">Cognitive Power Infusion - $285</a></li>
+                        <li><a href="#">Recovery Elite Formula - $225</a></li>
+                        <li><a href="#">Radiance Pro Treatment - $350</a></li>
+                        <li><a href="#">Peak Performance Protocol - $395</a></li>
+                        <li><a href="#">Executive Wellness Programs</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>COMPANY</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Our Services</a></li>
-                        <li><a href="#" onclick="showFAQ()">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
                         <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -2048,18 +3023,21 @@ const server = http.createServer((req, res) => {
     <div id="loginModal" class="modal-overlay">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div id="title">LOGIN</div>
-            <input type="email" id="loginEmail" placeholder="Email">
-            <input type="password" id="loginPassword" placeholder="Password">
-            <div id="button">
-                <div class="rip1"></div>
-                <div class="rip2"></div>
-                <input type="submit" value="LOGIN" onclick="handleLogin()">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email">
             </div>
-            <div id="linksParent">
-                <a onclick="showSignup()">Don't have an account? Sign up</a>
-                <a href="#">Forgot Password?</a>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password">
             </div>
+            <button class="btn btn-primary" onclick="handleLogin()" style="width: 100%; margin-top: 1rem;">
+                Login
+            </button>
+            <p style="text-align: center; margin-top: 1rem; color: #666;">
+                Don't have an account? <a href="#" onclick="showSignup()" style="color: var(--iv-primary);">Sign up</a>
+            </p>
         </div>
     </div>
 
@@ -2067,301 +3045,271 @@ const server = http.createServer((req, res) => {
     <div id="signupModal" class="modal-overlay">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <div id="title">SIGN UP</div>
-            <input type="text" id="signupName" placeholder="Full Name">
-            <input type="email" id="signupEmail" placeholder="Email">
-            <input type="password" id="signupPassword" placeholder="Password">
-            <div id="button">
-                <div class="rip1"></div>
-                <div class="rip2"></div>
-                <input type="submit" value="SIGN UP" onclick="handleSignup()">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <label for="signupName">Full Name</label>
+                <input type="text" id="signupName" placeholder="Enter your full name">
             </div>
-            <div id="linksParent">
-                <a onclick="showLogin()">Already have an account? Login</a>
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" placeholder="Create a password">
+            </div>
+            <button class="btn btn-primary" onclick="handleSignup()" style="width: 100%; margin-top: 1rem;">
+                Sign Up
+            </button>
+            <p style="text-align: center; margin-top: 1rem; color: #666;">
+                Already have an account? <a href="#" onclick="showLogin()" style="color: var(--iv-primary);">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Client Portal Modal -->
+    <div id="clientPortalModal" class="modal-overlay">
+        <div class="modal" style="max-width: 800px; width: 95%; max-height: 90vh; overflow-y: auto;">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--brand-dark);">Client Portal</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666; font-size: 16px;">
+                Access your appointments, treatment history, and manage your wellness journey
+            </p>
+
+            <!-- IntakeQ Client Area Widget -->
+            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(44, 62, 80, 0.2);">
+                <script>
+                (function (c) {
+                    // Clear any existing IntakeQ configuration
+                    if (window.intakeq) {
+                        delete window.intakeq;
+                        delete window.intakeqCategoryId;
+                        delete window.intakeqServiceId;
+                        delete window.intakeqClientArea;
+                    }
+
+                    window.intakeq = "68460f36bc104b6aa9da43e0";
+                    window.intakeqClientArea = true;
+
+                    var i = c.createElement("script");
+                    i.type = "text/javascript";
+                    i.async = true;
+                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
+                    i.onload = function() {
+                        console.log('IntakeQ Client Portal widget loaded');
+                    };
+                    document.head.appendChild(i);
+                })(document);
+                </script>
+                <div id="intakeq-client-portal" style="min-height: 400px; width: 100%;"></div>
+            </div>
+
+            <!-- Fallback Link -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p style="color: #666; margin-bottom: 1rem;">Having trouble? Access the full portal directly:</p>
+                <a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span>🔗</span> Open Full Client Portal
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // IV Therapy Packages data
-        const ivPackages = [
-            {
-                id: 1,
-                name: "The Classic Hydration",
-                type: "hydration",
-                price: 150,
-                duration: "30-45 mins",
-                rating: 4.9,
-                reviews: 324,
-                description: "Perfect for dehydration, hangovers, and general wellness",
-                ingredients: ["Normal Saline", "Electrolytes", "B-Complex", "Vitamin C"],
-                benefits: ["Rapid rehydration", "Hangover relief", "Energy boost", "Improved skin"],
-                favorite: false,
-                popular: true
-            },
-            {
-                id: 2,
-                name: "Energy & Performance",
-                type: "energy",
-                price: 225,
-                duration: "45-60 mins",
-                rating: 4.8,
-                reviews: 198,
-                description: "Boost energy levels and enhance athletic performance",
-                ingredients: ["Amino Acids", "B-Complex", "Vitamin C", "Magnesium", "Taurine"],
-                benefits: ["Increased energy", "Enhanced focus", "Muscle recovery", "Endurance boost"],
-                favorite: false,
-                popular: false
-            },
-            {
-                id: 3,
-                name: "Immunity Boost",
-                type: "immunity",
-                price: 200,
-                duration: "45 mins",
-                rating: 4.9,
-                reviews: 267,
-                description: "Strengthen your immune system and fight off illness",
-                ingredients: ["High-dose Vitamin C", "Zinc", "Glutathione", "B-Complex"],
-                benefits: ["Immune support", "Antioxidant boost", "Faster recovery", "Illness prevention"],
-                favorite: false,
-                popular: true
-            },
-            {
-                id: 4,
-                name: "Recovery & Detox",
-                type: "recovery",
-                price: 275,
-                duration: "60 mins",
-                rating: 4.7,
-                reviews: 156,
-                description: "Accelerate recovery and eliminate toxins",
-                ingredients: ["Glutathione", "NAD+", "Vitamin C", "B-Complex", "Magnesium"],
-                benefits: ["Cellular repair", "Toxin elimination", "Anti-aging", "Mental clarity"],
-                favorite: false,
-                popular: false
-            },
-            {
-                id: 5,
-                name: "Beauty Glow",
-                type: "beauty",
-                price: 250,
-                duration: "45 mins",
-                rating: 4.8,
-                reviews: 189,
-                description: "Enhance skin radiance and promote healthy hair and nails",
-                ingredients: ["Biotin", "Glutathione", "Vitamin C", "Collagen precursors"],
-                benefits: ["Glowing skin", "Hair growth", "Nail strength", "Anti-aging"],
-                favorite: false,
-                popular: true
-            },
-            {
-                id: 6,
-                name: "The Executive",
-                type: "energy",
-                price: 300,
-                duration: "60 mins",
-                rating: 4.9,
-                reviews: 142,
-                description: "Premium package for busy professionals",
-                ingredients: ["NAD+", "B-Complex", "Vitamin C", "Magnesium", "Amino Acids", "Glutathione"],
-                benefits: ["Mental clarity", "Stress relief", "Energy boost", "Immune support"],
-                favorite: false,
-                popular: false
-            },
-            {
-                id: 7,
-                name: "Hangover Cure",
-                type: "recovery",
-                price: 175,
-                duration: "30 mins",
-                rating: 4.8,
-                reviews: 412,
-                description: "Fast relief from hangover symptoms",
-                ingredients: ["Normal Saline", "B-Complex", "Anti-nausea medication", "Electrolytes"],
-                benefits: ["Nausea relief", "Rehydration", "Headache relief", "Energy restoration"],
-                favorite: false,
-                popular: true
-            },
-            {
-                id: 8,
-                name: "Athletic Recovery",
-                type: "recovery",
-                price: 225,
-                duration: "45 mins",
-                rating: 4.9,
-                reviews: 178,
-                description: "Optimize recovery for athletes and fitness enthusiasts",
-                ingredients: ["Amino Acids", "Magnesium", "B-Complex", "Vitamin C", "Electrolytes"],
-                benefits: ["Muscle recovery", "Reduced inflammation", "Energy restoration", "Performance enhancement"],
-                favorite: false,
-                popular: false
-            }
-        ];
-
-        let currentFilter = 'all';
         let currentUser = null;
 
-        // Initialize the page
-        function initializePage() {
-            loadPackages();
-            setMinDate();
-            checkUserSession();
-        }
-
-        // Use DOMContentLoaded for initialization
-        document.addEventListener('DOMContentLoaded', initializePage);
-
-        // Set minimum date to today for date inputs
-        function setMinDate() {
-            const today = new Date().toISOString().split('T')[0];
-            const serviceDateInput = document.getElementById('service-date');
-            if (serviceDateInput) {
-                serviceDateInput.min = today;
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-        }
+        });
 
-        // Load IV therapy packages into the grid
-        function loadPackages() {
-            const packagesGrid = document.getElementById('packages-grid');
-            const filteredPackages = currentFilter === 'all' ? ivPackages : ivPackages.filter(pkg => pkg.type === currentFilter);
-
-            packagesGrid.innerHTML = '';
-
-            if (filteredPackages.length === 0) {
-                packagesGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666;">No packages found for the selected filter.</p>';
-                return;
-            }
-
-            filteredPackages.forEach(pkg => {
-                const packageCard = createPackageCard(pkg);
-                packagesGrid.appendChild(packageCard);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Skip empty hashes or just "#" to prevent invalid selector errors
+                if (!href || href === '#' || href.length <= 1) {
+                    return;
+                }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Direction-aware hover effect JavaScript
+        const nodes = [].slice.call(document.querySelectorAll('.hover-grid li'), 0);
+        const directions = { 0: 'top', 1: 'right', 2: 'bottom', 3: 'left' };
+        const classNames = ['in', 'out'].map((p) => Object.values(directions).map((d) => \`\${p}-\${d}\`)).reduce((a, b) => a.concat(b));
+
+        const getDirectionKey = (ev, node) => {
+            const { width, height, top, left } = node.getBoundingClientRect();
+            const l = ev.pageX - (left + window.pageXOffset);
+            const t = ev.pageY - (top + window.pageYOffset);
+            const x = (l - (width/2) * (width > height ? (height/width) : 1));
+            const y = (t - (height/2) * (height > width ? (width/height) : 1));
+            return Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
         }
 
-        // Create package card element
-        function createPackageCard(pkg) {
-            const card = document.createElement('div');
-            card.className = 'car-card fade-in'; // Reusing car-card styles
-            const packageTypeIcons = {
-                'hydration': '💧',
-                'energy': '⚡',
-                'immunity': '🛡️',
-                'recovery': '🔄',
-                'beauty': '✨'
+        class Item {
+            constructor(element) {
+                this.element = element;    
+                this.element.addEventListener('mouseover', (ev) => this.update(ev, 'in'));
+                this.element.addEventListener('mouseout', (ev) => this.update(ev, 'out'));
+            }
+
+            update(ev, prefix) {
+                this.element.classList.remove(...classNames);
+                this.element.classList.add(\`\${prefix}-\${directions[getDirectionKey(ev, this.element)]}\`);
+            }
+        }
+
+        nodes.forEach(node => new Item(node));
+
+        // Dynamic Navigation Integration
+        async function loadDynamicNavigation() {
+            try {
+                const response = await fetch('/api/navigation');
+                const navData = await response.json();
+                
+                if (navData && navData.subCategories) {
+                    updateNavigationWithDynamicData(navData);
+                    updateTreatmentGrid(navData);
+                }
+            } catch (error) {
+                console.log('Using static navigation - API unavailable');
+            }
+        }
+
+        function updateNavigationWithDynamicData(navData) {
+            const mainNav = document.getElementById('mainNavLinks');
+            const treatmentItems = [];
+            
+            // Create treatment navigation from API data
+            navData.subCategories.forEach(item => {
+                if (item.url && item.url.includes('vitabella.com/') && 
+                    !item.url.includes('membership') && 
+                    item.metadata.probability > 0.92) {
+                    
+                    const urlParts = item.url.split('/');
+                    const slug = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+                    const name = item.name || formatSlugToName(slug);
+                    
+                    treatmentItems.push({ slug, name, probability: item.metadata.probability });
+                }
+            });
+
+            // Add dynamic treatments dropdown if we have data
+            if (treatmentItems.length > 0) {
+                const treatmentsDropdown = createTreatmentsDropdown(treatmentItems);
+                const servicesLink = mainNav.querySelector('a[href="#services"]').parentElement;
+                servicesLink.innerHTML = treatmentsDropdown;
+            }
+        }
+
+        function createTreatmentsDropdown(treatments) {
+            const sortedTreatments = treatments.sort((a, b) => b.probability - a.probability);
+            const dropdownItems = sortedTreatments.map(treatment => 
+                \`<a href="#\${treatment.slug}" onclick="scrollToTreatment('\${treatment.slug}')">\${treatment.name}</a>\`
+            ).join('');
+
+            return \`
+                <div class="nav-dropdown">
+                    <a href="#services" class="dropdown-trigger">Services <span style="font-size: 12px;">▼</span></a>
+                    <div class="dropdown-content">
+                        \${dropdownItems}
+                        <a href="#iv-therapy">IV Therapy</a>
+                    </div>
+                </div>
+            \`;
+        }
+
+        function updateTreatmentGrid(navData) {
+            const treatmentGrid = document.getElementById('dynamicTreatments');
+            const treatments = navData.subCategories
+                .filter(item => item.url && item.url.includes('vitabella.com/') && 
+                               !item.url.includes('membership') && 
+                               item.metadata.probability > 0.92)
+                .sort((a, b) => b.metadata.probability - a.metadata.probability);
+
+            if (treatments.length > 0) {
+                const treatmentHTML = treatments.map(treatment => {
+                    const urlParts = treatment.url.split('/');
+                    const slug = urlParts[urlParts.length - 1] || urlParts[urlParts.length - 2];
+                    const name = treatment.name || formatSlugToName(slug);
+                    const description = getTreatmentDescription(slug);
+                    
+                    return \`
+                        <div class="treatment-item dynamic-treatment" data-url="\${slug}" data-probability="\${treatment.metadata.probability}">
+                            <h4>\${name}</h4>
+                            <p>\${description}</p>
+                            <div class="confidence-indicator" style="font-size: 10px; opacity: 0.7; margin-top: 5px;">
+                                Confidence: \${(treatment.metadata.probability * 100).toFixed(1)}%
+                            </div>
+                        </div>
+                    \`;
+                }).join('');
+                
+                treatmentGrid.innerHTML = treatmentHTML;
+            }
+        }
+
+        function formatSlugToName(slug) {
+            return slug.split('-').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function getTreatmentDescription(slug) {
+            const descriptions = {
+                'weight-loss': 'Medical-grade programs',
+                'hormone-therapy': 'Personalized optimization', 
+                'anti-aging': 'Advanced treatments',
+                'sexual-wellness': 'Restore confidence'
             };
-
-            card.innerHTML =
-                '<div class="car-image" style="position: relative;">' +
-                    '<div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; z-index: 1;">' +
-                        (packageTypeIcons[pkg.type] || '💉') +
-                    '</div>' +
-                    (pkg.popular ? '<div style="position: absolute; top: 10px; left: 10px; background: #ff4757; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 2;">POPULAR</div>' : '') +
-                    '<button class="favorite-btn ' + (pkg.favorite ? 'active' : '') + '" onclick="toggleFavorite(' + pkg.id + ')" style="z-index: 2;">♥</button>' +
-                '</div>' +
-                '<div class="car-info">' +
-                    '<div class="car-header">' +
-                        '<div class="car-name-year">' +
-                            '<h3 class="car-name">' + pkg.name + '</h3>' +
-                            '<p class="car-year">' + pkg.duration + '</p>' +
-                        '</div>' +
-                        '<div class="car-price">$' + pkg.price + '<small>per session</small></div>' +
-                    '</div>' +
-                    '<div class="car-rating">' +
-                        '<div class="stars">' + generateStars(pkg.rating) + '</div>' +
-                        '<span class="rating-text">' + pkg.rating + ' (' + pkg.reviews + ' reviews)</span>' +
-                    '</div>' +
-                    '<div style="margin: 1rem 0; padding: 1rem; background: #f8f9ff; border-radius: 10px;">' +
-                        '<p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">' + pkg.description + '</p>' +
-                    '</div>' +
-                    '<div class="car-features">' +
-                        '<h4 style="font-size: 0.9rem; color: #333; margin-bottom: 0.5rem;">Key Benefits:</h4>' +
-                        '<div class="features-list">' +
-                            pkg.benefits.map(benefit => '<span class="feature-tag">' + benefit + '</span>').join('') +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="car-actions" style="margin-top: 1rem;">' +
-                        '<button class="btn-rent" onclick="bookPackage(' + pkg.id + ')">Book Now</button>' +
-                    '</div>' +
-                '</div>';
-            return card;
+            return descriptions[slug] || 'Specialized treatment';
         }
 
-        // Generate star rating
-        function generateStars(rating) {
-            const fullStars = Math.floor(rating);
-            const hasHalfStar = rating % 1 !== 0;
-            let stars = '';
-            
-            for (let i = 0; i < fullStars; i++) {
-                stars += '⭐';
-            }
-            
-            if (hasHalfStar) {
-                stars += '��';
-            }
-            
-            const emptyStars = 5 - Math.ceil(rating);
-            for (let i = 0; i < emptyStars; i++) {
-                stars += '☆';
-            }
-            
-            return stars;
-        }
-
-        // Filter IV therapy packages
-        function filterPackages(type) {
-            currentFilter = type;
-
-            // Update active filter button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            loadPackages();
-        }
-
-        // Toggle favorite
-        function toggleFavorite(packageId) {
-            const pkg = ivPackages.find(p => p.id === packageId);
-            if (pkg) {
-                pkg.favorite = !pkg.favorite;
-                loadPackages();
-            }
-        }
-
-        // Book service
-        function bookService() {
-            const location = document.getElementById('service-location').value;
-            const serviceDate = document.getElementById('service-date').value;
-            const serviceTime = document.getElementById('service-time').value;
-            const ivType = document.getElementById('iv-type-search').value;
-
-            if (!location || !serviceDate || !serviceTime) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            if (new Date(serviceDate) < new Date()) {
-                alert('Service date cannot be in the past');
-                return;
-            }
-
-            alert('IV Therapy booking confirmed! Details: ' + location + ', ' + serviceDate + ', ' + serviceTime);
-        }
-
-        // Book IV therapy package
-        function bookPackage(packageId) {
-            if (!currentUser) {
-                alert('Please login to book a treatment');
-                showLogin();
-                return;
-            }
-
-            const pkg = ivPackages.find(p => p.id === packageId);
-            if (pkg) {
-                alert('Booking confirmed for ' + pkg.name + '! You will be redirected to payment. Our team will contact you to schedule your appointment.');
+        function scrollToTreatment(slug) {
+            const treatmentElement = document.querySelector(\`[data-url="\${slug}"]\`);
+            if (treatmentElement) {
+                treatmentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                treatmentElement.style.background = 'var(--iv-primary)';
+                treatmentElement.style.color = 'var(--white)';
+                treatmentElement.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    treatmentElement.style.background = '';
+                    treatmentElement.style.color = '';
+                    treatmentElement.style.transform = '';
+                }, 2000);
             }
         }
 
@@ -2374,6 +3322,18 @@ const server = http.createServer((req, res) => {
         function showSignup() {
             closeModal();
             document.getElementById('signupModal').classList.add('active');
+        }
+
+        function showClientPortal() {
+            closeModal();
+            document.getElementById('clientPortalModal').classList.add('active');
+
+            // Initialize IntakeQ client portal widget
+            setTimeout(() => {
+                if (window.IntakeQ && window.IntakeQ.init) {
+                    window.IntakeQ.init();
+                }
+            }, 500);
         }
 
         function closeModal() {
@@ -2444,11 +3404,6 @@ const server = http.createServer((req, res) => {
             }
         }
 
-        function checkUserSession() {
-            // Check if user was logged in (in a real app, this would check localStorage or session)
-            // For demo purposes, we'll keep them logged out
-        }
-
         // Navigation functions
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
@@ -2462,21 +3417,44 @@ const server = http.createServer((req, res) => {
 
         function toggleMenu() {
             const mobileNav = document.getElementById('mobileNav');
-            const menuIcon = document.getElementById('menuIcon');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (mobileNav.style.display === 'block') {
+                mobileNav.style.display = 'none';
+                menuToggle.textContent = '☰';
+            } else {
+                mobileNav.style.display = 'block';
+                menuToggle.textContent = '✕';
+            }
+        }
 
-            if (!mobileNav) {
-                console.error('Mobile nav element not found');
+        // Book IV therapy service
+        function bookService() {
+            const location = document.getElementById('service-location').value;
+            const date = document.getElementById('service-date').value;
+            const time = document.getElementById('service-time').value;
+            const type = document.getElementById('iv-type-search').value;
+            
+            if (!location || !date || !time) {
+                alert('Please fill in all booking fields');
                 return;
             }
+            
+            if (!currentUser) {
+                alert('Please login to book a service');
+                showLogin();
+                return;
+            }
+            
+            alert(\`Mobile IV Therapy booking confirmed!\nLocation: \${location}\nDate: \${date}\nTime: \${time}\nType: \${type || 'All Treatments'}\n\nOur team will contact you to confirm the appointment.\`);
+        }
 
-            mobileNav.classList.toggle('active');
-
-            if (menuIcon) {
-                if (mobileNav.classList.contains('active')) {
-                    menuIcon.textContent = '✕';
-                } else {
-                    menuIcon.textContent = '☰';
-                }
+        // Set minimum date to today
+        function setMinDate() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('service-date');
+            if (dateInput) {
+                dateInput.min = today;
             }
         }
 
@@ -2490,277 +3468,317 @@ const server = http.createServer((req, res) => {
             });
         });
 
-        // Handle service date validation
-        const serviceDateInput = document.getElementById('service-date');
-        if (serviceDateInput) {
-            serviceDateInput.addEventListener('change', function() {
-                const selectedDate = new Date(this.value);
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-
-                if (selectedDate < today) {
-                    alert('Please select a future date for your service.');
-                    this.value = '';
-                }
-            });
-        }
-
-        // Newsletter signup functionality
-        function handleNewsletterSignup() {
-            const emailInput = document.getElementById('newsletter-email');
-            const email = emailInput.value.trim();
-
-            if (!email) {
-                alert('Please enter your email address');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-
-            // Simulate newsletter signup
-            alert('Thank you for subscribing to our newsletter!');
-            emailInput.value = '';
-        }
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Video modal functionality
-        function showVideoModal() {
-            const modal = document.createElement('div');
-            modal.className = 'video-modal-overlay';
-            modal.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 2rem;';
-
-            const modalContent = document.createElement('div');
-            modalContent.style.cssText = 'position: relative; max-width: 800px; width: 100%;';
-
-            // Close button
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '×';
-            closeBtn.style.cssText = 'position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; z-index: 10000;';
-            closeBtn.onclick = () => modal.remove();
-
-            // Video iframe (placeholder - replace with actual video)
-            const videoFrame = document.createElement('iframe');
-            videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Replace with actual video
-            videoFrame.style.cssText = 'width: 100%; height: 450px; border: none; border-radius: 10px;';
-            videoFrame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-            videoFrame.allowFullscreen = true;
-
-            modalContent.appendChild(closeBtn);
-            modalContent.appendChild(videoFrame);
-            modal.appendChild(modalContent);
-
-            // Close on background click
-            modal.onclick = (e) => {
-                if (e.target === modal) modal.remove();
-            };
-
-            document.body.appendChild(modal);
-        }
-
-        // Counter animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const increment = target / 100;
-                let current = 0;
-
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        counter.textContent = Math.floor(current);
-                        setTimeout(updateCounter, 20);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
-
-                updateCounter();
-            });
-        }
-
-        // Intersection Observer for counter animation
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    counterObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe stats section when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            const statsSection = document.querySelector('.stats-section');
-            if (statsSection) {
-                counterObserver.observe(statsSection);
-            }
-
-            // Initialize all scroll animations
-            initScrollAnimations();
-
-            // Initialize enhanced interactions
-            initEnhancedInteractions();
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            setMinDate();
+            loadDynamicNavigation();
         });
 
-        // Header scroll effect
+        // Enhanced scroll animations with stagger effect
         function initScrollAnimations() {
-            window.addEventListener('scroll', function() {
-                const header = document.getElementById('header');
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+            const animatedElements = document.querySelectorAll('.scroll-animate');
 
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
                     }
                 });
-            }, observerOptions);
-
-            document.querySelectorAll('.scroll-animate').forEach(el => {
-                observer.observe(el);
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
+
+            animatedElements.forEach(el => observer.observe(el));
         }
 
-        // Enhanced button interactions
-        function initEnhancedInteractions() {
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
-                });
+        // Enhanced hover card direction detection
+        function initDirectionalHovers() {
+            const hoverCards = document.querySelectorAll('.hover-card-item');
 
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
+            hoverCards.forEach(card => {
+                card.addEventListener('mouseenter', function(e) {
+                    // Add subtle scale effect
+                    this.style.transform = 'scale(1.02)';
 
-            // Service card hover effects
-            document.querySelectorAll('.service-card, .feature-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
+                    // Add entrance animation based on hover direction
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const w = rect.width;
+                    const h = rect.height;
+
+                    // Determine direction for animation
+                    if (y < h * 0.5 && x > w * 0.25 && x < w * 0.75) {
+                        this.classList.add('hover-from-top');
+                    } else if (x > w * 0.5 && y > h * 0.25 && y < h * 0.75) {
+                        this.classList.add('hover-from-right');
+                    } else {
+                        this.classList.add('hover-from-center');
+                    }
                 });
 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
+                    this.style.transform = '';
+                    this.classList.remove('hover-from-top', 'hover-from-right', 'hover-from-center');
                 });
             });
         }
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Add sparkle effect to glassmorphism elements
+        function addSparkleEffect() {
+            const glassmorphElements = document.querySelectorAll('.service-card-enhanced, .floating-card');
 
-        // FAQ functionality
-        const faqs = [
-            {
-                question: "What is IV therapy and how does it work?",
-                answer: "IV therapy delivers vitamins, minerals, and medications directly into your bloodstream through a small catheter. This allows for 100% absorption and faster results compared to oral supplements. Our treatments are administered by licensed medical professionals in the comfort of your chosen location."
-            },
-            {
-                question: "Is IV therapy safe?",
-                answer: "Yes, our IV therapy treatments are very safe when administered by our licensed medical professionals. We use only pharmaceutical-grade ingredients and FDA-approved medications. All equipment is sterile and single-use to ensure your safety."
-            },
-            {
-                question: "How long does an IV therapy session take?",
-                answer: "Most IV therapy sessions take between 30-60 minutes, depending on the specific treatment you choose. Our medical professional will stay with you throughout the entire process to monitor your comfort and wellbeing."
-            },
-            {
-                question: "What areas do you serve?",
-                answer: "We provide mobile IV therapy services throughout Scottsdale, AZ and surrounding areas. We come to your home, office, hotel, or any location where you're comfortable receiving treatment."
-            },
-            {
-                question: "Who can receive IV therapy?",
-                answer: "Most healthy adults can safely receive IV therapy. However, we require a brief health screening before each treatment. Certain medical conditions or medications may prevent you from receiving specific treatments, which our medical professionals will assess."
-            },
-            {
-                question: "How often can I get IV therapy?",
-                answer: "The frequency depends on your specific needs and the type of treatment. Some clients receive treatments weekly for ongoing wellness, while others use our services occasionally for recovery or specific health goals. Our medical professionals will recommend the best schedule for you."
-            },
-            {
-                question: "Do you accept insurance?",
-                answer: "Currently, most IV therapy treatments are not covered by insurance as they are considered elective wellness services. However, we offer competitive pricing and package deals to make our services accessible. We can provide receipts for potential HSA/FSA reimbursement."
-            },
-            {
-                question: "What should I expect during my first treatment?",
-                answer: "Our medical professional will arrive at your location with all necessary equipment. They'll review your health history, explain the treatment, and answer any questions. The IV insertion is typically painless, and you can relax, work, or watch TV during your treatment."
-            },
-            {
-                question: "Can I customize my IV treatment?",
-                answer: "Absolutely! While we offer popular pre-designed packages, our medical professionals can customize treatments based on your specific health goals, lifestyle, and needs. We'll work with you to create the perfect blend of nutrients and medications."
-            },
-            {
-                question: "How quickly will I feel the effects?",
-                answer: "Many clients feel the effects immediately or within a few hours of treatment. Energy boosts and hydration effects are typically felt quickly, while immune and beauty benefits may take 24-48 hours to fully manifest. Results vary by individual and treatment type."
+            glassmorphElements.forEach(element => {
+                element.addEventListener('mouseenter', function(e) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle-effect';
+                    sparkle.style.cssText = 'position: absolute; top: ' + (e.offsetY - 2) + 'px; left: ' + (e.offsetX - 2) + 'px; width: 4px; height: 4px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%); border-radius: 50%; pointer-events: none; animation: sparkle 0.6s ease-out forwards; z-index: 1000;';
+
+                    // Add sparkle animation if not exists
+                    if (!document.getElementById('sparkle-styles')) {
+                        const style = document.createElement('style');
+                        style.id = 'sparkle-styles';
+                        style.textContent = '@keyframes sparkle { 0% { transform: scale(0) rotate(0deg); opacity: 1; } 50% { transform: scale(1) rotate(180deg); opacity: 1; } 100% { transform: scale(0) rotate(360deg); opacity: 0; } }';
+                        document.head.appendChild(style);
+                    }
+
+                    this.style.position = 'relative';
+                    this.appendChild(sparkle);
+
+                    setTimeout(() => sparkle.remove(), 600);
+                });
+            });
+        }
+
+        // Enhanced button interactions with ripple effect
+        function enhanceButtons() {
+            const buttons = document.querySelectorAll('.btn-iv-therapy');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.className = 'ripple-effect';
+                    ripple.style.cssText = 'position: absolute; top: ' + y + 'px; left: ' + x + 'px; width: ' + size + 'px; height: ' + size + 'px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; transform: scale(0); animation: ripple 0.6s ease-out; pointer-events: none;';
+
+                    // Add ripple animation if not exists
+                    if (!document.getElementById('ripple-styles')) {
+                        const style = document.createElement('style');
+                        style.id = 'ripple-styles';
+                        style.textContent = '@keyframes ripple { to { transform: scale(2); opacity: 0; } }';
+                        document.head.appendChild(style);
+                    }
+
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        }
+
+        // Enhanced vial interactions
+        function enhanceVialInteractions() {
+            const vialHighlights = document.querySelectorAll('.vial-highlight');
+
+            const vialInfo = {
+                'amino': 'Essential amino acids for muscle recovery and energy',
+                'b-complex': 'B-vitamins for energy metabolism and brain function',
+                'glutathione': 'Master antioxidant for detox and cellular health',
+                'vitamin-b12': 'Energy boost and nervous system support'
+            };
+
+            vialHighlights.forEach(vial => {
+                vial.addEventListener('click', function() {
+                    const vialType = this.getAttribute('data-vial');
+                    const info = vialInfo[vialType];
+
+                    // Create info popup
+                    const popup = document.createElement('div');
+                    popup.className = 'vial-info-popup';
+                    popup.innerHTML = '<p>' + info + '</p>';
+                    popup.style.cssText = 'position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.9); color: white; padding: 10px 15px; border-radius: 8px; font-size: 12px; white-space: nowrap; z-index: 1000; animation: fadeInUp 0.3s ease;';
+
+                    this.style.position = 'relative';
+                    this.appendChild(popup);
+
+                    setTimeout(() => popup.remove(), 3000);
+
+                    // Add pulse effect
+                    this.style.animation = 'vialPulse 0.6s ease';
+                    setTimeout(() => this.style.animation = '', 600);
+                });
+            });
+
+            // Add vial pulse animation
+            if (!document.getElementById('vial-animation-styles')) {
+                const style = document.createElement('style');
+                style.id = 'vial-animation-styles';
+                style.textContent = '@keyframes vialPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }';
+                document.head.appendChild(style);
             }
+        }
+
+        // Team Carousel Functionality
+        const teamMembers = [
+            { name: "Dr. Emily Rodriguez", role: "Medical Director" },
+            { name: "Dr. Michael Chen", role: "Lead Physician" },
+            { name: "Sarah Johnson", role: "Nurse Practitioner" },
+            { name: "Dr. James Wilson", role: "Wellness Specialist" },
+            { name: "Lisa Martinez", role: "IV Therapy Coordinator" },
+            { name: "Dr. Amanda Thompson", role: "Hormone Specialist" }
         ];
 
-        function showFAQ() {
-            const existingModal = document.querySelector('.faq-overlay');
-            if (existingModal) {
-                existingModal.remove();
-                return;
+        function initTeamCarousel() {
+            const cards = document.querySelectorAll(".card");
+            const dots = document.querySelectorAll(".dot");
+            const memberName = document.querySelector(".member-name");
+            const memberRole = document.querySelector(".member-role");
+            const leftArrow = document.querySelector(".nav-arrow.left");
+            const rightArrow = document.querySelector(".nav-arrow.right");
+
+            if (!cards.length || !dots.length || !memberName || !memberRole || !leftArrow || !rightArrow) {
+                return; // Elements not found, skip initialization
             }
 
-            const faqContainer = document.createElement('div');
-            faqContainer.className = 'faq-overlay';
-            faqContainer.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 2rem;';
+            let currentIndex = 0;
+            let isAnimating = false;
 
-            let faqHTML = '<div style="background: white; border-radius: 20px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 2rem;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;"><h2 style="margin: 0; color: #333;">Frequently Asked Questions</h2><button onclick="this.closest(\\".faq-overlay\\").remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button></div>';
+            function updateCarousel(newIndex) {
+                if (isAnimating) return;
+                isAnimating = true;
 
-            faqs.forEach((faq, index) => {
-                faqHTML += '<div style="border-bottom: 1px solid #eee; margin-bottom: 1rem; padding-bottom: 1rem;"><h3 style="color: #667eea; margin-bottom: 0.5rem; cursor: pointer;" onclick="toggleFAQ(' + index + ')">' + faq.question + ' <span id="faq-icon-' + index + '">+</span></h3><div id="faq-answer-' + index + '" style="display: none; color: #666; line-height: 1.6;">' + faq.answer + '</div></div>';
+                currentIndex = (newIndex + cards.length) % cards.length;
+
+                cards.forEach((card, i) => {
+                    const offset = (i - currentIndex + cards.length) % cards.length;
+
+                    card.classList.remove(
+                        "center",
+                        "left-1",
+                        "left-2",
+                        "right-1",
+                        "right-2",
+                        "hidden"
+                    );
+
+                    if (offset === 0) {
+                        card.classList.add("center");
+                    } else if (offset === 1) {
+                        card.classList.add("right-1");
+                    } else if (offset === 2) {
+                        card.classList.add("right-2");
+                    } else if (offset === cards.length - 1) {
+                        card.classList.add("left-1");
+                    } else if (offset === cards.length - 2) {
+                        card.classList.add("left-2");
+                    } else {
+                        card.classList.add("hidden");
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
+
+                memberName.style.opacity = "0";
+                memberRole.style.opacity = "0";
+
+                setTimeout(() => {
+                    memberName.textContent = teamMembers[currentIndex].name;
+                    memberRole.textContent = teamMembers[currentIndex].role;
+                    memberName.style.opacity = "1";
+                    memberRole.style.opacity = "1";
+                }, 300);
+
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 800);
+            }
+
+            leftArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex - 1);
             });
 
-            faqHTML += '</div>';
-            faqContainer.innerHTML = faqHTML;
-            document.body.appendChild(faqContainer);
-        }
+            rightArrow.addEventListener("click", () => {
+                updateCarousel(currentIndex + 1);
+            });
 
-        function toggleFAQ(index) {
-            const answer = document.getElementById('faq-answer-' + index);
-            const icon = document.getElementById('faq-icon-' + index);
+            dots.forEach((dot, i) => {
+                dot.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
 
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-                icon.textContent = '-';
-            } else {
-                answer.style.display = 'none';
-                icon.textContent = '+';
+            cards.forEach((card, i) => {
+                card.addEventListener("click", () => {
+                    updateCarousel(i);
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") {
+                    updateCarousel(currentIndex - 1);
+                } else if (e.key === "ArrowRight") {
+                    updateCarousel(currentIndex + 1);
+                }
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener("touchstart", (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener("touchend", (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        updateCarousel(currentIndex + 1);
+                    } else {
+                        updateCarousel(currentIndex - 1);
+                    }
+                }
             }
+
+            updateCarousel(0);
         }
+
+        // Loading animation with enhanced effects
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+
+            // Initialize all enhanced visual effects
+            initScrollAnimations();
+            initDirectionalHovers();
+            addSparkleEffect();
+            enhanceButtons();
+            enhanceVialInteractions();
+            initTeamCarousel();
+
+            // Staggered fade-in for hero elements
+            const heroElements = document.querySelectorAll('.fade-in-up');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = (0.2 + (index * 0.1)) + 's';
+            });
+        });
     </script>
 </body>
 </html>`;
@@ -2775,5 +3793,5 @@ const server = http.createServer((req, res) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Ridex Car Rental Server running on http://localhost:${PORT}`);
+  console.log(`Stay Dripped IV & Wellness Co. - Complete Mobile IV Therapy Website running on http://localhost:${PORT}`);
 });
