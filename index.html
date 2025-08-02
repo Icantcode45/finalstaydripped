@@ -3152,10 +3152,12 @@
 
         // Dynamic Navigation Integration
         async function loadDynamicNavigation() {
+            // Commented out for static hosting - API endpoints not available
+            /*
             try {
                 const response = await fetch('/api/navigation');
                 const navData = await response.json();
-                
+
                 if (navData && navData.subCategories) {
                     updateNavigationWithDynamicData(navData);
                     updateTreatmentGrid(navData);
@@ -3163,6 +3165,8 @@
             } catch (error) {
                 console.log('Using static navigation - API unavailable');
             }
+            */
+            console.log('Dynamic navigation disabled for static hosting');
         }
 
         function updateNavigationWithDynamicData(navData) {
