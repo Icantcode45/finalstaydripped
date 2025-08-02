@@ -652,23 +652,17 @@
                     
                     <div id="widget-diamond-nad" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDiamondNad = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDiamondNad = "1a0e76e3-7548-4039-a737-efe993bfdbfd";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?10";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-diamond-nad', {
-                                            practiceId: window.intakeqDiamondNad,
-                                            serviceId: window.intakeqServiceIdDiamondNad
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDiamondNad = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDiamondNad = "1a0e76e3-7548-4039-a737-efe993bfdbfd";
+
+                            function loadDiamondNadWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-diamond-nad', {
+                                        practiceId: window.intakeqDiamondNad,
+                                        serviceId: window.intakeqServiceIdDiamondNad
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-diamond-nad" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -691,23 +685,17 @@
                     
                     <div id="widget-elite-nad" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqEliteNad = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdEliteNad = "1af0f33f-361e-42db-8a06-a87f653a5cb1";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?11";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-elite-nad', {
-                                            practiceId: window.intakeqEliteNad,
-                                            serviceId: window.intakeqServiceIdEliteNad
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqEliteNad = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdEliteNad = "1af0f33f-361e-42db-8a06-a87f653a5cb1";
+
+                            function loadEliteNadWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-elite-nad', {
+                                        practiceId: window.intakeqEliteNad,
+                                        serviceId: window.intakeqServiceIdEliteNad
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-elite-nad" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -730,23 +718,17 @@
                     
                     <div id="widget-metabolism-booster" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqMetabolismBooster = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdMetabolismBooster = "af87e9d3-a72c-4a63-9317-4013d18bd576";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?12";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-metabolism-booster', {
-                                            practiceId: window.intakeqMetabolismBooster,
-                                            serviceId: window.intakeqServiceIdMetabolismBooster
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqMetabolismBooster = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdMetabolismBooster = "af87e9d3-a72c-4a63-9317-4013d18bd576";
+
+                            function loadMetabolismBoosterWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-metabolism-booster', {
+                                        practiceId: window.intakeqMetabolismBooster,
+                                        serviceId: window.intakeqServiceIdMetabolismBooster
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-metabolism-booster" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
