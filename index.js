@@ -2792,8 +2792,15 @@ const server = http.createServer(async (req, res) => {
 
                 <!-- Vitamin Injection Shots -->
                 <div class="booking-category-card service-card-enhanced" style="padding: 40px; border-radius: 24px;">
-                    <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Vitamin Injection Shots</h3>
-                    <p style="margin-bottom: 24px; opacity: 0.8;">Quick and effective vitamin injections for immediate energy and wellness benefits.</p>
+                    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <h3 style="color: var(--brand-primary); margin-bottom: 16px;">Vitamin Injection Shots</h3>
+                            <p style="margin-bottom: 24px; opacity: 0.8;">Quick and effective vitamin injections for immediate energy and wellness benefits.</p>
+                        </div>
+                        <div style="flex-shrink: 0;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Fc446a3c079eb41d1b8d2348b17a3f507?format=webp&width=800" alt="Vitamin Injection Vials" style="width: 200px; height: auto; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);" />
+                        </div>
+                    </div>
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
