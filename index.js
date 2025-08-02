@@ -3860,6 +3860,19 @@ const server = http.createServer(async (req, res) => {
                 el.style.animationDelay = (0.2 + (index * 0.1)) + 's';
             });
         });
+
+        // Client Portal Dropdown Toggle
+        function toggleClientPortal() {
+            const dropdown = document.getElementById('clientPortalMenu');
+            dropdown.classList.toggle('active');
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.client-portal-dropdown')) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>`;
