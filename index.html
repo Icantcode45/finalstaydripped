@@ -2736,6 +2736,54 @@
             div[style*="gap: 24px"] {
                 gap: 15px !important;
             }
+
+            /* Critical Mobile Fixes for Booking Portal */
+            .booking-portal {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .booking-portal .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 15px !important;
+            }
+
+            /* Fix any wide divs */
+            div[style*="display: flex; align-items: center; gap: 24px"] {
+                flex-direction: column !important;
+                gap: 15px !important;
+                text-align: center !important;
+            }
+
+            div[style*="flex: 1; min-width: 300px"] {
+                min-width: auto !important;
+                width: 100% !important;
+            }
+
+            div[style*="flex-shrink: 0"] {
+                flex-shrink: 1 !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            /* Ensure all images are mobile responsive */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            /* Fix any problematic inline styles */
+            *[style*="width:"] {
+                max-width: 100% !important;
+            }
+
+            *[style*="min-width: 300px"] {
+                min-width: auto !important;
+            }
         }
 
             /* Mobile-specific IV Therapy Enhancements */
@@ -3979,7 +4027,7 @@
                 document.body.style.overflow = '';
             } else {
                 mobileNav.classList.add('active');
-                menuToggle.textContent = '��';
+                menuToggle.textContent = '✕';
                 document.body.style.overflow = 'hidden';
             }
         }
