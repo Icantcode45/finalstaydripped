@@ -825,6 +825,28 @@
         function toggleMenu() {
             alert('Mobile menu feature will be added soon.');
         }
-    </script>
+        </script>
+
+        <!-- Global IntakeQ Widget Loader -->
+        <script>
+            (function() {
+                // Load IntakeQ script once
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src = 'https://intakeq.com/js/widget.min.js';
+                script.onload = function() {
+                    // Initialize all widgets once IntakeQ is loaded
+                    if (window.IntakeQ) {
+                        // Load all widgets
+                        if (typeof loadSunDevilWidget === 'function') loadSunDevilWidget();
+                        if (typeof loadDBookWidget === 'function') loadDBookWidget();
+                        if (typeof loadDiamondBackWidget === 'function') loadDiamondBackWidget();
+                        // Add other widget loaders here as needed
+                    }
+                };
+                document.head.appendChild(script);
+            })();
+        </script>
 </body>
 </html>
