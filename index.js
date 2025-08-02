@@ -2591,9 +2591,11 @@ const server = http.createServer(async (req, res) => {
         </nav>
         <div class="mobile-nav" id="mobileNav">
             <ul>
-                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
-                <li><a href="/book-ivtherapy" onclick="toggleMenu();">Book IV Therapy</a></li>
-                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
+                <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Home</a></li>
+                <li><a href="/book-ivtherapy" onclick="toggleMenu();">IV Cocktail Menu</a></li>
+                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Peptides</a></li>
+                <li><a href="#weight-management" onclick="scrollToSection('weight-management'); toggleMenu();">Weight Management</a></li>
+                <li><a href="#hormone-therapy" onclick="scrollToSection('hormone-therapy'); toggleMenu();">Hormone Therapy</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
