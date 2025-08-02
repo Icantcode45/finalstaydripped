@@ -4082,6 +4082,262 @@ Our team will contact you to confirm the appointment.`);
                 el.style.animationDelay = (0.2 + (index * 0.1)) + 's';
             });
         });
+
+        // Device Detection and Optimization System
+        (function() {
+            const deviceInfo = {
+                type: 'desktop',
+                os: 'unknown',
+                browser: 'unknown',
+                isTouch: false,
+                connection: 'unknown',
+                pixelRatio: window.devicePixelRatio || 1,
+                screenSize: {
+                    width: window.screen.width,
+                    height: window.screen.height
+                },
+                viewportSize: {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                }
+            };
+
+            // Device Type Detection
+            function detectDevice() {
+                const userAgent = navigator.userAgent.toLowerCase();
+                const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+                // iPhone Detection
+                if (/iphone/.test(userAgent)) {
+                    deviceInfo.type = 'iphone';
+                    deviceInfo.os = 'ios';
+                }
+                // iPad Detection
+                else if (/ipad/.test(userAgent) || (navigator.platform === 'MacIntel' && isTouch)) {
+                    deviceInfo.type = 'ipad';
+                    deviceInfo.os = 'ios';
+                }
+                // Android Mobile
+                else if (/android/.test(userAgent) && /mobile/.test(userAgent)) {
+                    deviceInfo.type = 'mobile';
+                    deviceInfo.os = 'android';
+                }
+                // Android Tablet
+                else if (/android/.test(userAgent)) {
+                    deviceInfo.type = 'tablet';
+                    deviceInfo.os = 'android';
+                }
+                // General Mobile Detection
+                else if (isTouch && window.innerWidth <= 768) {
+                    deviceInfo.type = 'mobile';
+                }
+                // General Tablet Detection
+                else if (isTouch && window.innerWidth <= 1024) {
+                    deviceInfo.type = 'tablet';
+                }
+                // Desktop
+                else {
+                    deviceInfo.type = 'desktop';
+                }
+
+                deviceInfo.isTouch = isTouch;
+
+                // Browser Detection
+                if (/safari/.test(userAgent) && !/chrome/.test(userAgent)) {
+                    deviceInfo.browser = 'safari';
+                } else if (/chrome/.test(userAgent)) {
+                    deviceInfo.browser = 'chrome';
+                } else if (/firefox/.test(userAgent)) {
+                    deviceInfo.browser = 'firefox';
+                }
+            }
+
+            // Connection Speed Detection
+            function detectConnection() {
+                if ('connection' in navigator) {
+                    const connection = navigator.connection;
+                    deviceInfo.connection = connection.effectiveType || 'unknown';
+                }
+            }
+
+            // Apply Device-Specific Optimizations
+            function applyOptimizations() {
+                const body = document.body;
+                const html = document.documentElement;
+
+                // Remove existing device classes
+                body.classList.remove('device-mobile', 'device-iphone', 'device-ipad', 'device-tablet', 'device-desktop');
+
+                // Add device-specific class
+                body.classList.add(`device-${deviceInfo.type}`);
+
+                // Add touch capability
+                if (deviceInfo.isTouch) {
+                    body.classList.add('device-touch');
+                } else {
+                    body.classList.add('device-no-touch');
+                }
+
+                // Connection-based optimizations
+                if (deviceInfo.connection === 'slow-2g' || deviceInfo.connection === '2g') {
+                    body.classList.add('connection-slow');
+                    // Disable complex animations for slow connections
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .connection-slow * {
+                            animation-duration: 0.1s !important;
+                            transition-duration: 0.1s !important;
+                        }
+                        .connection-slow .floating-card {
+                            animation: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                // High DPI optimizations
+                if (deviceInfo.pixelRatio >= 2) {
+                    body.classList.add('high-dpi');
+                }
+
+                // Viewport-based optimizations
+                optimizeForViewport();
+            }
+
+            // Viewport-Specific Optimizations
+            function optimizeForViewport() {
+                const viewport = deviceInfo.viewportSize;
+                const body = document.body;
+
+                // Small screen optimizations
+                if (viewport.width <= 480) {
+                    body.classList.add('viewport-small');
+                    // Reduce blur effects for performance
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .viewport-small .glass-effect {
+                            backdrop-filter: blur(4px) !important;
+                            -webkit-backdrop-filter: blur(4px) !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+
+                // Large screen enhancements
+                if (viewport.width >= 1920) {
+                    body.classList.add('viewport-large');
+                    // Enhanced effects for large screens
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .viewport-large .service-card:hover {
+                            transform: translateY(-12px) scale(1.02);
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+
+            // Performance Monitoring
+            function monitorPerformance() {
+                if ('PerformanceObserver' in window) {
+                    const observer = new PerformanceObserver((list) => {
+                        const entries = list.getEntries();
+                        entries.forEach((entry) => {
+                            if (entry.entryType === 'paint' && entry.name === 'first-contentful-paint') {
+                                // If FCP is slow, reduce animations
+                                if (entry.startTime > 2000) {
+                                    document.body.classList.add('performance-limited');
+                                    const style = document.createElement('style');
+                                    style.textContent = `
+                                        .performance-limited * {
+                                            animation-duration: 0.1s !important;
+                                            transition-duration: 0.1s !important;
+                                        }
+                                    `;
+                                    document.head.appendChild(style);
+                                }
+                            }
+                        });
+                    });
+                    observer.observe({ entryTypes: ['paint'] });
+                }
+            }
+
+            // Lazy Loading for Mobile Devices
+            function setupLazyLoading() {
+                if (deviceInfo.type === 'mobile' || deviceInfo.type === 'iphone') {
+                    const images = document.querySelectorAll('img');
+                    const imageObserver = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const img = entry.target;
+                                img.loading = 'lazy';
+                                imageObserver.unobserve(img);
+                            }
+                        });
+                    });
+
+                    images.forEach((img) => imageObserver.observe(img));
+                }
+            }
+
+            // Touch Optimizations
+            function setupTouchOptimizations() {
+                if (deviceInfo.isTouch) {
+                    // Add touch-friendly hover effects
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .device-touch .btn:active,
+                        .device-touch .service-card:active {
+                            transform: scale(0.98);
+                            transition: transform 0.1s ease;
+                        }
+
+                        .device-touch .treatment-item:active {
+                            background: rgba(255, 255, 255, 0.2);
+                        }
+                    `;
+                    document.head.appendChild(style);
+
+                    // Prevent zoom on double tap for iOS
+                    if (deviceInfo.type === 'iphone' || deviceInfo.type === 'ipad') {
+                        const viewport = document.querySelector('meta[name="viewport"]');
+                        if (viewport) {
+                            viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+                        }
+                    }
+                }
+            }
+
+            // Initialize Device Detection
+            function init() {
+                detectDevice();
+                detectConnection();
+                applyOptimizations();
+                monitorPerformance();
+                setupLazyLoading();
+                setupTouchOptimizations();
+
+                // Console log for debugging
+                console.log('Device Info:', deviceInfo);
+
+                // Update optimizations on resize
+                window.addEventListener('resize', () => {
+                    deviceInfo.viewportSize = {
+                        width: window.innerWidth,
+                        height: window.innerHeight
+                    };
+                    optimizeForViewport();
+                });
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
     </script>
 </body>
 </html>
