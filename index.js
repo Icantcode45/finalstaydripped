@@ -2533,8 +2533,7 @@ const server = http.createServer(async (req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                Stay Dripped
-                <span class="logo-subtitle">IV & Wellness Co.</span>
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
             </a>
             <ul class="nav-links" id="mainNavLinks">
                 <li><a href="/">Home</a></li>
@@ -2770,7 +2769,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">☀️ The "Sun Devil" Energy Booster</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🏀 The "D-Book" Performance</li>
-                            <li style="padding: 8px 0;">�� The "Diamond-Back" Immune Boost</li>
+                            <li style="padding: 8px 0;">🐍 The "Diamond-Back" Immune Boost</li>
                         </ul>
                     </div>
                     <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book Specialty IV Therapy</a>
