@@ -1333,6 +1333,85 @@
             opacity: 0.9;
         }
 
+        /* Location Section */
+        .location-section {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 60px;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .location-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .location-card h3 {
+            color: var(--brand-primary);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .location-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .location-card li {
+            padding: 8px 0;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: color 0.3s ease;
+        }
+
+        .location-card li:last-child {
+            border-bottom: none;
+        }
+
+        .location-card li:hover {
+            color: var(--brand-primary);
+        }
+
+        .map-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
         /* Team Carousel Section with 3D Glassmorphism */
         .team-section {
             padding: 120px 0;
@@ -2413,6 +2492,24 @@
             .nav-arrow.right {
                 right: 10px;
             }
+
+            /* Location Section Mobile */
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .location-card {
+                padding: 20px;
+            }
+
+            .map-container {
+                padding: 15px;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
         }
     </style>
 </head>
@@ -2427,7 +2524,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#advanced-therapies">Advanced Therapies</a></li>
                 <li><a href="/book-ivtherapy">Cocktail Menu</a></li>
-                <li><a href="#iv-therapy">Elite IV Therapy</a></li>
+                <li><a href="#location">Service Area</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="nav-dropdown">
@@ -2462,7 +2559,7 @@
             <ul>
                 <li><a href="#advanced-therapies" onclick="scrollToSection('advanced-therapies'); toggleMenu();">Advanced Therapies</a></li>
                 <li><a href="/book-ivtherapy" onclick="toggleMenu();">Cocktail Menu</a></li>
-                <li><a href="#iv-therapy" onclick="scrollToSection('iv-therapy'); toggleMenu();">Elite IV Therapy</a></li>
+                <li><a href="#location" onclick="scrollToSection('location'); toggleMenu();">Service Area</a></li>
                 <li><a href="#team" onclick="scrollToSection('team'); toggleMenu();">Our Team</a></li>
                 <li><a href="#contact" onclick="scrollToSection('contact'); toggleMenu();">Contact</a></li>
                 <li><a href="#" onclick="window.open('https://Staydripped.intakeq.com/booking?clientArea=1', '_blank'); toggleMenu();">Client Portal</a></li>
@@ -2479,7 +2576,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in-up">
-                    <h1 class="modern-hero-title">Stay Dripped Wellness</h1>
+                    <h1 class="modern-hero-title">Stay Dripped® Wellness</h1>
                     <div class="hero-tagline">Advanced Wellness Solutions at Your Doorstep</div>
                     <p class="hero-subtitle">
                         Revolutionary mobile wellness therapies combining cutting-edge medical treatments with premium IV therapy. Transform your health with our personalized approach to optimal vitality and performance.
@@ -2674,7 +2771,7 @@
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💉 B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">��� B12 Energy Shot</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
@@ -2845,37 +2942,7 @@
     </section>
 
 
-    <!-- IV Therapy Section -->
-    <section id="iv-therapy" class="iv-section">
-        <div class="container">
-            <div class="iv-content">
-                <div class="scroll-animate">
-                    <h2 class="shadow-text deepshadow">Revolutionary Infusion Therapy</h2>
-                    <h3>Concierge Wellness Redefined</h3>
-                    <p>Transform your wellness journey with our revolutionary mobile infusion therapy. Our board-certified medical team delivers pharmaceutical-grade treatments using cutting-edge protocols, bringing the future of personalized medicine directly to your private sanctuary.</p>
-                    
-                    <ul class="iv-features">
-                        <li>Board-certified physicians & advanced practitioners</li>
-                        <li>Immediate deployment with concierge scheduling</li>
-                        <li>Pharmaceutical-grade nutrients & bioactive compounds</li>
-                        <li>Medical-grade sterile compounding & delivery systems</li>
-                        <li>Precision-dosed protocols tailored to biomarkers</li>
-                        <li>Executive wellness programs & private events</li>
-                        <li>Advanced monitoring & real-time health optimization</li>
-                        <li>Luxury mobile clinic experience with privacy assurance</li>
-                    </ul>
 
-                    <a href="/book-ivtherapy" class="btn btn-iv-therapy">Schedule Elite Treatment</a>
-                </div>
-                <div class="scroll-animate">
-                    <div style="position: relative; overflow: hidden; border-radius: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);">
-                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy" style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.4s ease;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(61, 156, 210, 0.1), rgba(16, 185, 129, 0.1)); opacity: 0; transition: opacity 0.3s ease;" class="image-overlay"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Our Team Section -->
     <section id="team" class="team-section">
@@ -2919,6 +2986,69 @@
                 <div class="dot" data-index="3"></div>
                 <div class="dot" data-index="4"></div>
                 <div class="dot" data-index="5"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Our Service Area</div>
+                <h2 class="section-title">Scottsdale & Surrounding Areas</h2>
+                <p class="section-description">
+                    Stay Dripped® provides premium mobile IV therapy throughout Scottsdale, Arizona and the greater Phoenix metropolitan area. Our team brings wellness directly to your location for the ultimate convenience.
+                </p>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="location-card">
+                        <h3>📍 Primary Service Area</h3>
+                        <ul>
+                            <li>Scottsdale</li>
+                            <li>Paradise Valley</li>
+                            <li>North Phoenix</li>
+                            <li>Cave Creek</li>
+                            <li>Carefree</li>
+                            <li>Fountain Hills</li>
+                        </ul>
+                    </div>
+
+                    <div class="location-card">
+                        <h3>🏨 Service Locations</h3>
+                        <ul>
+                            <li>Private Residences</li>
+                            <li>Hotels & Resorts</li>
+                            <li>Corporate Offices</li>
+                            <li>Event Venues</li>
+                            <li>Vacation Rentals</li>
+                            <li>Wellness Centers</li>
+                        </ul>
+                    </div>
+
+                    <div class="location-card">
+                        <h3>⏰ Service Hours</h3>
+                        <ul>
+                            <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
+                            <li>Saturday: 8:00 AM - 6:00 PM</li>
+                            <li>Sunday: 9:00 AM - 5:00 PM</li>
+                            <li>Emergency Services Available</li>
+                            <li>Same-Day Appointments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d212976.0376813488!2d-112.02195913466991!3d33.48184371121143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1754155681632!5m2!1sen!2sus"
+                            width="100%"
+                            height="450"
+                            style="border:0; border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </div>
     </section>
