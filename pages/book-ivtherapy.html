@@ -115,31 +115,48 @@
         }
 
         /* Client Portal Glass Button */
+        .nav-links .client-portal-btn,
         .client-portal-btn {
-            display: inline-flex;
+            display: inline-flex !important;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 500;
-            text-decoration: none;
+            padding: 12px 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-radius: 12px !important;
+            font-size: 15px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--text-gray);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            color: var(--text-gray) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }
 
+        .nav-links .client-portal-btn:hover,
         .client-portal-btn:hover {
-            background: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
-            color: var(--brand-primary);
+            background: rgba(255, 255, 255, 0.35) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+            color: var(--brand-primary) !important;
+        }
+
+        .nav-links a:not(.client-portal-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.client-portal-btn):hover::after {
+            width: 100%;
         }
 
         /* Navigation Dropdown */
@@ -610,7 +627,7 @@
                 <!-- The Mental Clarity IV Drip -->
                 <div class="service-card-enhanced">
                     <div class="service-header">
-                        <div class="iv-bag-image">🧠</div>
+                        <div class="iv-bag-image">����</div>
                         <div class="service-info">
                             <h3 class="service-title" style="color: var(--therapy-focus);">The Mental Clarity IV Drip</h3>
                             <div class="category-subtitle" style="color: var(--therapy-focus);">Cognitive Enhancement</div>
@@ -775,7 +792,7 @@
                     <p style="margin-bottom: 16px; opacity: 0.8; line-height: 1.6;">Premium NAD+ formula with enhanced concentration for maximum cellular regeneration and anti-aging benefits.</p>
                     
                     <button class="btn btn-primary" onclick="toggleWidget('widget-diamond-nad')">
-                        📅 Book Now
+                        ��� Book Now
                     </button>
                     
                     <div id="widget-diamond-nad" class="widget-container">
