@@ -355,23 +355,17 @@
                     
                     <div id="widget-sun-devil" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqSunDevil = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdSunDevil = "65854196-73a1-4e68-a6c5-15cc88a5e346";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?1";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-sun-devil', {
-                                            practiceId: window.intakeqSunDevil,
-                                            serviceId: window.intakeqServiceIdSunDevil
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqSunDevil = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdSunDevil = "65854196-73a1-4e68-a6c5-15cc88a5e346";
+
+                            function loadSunDevilWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-sun-devil', {
+                                        practiceId: window.intakeqSunDevil,
+                                        serviceId: window.intakeqServiceIdSunDevil
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-sun-devil" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
