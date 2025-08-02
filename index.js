@@ -477,6 +477,12 @@ const server = http.createServer(async (req, res) => {
             gap: 12px;
         }
 
+        .logo-image {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
 
 
         .logo-subtitle {
