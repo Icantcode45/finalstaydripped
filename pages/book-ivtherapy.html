@@ -388,23 +388,17 @@
                     
                     <div id="widget-d-book" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDBook = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDBook = "351c5cac-f576-418f-80d1-b8d6c0a1614f";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?2";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-d-book', {
-                                            practiceId: window.intakeqDBook,
-                                            serviceId: window.intakeqServiceIdDBook
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDBook = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDBook = "351c5cac-f576-418f-80d1-b8d6c0a1614f";
+
+                            function loadDBookWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-d-book', {
+                                        practiceId: window.intakeqDBook,
+                                        serviceId: window.intakeqServiceIdDBook
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-d-book" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -427,23 +421,17 @@
                     
                     <div id="widget-diamond-back" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDiamondBack = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDiamondBack = "d2f9830e-765d-4f50-89b4-b8ed1d9dc16c";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?3";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-diamond-back', {
-                                            practiceId: window.intakeqDiamondBack,
-                                            serviceId: window.intakeqServiceIdDiamondBack
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDiamondBack = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDiamondBack = "d2f9830e-765d-4f50-89b4-b8ed1d9dc16c";
+
+                            function loadDiamondBackWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-diamond-back', {
+                                        practiceId: window.intakeqDiamondBack,
+                                        serviceId: window.intakeqServiceIdDiamondBack
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-diamond-back" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
