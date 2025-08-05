@@ -582,6 +582,17 @@ const server = http.createServer(async (req, res) => {
         }
 
 
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+
 
         .logo-subtitle {
             font-size: 12px;
@@ -833,6 +844,72 @@ const server = http.createServer(async (req, res) => {
             background: linear-gradient(135deg, var(--primary-emerald), var(--iv-primary));
             transform: translateY(-2px);
             box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
+        }
+
+        /* Glass Button for Client Portal */
+        .btn-glass {
+            background: rgba(61, 156, 210, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 156, 210, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px 0 rgba(61, 156, 210, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(61, 156, 210, 0.6);
+            border-color: rgba(61, 156, 210, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.3);
+        }
+
+        /* Client Portal Dropdown */
+        .client-portal-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 180px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(61, 156, 210, 0.1);
+            color: var(--iv-primary);
         }
 
         /* Mobile menu */
@@ -2932,7 +3009,7 @@ const server = http.createServer(async (req, res) => {
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 215, 61, 0.3);">
                         <h4 style="color: var(--therapy-energy); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🥇 The "Gold" Ultimate Recovery</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">���� The "Gold" Ultimate Recovery</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">💎 The "Platinum" Premium Formula</li>
                             <li style="padding: 8px 0;">🌵 The "Arizona" Detox & Cleanse</li>
                         </ul>
