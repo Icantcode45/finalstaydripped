@@ -740,21 +740,48 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             border-radius: 16px;
             display: none;
             z-index: 1000;
             margin-top: 8px;
-            min-width: 400px;
-            padding: 20px;
+            min-width: 280px;
+            padding: 16px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
         }
 
         .nav-dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Services Dropdown Specific Styling */
+        #servicesDropdown {
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        #servicesDropdown a {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        #servicesDropdown a:hover {
+            background: rgba(255, 107, 107, 0.1);
+            color: var(--brand-primary);
+            transform: translateX(4px);
         }
 
         .client-portal-dropdown {
