@@ -2925,16 +2925,17 @@
             will-change: transform, box-shadow;
         }
 
-        /* Hover Card Items Integration */
+        /* Hover Card Items Integration - Fixed Performance */
         .hover-card-item {
             position: relative;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            perspective: 400px;
             cursor: pointer;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
         }
 
         .hover-card-item .card-face {
