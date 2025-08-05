@@ -3658,7 +3658,7 @@
                     <div style="background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 24px; margin: 16px 0; border: 2px solid rgba(255, 107, 107, 0.3);">
                         <h4 style="color: var(--brand-primary); margin-bottom: 12px; font-size: 18px;">Featured Treatments:</h4>
                         <ul style="list-style: none; margin: 0; padding: 0;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">����� B12 Energy Shot</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">������� B12 Energy Shot</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">📦 B12 Power Pack Bundle</li>
                             <li style="padding: 8px 0;">🎯 Wellness Shot Bundle</li>
                         </ul>
@@ -5265,6 +5265,79 @@ Our team will contact you to confirm the appointment.`);
                         ripple.remove();
                     }, 600);
                 });
+            });
+
+            // Enhanced Dropdown Functionality for Services Menu
+            const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+            dropdownTriggers.forEach(trigger => {
+                const dropdown = trigger.nextElementSibling;
+                if (!dropdown) return;
+
+                let isDropdownOpen = false;
+
+                // Handle click events for mobile support
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dd => {
+                        if (dd !== dropdown) {
+                            dd.style.display = 'none';
+                            dd.style.opacity = '0';
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    if (!isDropdownOpen) {
+                        dropdown.style.display = 'block';
+                        dropdown.style.opacity = '1';
+                        dropdown.style.transform = 'translateY(0)';
+                        isDropdownOpen = true;
+                    } else {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            dropdown.style.display = 'none';
+                        }, 300);
+                        isDropdownOpen = false;
+                    }
+                });
+
+                // Handle hover for desktop - only if not a button
+                if (!trigger.tagName || trigger.tagName.toLowerCase() !== 'button') {
+                    trigger.parentElement.addEventListener('mouseenter', () => {
+                        if (window.innerWidth > 768) {
+                            dropdown.style.display = 'block';
+                            dropdown.style.opacity = '1';
+                            dropdown.style.transform = 'translateY(0)';
+                            isDropdownOpen = true;
+                        }
+                    });
+
+                    trigger.parentElement.addEventListener('mouseleave', () => {
+                        if (window.innerWidth > 768) {
+                            dropdown.style.opacity = '0';
+                            dropdown.style.transform = 'translateY(-10px)';
+                            setTimeout(() => {
+                                dropdown.style.display = 'none';
+                                isDropdownOpen = false;
+                            }, 300);
+                        }
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            dropdown.style.display = 'none';
+                        }, 300);
+                    });
+                }
             });
         });
 
