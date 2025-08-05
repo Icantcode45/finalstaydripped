@@ -453,12 +453,119 @@
         }
 
         @media (max-width: 767px) {
-            .nav-links { display: none; }
-            .mobile-menu-toggle { display: block; background: none; border: none; font-size: 24px; cursor: pointer; }
-            .services-grid { grid-template-columns: 1fr; gap: 20px; }
-            .service-card-enhanced { padding: 24px; }
-            .service-header { flex-direction: column; text-align: center; }
-            .iv-bag-image { align-self: center; }
+            /* Prevent horizontal overflow */
+            body {
+                overflow-x: hidden;
+            }
+
+            * {
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            /* Navigation */
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            /* Main content */
+            main {
+                padding-top: 100px !important;
+            }
+
+            /* Services grid */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card-enhanced {
+                padding: 20px;
+                margin: 0 auto;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .iv-bag-image {
+                align-self: center;
+                width: 60px;
+                height: 75px;
+                font-size: 24px;
+            }
+
+            /* Typography */
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 2.2rem);
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .service-title {
+                font-size: 20px;
+            }
+
+            .service-price {
+                font-size: 18px;
+            }
+
+            /* Button adjustments */
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                font-size: 16px;
+                padding: 12px 20px;
+                min-height: 44px;
+            }
+
+            /* Widget containers */
+            .widget-container {
+                padding: 16px;
+                margin-top: 15px;
+                border-radius: 12px;
+            }
+
+            .widget-container iframe {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Fix any wide elements */
+            .service-info {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            /* Section spacing */
+            .section-header {
+                margin-bottom: 40px;
+                padding: 0 10px;
+            }
         }
     </style>
 </head>

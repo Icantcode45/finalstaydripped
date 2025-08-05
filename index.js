@@ -571,6 +571,16 @@ const server = http.createServer(async (req, res) => {
             gap: 12px;
         }
 
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
 
         .logo img {
             height: 60px;
