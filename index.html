@@ -599,6 +599,64 @@
             color: var(--brand-primary);
         }
 
+        /* Back to Top Glass Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            font-size: 24px;
+            color: var(--dark-gray);
+            text-decoration: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-4px) scale(1.1);
+            box-shadow:
+                0 12px 48px rgba(0, 0, 0, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            color: var(--brand-primary);
+        }
+
+        .back-to-top:active {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
         /* Enhanced 3D Glassmorphism Button System */
         .btn, button, input[type="button"], input[type="submit"], .elementor-button {
             display: inline-flex;
@@ -3142,7 +3200,7 @@
                     </div>
 
                     <div class="location-card">
-                        <h3>⏰ Service Hours</h3>
+                        <h3>��� Service Hours</h3>
                         <ul>
                             <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
                             <li>Saturday: 8:00 AM - 6:00 PM</li>
