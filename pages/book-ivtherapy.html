@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Book IV Therapy Treatment | Stay Dripped IV & Wellness Co.</title>
-    <meta name="description" content="Book your IV therapy treatment directly online. Choose from our complete range of IV drips, NAD+ therapy, vitamin shots, and membership plans.">
+    <title>Cocktail Menu | Stay Dripped® IV & Wellness Co.</title>
+    <meta name="description" content="Browse our complete cocktail menu of IV therapy treatments. Choose from our range of IV drips, NAD+ therapy, vitamin shots, and membership plans.">
     
     <style>
         :root {
@@ -75,28 +75,20 @@
         }
         
         .logo {
-            font-family: var(--primary-font);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--brand-primary);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .logo-image {
-            height: 70px;
+        .logo img {
+            height: 60px;
             width: auto;
-            object-fit: contain;
+            transition: all 0.3s ease;
         }
 
-        .logo-subtitle {
-            font-size: 12px;
-            color: var(--text-gray);
-            font-weight: 400;
-            margin-left: 8px;
-            opacity: 0.8;
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
         /* Glass Button for Client Portal */
@@ -184,6 +176,78 @@
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--brand-primary);
+        }
+
+        /* Client Portal Glass Button */
+        .nav-links .client-portal-btn,
+        .client-portal-btn {
+            display: inline-flex !important;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-radius: 12px !important;
+            font-size: 15px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            color: var(--text-gray) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .nav-links .client-portal-btn:hover,
+        .client-portal-btn:hover {
+            background: rgba(255, 255, 255, 0.35) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+            color: var(--brand-primary) !important;
+        }
+
+        .nav-links a:not(.client-portal-btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.client-portal-btn):hover::after {
+            width: 100%;
+        }
+
+        /* Navigation Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: none;
+            z-index: 1000;
+            margin-top: 8px;
+            min-width: 400px;
+            padding: 20px;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
         }
         
         .section-header {
@@ -324,6 +388,32 @@
             transform: translateY(-3px) scale(1.05);
         }
 
+        .btn-primary {
+            background: linear-gradient(135deg,
+                rgba(61, 156, 210, 0.9),
+                rgba(29, 78, 216, 0.9)) !important;
+            backdrop-filter: blur(25px) !important;
+            -webkit-backdrop-filter: blur(25px) !important;
+            color: var(--white) !important;
+            border: 1px solid rgba(61, 156, 210, 0.3) !important;
+            box-shadow:
+                0 8px 32px rgba(61, 156, 210, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 1px 2px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg,
+                rgba(29, 78, 216, 0.95),
+                rgba(61, 156, 210, 0.95)) !important;
+            color: var(--white) !important;
+            border-color: rgba(29, 78, 216, 0.4) !important;
+            box-shadow:
+                0 12px 48px rgba(61, 156, 210, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.15) !important;
+        }
+
         .category-subtitle {
             font-size: 14px;
             margin-bottom: 16px;
@@ -376,25 +466,39 @@
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="/" class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F8a73786b36c64d79b0b050411ecc25ce?format=webp&width=800" alt="Stay Dripped Logo" class="logo-image">
+            <a href="../index.html" class="logo">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped® IV & Wellness Co." />
             </a>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/book-ivtherapy" class="active">IV Cocktail Menu</a></li>
-                <li><a href="/#iv-therapy">Peptides</a></li>
-                <li><a href="/#weight-management">Weight Management</a></li>
-                <li><a href="/#hormone-therapy">Hormone Therapy</a></li>
-                <li><a href="/#team">Our Team</a></li>
-                <li><a href="/#contact">Contact</a></li>
-                <li class="client-portal-dropdown">
-                    <button class="btn-glass client-portal-btn" onclick="toggleClientPortal()">
-                        Client Portal ▼
-                    </button>
-                    <div class="dropdown-menu" id="clientPortalMenu">
-                        <a href="#login">Login</a>
-                        <a href="#signup">Sign Up</a>
-                        <a href="#portal">Portal Access</a>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#advanced-therapies">Advanced Therapies</a></li>
+                <li><a href="./book-ivtherapy.html" class="active">Cocktail Menu</a></li>
+                <li><a href="../index.html#location">Service Area</a></li>
+                <li><a href="../index.html#team">Our Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li class="nav-dropdown">
+                    <button class="btn btn-primary dropdown-trigger" onclick="toggleClientPortal()">👤 Client Portal</button>
+                    <div class="dropdown-content" id="clientPortalDropdown" style="display: none;">
+                        <div style="padding: 24px; min-width: 400px; max-width: 500px;">
+                            <h4 style="margin-bottom: 16px; color: var(--brand-dark); text-align: center;">Access Your Portal</h4>
+                            <div style="background: rgba(255, 255, 255, 0.95); border-radius: 12px; padding: 20px; border: 2px solid rgba(44, 62, 80, 0.2); backdrop-filter: blur(20px);">
+                                <script>
+                                (function (c) {
+                                    if (window.intakeqClientPortal) return;
+                                    window.intakeq = "68460f36bc104b6aa9da43e0";
+                                    window.intakeqClientArea = true;
+                                    window.intakeqClientPortal = true;
+
+                                    var i = c.createElement("script");
+                                    i.type = "text/javascript";
+                                    i.async = true;
+                                    i.src = "https://intakeq.com/js/widget.min.js?v=" + Date.now();
+                                    document.head.appendChild(i);
+                                })(document);
+                                </script>
+                                <div id="intakeq-client-portal" style="min-height: 300px; width: 100%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -407,7 +511,7 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-subtitle">Book Your Treatment</div>
-                <h1 class="section-title">IV Therapy Booking Portal</h1>
+                <h1 class="section-title">Cocktail Menu</h1>
                 <p class="section-description">
                     Choose from our complete range of IV therapy treatments and book your appointment directly below. All treatments are delivered by licensed medical professionals to your location in Scottsdale, AZ.
                 </p>
@@ -840,58 +944,20 @@
             }
         }
 
-        function showClientPortal() {
-            alert('Client Portal feature will be available soon. Please use the main website for now.');
-        }
 
-        // Client Portal Dropdown Toggle
-        function toggleClientPortal() {
-            const dropdown = document.getElementById('clientPortalMenu');
-            dropdown.classList.toggle('active');
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.client-portal-dropdown')) {
-                    dropdown.classList.remove('active');
-                }
-            });
-        }
         
         function toggleMenu() {
             alert('Mobile menu feature will be added soon.');
         }
-        </script>
 
-        <!-- Global IntakeQ Widget Loader -->
-        <script>
-            (function() {
-                // Load IntakeQ script once
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.async = true;
-                script.src = 'https://intakeq.com/js/widget.min.js';
-                script.onload = function() {
-                    // Initialize all widgets once IntakeQ is loaded
-                    if (window.IntakeQ) {
-                        // Load all widgets
-                        setTimeout(function() {
-                            if (typeof loadSunDevilWidget === 'function') loadSunDevilWidget();
-                            if (typeof loadDBookWidget === 'function') loadDBookWidget();
-                            if (typeof loadDiamondBackWidget === 'function') loadDiamondBackWidget();
-                            if (typeof loadScottsdaleBeautyWidget === 'function') loadScottsdaleBeautyWidget();
-                            if (typeof loadStressReliefWidget === 'function') loadStressReliefWidget();
-                            if (typeof loadMentalClarityWidget === 'function') loadMentalClarityWidget();
-                            if (typeof loadAntiInflammatoryWidget === 'function') loadAntiInflammatoryWidget();
-                            if (typeof loadStayDrippedSpecialWidget === 'function') loadStayDrippedSpecialWidget();
-                            if (typeof loadFountainYouthWidget === 'function') loadFountainYouthWidget();
-                            if (typeof loadDiamondNadWidget === 'function') loadDiamondNadWidget();
-                            if (typeof loadEliteNadWidget === 'function') loadEliteNadWidget();
-                            if (typeof loadMetabolismBoosterWidget === 'function') loadMetabolismBoosterWidget();
-                        }, 100);
-                    }
-                };
-                document.head.appendChild(script);
-            })();
-        </script>
+        function toggleClientPortal() {
+            const dropdown = document.getElementById('clientPortalDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
