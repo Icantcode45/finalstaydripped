@@ -2957,17 +2957,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            padding: 20px;
+            padding: 15px;
             background: linear-gradient(135deg, var(--iv-primary), var(--primary-blue));
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            transform: rotateX(90deg);
-            transform-origin: bottom;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+            will-change: opacity;
         }
 
         .hover-card-item .card-info h4 {
