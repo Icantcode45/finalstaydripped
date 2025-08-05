@@ -90,7 +90,73 @@
         .logo:hover img {
             transform: scale(1.05);
         }
-        
+
+        /* Glass Button for Client Portal */
+        .btn-glass {
+            background: rgba(61, 156, 210, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 156, 210, 0.3);
+            border-radius: 12px;
+            padding: 8px 16px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px 0 rgba(61, 156, 210, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-glass:hover {
+            background: rgba(61, 156, 210, 0.6);
+            border-color: rgba(61, 156, 210, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.3);
+        }
+
+        /* Client Portal Dropdown */
+        .client-portal-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 180px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(61, 156, 210, 0.1);
+            color: var(--iv-primary);
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
@@ -469,23 +535,17 @@
                     
                     <div id="widget-sun-devil" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqSunDevil = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdSunDevil = "65854196-73a1-4e68-a6c5-15cc88a5e346";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?1";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-sun-devil', {
-                                            practiceId: window.intakeqSunDevil,
-                                            serviceId: window.intakeqServiceIdSunDevil
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqSunDevil = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdSunDevil = "65854196-73a1-4e68-a6c5-15cc88a5e346";
+
+                            function loadSunDevilWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-sun-devil', {
+                                        practiceId: window.intakeqSunDevil,
+                                        serviceId: window.intakeqServiceIdSunDevil
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-sun-devil" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -508,23 +568,17 @@
                     
                     <div id="widget-d-book" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDBook = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDBook = "351c5cac-f576-418f-80d1-b8d6c0a1614f";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?2";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-d-book', {
-                                            practiceId: window.intakeqDBook,
-                                            serviceId: window.intakeqServiceIdDBook
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDBook = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDBook = "351c5cac-f576-418f-80d1-b8d6c0a1614f";
+
+                            function loadDBookWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-d-book', {
+                                        practiceId: window.intakeqDBook,
+                                        serviceId: window.intakeqServiceIdDBook
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-d-book" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -547,23 +601,17 @@
                     
                     <div id="widget-diamond-back" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDiamondBack = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDiamondBack = "d2f9830e-765d-4f50-89b4-b8ed1d9dc16c";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?3";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-diamond-back', {
-                                            practiceId: window.intakeqDiamondBack,
-                                            serviceId: window.intakeqServiceIdDiamondBack
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDiamondBack = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDiamondBack = "d2f9830e-765d-4f50-89b4-b8ed1d9dc16c";
+
+                            function loadDiamondBackWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-diamond-back', {
+                                        practiceId: window.intakeqDiamondBack,
+                                        serviceId: window.intakeqServiceIdDiamondBack
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-diamond-back" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -586,23 +634,17 @@
                     
                     <div id="widget-scottsdale-beauty" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqScottsdaleBeauty = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdScottsdaleBeauty = "68503856-7b7c-487a-ac80-9f6e4aabcb08";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?4";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-scottsdale-beauty', {
-                                            practiceId: window.intakeqScottsdaleBeauty,
-                                            serviceId: window.intakeqServiceIdScottsdaleBeauty
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqScottsdaleBeauty = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdScottsdaleBeauty = "68503856-7b7c-487a-ac80-9f6e4aabcb08";
+
+                            function loadScottsdaleBeautyWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-scottsdale-beauty', {
+                                        practiceId: window.intakeqScottsdaleBeauty,
+                                        serviceId: window.intakeqServiceIdScottsdaleBeauty
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-scottsdale-beauty" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -625,23 +667,17 @@
                     
                     <div id="widget-stress-relief" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqStressRelief = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdStressRelief = "549f9f59-8bf3-4e62-a4ac-100998a40215";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?5";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-stress-relief', {
-                                            practiceId: window.intakeqStressRelief,
-                                            serviceId: window.intakeqServiceIdStressRelief
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqStressRelief = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdStressRelief = "549f9f59-8bf3-4e62-a4ac-100998a40215";
+
+                            function loadStressReliefWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-stress-relief', {
+                                        practiceId: window.intakeqStressRelief,
+                                        serviceId: window.intakeqServiceIdStressRelief
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-stress-relief" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -664,23 +700,17 @@
                     
                     <div id="widget-mental-clarity" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqMentalClarity = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdMentalClarity = "6df0fe13-174e-4cb2-8a99-fd4d9dce4b92";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?6";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-mental-clarity', {
-                                            practiceId: window.intakeqMentalClarity,
-                                            serviceId: window.intakeqServiceIdMentalClarity
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqMentalClarity = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdMentalClarity = "6df0fe13-174e-4cb2-8a99-fd4d9dce4b92";
+
+                            function loadMentalClarityWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-mental-clarity', {
+                                        practiceId: window.intakeqMentalClarity,
+                                        serviceId: window.intakeqServiceIdMentalClarity
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-mental-clarity" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -703,23 +733,17 @@
                     
                     <div id="widget-anti-inflammatory" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqAntiInflammatory = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdAntiInflammatory = "f6362671-bcb3-4b2b-ab08-1f3801ff5249";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?7";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-anti-inflammatory', {
-                                            practiceId: window.intakeqAntiInflammatory,
-                                            serviceId: window.intakeqServiceIdAntiInflammatory
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqAntiInflammatory = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdAntiInflammatory = "f6362671-bcb3-4b2b-ab08-1f3801ff5249";
+
+                            function loadAntiInflammatoryWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-anti-inflammatory', {
+                                        practiceId: window.intakeqAntiInflammatory,
+                                        serviceId: window.intakeqServiceIdAntiInflammatory
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-anti-inflammatory" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -742,23 +766,17 @@
                     
                     <div id="widget-stay-dripped-special" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqStayDrippedSpecial = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdStayDrippedSpecial = "9e6f536c-5907-4c69-93ea-799863fd6495";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?8";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-stay-dripped-special', {
-                                            practiceId: window.intakeqStayDrippedSpecial,
-                                            serviceId: window.intakeqServiceIdStayDrippedSpecial
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqStayDrippedSpecial = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdStayDrippedSpecial = "9e6f536c-5907-4c69-93ea-799863fd6495";
+
+                            function loadStayDrippedSpecialWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-stay-dripped-special', {
+                                        practiceId: window.intakeqStayDrippedSpecial,
+                                        serviceId: window.intakeqServiceIdStayDrippedSpecial
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-stay-dripped-special" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -781,23 +799,17 @@
                     
                     <div id="widget-fountain-youth" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqFountainYouth = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdFountainYouth = "73bbd812-1b77-4e60-a92e-35b64af58379";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?9";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-fountain-youth', {
-                                            practiceId: window.intakeqFountainYouth,
-                                            serviceId: window.intakeqServiceIdFountainYouth
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqFountainYouth = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdFountainYouth = "73bbd812-1b77-4e60-a92e-35b64af58379";
+
+                            function loadFountainYouthWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-fountain-youth', {
+                                        practiceId: window.intakeqFountainYouth,
+                                        serviceId: window.intakeqServiceIdFountainYouth
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-fountain-youth" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -820,23 +832,17 @@
                     
                     <div id="widget-diamond-nad" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqDiamondNad = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdDiamondNad = "1a0e76e3-7548-4039-a737-efe993bfdbfd";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?10";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-diamond-nad', {
-                                            practiceId: window.intakeqDiamondNad,
-                                            serviceId: window.intakeqServiceIdDiamondNad
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqDiamondNad = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdDiamondNad = "1a0e76e3-7548-4039-a737-efe993bfdbfd";
+
+                            function loadDiamondNadWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-diamond-nad', {
+                                        practiceId: window.intakeqDiamondNad,
+                                        serviceId: window.intakeqServiceIdDiamondNad
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-diamond-nad" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -859,23 +865,17 @@
                     
                     <div id="widget-elite-nad" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqEliteNad = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdEliteNad = "1af0f33f-361e-42db-8a06-a87f653a5cb1";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?11";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-elite-nad', {
-                                            practiceId: window.intakeqEliteNad,
-                                            serviceId: window.intakeqServiceIdEliteNad
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqEliteNad = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdEliteNad = "1af0f33f-361e-42db-8a06-a87f653a5cb1";
+
+                            function loadEliteNadWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-elite-nad', {
+                                        practiceId: window.intakeqEliteNad,
+                                        serviceId: window.intakeqServiceIdEliteNad
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-elite-nad" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
@@ -898,23 +898,17 @@
                     
                     <div id="widget-metabolism-booster" class="widget-container">
                         <script>
-                            (function(c) {
-                                window.intakeqMetabolismBooster = "68460f36bc104b6aa9da43e0";
-                                window.intakeqServiceIdMetabolismBooster = "af87e9d3-a72c-4a63-9317-4013d18bd576";
-                                var i = c.createElement("script");
-                                i.type = "text/javascript";
-                                i.async = true;
-                                i.src = "https://intakeq.com/js/widget.min.js?12";
-                                i.onload = function() {
-                                    if (window.IntakeQ) {
-                                        window.IntakeQ.render('intakeq-metabolism-booster', {
-                                            practiceId: window.intakeqMetabolismBooster,
-                                            serviceId: window.intakeqServiceIdMetabolismBooster
-                                        });
-                                    }
-                                };
-                                c.head.appendChild(i);
-                            })(document);
+                            window.intakeqMetabolismBooster = "68460f36bc104b6aa9da43e0";
+                            window.intakeqServiceIdMetabolismBooster = "af87e9d3-a72c-4a63-9317-4013d18bd576";
+
+                            function loadMetabolismBoosterWidget() {
+                                if (window.IntakeQ) {
+                                    window.IntakeQ.render('intakeq-metabolism-booster', {
+                                        practiceId: window.intakeqMetabolismBooster,
+                                        serviceId: window.intakeqServiceIdMetabolismBooster
+                                    });
+                                }
+                            }
                         </script>
                         <div id="intakeq-metabolism-booster" style="max-width: 100%; width: 100%; min-height: 400px;"></div>
                     </div>
