@@ -1099,8 +1099,8 @@
 
         // Show booking widget function
         function showBookingWidget(widgetId) {
-            // Hide all booking widgets first
-            const allWidgets = document.querySelectorAll('.booking-widget');
+            // Hide all service booking widgets first (those with IDs ending in '-widget')
+            const allWidgets = document.querySelectorAll('.booking-widget[id$="-widget"]');
             allWidgets.forEach(widget => {
                 widget.style.display = 'none';
             });
