@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>First Time Patient Intake | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Welcome to Stay Dripped! Complete your new patient intake form to get started with our premium mobile IV therapy and wellness services in Scottsdale, AZ.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Main Content */
+        .main {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .welcome-section {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
+        }
+
+        .welcome-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .welcome-subtitle {
+            font-size: 20px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .benefit-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .benefit-description {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* Intake Form Section */
+        .intake-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .intake-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Form Styles */
+        .intake-form {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(26, 43, 58, 0.08);
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            margin-bottom: 32px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        /* Embedded IntakeQ Form */
+        .intakeq-container {
+            min-height: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(26, 43, 58, 0.08);
+            background: var(--white);
+        }
+
+        /* Next Steps Section */
+        .next-steps {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .next-steps-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .next-steps-description {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .next-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .next-step-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .welcome-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intake-form {
+                padding: 24px;
+            }
+
+            .next-steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="../index.html" class="logo">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="./book-ivtherapy.html">IV Treatments</a></li>
+                <li><a href="./peptides.html">Peptides</a></li>
+                <li><a href="./weight-loss.html">Weight Loss</a></li>
+                <li><a href="./hormone-therapy.html">Hormone Therapy</a></li>
+                <li><a href="./membership.html">Membership</a></li>
+                <li><a href="../index.html#team">Our Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="container">
+                <div class="fade-in">
+                    <h1 class="welcome-title">Welcome to Stay Dripped IV & Wellness Co.</h1>
+                    <p class="welcome-subtitle">
+                        Thank you for choosing us for your wellness journey! Complete your new patient intake form below to get started with our premium mobile IV therapy and wellness services.
+                    </p>
+                    
+                    <div class="welcome-benefits">
+                        <div class="benefit-card fade-in">
+                            <div class="benefit-icon">🏥</div>
+                            <h3 class="benefit-title">Licensed Medical Team</h3>
+                            <p class="benefit-description">Board-certified medical professionals providing safe, effective treatments</p>
+                        </div>
+                        
+                        <div class="benefit-card fade-in">
+                            <div class="benefit-icon">🚀</div>
+                            <h3 class="benefit-title">Same-Day Service</h3>
+                            <p class="benefit-description">Fast scheduling with same-day appointments available</p>
+                        </div>
+                        
+                        <div class="benefit-card fade-in">
+                            <div class="benefit-icon">💎</div>
+                            <h3 class="benefit-title">Premium Quality</h3>
+                            <p class="benefit-description">Pharmaceutical-grade nutrients and premium formulations</p>
+                        </div>
+                        
+                        <div class="benefit-card fade-in">
+                            <div class="benefit-icon">📱</div>
+                            <h3 class="benefit-title">Mobile Convenience</h3>
+                            <p class="benefit-description">Professional treatments delivered to your location</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intake Form Section -->
+        <section class="intake-section">
+            <div class="container">
+                <div class="intake-container">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title">New Patient Intake Form</h2>
+                        <p class="section-description">
+                            Please complete this form so we can provide you with the best possible care. All information is confidential and secure.
+                        </p>
+                    </div>
+
+                    <!-- Progress Indicator -->
+                    <div class="progress-container fade-in">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Complete the form below to get started</div>
+                    </div>
+
+                    <!-- IntakeQ Embedded Form -->
+                    <div class="intakeq-container fade-in">
+                        <div id="intakeq-intake-form" style="min-height: 800px; width: 100%;">
+                            <!-- IntakeQ form will be embedded here -->
+                            <script>
+                            (function (c) {
+                                window.intakeqWebhookUrl = "https://staydrippediv.com/first-time-patients";
+                                window.intakeq = "68460f36bc104b6aa9da43e0";
+                                var i = c.createElement("script");
+                                i.type = "text/javascript";
+                                i.async = true;
+                                i.src = "https://intakeq.com/js/widget.min.js";
+                                i.onload = function() {
+                                    // Initialize intake form with custom fields
+                                    if (window.IntakeQ) {
+                                        window.IntakeQ.init({
+                                            customFields: {
+                                                'peptide_interest': 'Are you interested in peptide therapy?',
+                                                'wellness_goals': 'Which wellness goals are most important to you?',
+                                                'membership_interest': 'Would you like us to contact you about membership plans?',
+                                                'referral_source': 'How did you hear about us?'
+                                            },
+                                            onSubmit: function(data) {
+                                                handleIntakeSubmission(data);
+                                            }
+                                        });
+                                    }
+                                };
+                                document.head.appendChild(i);
+                            })(document);
+                            </script>
+                            
+                            <!-- Fallback form if IntakeQ doesn't load -->
+                            <div id="fallback-form" style="display: none;">
+                                <form class="intake-form" onsubmit="handleFormSubmission(event)">
+                                    <div class="form-section">
+                                        <h3 class="form-section-title">Personal Information</h3>
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label for="firstName">First Name *</label>
+                                                <input type="text" id="firstName" name="firstName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lastName">Last Name *</label>
+                                                <input type="text" id="lastName" name="lastName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email Address *</label>
+                                                <input type="email" id="email" name="email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone">Phone Number *</label>
+                                                <input type="tel" id="phone" name="phone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dateOfBirth">Date of Birth *</label>
+                                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="gender">Gender</label>
+                                                <select id="gender" name="gender">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3 class="form-section-title">Address Information</h3>
+                                        <div class="form-group">
+                                            <label for="address">Street Address *</label>
+                                            <input type="text" id="address" name="address" required>
+                                        </div>
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label for="city">City *</label>
+                                                <input type="text" id="city" name="city" value="Scottsdale" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="state">State *</label>
+                                                <input type="text" id="state" name="state" value="Arizona" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="zipCode">ZIP Code *</label>
+                                                <input type="text" id="zipCode" name="zipCode" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3 class="form-section-title">Medical History</h3>
+                                        <div class="form-group">
+                                            <label for="medicalConditions">Current Medical Conditions</label>
+                                            <textarea id="medicalConditions" name="medicalConditions" rows="3" placeholder="Please list any current medical conditions or write 'None'"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="medications">Current Medications</label>
+                                            <textarea id="medications" name="medications" rows="3" placeholder="Please list all current medications including vitamins and supplements, or write 'None'"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="allergies">Known Allergies</label>
+                                            <textarea id="allergies" name="allergies" rows="2" placeholder="Please list any known allergies or write 'None'"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3 class="form-section-title">Wellness Goals & Interests</h3>
+                                        <div class="form-group">
+                                            <label>Which wellness goals are most important to you? (Select all that apply)</label>
+                                            <div class="checkbox-group">
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-hydration" name="wellness_goals" value="hydration">
+                                                    <label for="goal-hydration">Hydration & Energy Boost</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-recovery" name="wellness_goals" value="recovery">
+                                                    <label for="goal-recovery">Athletic Recovery & Performance</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-antiaging" name="wellness_goals" value="antiaging">
+                                                    <label for="goal-antiaging">Anti-Aging & Beauty</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-immunity" name="wellness_goals" value="immunity">
+                                                    <label for="goal-immunity">Immune System Support</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-weight" name="wellness_goals" value="weight">
+                                                    <label for="goal-weight">Weight Management</label>
+                                                </div>
+                                                <div class="checkbox-item">
+                                                    <input type="checkbox" id="goal-hormone" name="wellness_goals" value="hormone">
+                                                    <label for="goal-hormone">Hormone Optimization</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Are you interested in peptide therapy?</label>
+                                            <div class="radio-group">
+                                                <div class="radio-item">
+                                                    <input type="radio" id="peptide-yes" name="peptide_interest" value="yes">
+                                                    <label for="peptide-yes">Yes, I'm interested in learning more about peptide therapy</label>
+                                                </div>
+                                                <div class="radio-item">
+                                                    <input type="radio" id="peptide-maybe" name="peptide_interest" value="maybe">
+                                                    <label for="peptide-maybe">Maybe, I'd like more information first</label>
+                                                </div>
+                                                <div class="radio-item">
+                                                    <input type="radio" id="peptide-no" name="peptide_interest" value="no">
+                                                    <label for="peptide-no">No, not interested at this time</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Would you like us to contact you about membership plans?</label>
+                                            <div class="radio-group">
+                                                <div class="radio-item">
+                                                    <input type="radio" id="membership-yes" name="membership_interest" value="yes">
+                                                    <label for="membership-yes">Yes, please contact me about membership plans</label>
+                                                </div>
+                                                <div class="radio-item">
+                                                    <input type="radio" id="membership-no" name="membership_interest" value="no">
+                                                    <label for="membership-no">No, not interested in membership at this time</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="referralSource">How did you hear about us?</label>
+                                            <select id="referralSource" name="referral_source">
+                                                <option value="">Select an option</option>
+                                                <option value="google">Google Search</option>
+                                                <option value="social-media">Social Media</option>
+                                                <option value="friend-referral">Friend/Family Referral</option>
+                                                <option value="doctor-referral">Doctor Referral</option>
+                                                <option value="online-ad">Online Advertisement</option>
+                                                <option value="event">Event or Health Fair</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3 class="form-section-title">Emergency Contact</h3>
+                                        <div class="form-grid">
+                                            <div class="form-group">
+                                                <label for="emergencyName">Emergency Contact Name *</label>
+                                                <input type="text" id="emergencyName" name="emergencyName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="emergencyPhone">Emergency Contact Phone *</label>
+                                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="emergencyRelationship">Relationship *</label>
+                                                <input type="text" id="emergencyRelationship" name="emergencyRelationship" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="consent" name="consent" required>
+                                            <label for="consent">I consent to receive IV therapy treatments and acknowledge that I have provided accurate medical information. *</label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn" style="width: 100%; justify-content: center; font-size: 18px; padding: 16px;">
+                                        Complete Intake & Continue to Booking
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps Section -->
+        <section class="next-steps">
+            <div class="container">
+                <h2 class="next-steps-title">What Happens Next?</h2>
+                <p class="next-steps-description">
+                    After completing your intake form, here's what you can expect from your Stay Dripped experience.
+                </p>
+                
+                <div class="next-steps-grid">
+                    <div class="next-step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Review & Verification</h3>
+                        <p class="step-description">Our medical team reviews your intake form and may contact you for any clarifications.</p>
+                    </div>
+                    
+                    <div class="next-step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Book Your Appointment</h3>
+                        <p class="step-description">You'll be redirected to our booking system to schedule your first treatment at your convenience.</p>
+                    </div>
+                    
+                    <div class="next-step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Confirmation & Reminders</h3>
+                        <p class="step-description">Receive confirmation emails and automated reminders 24 hours and 2 hours before your appointment.</p>
+                    </div>
+                    
+                    <div class="next-step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Mobile Treatment</h3>
+                        <p class="step-description">Our licensed medical professional arrives at your location with all necessary equipment and medications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Progress tracking
+        function updateProgress() {
+            const form = document.querySelector('.intake-form');
+            if (!form) return;
+            
+            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+            const completed = Array.from(inputs).filter(input => {
+                if (input.type === 'radio') {
+                    return form.querySelector(`input[name="${input.name}"]:checked`);
+                }
+                return input.value.trim() !== '';
+            }).length;
+            
+            const percentage = Math.round((completed / inputs.length) * 100);
+            
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            if (progressFill) {
+                progressFill.style.width = percentage + '%';
+            }
+            
+            if (progressText) {
+                progressText.textContent = `${percentage}% Complete`;
+            }
+        }
+
+        // Handle IntakeQ form submission
+        function handleIntakeSubmission(data) {
+            console.log('Intake form submitted:', data);
+            
+            // Tag patients based on their responses
+            let tags = [];
+            
+            if (data.peptide_interest === 'yes' || data.peptide_interest === 'maybe') {
+                tags.push('Peptide Prospect');
+            }
+            
+            if (data.membership_interest === 'yes') {
+                tags.push('Membership Interest');
+            }
+            
+            // Add wellness goal tags
+            if (data.wellness_goals) {
+                if (Array.isArray(data.wellness_goals)) {
+                    data.wellness_goals.forEach(goal => {
+                        tags.push(`Goal: ${goal}`);
+                    });
+                } else {
+                    tags.push(`Goal: ${data.wellness_goals}`);
+                }
+            }
+            
+            // Send data to webhook
+            fetch('https://staydrippediv.com/first-time-patients', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...data,
+                    tags: tags,
+                    source: 'first-time-patient-intake',
+                    timestamp: new Date().toISOString()
+                })
+            }).then(response => {
+                if (response.ok) {
+                    // Redirect to booking page
+                    window.location.href = './book-appointment.html?source=intake&newPatient=true';
+                } else {
+                    console.error('Error submitting intake form');
+                    alert('There was an error submitting your form. Please try again or contact us directly.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your form. Please try again or contact us directly.');
+            });
+        }
+
+        // Handle fallback form submission
+        function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {};
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            handleIntakeSubmission(data);
+        }
+
+        // Show fallback form if IntakeQ doesn't load
+        setTimeout(() => {
+            const intakeqForm = document.querySelector('#intakeq-intake-form iframe, #intakeq-intake-form .intakeq-widget');
+            if (!intakeqForm) {
+                document.getElementById('fallback-form').style.display = 'block';
+                
+                // Add progress tracking to fallback form
+                const inputs = document.querySelectorAll('.intake-form input, .intake-form select, .intake-form textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('input', updateProgress);
+                    input.addEventListener('change', updateProgress);
+                });
+                
+                updateProgress();
+            }
+        }, 5000);
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set minimum date to today
+            const dateInput = document.getElementById('service-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+            }
+        });
+    </script>
+</body>
+</html>
