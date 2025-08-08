@@ -667,7 +667,7 @@
                                     <div class="treatment-price">$399</div>
                                     <div class="treatment-duration">120-180 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('nad-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('basic-nad-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -678,7 +678,7 @@
                                     <div class="treatment-price">$599</div>
                                     <div class="treatment-duration">180-240 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('nad-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('fountain-youth-nad-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -689,17 +689,43 @@
                                     <div class="treatment-price">$799</div>
                                     <div class="treatment-duration">240-300 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('nad-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('diamond-nad-widget')">Book</button>
                             </div>
                         </div>
 
-                        <!-- NAD+ Therapy Booking Widget -->
-                        <div id="nad-iv-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                        <!-- Individual Service Booking Widgets for NAD+ Therapy -->
+                        <div id="basic-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
                             <div class="widget-header">
-                                <h4 class="widget-title">Book NAD+ IV Therapy</h4>
-                                <p class="widget-description">Schedule your NAD+ therapy treatment for revolutionary anti-aging and cellular regeneration.</p>
+                                <h4 class="widget-title">Book The Basic NAD+ IV Drip</h4>
+                                <p class="widget-description">Introduction to NAD+ therapy - $399</p>
                             </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?categoryId=ddf30134-b441-4226-bfe9-27eed5368949"
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=7c8dcca4-35b4-44bd-a242-d1fdc722ddb5"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="fountain-youth-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Fountain of Youth" NAD+ IV Drip</h4>
+                                <p class="widget-description">Enhanced anti-aging NAD+ formula - $599</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=73bbd812-1b77-4e60-a92e-35b64af58379"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="diamond-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Diamond" NAD+ IV Drip</h4>
+                                <p class="widget-description">Premium cellular regeneration protocol - $799</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=1a0e76e3-7548-4039-a737-efe993bfdbfd"
                                     width="100%"
                                     height="600"
                                     frameborder="0"
