@@ -415,7 +415,7 @@
                                     <div class="treatment-price">$149</div>
                                     <div class="treatment-duration">30-45 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('basic-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('rehydrate-iv-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -426,7 +426,7 @@
                                     <div class="treatment-price">$199</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('basic-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('jr-myers-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -437,17 +437,43 @@
                                     <div class="treatment-price">$179</div>
                                     <div class="treatment-duration">30-45 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('basic-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('rehydrate-plus-widget')">Book</button>
                             </div>
                         </div>
 
-                        <!-- Basic IV Therapy Booking Widget -->
-                        <div id="basic-iv-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                        <!-- Individual Service Booking Widgets for Basic IV Therapy -->
+                        <div id="rehydrate-iv-widget" class="booking-widget" style="display: none; margin-top: 20px;">
                             <div class="widget-header">
-                                <h4 class="widget-title">Book Basic IV Therapy</h4>
-                                <p class="widget-description">Schedule your basic IV therapy treatment with our licensed medical professionals.</p>
+                                <h4 class="widget-title">Book Rehydrate IV Drip</h4>
+                                <p class="widget-description">Essential hydration with electrolytes - $149</p>
                             </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?categoryId=17d0bbca-0d95-4e32-8a8b-3ae8ae2c1152"
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=73e00621-4069-486a-9fa8-a5a94a089618"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="jr-myers-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Jr. Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Essential vitamin and mineral blend - $199</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=065ab682-3334-403a-9635-ea461e520a6d"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="rehydrate-plus-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Rehydrate Plus IV Drip</h4>
+                                <p class="widget-description">Enhanced hydration with additional electrolytes - $179</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=ae66ce7c-fa68-408c-9ab0-a04b287f6b31"
                                     width="100%"
                                     height="600"
                                     frameborder="0"
