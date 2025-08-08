@@ -1133,8 +1133,16 @@
                 throw new Error('Booking failed');
             })
             .then(data => {
-                // Redirect to confirmation page
-                window.location.href = `./appointment-confirmation.html?appointmentId=${data.appointmentId}`;
+                // Redirect to checkout page with appointment details
+                const params = new URLSearchParams({
+                    service: appointmentData.service,
+                    date: appointmentData.date,
+                    time: appointmentData.time,
+                    price: servicePrice,
+                    location: appointmentData.patient.address,
+                    name: `${appointmentData.patient.firstName} ${appointmentData.patient.lastName}`
+                });
+                window.location.href = `./checkout.html?${params.toString()}`;
             })
             .catch(error => {
                 console.error('Error:', error);
