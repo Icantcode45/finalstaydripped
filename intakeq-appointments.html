@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntakeQ Appointments Widget</title>
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --error-color: #EF4444;
+            --success-color: #10B981;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+            padding: 20px;
+        }
+
+        .appointments-widget {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(26, 43, 58, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .widget-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .widget-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .widget-subtitle {
+            color: var(--medium-gray);
+            font-size: 16px;
+        }
+
+        .date-selector {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .date-input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date-input-group label {
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .date-input-group input {
+            padding: 10px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .date-input-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .refresh-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refresh-button:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .refresh-button:disabled {
+            background: var(--medium-gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            color: var(--error-color);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            display: none;
+        }
+
+        .appointments-table-container {
+            overflow-x: auto;
+            margin-bottom: 24px;
+        }
+
+        .appointments-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointments-table th {
+            background: var(--light-gray);
+            color: var(--dark-slate);
+            font-weight: 600;
+            padding: 16px 12px;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .appointments-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--dark-slate);
+        }
+
+        .appointments-table tr:hover {
+            background: var(--light-gray);
+        }
+
+        .appointments-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .price-cell {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .date-cell {
+            font-weight: 500;
+        }
+
+        .no-appointments {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--medium-gray);
+        }
+
+        .no-appointments-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .pagination-button {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            color: var(--dark-slate);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .pagination-button:hover:not(:disabled) {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .pagination-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination-button.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .pagination-info {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin: 0 16px;
+        }
+
+        .appointments-count {
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .appointments-widget {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .date-selector {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .date-input-group {
+                justify-content: space-between;
+            }
+
+            .appointments-table {
+                font-size: 14px;
+            }
+
+            .appointments-table th,
+            .appointments-table td {
+                padding: 12px 8px;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .appointments-table th:nth-child(4),
+            .appointments-table td:nth-child(4),
+            .appointments-table th:nth-child(5),
+            .appointments-table td:nth-child(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="appointments-widget">
+        <div class="widget-header">
+            <h1 class="widget-title">IntakeQ Appointments</h1>
+            <p class="widget-subtitle">View confirmed appointments for selected date</p>
+        </div>
+
+        <div class="date-selector">
+            <div class="date-input-group">
+                <label for="appointment-date">Select Date:</label>
+                <input type="date" id="appointment-date">
+            </div>
+            <button class="refresh-button" id="refresh-btn">
+                <span id="refresh-icon">🔄</span>
+                <span id="refresh-text">Load Appointments</span>
+            </button>
+        </div>
+
+        <div class="error-message" id="error-message"></div>
+
+        <div class="loading-spinner" id="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading appointments...</p>
+        </div>
+
+        <div id="appointments-content" style="display: none;">
+            <div class="appointments-count" id="appointments-count"></div>
+            
+            <div class="appointments-table-container">
+                <table class="appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Client Name</th>
+                            <th>Service Name</th>
+                            <th>Date & Time</th>
+                            <th>Practitioner</th>
+                            <th>Location</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-tbody"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination" id="pagination" style="display: none;"></div>
+        </div>
+
+        <div class="no-appointments" id="no-appointments" style="display: none;">
+            <div class="no-appointments-icon">📅</div>
+            <h3>No Appointments Found</h3>
+            <p>There are no confirmed appointments for the selected date.</p>
+        </div>
+    </div>
+
+    <script>
+        class IntakeQAppointmentsWidget {
+            constructor() {
+                this.apiKey = '2b6f1ebbd77ed61fa246625228e4e36879bd6030';
+                this.baseUrl = 'https://intakeq.com/api/v1';
+                this.currentPage = 1;
+                this.appointmentsPerPage = 10;
+                this.allAppointments = [];
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.setDefaultDate();
+            }
+
+            setupEventListeners() {
+                const refreshBtn = document.getElementById('refresh-btn');
+                const dateInput = document.getElementById('appointment-date');
+
+                refreshBtn.addEventListener('click', () => this.loadAppointments());
+                
+                dateInput.addEventListener('change', () => {
+                    this.currentPage = 1;
+                    this.loadAppointments();
+                });
+
+                // Load appointments for today by default
+                this.loadAppointments();
+            }
+
+            setDefaultDate() {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('appointment-date').value = today;
+            }
+
+            async loadAppointments() {
+                const dateInput = document.getElementById('appointment-date');
+                const selectedDate = dateInput.value;
+
+                if (!selectedDate) {
+                    this.showError('Please select a date');
+                    return;
+                }
+
+                this.showLoading();
+                this.hideError();
+
+                try {
+                    const appointments = await this.fetchAppointments(selectedDate);
+                    this.allAppointments = appointments;
+                    this.displayAppointments();
+                } catch (error) {
+                    console.error('Error loading appointments:', error);
+                    this.showError('Failed to load appointments. Please check your connection and try again.');
+                } finally {
+                    this.hideLoading();
+                }
+            }
+
+            async fetchAppointments(startDate) {
+                const url = `${this.baseUrl}/appointments?status=Confirmed&startDate=${startDate}`;
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${this.apiKey}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        throw new Error('Invalid API key or unauthorized access');
+                    } else if (response.status === 403) {
+                        throw new Error('Access forbidden. Please check your API permissions');
+                    } else if (response.status === 429) {
+                        throw new Error('Rate limit exceeded. Please try again later');
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                }
+
+                const data = await response.json();
+                return Array.isArray(data) ? data : [];
+            }
+
+            displayAppointments() {
+                const appointmentsContent = document.getElementById('appointments-content');
+                const noAppointments = document.getElementById('no-appointments');
+                const tbody = document.getElementById('appointments-tbody');
+                const countElement = document.getElementById('appointments-count');
+
+                if (this.allAppointments.length === 0) {
+                    appointmentsContent.style.display = 'none';
+                    noAppointments.style.display = 'block';
+                    return;
+                }
+
+                noAppointments.style.display = 'none';
+                appointmentsContent.style.display = 'block';
+
+                // Update count
+                countElement.textContent = `${this.allAppointments.length} appointment${this.allAppointments.length !== 1 ? 's' : ''} found`;
+
+                // Calculate pagination
+                const startIndex = (this.currentPage - 1) * this.appointmentsPerPage;
+                const endIndex = startIndex + this.appointmentsPerPage;
+                const appointmentsToShow = this.allAppointments.slice(startIndex, endIndex);
+
+                // Clear existing rows
+                tbody.innerHTML = '';
+
+                // Add appointment rows
+                appointmentsToShow.forEach(appointment => {
+                    const row = this.createAppointmentRow(appointment);
+                    tbody.appendChild(row);
+                });
+
+                // Setup pagination
+                this.setupPagination();
+            }
+
+            createAppointmentRow(appointment) {
+                const row = document.createElement('tr');
+                
+                const clientName = appointment.ClientName || 'N/A';
+                const serviceName = appointment.ServiceName || 'N/A';
+                const practitionerName = appointment.PractitionerName || 'N/A';
+                const locationName = appointment.LocationName || 'N/A';
+                const price = appointment.Price ? `$${parseFloat(appointment.Price).toFixed(2)}` : 'N/A';
+                
+                // Format date
+                let formattedDate = 'N/A';
+                if (appointment.StartDateLocalFormatted) {
+                    try {
+                        const date = new Date(appointment.StartDateLocalFormatted);
+                        formattedDate = date.toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: '2-digit',
+                            year: 'numeric'
+                        }) + ' - ' + date.toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            hour12: true
+                        });
+                    } catch (e) {
+                        formattedDate = appointment.StartDateLocalFormatted;
+                    }
+                }
+
+                row.innerHTML = `
+                    <td>${this.escapeHtml(clientName)}</td>
+                    <td>${this.escapeHtml(serviceName)}</td>
+                    <td class="date-cell">${this.escapeHtml(formattedDate)}</td>
+                    <td>${this.escapeHtml(practitionerName)}</td>
+                    <td>${this.escapeHtml(locationName)}</td>
+                    <td class="price-cell">${this.escapeHtml(price)}</td>
+                `;
+
+                return row;
+            }
+
+            setupPagination() {
+                const paginationContainer = document.getElementById('pagination');
+                const totalPages = Math.ceil(this.allAppointments.length / this.appointmentsPerPage);
+
+                if (totalPages <= 1) {
+                    paginationContainer.style.display = 'none';
+                    return;
+                }
+
+                paginationContainer.style.display = 'flex';
+                paginationContainer.innerHTML = '';
+
+                // Previous button
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'pagination-button';
+                prevBtn.textContent = '← Previous';
+                prevBtn.disabled = this.currentPage === 1;
+                prevBtn.addEventListener('click', () => {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                        this.displayAppointments();
+                    }
+                });
+                paginationContainer.appendChild(prevBtn);
+
+                // Page info
+                const pageInfo = document.createElement('span');
+                pageInfo.className = 'pagination-info';
+                pageInfo.textContent = `Page ${this.currentPage} of ${totalPages}`;
+                paginationContainer.appendChild(pageInfo);
+
+                // Next button
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'pagination-button';
+                nextBtn.textContent = 'Next →';
+                nextBtn.disabled = this.currentPage === totalPages;
+                nextBtn.addEventListener('click', () => {
+                    if (this.currentPage < totalPages) {
+                        this.currentPage++;
+                        this.displayAppointments();
+                    }
+                });
+                paginationContainer.appendChild(nextBtn);
+            }
+
+            showLoading() {
+                document.getElementById('loading-spinner').style.display = 'block';
+                document.getElementById('appointments-content').style.display = 'none';
+                document.getElementById('no-appointments').style.display = 'none';
+                document.getElementById('refresh-btn').disabled = true;
+                document.getElementById('refresh-text').textContent = 'Loading...';
+            }
+
+            hideLoading() {
+                document.getElementById('loading-spinner').style.display = 'none';
+                document.getElementById('refresh-btn').disabled = false;
+                document.getElementById('refresh-text').textContent = 'Load Appointments';
+            }
+
+            showError(message) {
+                const errorElement = document.getElementById('error-message');
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+
+            hideError() {
+                document.getElementById('error-message').style.display = 'none';
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // Initialize the widget when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new IntakeQAppointmentsWidget();
+        });
+    </script>
+</body>
+</html>
