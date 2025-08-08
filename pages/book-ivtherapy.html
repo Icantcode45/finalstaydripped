@@ -954,25 +954,43 @@
             observer.observe(el);
         });
 
-        // Book treatment function
-        function bookTreatment(treatmentId) {
-            // Scroll to booking widget
-            document.getElementById('intakeq-booking-widget').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
+        // Show booking widget function
+        function showBookingWidget(widgetId) {
+            // Hide all booking widgets first
+            const allWidgets = document.querySelectorAll('.booking-widget');
+            allWidgets.forEach(widget => {
+                widget.style.display = 'none';
             });
-            
-            // Highlight the booking widget
-            const widget = document.querySelector('.booking-widget');
-            widget.style.border = '2px solid var(--primary-blue)';
-            widget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
-            
-            setTimeout(() => {
-                widget.style.border = '1px solid var(--border-color)';
-                widget.style.boxShadow = 'none';
-            }, 3000);
-            
+
+            // Show the selected widget
+            const selectedWidget = document.getElementById(widgetId);
+            if (selectedWidget) {
+                selectedWidget.style.display = 'block';
+
+                // Scroll to the widget
+                selectedWidget.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Highlight the booking widget
+                selectedWidget.style.border = '2px solid var(--primary-blue)';
+                selectedWidget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
+
+                setTimeout(() => {
+                    selectedWidget.style.border = '1px solid var(--border-color)';
+                    selectedWidget.style.boxShadow = 'none';
+                }, 3000);
+            }
+
+            console.log('Showing booking widget:', widgetId);
+        }
+
+        // Book treatment function (legacy support)
+        function bookTreatment(treatmentId) {
             console.log('Booking treatment:', treatmentId);
+            // For backward compatibility, redirect to general booking
+            window.open('https://Staydripped.intakeq.com/booking', '_blank');
         }
 
         // Initialize on page load
