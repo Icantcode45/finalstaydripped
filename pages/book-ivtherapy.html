@@ -499,7 +499,7 @@
                                     <div class="treatment-price">$249</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('standard-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('myers-cocktail-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -510,7 +510,7 @@
                                     <div class="treatment-price">$299</div>
                                     <div class="treatment-duration">60-75 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('standard-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('mega-myers-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -521,17 +521,43 @@
                                     <div class="treatment-price">$199</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="showBookingWidget('standard-iv-widget')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('day-after-widget')">Book</button>
                             </div>
                         </div>
 
-                        <!-- Standard IV Therapy Booking Widget -->
-                        <div id="standard-iv-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                        <!-- Individual Service Booking Widgets for Standard IV Therapy -->
+                        <div id="myers-cocktail-widget" class="booking-widget" style="display: none; margin-top: 20px;">
                             <div class="widget-header">
-                                <h4 class="widget-title">Book Standard IV Therapy</h4>
-                                <p class="widget-description">Schedule your standard IV therapy treatment with enhanced formulations.</p>
+                                <h4 class="widget-title">Book Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Complete vitamin and mineral infusion - $249</p>
                             </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?categoryId=2f8be24a-d5ad-40c7-aa8c-5172eed7df3e"
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=c13f904a-a8d0-43b1-bd5f-570387ee77d6"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="mega-myers-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Mega Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Enhanced potency vitamin formula - $299</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=e14cdb17-a9d1-47cb-90e1-d3050059bcf3"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="day-after-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The Day After Hangover Relief IV Drip</h4>
+                                <p class="widget-description">Hangover relief and recovery formula - $199</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=a7d83ea1-cf5e-4865-923e-bfe2232de898"
                                     width="100%"
                                     height="600"
                                     frameborder="0"
