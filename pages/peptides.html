@@ -1,109 +1,77 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US" prefix="og: https://ogp.me/ns#" style="--lqd-mobile-sec-height: 0px; scroll-behavior: smooth;">
-<head itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Peptide Therapy | Stay Dripped® IV & Wellness Co.</title>
-    <meta name="description" content="Advanced peptide therapy treatments in Scottsdale, AZ. Enhance healing, boost energy, improve skin, and optimize performance with our premium peptide therapies delivered by licensed professionals.">
-    <meta name="keywords" content="peptide therapy, BPC-157, thymosin beta 4, growth hormone peptides, Scottsdale Arizona, anti-aging, healing peptides, performance enhancement, wellness treatments">
-    <link rel="canonical" href="https://staydrippediv.com/peptides">
+    <title>Peptide Therapy | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Advanced peptide therapy treatments in Scottsdale, AZ. Professional peptide injections delivered by licensed medical professionals.">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Peptide Therapy | Stay Dripped® IV & Wellness Co.">
-    <meta property="og:description" content="Advanced peptide therapy treatments in Scottsdale, AZ. Enhance healing, boost energy, and optimize performance with our premium peptide therapies.">
-    <meta property="og:url" content="https://staydrippediv.com/peptides">
-    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Peptide Therapy | Stay Dripped® IV & Wellness Co.">
-    <meta name="twitter:description" content="Advanced peptide therapy treatments for healing, anti-aging, and performance enhancement.">
-    <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --e-global-color-primary: #000000;
-            --e-global-color-text: #3F4C51;
-            --e-global-color-12573a4: #FFFFFF;
-            --e-global-color-6e06d90: #000000;
-            --brand-primary: #FF6B6B;
-            --brand-secondary: #4ECDC4;
-            --brand-accent: #45B7D1;
-            --brand-dark: #2C3E50;
-            --brand-light: #F8F9FA;
-            --therapy-energy: #FFD93D;
-            --therapy-calm: #6BCF7F;
-            --therapy-focus: #4D96FF;
-            --elite-gold: #D4AF37;
-            --premium-purple: #8B5CF6;
-            --platinum-silver: #C0C0C0;
-            --white: #ffffff;
-            --light-gray: #f8fafc;
-            --dark-gray: #1f2937;
-            --text-gray: #374151;
-            --primary-font: "Inter", sans-serif;
-            --container-max-width: 1100px;
-            --container-default-padding: 20px;
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
         }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: var(--primary-font), sans-serif;
-            font-size: 17px;
-            font-weight: 400;
-            line-height: 1.35em;
-            color: var(--e-global-color-text);
-            background-color: var(--e-global-color-12573a4);
-            overflow-x: hidden;
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
         }
-        
+
         .container {
-            max-width: var(--container-max-width);
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 var(--container-default-padding);
-            width: 100%;
+            padding: 0 20px;
         }
-        
+
+        /* Header */
         .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
         }
-        
+
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
         }
-        
+
         .logo {
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 12px;
+            text-decoration: none;
         }
 
         .logo img {
-            height: 60px;
+            height: 48px;
             width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
         }
 
         .nav-links {
@@ -112,582 +80,334 @@
             gap: 32px;
             align-items: center;
         }
-        
+
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--dark-slate);
             font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: color 0.3s ease;
         }
-        
-        .nav-links a.active,
+
         .nav-links a:hover {
-            color: var(--brand-primary);
-        }
-
-        .nav-links a:not(.client-portal-btn)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--brand-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:not(.client-portal-btn):hover::after {
-            width: 100%;
+            color: var(--primary-blue);
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            font-size: 16px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            color: var(--dark-gray);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.35);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--elite-gold), var(--premium-purple));
-            color: white;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #c19b2a, #7c52e3);
-            transform: translateY(-3px) scale(1.05);
-        }
-
-        /* Navigation Dropdown */
-        .nav-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            display: none;
-            z-index: 1000;
-            margin-top: 8px;
-            min-width: 250px;
-            padding: 20px;
-        }
-
-        .nav-dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 12px 16px;
-            text-decoration: none;
-            color: var(--text-gray);
             transition: all 0.3s ease;
-            border-radius: 8px;
-            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .dropdown-content a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--brand-primary);
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
         }
 
-        .mobile-menu-toggle {
-            display: none;
+        /* Main Content */
+        .main {
+            padding-top: 100px;
+            min-height: 100vh;
         }
 
-        .hero-section {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, 
-                rgba(212, 175, 55, 0.1) 0%,
-                rgba(139, 92, 246, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
+        .page-header {
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--elite-gold), var(--premium-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
+        .page-title {
+            font-size: clamp(32px, 4vw, 48px);
             font-weight: 700;
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
         }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            max-width: 700px;
+        .page-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
-        .peptides-grid {
+        .treatments-section {
+            padding: var(--section-padding);
+        }
+
+        .treatments-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            gap: 32px;
+            margin-bottom: 80px;
         }
 
-        .peptide-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-radius: 24px;
-            padding: 40px 30px;
-            position: relative;
-            text-align: center;
-        }
-
-        .peptide-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3);
-        }
-
-        .peptide-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .peptide-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
-        }
-
-        .peptide-description {
-            color: var(--text-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .peptide-benefits {
-            list-style: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .peptide-benefits li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 30px;
-            color: var(--text-gray);
-        }
-
-        .peptide-benefits li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--therapy-calm);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .benefits-section {
-            background: var(--light-gray);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .benefit-item {
+        .treatment-category {
             background: var(--white);
-            padding: 30px;
+            border: 1px solid var(--border-color);
             border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .benefit-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        .treatment-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.1);
+            border-color: var(--primary-blue);
         }
 
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .category-header {
+            padding: 32px;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .benefit-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--dark-gray);
-            margin-bottom: 0.5rem;
-        }
-
-        .benefit-description {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .science-section {
-            background: var(--white);
-        }
-
-        .science-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .science-text {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, var(--elite-gold), var(--premium-purple));
-            color: white;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: clamp(2rem, 4vw, 3rem);
+        .category-title {
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
         }
 
-        .cta-subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .category-subtitle {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-white {
-            background: white;
-            color: var(--dark-gray);
+        .category-description {
+            color: var(--medium-gray);
+            margin-top: 12px;
+        }
+
+        .treatments-list {
+            padding: 32px;
+        }
+
+        .treatment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .treatment-item:last-child {
+            border-bottom: none;
+        }
+
+        .treatment-info h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--dark-slate);
+        }
+
+        .treatment-info p {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        .treatment-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .book-btn {
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 16px;
         }
 
-        .btn-white:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px) scale(1.05);
+        .book-btn:hover {
+            background: #0052A3;
+            transform: translateY(-1px);
         }
 
+        /* Booking Widget */
+        .booking-widget {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 60px 0;
+        }
+
+        .widget-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .widget-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .widget-description {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
 
-            .mobile-menu-toggle {
-                display: block;
-                background: none;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-            }
-
-            .peptides-grid {
+            .treatments-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
 
-            .peptide-card {
-                padding: 30px 20px;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .treatment-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <nav class="nav container">
             <a href="../index.html" class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped® IV & Wellness Co." />
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
             </a>
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
-                <li class="nav-dropdown">
-                    <a href="#" class="dropdown-trigger">Services ▼</a>
-                    <div class="dropdown-content">
-                        <a href="./book-ivtherapy.html">Cocktail Menu</a>
-                        <a href="./sexual-wellness.html">Sexual Wellness</a>
-                        <a href="./hormone-therapy.html">Hormone Therapy</a>
-                        <a href="./weight-loss.html">Weight Loss</a>
-                        <a href="./peptides.html" class="active">Peptide Therapy</a>
-                        <a href="./membership.html">Membership</a>
-                    </div>
-                </li>
-                <li><a href="../index.html#location">Service Area</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="./book-ivtherapy.html">Treatments</a></li>
+                <li><a href="#peptides">Peptides</a></li>
+                <li><a href="./membership.html">Membership</a></li>
                 <li><a href="../index.html#team">Our Team</a></li>
+                <li><a href="../index.html#location">Location</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
-                <li><button class="btn btn-primary">👤 Client Portal</button></li>
+                <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
             </ul>
-            <button class="mobile-menu-toggle">☰</button>
         </nav>
     </header>
 
-    <main>
-        <section class="hero-section">
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
             <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Advanced Peptide Therapy</h1>
-                    <p class="hero-subtitle">
-                        Unlock your body's natural healing potential with cutting-edge peptide treatments designed to enhance recovery, boost performance, and optimize cellular function for total wellness.
-                    </p>
-                    <a href="#peptides" class="btn btn-primary">Explore Peptides</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="peptides" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Premium Peptide Treatments</h2>
-                    <p class="section-subtitle">
-                        Our peptide therapy uses bioidentical amino acid sequences that signal your body's natural healing processes. Each treatment is carefully selected for its proven efficacy and safety profile.
-                    </p>
-                </div>
-
-                <div class="peptides-grid">
-                    <div class="peptide-card">
-                        <div class="peptide-icon">🧬</div>
-                        <h3 class="peptide-title">BPC-157</h3>
-                        <p class="peptide-description">
-                            Known as the "healing peptide," BPC-157 accelerates tissue repair and supports gut health, making it ideal for injury recovery and digestive wellness.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Accelerated wound healing</li>
-                            <li>Improved gut health</li>
-                            <li>Reduced inflammation</li>
-                            <li>Enhanced tendon/ligament repair</li>
-                            <li>Neuroprotective effects</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-
-                    <div class="peptide-card">
-                        <div class="peptide-icon">⚡</div>
-                        <h3 class="peptide-title">Thymosin Beta-4</h3>
-                        <p class="peptide-description">
-                            A powerful healing peptide that promotes tissue regeneration, reduces inflammation, and supports cardiovascular health.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Enhanced muscle recovery</li>
-                            <li>Improved cardiovascular function</li>
-                            <li>Reduced scar tissue formation</li>
-                            <li>Accelerated hair growth</li>
-                            <li>Anti-inflammatory properties</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-
-                    <div class="peptide-card">
-                        <div class="peptide-icon">🎯</div>
-                        <h3 class="peptide-title">CJC-1295</h3>
-                        <p class="peptide-description">
-                            Growth hormone releasing peptide that enhances muscle growth, improves sleep quality, and supports anti-aging processes.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Increased muscle mass</li>
-                            <li>Enhanced fat burning</li>
-                            <li>Improved sleep quality</li>
-                            <li>Better skin elasticity</li>
-                            <li>Cognitive enhancement</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-
-                    <div class="peptide-card">
-                        <div class="peptide-icon">💪</div>
-                        <h3 class="peptide-title">Ipamorelin</h3>
-                        <p class="peptide-description">
-                            A selective growth hormone secretagogue that promotes lean muscle growth and fat loss without affecting cortisol levels.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Lean muscle development</li>
-                            <li>Enhanced fat metabolism</li>
-                            <li>Improved bone density</li>
-                            <li>Better recovery times</li>
-                            <li>Minimal side effects</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-
-                    <div class="peptide-card">
-                        <div class="peptide-icon">🧠</div>
-                        <h3 class="peptide-title">Nootropic Peptides</h3>
-                        <p class="peptide-description">
-                            Cognitive enhancement peptides designed to improve memory, focus, and overall brain function for peak mental performance.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Enhanced memory formation</li>
-                            <li>Improved focus and clarity</li>
-                            <li>Neuroprotective benefits</li>
-                            <li>Better stress resilience</li>
-                            <li>Mood stabilization</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-
-                    <div class="peptide-card">
-                        <div class="peptide-icon">✨</div>
-                        <h3 class="peptide-title">Anti-Aging Peptides</h3>
-                        <p class="peptide-description">
-                            Comprehensive anti-aging peptide protocols designed to enhance longevity, improve skin health, and optimize cellular function.
-                        </p>
-                        <ul class="peptide-benefits">
-                            <li>Collagen production boost</li>
-                            <li>Improved skin texture</li>
-                            <li>Enhanced energy levels</li>
-                            <li>Better metabolic function</li>
-                            <li>Cellular regeneration</li>
-                        </ul>
-                        <a href="../pages/book-ivtherapy.html" class="btn btn-primary">Book Treatment</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="benefits-section section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Why Choose Peptide Therapy?</h2>
-                    <p class="section-subtitle">
-                        Experience the transformative benefits of targeted peptide treatments that work at the cellular level to optimize your health and performance.
-                    </p>
-                </div>
-
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🎯</div>
-                        <h3 class="benefit-title">Targeted Action</h3>
-                        <p class="benefit-description">Peptides work at specific cellular receptors for precise therapeutic effects</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🌿</div>
-                        <h3 class="benefit-title">Natural & Safe</h3>
-                        <p class="benefit-description">Bioidentical amino acid sequences that mimic your body's natural processes</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="benefit-icon">⚡</div>
-                        <h3 class="benefit-title">Fast Results</h3>
-                        <p class="benefit-description">Experience noticeable improvements in energy, recovery, and performance quickly</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🔬</div>
-                        <h3 class="benefit-title">Science-Based</h3>
-                        <p class="benefit-description">Backed by extensive research and clinical studies for proven efficacy</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🎨</div>
-                        <h3 class="benefit-title">Customizable</h3>
-                        <p class="benefit-description">Personalized treatment protocols tailored to your specific health goals</p>
-                    </div>
-
-                    <div class="benefit-item">
-                        <div class="benefit-icon">👨‍⚕️</div>
-                        <h3 class="benefit-title">Professional Care</h3>
-                        <p class="benefit-description">Administered by licensed medical professionals with expertise in peptide therapy</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="science-section section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">The Science Behind Peptides</h2>
-                </div>
-                <div class="science-content">
-                    <p class="science-text">
-                        Peptides are short chains of amino acids that act as signaling molecules in the body. They communicate with cells to trigger specific biological responses, from healing and recovery to growth and repair. Unlike synthetic drugs, peptides work with your body's natural processes, making them highly effective with minimal side effects.
-                    </p>
-                    <p class="science-text">
-                        Our peptide therapies are sourced from the highest quality compounding pharmacies and administered using evidence-based protocols. Each treatment is designed to maximize bioavailability and therapeutic benefit while ensuring complete safety and comfort.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section section">
-            <div class="container">
-                <h2 class="cta-title">Ready to Experience Advanced Peptide Therapy?</h2>
-                <p class="cta-subtitle">
-                    Transform your health and unlock your potential with our premium peptide treatments delivered by expert medical professionals.
+                <h1 class="page-title">Peptide Therapy Treatments</h1>
+                <p class="page-description">
+                    Advanced peptide therapy treatments administered by licensed medical professionals for optimal health and wellness enhancement.
                 </p>
-                <a href="../pages/book-ivtherapy.html" class="btn btn-white">Schedule Consultation</a>
+            </div>
+        </section>
+
+        <!-- Treatments Section -->
+        <section id="peptides" class="treatments-section">
+            <div class="container">
+                <div class="treatments-grid">
+                    <!-- Peptide Therapy Treatments -->
+                    <div class="treatment-category">
+                        <div class="category-header">
+                            <h3 class="category-title">Peptide Therapy Treatments</h3>
+                            <div class="category-subtitle">Starting at $299</div>
+                            <p class="category-description">Advanced peptide formulations for enhanced health, performance, and longevity.</p>
+                        </div>
+                        <div class="treatments-list">
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>Contact for Peptide Consultation</h4>
+                                    <p>Personalized peptide therapy consultation and treatment plan</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">Contact</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('peptide-widget')">Book</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Peptide Therapy Booking Widget -->
+                        <div id="peptide-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Peptide Therapy Consultation</h4>
+                                <p class="widget-description">Schedule your personalized peptide therapy consultation with our medical professionals.</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?categoryId=7b76bb12-b381-407c-8d7d-2f351634a4cd" 
+                                    width="100%" 
+                                    height="600" 
+                                    frameborder="0" 
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- General Booking Widget -->
+                <div class="booking-widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">Ready to Book Your Peptide Therapy?</h3>
+                        <p class="widget-description">Schedule your consultation today. Our licensed medical professionals will create a personalized treatment plan for you.</p>
+                    </div>
+                    
+                    <!-- Fallback booking options -->
+                    <div style="text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--medium-gray); margin-bottom: 20px;">Contact us for peptide therapy consultation</p>
+                        <a href="tel:+16027610492" class="btn" style="margin-right: 16px;">📞 Call (602) 761-0492</a>
+                        <a href="https://Staydripped.intakeq.com/booking?categoryId=7b76bb12-b381-407c-8d7d-2f351634a4cd" target="_blank" class="btn" style="background: var(--secondary-teal);">Book Consultation</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
+
+    <script>
+        // Show booking widget function
+        function showBookingWidget(widgetId) {
+            // Hide all booking widgets first
+            const allWidgets = document.querySelectorAll('.booking-widget[id]');
+            allWidgets.forEach(widget => {
+                widget.style.display = 'none';
+            });
+            
+            // Show the selected widget
+            const selectedWidget = document.getElementById(widgetId);
+            if (selectedWidget) {
+                selectedWidget.style.display = 'block';
+                
+                // Scroll to the widget
+                selectedWidget.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Highlight the booking widget
+                selectedWidget.style.border = '2px solid var(--primary-blue)';
+                selectedWidget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
+                
+                setTimeout(() => {
+                    selectedWidget.style.border = '1px solid var(--border-color)';
+                    selectedWidget.style.boxShadow = 'none';
+                }, 3000);
+            }
+            
+            console.log('Showing booking widget:', widgetId);
+        }
+    </script>
 </body>
 </html>
