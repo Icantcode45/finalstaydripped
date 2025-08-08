@@ -1017,12 +1017,23 @@
                 'vitamin-d3': 45
             };
             
+            // Helper to escape HTML special characters
+            function escapeHTML(str) {
+                return String(str)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;")
+                    .replace(/`/g, "&#96;");
+            }
+
             let addonsSummaryHTML = '';
             addonCheckboxes.forEach(checkbox => {
                 const price = addonPrices[checkbox.value];
                 addonsTotal += price;
                 const addonName = checkbox.value.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
-                addonsSummaryHTML += `<div class="summary-row"><span>${addonName}:</span><span>+$${price}</span></div>`;
+                addonsSummaryHTML += `<div class="summary-row"><span>${escapeHTML(addonName)}:</span><span>+$${price}</span></div>`;
             });
             
             document.getElementById('addonsSummary').innerHTML = addonsSummaryHTML;
