@@ -1150,7 +1150,16 @@
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Add any initialization code here
+            // Add fade-in animation initialization
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+
+            // Test function to ensure all widgets are properly hidden on load
+            const allServiceWidgets = document.querySelectorAll('.booking-widget[id$="-widget"]');
+            console.log('Total service widgets found:', allServiceWidgets.length);
         });
     </script>
 </body>
