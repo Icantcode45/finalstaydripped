@@ -294,6 +294,18 @@
             border-radius: 16px;
             padding: 32px;
             margin: 60px 0;
+            transition: all 0.3s ease;
+        }
+
+        .booking-widget[id$="-widget"] {
+            margin: 20px 0;
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .booking-widget[id$="-widget"]:not([style*="display: none"]) {
+            display: block !important;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .widget-header {
@@ -366,11 +378,12 @@
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../index.html#services">Services</a></li>
-                <li><a href="#treatments">Treatments</a></li>
+                <li><a href="#treatments">IV Treatments</a></li>
                 <li><a href="./peptides.html">Peptides</a></li>
+                <li><a href="./weight-loss.html">Weight Loss</a></li>
+                <li><a href="./hormone-therapy.html">Hormone Therapy</a></li>
                 <li><a href="./membership.html">Membership</a></li>
                 <li><a href="../index.html#team">Our Team</a></li>
-                <li><a href="../index.html#location">Location</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
                 <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
             </ul>
@@ -415,7 +428,7 @@
                                     <div class="treatment-price">$149</div>
                                     <div class="treatment-duration">30-45 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('rehydrate-iv')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('rehydrate-iv-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -426,7 +439,7 @@
                                     <div class="treatment-price">$199</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('jr-myers')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('jr-myers-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -437,8 +450,48 @@
                                     <div class="treatment-price">$179</div>
                                     <div class="treatment-duration">30-45 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('rehydrate-plus')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('rehydrate-plus-widget')">Book</button>
                             </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for Basic IV Therapy -->
+                        <div id="rehydrate-iv-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Rehydrate IV Drip</h4>
+                                <p class="widget-description">Essential hydration with electrolytes - $149</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=73e00621-4069-486a-9fa8-a5a94a089618"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="jr-myers-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Jr. Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Essential vitamin and mineral blend - $199</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=065ab682-3334-403a-9635-ea461e520a6d"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="rehydrate-plus-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Rehydrate Plus IV Drip</h4>
+                                <p class="widget-description">Enhanced hydration with additional electrolytes - $179</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=ae66ce7c-fa68-408c-9ab0-a04b287f6b31"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
 
@@ -459,7 +512,7 @@
                                     <div class="treatment-price">$249</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('myers-cocktail')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('myers-cocktail-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -470,7 +523,7 @@
                                     <div class="treatment-price">$299</div>
                                     <div class="treatment-duration">60-75 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('mega-myers')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('mega-myers-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -481,8 +534,48 @@
                                     <div class="treatment-price">$199</div>
                                     <div class="treatment-duration">45-60 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('day-after')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('day-after-widget')">Book</button>
                             </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for Standard IV Therapy -->
+                        <div id="myers-cocktail-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Complete vitamin and mineral infusion - $249</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=c13f904a-a8d0-43b1-bd5f-570387ee77d6"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="mega-myers-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Mega Myers' Cocktail IV Drip</h4>
+                                <p class="widget-description">Enhanced potency vitamin formula - $299</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=e14cdb17-a9d1-47cb-90e1-d3050059bcf3"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="day-after-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The Day After Hangover Relief IV Drip</h4>
+                                <p class="widget-description">Hangover relief and recovery formula - $199</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=a7d83ea1-cf5e-4865-923e-bfe2232de898"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
 
@@ -503,7 +596,7 @@
                                     <div class="treatment-price">$399</div>
                                     <div class="treatment-duration">60-90 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('gold-ultimate')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('gold-ultimate-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -514,7 +607,7 @@
                                     <div class="treatment-price">$499</div>
                                     <div class="treatment-duration">90-120 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('platinum-premium')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('platinum-premium-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -525,8 +618,48 @@
                                     <div class="treatment-price">$349</div>
                                     <div class="treatment-duration">75-90 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('arizona-detox')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('arizona-detox-widget')">Book</button>
                             </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for Premium IV Therapy -->
+                        <div id="gold-ultimate-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Gold" Ultimate Recovery</h4>
+                                <p class="widget-description">Premium recovery with finest ingredients - $399</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=3519d39a-31ac-4944-80c9-4eb667a13df4"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="platinum-premium-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Platinum" Ultimate Recovery</h4>
+                                <p class="widget-description">Elite comprehensive wellness formula - $499</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=0c0c56b7-85a4-4e01-9b9c-180bc714fa94"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="arizona-detox-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Arizona" Detox & Cleanse</h4>
+                                <p class="widget-description">Comprehensive detox and cleanse formula - $349</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=3fb4cbbb-5e12-447c-a236-869573ef730f"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
 
@@ -547,7 +680,7 @@
                                     <div class="treatment-price">$399</div>
                                     <div class="treatment-duration">120-180 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('basic-nad')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('basic-nad-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -558,7 +691,7 @@
                                     <div class="treatment-price">$599</div>
                                     <div class="treatment-duration">180-240 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('fountain-youth-nad')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('fountain-youth-nad-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -569,8 +702,48 @@
                                     <div class="treatment-price">$799</div>
                                     <div class="treatment-duration">240-300 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('diamond-nad')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('diamond-nad-widget')">Book</button>
                             </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for NAD+ Therapy -->
+                        <div id="basic-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The Basic NAD+ IV Drip</h4>
+                                <p class="widget-description">Introduction to NAD+ therapy - $399</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=7c8dcca4-35b4-44bd-a242-d1fdc722ddb5"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="fountain-youth-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Fountain of Youth" NAD+ IV Drip</h4>
+                                <p class="widget-description">Enhanced anti-aging NAD+ formula - $599</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=73bbd812-1b77-4e60-a92e-35b64af58379"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="diamond-nad-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Diamond" NAD+ IV Drip</h4>
+                                <p class="widget-description">Premium cellular regeneration protocol - $799</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=1a0e76e3-7548-4039-a737-efe993bfdbfd"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
 
@@ -591,7 +764,7 @@
                                     <div class="treatment-price">$35</div>
                                     <div class="treatment-duration">5-10 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('b12-shot')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('b12-shot-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -602,7 +775,7 @@
                                     <div class="treatment-price">$120</div>
                                     <div class="treatment-duration">5-10 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('b12-pack')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('b12-pack-widget')">Book</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -613,8 +786,204 @@
                                     <div class="treatment-price">$89</div>
                                     <div class="treatment-duration">10-15 min</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('wellness-bundle')">Book</button>
+                                <button class="book-btn" onclick="showBookingWidget('wellness-bundle-widget')">Book</button>
                             </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for Vitamin Shots -->
+                        <div id="b12-shot-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book B12 Energy Shot</h4>
+                                <p class="widget-description">Instant energy boost injection - $35</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=c14d40af-977b-4f6e-9db8-d24c9ad3a35d"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="b12-pack-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book B12 Power Pack Bundle</h4>
+                                <p class="widget-description">Multiple B12 shots for extended benefits - $120</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=e7c6a722-e621-46d7-8f96-af2f96848dc4"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="wellness-bundle-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Wellness Shot Bundle</h4>
+                                <p class="widget-description">Combination of essential vitamin shots - $89</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=1b14cb7a-8e18-44b3-99a1-ecd3b516e8a6"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Specialty IV Therapy -->
+                    <div class="treatment-category fade-in">
+                        <div class="category-header">
+                            <h3 class="category-title">Specialty IV Therapy</h3>
+                            <div class="category-subtitle">Starting at $249</div>
+                            <p class="category-description">Specialized formulations targeting specific health and performance goals.</p>
+                        </div>
+                        <div class="treatments-list">
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>The "Sun Devil" Energy Booster</h4>
+                                    <p>Arizona-inspired energy enhancement formula</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$299</div>
+                                    <div class="treatment-duration">45-60 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('sun-devil-widget')">Book</button>
+                            </div>
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>The "D-Book" Performance Booster</h4>
+                                    <p>Athletic performance optimization formula</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$349</div>
+                                    <div class="treatment-duration">60-75 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('d-book-widget')">Book</button>
+                            </div>
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>The "Diamond-Back" Immune Booster</h4>
+                                    <p>Comprehensive immune system support</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$299</div>
+                                    <div class="treatment-duration">45-60 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('diamond-back-widget')">Book</button>
+                            </div>
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>The "Scottsdale" Beauty IV</h4>
+                                    <p>Beauty and anti-aging enhancement formula</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$329</div>
+                                    <div class="treatment-duration">60-75 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('scottsdale-beauty-widget')">Book</button>
+                            </div>
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>Stress Relief IV Drip</h4>
+                                    <p>Relaxation and stress reduction formula</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$279</div>
+                                    <div class="treatment-duration">45-60 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('stress-relief-widget')">Book</button>
+                            </div>
+                            <div class="treatment-item">
+                                <div class="treatment-info">
+                                    <h4>Mental Clarity IV Drip</h4>
+                                    <p>Cognitive enhancement and focus formula</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="treatment-price">$299</div>
+                                    <div class="treatment-duration">45-60 min</div>
+                                </div>
+                                <button class="book-btn" onclick="showBookingWidget('mental-clarity-widget')">Book</button>
+                            </div>
+                        </div>
+
+                        <!-- Individual Service Booking Widgets for Specialty IV Therapy -->
+                        <div id="sun-devil-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Sun Devil" Energy Booster</h4>
+                                <p class="widget-description">Arizona-inspired energy enhancement formula - $299</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=65854196-73a1-4e68-a6c5-15cc88a5e346"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="d-book-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "D-Book" Performance Booster</h4>
+                                <p class="widget-description">Athletic performance optimization formula - $349</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=351c5cac-f576-418f-80d1-b8d6c0a1614f"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="diamond-back-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Diamond-Back" Immune Booster</h4>
+                                <p class="widget-description">Comprehensive immune system support - $299</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=d2f9830e-765d-4f50-89b4-b8ed1d9dc16c"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="scottsdale-beauty-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book The "Scottsdale" Beauty IV</h4>
+                                <p class="widget-description">Beauty and anti-aging enhancement formula - $329</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=68503856-7b7c-487a-ac80-9f6e4aabcb08"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="stress-relief-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Stress Relief IV Drip</h4>
+                                <p class="widget-description">Relaxation and stress reduction formula - $279</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=549f9f59-8bf3-4e62-a4ac-100998a40215"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="mental-clarity-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Book Mental Clarity IV Drip</h4>
+                                <p class="widget-description">Cognitive enhancement and focus formula - $299</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=6df0fe13-174e-4cb2-8a99-fd4d9dce4b92"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
 
@@ -635,7 +1004,7 @@
                                     <div class="treatment-price">$99/mo</div>
                                     <div class="treatment-duration">Unlimited</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('shot-pass')">Join</button>
+                                <button class="book-btn" onclick="showBookingWidget('shot-pass-widget')">Join</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -646,7 +1015,7 @@
                                     <div class="treatment-price">$399/mo</div>
                                     <div class="treatment-duration">Monthly</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('wellness-explorer')">Join</button>
+                                <button class="book-btn" onclick="showBookingWidget('wellness-explorer-widget')">Join</button>
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
@@ -657,38 +1026,64 @@
                                     <div class="treatment-price">$799/mo</div>
                                     <div class="treatment-duration">Unlimited</div>
                                 </div>
-                                <button class="book-btn" onclick="bookTreatment('wellness-platinum')">Join</button>
+                                <button class="book-btn" onclick="showBookingWidget('wellness-platinum-widget')">Join</button>
                             </div>
+
+                        <!-- Individual Service Booking Widgets for Membership Plans -->
+                        <div id="shot-pass-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Join Monthly Shot Pass</h4>
+                                <p class="widget-description">Unlimited vitamin shots per month - $99/mo</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=08549cfc-d53e-4841-9366-d63b9c22251a"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="wellness-explorer-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Join Wellness Explorer Membership</h4>
+                                <p class="widget-description">2 IV treatments + unlimited shots monthly - $399/mo</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=d7b705fd-04b7-4b2e-bda7-950417d6007d"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
+                        </div>
+
+                        <div id="wellness-platinum-widget" class="booking-widget" style="display: none; margin-top: 20px;">
+                            <div class="widget-header">
+                                <h4 class="widget-title">Join Wellness Platinum Membership</h4>
+                                <p class="widget-description">Unlimited treatments + priority booking - $799/mo</p>
+                            </div>
+                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=23cd9dbe-9135-42eb-9d37-9281cffda0f8"
+                                    width="100%"
+                                    height="600"
+                                    frameborder="0"
+                                    style="border-radius: 8px;">
+                            </iframe>
                         </div>
                     </div>
                 </div>
+                </div>
 
-                <!-- Booking Widget -->
+                <!-- General Contact Information -->
                 <div class="booking-widget">
                     <div class="widget-header">
-                        <h3 class="widget-title">Ready to Book Your Treatment?</h3>
-                        <p class="widget-description">Schedule your mobile IV therapy session today. Our licensed medical professionals will come to your location.</p>
+                        <h3 class="widget-title">Need Help Choosing?</h3>
+                        <p class="widget-description">Our medical professionals are here to help you select the perfect treatment for your needs.</p>
                     </div>
-                    
-                    <!-- IntakeQ Booking Widget -->
-                    <div id="intakeq-booking-widget" style="min-height: 600px; width: 100%;">
-                        <script>
-                        (function (c) {
-                            window.intakeq = "68460f36bc104b6aa9da43e0";
-                            var i = c.createElement("script");
-                            i.type = "text/javascript";
-                            i.async = true;
-                            i.src = "https://intakeq.com/js/widget.min.js";
-                            document.head.appendChild(i);
-                        })(document);
-                        </script>
-                    </div>
-                    
-                    <!-- Fallback booking options -->
-                    <div style="text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border-color);">
-                        <p style="color: var(--medium-gray); margin-bottom: 20px;">Prefer to book by phone?</p>
+
+                    <!-- Contact options -->
+                    <div style="text-align: center; margin-top: 32px;">
+                        <p style="color: var(--medium-gray); margin-bottom: 20px;">Contact us for personalized recommendations</p>
                         <a href="tel:+16027610492" class="btn" style="margin-right: 16px;">📞 Call (602) 761-0492</a>
-                        <a href="https://Staydripped.intakeq.com/booking" target="_blank" class="btn-secondary">Open Full Booking Portal</a>
+                        <a href="https://Staydripped.intakeq.com/booking" target="_blank" class="btn" style="background: var(--secondary-teal);">General Booking Portal</a>
                     </div>
                 </div>
             </div>
@@ -714,30 +1109,57 @@
             observer.observe(el);
         });
 
-        // Book treatment function
-        function bookTreatment(treatmentId) {
-            // Scroll to booking widget
-            document.getElementById('intakeq-booking-widget').scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
+        // Show booking widget function
+        function showBookingWidget(widgetId) {
+            // Hide all service booking widgets first (those with IDs ending in '-widget')
+            const allWidgets = document.querySelectorAll('.booking-widget[id$="-widget"]');
+            allWidgets.forEach(widget => {
+                widget.style.display = 'none';
             });
-            
-            // Highlight the booking widget
-            const widget = document.querySelector('.booking-widget');
-            widget.style.border = '2px solid var(--primary-blue)';
-            widget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
-            
-            setTimeout(() => {
-                widget.style.border = '1px solid var(--border-color)';
-                widget.style.boxShadow = 'none';
-            }, 3000);
-            
+
+            // Show the selected widget
+            const selectedWidget = document.getElementById(widgetId);
+            if (selectedWidget) {
+                selectedWidget.style.display = 'block';
+
+                // Scroll to the widget
+                selectedWidget.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Highlight the booking widget
+                selectedWidget.style.border = '2px solid var(--primary-blue)';
+                selectedWidget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
+
+                setTimeout(() => {
+                    selectedWidget.style.border = '1px solid var(--border-color)';
+                    selectedWidget.style.boxShadow = 'none';
+                }, 3000);
+            }
+
+            console.log('Showing booking widget:', widgetId);
+        }
+
+        // Book treatment function (legacy support)
+        function bookTreatment(treatmentId) {
             console.log('Booking treatment:', treatmentId);
+            // For backward compatibility, redirect to general booking
+            window.open('https://Staydripped.intakeq.com/booking', '_blank');
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Add any initialization code here
+            // Add fade-in animation initialization
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+
+            // Test function to ensure all widgets are properly hidden on load
+            const allServiceWidgets = document.querySelectorAll('.booking-widget[id$="-widget"]');
+            console.log('Total service widgets found:', allServiceWidgets.length);
         });
     </script>
 </body>
