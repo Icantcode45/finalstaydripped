@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Basic IV Therapy | Essential Hydration & Vitamins | Stay Dripped IV</title>
+    <meta name="description" content="Discover our basic IV therapy treatments in Scottsdale. Essential hydration, electrolyte balance, and vitamin infusions starting at $149. Professional mobile service.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-color: #10B981;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Main Content */
+        .main {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--dark-slate);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* Treatments Section */
+        .treatments-section {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            margin-bottom: 64px;
+        }
+
+        .treatment-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .treatment-header {
+            padding: 32px;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .treatment-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            color: var(--white);
+        }
+
+        .treatment-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .treatment-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .treatment-duration {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        .treatment-body {
+            padding: 32px;
+        }
+
+        .treatment-description {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .treatment-benefits {
+            margin-bottom: 32px;
+        }
+
+        .benefits-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .treatment-ingredients {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .ingredients-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .ingredients-list {
+            font-size: 14px;
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Why Choose Section */
+        .why-choose-section {
+            background: var(--light-gray);
+            padding: var(--section-padding);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--white);
+            margin: 0 auto 20px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .feature-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: var(--section-padding);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .step-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .treatments-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-header {
+                padding: 24px;
+            }
+
+            .treatment-body {
+                padding: 24px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="../index.html" class="logo">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#services">Services</a></li>
+                <li><a href="./book-ivtherapy.html">IV Treatments</a></li>
+                <li><a href="./peptides.html">Peptides</a></li>
+                <li><a href="./weight-loss.html">Weight Loss</a></li>
+                <li><a href="./hormone-therapy.html">Hormone Therapy</a></li>
+                <li><a href="./membership.html">Membership</a></li>
+                <li><a href="../index.html#team">Our Team</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Basic IV Therapy</h1>
+                    <p class="hero-subtitle">
+                        Essential hydration and vitamin infusions for everyday wellness. Our foundational treatments provide 
+                        the perfect introduction to IV therapy with proven benefits for energy, recovery, and overall health.
+                    </p>
+                    <a href="#treatments" class="btn">Explore Treatments</a>
+                    <a href="tel:+16027610492" class="btn-secondary">📞 Call (602) 761-0492</a>
+                </div>
+
+                <div class="hero-stats fade-in">
+                    <div class="stat-card">
+                        <span class="stat-number">$149</span>
+                        <span class="stat-label">Starting Price</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">30-60</span>
+                        <span class="stat-label">Minutes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Mobile Service</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Treatments Section -->
+        <section id="treatments" class="treatments-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">Essential Treatments</div>
+                    <h2 class="section-title">Basic IV Therapy Options</h2>
+                    <p class="section-description">
+                        Our basic IV therapy treatments are perfect for first-time clients or those seeking essential wellness support.
+                    </p>
+                </div>
+
+                <div class="treatments-grid">
+                    <!-- Rehydrate IV Drip -->
+                    <div class="treatment-card fade-in">
+                        <div class="treatment-header">
+                            <div class="treatment-icon">💧</div>
+                            <h3 class="treatment-name">Rehydrate IV Drip</h3>
+                            <div class="treatment-price">$149</div>
+                            <div class="treatment-duration">30-45 minutes</div>
+                        </div>
+                        <div class="treatment-body">
+                            <p class="treatment-description">
+                                Our most popular basic treatment provides essential hydration with electrolytes to restore optimal fluid balance and energy levels.
+                            </p>
+                            
+                            <div class="treatment-benefits">
+                                <h4 class="benefits-title">Key Benefits:</h4>
+                                <ul class="benefits-list">
+                                    <li>Rapid rehydration</li>
+                                    <li>Electrolyte balance restoration</li>
+                                    <li>Improved energy levels</li>
+                                    <li>Enhanced mental clarity</li>
+                                    <li>Better sleep quality</li>
+                                </ul>
+                            </div>
+
+                            <div class="treatment-ingredients">
+                                <h4 class="ingredients-title">Ingredients:</h4>
+                                <p class="ingredients-list">
+                                    Normal Saline (0.9% Sodium Chloride), Magnesium, Potassium, Calcium, B-Complex Vitamins
+                                </p>
+                            </div>
+
+                            <a href="https://Staydripped.intakeq.com/booking?serviceId=73e00621-4069-486a-9fa8-a5a94a089618" target="_blank" class="btn" style="width: 100%; justify-content: center;">Book Rehydrate IV</a>
+                        </div>
+                    </div>
+
+                    <!-- Jr. Myers' Cocktail -->
+                    <div class="treatment-card fade-in">
+                        <div class="treatment-header">
+                            <div class="treatment-icon">⚡</div>
+                            <h3 class="treatment-name">Jr. Myers' Cocktail</h3>
+                            <div class="treatment-price">$199</div>
+                            <div class="treatment-duration">45-60 minutes</div>
+                        </div>
+                        <div class="treatment-body">
+                            <p class="treatment-description">
+                                A gentle introduction to the famous Myers' Cocktail with essential vitamins and minerals for overall wellness and energy enhancement.
+                            </p>
+                            
+                            <div class="treatment-benefits">
+                                <h4 class="benefits-title">Key Benefits:</h4>
+                                <ul class="benefits-list">
+                                    <li>Immune system support</li>
+                                    <li>Natural energy boost</li>
+                                    <li>Stress reduction</li>
+                                    <li>Improved mood</li>
+                                    <li>Better nutrient absorption</li>
+                                </ul>
+                            </div>
+
+                            <div class="treatment-ingredients">
+                                <h4 class="ingredients-title">Ingredients:</h4>
+                                <p class="ingredients-list">
+                                    Vitamin C, B-Complex, B12, Magnesium, Calcium, Normal Saline
+                                </p>
+                            </div>
+
+                            <a href="https://Staydripped.intakeq.com/booking?serviceId=065ab682-3334-403a-9635-ea461e520a6d" target="_blank" class="btn" style="width: 100%; justify-content: center;">Book Jr. Myers'</a>
+                        </div>
+                    </div>
+
+                    <!-- Rehydrate Plus -->
+                    <div class="treatment-card fade-in">
+                        <div class="treatment-header">
+                            <div class="treatment-icon">💪</div>
+                            <h3 class="treatment-name">Rehydrate Plus</h3>
+                            <div class="treatment-price">$179</div>
+                            <div class="treatment-duration">30-45 minutes</div>
+                        </div>
+                        <div class="treatment-body">
+                            <p class="treatment-description">
+                                Enhanced hydration therapy with additional electrolytes and vitamins for those needing extra support for active lifestyles.
+                            </p>
+                            
+                            <div class="treatment-benefits">
+                                <h4 class="benefits-title">Key Benefits:</h4>
+                                <ul class="benefits-list">
+                                    <li>Superior hydration</li>
+                                    <li>Athletic recovery</li>
+                                    <li>Muscle cramp prevention</li>
+                                    <li>Enhanced performance</li>
+                                    <li>Faster recovery time</li>
+                                </ul>
+                            </div>
+
+                            <div class="treatment-ingredients">
+                                <h4 class="ingredients-title">Ingredients:</h4>
+                                <p class="ingredients-list">
+                                    Normal Saline, Enhanced Electrolyte Blend, Magnesium, B-Complex, Vitamin C
+                                </p>
+                            </div>
+
+                            <a href="https://Staydripped.intakeq.com/booking?serviceId=ae66ce7c-fa68-408c-9ab0-a04b287f6b31" target="_blank" class="btn" style="width: 100%; justify-content: center;">Book Rehydrate Plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Section -->
+        <section class="why-choose-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">Why Choose Basic IV Therapy</div>
+                    <h2 class="section-title">Perfect for First-Time Clients</h2>
+                    <p class="section-description">
+                        Our basic IV therapy treatments offer an excellent introduction to IV wellness with proven results and gentle formulations.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Targeted Hydration</h3>
+                        <p class="feature-description">
+                            Direct IV delivery ensures 100% bioavailability compared to oral supplements, providing faster and more effective results.
+                        </p>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">⏱️</div>
+                        <h3 class="feature-title">Quick Treatment</h3>
+                        <p class="feature-description">
+                            Most basic treatments take 30-60 minutes, perfect for busy schedules while delivering maximum benefits.
+                        </p>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🏠</div>
+                        <h3 class="feature-title">Mobile Convenience</h3>
+                        <p class="feature-description">
+                            We come to you - home, office, or hotel. No travel required, just relaxation and recovery in your preferred environment.
+                        </p>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">👨‍⚕️</div>
+                        <h3 class="feature-title">Medical Professionals</h3>
+                        <p class="feature-description">
+                            All treatments administered by licensed medical professionals with extensive IV therapy experience.
+                        </p>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">💰</div>
+                        <h3 class="feature-title">Affordable Wellness</h3>
+                        <p class="feature-description">
+                            Starting at just $149, basic IV therapy provides exceptional value for premium wellness care.
+                        </p>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">✅</div>
+                        <h3 class="feature-title">Proven Results</h3>
+                        <p class="feature-description">
+                            Thousands of satisfied clients have experienced improved energy, hydration, and overall wellness through our treatments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">How It Works</div>
+                    <h2 class="section-title">Simple 4-Step Process</h2>
+                    <p class="section-description">
+                        Getting started with basic IV therapy is easy. Here's what to expect from booking to treatment.
+                    </p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step fade-in">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Book Online</h3>
+                        <p class="step-description">
+                            Choose your treatment and schedule a convenient time. Our online booking makes it simple to secure your appointment.
+                        </p>
+                    </div>
+
+                    <div class="process-step fade-in">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Medical Consultation</h3>
+                        <p class="step-description">
+                            Our medical professional will review your health history and discuss the best treatment options for your needs.
+                        </p>
+                    </div>
+
+                    <div class="process-step fade-in">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">IV Treatment</h3>
+                        <p class="step-description">
+                            Relax while our licensed professional administers your IV treatment in the comfort of your chosen location.
+                        </p>
+                    </div>
+
+                    <div class="process-step fade-in">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Feel the Difference</h3>
+                        <p class="step-description">
+                            Experience improved hydration, energy, and wellness. Many clients feel benefits immediately after treatment.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px;">
+                    <a href="https://Staydripped.intakeq.com/booking" target="_blank" class="btn" style="margin-right: 16px;">Start Your Wellness Journey</a>
+                    <a href="tel:+16027610492" class="btn-secondary">Have Questions? Call Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#' || href.length <= 1) return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
