@@ -1469,6 +1469,15 @@
             }
         }
 
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         function updateBookingSummary() {
             const treatment = document.getElementById('treatment').value;
             const location = document.getElementById('location').value;
@@ -1483,7 +1492,7 @@
                 const summary = document.getElementById('booking-summary');
                 summary.innerHTML = `
                     <p><strong>Treatment:</strong> ${document.getElementById('treatment').options[document.getElementById('treatment').selectedIndex].text}</p>
-                    ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
+                    ${location ? `<p><strong>Location:</strong> ${escapeHTML(location)}</p>` : ''}
                     ${date ? `<p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>` : ''}
                     ${time ? `<p><strong>Time:</strong> ${document.getElementById('time').options[document.getElementById('time').selectedIndex].text}</p>` : ''}
                 `;
