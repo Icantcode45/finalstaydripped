@@ -31,11 +31,16 @@
             --primary-blue: #0066CC;
             --secondary-teal: #00B8A0;
             --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
             --dark-slate: #1A2B3A;
             --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
             --medium-gray: #64748B;
+            --warm-text: #2D3748;
             --white: #FFFFFF;
             --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
             --font-family: 'Inter', sans-serif;
             --max-width: 1200px;
             --section-padding: 80px 0;
@@ -154,7 +159,7 @@
         /* Hero Section */
         .hero {
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
         }
 
         .hero-content {
@@ -308,18 +313,36 @@
             gap: 32px;
         }
 
-        .service-card {
+        .service-card, .enhanced-card {
             background: var(--white);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 32px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.1);
+        .service-card::before, .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover, .enhanced-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
             border-color: var(--primary-blue);
+        }
+
+        .service-card:hover::before, .enhanced-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-icon {
@@ -364,7 +387,7 @@
         /* Team Section */
         .team {
             padding: var(--section-padding);
-            background: var(--light-gray);
+            background: var(--warm-gray);
         }
 
         .team-grid {
@@ -516,6 +539,246 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
+        /* Promotional Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-blue), #0052A3);
+            color: var(--white);
+            text-align: center;
+            padding: 16px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .promo-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .discount-code {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        /* Enhanced Question Cards */
+        .question-section {
+            padding: 80px 0;
+            background: var(--warm-gray);
+        }
+
+        .question-cards {
+            display: grid;
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .question-card {
+            background: var(--white);
+            border: 2px solid var(--soft-border);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .question-card:hover {
+            border-color: var(--secondary-teal);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 184, 160, 0.15);
+        }
+
+        .question-card.selected {
+            border-color: var(--secondary-teal);
+            background: rgba(0, 184, 160, 0.05);
+        }
+
+        .question-card::after {
+            content: '✓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-teal);
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .question-card.selected::after {
+            display: flex;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--dark-slate);
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        /* Enhanced Cards */
+        .enhanced-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .enhanced-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Progressive Form Steps */
+        .progressive-form {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: -80px auto 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 25px 80px rgba(26, 43, 58, 0.12);
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+        }
+
+        .form-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .step-indicator.completed {
+            background: var(--secondary-teal);
+            color: white;
+        }
+
+        .step-indicator:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--border-color);
+            transform: translateY(-50%);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -580,6 +843,16 @@
     </style>
 </head>
 <body>
+    <!-- Promotional Banner -->
+    <div class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h2>Get started today and enjoy <span class="discount-code">20% off</span> your first treatment.</h2>
+                <p>Your discount will automatically be applied at checkout.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
@@ -634,41 +907,132 @@
             </div>
         </div>
 
-        <!-- Booking Form -->
+        <!-- Question Section -->
         <div class="container">
-            <div class="booking-form">
-                <h3 style="text-align: center; margin-bottom: 24px; color: var(--dark-slate);">Book Your IV Therapy Session</h3>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="location">Service Location</label>
-                        <input type="text" id="location" placeholder="Your address in Scottsdale, AZ" required>
+            <div class="question-section">
+                <div class="section-header">
+                    <h2 class="section-title">What brings you to Stay Dripped?</h2>
+                    <p class="section-description">Help us personalize your wellness experience</p>
+                </div>
+
+                <div class="question-cards">
+                    <div class="question-card" onclick="selectQuestion(this)">
+                        <p class="question-text">I want to feel more energized and revitalized in my daily life.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="date">Preferred Date</label>
-                        <input type="date" id="date" required>
+                    <div class="question-card" onclick="selectQuestion(this)">
+                        <p class="question-text">I'm looking to boost my immune system and overall wellness.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="time">Preferred Time</label>
-                        <select id="time" required>
-                            <option value="">Select Time</option>
-                            <option value="morning">Morning (8AM-12PM)</option>
-                            <option value="afternoon">Afternoon (12PM-6PM)</option>
-                            <option value="evening">Evening (6PM-10PM)</option>
-                        </select>
+                    <div class="question-card" onclick="selectQuestion(this)">
+                        <p class="question-text">I need recovery support after workouts or long nights.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="treatment">Treatment Type</label>
-                        <select id="treatment" required>
-                            <option value="">Select Treatment</option>
-                            <option value="hydration">Hydration Boost</option>
-                            <option value="energy">Energy & Wellness</option>
-                            <option value="immunity">Immune Support</option>
-                            <option value="recovery">Recovery & Performance</option>
-                            <option value="beauty">Beauty & Anti-Aging</option>
-                        </select>
+                    <div class="question-card" onclick="selectQuestion(this)">
+                        <p class="question-text">I want to enhance my beauty and anti-aging routine naturally.</p>
+                    </div>
+                    <div class="question-card" onclick="selectQuestion(this)">
+                        <p class="question-text">I'm preparing for an important event or milestone.</p>
                     </div>
                 </div>
-                <button class="btn" style="width: 100%; justify-content: center;" onclick="bookService()">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Enhanced Booking Form -->
+        <div class="container">
+            <div class="progressive-form">
+                <div class="form-steps">
+                    <div class="step-indicator active" data-step="1">1</div>
+                    <div class="step-indicator" data-step="2">2</div>
+                    <div class="step-indicator" data-step="3">3</div>
+                </div>
+
+                <div class="form-step active" id="step1">
+                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Choose Your Treatment</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="treatment">Treatment Type</label>
+                            <select id="treatment" required onchange="updateTreatmentInfo()">
+                                <option value="">Select Your Treatment</option>
+                                <option value="hydration">Hydration Boost - $150</option>
+                                <option value="energy">Energy & Wellness - $180</option>
+                                <option value="immunity">Immune Support - $200</option>
+                                <option value="recovery">Recovery & Performance - $220</option>
+                                <option value="beauty">Beauty & Anti-Aging - $250</option>
+                                <option value="nad">NAD+ Therapy - $400</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="treatment-info" style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px; display: none;">
+                        <h4 style="margin-bottom: 12px;">Treatment Details</h4>
+                        <p id="treatment-description"></p>
+                        <ul id="treatment-benefits"></ul>
+                    </div>
+                    <div class="step-navigation">
+                        <div></div>
+                        <button class="btn" onclick="nextStep(2)" disabled id="step1-next">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Schedule Your Session</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="location">Service Location</label>
+                            <input type="text" id="location" placeholder="Your address in Scottsdale, AZ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" required>
+                                <option value="">Select Time</option>
+                                <option value="morning">Morning (8AM-12PM)</option>
+                                <option value="afternoon">Afternoon (12PM-6PM)</option>
+                                <option value="evening">Evening (6PM-10PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-outline" onclick="prevStep(1)">Back</button>
+                        <button class="btn" onclick="nextStep(3)" disabled id="step2-next">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step3">
+                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Contact Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" placeholder="Your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" placeholder="Your last name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px;">
+                        <h4 style="margin-bottom: 12px;">Booking Summary</h4>
+                        <div id="booking-summary"></div>
+                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                            <p style="font-weight: 600; color: var(--primary-blue);">
+                                Total: <span id="total-price">$0</span>
+                                <span style="color: var(--secondary-teal); font-size: 14px; margin-left: 8px;">(20% off first treatment applied)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-navigation">
+                        <button class="btn-outline" onclick="prevStep(2)">Back</button>
+                        <button class="btn" onclick="completeBooking()" disabled id="step3-complete">Complete Booking</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -685,7 +1049,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="service-card fade-in">
+                <div class="enhanced-card fade-in">
                     <div class="service-icon">💧</div>
                     <h3>Hydration Therapy</h3>
                     <p>Essential hydration and electrolyte replenishment for optimal cellular function and energy.</p>
@@ -698,7 +1062,7 @@
                     <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
                 </div>
 
-                <div class="service-card fade-in">
+                <div class="enhanced-card fade-in">
                     <div class="service-icon">⚡</div>
                     <h3>Energy & Wellness</h3>
                     <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
@@ -988,9 +1352,216 @@
             window.location.href = 'pages/book-ivtherapy.html';
         }
 
+        // Question selection functionality
+        function selectQuestion(element) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Add selected class to clicked card
+            element.classList.add('selected');
+
+            // Auto-scroll to booking form
+            setTimeout(() => {
+                document.querySelector('.progressive-form').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 500);
+        }
+
+        // Progressive form functionality
+        function nextStep(stepNumber) {
+            // Hide current step
+            document.querySelector('.form-step.active').classList.remove('active');
+
+            // Update step indicators
+            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                indicator.classList.remove('active');
+                if (index < stepNumber - 1) {
+                    indicator.classList.add('completed');
+                } else if (index === stepNumber - 1) {
+                    indicator.classList.add('active');
+                }
+            });
+
+            // Show new step
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+        }
+
+        function prevStep(stepNumber) {
+            // Hide current step
+            document.querySelector('.form-step.active').classList.remove('active');
+
+            // Update step indicators
+            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+                indicator.classList.remove('active', 'completed');
+                if (index < stepNumber - 1) {
+                    indicator.classList.add('completed');
+                } else if (index === stepNumber - 1) {
+                    indicator.classList.add('active');
+                }
+            });
+
+            // Show new step
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+        }
+
+        // Treatment information
+        const treatmentInfo = {
+            hydration: {
+                description: "Essential hydration and electrolyte replenishment for optimal cellular function and energy.",
+                benefits: ["Rapid rehydration", "Electrolyte balance", "Increased energy", "Improved mental clarity"],
+                price: 150
+            },
+            energy: {
+                description: "Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.",
+                benefits: ["B12 energy boost", "Enhanced mental clarity", "Improved mood", "Sustained energy"],
+                price: 180
+            },
+            immunity: {
+                description: "High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.",
+                benefits: ["Immune system support", "Antioxidant protection", "Faster recovery", "Zinc & glutathione"],
+                price: 200
+            },
+            recovery: {
+                description: "Advanced formulas for athletic recovery, hangover relief, and performance optimization.",
+                benefits: ["Hangover relief", "Athletic recovery", "Reduced inflammation", "Performance enhancement"],
+                price: 220
+            },
+            beauty: {
+                description: "Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.",
+                benefits: ["Skin brightening", "Anti-aging support", "Hair & nail health", "Collagen boost"],
+                price: 250
+            },
+            nad: {
+                description: "Advanced NAD+ therapy for cellular regeneration, longevity, and optimal brain function.",
+                benefits: ["Cellular regeneration", "Anti-aging effects", "Enhanced cognition", "Energy production"],
+                price: 400
+            }
+        };
+
+        function updateTreatmentInfo() {
+            const treatment = document.getElementById('treatment').value;
+            const infoDiv = document.getElementById('treatment-info');
+            const nextBtn = document.getElementById('step1-next');
+
+            if (treatment && treatmentInfo[treatment]) {
+                const info = treatmentInfo[treatment];
+                document.getElementById('treatment-description').textContent = info.description;
+
+                const benefitsList = document.getElementById('treatment-benefits');
+                benefitsList.innerHTML = '';
+                info.benefits.forEach(benefit => {
+                    const li = document.createElement('li');
+                    li.textContent = benefit;
+                    li.style.cssText = 'padding: 4px 0; color: var(--medium-gray);';
+                    benefitsList.appendChild(li);
+                });
+
+                infoDiv.style.display = 'block';
+                nextBtn.disabled = false;
+                updateBookingSummary();
+            } else {
+                infoDiv.style.display = 'none';
+                nextBtn.disabled = true;
+            }
+        }
+
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function updateBookingSummary() {
+            const treatment = document.getElementById('treatment').value;
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            if (treatment && treatmentInfo[treatment]) {
+                const info = treatmentInfo[treatment];
+                const originalPrice = info.price;
+                const discountedPrice = Math.round(originalPrice * 0.8); // 20% off
+
+                const summary = document.getElementById('booking-summary');
+                summary.innerHTML = `
+                    <p><strong>Treatment:</strong> ${document.getElementById('treatment').options[document.getElementById('treatment').selectedIndex].text}</p>
+                    ${location ? `<p><strong>Location:</strong> ${escapeHTML(location)}</p>` : ''}
+                    ${date ? `<p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>` : ''}
+                    ${time ? `<p><strong>Time:</strong> ${document.getElementById('time').options[document.getElementById('time').selectedIndex].text}</p>` : ''}
+                `;
+
+                document.getElementById('total-price').textContent = `$${discountedPrice}`;
+            }
+        }
+
+        // Form validation
+        function validateStep2() {
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const nextBtn = document.getElementById('step2-next');
+
+            if (location && date && time) {
+                nextBtn.disabled = false;
+                updateBookingSummary();
+            } else {
+                nextBtn.disabled = true;
+            }
+        }
+
+        function validateStep3() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const completeBtn = document.getElementById('step3-complete');
+
+            if (firstName && lastName && phone && email) {
+                completeBtn.disabled = false;
+            } else {
+                completeBtn.disabled = true;
+            }
+        }
+
+        function completeBooking() {
+            const formData = {
+                treatment: document.getElementById('treatment').value,
+                location: document.getElementById('location').value,
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+
+            // Here you would typically send the data to your booking system
+            console.log('Booking data:', formData);
+
+            // For now, redirect to the booking page
+            window.location.href = 'pages/book-ivtherapy.html';
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             setMinDate();
+
+            // Add event listeners for form validation
+            ['location', 'date', 'time'].forEach(id => {
+                document.getElementById(id).addEventListener('input', validateStep2);
+                document.getElementById(id).addEventListener('change', validateStep2);
+            });
+
+            ['firstName', 'lastName', 'phone', 'email'].forEach(id => {
+                document.getElementById(id).addEventListener('input', validateStep3);
+            });
         });
     </script>
 
