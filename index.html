@@ -1630,6 +1630,133 @@
             }, 500);
         }
 
+        // Location finder functionality
+        function showLocationFinder() {
+            const modal = document.createElement('div');
+            modal.className = 'location-modal';
+            modal.innerHTML = `
+                <div class="location-modal-content">
+                    <div class="location-modal-header">
+                        <h3>Find Service Locations</h3>
+                        <button class="close-modal" onclick="closeLocationModal()">&times;</button>
+                    </div>
+                    <div class="location-search">
+                        <input type="text" id="location-search-input" placeholder="Enter your zip code or city" />
+                        <button onclick="searchLocations()">Search</button>
+                    </div>
+                    <div class="location-results">
+                        <div class="location-item">
+                            <h4>Scottsdale Service Area</h4>
+                            <p>📍 Greater Scottsdale, Paradise Valley, North Phoenix</p>
+                            <p>📞 (602) 761-0492</p>
+                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Cave Creek / Carefree</h4>
+                            <p>📍 Cave Creek, Carefree, Fountain Hills</p>
+                            <p>📞 (602) 761-0492</p>
+                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeLocationModal() {
+            const modal = document.querySelector('.location-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        function searchLocations() {
+            const searchTerm = document.getElementById('location-search-input').value.toLowerCase();
+            // Simple search functionality - in real app would call API
+            if (searchTerm.includes('scottsdale') || searchTerm.includes('85260') || searchTerm.includes('85259')) {
+                alert('Great! We service your area. Call (602) 761-0492 to book.');
+            } else if (searchTerm.includes('phoenix') || searchTerm.includes('cave creek') || searchTerm.includes('paradise valley')) {
+                alert('We service your area! Call (602) 761-0492 to book.');
+            } else {
+                alert('We may service your area. Please call (602) 761-0492 to confirm availability.');
+            }
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const searchOverlay = document.createElement('div');
+            searchOverlay.className = 'search-overlay';
+            searchOverlay.innerHTML = `
+                <div class="search-container">
+                    <input type="text" id="site-search" placeholder="Search treatments, services, or information..." />
+                    <button onclick="performSearch()">Search</button>
+                    <button class="close-search" onclick="closeSearch()">&times;</button>
+                </div>
+            `;
+            document.body.appendChild(searchOverlay);
+            setTimeout(() => searchOverlay.classList.add('show'), 10);
+            document.getElementById('site-search').focus();
+        }
+
+        function closeSearch() {
+            const overlay = document.querySelector('.search-overlay');
+            if (overlay) {
+                overlay.classList.remove('show');
+                setTimeout(() => overlay.remove(), 300);
+            }
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('site-search').value.toLowerCase();
+            if (searchTerm.includes('iv') || searchTerm.includes('hydration')) {
+                window.location.href = 'pages/book-ivtherapy.html';
+            } else if (searchTerm.includes('peptide')) {
+                window.location.href = 'pages/peptides.html';
+            } else if (searchTerm.includes('weight') || searchTerm.includes('loss')) {
+                window.location.href = 'pages/weight-loss.html';
+            } else if (searchTerm.includes('hormone')) {
+                window.location.href = 'pages/hormone-therapy.html';
+            } else {
+                alert('No results found. Please try a different search term or browse our services.');
+            }
+        }
+
+        // Add event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Location finder
+            const locationBtn = document.querySelector('.location-finder-btn');
+            if (locationBtn) {
+                locationBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showLocationFinder();
+                });
+            }
+
+            // Search button
+            const searchBtn = document.querySelector('.search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', toggleSearch);
+            }
+
+            // Cart functionality (placeholder)
+            const cartBtn = document.querySelector('.cart-btn');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', function() {
+                    alert('Cart functionality coming soon! For now, please call (602) 761-0492 to book multiple treatments.');
+                });
+            }
+
+            // Close modals on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeLocationModal();
+                    closeSearch();
+                }
+            });
+        });
+
         // Progressive form functionality
         function nextStep(stepNumber) {
             // Hide current step
