@@ -66,12 +66,99 @@
             padding: 0 20px;
         }
 
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location-finder-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-finder-btn:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .tagline-text {
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--accent-orange);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
         /* Header */
         .header {
             background: var(--white);
             border-bottom: 1px solid var(--border-color);
             position: fixed;
-            top: 0;
+            top: 44px;
             width: 100%;
             z-index: 1000;
             transition: box-shadow 0.3s ease;
@@ -158,7 +245,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            padding: 164px 0 80px;
             background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
         }
 
@@ -167,6 +254,23 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
+        }
+
+        .hero-tagline {
+            margin-bottom: 32px;
+        }
+
+        .tagline-highlight {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .hero-text h1 {
@@ -298,6 +402,7 @@
             font-weight: 700;
             margin-bottom: 16px;
             color: var(--dark-slate);
+            letter-spacing: -0.5px;
         }
 
         .section-description {
@@ -311,6 +416,76 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .service-card-enhanced {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card-enhanced:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card-enhanced:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 32px;
+        }
+
+        .service-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .service-content p {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .service-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .services-summary {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .services-summary p {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
         .service-card, .enhanced-card {
@@ -387,7 +562,7 @@
         /* Team Section */
         .team {
             padding: var(--section-padding);
-            background: var(--warm-gray);
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(0, 102, 204, 0.04) 100%);
         }
 
         .team-grid {
@@ -496,9 +671,20 @@
 
         /* Footer */
         .footer {
-            background: var(--dark-slate);
+            background: linear-gradient(135deg, var(--dark-slate) 0%, #0f1a24 100%);
             color: var(--white);
             padding: 60px 0 20px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
         }
 
         .footer-content {
@@ -781,12 +967,28 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .top-bar-right {
+                gap: 12px;
+            }
+
+            .tagline-text {
+                display: none;
+            }
+
+            .location-finder-btn {
+                font-size: 12px;
+            }
+
             .nav-links {
                 display: none;
             }
 
             .mobile-menu-btn {
                 display: block;
+            }
+
+            .hero {
+                padding: 140px 0 80px;
             }
 
             .hero-content {
@@ -829,6 +1031,166 @@
             }
         }
 
+        /* Location Modal */
+        .location-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-modal.show {
+            opacity: 1;
+        }
+
+        .location-modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .location-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-modal-header h3 {
+            margin: 0;
+            color: var(--dark-slate);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--medium-gray);
+        }
+
+        .location-search {
+            padding: 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .location-search input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .location-search button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .location-results {
+            padding: 0 24px 24px;
+        }
+
+        .location-item {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .location-item h4 {
+            margin: 0 0 12px 0;
+            color: var(--dark-slate);
+        }
+
+        .location-item p {
+            margin: 4px 0;
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* Search Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 43, 58, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-overlay.show {
+            opacity: 1;
+        }
+
+        .search-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .search-container button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .close-search {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none !important;
+            color: var(--medium-gray) !important;
+            font-size: 28px !important;
+            padding: 8px !important;
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
@@ -853,6 +1215,46 @@
         </div>
     </div>
 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <a href="#location" class="location-finder-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    FIND A SERVICE LOCATION
+                </a>
+                <div class="top-bar-right">
+                    <span class="tagline-text">MORE THAN WELLNESS</span>
+                    <div class="top-bar-icons">
+                        <button class="icon-btn search-btn" title="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                        <a href="https://Staydripped.intakeq.com/booking?clientArea=1" class="icon-btn" title="Client Portal">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </a>
+                        <button class="icon-btn cart-btn" title="Treatment Cart">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
@@ -869,7 +1271,6 @@
                 <li><a href="pages/membership.html">Membership</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
         </nav>
@@ -880,8 +1281,11 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in">
-                    <h1>Professional Mobile IV Therapy in Scottsdale</h1>
-                    <p>Experience premium IV therapy and wellness treatments delivered directly to your location by licensed medical professionals.</p>
+                    <div class="hero-tagline">
+                        <span class="tagline-highlight">MORE THAN WELLNESS</span>
+                        <h1>Professional Mobile IV Therapy in Scottsdale</h1>
+                        <p>At Stay Dripped, we offer diverse wellness services united by a shared goal: better outcomes through more personalized care. No matter your needs, we're here to support your journey with precision medicine and people-first partnership.</p>
+                    </div>
                     <div class="hero-cta">
                         <a href="pages/book-ivtherapy.html" class="btn">Book Treatment</a>
                         <a href="#services" class="btn-secondary">Learn More</a>
@@ -1042,91 +1446,118 @@
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-subtitle">Our Services</div>
-                <h2 class="section-title">Professional IV Therapy & Wellness Treatments</h2>
+                <h2 class="section-title">OUR SERVICES</h2>
                 <p class="section-description">
-                    We offer a comprehensive range of IV therapy treatments designed to enhance your health, boost energy, and support your wellness goals.
+                    At Stay Dripped, we offer diverse wellness services united by a shared goal: better outcomes through more personalized care. No matter your field, we're here to support your work with precision medicine and people-first partnership.
                 </p>
             </div>
 
             <div class="services-grid">
-                <div class="enhanced-card fade-in">
-                    <div class="service-icon">💧</div>
-                    <h3>Hydration Therapy</h3>
-                    <p>Essential hydration and electrolyte replenishment for optimal cellular function and energy.</p>
-                    <ul class="treatment-list">
-                        <li>Basic Hydration IV</li>
-                        <li>Electrolyte Plus</li>
-                        <li>Recovery Hydration</li>
-                        <li>Athletic Hydration</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=600&auto=format&fit=crop" alt="Hydration Therapy" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Hydration Therapy</h3>
+                        <p>Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
+                        <ul class="treatment-list">
+                            <li>Basic Hydration IV</li>
+                            <li>Electrolyte Plus</li>
+                            <li>Recovery Hydration</li>
+                            <li>Athletic Hydration</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
 
-                <div class="enhanced-card fade-in">
-                    <div class="service-icon">⚡</div>
-                    <h3>Energy & Wellness</h3>
-                    <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
-                    <ul class="treatment-list">
-                        <li>B12 Energy Boost</li>
-                        <li>Myers&#39; Cocktail</li>
-                        <li>Mega Myers&#39;</li>
-                        <li>Executive Wellness</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=600&auto=format&fit=crop" alt="Energy & Wellness" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Energy & Wellness</h3>
+                        <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
+                        <ul class="treatment-list">
+                            <li>B12 Energy Boost</li>
+                            <li>Myers' Cocktail</li>
+                            <li>Mega Myers'</li>
+                            <li>Executive Wellness</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
 
-                <div class="service-card fade-in">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Immune Support</h3>
-                    <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
-                    <ul class="treatment-list">
-                        <li>Immune Boost IV</li>
-                        <li>Vitamin C Mega Dose</li>
-                        <li>Zinc & Glutathione</li>
-                        <li>Cold & Flu Recovery</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Immune Support" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Immune Support</h3>
+                        <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
+                        <ul class="treatment-list">
+                            <li>Immune Boost IV</li>
+                            <li>Vitamin C Mega Dose</li>
+                            <li>Zinc & Glutathione</li>
+                            <li>Cold & Flu Recovery</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
 
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏃</div>
-                    <h3>Recovery & Performance</h3>
-                    <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
-                    <ul class="treatment-list">
-                        <li>Hangover Recovery</li>
-                        <li>Athletic Performance</li>
-                        <li>Post-Workout Recovery</li>
-                        <li>NAD+ Therapy</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Recovery & Performance" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Recovery & Performance</h3>
+                        <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
+                        <ul class="treatment-list">
+                            <li>Hangover Recovery</li>
+                            <li>Athletic Performance</li>
+                            <li>Post-Workout Recovery</li>
+                            <li>NAD+ Therapy</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
 
-                <div class="service-card fade-in">
-                    <div class="service-icon">✨</div>
-                    <h3>Beauty & Anti-Aging</h3>
-                    <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
-                    <ul class="treatment-list">
-                        <li>Beauty Glow IV</li>
-                        <li>Anti-Aging Formula</li>
-                        <li>Skin Brightening</li>
-                        <li>Hair & Nail Support</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=600&auto=format&fit=crop" alt="Beauty & Anti-Aging" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Beauty & Anti-Aging</h3>
+                        <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
+                        <ul class="treatment-list">
+                            <li>Beauty Glow IV</li>
+                            <li>Anti-Aging Formula</li>
+                            <li>Skin Brightening</li>
+                            <li>Hair & Nail Support</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
-    <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
 
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎯</div>
-                    <h3>Specialized Treatments</h3>
-                    <p>Advanced therapies including peptide treatments, hormone optimization, and weight management support.</p>
-                    <ul class="treatment-list">
-                        <li>Peptide Therapy</li>
-                        <li>Weight Management</li>
-                        <li>Hormone Support</li>
-                        <li>Custom Formulations</li>
-                    </ul>
-                    <a href="pages/book-ivtherapy.html" class="btn" style="margin-top: 20px;">Book Treatment</a>
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=600&auto=format&fit=crop" alt="Specialized Treatments" />
+                    </div>
+                    <div class="service-content">
+                        <h3>Specialized Treatments</h3>
+                        <p>Advanced therapies including peptide treatments, hormone optimization, and weight management support.</p>
+                        <ul class="treatment-list">
+                            <li>Peptide Therapy</li>
+                            <li>Weight Management</li>
+                            <li>Hormone Support</li>
+                            <li>Custom Formulations</li>
+                        </ul>
+                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                    </div>
                 </div>
+            </div>
+
+            <div class="services-summary fade-in">
+                <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
             </div>
         </div>
     </section>
@@ -1370,6 +1801,133 @@
                 });
             }, 500);
         }
+
+        // Location finder functionality
+        function showLocationFinder() {
+            const modal = document.createElement('div');
+            modal.className = 'location-modal';
+            modal.innerHTML = `
+                <div class="location-modal-content">
+                    <div class="location-modal-header">
+                        <h3>Find Service Locations</h3>
+                        <button class="close-modal" onclick="closeLocationModal()">&times;</button>
+                    </div>
+                    <div class="location-search">
+                        <input type="text" id="location-search-input" placeholder="Enter your zip code or city" />
+                        <button onclick="searchLocations()">Search</button>
+                    </div>
+                    <div class="location-results">
+                        <div class="location-item">
+                            <h4>Scottsdale Service Area</h4>
+                            <p>📍 Greater Scottsdale, Paradise Valley, North Phoenix</p>
+                            <p>📞 (602) 761-0492</p>
+                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Cave Creek / Carefree</h4>
+                            <p>📍 Cave Creek, Carefree, Fountain Hills</p>
+                            <p>📞 (602) 761-0492</p>
+                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeLocationModal() {
+            const modal = document.querySelector('.location-modal');
+            if (modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            }
+        }
+
+        function searchLocations() {
+            const searchTerm = document.getElementById('location-search-input').value.toLowerCase();
+            // Simple search functionality - in real app would call API
+            if (searchTerm.includes('scottsdale') || searchTerm.includes('85260') || searchTerm.includes('85259')) {
+                alert('Great! We service your area. Call (602) 761-0492 to book.');
+            } else if (searchTerm.includes('phoenix') || searchTerm.includes('cave creek') || searchTerm.includes('paradise valley')) {
+                alert('We service your area! Call (602) 761-0492 to book.');
+            } else {
+                alert('We may service your area. Please call (602) 761-0492 to confirm availability.');
+            }
+        }
+
+        // Search functionality
+        function toggleSearch() {
+            const searchOverlay = document.createElement('div');
+            searchOverlay.className = 'search-overlay';
+            searchOverlay.innerHTML = `
+                <div class="search-container">
+                    <input type="text" id="site-search" placeholder="Search treatments, services, or information..." />
+                    <button onclick="performSearch()">Search</button>
+                    <button class="close-search" onclick="closeSearch()">&times;</button>
+                </div>
+            `;
+            document.body.appendChild(searchOverlay);
+            setTimeout(() => searchOverlay.classList.add('show'), 10);
+            document.getElementById('site-search').focus();
+        }
+
+        function closeSearch() {
+            const overlay = document.querySelector('.search-overlay');
+            if (overlay) {
+                overlay.classList.remove('show');
+                setTimeout(() => overlay.remove(), 300);
+            }
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('site-search').value.toLowerCase();
+            if (searchTerm.includes('iv') || searchTerm.includes('hydration')) {
+                window.location.href = 'pages/book-ivtherapy.html';
+            } else if (searchTerm.includes('peptide')) {
+                window.location.href = 'pages/peptides.html';
+            } else if (searchTerm.includes('weight') || searchTerm.includes('loss')) {
+                window.location.href = 'pages/weight-loss.html';
+            } else if (searchTerm.includes('hormone')) {
+                window.location.href = 'pages/hormone-therapy.html';
+            } else {
+                alert('No results found. Please try a different search term or browse our services.');
+            }
+        }
+
+        // Add event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Location finder
+            const locationBtn = document.querySelector('.location-finder-btn');
+            if (locationBtn) {
+                locationBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showLocationFinder();
+                });
+            }
+
+            // Search button
+            const searchBtn = document.querySelector('.search-btn');
+            if (searchBtn) {
+                searchBtn.addEventListener('click', toggleSearch);
+            }
+
+            // Cart functionality (placeholder)
+            const cartBtn = document.querySelector('.cart-btn');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', function() {
+                    alert('Cart functionality coming soon! For now, please call (602) 761-0492 to book multiple treatments.');
+                });
+            }
+
+            // Close modals on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeLocationModal();
+                    closeSearch();
+                }
+            });
+        });
 
         // Progressive form functionality
         function nextStep(stepNumber) {
