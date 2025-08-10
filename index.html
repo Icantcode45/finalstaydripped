@@ -1019,6 +1019,166 @@
             }
         }
 
+        /* Location Modal */
+        .location-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-modal.show {
+            opacity: 1;
+        }
+
+        .location-modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .location-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-modal-header h3 {
+            margin: 0;
+            color: var(--dark-slate);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--medium-gray);
+        }
+
+        .location-search {
+            padding: 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .location-search input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .location-search button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .location-results {
+            padding: 0 24px 24px;
+        }
+
+        .location-item {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .location-item h4 {
+            margin: 0 0 12px 0;
+            color: var(--dark-slate);
+        }
+
+        .location-item p {
+            margin: 4px 0;
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* Search Overlay */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 43, 58, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .search-overlay.show {
+            opacity: 1;
+        }
+
+        .search-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .search-container button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .close-search {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none !important;
+            color: var(--medium-gray) !important;
+            font-size: 28px !important;
+            padding: 8px !important;
+        }
+
         /* Animations */
         .fade-in {
             opacity: 0;
