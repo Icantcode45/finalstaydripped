@@ -1362,5 +1362,827 @@
             </div>
         </div>
     </section>
+
+    <!-- Chat Widget for Product Support -->
+    <div id="chatWidget" class="chat-widget">
+        <div id="chatTrigger" class="chat-trigger">
+            <div class="chat-bubble">
+                <div class="chat-bubble-content">
+                    <p class="chat-bubble-text">Questions about our peptides?</p>
+                    <button class="chat-bubble-btn">Chat with a Specialist</button>
+                </div>
+                <button class="chat-close" onclick="dismissChat()" aria-label="Dismiss">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-modal-content">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <h3>NAD+ & Peptide Specialist</h3>
+                    <p class="chat-status">Online • Typically responds in minutes</p>
+                </div>
+                <button class="chat-modal-close" onclick="closeChatModal()">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot-message">
+                    <div class="message-content">
+                        <p>Hello! I'm here to help with any questions about our NAD+ and peptide therapies. How can I assist you today?</p>
+                        <span class="message-time">Now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="suggested-questions">
+                <p class="suggested-label">Popular questions:</p>
+                <div class="question-buttons">
+                    <button class="question-btn" onclick="askQuestion('What is NAD+ therapy?')">What is NAD+ therapy?</button>
+                    <button class="question-btn" onclick="askQuestion('How long do treatments take?')">How long do treatments take?</button>
+                    <button class="question-btn" onclick="askQuestion('What are the benefits?')">What are the benefits?</button>
+                    <button class="question-btn" onclick="askQuestion('Are there side effects?')">Are there side effects?</button>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="chat-input" onkeypress="handleChatKeypress(event)">
+                <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="quickViewModal" class="quick-view-modal">
+        <div class="quick-view-content">
+            <button class="quick-view-close" onclick="closeQuickView()">×</button>
+            <div id="quickViewBody" class="quick-view-body">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Chat Widget Styles */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-trigger {
+            display: none;
+        }
+
+        .chat-trigger.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .chat-bubble {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .chat-bubble-text {
+            font-size: 14px;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .chat-bubble-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .chat-bubble-btn:hover {
+            background: #0052A3;
+            transform: translateY(-1px);
+        }
+
+        .chat-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #64748B;
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .chat-close:hover {
+            background: #f1f5f9;
+            color: var(--dark-slate);
+        }
+
+        /* Chat Modal Styles */
+        .chat-modal {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        .chat-modal.show {
+            display: flex;
+            flex-direction: column;
+            animation: chatModalSlide 0.3s ease-out;
+        }
+
+        .chat-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .chat-status {
+            font-size: 12px;
+            opacity: 0.9;
+            margin: 2px 0 0 0;
+        }
+
+        .chat-modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease;
+        }
+
+        .chat-modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .chat-message {
+            margin-bottom: 16px;
+        }
+
+        .bot-message .message-content {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px 12px 12px 4px;
+            padding: 12px 16px;
+            max-width: 80%;
+        }
+
+        .user-message .message-content {
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 4px 12px;
+            padding: 12px 16px;
+            max-width: 80%;
+            margin-left: auto;
+        }
+
+        .message-content p {
+            margin: 0 0 4px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message-time {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #64748B;
+            border-radius: 50%;
+            animation: typingPulse 1.5s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .suggested-questions {
+            padding: 16px 20px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        .suggested-label {
+            font-size: 12px;
+            color: #64748B;
+            margin: 0 0 8px 0;
+            font-weight: 500;
+        }
+
+        .question-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .question-btn {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .question-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .chat-input-container {
+            padding: 16px 20px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .chat-send-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .chat-send-btn:hover {
+            background: #0052A3;
+        }
+
+        /* Quick View Modal */
+        .quick-view-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quick-view-modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .quick-view-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        .quick-view-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .quick-view-close:hover {
+            background: #f1f5f9;
+        }
+
+        .quick-view-body {
+            padding: 40px 32px 32px;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes chatModalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes typingPulse {
+            0%, 60%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            30% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced Product Cards */
+        .product-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card::after {
+            content: 'Quick View';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .product-card:hover::after {
+            opacity: 1;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .chat-modal {
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .chat-bubble {
+                max-width: 280px;
+            }
+
+            .quick-view-content {
+                margin: 0;
+                height: 100vh;
+                border-radius: 0;
+            }
+        }
+    </style>
+
+    <script>
+        // Chat Widget Functionality
+        let chatVisible = false;
+        let chatModalOpen = false;
+        let currentProduct = null;
+
+        // Product data for quick responses
+        const productInfo = {
+            'nad': {
+                name: 'NAD+ IV Infusion',
+                benefits: 'Cellular energy restoration, enhanced mental clarity, anti-aging benefits',
+                duration: '3-4 hours',
+                price: '$150'
+            },
+            'bpc': {
+                name: 'BPC-157 Healing Peptide',
+                benefits: 'Enhanced tissue repair, gut health optimization, injury recovery support',
+                duration: 'Weekly injections',
+                price: '$120'
+            },
+            'default': {
+                name: 'NAD+ & Peptide Therapy',
+                benefits: 'Cellular optimization, longevity enhancement, performance improvement',
+                duration: 'Varies by treatment',
+                price: 'Starting at $120'
+            }
+        };
+
+        // Show chat widget after 5 seconds
+        setTimeout(() => {
+            const chatTrigger = document.getElementById('chatTrigger');
+            if (chatTrigger) {
+                chatTrigger.classList.add('show');
+                chatVisible = true;
+            }
+        }, 5000);
+
+        // Chat functions
+        function dismissChat() {
+            const chatTrigger = document.getElementById('chatTrigger');
+            if (chatTrigger) {
+                chatTrigger.classList.remove('show');
+                chatVisible = false;
+            }
+        }
+
+        function openChatModal() {
+            const chatModal = document.getElementById('chatModal');
+            const chatTrigger = document.getElementById('chatTrigger');
+
+            if (chatModal) {
+                chatModal.classList.add('show');
+                chatModalOpen = true;
+            }
+
+            if (chatTrigger) {
+                chatTrigger.classList.remove('show');
+                chatVisible = false;
+            }
+        }
+
+        function closeChatModal() {
+            const chatModal = document.getElementById('chatModal');
+            if (chatModal) {
+                chatModal.classList.remove('show');
+                chatModalOpen = false;
+            }
+        }
+
+        function askQuestion(question) {
+            addUserMessage(question);
+
+            // Simulate typing delay
+            setTimeout(() => {
+                showTypingIndicator();
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    generateResponse(question);
+                }, 1500);
+            }, 300);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (message) {
+                addUserMessage(message);
+                input.value = '';
+
+                // Simulate response
+                setTimeout(() => {
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        generateResponse(message);
+                    }, 1500);
+                }, 300);
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addUserMessage(message) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user-message';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <p>${message}</p>
+                    <span class="message-time">${getCurrentTime()}</span>
+                </div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message bot-message';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <p>${message}</p>
+                    <span class="message-time">${getCurrentTime()}</span>
+                </div>
+            `;
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot-message';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function generateResponse(question) {
+            const lowerQuestion = question.toLowerCase();
+            let response = '';
+
+            if (lowerQuestion.includes('nad+') || lowerQuestion.includes('nad')) {
+                response = `NAD+ IV therapy helps restore cellular energy and supports healthy aging. Our treatments take 3-4 hours and include 250-500mg of pharmaceutical-grade NAD+. Many clients experience improved mental clarity, energy, and overall wellness. Would you like to schedule a consultation?`;
+            } else if (lowerQuestion.includes('peptide') || lowerQuestion.includes('bpc')) {
+                response = `Our peptide therapies are designed for healing, performance, and longevity. Popular options include BPC-157 for tissue repair and recovery peptides for enhanced performance. All treatments are administered by licensed medical professionals. What specific goals are you looking to achieve?`;
+            } else if (lowerQuestion.includes('time') || lowerQuestion.includes('long')) {
+                response = `Treatment duration varies by therapy: NAD+ infusions take 3-4 hours, while peptide injections are quick 5-10 minute appointments. We recommend scheduling consultations to discuss your specific treatment timeline and goals.`;
+            } else if (lowerQuestion.includes('side') || lowerQuestion.includes('safe')) {
+                response = `Our treatments are administered by licensed medical professionals and side effects are typically minimal. Common experiences include mild fatigue after NAD+ treatments or minor injection site reactions with peptides. We conduct thorough consultations to ensure treatments are appropriate for you.`;
+            } else if (lowerQuestion.includes('benefit') || lowerQuestion.includes('help')) {
+                response = `Benefits include enhanced cellular energy, improved recovery, better sleep quality, cognitive enhancement, and support for healthy aging. Many clients report increased energy, mental clarity, and overall wellness within days of treatment.`;
+            } else if (lowerQuestion.includes('price') || lowerQuestion.includes('cost')) {
+                response = `NAD+ treatments start at $150, peptide therapies range from $120-250. We offer package deals and personalized treatment plans. Would you like to schedule a consultation to discuss pricing for your specific needs?`;
+            } else {
+                response = `Thank you for your question about our NAD+ and peptide therapies. I'd be happy to connect you with one of our medical specialists who can provide detailed information tailored to your specific needs. Would you like to schedule a consultation? You can also call us at (480) 418-3678.`;
+            }
+
+            addBotMessage(response);
+        }
+
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Product Quick View
+        function openQuickView(productName) {
+            const modal = document.getElementById('quickViewModal');
+            const body = document.getElementById('quickViewBody');
+
+            // Find product info
+            const product = getProductInfo(productName);
+
+            body.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <h2 style="color: var(--dark-slate); margin-bottom: 16px;">${product.name}</h2>
+                    <div style="background: var(--light-gray); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 12px;">Key Benefits</h4>
+                        <p style="color: var(--medium-gray); line-height: 1.6;">${product.benefits}</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <strong style="color: var(--dark-slate);">Duration:</strong>
+                            <span style="color: var(--medium-gray);">${product.duration}</span>
+                        </div>
+                        <div>
+                            <strong style="color: var(--primary-blue); font-size: 24px;">${product.price}</strong>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <a href="../pages/book-appointment.html" class="btn" style="display: inline-flex; align-items: center; text-decoration: none;">Book Consultation</a>
+                        <button onclick="openChatModal(); closeQuickView();" class="btn btn-secondary">Ask Questions</button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('show');
+        }
+
+        function closeQuickView() {
+            const modal = document.getElementById('quickViewModal');
+            modal.classList.remove('show');
+        }
+
+        function getProductInfo(productName) {
+            const name = productName.toLowerCase();
+            if (name.includes('nad')) return productInfo.nad;
+            if (name.includes('bpc')) return productInfo.bpc;
+            return productInfo.default;
+        }
+
+        // Enhanced product card interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers to chat bubble button
+            const chatBubbleBtn = document.querySelector('.chat-bubble-btn');
+            if (chatBubbleBtn) {
+                chatBubbleBtn.addEventListener('click', openChatModal);
+            }
+
+            // Add click handlers to product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                const productTitle = card.querySelector('.product-title');
+                if (productTitle) {
+                    card.addEventListener('click', function(e) {
+                        // Don't trigger if clicking on a button
+                        if (!e.target.classList.contains('btn') && !e.target.closest('.btn')) {
+                            openQuickView(productTitle.textContent);
+                        }
+                    });
+                }
+            });
+
+            // Close modals when clicking outside
+            document.addEventListener('click', function(e) {
+                const chatModal = document.getElementById('chatModal');
+                const quickViewModal = document.getElementById('quickViewModal');
+
+                if (e.target === quickViewModal) {
+                    closeQuickView();
+                }
+            });
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeChatModal();
+                    closeQuickView();
+                }
+            });
+        });
+
+        // Add enhanced visual feedback
+        function addRippleEffect(element, e) {
+            const ripple = document.createElement('div');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+
+            element.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Add accessibility improvements
+        function initializeAccessibility() {
+            // Add ARIA labels and roles
+            const chatWidget = document.getElementById('chatWidget');
+            if (chatWidget) {
+                chatWidget.setAttribute('role', 'complementary');
+                chatWidget.setAttribute('aria-label', 'Customer support chat');
+            }
+
+            // Add keyboard navigation for modals
+            const modalElements = document.querySelectorAll('.chat-modal, .quick-view-modal');
+            modalElements.forEach(modal => {
+                modal.addEventListener('keydown', function(e) {
+                    if (e.key === 'Tab') {
+                        // Trap focus within modal
+                        const focusableElements = modal.querySelectorAll(
+                            'button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                        );
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+
+                        if (e.shiftKey && document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initializeAccessibility);
+    </script>
 </body>
 </html>
