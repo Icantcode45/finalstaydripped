@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsorship & Brand Ambassador | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Join our brand ambassador program or explore sponsorship opportunities with Stay Dripped IV & Wellness Co. in Scottsdale, AZ.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-slate);
+        }
+
+        .page-description {
+            font-size: 20px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .form-section {
+            padding: var(--section-padding);
+        }
+
+        .inquiry-form {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-slate);
+            text-align: center;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .info-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Sponsorship & Brand Ambassador</h1>
+            <p class="page-description">Join our wellness community and explore partnership opportunities with Stay Dripped IV & Wellness Co.</p>
+        </div>
+    </div>
+
+    <section class="form-section">
+        <div class="container">
+            <h2 class="section-title">Partnership Opportunities</h2>
+            <p class="section-description">We're always looking for like-minded individuals and businesses to partner with in promoting wellness and healthy lifestyles.</p>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>Brand Ambassador Program</h3>
+                    <p>Join our exclusive brand ambassador program and receive complimentary treatments, exclusive discounts, and earn commissions for referrals. Perfect for influencers, fitness professionals, and wellness enthusiasts.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Corporate Sponsorship</h3>
+                    <p>Partner with us to sponsor events, wellness programs, or community initiatives. We offer various sponsorship packages to increase your brand visibility while supporting community wellness.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Collaboration Opportunities</h3>
+                    <p>Explore cross-promotional opportunities, joint events, and collaborative wellness programs that benefit both our communities and create lasting partnerships.</p>
+                </div>
+            </div>
+            
+            <form class="inquiry-form" action="#" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Brand Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="partnershipType">Partnership Interest <span class="required">*</span></label>
+                        <select id="partnershipType" name="partnershipType" required>
+                            <option value="">Select Type</option>
+                            <option value="brand-ambassador">Brand Ambassador Program</option>
+                            <option value="influencer-collaboration">Influencer Collaboration</option>
+                            <option value="corporate-sponsorship">Corporate Sponsorship</option>
+                            <option value="event-sponsorship">Event Sponsorship</option>
+                            <option value="cross-promotion">Cross-Promotion</option>
+                            <option value="affiliate-program">Affiliate Program</option>
+                            <option value="wellness-partnership">Wellness Center Partnership</option>
+                            <option value="other">Other Partnership</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="industry">Industry/Niche</label>
+                        <input type="text" id="industry" name="industry" placeholder="e.g., Fitness, Beauty, Wellness, Healthcare, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="website">Website/Portfolio</label>
+                        <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instagram">Instagram Handle</label>
+                        <input type="text" id="instagram" name="instagram" placeholder="@yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="followers">Social Media Following</label>
+                        <select id="followers" name="followers">
+                            <option value="">Select Range</option>
+                            <option value="under-1k">Under 1,000</option>
+                            <option value="1k-5k">1,000 - 5,000</option>
+                            <option value="5k-10k">5,000 - 10,000</option>
+                            <option value="10k-50k">10,000 - 50,000</option>
+                            <option value="50k-100k">50,000 - 100,000</option>
+                            <option value="100k+">100,000+</option>
+                            <option value="not-applicable">Not Applicable</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="audience">Target Audience</label>
+                        <input type="text" id="audience" name="audience" placeholder="e.g., Health-conscious professionals, Athletes, etc.">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="experience">Relevant Experience</label>
+                        <textarea id="experience" name="experience" placeholder="Tell us about your experience with wellness brands, previous partnerships, or relevant background that makes you a great fit for our brand."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="proposal">Partnership Proposal</label>
+                        <textarea id="proposal" name="proposal" placeholder="Describe your partnership ideas, how you'd like to collaborate with us, what value you can bring, and what you're hoping to achieve through this partnership."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="additionalInfo">Additional Information</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information, questions, or special requirements you'd like us to know about."></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Submit Partnership Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.partnershipType) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // In a real application, you would send this data to your backend
+            console.log('Partnership inquiry submitted:', data);
+            alert('Thank you for your partnership inquiry! Our team will review your application and contact you within 2-3 business days.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

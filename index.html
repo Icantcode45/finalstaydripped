@@ -155,17 +155,22 @@
 
         /* Header */
         .header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: fixed;
             top: 44px;
             width: 100%;
             z-index: 1000;
-            transition: box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .header.scrolled {
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 102, 204, 0.2);
         }
 
         .nav {
@@ -179,29 +184,182 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            position: relative;
+            z-index: 2;
         }
 
         .logo img {
             height: 48px;
             width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 32px;
+            gap: 8px;
             align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links li {
+            position: relative;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark-slate);
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: block;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links a:hover {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown Menu Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            position: relative;
+        }
+
+        .nav-dropdown > a::after {
+            content: ' ▼';
+            font-size: 10px;
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 280px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 16px 0;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Create a bridge area to prevent dropdown from closing */
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: var(--dark-slate);
+            padding: 14px 24px;
+            display: block;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin: 2px 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
             color: var(--primary-blue);
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Dropdown Sections */
+        .dropdown-section {
+            margin-bottom: 16px;
+            padding: 0 12px;
+        }
+
+        .dropdown-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 102, 204, 0.2);
+        }
+
+        .dropdown-section a {
+            color: var(--dark-slate);
+            padding: 8px 12px;
+            display: block;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            margin: 2px 0;
+            font-weight: 500;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .dropdown-section a:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
+            color: var(--primary-blue);
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Multi-column dropdown for services */
+        .dropdown-content.services-dropdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            min-width: 500px;
+            padding: 20px;
         }
 
         .btn {
@@ -420,40 +578,45 @@
         }
 
         .service-card-enhanced {
-            background: var(--white);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 20px;
-            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
+        }
+
+        .service-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 184, 160, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
         .service-card-enhanced:hover {
             transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
-            border-color: var(--primary-blue);
+            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.3);
+            background: rgba(255, 255, 255, 0.35);
         }
 
-        .service-image {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card-enhanced:hover .service-image img {
-            transform: scale(1.05);
+        .service-card-enhanced:hover::before {
+            opacity: 1;
         }
 
         .service-content {
-            padding: 32px;
+            padding: 40px 32px;
+            position: relative;
+            z-index: 1;
         }
 
         .service-content h3 {
@@ -604,11 +767,596 @@
 
         .team-member p {
             color: var(--medium-gray);
+            margin-bottom: 8px;
+        }
+
+        .credentials {
+            font-size: 14px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            background: rgba(0, 102, 204, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .team-certifications {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .certification-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--dark-slate);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .badge-icon {
+            font-size: 18px;
+        }
+
+        /* Service Types Section */
+        .service-types-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .service-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .service-type-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-type-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .service-type-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-type-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-type-info {
+            padding: 32px;
+        }
+
+        .service-type-info h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .service-type-info > p {
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--secondary-teal);
+            font-weight: bold;
+            font-size: 16px;
         }
 
         /* Location Section */
         .location {
             padding: var(--section-padding);
+        }
+
+        /* Focus Shortcut / Search Component */
+        .focus-shortcut-section {
+            padding: 40px 0;
+            background: var(--white);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .focus-shortcut {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .focus-shortcut h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 24px;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 60px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--medium-gray);
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--light-gray);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--medium-gray);
+            font-weight: 600;
+        }
+
+        /* Social Share Bar */
+        .social-share-section {
+            padding: 40px 0;
+            background: var(--light-gray);
+        }
+
+        .social-share-bar {
+            text-align: center;
+        }
+
+        .social-share-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--medium-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--dark-slate);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-icon.facebook:hover { color: #1877F2; }
+        .social-icon.twitter:hover { color: #1DA1F2; }
+        .social-icon.linkedin:hover { color: #0A66C2; }
+        .social-icon.whatsapp:hover { color: #25D366; }
+        .social-icon.telegram:hover { color: #0088cc; }
+        .social-icon.pinterest:hover { color: #E60023; }
+
+        /* Language Selector */
+        .language-selector-section {
+            padding: 40px 0;
+            background: var(--white);
+        }
+
+        .language-selector {
+            text-align: center;
+        }
+
+        .language-dropdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 500;
+        }
+
+        .language-dropdown:hover {
+            border-color: var(--primary-blue);
+            background: rgba(0, 102, 204, 0.02);
+        }
+
+        .globe-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--dark-slate);
+            position: relative;
+        }
+
+        .globe-icon::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+        }
+
+        /* Trust/Logo Section */
+        .trust-section {
+            padding: 60px 0;
+            background: var(--light-gray);
+        }
+
+        .trust-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .trust-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .trust-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--dark-slate);
+            line-height: 1.2;
+        }
+
+        .trust-highlight {
+            color: var(--accent-orange);
+            position: relative;
+        }
+
+        .trust-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .trust-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 32px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trust-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .trust-logo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .trust-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--dark-slate);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .faq-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .faq-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--dark-slate);
+            line-height: 1.2;
+        }
+
+        .faq-highlight {
+            color: var(--accent-orange);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-gray);
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 20px;
+        }
+
+        .faq-answer p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        .faq-cta {
+            text-align: center;
+            margin-top: 48px;
+            padding: 32px;
+            background: var(--light-gray);
+            border-radius: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-cta h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .faq-cta p {
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            padding: var(--section-padding);
+            background: var(--light-gray);
+        }
+
+        .learn-more-header {
+            margin-bottom: 48px;
+        }
+
+        .learn-more-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .learn-more-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+        }
+
+        .learn-more-description {
+            color: var(--medium-gray);
+            font-size: 16px;
+        }
+
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .learn-more-item {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .learn-more-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .learn-more-arrow {
+            color: var(--medium-gray);
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more-item:hover .learn-more-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .social-icons {
+                gap: 16px;
+            }
+
+            .social-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .trust-logos {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .location-content {
@@ -777,68 +1525,6 @@
             margin: 0 8px;
         }
 
-        /* Enhanced Question Cards */
-        .question-section {
-            padding: 80px 0;
-            background: var(--warm-gray);
-        }
-
-        .question-cards {
-            display: grid;
-            gap: 20px;
-            max-width: 800px;
-            margin: 40px auto 0;
-        }
-
-        .question-card {
-            background: var(--white);
-            border: 2px solid var(--soft-border);
-            border-radius: 16px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .question-card:hover {
-            border-color: var(--secondary-teal);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 184, 160, 0.15);
-        }
-
-        .question-card.selected {
-            border-color: var(--secondary-teal);
-            background: rgba(0, 184, 160, 0.05);
-        }
-
-        .question-card::after {
-            content: '✓';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 24px;
-            height: 24px;
-            background: var(--secondary-teal);
-            color: white;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .question-card.selected::after {
-            display: flex;
-        }
-
-        .question-text {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--dark-slate);
-            margin: 0;
-            padding-right: 40px;
-        }
 
         /* Enhanced Cards */
         .enhanced-card {
@@ -873,97 +1559,7 @@
             transform: scaleX(1);
         }
 
-        /* Progressive Form Steps */
-        .progressive-form {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            margin: -80px auto 0;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 25px 80px rgba(26, 43, 58, 0.12);
-            border: 1px solid var(--border-color);
-            max-width: 900px;
-        }
 
-        .form-steps {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            gap: 20px;
-        }
-
-        .step-indicator {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--border-color);
-            color: var(--medium-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step-indicator.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .step-indicator.completed {
-            background: var(--secondary-teal);
-            color: white;
-        }
-
-        .step-indicator:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--border-color);
-            transform: translateY(-50%);
-        }
-
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .step-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -1263,13 +1859,65 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="pages/book-ivtherapy.html">IV Treatments</a></li>
-                <li><a href="pages/peptides.html">Peptides</a></li>
-                <li><a href="pages/weight-loss.html">Weight Loss</a></li>
-                <li><a href="pages/hormone-therapy.html">Hormone Therapy</a></li>
-                <li><a href="pages/membership.html">Membership</a></li>
+                <li class="nav-dropdown">
+                    <a href="#services">Services</a>
+                    <div class="dropdown-content services-dropdown">
+                        <div class="dropdown-section">
+                            <h4>Basic IV Therapy</h4>
+                            <a href="pages/basic-iv-therapy.html">Basic IV Therapy</a>
+                            <a href="pages/iv-hydration-therapy.html">IV Hydration Therapy</a>
+                            <a href="pages/vitamin-injections.html">Vitamin Injections</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Advanced Treatments</h4>
+                            <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
+                            <a href="pages/peptides.html">Peptide Therapy</a>
+                            <a href="pages/hormone-therapy.html">Hormone Therapy</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Wellness Programs</h4>
+                            <a href="pages/weight-loss.html">Weight Loss</a>
+                            <a href="pages/weight-management.html">Weight Management</a>
+                            <a href="pages/sexual-wellness.html">Sexual Wellness</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Additional Services</h4>
+                            <a href="pages/mobile-testing-kits.html">Mobile Testing</a>
+                            <a href="pages/telehealth-services.html">Telehealth</a>
+                            <a href="pages/membership.html">Membership</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="pages/first-time-patients.html">New Patients</a></li>
                 <li><a href="#team">Our Team</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Booking</a>
+                    <div class="dropdown-content">
+                        <a href="pages/book-appointment.html">Book Appointment</a>
+                        <a href="pages/book-ivtherapy.html">Book IV Therapy</a>
+                        <a href="pages/checkout.html">Checkout</a>
+                        <a href="pages/payment.html">Payment</a>
+                        <a href="intakeq-appointments.html">Patient Intake</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#">Inquiries</a>
+                    <div class="dropdown-content">
+                        <a href="pages/event-corporate-inquiry.html">Event & Corporate</a>
+                        <a href="pages/sponsorship-inquiry.html">Sponsorship & Partners</a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#">Legal & Info</a>
+                    <div class="dropdown-content">
+                        <a href="pages/compliance.html">Compliance</a>
+                        <a href="pages/privacy-practices.html">Privacy Practices</a>
+                        <a href="pages/terms-of-use.html">Terms of Use</a>
+                        <a href="pages/telehealth-consent.html">Telehealth Consent</a>
+                        <a href="pages/good-faith-estimate.html">Good Faith Estimate</a>
+                        <a href="pages/accessibility.html">Accessibility</a>
+                    </div>
+                </li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
@@ -1306,139 +1954,12 @@
                     </div>
                 </div>
                 <div class="hero-image fade-in">
-                    <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Professional IV Therapy Service" />
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F6add584e522d400eb7866ec4b8f7a95e?format=webp&width=800" alt="Professional IV Therapy Service - Stay Dripped clients receiving IV therapy in a luxury setting" />
                 </div>
             </div>
         </div>
 
-        <!-- Question Section -->
-        <div class="container">
-            <div class="question-section">
-                <div class="section-header">
-                    <h2 class="section-title">What brings you to Stay Dripped?</h2>
-                    <p class="section-description">Help us personalize your wellness experience</p>
-                </div>
 
-                <div class="question-cards">
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to feel more energized and revitalized in my daily life.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm looking to boost my immune system and overall wellness.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I need recovery support after workouts or long nights.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to enhance my beauty and anti-aging routine naturally.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm preparing for an important event or milestone.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Enhanced Booking Form -->
-        <div class="container">
-            <div class="progressive-form">
-                <div class="form-steps">
-                    <div class="step-indicator active" data-step="1">1</div>
-                    <div class="step-indicator" data-step="2">2</div>
-                    <div class="step-indicator" data-step="3">3</div>
-                </div>
-
-                <div class="form-step active" id="step1">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Choose Your Treatment</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="treatment">Treatment Type</label>
-                            <select id="treatment" required onchange="updateTreatmentInfo()">
-                                <option value="">Select Your Treatment</option>
-                                <option value="hydration">Hydration Boost - $150</option>
-                                <option value="energy">Energy & Wellness - $180</option>
-                                <option value="immunity">Immune Support - $200</option>
-                                <option value="recovery">Recovery & Performance - $220</option>
-                                <option value="beauty">Beauty & Anti-Aging - $250</option>
-                                <option value="nad">NAD+ Therapy - $400</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="treatment-info" style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px; display: none;">
-                        <h4 style="margin-bottom: 12px;">Treatment Details</h4>
-                        <p id="treatment-description"></p>
-                        <ul id="treatment-benefits"></ul>
-                    </div>
-                    <div class="step-navigation">
-                        <div></div>
-                        <button class="btn" onclick="nextStep(2)" disabled id="step1-next">Continue</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="step2">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Schedule Your Session</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="location">Service Location</label>
-                            <input type="text" id="location" placeholder="Your address in Scottsdale, AZ" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Preferred Date</label>
-                            <input type="date" id="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Preferred Time</label>
-                            <select id="time" required>
-                                <option value="">Select Time</option>
-                                <option value="morning">Morning (8AM-12PM)</option>
-                                <option value="afternoon">Afternoon (12PM-6PM)</option>
-                                <option value="evening">Evening (6PM-10PM)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="step-navigation">
-                        <button class="btn-outline" onclick="prevStep(1)">Back</button>
-                        <button class="btn" onclick="nextStep(3)" disabled id="step2-next">Continue</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="step3">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Contact Information</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" placeholder="Your first name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" placeholder="Your last name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="(555) 123-4567" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
-                        </div>
-                    </div>
-                    <div style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px;">
-                        <h4 style="margin-bottom: 12px;">Booking Summary</h4>
-                        <div id="booking-summary"></div>
-                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-                            <p style="font-weight: 600; color: var(--primary-blue);">
-                                Total: <span id="total-price">$0</span>
-                                <span style="color: var(--secondary-teal); font-size: 14px; margin-left: 8px;">(20% off first treatment applied)</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="step-navigation">
-                        <button class="btn-outline" onclick="prevStep(2)">Back</button>
-                        <button class="btn" onclick="completeBooking()" disabled id="step3-complete">Complete Booking</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Services Section -->
@@ -1454,9 +1975,6 @@
 
             <div class="services-grid">
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=600&auto=format&fit=crop" alt="Hydration Therapy" />
-                    </div>
                     <div class="service-content">
                         <h3>Hydration Therapy</h3>
                         <p>Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
@@ -1471,9 +1989,6 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=600&auto=format&fit=crop" alt="Energy & Wellness" />
-                    </div>
                     <div class="service-content">
                         <h3>Energy & Wellness</h3>
                         <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
@@ -1488,9 +2003,6 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Immune Support" />
-                    </div>
                     <div class="service-content">
                         <h3>Immune Support</h3>
                         <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
@@ -1505,9 +2017,6 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Recovery & Performance" />
-                    </div>
                     <div class="service-content">
                         <h3>Recovery & Performance</h3>
                         <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
@@ -1522,9 +2031,6 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=600&auto=format&fit=crop" alt="Beauty & Anti-Aging" />
-                    </div>
                     <div class="service-content">
                         <h3>Beauty & Anti-Aging</h3>
                         <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
@@ -1539,25 +2045,88 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=600&auto=format&fit=crop" alt="Specialized Treatments" />
-                    </div>
                     <div class="service-content">
-                        <h3>Specialized Treatments</h3>
-                        <p>Advanced therapies including peptide treatments, hormone optimization, and weight management support.</p>
+                        <h3>Telehealth Services</h3>
+                        <p>Virtual consultations and ongoing care management from the comfort of your home.</p>
                         <ul class="treatment-list">
-                            <li>Peptide Therapy</li>
-                            <li>Weight Management</li>
-                            <li>Hormone Support</li>
-                            <li>Custom Formulations</li>
+                            <li>Virtual Consultations</li>
+                            <li>Follow-up Care</li>
+                            <li>Prescription Management</li>
+                            <li>Health Coaching</li>
                         </ul>
-                        <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
+                        <a href="pages/telehealth-services.html" class="btn service-btn">Schedule Consultation</a>
+                    </div>
+                </div>
+
+                <div class="service-card-enhanced fade-in">
+                    <div class="service-content">
+                        <h3>Mobile Testing Kits</h3>
+                        <p>Convenient at-home testing kits for comprehensive health monitoring and optimization.</p>
+                        <ul class="treatment-list">
+                            <li>Hormone Panel Testing</li>
+                            <li>Vitamin Deficiency Screen</li>
+                            <li>Metabolic Health Panel</li>
+                            <li>Food Sensitivity Testing</li>
+                        </ul>
+                        <a href="pages/mobile-testing-kits.html" class="btn service-btn">Order Kit</a>
                     </div>
                 </div>
             </div>
 
             <div class="services-summary fade-in">
                 <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Types Section -->
+    <section class="service-types-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">How We Serve</div>
+                <h2 class="section-title">Mobile IV Therapy Your Way</h2>
+                <p class="section-description">
+                    Professional IV therapy delivered to your preferred location with luxury comfort and medical excellence.
+                </p>
+            </div>
+
+            <div class="service-types-grid">
+                <div class="service-type-card fade-in">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fbd6c681be890448b9aa24864d709d764?format=webp&width=800" alt="Stay Dripped luxury home IV therapy service - comfortable at-home experience">
+                    <div class="service-type-info">
+                        <h4>Luxury Home Service</h4>
+                        <p>Comfortable at-home IV therapy experience with premium amenities and personalized care</p>
+                        <ul class="service-features">
+                            <li>Private residence treatments</li>
+                            <li>Luxury comfort amenities</li>
+                            <li>Discretion and privacy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-type-card fade-in">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F4bfd3fb86d3c4208b13f8e6c6347ea76?format=webp&width=800" alt="Stay Dripped professional IV therapy setup - medical equipment and professional environment">
+                    <div class="service-type-info">
+                        <h4>Professional Setup</h4>
+                        <p>Clinical-grade equipment and licensed medical professionals ensuring safety and efficacy</p>
+                        <ul class="service-features">
+                            <li>Medical-grade equipment</li>
+                            <li>Licensed healthcare providers</li>
+                            <li>Sterile environment protocols</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-type-card fade-in">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F9c0dd222fb974c48818b60bf8dfc5474?format=webp&width=800" alt="Stay Dripped poolside IV therapy - outdoor luxury setting with professional medical care">
+                    <div class="service-type-info">
+                        <h4>Any Location</h4>
+                        <p>Poolside, events, hotels, offices, and vacation rentals - wherever you need us most</p>
+                        <ul class="service-features">
+                            <li>Poolside & outdoor settings</li>
+                            <li>Corporate events & offices</li>
+                            <li>Hotels & vacation rentals</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1569,31 +2138,53 @@
                 <div class="section-subtitle">Our Team</div>
                 <h2 class="section-title">Licensed Medical Professionals</h2>
                 <p class="section-description">
-                    Our experienced team of medical professionals is dedicated to providing safe, effective, and personalized IV therapy treatments.
+                    Our experienced team of nurses, physicians, and healthcare professionals is dedicated to providing safe, effective, and personalized IV therapy treatments.
                 </p>
             </div>
 
             <div class="team-grid">
                 <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" alt="Dr. Emily Rodriguez">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F6add584e522d400eb7866ec4b8f7a95e?format=webp&width=600" alt="Stay Dripped medical team providing professional IV therapy service">
                     <div class="team-member-info">
-                        <h4>Dr. Emily Rodriguez</h4>
+                        <h4>Sarah Johnson, RN</h4>
+                        <p>Lead Registered Nurse</p>
+                        <div class="credentials">10+ years emergency medicine experience</div>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F4bfd3fb86d3c4208b13f8e6c6347ea76?format=webp&width=600" alt="Stay Dripped licensed medical professional setting up IV therapy equipment">
+                    <div class="team-member-info">
+                        <h4>Dr. Michael Chen, MD</h4>
                         <p>Medical Director</p>
+                        <div class="credentials">Board certified in Internal Medicine</div>
                     </div>
                 </div>
                 <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" alt="Dr. Michael Chen">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F9c0dd222fb974c48818b60bf8dfc5474?format=webp&width=600" alt="Stay Dripped healthcare team providing personalized IV therapy consultation">
                     <div class="team-member-info">
-                        <h4>Dr. Michael Chen</h4>
-                        <p>Lead Physician</p>
+                        <h4>Jennifer Rodriguez, RN</h4>
+                        <p>Senior Clinical Nurse</p>
+                        <div class="credentials">Certified in IV therapy and wellness</div>
                     </div>
                 </div>
-                <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1594824771640-9c8c1f9df2a6?q=80&w=400&auto=format&fit=crop" alt="Sarah Johnson">
-                    <div class="team-member-info">
-                        <h4>Sarah Johnson</h4>
-                        <p>Nurse Practitioner</p>
-                    </div>
+            </div>
+
+            <div class="team-certifications fade-in">
+                <div class="certification-badge">
+                    <span class="badge-icon">🏥</span>
+                    <span>State Licensed</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">✅</span>
+                    <span>HIPAA Certified</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Insured & Bonded</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">📋</span>
+                    <span>Background Checked</span>
                 </div>
             </div>
         </div>
@@ -1657,6 +2248,205 @@
         </div>
     </section>
 
+    <!-- Focus Shortcut / Search Section -->
+    <section class="focus-shortcut-section">
+        <div class="container">
+            <div class="focus-shortcut">
+                <h3>Focus Shortcut</h3>
+                <div class="search-container">
+                    <div class="search-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    <input type="text" class="search-input" placeholder="Search our services, treatments, and information..." />
+                    <div class="search-shortcut">⌘K</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Share Bar -->
+    <section class="social-share-section">
+        <div class="container">
+            <div class="social-share-bar">
+                <h3 class="social-share-title">Social Share Bar</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon facebook" aria-label="Share on Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon twitter" aria-label="Share on Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon linkedin" aria-label="Share on LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon whatsapp" aria-label="Share on WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.891 3.488"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon telegram" aria-label="Share on Telegram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon pinterest" aria-label="Share on Pinterest">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.31-.623-.31-1.543c0-1.446.839-2.525 1.883-2.525.888 0 1.317.664 1.317 1.46 0 .889-.565 2.219-.857 3.449-.244 1.029.516 1.871 1.531 1.871 1.836 0 3.249-1.935 3.249-4.728 0-2.471-1.776-4.198-4.312-4.198-2.94 0-4.666 2.205-4.666 4.485 0 .887.341 1.839.769 2.357.085.101.097.19.072.293-.078.33-.254 1.021-.289 1.164-.046.186-.148.226-.341.136-1.268-.59-2.062-2.447-2.062-3.937 0-3.253 2.365-6.24 6.821-6.24 3.583 0 6.368 2.552 6.368 5.964 0 3.559-2.243 6.423-5.359 6.423-1.048 0-2.037-.546-2.376-1.194l-.646 2.462c-.233.895-.867 2.02-1.292 2.703C9.559 23.738 10.753 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Selector -->
+    <section class="language-selector-section">
+        <div class="container">
+            <div class="language-selector">
+                <div class="language-dropdown">
+                    <div class="globe-icon"></div>
+                    <span>Select Language</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust / Logo Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-header">
+                <div class="trust-badge">Partners</div>
+                <h2 class="trust-title">
+                    Trusted by over <span class="trust-highlight">100+</span><br>
+                    healthcare providers
+                </h2>
+            </div>
+            <div class="trust-logos">
+                <div class="trust-logo">
+                    <div class="trust-logo-icon"></div>
+                </div>
+                <div class="trust-logo">
+                    <div class="trust-logo-icon"></div>
+                </div>
+                <div class="trust-logo">
+                    <div class="trust-logo-icon"></div>
+                </div>
+                <div class="trust-logo">
+                    <div class="trust-logo-icon"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn More Section -->
+    <section class="learn-more-section">
+        <div class="container">
+            <div class="learn-more-header">
+                <div class="learn-more-badge">💡 Empower Innovation!</div>
+                <h2 class="learn-more-title">Want to learn more?</h2>
+                <p class="learn-more-description">
+                    Get answers to common questions about our IV therapy services, treatments, and wellness programs.
+                </p>
+            </div>
+            <div class="learn-more-grid">
+                <div class="learn-more-item">
+                    <h4>
+                        Who exactly is Stay Dripped designed for, and what types of clients benefit the most from it?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+                <div class="learn-more-item">
+                    <h4>
+                        What are the standout features that make Stay Dripped a truly unique and innovative wellness solution?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+                <div class="learn-more-item">
+                    <h4>
+                        Does Stay Dripped fully support popular health monitoring integrations?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+                <div class="learn-more-item">
+                    <h4>
+                        How effectively does Stay Dripped protect my personal health data?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+                <div class="learn-more-item">
+                    <h4>
+                        Is Stay Dripped completely optimized for mobile and in-home service?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+                <div class="learn-more-item">
+                    <h4>
+                        What flexible treatment options does Stay Dripped offer?
+                        <span class="learn-more-arrow">→</span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <div class="faq-badge">FAQs</div>
+                <h2 class="faq-title">
+                    Frequently Asked <span class="faq-highlight">Questions</span>
+                </h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What makes Stay Dripped IV therapy different from clinic visits?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Stay Dripped brings licensed medical professionals directly to your location with the same clinical-grade equipment and treatments you'd receive in a medical facility. You get personalized, convenient care in the comfort of your chosen environment.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Are your treatments safe and who administers them?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All treatments are administered by licensed registered nurses (RNs) under the supervision of our medical director. We follow strict safety protocols, use only FDA-registered supplies, and maintain comprehensive insurance coverage.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What areas do you service and how quickly can you respond?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We serve Scottsdale, Paradise Valley, North Phoenix, Cave Creek, Carefree, and Fountain Hills. Same-day appointments are often available, and we typically arrive within 1-2 hours of booking during business hours.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-cta">
+                <h4>Still have questions? Get connected to our support team.</h4>
+                <p>Our medical professionals are here to help answer any specific questions about treatments or scheduling.</p>
+                <a href="pages/book-appointment.html" class="btn">Contact us</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
@@ -1695,20 +2485,49 @@
                     </ul>
                 </div>
                 <div>
-                    <h4>Resources</h4>
+                    <h4>Legal & Compliance</h4>
                     <ul>
-                        <li><a href="#">Treatment Guide</a></li>
-                        <li><a href="#">Health Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Membership Plans</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="pages/compliance.html">Compliance Info</a></li>
+                        <li><a href="pages/privacy-practices.html">Privacy Practices</a></li>
+                        <li><a href="pages/terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="pages/telehealth-consent.html">Telehealth Consent</a></li>
+                        <li><a href="pages/good-faith-estimate.html">Pricing Estimates</a></li>
+                        <li><a href="pages/accessibility.html">Accessibility</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved.</p>
+            <div style="margin-bottom: 20px; padding: 16px; background: rgba(255,255,255,0.05); border-radius: 8px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 16px; text-align: center;">
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.7);">
+                        <span style="color: #10B981;">✓</span> HIPAA Compliant
+                    </div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.7);">
+                        <span style="color: #10B981;">✓</span> Licensed Supervision
+                    </div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.7);">
+                        <span style="color: #10B981;">✓</span> Arizona Licensed
+                    </div>
+                    <div style="font-size: 11px; color: rgba(255,255,255,0.7);">
+                        <span style="color: #10B981;">✓</span> Insured & Bonded
+                    </div>
+                </div>
+                <div style="font-size: 11px; line-height: 1.4; color: rgba(255,255,255,0.6); text-align: center; margin-bottom: 12px;">
+                    <strong>Medical Disclaimer:</strong> Services are not for medical emergencies. For emergencies, call 911.
+                    Many treatments have not been evaluated by the FDA. Individual results may vary.
+                    All services provided under licensed medical supervision in Arizona only.
+                </div>
+                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 11px;">
+                    <a href="pages/privacy-practices.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Privacy</a>
+                    <a href="pages/telehealth-consent.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Telehealth</a>
+                    <a href="pages/good-faith-estimate.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Pricing</a>
+                    <a href="pages/compliance.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Full Compliance</a>
+                    <a href="pages/terms-of-use.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Terms</a>
+                    <a href="pages/accessibility.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Accessibility</a>
+                </div>
             </div>
+            <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved. | Licensed healthcare practice serving Arizona</p>
+        </div>
         </div>
     </footer>
 
@@ -1758,49 +2577,6 @@
             observer.observe(el);
         });
 
-        // Set minimum date to today
-        function setMinDate() {
-            const today = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                dateInput.min = today;
-            }
-        }
-
-        // Book service function
-        function bookService() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const treatment = document.getElementById('treatment').value;
-            
-            if (!location || !date || !time || !treatment) {
-                alert('Please fill in all fields to book your treatment.');
-                return;
-            }
-            
-            // Redirect to booking page
-            window.location.href = 'pages/book-ivtherapy.html';
-        }
-
-        // Question selection functionality
-        function selectQuestion(element) {
-            // Remove selected class from all cards
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-
-            // Add selected class to clicked card
-            element.classList.add('selected');
-
-            // Auto-scroll to booking form
-            setTimeout(() => {
-                document.querySelector('.progressive-form').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 500);
-        }
 
         // Location finder functionality
         function showLocationFinder() {
@@ -1929,198 +2705,6 @@
             });
         });
 
-        // Progressive form functionality
-        function nextStep(stepNumber) {
-            // Hide current step
-            document.querySelector('.form-step.active').classList.remove('active');
-
-            // Update step indicators
-            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
-                indicator.classList.remove('active');
-                if (index < stepNumber - 1) {
-                    indicator.classList.add('completed');
-                } else if (index === stepNumber - 1) {
-                    indicator.classList.add('active');
-                }
-            });
-
-            // Show new step
-            document.getElementById(`step${stepNumber}`).classList.add('active');
-        }
-
-        function prevStep(stepNumber) {
-            // Hide current step
-            document.querySelector('.form-step.active').classList.remove('active');
-
-            // Update step indicators
-            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
-                indicator.classList.remove('active', 'completed');
-                if (index < stepNumber - 1) {
-                    indicator.classList.add('completed');
-                } else if (index === stepNumber - 1) {
-                    indicator.classList.add('active');
-                }
-            });
-
-            // Show new step
-            document.getElementById(`step${stepNumber}`).classList.add('active');
-        }
-
-        // Treatment information
-        const treatmentInfo = {
-            hydration: {
-                description: "Essential hydration and electrolyte replenishment for optimal cellular function and energy.",
-                benefits: ["Rapid rehydration", "Electrolyte balance", "Increased energy", "Improved mental clarity"],
-                price: 150
-            },
-            energy: {
-                description: "Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.",
-                benefits: ["B12 energy boost", "Enhanced mental clarity", "Improved mood", "Sustained energy"],
-                price: 180
-            },
-            immunity: {
-                description: "High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.",
-                benefits: ["Immune system support", "Antioxidant protection", "Faster recovery", "Zinc & glutathione"],
-                price: 200
-            },
-            recovery: {
-                description: "Advanced formulas for athletic recovery, hangover relief, and performance optimization.",
-                benefits: ["Hangover relief", "Athletic recovery", "Reduced inflammation", "Performance enhancement"],
-                price: 220
-            },
-            beauty: {
-                description: "Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.",
-                benefits: ["Skin brightening", "Anti-aging support", "Hair & nail health", "Collagen boost"],
-                price: 250
-            },
-            nad: {
-                description: "Advanced NAD+ therapy for cellular regeneration, longevity, and optimal brain function.",
-                benefits: ["Cellular regeneration", "Anti-aging effects", "Enhanced cognition", "Energy production"],
-                price: 400
-            }
-        };
-
-        function updateTreatmentInfo() {
-            const treatment = document.getElementById('treatment').value;
-            const infoDiv = document.getElementById('treatment-info');
-            const nextBtn = document.getElementById('step1-next');
-
-            if (treatment && treatmentInfo[treatment]) {
-                const info = treatmentInfo[treatment];
-                document.getElementById('treatment-description').textContent = info.description;
-
-                const benefitsList = document.getElementById('treatment-benefits');
-                benefitsList.innerHTML = '';
-                info.benefits.forEach(benefit => {
-                    const li = document.createElement('li');
-                    li.textContent = benefit;
-                    li.style.cssText = 'padding: 4px 0; color: var(--medium-gray);';
-                    benefitsList.appendChild(li);
-                });
-
-                infoDiv.style.display = 'block';
-                nextBtn.disabled = false;
-                updateBookingSummary();
-            } else {
-                infoDiv.style.display = 'none';
-                nextBtn.disabled = true;
-            }
-        }
-
-        function escapeHTML(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function updateBookingSummary() {
-            const treatment = document.getElementById('treatment').value;
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-
-            if (treatment && treatmentInfo[treatment]) {
-                const info = treatmentInfo[treatment];
-                const originalPrice = info.price;
-                const discountedPrice = Math.round(originalPrice * 0.8); // 20% off
-
-                const summary = document.getElementById('booking-summary');
-                summary.innerHTML = `
-                    <p><strong>Treatment:</strong> ${document.getElementById('treatment').options[document.getElementById('treatment').selectedIndex].text}</p>
-                    ${location ? `<p><strong>Location:</strong> ${escapeHTML(location)}</p>` : ''}
-                    ${date ? `<p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>` : ''}
-                    ${time ? `<p><strong>Time:</strong> ${document.getElementById('time').options[document.getElementById('time').selectedIndex].text}</p>` : ''}
-                `;
-
-                document.getElementById('total-price').textContent = `$${discountedPrice}`;
-            }
-        }
-
-        // Form validation
-        function validateStep2() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const nextBtn = document.getElementById('step2-next');
-
-            if (location && date && time) {
-                nextBtn.disabled = false;
-                updateBookingSummary();
-            } else {
-                nextBtn.disabled = true;
-            }
-        }
-
-        function validateStep3() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const completeBtn = document.getElementById('step3-complete');
-
-            if (firstName && lastName && phone && email) {
-                completeBtn.disabled = false;
-            } else {
-                completeBtn.disabled = true;
-            }
-        }
-
-        function completeBooking() {
-            const formData = {
-                treatment: document.getElementById('treatment').value,
-                location: document.getElementById('location').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value
-            };
-
-            // Here you would typically send the data to your booking system
-            console.log('Booking data:', formData);
-
-            // For now, redirect to the booking page
-            window.location.href = 'pages/book-ivtherapy.html';
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            setMinDate();
-
-            // Add event listeners for form validation
-            ['location', 'date', 'time'].forEach(id => {
-                document.getElementById(id).addEventListener('input', validateStep2);
-                document.getElementById(id).addEventListener('change', validateStep2);
-            });
-
-            ['firstName', 'lastName', 'phone', 'email'].forEach(id => {
-                document.getElementById(id).addEventListener('input', validateStep3);
-            });
-        });
     </script>
 
     <!-- Back to Top Button -->
