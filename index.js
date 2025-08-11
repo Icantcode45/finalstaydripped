@@ -585,6 +585,35 @@ const server = http.createServer(async (req, res) => {
         </div>
     </section>
 
+    <!-- Trust & Quality Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Feb295e2728714bb8b0f6361e148ff41d?format=webp&width=800" alt="Trusted Service" />
+                    </div>
+                    <h3>Licensed & Insured</h3>
+                    <p>Fully licensed medical professionals with comprehensive insurance coverage for your peace of mind.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2F07d1f6cb34f548aa82e4ee354e5fb5f7?format=webp&width=800" alt="Customer Satisfaction" />
+                    </div>
+                    <h3>100% Satisfaction</h3>
+                    <p>Over 10,000 satisfied customers with a 5-star rating. Your wellness is our priority.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2F85f8f270cd14469f866585f0976e24d4?format=webp&width=800" alt="Professional Network" />
+                    </div>
+                    <h3>Professional Network</h3>
+                    <p>Connected with leading healthcare providers and wellness professionals across Arizona.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
