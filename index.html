@@ -1106,6 +1106,92 @@
             border-radius: 50%;
         }
 
+        /* Reviews Section */
+        .reviews-section {
+            padding: var(--section-padding);
+            background: var(--light-gray);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 102, 204, 0.1);
+        }
+
+        .review-stars {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .reviewer-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 4px;
+        }
+
+        .reviewer-info p {
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        .reviews-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 32px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .google-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .rating-stars {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
         /* Trust/Logo Section */
         .trust-section {
             padding: 60px 0;
