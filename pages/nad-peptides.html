@@ -445,6 +445,162 @@
             }
         }
 
+        /* Google Reviews Section */
+        .reviews-section {
+            padding: 100px 0;
+            background: var(--warm-gray);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            margin-right: 15px;
+        }
+
+        .avatar-placeholder {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin: 0 0 4px 0;
+        }
+
+        .review-date {
+            font-size: 13px;
+            color: var(--medium-gray);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        .star.filled {
+            color: #ffc107;
+        }
+
+        .review-content {
+            line-height: 1.7;
+            color: var(--medium-gray);
+            font-size: 15px;
+        }
+
+        .google-reviews-widget {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .google-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .google-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rating-score {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .rating-stars .star {
+            font-size: 18px;
+        }
+
+        .rating-count {
+            font-size: 14px;
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        .reviews-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .reviews-actions .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-cta {
@@ -2529,7 +2685,7 @@
                         <span class="star filled">★</span>
                         <span class="star filled">★</span>
                         <span class="star filled">★</span>
-                        <span class="star filled">��</span>
+                        <span class="star filled">★</span>
                         <span class="star filled">★</span>
                     </div>
                     <div class="rating-count">512 reviews</div>
