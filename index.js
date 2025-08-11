@@ -509,6 +509,161 @@ const server = http.createServer(async (req, res) => {
             font-size: 15px;
         }
 
+        /* Question Section */
+        .question-section {
+            padding: 80px 0;
+            background: var(--warm-gray);
+        }
+
+        .question-cards {
+            display: grid;
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .question-card {
+            background: var(--white);
+            border: 2px solid var(--soft-border);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .question-card:hover {
+            border-color: var(--secondary-teal);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 184, 160, 0.15);
+        }
+
+        .question-card.selected {
+            border-color: var(--secondary-teal);
+            background: rgba(0, 184, 160, 0.05);
+        }
+
+        .question-card::after {
+            content: '✓';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-teal);
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .question-card.selected::after {
+            display: flex;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--dark-slate);
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        /* Progressive Form Steps */
+        .progressive-form {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: -80px auto 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 25px 80px rgba(26, 43, 58, 0.12);
+            border: 1px solid var(--border-color);
+            max-width: 900px;
+        }
+
+        .form-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-indicator.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .step-indicator.completed {
+            background: var(--secondary-teal);
+            color: white;
+        }
+
+        .step-indicator:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            width: 20px;
+            height: 2px;
+            background: var(--border-color);
+            transform: translateY(-50%);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .top-bar-right {
