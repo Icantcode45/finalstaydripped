@@ -475,76 +475,6 @@
             margin-top: 24px;
         }
 
-        .services-summary {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .services-summary p {
-            font-size: 18px;
-            color: var(--medium-gray);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .service-card, .enhanced-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before, .enhanced-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover, .enhanced-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
-            border-color: var(--primary-blue);
-        }
-
-        .service-card:hover::before, .enhanced-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--white);
-            margin-bottom: 24px;
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--dark-slate);
-        }
-
-        .service-card p {
-            color: var(--medium-gray);
-            margin-bottom: 24px;
-        }
-
         .treatment-list {
             list-style: none;
         }
@@ -777,194 +707,6 @@
             margin: 0 8px;
         }
 
-        /* Enhanced Question Cards */
-        .question-section {
-            padding: 80px 0;
-            background: var(--warm-gray);
-        }
-
-        .question-cards {
-            display: grid;
-            gap: 20px;
-            max-width: 800px;
-            margin: 40px auto 0;
-        }
-
-        .question-card {
-            background: var(--white);
-            border: 2px solid var(--soft-border);
-            border-radius: 16px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .question-card:hover {
-            border-color: var(--secondary-teal);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 184, 160, 0.15);
-        }
-
-        .question-card.selected {
-            border-color: var(--secondary-teal);
-            background: rgba(0, 184, 160, 0.05);
-        }
-
-        .question-card::after {
-            content: '✓';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 24px;
-            height: 24px;
-            background: var(--secondary-teal);
-            color: white;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .question-card.selected::after {
-            display: flex;
-        }
-
-        .question-text {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--dark-slate);
-            margin: 0;
-            padding-right: 40px;
-        }
-
-        /* Enhanced Cards */
-        .enhanced-card {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enhanced-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .enhanced-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(26, 43, 58, 0.15);
-            border-color: var(--primary-blue);
-        }
-
-        .enhanced-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* Progressive Form Steps */
-        .progressive-form {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            margin: -80px auto 0;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 25px 80px rgba(26, 43, 58, 0.12);
-            border: 1px solid var(--border-color);
-            max-width: 900px;
-        }
-
-        .form-steps {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            gap: 20px;
-        }
-
-        .step-indicator {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--border-color);
-            color: var(--medium-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .step-indicator.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .step-indicator.completed {
-            background: var(--secondary-teal);
-            color: white;
-        }
-
-        .step-indicator:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--border-color);
-            transform: translateY(-50%);
-        }
-
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .step-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 32px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .top-bar-right {
@@ -1029,166 +771,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-        }
-
-        /* Location Modal */
-        .location-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .location-modal.show {
-            opacity: 1;
-        }
-
-        .location-modal-content {
-            background: var(--white);
-            border-radius: 16px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .location-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .location-modal-header h3 {
-            margin: 0;
-            color: var(--dark-slate);
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--medium-gray);
-        }
-
-        .location-search {
-            padding: 24px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .location-search input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .location-search button {
-            background: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .location-results {
-            padding: 0 24px 24px;
-        }
-
-        .location-item {
-            background: var(--light-gray);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-        }
-
-        .location-item h4 {
-            margin: 0 0 12px 0;
-            color: var(--dark-slate);
-        }
-
-        .location-item p {
-            margin: 4px 0;
-            color: var(--medium-gray);
-            font-size: 14px;
-        }
-
-        /* Search Overlay */
-        .search-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 43, 58, 0.95);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .search-overlay.show {
-            opacity: 1;
-        }
-
-        .search-container {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .search-container input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-
-        .search-container button {
-            background: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            padding: 12px 32px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .close-search {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none !important;
-            color: var(--medium-gray) !important;
-            font-size: 28px !important;
-            padding: 8px !important;
         }
 
         /* Animations */
@@ -1311,131 +893,43 @@
             </div>
         </div>
 
-        <!-- Question Section -->
+        <!-- Booking Form -->
         <div class="container">
-            <div class="question-section">
-                <div class="section-header">
-                    <h2 class="section-title">What brings you to Stay Dripped?</h2>
-                    <p class="section-description">Help us personalize your wellness experience</p>
-                </div>
-
-                <div class="question-cards">
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to feel more energized and revitalized in my daily life.</p>
+            <div class="booking-form">
+                <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Book Your Mobile IV Therapy</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="treatment">Treatment Type</label>
+                        <select id="treatment" required>
+                            <option value="">Select Your Treatment</option>
+                            <option value="hydration">Desert Hydration IV - $150</option>
+                            <option value="myers">Myers Cocktail - $180</option>
+                            <option value="hangover">Hangover Recovery - $200</option>
+                            <option value="immune">Immune Boost - $220</option>
+                            <option value="basic">Basic IV - $130</option>
+                            <option value="morning">Morning Sickness Relief - $180</option>
+                        </select>
                     </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm looking to boost my immune system and overall wellness.</p>
+                    <div class="form-group">
+                        <label for="location">Service Location</label>
+                        <input type="text" id="location" placeholder="Your address in Scottsdale, AZ" required>
                     </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I need recovery support after workouts or long nights.</p>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
                     </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to enhance my beauty and anti-aging routine naturally.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm preparing for an important event or milestone.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Enhanced Booking Form -->
-        <div class="container">
-            <div class="progressive-form">
-                <div class="form-steps">
-                    <div class="step-indicator active" data-step="1">1</div>
-                    <div class="step-indicator" data-step="2">2</div>
-                    <div class="step-indicator" data-step="3">3</div>
-                </div>
-
-                <div class="form-step active" id="step1">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Choose Your Treatment</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="treatment">Treatment Type</label>
-                            <select id="treatment" required onchange="updateTreatmentInfo()">
-                                <option value="">Select Your Treatment</option>
-                                <option value="hydration">Hydration Boost - $150</option>
-                                <option value="energy">Energy & Wellness - $180</option>
-                                <option value="immunity">Immune Support - $200</option>
-                                <option value="recovery">Recovery & Performance - $220</option>
-                                <option value="beauty">Beauty & Anti-Aging - $250</option>
-                                <option value="nad">NAD+ Therapy - $400</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="treatment-info" style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px; display: none;">
-                        <h4 style="margin-bottom: 12px;">Treatment Details</h4>
-                        <p id="treatment-description"></p>
-                        <ul id="treatment-benefits"></ul>
-                    </div>
-                    <div class="step-navigation">
-                        <div></div>
-                        <button class="btn" onclick="nextStep(2)" disabled id="step1-next">Continue</button>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <select id="time" required>
+                            <option value="">Select Time</option>
+                            <option value="morning">Morning (8AM-12PM)</option>
+                            <option value="afternoon">Afternoon (12PM-6PM)</option>
+                            <option value="evening">Evening (6PM-10PM)</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="form-step" id="step2">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Schedule Your Session</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="location">Service Location</label>
-                            <input type="text" id="location" placeholder="Your address in Scottsdale, AZ" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Preferred Date</label>
-                            <input type="date" id="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Preferred Time</label>
-                            <select id="time" required>
-                                <option value="">Select Time</option>
-                                <option value="morning">Morning (8AM-12PM)</option>
-                                <option value="afternoon">Afternoon (12PM-6PM)</option>
-                                <option value="evening">Evening (6PM-10PM)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="step-navigation">
-                        <button class="btn-outline" onclick="prevStep(1)">Back</button>
-                        <button class="btn" onclick="nextStep(3)" disabled id="step2-next">Continue</button>
-                    </div>
-                </div>
-
-                <div class="form-step" id="step3">
-                    <h3 style="text-align: center; margin-bottom: 32px; color: var(--dark-slate);">Contact Information</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" placeholder="Your first name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" placeholder="Your last name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="(555) 123-4567" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="your@email.com" required>
-                        </div>
-                    </div>
-                    <div style="margin-top: 24px; padding: 20px; background: var(--light-gray); border-radius: 12px;">
-                        <h4 style="margin-bottom: 12px;">Booking Summary</h4>
-                        <div id="booking-summary"></div>
-                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
-                            <p style="font-weight: 600; color: var(--primary-blue);">
-                                Total: <span id="total-price">$0</span>
-                                <span style="color: var(--secondary-teal); font-size: 14px; margin-left: 8px;">(20% off first treatment applied)</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="step-navigation">
-                        <button class="btn-outline" onclick="prevStep(2)">Back</button>
-                        <button class="btn" onclick="completeBooking()" disabled id="step3-complete">Complete Booking</button>
-                    </div>
+                <div style="text-align: center;">
+                    <a href="pages/book-ivtherapy.html" class="btn">Schedule Your Treatment</a>
                 </div>
             </div>
         </div>
@@ -1446,118 +940,78 @@
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-subtitle">Our Services</div>
-                <h2 class="section-title">OUR SERVICES</h2>
+                <h2 class="section-title">MOBILE IV THERAPY TREATMENTS</h2>
                 <p class="section-description">
-                    At Stay Dripped, we offer diverse wellness services united by a shared goal: better outcomes through more personalized care. No matter your field, we're here to support your work with precision medicine and people-first partnership.
+                    Professional IV therapy treatments delivered to your home, office, or event. Our licensed medical professionals provide personalized wellness solutions in the comfort of your preferred location.
                 </p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=600&auto=format&fit=crop" alt="Hydration Therapy" />
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=600&auto=format&fit=crop" alt="Desert Hydration IV" />
                     </div>
                     <div class="service-content">
-                        <h3>Hydration Therapy</h3>
-                        <p>Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
-                        <ul class="treatment-list">
-                            <li>Basic Hydration IV</li>
-                            <li>Electrolyte Plus</li>
-                            <li>Recovery Hydration</li>
-                            <li>Athletic Hydration</li>
-                        </ul>
+                        <h3>Desert Hydration IV</h3>
+                        <p>Combat Arizona's dry climate with essential hydration and electrolyte replenishment for optimal cellular function.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
 
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=600&auto=format&fit=crop" alt="Energy & Wellness" />
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=600&auto=format&fit=crop" alt="Myers Cocktail" />
                     </div>
                     <div class="service-content">
-                        <h3>Energy & Wellness</h3>
-                        <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
-                        <ul class="treatment-list">
-                            <li>B12 Energy Boost</li>
-                            <li>Myers' Cocktail</li>
-                            <li>Mega Myers'</li>
-                            <li>Executive Wellness</li>
-                        </ul>
+                        <h3>Myers Cocktail</h3>
+                        <p>A blend of vitamins and minerals designed to support energy, immunity, and overall wellness enhancement.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
 
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Immune Support" />
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=600&auto=format&fit=crop" alt="Hangover Recovery" />
                     </div>
                     <div class="service-content">
-                        <h3>Immune Support</h3>
-                        <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
-                        <ul class="treatment-list">
-                            <li>Immune Boost IV</li>
-                            <li>Vitamin C Mega Dose</li>
-                            <li>Zinc & Glutathione</li>
-                            <li>Cold & Flu Recovery</li>
-                        </ul>
+                        <h3>Hangover Recovery</h3>
+                        <p>Fast relief from hangover symptoms with hydration, electrolytes, and nausea relief delivered directly to you.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
 
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop" alt="Recovery & Performance" />
+                        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Immune Boost IV" />
                     </div>
                     <div class="service-content">
-                        <h3>Recovery & Performance</h3>
-                        <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
-                        <ul class="treatment-list">
-                            <li>Hangover Recovery</li>
-                            <li>Athletic Performance</li>
-                            <li>Post-Workout Recovery</li>
-                            <li>NAD+ Therapy</li>
-                        </ul>
+                        <h3>Immune Boost IV</h3>
+                        <p>High-dose Vitamin C and Zinc blend to strengthen your body's natural defenses and boost immunity.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
 
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1616391182219-e080b4d1043a?q=80&w=600&auto=format&fit=crop" alt="Beauty & Anti-Aging" />
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Basic IV" />
                     </div>
                     <div class="service-content">
-                        <h3>Beauty & Anti-Aging</h3>
-                        <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
-                        <ul class="treatment-list">
-                            <li>Beauty Glow IV</li>
-                            <li>Anti-Aging Formula</li>
-                            <li>Skin Brightening</li>
-                            <li>Hair & Nail Support</li>
-                        </ul>
+                        <h3>Basic IV</h3>
+                        <p>Simple, effective hydration boost with essential fluids to re-energize and refresh your body.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
 
                 <div class="service-card-enhanced fade-in">
                     <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=600&auto=format&fit=crop" alt="Specialized Treatments" />
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=600&auto=format&fit=crop" alt="Morning Sickness Relief" />
                     </div>
                     <div class="service-content">
-                        <h3>Specialized Treatments</h3>
-                        <p>Advanced therapies including peptide treatments, hormone optimization, and weight management support.</p>
-                        <ul class="treatment-list">
-                            <li>Peptide Therapy</li>
-                            <li>Weight Management</li>
-                            <li>Hormone Support</li>
-                            <li>Custom Formulations</li>
-                        </ul>
+                        <h3>Morning Sickness Relief</h3>
+                        <p>Gentle hydration and nausea relief specially formulated for expectant mothers' comfort and safety.</p>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="services-summary fade-in">
-                <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
             </div>
         </div>
     </section>
@@ -1567,32 +1021,32 @@
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-subtitle">Our Team</div>
-                <h2 class="section-title">Licensed Medical Professionals</h2>
+                <h2 class="section-title">LICENSED MEDICAL PROFESSIONALS</h2>
                 <p class="section-description">
-                    Our experienced team of medical professionals is dedicated to providing safe, effective, and personalized IV therapy treatments.
+                    Our certified healthcare professionals bring years of experience in IV therapy and mobile wellness services to ensure safe, effective treatments.
                 </p>
             </div>
 
             <div class="team-grid">
                 <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" alt="Dr. Emily Rodriguez">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&auto=format&fit=crop" alt="Licensed Nurse" />
                     <div class="team-member-info">
-                        <h4>Dr. Emily Rodriguez</h4>
-                        <p>Medical Director</p>
+                        <h4>Licensed Medical Team</h4>
+                        <p>Certified IV therapy specialists with extensive experience in mobile wellness treatments.</p>
                     </div>
                 </div>
                 <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" alt="Dr. Michael Chen">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?q=80&w=400&auto=format&fit=crop" alt="Wellness Coordinator" />
                     <div class="team-member-info">
-                        <h4>Dr. Michael Chen</h4>
-                        <p>Lead Physician</p>
+                        <h4>Wellness Coordinators</h4>
+                        <p>Dedicated professionals who ensure personalized care and coordinate your treatment experience.</p>
                     </div>
                 </div>
                 <div class="team-member fade-in">
-                    <img src="https://images.unsplash.com/photo-1594824771640-9c8c1f9df2a6?q=80&w=400&auto=format&fit=crop" alt="Sarah Johnson">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=400&auto=format&fit=crop" alt="Mobile IV Specialist" />
                     <div class="team-member-info">
-                        <h4>Sarah Johnson</h4>
-                        <p>Nurse Practitioner</p>
+                        <h4>Mobile IV Specialists</h4>
+                        <p>Expert practitioners specializing in on-location IV therapy and wellness treatments.</p>
                     </div>
                 </div>
             </div>
@@ -1604,53 +1058,70 @@
         <div class="container">
             <div class="section-header fade-in">
                 <div class="section-subtitle">Service Area</div>
-                <h2 class="section-title">Serving Scottsdale & Surrounding Areas</h2>
+                <h2 class="section-title">SERVING SCOTTSDALE & SURROUNDING AREAS</h2>
                 <p class="section-description">
-                    We bring professional IV therapy directly to your location throughout Scottsdale and the greater Phoenix metropolitan area.
+                    We bring professional mobile IV therapy directly to your location throughout Scottsdale and the greater Phoenix metro area.
                 </p>
             </div>
 
             <div class="location-content">
                 <div class="location-info">
                     <div class="info-card fade-in">
-                        <h3>📍 Service Areas</h3>
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Service Locations
+                        </h3>
                         <ul>
                             <li>Scottsdale</li>
                             <li>Paradise Valley</li>
                             <li>North Phoenix</li>
-                            <li>Cave Creek</li>
-                            <li>Carefree</li>
+                            <li>Tempe</li>
+                            <li>Mesa</li>
                             <li>Fountain Hills</li>
                         </ul>
                     </div>
 
                     <div class="info-card fade-in">
-                        <h3>🏠 Service Locations</h3>
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                            Service Hours
+                        </h3>
                         <ul>
-                            <li>Private Residences</li>
-                            <li>Hotels & Resorts</li>
-                            <li>Corporate Offices</li>
-                            <li>Event Venues</li>
-                            <li>Vacation Rentals</li>
+                            <li>Monday - Friday: 8AM - 10PM</li>
+                            <li>Saturday: 8AM - 10PM</li>
+                            <li>Sunday: 9AM - 8PM</li>
+                            <li>24/7 Emergency Services Available</li>
                         </ul>
                     </div>
 
                     <div class="info-card fade-in">
-                        <h3>⏰ Hours</h3>
+                        <h3>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            Contact Information
+                        </h3>
                         <ul>
-                            <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
-                            <li>Saturday: 8:00 AM - 6:00 PM</li>
-                            <li>Sunday: 9:00 AM - 5:00 PM</li>
-                            <li>Emergency Services Available</li>
+                            <li>Phone: (480) 555-DRIP</li>
+                            <li>Email: info@staydrippediv.com</li>
+                            <li>Same-day appointments available</li>
+                            <li>Group & event services</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="map-container fade-in">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d212976.0376813488!2d-112.02195913466991!3d33.48184371121143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1754155681632!5m2!1sen!2sus"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8429424421847!2d-111.92634848543252!3d33.50217928075952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b0d7f51c89b03%3A0x1234567890!2sScottsdale%2C%20AZ!5e0!3m2!1sen!2sus!4v1234567890"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -1662,57 +1133,79 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <h4>Stay Dripped IV & Wellness Co.</h4>
-                    <p style="margin-bottom: 20px; line-height: 1.7; opacity: 0.8;">
-                        Professional mobile IV therapy and wellness treatments delivered by licensed medical professionals throughout Scottsdale, Arizona.
+                    <h4>Stay Dripped IV & Wellness</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px;">
+                        Professional mobile IV therapy bringing wellness directly to your location in Scottsdale and surrounding areas.
                     </p>
-                    <div style="margin-bottom: 16px;">
-                        <p style="margin-bottom: 8px;">📞 (602) 761-0492</p>
-                        <p style="margin-bottom: 8px;">✉️ info@staydrippediv.com</p>
-                        <p>📍 Scottsdale, AZ</p>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#" class="icon-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="icon-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="icon-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.22.083.402-.09.381-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 <div>
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">IV Hydration</a></li>
-                        <li><a href="#services">Energy & Wellness</a></li>
-                        <li><a href="#services">Immune Support</a></li>
-                        <li><a href="#services">Recovery Therapy</a></li>
-                        <li><a href="#services">Beauty Treatments</a></li>
-                        <li><a href="#services">NAD+ Therapy</a></li>
+                        <li><a href="pages/book-ivtherapy.html">IV Treatments</a></li>
+                        <li><a href="pages/peptides.html">Peptides</a></li>
+                        <li><a href="pages/weight-loss.html">Weight Loss</a></li>
+                        <li><a href="pages/hormone-therapy.html">Hormone Therapy</a></li>
+                        <li><a href="pages/membership.html">Membership</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Company</h4>
                     <ul>
                         <li><a href="#team">Our Team</a></li>
-                        <li><a href="#location">Service Areas</a></li>
-                        <li><a href="pages/book-ivtherapy.html">Book Treatment</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        <li><a href="#">Safety & Protocols</a></li>
-                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#location">Service Area</a></li>
+                        <li><a href="pages/first-time-patients.html">First Time Patients</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Resources</h4>
+                    <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Treatment Guide</a></li>
-                        <li><a href="#">Health Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Membership Plans</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="pages/book-appointment.html">Book Appointment</a></li>
+                        <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1">Client Portal</a></li>
+                        <li><a href="pages/payment.html">Payment Options</a></li>
+                        <li><a href="#contact">Emergency Services</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved.</p>
+                <p>&copy; 2024 Stay Dripped IV & Wellness Co. All rights reserved. | Licensed Medical Professionals | Scottsdale, AZ</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
@@ -1723,24 +1216,7 @@
             }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (!href || href === '#' || href.length <= 1) return;
-                
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll animations
+        // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1754,376 +1230,69 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
         });
 
-        // Set minimum date to today
-        function setMinDate() {
+        // Mobile menu toggle (if needed)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Form validation for booking form
+        const bookingForm = document.querySelector('.booking-form');
+        if (bookingForm) {
+            const formInputs = bookingForm.querySelectorAll('input, select');
+            formInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    validateForm();
+                });
+            });
+        }
+
+        function validateForm() {
+            const treatment = document.getElementById('treatment')?.value;
+            const location = document.getElementById('location')?.value;
+            const date = document.getElementById('date')?.value;
+            const time = document.getElementById('time')?.value;
+
+            // Basic validation - can be enhanced as needed
+            if (treatment && location && date && time) {
+                console.log('Form is valid');
+            }
+        }
+
+        // Set minimum date to today for date picker
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
             const today = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                dateInput.min = today;
+            dateInput.setAttribute('min', today);
+        }
+
+        // Cart functionality placeholder
+        let cartCount = 0;
+        const cartCountElement = document.querySelector('.cart-count');
+
+        function updateCartCount(count) {
+            cartCount = count;
+            if (cartCountElement) {
+                cartCountElement.textContent = cartCount;
             }
         }
 
-        // Book service function
-        function bookService() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const treatment = document.getElementById('treatment').value;
-            
-            if (!location || !date || !time || !treatment) {
-                alert('Please fill in all fields to book your treatment.');
-                return;
-            }
-            
-            // Redirect to booking page
-            window.location.href = 'pages/book-ivtherapy.html';
-        }
-
-        // Question selection functionality
-        function selectQuestion(element) {
-            // Remove selected class from all cards
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.classList.remove('selected');
+        // Search functionality placeholder
+        const searchBtn = document.querySelector('.search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', function() {
+                // Implement search functionality
+                console.log('Search clicked');
             });
-
-            // Add selected class to clicked card
-            element.classList.add('selected');
-
-            // Auto-scroll to booking form
-            setTimeout(() => {
-                document.querySelector('.progressive-form').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 500);
         }
-
-        // Location finder functionality
-        function showLocationFinder() {
-            const modal = document.createElement('div');
-            modal.className = 'location-modal';
-            modal.innerHTML = `
-                <div class="location-modal-content">
-                    <div class="location-modal-header">
-                        <h3>Find Service Locations</h3>
-                        <button class="close-modal" onclick="closeLocationModal()">&times;</button>
-                    </div>
-                    <div class="location-search">
-                        <input type="text" id="location-search-input" placeholder="Enter your zip code or city" />
-                        <button onclick="searchLocations()">Search</button>
-                    </div>
-                    <div class="location-results">
-                        <div class="location-item">
-                            <h4>Scottsdale Service Area</h4>
-                            <p>📍 Greater Scottsdale, Paradise Valley, North Phoenix</p>
-                            <p>📞 (602) 761-0492</p>
-                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
-                        </div>
-                        <div class="location-item">
-                            <h4>Cave Creek / Carefree</h4>
-                            <p>📍 Cave Creek, Carefree, Fountain Hills</p>
-                            <p>📞 (602) 761-0492</p>
-                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            setTimeout(() => modal.classList.add('show'), 10);
-        }
-
-        function closeLocationModal() {
-            const modal = document.querySelector('.location-modal');
-            if (modal) {
-                modal.classList.remove('show');
-                setTimeout(() => modal.remove(), 300);
-            }
-        }
-
-        function searchLocations() {
-            const searchTerm = document.getElementById('location-search-input').value.toLowerCase();
-            // Simple search functionality - in real app would call API
-            if (searchTerm.includes('scottsdale') || searchTerm.includes('85260') || searchTerm.includes('85259')) {
-                alert('Great! We service your area. Call (602) 761-0492 to book.');
-            } else if (searchTerm.includes('phoenix') || searchTerm.includes('cave creek') || searchTerm.includes('paradise valley')) {
-                alert('We service your area! Call (602) 761-0492 to book.');
-            } else {
-                alert('We may service your area. Please call (602) 761-0492 to confirm availability.');
-            }
-        }
-
-        // Search functionality
-        function toggleSearch() {
-            const searchOverlay = document.createElement('div');
-            searchOverlay.className = 'search-overlay';
-            searchOverlay.innerHTML = `
-                <div class="search-container">
-                    <input type="text" id="site-search" placeholder="Search treatments, services, or information..." />
-                    <button onclick="performSearch()">Search</button>
-                    <button class="close-search" onclick="closeSearch()">&times;</button>
-                </div>
-            `;
-            document.body.appendChild(searchOverlay);
-            setTimeout(() => searchOverlay.classList.add('show'), 10);
-            document.getElementById('site-search').focus();
-        }
-
-        function closeSearch() {
-            const overlay = document.querySelector('.search-overlay');
-            if (overlay) {
-                overlay.classList.remove('show');
-                setTimeout(() => overlay.remove(), 300);
-            }
-        }
-
-        function performSearch() {
-            const searchTerm = document.getElementById('site-search').value.toLowerCase();
-            if (searchTerm.includes('iv') || searchTerm.includes('hydration')) {
-                window.location.href = 'pages/book-ivtherapy.html';
-            } else if (searchTerm.includes('peptide')) {
-                window.location.href = 'pages/peptides.html';
-            } else if (searchTerm.includes('weight') || searchTerm.includes('loss')) {
-                window.location.href = 'pages/weight-loss.html';
-            } else if (searchTerm.includes('hormone')) {
-                window.location.href = 'pages/hormone-therapy.html';
-            } else {
-                alert('No results found. Please try a different search term or browse our services.');
-            }
-        }
-
-        // Add event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Location finder
-            const locationBtn = document.querySelector('.location-finder-btn');
-            if (locationBtn) {
-                locationBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showLocationFinder();
-                });
-            }
-
-            // Search button
-            const searchBtn = document.querySelector('.search-btn');
-            if (searchBtn) {
-                searchBtn.addEventListener('click', toggleSearch);
-            }
-
-            // Cart functionality (placeholder)
-            const cartBtn = document.querySelector('.cart-btn');
-            if (cartBtn) {
-                cartBtn.addEventListener('click', function() {
-                    alert('Cart functionality coming soon! For now, please call (602) 761-0492 to book multiple treatments.');
-                });
-            }
-
-            // Close modals on escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeLocationModal();
-                    closeSearch();
-                }
-            });
-        });
-
-        // Progressive form functionality
-        function nextStep(stepNumber) {
-            // Hide current step
-            document.querySelector('.form-step.active').classList.remove('active');
-
-            // Update step indicators
-            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
-                indicator.classList.remove('active');
-                if (index < stepNumber - 1) {
-                    indicator.classList.add('completed');
-                } else if (index === stepNumber - 1) {
-                    indicator.classList.add('active');
-                }
-            });
-
-            // Show new step
-            document.getElementById(`step${stepNumber}`).classList.add('active');
-        }
-
-        function prevStep(stepNumber) {
-            // Hide current step
-            document.querySelector('.form-step.active').classList.remove('active');
-
-            // Update step indicators
-            document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
-                indicator.classList.remove('active', 'completed');
-                if (index < stepNumber - 1) {
-                    indicator.classList.add('completed');
-                } else if (index === stepNumber - 1) {
-                    indicator.classList.add('active');
-                }
-            });
-
-            // Show new step
-            document.getElementById(`step${stepNumber}`).classList.add('active');
-        }
-
-        // Treatment information
-        const treatmentInfo = {
-            hydration: {
-                description: "Essential hydration and electrolyte replenishment for optimal cellular function and energy.",
-                benefits: ["Rapid rehydration", "Electrolyte balance", "Increased energy", "Improved mental clarity"],
-                price: 150
-            },
-            energy: {
-                description: "Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.",
-                benefits: ["B12 energy boost", "Enhanced mental clarity", "Improved mood", "Sustained energy"],
-                price: 180
-            },
-            immunity: {
-                description: "High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.",
-                benefits: ["Immune system support", "Antioxidant protection", "Faster recovery", "Zinc & glutathione"],
-                price: 200
-            },
-            recovery: {
-                description: "Advanced formulas for athletic recovery, hangover relief, and performance optimization.",
-                benefits: ["Hangover relief", "Athletic recovery", "Reduced inflammation", "Performance enhancement"],
-                price: 220
-            },
-            beauty: {
-                description: "Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.",
-                benefits: ["Skin brightening", "Anti-aging support", "Hair & nail health", "Collagen boost"],
-                price: 250
-            },
-            nad: {
-                description: "Advanced NAD+ therapy for cellular regeneration, longevity, and optimal brain function.",
-                benefits: ["Cellular regeneration", "Anti-aging effects", "Enhanced cognition", "Energy production"],
-                price: 400
-            }
-        };
-
-        function updateTreatmentInfo() {
-            const treatment = document.getElementById('treatment').value;
-            const infoDiv = document.getElementById('treatment-info');
-            const nextBtn = document.getElementById('step1-next');
-
-            if (treatment && treatmentInfo[treatment]) {
-                const info = treatmentInfo[treatment];
-                document.getElementById('treatment-description').textContent = info.description;
-
-                const benefitsList = document.getElementById('treatment-benefits');
-                benefitsList.innerHTML = '';
-                info.benefits.forEach(benefit => {
-                    const li = document.createElement('li');
-                    li.textContent = benefit;
-                    li.style.cssText = 'padding: 4px 0; color: var(--medium-gray);';
-                    benefitsList.appendChild(li);
-                });
-
-                infoDiv.style.display = 'block';
-                nextBtn.disabled = false;
-                updateBookingSummary();
-            } else {
-                infoDiv.style.display = 'none';
-                nextBtn.disabled = true;
-            }
-        }
-
-        function escapeHTML(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function updateBookingSummary() {
-            const treatment = document.getElementById('treatment').value;
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-
-            if (treatment && treatmentInfo[treatment]) {
-                const info = treatmentInfo[treatment];
-                const originalPrice = info.price;
-                const discountedPrice = Math.round(originalPrice * 0.8); // 20% off
-
-                const summary = document.getElementById('booking-summary');
-                summary.innerHTML = `
-                    <p><strong>Treatment:</strong> ${document.getElementById('treatment').options[document.getElementById('treatment').selectedIndex].text}</p>
-                    ${location ? `<p><strong>Location:</strong> ${escapeHTML(location)}</p>` : ''}
-                    ${date ? `<p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>` : ''}
-                    ${time ? `<p><strong>Time:</strong> ${document.getElementById('time').options[document.getElementById('time').selectedIndex].text}</p>` : ''}
-                `;
-
-                document.getElementById('total-price').textContent = `$${discountedPrice}`;
-            }
-        }
-
-        // Form validation
-        function validateStep2() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const nextBtn = document.getElementById('step2-next');
-
-            if (location && date && time) {
-                nextBtn.disabled = false;
-                updateBookingSummary();
-            } else {
-                nextBtn.disabled = true;
-            }
-        }
-
-        function validateStep3() {
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const completeBtn = document.getElementById('step3-complete');
-
-            if (firstName && lastName && phone && email) {
-                completeBtn.disabled = false;
-            } else {
-                completeBtn.disabled = true;
-            }
-        }
-
-        function completeBooking() {
-            const formData = {
-                treatment: document.getElementById('treatment').value,
-                location: document.getElementById('location').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value
-            };
-
-            // Here you would typically send the data to your booking system
-            console.log('Booking data:', formData);
-
-            // For now, redirect to the booking page
-            window.location.href = 'pages/book-ivtherapy.html';
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            setMinDate();
-
-            // Add event listeners for form validation
-            ['location', 'date', 'time'].forEach(id => {
-                document.getElementById(id).addEventListener('input', validateStep2);
-                document.getElementById(id).addEventListener('change', validateStep2);
-            });
-
-            ['firstName', 'lastName', 'phone', 'email'].forEach(id => {
-                document.getElementById(id).addEventListener('input', validateStep3);
-            });
-        });
     </script>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop" title="Back to Top">↑</a>
 </body>
 </html>
