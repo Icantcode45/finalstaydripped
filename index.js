@@ -446,6 +446,56 @@ const server = http.createServer(async (req, res) => {
             box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
         }
 
+        /* Trust Section */
+        .trust-section {
+            padding: 60px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .trust-icon {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trust-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-item:hover .trust-icon img {
+            transform: scale(1.1);
+        }
+
+        .trust-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+        }
+
+        .trust-item p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .top-bar-right {
