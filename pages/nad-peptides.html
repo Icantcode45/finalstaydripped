@@ -2934,26 +2934,1018 @@
         let chatModalOpen = false;
         let currentProduct = null;
 
-        // Product data for quick responses
-        const productInfo = {
-            'nad': {
+        // Comprehensive peptide database for personalized quick views
+        const peptideDatabase = {
+            'nad+ iv infusion': {
                 name: 'NAD+ IV Infusion',
-                benefits: 'Cellular energy restoration, enhanced mental clarity, anti-aging benefits',
+                category: 'NAD+ Therapy',
+                price: '$150',
                 duration: '3-4 hours',
-                price: '$150'
+                dosage: '250mg-500mg per session',
+                administration: 'Intravenous infusion',
+                benefits: [
+                    'Cellular energy restoration',
+                    'Enhanced mental clarity and focus',
+                    'Anti-aging and longevity support',
+                    'Improved metabolism',
+                    'Better sleep quality',
+                    'Increased physical energy'
+                ],
+                description: 'NAD+ (Nicotinamide Adenine Dinucleotide) is a crucial coenzyme found in every cell of your body. As we age, NAD+ levels naturally decline, contributing to cellular aging and reduced energy. Our NAD+ IV therapy replenishes these levels directly.',
+                howItWorks: 'NAD+ plays a vital role in cellular metabolism, DNA repair, and energy production. The IV infusion delivers high concentrations directly to your bloodstream, bypassing digestive absorption issues.',
+                idealFor: 'Individuals seeking enhanced energy, mental clarity, anti-aging benefits, or recovery from fatigue and brain fog.',
+                frequency: 'Weekly to bi-weekly treatments for optimal results',
+                sideEffects: 'Mild nausea or flushing during infusion (can be minimized by adjusting flow rate)'
             },
-            'bpc': {
+            'bpc-157 healing peptide': {
                 name: 'BPC-157 Healing Peptide',
-                benefits: 'Enhanced tissue repair, gut health optimization, injury recovery support',
-                duration: 'Weekly injections',
-                price: '$120'
+                category: 'Peptide Therapy',
+                price: '$120',
+                duration: '5-10 minutes',
+                dosage: '250-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Accelerated tissue repair',
+                    'Gut health optimization',
+                    'Injury recovery support',
+                    'Anti-inflammatory effects',
+                    'Improved wound healing',
+                    'Joint and tendon protection'
+                ],
+                description: 'BPC-157 (Body Protection Compound) is a synthetic peptide derived from a protective protein found in gastric juice. It has remarkable healing properties for both soft tissue and the digestive system.',
+                howItWorks: 'BPC-157 promotes angiogenesis (formation of new blood vessels), stimulates collagen production, and modulates inflammatory responses to accelerate healing processes.',
+                idealFor: 'Athletes with injuries, individuals with digestive issues, those recovering from surgery, or anyone seeking enhanced healing.',
+                frequency: 'Daily injections for 2-4 weeks for acute issues, longer for chronic conditions',
+                sideEffects: 'Very well tolerated with minimal side effects reported'
             },
-            'default': {
-                name: 'NAD+ & Peptide Therapy',
-                benefits: 'Cellular optimization, longevity enhancement, performance improvement',
-                duration: 'Varies by treatment',
-                price: 'Starting at $120'
+            'ipamorelin + cjc-1295': {
+                name: 'Ipamorelin + CJC-1295',
+                category: 'Growth Hormone',
+                price: '$180',
+                duration: '5 minutes',
+                dosage: 'Ipamorelin 200-300mcg + CJC-1295 100mcg',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Natural growth hormone stimulation',
+                    'Improved sleep quality',
+                    'Enhanced muscle recovery',
+                    'Fat loss support',
+                    'Better body composition',
+                    'Increased energy levels'
+                ],
+                description: 'This powerful combination stimulates your body\'s natural growth hormone production. Ipamorelin is a selective GHRP that mimics ghrelin, while CJC-1295 extends the release of growth hormone.',
+                howItWorks: 'Ipamorelin triggers GH release from the pituitary gland, while CJC-1295 prevents its rapid breakdown, creating sustained elevation of growth hormone levels.',
+                idealFor: 'Adults looking to optimize body composition, improve recovery, enhance sleep, or combat age-related decline in growth hormone.',
+                frequency: 'Daily injections, typically before bed for optimal GH release during sleep',
+                sideEffects: 'Mild injection site reactions, temporary water retention, rare instances of increased hunger'
+            },
+            'longevity combo therapy': {
+                name: 'Longevity Combo Therapy',
+                category: 'Anti-Aging Protocol',
+                price: '$250',
+                duration: '4-6 hours',
+                dosage: 'NAD+ 500mg + selected peptides',
+                administration: 'IV infusion + injections',
+                benefits: [
+                    'Comprehensive cellular rejuvenation',
+                    'Cognitive enhancement',
+                    'Metabolic optimization',
+                    'Enhanced longevity markers',
+                    'Improved energy and vitality',
+                    'Systemic anti-aging effects'
+                ],
+                description: 'Our premium anti-aging protocol combines high-dose NAD+ with carefully selected peptides for comprehensive longevity support.',
+                howItWorks: 'Synergistic effects of NAD+ cellular repair with targeted peptides create enhanced anti-aging benefits beyond individual treatments.',
+                idealFor: 'Individuals committed to optimal aging, longevity optimization, and comprehensive wellness enhancement.',
+                frequency: 'Monthly treatments for maintenance, bi-weekly for intensive protocols',
+                sideEffects: 'Combination of NAD+ and peptide side effects, closely monitored during treatment'
+            },
+            'nootropic peptide stack': {
+                name: 'Nootropic Peptide Stack',
+                category: 'Cognitive Enhancement',
+                price: '$160',
+                duration: '10-15 minutes',
+                dosage: 'Customized based on individual needs',
+                administration: 'Subcutaneous injection or nasal spray',
+                benefits: [
+                    'Enhanced focus and memory',
+                    'Neuroprotective benefits',
+                    'Mood stabilization',
+                    'Mental clarity boost',
+                    'Improved cognitive processing',
+                    'Stress resilience'
+                ],
+                description: 'A carefully formulated combination of cognitive-enhancing peptides designed to optimize brain function and mental performance.',
+                howItWorks: 'These peptides cross the blood-brain barrier to enhance neurotransmitter function, promote neuroplasticity, and protect against cognitive decline.',
+                idealFor: 'Students, professionals, entrepreneurs, or anyone seeking enhanced cognitive performance and brain health.',
+                frequency: 'Daily or every other day depending on specific peptides used',
+                sideEffects: 'Generally well tolerated, possible mild headache initially as brain chemistry adjusts'
+            },
+            'dna repair protocol': {
+                name: 'DNA Repair Protocol',
+                category: 'Cellular Repair',
+                price: '$200',
+                duration: '4-5 hours',
+                dosage: 'High-dose NAD+ + DNA repair peptides',
+                administration: 'IV infusion + targeted injections',
+                benefits: [
+                    'Enhanced DNA repair mechanisms',
+                    'Telomere support and protection',
+                    'Oxidative stress reduction',
+                    'Cellular regeneration',
+                    'Longevity gene activation',
+                    'Anti-aging at the genetic level'
+                ],
+                description: 'Advanced therapy targeting DNA repair and cellular regeneration at the genetic level for optimal longevity and health span.',
+                howItWorks: 'Combines NAD+ with specific peptides that activate DNA repair pathways and protect against genetic damage.',
+                idealFor: 'Individuals with family history of genetic conditions, those exposed to environmental toxins, or seeking maximum longevity benefits.',
+                frequency: 'Monthly treatments for maintenance, more frequent for intensive protocols',
+                sideEffects: 'Similar to NAD+ therapy with additional peptide-specific effects'
+            },
+            'tb-500 (thymosin β4)': {
+                name: 'TB-500 (Thymosin β4)',
+                category: 'Tissue Repair',
+                price: '$130',
+                duration: '5 minutes',
+                dosage: '2-5mg twice weekly',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Accelerated wound healing',
+                    'Reduced inflammation',
+                    'Improved flexibility',
+                    'Muscle and tendon repair',
+                    'Enhanced recovery',
+                    'Cardiovascular benefits'
+                ],
+                description: 'TB-500 is a synthetic version of Thymosin β4, a naturally occurring peptide with powerful healing and regenerative properties.',
+                howItWorks: 'Promotes cell migration, angiogenesis, and tissue repair while reducing inflammation and enhancing flexibility.',
+                idealFor: 'Athletes with injuries, individuals with chronic pain, those recovering from surgery, or seeking enhanced healing.',
+                frequency: 'Twice weekly for 4-6 weeks for acute issues',
+                sideEffects: 'Very well tolerated, occasional mild injection site reactions'
+            },
+            'ghrp-6': {
+                name: 'GHRP-6',
+                category: 'Growth Hormone',
+                price: '$110',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Stimulates growth hormone release',
+                    'Increased appetite',
+                    'Improved body composition',
+                    'Enhanced recovery',
+                    'Better sleep quality',
+                    'Anti-aging effects'
+                ],
+                description: 'GHRP-6 (Growth Hormone Releasing Peptide-6) is a synthetic peptide that stimulates the release of growth hormone from the pituitary gland.',
+                howItWorks: 'Mimics ghrelin to trigger natural growth hormone release, leading to improved metabolism, recovery, and body composition.',
+                idealFor: 'Individuals seeking natural growth hormone optimization, improved recovery, and enhanced body composition.',
+                frequency: '2-3 times daily on empty stomach for optimal results',
+                sideEffects: 'Increased hunger, mild water retention, injection site reactions'
+            },
+            'ghrp-2': {
+                name: 'GHRP-2',
+                category: 'Growth Hormone',
+                price: '$125',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Strong growth hormone stimulation',
+                    'Lean muscle growth',
+                    'Improved sleep quality',
+                    'Enhanced fat metabolism',
+                    'Better recovery',
+                    'Anti-aging benefits'
+                ],
+                description: 'GHRP-2 is a more potent version of GHRP-6, providing stronger growth hormone stimulation with less impact on appetite.',
+                howItWorks: 'Binds to ghrelin receptors to stimulate growth hormone release more potently than GHRP-6.',
+                idealFor: 'Those seeking stronger GH effects than GHRP-6 without significant appetite increase.',
+                frequency: '2-3 times daily on empty stomach',
+                sideEffects: 'Less appetite stimulation than GHRP-6, mild water retention, injection site reactions'
+            },
+            'hexarelin': {
+                name: 'Hexarelin',
+                category: 'Growth Hormone',
+                price: '$150',
+                duration: '5 minutes',
+                dosage: '100-200mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Potent growth hormone release',
+                    'Muscle mass increase',
+                    'Accelerated recovery',
+                    'Improved strength',
+                    'Enhanced performance',
+                    'Cardiovascular benefits'
+                ],
+                description: 'Hexarelin is the most potent GHRP, providing the strongest growth hormone stimulation but requiring cycling to prevent desensitization.',
+                howItWorks: 'Provides the most potent stimulation of growth hormone release through ghrelin receptor activation.',
+                idealFor: 'Experienced users seeking maximum growth hormone effects for specific training phases.',
+                frequency: 'Daily for 4-6 weeks, then 2-4 week break to prevent receptor desensitization',
+                sideEffects: 'Strongest appetite stimulation, potential for receptor desensitization, cardiovascular stress in sensitive individuals'
+            },
+            'ghk-cu (copper peptide)': {
+                name: 'GHK-Cu (Copper Peptide)',
+                category: 'Skin & Beauty',
+                price: '$100',
+                duration: '5-10 minutes',
+                dosage: '1-3mg per application/injection',
+                administration: 'Topical application or subcutaneous injection',
+                benefits: [
+                    'Stimulates collagen production',
+                    'Reduces fine lines and wrinkles',
+                    'Improves skin elasticity',
+                    'Accelerates healing',
+                    'Anti-inflammatory effects',
+                    'Hair growth stimulation'
+                ],
+                description: 'GHK-Cu is a naturally occurring copper peptide with remarkable anti-aging and healing properties for skin and overall health.',
+                howItWorks: 'Copper peptides stimulate collagen synthesis, promote angiogenesis, and activate antioxidant enzymes.',
+                idealFor: 'Individuals seeking skin rejuvenation, anti-aging effects, wound healing, or hair restoration.',
+                frequency: 'Daily topical application or 2-3 weekly injections',
+                sideEffects: 'Generally very well tolerated, possible mild skin irritation with topical use'
+            },
+            'cerebrolysin': {
+                name: 'Cerebrolysin',
+                category: 'Cognitive Enhancement',
+                price: '$200',
+                duration: '30-45 minutes',
+                dosage: '5-30ml per infusion',
+                administration: 'Intravenous infusion',
+                benefits: [
+                    'Neuroprotection and repair',
+                    'Enhanced memory and learning',
+                    'Improved brain plasticity',
+                    'Neurotransmitter support',
+                    'Stroke recovery aid',
+                    'Cognitive enhancement'
+                ],
+                description: 'Cerebrolysin is a neuropeptide complex derived from pig brain tissue, providing comprehensive brain support and cognitive enhancement.',
+                howItWorks: 'Contains neurotrophic factors that promote neuroplasticity, protect neurons, and enhance cognitive function.',
+                idealFor: 'Individuals with cognitive decline, stroke recovery, traumatic brain injury, or seeking cognitive enhancement.',
+                frequency: 'Daily infusions for 2-4 weeks, then maintenance cycles',
+                sideEffects: 'Possible allergic reactions due to porcine origin, mild injection site reactions'
+            },
+            'aod-9604': {
+                name: 'AOD-9604',
+                category: 'Metabolic Support',
+                price: '$95',
+                duration: '5 minutes',
+                dosage: '250-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Selective fat burning',
+                    'Preserves lean muscle',
+                    'Improves metabolism',
+                    'No blood sugar effects',
+                    'Enhanced weight loss',
+                    'Better body composition'
+                ],
+                description: 'AOD-9604 is a fragment of growth hormone specifically designed for fat loss without affecting blood sugar or muscle mass.',
+                howItWorks: 'Stimulates lipolysis (fat breakdown) while inhibiting lipogenesis (fat formation) without affecting insulin sensitivity.',
+                idealFor: 'Individuals seeking targeted fat loss while preserving muscle mass and metabolic health.',
+                frequency: 'Daily injections, preferably before exercise or on empty stomach',
+                sideEffects: 'Very well tolerated with minimal side effects reported'
+            },
+            'dsip (deep sleep peptide)': {
+                name: 'DSIP (Deep Sleep Peptide)',
+                category: 'Sleep & Recovery',
+                price: '$85',
+                duration: '5 minutes',
+                dosage: '100-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Enhanced deep sleep',
+                    'Improved sleep quality',
+                    'Stress reduction',
+                    'Better recovery',
+                    'Normalized sleep cycles',
+                    'Mood stabilization'
+                ],
+                description: 'DSIP is a naturally occurring peptide that promotes deep, restorative sleep and helps regulate sleep-wake cycles.',
+                howItWorks: 'Modulates sleep architecture by promoting deep sleep phases and regulating circadian rhythms.',
+                idealFor: 'Individuals with insomnia, poor sleep quality, shift workers, or those seeking enhanced recovery through better sleep.',
+                frequency: 'Evening injections 30-60 minutes before bedtime',
+                sideEffects: 'Generally well tolerated, possible initial grogginess as sleep patterns adjust'
+            },
+            'thymosin alpha-1': {
+                name: 'Thymosin Alpha-1',
+                category: 'Immune Support',
+                price: '$140',
+                duration: '5 minutes',
+                dosage: '1.6mg twice weekly',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Boosts immune function',
+                    'Antiviral properties',
+                    'Reduces inflammation',
+                    'Supports T-cell function',
+                    'Enhanced vaccine response',
+                    'Autoimmune regulation'
+                ],
+                description: 'Thymosin Alpha-1 is a naturally occurring peptide that plays a crucial role in immune system regulation and enhancement.',
+                howItWorks: 'Modulates immune system function by enhancing T-cell maturation and function while regulating inflammatory responses.',
+                idealFor: 'Individuals with compromised immunity, frequent infections, autoimmune conditions, or seeking immune optimization.',
+                frequency: 'Twice weekly for immune support, daily during acute illness',
+                sideEffects: 'Well tolerated, occasional mild injection site reactions'
+            },
+            'follistatin-344': {
+                name: 'Follistatin-344',
+                category: 'Performance Enhancement',
+                price: '$250',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Inhibits myostatin',
+                    'Increases muscle mass',
+                    'Improves strength',
+                    'Enhanced performance',
+                    'Accelerated muscle growth',
+                    'Better recovery'
+                ],
+                description: 'Follistatin-344 is a powerful myostatin inhibitor that promotes muscle growth by blocking the protein that limits muscle development.',
+                howItWorks: 'Binds to and neutralizes myostatin, the protein that normally limits muscle growth, allowing for enhanced muscle development.',
+                idealFor: 'Serious athletes, bodybuilders, or individuals with muscle-wasting conditions seeking maximum muscle growth.',
+                frequency: 'Daily injections for specific training cycles under medical supervision',
+                sideEffects: 'Generally well tolerated, requires medical monitoring due to potency'
+            },
+            'pt-141 (bremelanotide)': {
+                name: 'PT-141 (Bremelanotide)',
+                category: 'Sexual Health',
+                price: '$75',
+                duration: '5 minutes',
+                dosage: '0.75-2mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Enhances libido',
+                    'Improves sexual function',
+                    'Works in both men and women',
+                    'Non-vascular mechanism',
+                    'Improved sexual satisfaction',
+                    'Enhanced arousal'
+                ],
+                description: 'PT-141 is a melanocortin receptor agonist that works through the nervous system to enhance sexual desire and function.',
+                howItWorks: 'Activates melanocortin receptors in the brain to increase sexual desire through central nervous system pathways.',
+                idealFor: 'Adults experiencing decreased libido, sexual dysfunction, or seeking enhanced sexual experiences.',
+                frequency: 'As needed, typically 45 minutes before sexual activity, maximum twice weekly',
+                sideEffects: 'Possible nausea, flushing, mild headache, injection site reactions'
+            },
+            'sermorelin': {
+                name: 'Sermorelin',
+                category: 'Growth Hormone',
+                price: '$135',
+                duration: '5 minutes',
+                dosage: '200-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Natural growth hormone stimulation',
+                    'Improved sleep quality',
+                    'Enhanced recovery',
+                    'Anti-aging benefits',
+                    'Better body composition',
+                    'Increased energy'
+                ],
+                description: 'Sermorelin is a synthetic version of growth hormone-releasing hormone (GHRH) that stimulates natural growth hormone production.',
+                howItWorks: 'Directly stimulates the pituitary gland to release growth hormone, maintaining natural pulsatile patterns.',
+                idealFor: 'Adults seeking natural growth hormone optimization with a focus on sleep quality and recovery.',
+                frequency: 'Daily injections before bedtime for optimal GH release during sleep',
+                sideEffects: 'Generally well tolerated, possible injection site reactions, rare instances of headache'
+            },
+            'igf-1 lr3': {
+                name: 'IGF-1 LR3',
+                category: 'Growth Factor',
+                price: '$175',
+                duration: '5 minutes',
+                dosage: '20-100mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Enhanced muscle growth',
+                    'Improved recovery',
+                    'Increased protein synthesis',
+                    'Fat metabolism boost',
+                    'Better nutrient uptake',
+                    'Muscle hyperplasia'
+                ],
+                description: 'IGF-1 LR3 is a long-acting version of insulin-like growth factor that promotes muscle growth and recovery.',
+                howItWorks: 'Extended half-life allows for sustained anabolic effects, promoting muscle growth through increased protein synthesis.',
+                idealFor: 'Serious athletes and bodybuilders seeking enhanced muscle growth and recovery.',
+                frequency: 'Post-workout or daily injections for muscle-building phases',
+                sideEffects: 'Possible hypoglycemia, injection site reactions, requires careful monitoring'
+            },
+            'igf-1 des': {
+                name: 'IGF-1 DES',
+                category: 'Growth Factor',
+                price: '$165',
+                duration: '5 minutes',
+                dosage: '20-60mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Localized muscle growth',
+                    'Rapid absorption',
+                    'Enhanced muscle repair',
+                    'Increased strength',
+                    'Site-specific effects',
+                    'Quick action'
+                ],
+                description: 'IGF-1 DES is a short-acting, potent version of IGF-1 that provides localized muscle growth effects.',
+                howItWorks: 'Short half-life and high potency create localized anabolic effects at injection sites.',
+                idealFor: 'Experienced users seeking targeted muscle development and site-specific growth.',
+                frequency: 'Pre or post-workout injections in target muscle groups',
+                sideEffects: 'Risk of hypoglycemia, injection site reactions, requires careful dosing'
+            },
+            'hgh fragment 176-191': {
+                name: 'HGH Fragment 176-191',
+                category: 'Weight Management',
+                price: '$90',
+                duration: '5 minutes',
+                dosage: '250-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Selective fat burning',
+                    'No muscle loss',
+                    'Improved metabolism',
+                    'No blood sugar effects',
+                    'Enhanced lipolysis',
+                    'Better body composition'
+                ],
+                description: 'HGH Fragment 176-191 is the fat-burning portion of growth hormone without the muscle-building or blood sugar effects.',
+                howItWorks: 'Specifically targets fat cells for breakdown while avoiding the side effects of full growth hormone.',
+                idealFor: 'Individuals seeking pure fat loss benefits without muscle gain or metabolic disruption.',
+                frequency: 'Daily injections on empty stomach or before exercise',
+                sideEffects: 'Very well tolerated with minimal side effects'
+            },
+            'melanotan ii (mt-2)': {
+                name: 'Melanotan II (MT-2)',
+                category: 'Tanning & Aesthetics',
+                price: '$80',
+                duration: '5 minutes',
+                dosage: '250-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Enhanced tanning ability',
+                    'UV protection',
+                    'Appetite suppression',
+                    'Skin darkening',
+                    'Reduced sunburn risk',
+                    'Libido enhancement'
+                ],
+                description: 'Melanotan II is a synthetic peptide that stimulates melanin production for enhanced tanning and UV protection.',
+                howItWorks: 'Activates melanocortin receptors to increase melanin production and distribution in skin cells.',
+                idealFor: 'Individuals seeking enhanced tanning ability, UV protection, or appetite suppression.',
+                frequency: 'Daily injections during loading phase, then as needed for maintenance',
+                sideEffects: 'Nausea, flushing, darkened freckles, possible changes in libido'
+            },
+            'mgf (mechano growth factor)': {
+                name: 'MGF (Mechano Growth Factor)',
+                category: 'Growth Factor',
+                price: '$145',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Muscle fiber repair',
+                    'Enhanced hypertrophy',
+                    'Improved recovery',
+                    'Satellite cell activation',
+                    'Muscle preservation',
+                    'Training adaptation'
+                ],
+                description: 'MGF is a variant of IGF-1 that is released in response to muscle damage and promotes muscle repair and growth.',
+                howItWorks: 'Activates satellite cells and promotes muscle fiber repair and growth following mechanical stress.',
+                idealFor: 'Athletes and bodybuilders seeking enhanced recovery and muscle adaptation to training.',
+                frequency: 'Post-workout injections in trained muscle groups',
+                sideEffects: 'Generally well tolerated, possible injection site reactions'
+            },
+            'peg-mgf': {
+                name: 'PEG-MGF',
+                category: 'Growth Factor',
+                price: '$155',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Extended half-life',
+                    'Systemic muscle growth',
+                    'Enhanced recovery',
+                    'Improved muscle repair',
+                    'Longer-lasting effects',
+                    'Convenient dosing'
+                ],
+                description: 'PEG-MGF is a pegylated version of MGF with an extended half-life for systemic rather than localized effects.',
+                howItWorks: 'Pegylation extends the peptide\'s half-life, allowing for systemic muscle growth effects.',
+                idealFor: 'Those seeking systemic muscle growth benefits with less frequent dosing than regular MGF.',
+                frequency: 'Weekly injections for systemic muscle growth effects',
+                sideEffects: 'Generally well tolerated, possible injection site reactions'
+            },
+            'epithalon (epitalon)': {
+                name: 'Epithalon (Epitalon)',
+                category: 'Anti-Aging',
+                price: '$110',
+                duration: '5 minutes',
+                dosage: '5-10mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Telomere lengthening',
+                    'Cellular regeneration',
+                    'Improved sleep patterns',
+                    'Enhanced longevity',
+                    'Hormonal regulation',
+                    'Antioxidant effects'
+                ],
+                description: 'Epithalon is a synthetic version of a naturally occurring peptide that supports telomere health and longevity.',
+                howItWorks: 'Activates telomerase enzyme to maintain and extend telomeres, the protective caps on chromosomes.',
+                idealFor: 'Individuals focused on longevity, anti-aging, and cellular health optimization.',
+                frequency: 'Daily injections for 10-20 days, repeated several times per year',
+                sideEffects: 'Very well tolerated with minimal side effects reported'
+            },
+            'mots-c': {
+                name: 'MOTS-c',
+                category: 'Mitochondrial Health',
+                price: '$125',
+                duration: '5 minutes',
+                dosage: '5-15mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Metabolic regulation',
+                    'Mitochondrial function',
+                    'Exercise mimetic effects',
+                    'Glucose metabolism',
+                    'Enhanced endurance',
+                    'Longevity support'
+                ],
+                description: 'MOTS-c is a mitochondrial-derived peptide that regulates metabolism and mimics the effects of exercise.',
+                howItWorks: 'Activates AMPK pathways to improve metabolic function and mitochondrial efficiency.',
+                idealFor: 'Individuals seeking metabolic optimization, enhanced endurance, or longevity benefits.',
+                frequency: 'Weekly injections for metabolic health and longevity',
+                sideEffects: 'Generally well tolerated, possible mild injection site reactions'
+            },
+            'aicar': {
+                name: 'AICAR',
+                category: 'Metabolic Support',
+                price: '$185',
+                duration: '5 minutes',
+                dosage: '50-150mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'AMPK pathway activation',
+                    'Enhanced endurance',
+                    'Improved fat oxidation',
+                    'Better glucose uptake',
+                    'Exercise mimetic effects',
+                    'Metabolic enhancement'
+                ],
+                description: 'AICAR is an AMPK activator known as "exercise in a pill" for its ability to mimic exercise benefits.',
+                howItWorks: 'Directly activates AMPK, the master metabolic regulator, mimicking the cellular effects of exercise.',
+                idealFor: 'Athletes seeking enhanced endurance, individuals with metabolic dysfunction, or those unable to exercise.',
+                frequency: 'Pre-workout or weekly injections depending on goals',
+                sideEffects: 'Generally well tolerated, possible mild nausea or injection site reactions'
+            },
+            'ara-290': {
+                name: 'ARA-290',
+                category: 'Neuroprotection',
+                price: '$165',
+                duration: '5-10 minutes',
+                dosage: '2-8mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Neuroprotective effects',
+                    'Tissue repair enhancement',
+                    'Improved wound healing',
+                    'Anti-inflammatory',
+                    'Pain reduction',
+                    'Nerve regeneration'
+                ],
+                description: 'ARA-290 is an erythropoietin derivative with neuroprotective and tissue repair properties.',
+                howItWorks: 'Activates tissue protective pathways without affecting red blood cell production.',
+                idealFor: 'Individuals with neuropathic pain, nerve injuries, or seeking enhanced tissue repair.',
+                frequency: 'Daily to weekly injections depending on condition severity',
+                sideEffects: 'Generally well tolerated with minimal side effects'
+            },
+            // Additional peptides to ensure comprehensive coverage
+            'tirzepatide': {
+                name: 'Tirzepatide',
+                category: 'Weight Management',
+                price: '$185',
+                duration: '5 minutes',
+                dosage: '2.5-15mg weekly',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Superior weight loss',
+                    'Blood sugar control',
+                    'Appetite suppression',
+                    'Improved insulin sensitivity',
+                    'Cardiovascular benefits',
+                    'Metabolic optimization'
+                ],
+                description: 'Tirzepatide is a dual GIP/GLP-1 receptor agonist providing superior weight loss and metabolic benefits.',
+                howItWorks: 'Activates both GIP and GLP-1 receptors for enhanced glucose control and weight loss.',
+                idealFor: 'Individuals with significant weight loss goals, type 2 diabetes, or metabolic syndrome.',
+                frequency: 'Weekly injections with gradual dose escalation',
+                sideEffects: 'Nausea, vomiting, diarrhea (usually temporary), injection site reactions'
+            },
+            'semaglutide': {
+                name: 'Semaglutide',
+                category: 'Weight Management',
+                price: '$175',
+                duration: '5 minutes',
+                dosage: '0.25-2.4mg weekly',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Proven weight loss',
+                    'Appetite suppression',
+                    'Blood sugar control',
+                    'Cardiovascular benefits',
+                    'Improved insulin sensitivity',
+                    'Metabolic health'
+                ],
+                description: 'Semaglutide is a GLP-1 receptor agonist highly effective for weight loss and diabetes management.',
+                howItWorks: 'Mimics GLP-1 hormone to slow gastric emptying, reduce appetite, and improve glucose control.',
+                idealFor: 'Individuals seeking significant weight loss, diabetes management, or cardiovascular protection.',
+                frequency: 'Weekly injections with gradual dose escalation',
+                sideEffects: 'Nausea, vomiting, diarrhea, constipation, injection site reactions'
+            },
+            'mazdutide': {
+                name: 'Mazdutide',
+                category: 'Weight Management',
+                price: '$195',
+                duration: '5 minutes',
+                dosage: '3-6mg weekly',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Weight loss support',
+                    'Metabolic enhancement',
+                    'Appetite control',
+                    'Improved glucose metabolism',
+                    'Dual mechanism action',
+                    'Enhanced efficacy'
+                ],
+                description: 'Mazdutide is a novel dual receptor agonist for advanced weight management and metabolic health.',
+                howItWorks: 'Dual mechanism targeting multiple pathways for enhanced weight loss and metabolic benefits.',
+                idealFor: 'Individuals seeking cutting-edge weight management therapy with enhanced efficacy.',
+                frequency: 'Weekly injections as prescribed',
+                sideEffects: 'Similar to other GLP-1 agonists: nausea, vomiting, injection site reactions'
+            },
+            'adipotide (ftpp)': {
+                name: 'Adipotide (FTPP)',
+                category: 'Weight Management',
+                price: '$195',
+                duration: '5 minutes',
+                dosage: '1-3mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Selective fat targeting',
+                    'Reduces adipose tissue',
+                    'Minimal muscle loss',
+                    'Metabolic benefits',
+                    'Vascular targeting',
+                    'Specialized fat reduction'
+                ],
+                description: 'Adipotide is a targeted fat-reduction peptide that specifically targets blood supply to fat tissue.',
+                howItWorks: 'Targets prohibitin in fat tissue blood vessels, leading to selective fat tissue reduction.',
+                idealFor: 'Individuals with stubborn fat deposits seeking targeted fat reduction.',
+                frequency: 'Specialized protocol under strict medical supervision',
+                sideEffects: 'Requires careful monitoring due to targeting mechanism, possible injection site reactions'
+            },
+            'melanotan i': {
+                name: 'Melanotan I',
+                category: 'Tanning & Aesthetics',
+                price: '$90',
+                duration: '5 minutes',
+                dosage: '1mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Natural tanning enhancement',
+                    'UV protection',
+                    'Fewer side effects',
+                    'Gradual skin darkening',
+                    'Reduced sunburn risk',
+                    'Sustained effects'
+                ],
+                description: 'Melanotan I is the original melanocortin agonist for enhanced tanning with fewer side effects than MT-2.',
+                howItWorks: 'Stimulates melanin production with more selective receptor activation than Melanotan II.',
+                idealFor: 'Individuals seeking tanning benefits with minimal side effects.',
+                frequency: 'Daily injections during loading phase, then maintenance dosing',
+                sideEffects: 'Fewer side effects than MT-2, possible mild nausea, injection site reactions'
+            },
+            'n-acetyl epithalon': {
+                name: 'N-Acetyl Epithalon',
+                category: 'Anti-Aging',
+                price: '$125',
+                duration: '5 minutes',
+                dosage: '5-10mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Enhanced bioavailability',
+                    'Telomere protection',
+                    'Improved longevity',
+                    'Better stability',
+                    'Optimized dosing',
+                    'Enhanced effects'
+                ],
+                description: 'N-Acetyl Epithalon is an enhanced, more bioavailable form of epithalon for improved longevity benefits.',
+                howItWorks: 'Acetylation increases stability and bioavailability compared to regular epithalon.',
+                idealFor: 'Individuals seeking enhanced anti-aging benefits with improved peptide stability.',
+                frequency: 'Daily injections for 10-20 days, repeated cycles throughout the year',
+                sideEffects: 'Very well tolerated with minimal side effects'
+            },
+            'humanin': {
+                name: 'Humanin',
+                category: 'Cardiovascular Health',
+                price: '$155',
+                duration: '5 minutes',
+                dosage: '2-5mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Cardiovascular protection',
+                    'Metabolic health support',
+                    'Neuroprotective effects',
+                    'Anti-aging properties',
+                    'Mitochondrial support',
+                    'Longevity enhancement'
+                ],
+                description: 'Humanin is a mitochondrial-derived peptide with cardiovascular and metabolic protective effects.',
+                howItWorks: 'Protects against cellular stress and supports cardiovascular and metabolic health.',
+                idealFor: 'Individuals with cardiovascular risk factors or seeking comprehensive health protection.',
+                frequency: 'Weekly injections for health maintenance and protection',
+                sideEffects: 'Generally well tolerated with minimal side effects'
+            },
+            'oxytocin': {
+                name: 'Oxytocin',
+                category: 'Hormone Support',
+                price: '$95',
+                duration: '5 minutes',
+                dosage: '10-40 IU per dose',
+                administration: 'Intranasal spray or subcutaneous injection',
+                benefits: [
+                    'Enhanced social bonding',
+                    'Stress reduction',
+                    'Improved mood',
+                    'Better relationships',
+                    'Anxiety reduction',
+                    'Enhanced empathy'
+                ],
+                description: 'Oxytocin is the "love hormone" that promotes social bonding, reduces stress, and enhances mood.',
+                howItWorks: 'Activates oxytocin receptors in the brain to promote bonding and reduce stress responses.',
+                idealFor: 'Individuals seeking improved relationships, stress reduction, or enhanced social connections.',
+                frequency: 'As needed for social situations or daily for general mood support',
+                sideEffects: 'Generally well tolerated, possible mild headache or nausea'
+            },
+            'glutathione': {
+                name: 'Glutathione',
+                category: 'Antioxidant Support',
+                price: '$85',
+                duration: '15-30 minutes',
+                dosage: '600-1200mg per infusion',
+                administration: 'Intravenous infusion or injection',
+                benefits: [
+                    'Powerful antioxidant effects',
+                    'Detoxification support',
+                    'Immune enhancement',
+                    'Skin brightening',
+                    'Cellular protection',
+                    'Anti-aging support'
+                ],
+                description: 'Glutathione is the master antioxidant that protects cells from oxidative damage and supports detoxification.',
+                howItWorks: 'Neutralizes free radicals, supports detoxification pathways, and protects cellular components.',
+                idealFor: 'Individuals seeking detoxification, antioxidant support, immune enhancement, or skin improvement.',
+                frequency: 'Weekly to bi-weekly infusions or injections',
+                sideEffects: 'Very well tolerated, possible mild injection site reactions'
+            },
+            'cjc-1295 with dac': {
+                name: 'CJC-1295 with DAC',
+                category: 'Growth Hormone',
+                price: '$165',
+                duration: '5 minutes',
+                dosage: '2mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Extended half-life',
+                    'Sustained GH release',
+                    'Improved body composition',
+                    'Enhanced recovery',
+                    'Convenient dosing',
+                    'Long-lasting effects'
+                ],
+                description: 'CJC-1295 with DAC provides long-lasting growth hormone stimulation with extended half-life.',
+                howItWorks: 'Drug Affinity Complex (DAC) extends the peptide\'s half-life for sustained GH elevation.',
+                idealFor: 'Individuals seeking convenient, long-lasting growth hormone stimulation.',
+                frequency: 'Twice weekly injections due to extended half-life',
+                sideEffects: 'Similar to other GHRPs, possible water retention, injection site reactions'
+            },
+            'mod grf 1-29': {
+                name: 'MOD GRF 1-29',
+                category: 'Growth Hormone',
+                price: '$115',
+                duration: '5 minutes',
+                dosage: '100-300mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Natural GH release pattern',
+                    'Enhanced muscle growth',
+                    'Improved recovery',
+                    'Better sleep quality',
+                    'Optimal timing flexibility',
+                    'Sustained effects'
+                ],
+                description: 'MOD GRF 1-29 is a modified version of GRF 1-29 (CJC-1295 without DAC) with improved stability.',
+                howItWorks: 'Stimulates natural growth hormone release without the extended half-life of DAC version.',
+                idealFor: 'Individuals seeking natural GH stimulation with flexible timing and natural patterns.',
+                frequency: '2-3 times daily for optimal pulsatile GH release',
+                sideEffects: 'Generally well tolerated, possible injection site reactions'
+            },
+            'pnc-27': {
+                name: 'PNC-27',
+                category: 'Anti-Cancer',
+                price: '$225',
+                duration: '5-10 minutes',
+                dosage: '10-20mg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Selective anti-cancer activity',
+                    'Membrane disruption',
+                    'Immune system support',
+                    'Targeted cell death',
+                    'Research-based therapy',
+                    'Selective action'
+                ],
+                description: 'PNC-27 is a membrane-active peptide with selective anti-cancer properties targeting cancer cells.',
+                howItWorks: 'Selectively disrupts cancer cell membranes while sparing healthy cells.',
+                idealFor: 'Individuals with cancer or high cancer risk seeking complementary therapy under medical supervision.',
+                frequency: 'Specialized protocol under strict oncological supervision',
+                sideEffects: 'Requires medical monitoring, possible injection site reactions'
+            },
+            'kpv (lys-pro-val)': {
+                name: 'KPV (Lys-Pro-Val)',
+                category: 'Anti-Inflammatory',
+                price: '$105',
+                duration: '5 minutes',
+                dosage: '1-5mg per injection',
+                administration: 'Subcutaneous injection or topical',
+                benefits: [
+                    'Potent anti-inflammatory',
+                    'Gut health optimization',
+                    'Immune system modulation',
+                    'Wound healing support',
+                    'Autoimmune regulation',
+                    'Versatile administration'
+                ],
+                description: 'KPV is a potent anti-inflammatory peptide derived from alpha-MSH with broad therapeutic applications.',
+                howItWorks: 'Activates melanocortin receptors to reduce inflammation and modulate immune responses.',
+                idealFor: 'Individuals with inflammatory conditions, autoimmune issues, or gut health problems.',
+                frequency: 'Daily to weekly depending on condition and administration route',
+                sideEffects: 'Very well tolerated with minimal side effects'
+            },
+            'll-37 (cap-18)': {
+                name: 'LL-37 (CAP-18)',
+                category: 'Antimicrobial',
+                price: '$135',
+                duration: '5-10 minutes',
+                dosage: '2-10mg per application',
+                administration: 'Topical application or injection',
+                benefits: [
+                    'Antimicrobial properties',
+                    'Immune system support',
+                    'Wound healing enhancement',
+                    'Anti-inflammatory effects',
+                    'Infection prevention',
+                    'Tissue protection'
+                ],
+                description: 'LL-37 is a natural antimicrobial peptide with broad-spectrum protective effects.',
+                howItWorks: 'Disrupts bacterial membranes and modulates immune responses for infection control.',
+                idealFor: 'Individuals with chronic infections, poor wound healing, or immune dysfunction.',
+                frequency: 'Daily application or injection depending on condition',
+                sideEffects: 'Generally well tolerated, possible mild skin irritation with topical use'
+            },
+            'n-acetyl semax amidate': {
+                name: 'N-Acetyl Semax Amidate',
+                category: 'Cognitive Enhancement',
+                price: '$145',
+                duration: '5 minutes',
+                dosage: '300-600mcg per dose',
+                administration: 'Intranasal spray',
+                benefits: [
+                    'Enhanced cognition',
+                    'Memory improvement',
+                    'Neuroprotection',
+                    'Mood enhancement',
+                    'Stress resilience',
+                    'Mental clarity'
+                ],
+                description: 'N-Acetyl Semax Amidate is an enhanced nootropic peptide with improved stability and bioavailability.',
+                howItWorks: 'Modulates neurotransmitter systems and provides neuroprotection while enhancing cognitive function.',
+                idealFor: 'Individuals seeking advanced cognitive enhancement, memory improvement, or neuroprotection.',
+                frequency: 'Daily intranasal administration for cognitive support',
+                sideEffects: 'Generally well tolerated, possible mild nasal irritation'
+            },
+            'gonadorelin': {
+                name: 'Gonadorelin',
+                category: 'Hormone Support',
+                price: '$120',
+                duration: '5 minutes',
+                dosage: '100-500mcg per injection',
+                administration: 'Subcutaneous injection',
+                benefits: [
+                    'Natural testosterone stimulation',
+                    'LH and FSH production',
+                    'Hormonal balance',
+                    'Fertility support',
+                    'Natural hormone optimization',
+                    'Reproductive health'
+                ],
+                description: 'Gonadorelin is a GnRH analog that stimulates natural testosterone production and hormonal balance.',
+                howItWorks: 'Stimulates the pituitary to release LH and FSH, which then stimulate natural hormone production.',
+                idealFor: 'Men seeking natural testosterone optimization, fertility support, or hormone balance restoration.',
+                frequency: 'Daily to weekly injections depending on treatment goals',
+                sideEffects: 'Generally well tolerated, possible injection site reactions'
+            },
+            'selank': {
+                name: 'Selank',
+                category: 'Cognitive Enhancement',
+                price: '$115',
+                duration: '5 minutes',
+                dosage: '250-750mcg per dose',
+                administration: 'Intranasal spray',
+                benefits: [
+                    'Anxiety reduction',
+                    'Enhanced cognition',
+                    'Stress management',
+                    'Mood stabilization',
+                    'Mental clarity',
+                    'Emotional balance'
+                ],
+                description: 'Selank is an anxiolytic and nootropic peptide that reduces anxiety while enhancing cognitive function.',
+                howItWorks: 'Modulates GABA and serotonin systems to reduce anxiety while supporting cognitive performance.',
+                idealFor: 'Individuals with anxiety, stress, or seeking cognitive enhancement with mood stabilization.',
+                frequency: 'Daily intranasal administration for anxiety and cognitive support',
+                sideEffects: 'Very well tolerated with minimal side effects'
+            },
+            'peptide blend complex': {
+                name: 'Peptide Blend Complex',
+                category: 'Complex Blend',
+                price: '$210',
+                duration: '10-15 minutes',
+                dosage: 'Customized based on blend',
+                administration: 'Multiple injection protocol',
+                benefits: [
+                    'Multi-peptide synergy',
+                    'Comprehensive benefits',
+                    'Enhanced efficacy',
+                    'Convenient administration',
+                    'Customized formulations',
+                    'Optimized effects'
+                ],
+                description: 'A synergistic combination of multiple peptides formulated for comprehensive wellness benefits.',
+                howItWorks: 'Combines complementary peptides to achieve synergistic effects greater than individual components.',
+                idealFor: 'Individuals seeking comprehensive wellness support with multiple therapeutic targets.',
+                frequency: 'Customized protocol based on specific peptide combination',
+                sideEffects: 'Varies based on specific peptides included in the blend'
             }
+        };
+
+        // Educational content about peptides
+        const peptideEducation = {
+            whatArePeptides: `
+                <h4>What Are Peptides?</h4>
+                <p>Peptides are short chains of amino acids, which are the building blocks of proteins. They occur naturally in the human body and in various biological sources, playing critical roles in functions such as cell signaling, immune response, and metabolic regulation.</p>
+            `,
+            naturalSources: `
+                <h4>Natural Sources of Peptides</h4>
+                <p>Peptides are found in:</p>
+                <ul>
+                    <li><strong>The Human Body</strong> – Many hormones and enzymes are peptides, including insulin, growth hormone, and endorphins.</li>
+                    <li><strong>Food Sources</strong> – Peptides can be derived from proteins in foods such as milk, eggs, soy, meat, and fish. Some bioactive peptides, like casein peptides from milk, have specific health benefits.</li>
+                    <li><strong>Plants and Microorganisms</strong> – Some plants and bacteria produce peptides with antimicrobial or therapeutic effects.</li>
+                </ul>
+            `,
+            howTheyAreMade: `
+                <h4>How Peptides Are Made in Labs</h4>
+                <p>While some peptides can be extracted from natural sources, most peptides used in medicine and research are synthetically produced through peptide synthesis. There are two primary methods for making peptides:</p>
+
+                <h5>1. Solid-Phase Peptide Synthesis (SPPS)</h5>
+                <ul>
+                    <li>This is the most common method for making peptides in laboratories.</li>
+                    <li>It involves linking amino acids together one at a time in a stepwise fashion on a solid resin support.</li>
+                    <li>SPPS allows for precise control over the peptide sequence, making it possible to create custom peptides for medical and research applications.</li>
+                </ul>
+
+                <h5>2. Recombinant DNA Technology</h5>
+                <ul>
+                    <li>This method is commonly used for large-scale production of peptide-based drugs like insulin and GLP-1 receptor agonists (e.g., Semaglutide and Tirzepatide).</li>
+                    <li>This method uses genetically modified bacteria or yeast to produce peptides.</li>
+                    <li>Scientists insert the DNA sequence for the desired peptide into a microorganism, which then produces the peptide as it grows.</li>
+                </ul>
+            `,
+            whySynthetic: `
+                <h4>Why Synthetic Peptides?</h4>
+                <ul>
+                    <li>Many peptide-based drugs, including GLP-1 receptor agonists used for diabetes and weight loss, are lab-synthesized to ensure precise dosing and effectiveness.</li>
+                    <li>Synthetic peptides ensure purity and consistency, which is crucial for medical applications.</li>
+                    <li>They allow for modifications, such as increased stability or enhanced absorption in the body.</li>
+                </ul>
+            `
         };
 
         // Show chat widget after 5 seconds
