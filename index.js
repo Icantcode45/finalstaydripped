@@ -355,83 +355,90 @@ const server = http.createServer(async (req, res) => {
             cursor: pointer;
         }
 
-        /* Client Portal Glass Button */
-        .nav-links .client-portal-btn,
-        .client-portal-btn {
-            display: inline-flex !important;
+        /* Hero Section */
+        .hero {
+            padding: 164px 0 80px;
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px !important;
-            border: 1px solid rgba(255, 255, 255, 0.18) !important;
-            border-radius: 12px !important;
-            font-size: 15px !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-            background: rgba(255, 255, 255, 0.25) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            color: var(--text-gray) !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-            position: relative;
         }
 
-        .nav-links .client-portal-btn:hover,
-        .client-portal-btn:hover {
-            background: rgba(255, 255, 255, 0.35) !important;
-            border-color: rgba(255, 255, 255, 0.25) !important;
-            transform: translateY(-2px) scale(1.02) !important;
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
-            color: var(--brand-primary) !important;
-        }
-
-        .nav-links .client-portal-btn::after {
-            display: none !important;
-        }
-
-        /* Navigation Dropdown Styles */
-        .nav-dropdown {
-            position: relative;
+        .tagline-highlight {
             display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            display: none;
-            z-index: 1000;
-            margin-top: 8px;
-            min-width: 400px;
+        .hero-text h1 {
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--dark-slate);
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
             padding: 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
-        .nav-dropdown:hover .dropdown-content {
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
             display: block;
         }
 
-        .client-portal-dropdown {
-            min-width: 400px;
+        .stat-label {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-top: 4px;
         }
 
-        .dropdown-content a {
-            display: block;
-            padding: 12px 16px;
-            text-decoration: none;
-            color: var(--text-gray);
-            transition: all 0.3s ease;
+        .hero-image {
+            position: relative;
         }
 
-        .dropdown-content a:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--brand-primary);
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
         }
 
         /* Enhanced 3D Glassmorphism Button System */
@@ -2952,7 +2959,7 @@ const server = http.createServer(async (req, res) => {
             <h1 class="about-title">OUR TEAM</h1>
 
             <div class="carousel-container">
-                <button class="nav-arrow left">‹</button>
+                <button class="nav-arrow left">���</button>
                 <div class="carousel-track">
                     <div class="card" data-index="0">
                         <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Emily Rodriguez - Medical Director">
