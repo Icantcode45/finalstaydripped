@@ -2691,16 +2691,24 @@
             }
         }
 
-        function performSearch() {
-            const searchTerm = document.getElementById('site-search').value.toLowerCase();
-            if (searchTerm.includes('iv') || searchTerm.includes('hydration')) {
+        function performSearch(searchTerm = null) {
+            const term = searchTerm || document.getElementById('site-search')?.value?.toLowerCase() || document.getElementById('topbar-search')?.value?.toLowerCase();
+            if (!term) return;
+
+            if (term.includes('iv') || term.includes('hydration') || term.includes('therapy')) {
                 window.location.href = 'pages/book-ivtherapy.html';
-            } else if (searchTerm.includes('peptide')) {
-                window.location.href = 'pages/peptides.html';
-            } else if (searchTerm.includes('weight') || searchTerm.includes('loss')) {
+            } else if (term.includes('peptide') || term.includes('nad')) {
+                window.location.href = 'pages/nad-peptides.html';
+            } else if (term.includes('weight') || term.includes('loss')) {
                 window.location.href = 'pages/weight-loss.html';
-            } else if (searchTerm.includes('hormone')) {
-                window.location.href = 'pages/hormone-therapy.html';
+            } else if (term.includes('vitamin') || term.includes('injection')) {
+                window.location.href = 'pages/vitamin-injections.html';
+            } else if (term.includes('appointment') || term.includes('book')) {
+                window.location.href = 'pages/book-appointment.html';
+            } else if (term.includes('membership')) {
+                window.location.href = 'pages/membership.html';
+            } else if (term.includes('telehealth')) {
+                window.location.href = 'pages/telehealth-services.html';
             } else {
                 alert('No results found. Please try a different search term or browse our services.');
             }
