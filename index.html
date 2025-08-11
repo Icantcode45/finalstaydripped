@@ -2731,6 +2731,26 @@
                 searchBtn.addEventListener('click', toggleSearch);
             }
 
+            // Top bar search
+            const topbarSearch = document.getElementById('topbar-search');
+            if (topbarSearch) {
+                topbarSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+
+            // Keyboard shortcut for search (Cmd+K / Ctrl+K)
+            document.addEventListener('keydown', function(e) {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    if (topbarSearch) {
+                        topbarSearch.focus();
+                    }
+                }
+            });
+
             // Cart functionality (placeholder)
             const cartBtn = document.querySelector('.cart-btn');
             if (cartBtn) {
