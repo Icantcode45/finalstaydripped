@@ -253,6 +253,19 @@ const server = http.createServer(async (req, res) => {
             background: rgba(255, 255, 255, 0.15);
         }
 
+        .icon-btn img {
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+
+        .icon-btn:hover img {
+            transform: scale(1.1);
+        }
+
+        .location-finder-btn img {
+            filter: brightness(0) invert(1);
+        }
+
         .cart-count {
             position: absolute;
             top: -2px;
