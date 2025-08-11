@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telehealth Informed Consent | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Arizona-compliant telehealth informed consent form for virtual healthcare consultations.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #10B981;
+            --error-red: #EF4444;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .consent-form {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin: 16px 0;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .important-notice {
+            background: #FEF2F2;
+            border: 2px solid #FECACA;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .important-notice h3 {
+            color: #DC2626;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .emergency-box {
+            background: linear-gradient(135deg, var(--error-red), #DC2626);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .emergency-box h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .consent-checkboxes {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            transition: border-color 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label {
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .consent-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: var(--medium-gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--error-red);
+            border: 2px solid var(--error-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--error-red);
+            color: var(--white);
+        }
+
+        .patient-info {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .signature-section {
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .signature-info {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-top: 20px;
+            text-align: center;
+            padding: 16px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .back-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-teal);
+        }
+
+        @media (max-width: 768px) {
+            .consent-form {
+                padding: 24px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .consent-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./compliance.html" class="back-link">← Back to Compliance</a>
+        
+        <div class="consent-form">
+            <div class="header">
+                <h1>Telehealth Informed Consent</h1>
+                <p class="subtitle">Arizona Telemedicine Consent (A.R.S. § 36-3602)</p>
+            </div>
+
+            <div class="emergency-box">
+                <h3>🚨 IMPORTANT - NOT FOR EMERGENCIES</h3>
+                <p><strong>Telehealth is NOT appropriate for emergency medical conditions.</strong><br>
+                For medical emergencies, call <strong>911</strong> or go to the nearest emergency room immediately.</p>
+            </div>
+
+            <div class="section">
+                <h2>About Telehealth Services</h2>
+                <p>Telehealth allows healthcare providers to evaluate, diagnose, and treat patients using interactive audio, video, and electronic communications technologies. This consent form provides important information about telehealth services offered by Stay Dripped IV & Wellness Co.</p>
+
+                <h3>What is Telehealth?</h3>
+                <p>Telehealth services include:</p>
+                <ul>
+                    <li>Virtual consultations via secure video conferencing</li>
+                    <li>Remote monitoring and follow-up care</li>
+                    <li>Electronic transmission of medical information</li>
+                    <li>Digital health assessments and treatment planning</li>
+                    <li>Prescription services (when clinically appropriate)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Benefits of Telehealth</h2>
+                <ul>
+                    <li>Convenient access to healthcare from your location</li>
+                    <li>Reduced travel time and associated costs</li>
+                    <li>Continuity of care during illness or isolation</li>
+                    <li>Access to specialists and specialized care</li>
+                    <li>Flexible scheduling options</li>
+                    <li>Reduced exposure to infectious diseases</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Risks and Limitations of Telehealth</h2>
+                
+                <h3>Technical Risks</h3>
+                <ul>
+                    <li>Technology failures, interruptions, or poor connection quality</li>
+                    <li>Delays in medical evaluation and treatment</li>
+                    <li>Security risks inherent in electronic communications</li>
+                    <li>Information transmitted may not be sufficient for decision-making</li>
+                </ul>
+
+                <h3>Clinical Limitations</h3>
+                <ul>
+                    <li>Physical examination may be limited or incomplete</li>
+                    <li>Certain diagnostic tests cannot be performed remotely</li>
+                    <li>Provider cannot directly intervene in emergency situations</li>
+                    <li>May not be appropriate for all medical conditions</li>
+                </ul>
+
+                <h3>Alternative Options</h3>
+                <p>Alternatives to telehealth services include:</p>
+                <ul>
+                    <li>In-person consultation and examination</li>
+                    <li>Telephone consultation (audio only)</li>
+                    <li>Email or secure messaging communication</li>
+                    <li>Traditional face-to-face medical care</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Privacy and Confidentiality</h2>
+                <ul>
+                    <li>All telehealth sessions are conducted using HIPAA-compliant technology</li>
+                    <li>Your medical information will be kept confidential as required by law</li>
+                    <li>Sessions may be recorded only with your explicit consent</li>
+                    <li>You are responsible for ensuring privacy on your end (private location, secure device)</li>
+                    <li>Family members or other individuals should not be present unless you request their participation</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Technical Requirements</h2>
+                <ul>
+                    <li>Reliable internet connection</li>
+                    <li>Computer, tablet, or smartphone with camera and microphone</li>
+                    <li>Updated web browser or mobile app</li>
+                    <li>Private, well-lit location for consultation</li>
+                    <li>Valid email address for appointment confirmations</li>
+                </ul>
+            </div>
+
+            <div class="important-notice">
+                <h3>🏛️ Arizona Law Requirements</h3>
+                <p>Under Arizona Revised Statutes § 36-3602, telehealth services must meet specific requirements:</p>
+                <ul>
+                    <li>You must be physically located in Arizona during the consultation</li>
+                    <li>Your identity will be verified at the beginning of each session</li>
+                    <li>Your location within Arizona will be confirmed</li>
+                    <li>This consent is governed by Arizona law</li>
+                    <li>Medical records will be maintained according to Arizona regulations</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Patient Responsibilities</h2>
+                <ul>
+                    <li>Provide accurate health and contact information</li>
+                    <li>Be located in Arizona during all telehealth sessions</li>
+                    <li>Ensure privacy and minimize distractions during sessions</li>
+                    <li>Have a backup communication method available</li>
+                    <li>Follow treatment recommendations and medication instructions</li>
+                    <li>Report any technical problems immediately</li>
+                    <li>Seek emergency care when appropriate (call 911)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Provider Responsibilities</h2>
+                <ul>
+                    <li>Verify your identity and Arizona location before each session</li>
+                    <li>Use secure, HIPAA-compliant technology platforms</li>
+                    <li>Maintain professional standards of care</li>
+                    <li>Document all telehealth encounters in your medical record</li>
+                    <li>Provide clear instructions for follow-up care</li>
+                    <li>Be available for urgent questions between scheduled visits</li>
+                    <li>Refer to in-person care when clinically indicated</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Consent Withdrawal</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Withdraw consent for telehealth services at any time</li>
+                    <li>Request in-person consultation instead</li>
+                    <li>Stop a telehealth session at any time</li>
+                    <li>Ask questions about telehealth services</li>
+                </ul>
+                <p><strong>Withdrawing consent will not affect your right to receive in-person healthcare services.</strong></p>
+            </div>
+
+            <!-- Patient Information Form -->
+            <div class="patient-info">
+                <h2>Patient Information</h2>
+                <form id="telehealthConsentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth *</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="arizonaAddress">Current Arizona Address *</label>
+                        <input type="text" id="arizonaAddress" name="arizonaAddress" placeholder="Street address in Arizona where you will receive telehealth services" required>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Consent Checkboxes -->
+            <div class="consent-checkboxes">
+                <h2>Informed Consent Acknowledgments</h2>
+                <p style="margin-bottom: 20px; font-weight: 500;">Please read each statement carefully and check the box to acknowledge your understanding:</p>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent1" name="consents" required>
+                    <label for="consent1" class="checkbox-label">
+                        I understand that telehealth involves the use of electronic communications to enable healthcare providers to diagnose, consult, treat, and educate using interactive audio, video, and data communications.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent2" name="consents" required>
+                    <label for="consent2" class="checkbox-label">
+                        I understand the potential risks, benefits, and limitations of telehealth services as explained above, including potential technology failures and clinical limitations.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent3" name="consents" required>
+                    <label for="consent3" class="checkbox-label">
+                        I understand that telehealth is not appropriate for emergency medical conditions and that I should call 911 or go to the nearest emergency room for any medical emergency.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent4" name="consents" required>
+                    <label for="consent4" class="checkbox-label">
+                        I understand that I must be physically located in Arizona during all telehealth sessions and that my identity and location will be verified at each session.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent5" name="consents" required>
+                    <label for="consent5" class="checkbox-label">
+                        I understand my privacy rights and that reasonable efforts will be made to protect the security and confidentiality of my medical information, but that no guarantee can be made due to the nature of electronic communications.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent6" name="consents" required>
+                    <label for="consent6" class="checkbox-label">
+                        I understand that I can withdraw my consent for telehealth services at any time and that this will not affect my right to receive in-person healthcare services.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent7" name="consents" required>
+                    <label for="consent7" class="checkbox-label">
+                        I understand that alternatives to telehealth consultation exist, including in-person consultation, and I have chosen to proceed with telehealth services.
+                    </label>
+                </div>
+
+                <div class="checkbox-item">
+                    <input type="checkbox" id="consent8" name="consents" required>
+                    <label for="consent8" class="checkbox-label">
+                        I acknowledge that I am at least 18 years old or am the parent/legal guardian of the patient, and I have the authority to consent to telehealth services.
+                    </label>
+                </div>
+            </div>
+
+            <!-- Signature Section -->
+            <div class="signature-section">
+                <h2>Electronic Consent</h2>
+                <p style="margin-bottom: 20px;">By clicking "I Consent" below, I acknowledge that:</p>
+                <ul style="margin-bottom: 20px;">
+                    <li>I have read and understand this Telehealth Informed Consent</li>
+                    <li>All my questions have been answered to my satisfaction</li>
+                    <li>I voluntarily consent to telehealth services</li>
+                    <li>This electronic signature has the same legal effect as a handwritten signature</li>
+                </ul>
+
+                <div class="consent-buttons">
+                    <button type="button" class="btn btn-primary" id="consentBtn" onclick="submitConsent()" disabled>
+                        ✅ I Consent to Telehealth Services
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="declineConsent()">
+                        ❌ I Do Not Consent
+                    </button>
+                </div>
+
+                <div class="signature-info">
+                    <p><strong>Digital Consent Record:</strong> Your consent will be recorded with timestamp, IP address, and device information for legal compliance and your medical record.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation and consent handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[name="consents"]');
+            const consentBtn = document.getElementById('consentBtn');
+            const form = document.getElementById('telehealthConsentForm');
+
+            // Check if all requirements are met
+            function validateForm() {
+                const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                const formValid = form.checkValidity();
+                
+                consentBtn.disabled = !(allChecked && formValid);
+            }
+
+            // Add event listeners
+            checkboxes.forEach(cb => cb.addEventListener('change', validateForm));
+            form.addEventListener('input', validateForm);
+            form.addEventListener('change', validateForm);
+        });
+
+        function submitConsent() {
+            const formData = new FormData(document.getElementById('telehealthConsentForm'));
+            const consentData = {
+                patient: {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    dateOfBirth: formData.get('dateOfBirth'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    arizonaAddress: formData.get('arizonaAddress')
+                },
+                consent: {
+                    consentGiven: true,
+                    timestamp: new Date().toISOString(),
+                    ipAddress: 'captured-by-server',
+                    userAgent: navigator.userAgent,
+                    arizonaLocation: true
+                },
+                acknowledgments: {
+                    understoodTelehealth: true,
+                    understoodRisks: true,
+                    understoodEmergencyLimitations: true,
+                    understoodArizonaRequirement: true,
+                    understoodPrivacy: true,
+                    understoodWithdrawalRights: true,
+                    understoodAlternatives: true,
+                    confirmedAuthorization: true
+                }
+            };
+
+            // Submit to server
+            fetch('/api/telehealth-consent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(consentData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Telehealth consent successfully recorded. You can now schedule telehealth appointments.');
+                // Redirect to booking page or patient portal
+                window.location.href = './book-appointment.html?telehealth=true';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error recording your consent. Please try again or contact us for assistance.');
+            });
+        }
+
+        function declineConsent() {
+            if (confirm('Are you sure you do not want to consent to telehealth services? You can still receive in-person care.')) {
+                alert('You have declined telehealth services. You can still schedule in-person appointments.');
+                window.location.href = './book-appointment.html';
+            }
+        }
+    </script>
+</body>
+</html>
