@@ -782,68 +782,6 @@
             margin: 0 8px;
         }
 
-        /* Enhanced Question Cards */
-        .question-section {
-            padding: 80px 0;
-            background: var(--warm-gray);
-        }
-
-        .question-cards {
-            display: grid;
-            gap: 20px;
-            max-width: 800px;
-            margin: 40px auto 0;
-        }
-
-        .question-card {
-            background: var(--white);
-            border: 2px solid var(--soft-border);
-            border-radius: 16px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .question-card:hover {
-            border-color: var(--secondary-teal);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 184, 160, 0.15);
-        }
-
-        .question-card.selected {
-            border-color: var(--secondary-teal);
-            background: rgba(0, 184, 160, 0.05);
-        }
-
-        .question-card::after {
-            content: '✓';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 24px;
-            height: 24px;
-            background: var(--secondary-teal);
-            color: white;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .question-card.selected::after {
-            display: flex;
-        }
-
-        .question-text {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--dark-slate);
-            margin: 0;
-            padding-right: 40px;
-        }
 
         /* Enhanced Cards */
         .enhanced-card {
@@ -1316,33 +1254,6 @@
             </div>
         </div>
 
-        <!-- Question Section -->
-        <div class="container">
-            <div class="question-section">
-                <div class="section-header">
-                    <h2 class="section-title">What brings you to Stay Dripped?</h2>
-                    <p class="section-description">Help us personalize your wellness experience</p>
-                </div>
-
-                <div class="question-cards">
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to feel more energized and revitalized in my daily life.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm looking to boost my immune system and overall wellness.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I need recovery support after workouts or long nights.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I want to enhance my beauty and anti-aging routine naturally.</p>
-                    </div>
-                    <div class="question-card" onclick="selectQuestion(this)">
-                        <p class="question-text">I'm preparing for an important event or milestone.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Enhanced Booking Form -->
         <div class="container">
