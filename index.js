@@ -288,42 +288,14 @@ const server = http.createServer(async (req, res) => {
         }
 
         .logo {
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 12px;
+            text-decoration: none;
         }
 
         .logo img {
-            height: 60px;
+            height: 48px;
             width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-
-
-        .logo-subtitle {
-            font-size: 12px;
-            color: var(--text-gray);
-            font-weight: 400;
-            font-family: var(--e-global-typography-text-font-family), sans-serif;
-            margin-left: 8px;
-            opacity: 0.8;
         }
 
         .nav-links {
@@ -335,35 +307,52 @@ const server = http.createServer(async (req, res) => {
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-gray);
+            color: var(--dark-slate);
             font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:not(.client-portal-btn) {
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--iv-primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--iv-primary);
+            color: var(--primary-blue);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
         }
 
         /* Client Portal Glass Button */
