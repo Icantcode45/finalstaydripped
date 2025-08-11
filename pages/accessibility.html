@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Statement | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Our commitment to web accessibility and compliance with ADA and WCAG 2.1 AA guidelines for all users.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #10B981;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-slate);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+        }
+
+        .header .subtitle {
+            color: var(--medium-gray);
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .accessibility-badge {
+            background: linear-gradient(135deg, var(--success-green), var(--secondary-teal));
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 16px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+
+        .section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary-teal);
+            margin-bottom: 8px;
+            margin-top: 16px;
+        }
+
+        .section ul {
+            padding-left: 20px;
+            margin: 16px 0;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-icon {
+            font-size: 20px;
+        }
+
+        .standards-box {
+            background: var(--light-gray);
+            border: 2px solid var(--success-green);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .standards-box h3 {
+            color: var(--success-green);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        .back-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-teal);
+        }
+
+        .back-link:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        .alternative-formats {
+            background: #FEF3C7;
+            border: 2px solid #F59E0B;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .alternative-formats h3 {
+            color: #92400E;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-blue: #0000FF;
+                --secondary-teal: #008080;
+                --dark-slate: #000000;
+                --medium-gray: #333333;
+                --border-color: #000000;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="container">
+        <a href="./compliance.html" class="back-link">← Back to Compliance</a>
+        
+        <div class="header">
+            <h1>Accessibility Statement</h1>
+            <p class="subtitle">Our Commitment to Digital Accessibility</p>
+            <div class="accessibility-badge">♿ WCAG 2.1 AA Compliant</div>
+        </div>
+
+        <main id="main-content">
+            <div class="section">
+                <h2>Our Accessibility Commitment</h2>
+                <p>Stay Dripped IV & Wellness Co. is committed to ensuring that our website is accessible to all users, including people with disabilities. We believe that everyone should have equal access to our healthcare information and services, regardless of their abilities or the technology they use.</p>
+                
+                <p>We are actively working to increase the accessibility and usability of our website for all users and strive to adhere to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards as well as comply with the Americans with Disabilities Act (ADA).</p>
+            </div>
+
+            <div class="standards-box">
+                <h3>✅ Accessibility Standards</h3>
+                <p>Our website aims to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>. These guidelines explain how to make web content more accessible for people with disabilities and are recognized as the international standard for web accessibility.</p>
+                
+                <h4>The four main principles of WCAG 2.1:</h4>
+                <ul>
+                    <li><strong>Perceivable:</strong> Information must be presentable in ways users can perceive</li>
+                    <li><strong>Operable:</strong> Interface components must be operable by all users</li>
+                    <li><strong>Understandable:</strong> Information and UI operation must be understandable</li>
+                    <li><strong>Robust:</strong> Content must be robust enough for interpretation by various assistive technologies</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Accessibility Features</h2>
+                <p>We have implemented the following accessibility features throughout our website:</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">⌨️</span> Keyboard Navigation</h4>
+                        <p>All interactive elements can be accessed and operated using only a keyboard.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">🔍</span> Screen Reader Compatible</h4>
+                        <p>Proper semantic markup and ARIA labels for assistive technology compatibility.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">🎨</span> High Contrast Colors</h4>
+                        <p>Color combinations meet WCAG contrast ratio requirements for readability.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">📱</span> Responsive Design</h4>
+                        <p>Mobile-friendly design that works across all devices and screen sizes.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">🖼️</span> Alternative Text</h4>
+                        <p>Descriptive alt text for all meaningful images and graphics.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">🎯</span> Focus Indicators</h4>
+                        <p>Clear visual focus indicators for keyboard and screen reader users.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">📋</span> Form Labels</h4>
+                        <p>Properly labeled form fields with clear instructions and error messages.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4><span class="feature-icon">🔤</span> Readable Fonts</h4>
+                        <p>Clear, legible typography with appropriate sizing and spacing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Assistive Technology Compatibility</h2>
+                <p>Our website has been tested with and supports the following assistive technologies:</p>
+                
+                <h3>Screen Readers</h3>
+                <ul>
+                    <li>NVDA (Windows)</li>
+                    <li>JAWS (Windows)</li>
+                    <li>VoiceOver (Mac/iOS)</li>
+                    <li>TalkBack (Android)</li>
+                    <li>Dragon NaturallySpeaking</li>
+                </ul>
+
+                <h3>Browser Compatibility</h3>
+                <ul>
+                    <li>Chrome (latest version)</li>
+                    <li>Firefox (latest version)</li>
+                    <li>Safari (latest version)</li>
+                    <li>Microsoft Edge (latest version)</li>
+                </ul>
+
+                <h3>Operating Systems</h3>
+                <ul>
+                    <li>Windows 10 and later</li>
+                    <li>macOS 10.15 and later</li>
+                    <li>iOS 13 and later</li>
+                    <li>Android 9 and later</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Navigation and Structure</h2>
+                <h3>Consistent Navigation</h3>
+                <ul>
+                    <li>Consistent navigation menu across all pages</li>
+                    <li>Skip links to main content and navigation</li>
+                    <li>Logical page hierarchy with proper heading structure</li>
+                    <li>Breadcrumb navigation where appropriate</li>
+                </ul>
+
+                <h3>Content Organization</h3>
+                <ul>
+                    <li>Clear page titles that describe page content</li>
+                    <li>Descriptive link text that makes sense out of context</li>
+                    <li>Logical reading order maintained in all layouts</li>
+                    <li>Important information is not conveyed by color alone</li>
+                </ul>
+            </div>
+
+            <div class="alternative-formats">
+                <h3>⚡ Alternative Formats Available</h3>
+                <p>If you need information from our website in an alternative format, we can provide:</p>
+                <ul>
+                    <li>Large print documents</li>
+                    <li>Audio recordings</li>
+                    <li>Braille materials</li>
+                    <li>Email or phone consultations</li>
+                    <li>Plain language summaries</li>
+                </ul>
+                <p>Contact us using the information below to request alternative formats.</p>
+            </div>
+
+            <div class="section">
+                <h2>Accessibility Testing</h2>
+                <p>We regularly test our website for accessibility using:</p>
+                <ul>
+                    <li><strong>Automated Testing:</strong> Tools like axe, WAVE, and Lighthouse</li>
+                    <li><strong>Manual Testing:</strong> Keyboard navigation and screen reader testing</li>
+                    <li><strong>User Testing:</strong> Feedback from users with disabilities</li>
+                    <li><strong>Professional Audits:</strong> Third-party accessibility evaluations</li>
+                </ul>
+
+                <h3>Known Issues</h3>
+                <p>We are continuously working to improve accessibility. Currently known issues include:</p>
+                <ul>
+                    <li>Some third-party embedded content may not be fully accessible</li>
+                    <li>PDF documents are being updated for better accessibility</li>
+                    <li>Some legacy content is being reviewed and updated</li>
+                </ul>
+                <p>We are actively working to address these issues and will provide alternative access methods in the meantime.</p>
+            </div>
+
+            <div class="section">
+                <h2>Report Accessibility Barriers</h2>
+                <p>If you encounter any accessibility barriers on our website, please let us know. Your feedback helps us improve accessibility for everyone.</p>
+
+                <div class="contact-form">
+                    <h3>Accessibility Feedback Form</h3>
+                    <form id="accessibilityForm" onsubmit="submitAccessibilityReport(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="assistiveTech">Assistive Technology Used (if applicable)</label>
+                            <select id="assistiveTech" name="assistiveTech">
+                                <option value="">Select if applicable</option>
+                                <option value="screen-reader">Screen Reader</option>
+                                <option value="voice-recognition">Voice Recognition Software</option>
+                                <option value="keyboard-only">Keyboard Only Navigation</option>
+                                <option value="magnification">Screen Magnification</option>
+                                <option value="high-contrast">High Contrast Mode</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pageUrl">Page URL Where Issue Occurred</label>
+                            <input type="url" id="pageUrl" name="pageUrl" placeholder="https://staydrippediv.com/...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="issueDescription">Description of Accessibility Barrier</label>
+                            <textarea id="issueDescription" name="issueDescription" rows="5" required placeholder="Please describe the accessibility issue you encountered, including what you were trying to do and what happened instead."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="browserInfo">Browser and Device Information</label>
+                            <input type="text" id="browserInfo" name="browserInfo" placeholder="e.g., Chrome on Windows 10, Safari on iPhone">
+                        </div>
+
+                        <button type="submit" class="btn">
+                            📧 Submit Accessibility Report
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Contact Information</h2>
+                <p>For accessibility-related questions, concerns, or to request alternative formats, please contact us:</p>
+
+                <div style="background: var(--light-gray); border-radius: 12px; padding: 30px; margin: 30px 0;">
+                    <h3>Accessibility Coordinator</h3>
+                    <p><strong>Stay Dripped IV & Wellness Co.</strong></p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
+                        <div>
+                            <h4>📞 Phone</h4>
+                            <p>(480) 418-3678</p>
+                            <p style="font-size: 14px; color: var(--medium-gray);">Monday-Friday 8AM-6PM</p>
+                        </div>
+                        
+                        <div>
+                            <h4>📧 Email</h4>
+                            <p>accessibility@staydrippediv.com</p>
+                            <p style="font-size: 14px; color: var(--medium-gray);">Response within 24 hours</p>
+                        </div>
+                        
+                        <div>
+                            <h4>📬 Mail</h4>
+                            <p>Stay Dripped IV & Wellness Co.<br>
+                            Accessibility Coordinator<br>
+                            Scottsdale, Arizona</p>
+                        </div>
+                        
+                        <div>
+                            <h4>💬 Alternative Contact</h4>
+                            <p>TTY/TDD users can call Arizona Relay at 7-1-1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Response Timeline</h3>
+                <p>We are committed to responding to accessibility inquiries promptly:</p>
+                <ul>
+                    <li><strong>Acknowledgment:</strong> Within 1 business day</li>
+                    <li><strong>Investigation:</strong> Within 3-5 business days</li>
+                    <li><strong>Resolution or Update:</strong> Within 10 business days</li>
+                    <li><strong>Complex Issues:</strong> May require additional time; we'll keep you informed</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Ongoing Improvements</h2>
+                <p>Accessibility is an ongoing effort. We are continually working to improve our website's accessibility through:</p>
+                <ul>
+                    <li>Regular accessibility audits and testing</li>
+                    <li>Staff training on accessibility best practices</li>
+                    <li>User feedback incorporation</li>
+                    <li>Technology updates and improvements</li>
+                    <li>Compliance with evolving accessibility standards</li>
+                </ul>
+
+                <h3>Recent Improvements</h3>
+                <ul>
+                    <li>Updated form labels and error messaging</li>
+                    <li>Improved keyboard navigation throughout the site</li>
+                    <li>Enhanced color contrast ratios</li>
+                    <li>Added skip navigation links</li>
+                    <li>Implemented proper heading hierarchy</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Related Policies</h2>
+                <p>Our accessibility commitment is part of our broader commitment to inclusive healthcare. Please also review:</p>
+                <ul>
+                    <li><a href="./compliance.html">Complete Compliance Information</a></li>
+                    <li><a href="./privacy-practices.html">Notice of Privacy Practices</a></li>
+                    <li><a href="./terms-of-use.html">Terms of Use</a></li>
+                    <li><a href="./good-faith-estimate.html">Good Faith Estimate (accessible formats available)</a></li>
+                </ul>
+            </div>
+        </main>
+
+        <div style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 40px;">
+            <p style="color: var(--medium-gray); margin-bottom: 16px;">
+                This Accessibility Statement was last updated on January 1, 2024
+            </p>
+            <p style="color: var(--medium-gray); font-size: 14px;">
+                © 2024 Stay Dripped IV & Wellness Co. – All Rights Reserved<br>
+                Committed to equal access for all users • 
+                <a href="./compliance.html" style="color: var(--primary-blue);">Return to Compliance Information</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function submitAccessibilityReport(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const reportData = {
+                reporter: {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    assistiveTech: formData.get('assistiveTech'),
+                    browserInfo: formData.get('browserInfo')
+                },
+                issue: {
+                    pageUrl: formData.get('pageUrl'),
+                    description: formData.get('issueDescription')
+                },
+                reportType: 'accessibility-barrier',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+            
+            // Submit to server
+            fetch('/api/accessibility-report', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reportData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Thank you for your accessibility feedback! We will review your report and respond within 1 business day.');
+                event.target.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your report. Please try again or contact us directly at accessibility@staydrippediv.com or (480) 418-3678.');
+            });
+        }
+
+        // Announce to screen readers when form is submitted
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.setAttribute('class', 'sr-only');
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
