@@ -2930,6 +2930,147 @@
             });
         }
 
+        // Reviews carousel functionality
+        let currentReviewIndex = 0;
+        let reviewsData = [];
+
+        function initializeReviewsCarousel() {
+            // Sample Google Reviews data - In production, this would come from Google Places API
+            reviewsData = [
+                {
+                    author: "Sarah Johnson",
+                    rating: 5,
+                    text: "Amazing service! The nurse was professional and made me feel completely comfortable. I felt so much better after my IV therapy session. Highly recommend!",
+                    date: "2 weeks ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Michael Rodriguez",
+                    rating: 5,
+                    text: "Convenient and professional. They came to my home and the whole process was seamless. The team is knowledgeable and caring. Will definitely book again!",
+                    date: "3 weeks ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Jennifer K.",
+                    rating: 5,
+                    text: "Stay Dripped saved my weekend! I was feeling terrible from dehydration and they came out same day. Felt like a new person afterwards. Excellent service!",
+                    date: "1 month ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "David Martinez",
+                    rating: 5,
+                    text: "Outstanding experience from start to finish. The booking process was simple, and the nurse arrived right on time. Professional, clean, and effective treatment.",
+                    date: "1 month ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Lisa Thompson",
+                    rating: 5,
+                    text: "I've been using Stay Dripped for months now. Consistent quality, professional staff, and great results every time. Worth every penny!",
+                    date: "2 months ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                }
+            ];
+
+            renderReviews();
+            setupCarouselControls();
+            updateRatingDisplay();
+
+            // Auto-advance carousel every 5 seconds
+            setInterval(nextReview, 5000);
+        }
+
+        function renderReviews() {
+            const carousel = document.getElementById('reviewsCarousel');
+            const dots = document.getElementById('carouselDots');
+
+            if (!carousel || !dots) return;
+
+            carousel.innerHTML = '';
+            dots.innerHTML = '';
+
+            reviewsData.forEach((review, index) => {
+                // Create review card
+                const reviewCard = document.createElement('div');
+                reviewCard.className = `review-card ${index === 0 ? 'active' : ''}`;
+                reviewCard.innerHTML = `
+                    <div class="reviewer-photo">
+                        <img src="${review.profilePhoto}" alt="${review.author}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;">
+                    </div>
+                    <div class="review-stars">
+                        ${'⭐'.repeat(review.rating)}
+                    </div>
+                    <p class="review-text">"${review.text}"</p>
+                    <div class="reviewer-info">
+                        <h4>${review.author}</h4>
+                        <p>Google Review • ${review.date}</p>
+                    </div>
+                `;
+                carousel.appendChild(reviewCard);
+
+                // Create dot
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToReview(index));
+                dots.appendChild(dot);
+            });
+        }
+
+        function setupCarouselControls() {
+            const prevBtn = document.getElementById('prevReview');
+            const nextBtn = document.getElementById('nextReview');
+
+            if (prevBtn) prevBtn.addEventListener('click', prevReview);
+            if (nextBtn) nextBtn.addEventListener('click', nextReview);
+        }
+
+        function goToReview(index) {
+            const cards = document.querySelectorAll('.review-card');
+            const dots = document.querySelectorAll('.dot');
+
+            cards.forEach((card, i) => {
+                card.classList.toggle('active', i === index);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentReviewIndex = index;
+        }
+
+        function nextReview() {
+            const nextIndex = (currentReviewIndex + 1) % reviewsData.length;
+            goToReview(nextIndex);
+        }
+
+        function prevReview() {
+            const prevIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
+            goToReview(prevIndex);
+        }
+
+        function updateRatingDisplay() {
+            // Calculate average rating
+            const totalRating = reviewsData.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = (totalRating / reviewsData.length).toFixed(1);
+            const reviewCount = reviewsData.length;
+
+            // Update rating display
+            const ratingStars = document.getElementById('overallRating');
+            const ratingText = document.getElementById('ratingText');
+
+            if (ratingStars) {
+                const starCount = Math.round(averageRating);
+                ratingStars.textContent = '⭐'.repeat(starCount);
+            }
+
+            if (ratingText) {
+                ratingText.textContent = `${averageRating} out of 5 stars from ${reviewCount}+ reviews`;
+            }
+        }
+
         // Add event listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Location finder
