@@ -534,7 +534,7 @@ const server = http.createServer(async (req, res) => {
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2F868eb06719aa4f289ae6e50e6061ba1e?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
