@@ -139,60 +139,23 @@ const server = http.createServer(async (req, res) => {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Enhanced CSS Variable System */
         :root {
-            /* Global Color System - Enhanced */
-            --e-global-color-primary: #000000;
-            --e-global-color-text: #3F4C51;
-            --e-global-color-12573a4: #FFFFFF;
-            --e-global-color-6e06d90: #000000;
-            --e-global-color-e41200d: #F5F7F9;
-            --e-global-color-34f92fa: #1A2B3B;
-            --e-global-color-ac9db47: #0000000D;
-            --e-global-color-f7d3e02: #0D0D0DCC;
-            --e-global-color-2584140: #FFFFFF;
-            --e-global-color-cbdd3a3: #D4D4D4;
-            --e-global-color-a403e49: #171717;
-            
-            /* Modern Brand Colors */
-            --brand-primary: #FF6B6B;
-            --brand-secondary: #4ECDC4;
-            --brand-accent: #45B7D1;
-            --brand-dark: #2C3E50;
-            --brand-light: #F8F9FA;
-
-            /* Enhanced Color Palette */
-            --elite-gold: #D4AF37;
-            --premium-purple: #8B5CF6;
-            --luxury-black: #0D0D0D;
-            --platinum-silver: #C0C0C0;
-
-            /* Gradient System */
-            --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
-            --gradient-secondary: linear-gradient(135deg, #45B7D1 0%, #96CEB4 100%);
-            --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
-
-            /* Therapy Colors */
-            --therapy-energy: #FFD93D;
-            --therapy-calm: #6BCF7F;
-            --therapy-focus: #4D96FF;
-            
-            /* Neutral System */
-            --white: #ffffff;
-            --light-gray: #f8fafc;
-            --dark-gray: #1f2937;
-            --text-gray: #374151;
-            --border-gray: #e5e7eb;
-            
-            /* Modern Typography Variables */
-            --primary-font: "Inter", sans-serif;
-            --display-font: "Playfair Display", serif;
-            --accent-font: "Space Grotesk", sans-serif;
-            --mono-font: "JetBrains Mono", monospace;
-            
-            /* Container System */
-            --container-max-width: 1100px;
-            --container-default-padding: 20px;
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
         }
 
         /* Device Detection & Optimization Styles */
@@ -2925,7 +2888,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🧬 The Basic NAD+ IV Drip</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⛲ The "Fountain of Youth" NAD+</li>
-                            <li style="padding: 8px 0;">�� The "Diamond" NAD+ Formula</li>
+                            <li style="padding: 8px 0;">💎 The "Diamond" NAD+ Formula</li>
                         </ul>
                     </div>
                     <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
