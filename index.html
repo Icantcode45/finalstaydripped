@@ -717,6 +717,121 @@
 
         .team-member p {
             color: var(--medium-gray);
+            margin-bottom: 8px;
+        }
+
+        .credentials {
+            font-size: 14px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            background: rgba(0, 102, 204, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .team-certifications {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .certification-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            color: var(--dark-slate);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .badge-icon {
+            font-size: 18px;
+        }
+
+        /* Service Types Section */
+        .service-types-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .service-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 64px;
+        }
+
+        .service-type-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-type-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .service-type-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-type-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-type-info {
+            padding: 32px;
+        }
+
+        .service-type-info h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .service-type-info > p {
+            color: var(--medium-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--secondary-teal);
+            font-weight: bold;
+            font-size: 16px;
         }
 
         /* Location Section */
