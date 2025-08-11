@@ -495,10 +495,7 @@ const server = http.createServer(async (req, res) => {
         <div class="container">
             <div class="top-bar-content">
                 <a href="#location" class="location-finder-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Fe7cecee1ec3a4073aaabc07c68fe4df3?format=webp&width=800" alt="Location" style="width: 16px; height: 16px;" />
                     FIND A SERVICE LOCATION
                 </a>
                 <div class="top-bar-right">
