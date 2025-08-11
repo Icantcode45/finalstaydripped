@@ -178,130 +178,106 @@ const server = http.createServer(async (req, res) => {
             padding: 0 20px;
         }
 
-        /* Enhanced Typography System */
-        h1, .h1 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: clamp(50px, 6vw, 84px);
-            font-weight: 600;
-            line-height: 1em;
-            letter-spacing: -1.8px;
-            margin-bottom: 24px;
-        }
-
-
-
-        h2, .h2 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: clamp(40px, 5vw, 54px);
-            font-weight: 600;
-            line-height: 1em;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-
-        h3, .h3 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 600;
-            line-height: 1.2em;
-            margin-bottom: 16px;
-        }
-
-        h4, .h4 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: clamp(20px, 3vw, 24px);
-            font-weight: 600;
-            line-height: 1.3em;
-            margin-bottom: 12px;
-        }
-
-        h5, .h5 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: 19px;
-            font-weight: 600;
-            line-height: 1em;
-            margin-bottom: 10px;
-        }
-
-        h6, .h6 {
-            color: var(--e-global-color-6e06d90);
-            font-family: var(--e-global-typography-primary-font-family), sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.4em;
-            margin-bottom: 8px;
-        }
-
-        /* Enhanced Container System */
-        .container {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            padding: 0 var(--container-default-padding);
-            width: 100%;
-        }
-
-        .container-fluid {
-            width: 100%;
-            padding: 0 var(--container-default-padding);
-        }
-
-        /* Bootstrap-inspired Grid System */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -15px;
-        }
-
-        .col, .col-12, .col-md-6, .col-lg-4, .col-lg-6, .col-lg-8 {
-            position: relative;
-            width: 100%;
-            padding: 0 15px;
-        }
-
-        .col-md-6 {
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-
-        .col-lg-4 {
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%;
-        }
-        .col-lg-6 {
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-
-        .col-lg-8 {
-            flex: 0 0 66.666667%;
-            max-width: 66.666667%;
-        }
-
-        /* Enhanced 3D Glassmorphism Header */
-        .header {
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            width: 100%;
+            z-index: 1001;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location-finder-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .location-finder-btn:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .tagline-text {
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--accent-orange);
+            color: var(--white);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 44px;
+            width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: box-shadow 0.3s ease;
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow:
-                0 12px 48px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3);
-            border-bottom-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
         }
 
         .nav {
