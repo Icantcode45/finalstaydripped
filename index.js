@@ -441,233 +441,47 @@ const server = http.createServer(async (req, res) => {
             box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
         }
 
-        /* Enhanced 3D Glassmorphism Button System */
-        .btn, button, input[type="button"], input[type="submit"], .elementor-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            font-family: var(--e-global-typography-text-font-family), sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 1.5em;
-            letter-spacing: 0.01em;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--dark-gray);
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .top-bar-right {
+                gap: 12px;
+            }
 
-        .btn:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover, .elementor-button:hover {
-            background: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow:
-                0 12px 48px rgba(0, 0, 0, 0.15),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
-        }
+            .tagline-text {
+                display: none;
+            }
 
-        /* 3D Glassmorphism Button Variants */
-        .btn-primary {
-            background: linear-gradient(135deg,
-                rgba(61, 156, 210, 0.9),
-                rgba(29, 78, 216, 0.9));
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            color: var(--white);
-            border: 1px solid rgba(61, 156, 210, 0.3);
-            box-shadow:
-                0 8px 32px rgba(61, 156, 210, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 1px 2px rgba(0, 0, 0, 0.1);
-        }
+            .location-finder-btn {
+                font-size: 12px;
+            }
 
-        .btn-primary:hover {
-            background: linear-gradient(135deg,
-                rgba(29, 78, 216, 0.95),
-                rgba(61, 156, 210, 0.95));
-            color: var(--white);
-            border-color: rgba(29, 78, 216, 0.4);
-            box-shadow:
-                0 12px 48px rgba(61, 156, 210, 0.5),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3),
-                0 2px 4px rgba(0, 0, 0, 0.15);
-        }
+            .nav-links {
+                display: none;
+            }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: var(--iv-primary);
-            border: 2px solid rgba(61, 156, 210, 0.3);
-            box-shadow:
-                0 4px 20px rgba(61, 156, 210, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
+            .mobile-menu-btn {
+                display: block;
+            }
 
-        .btn-secondary:hover {
-            background: rgba(61, 156, 210, 0.9);
-            color: var(--white);
-            border-color: rgba(61, 156, 210, 0.6);
-            box-shadow:
-                0 8px 32px rgba(61, 156, 210, 0.4),
-                inset 0 2px 0 rgba(255, 255, 255, 0.2);
-        }
+            .hero {
+                padding: 140px 0 80px;
+            }
 
-        .btn-gradient {
-            background: linear-gradient(135deg,
-                rgba(16, 185, 129, 0.9),
-                rgba(139, 92, 246, 0.9));
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow:
-                0 8px 32px rgba(16, 185, 129, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
 
-        .btn-gradient:hover {
-            background: linear-gradient(135deg,
-                rgba(139, 92, 246, 0.95),
-                rgba(16, 185, 129, 0.95));
-            box-shadow:
-                0 12px 48px rgba(139, 92, 246, 0.4),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3);
-        }
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
 
-        /* IV Therapy Specific Button */
-        .btn-iv-therapy {
-            background: linear-gradient(135deg, var(--iv-primary), var(--primary-emerald));
-            color: var(--white);
-            border-color: transparent;
-            font-weight: 600;
-            padding: 14px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 14px 0 rgba(61, 156, 210, 0.3);
-        }
-
-        .btn-iv-therapy:hover {
-            background: linear-gradient(135deg, var(--primary-emerald), var(--iv-primary));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.4);
-        }
-
-        /* Glass Button for Client Portal */
-        .btn-glass {
-            background: rgba(61, 156, 210, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(61, 156, 210, 0.3);
-            border-radius: 12px;
-            padding: 8px 16px;
-            color: white;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 15px 0 rgba(61, 156, 210, 0.2);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-glass:hover {
-            background: rgba(61, 156, 210, 0.6);
-            border-color: rgba(61, 156, 210, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px 0 rgba(61, 156, 210, 0.3);
-        }
-
-        /* Client Portal Dropdown */
-        .client-portal-dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 8px 0;
-            min-width: 180px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .dropdown-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 20px;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-menu a:hover {
-            background: rgba(61, 156, 210, 0.1);
-            color: var(--iv-primary);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--text-gray);
-            cursor: pointer;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-        }
-
-        .mobile-nav ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .mobile-nav li {
-            margin-bottom: 15px;
-        }
-
-        .mobile-nav a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-            padding: 10px 0;
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         /* Hero Section with enhanced animations */
@@ -2959,7 +2773,7 @@ const server = http.createServer(async (req, res) => {
             <h1 class="about-title">OUR TEAM</h1>
 
             <div class="carousel-container">
-                <button class="nav-arrow left">���</button>
+                <button class="nav-arrow left">‹</button>
                 <div class="carousel-track">
                     <div class="card" data-index="0">
                         <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dr. Emily Rodriguez - Medical Director">
