@@ -550,6 +550,16 @@ const server = http.createServer(async (req, res) => {
                 flex-direction: column;
                 align-items: center;
             }
+
+            .trust-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .trust-icon img {
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
