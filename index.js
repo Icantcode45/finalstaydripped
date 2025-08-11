@@ -996,6 +996,171 @@ const server = http.createServer(async (req, res) => {
                 header.classList.remove('scrolled');
             }
         });
+
+        // Question selection functionality
+        function selectQuestion(card) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.question-card').forEach(c => c.classList.remove('selected'));
+            // Add selected class to clicked card
+            card.classList.add('selected');
+        }
+
+        // Progressive form functionality
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function nextStep(step) {
+            if (validateCurrentStep()) {
+                // Hide current step
+                document.getElementById(\`step\${currentStep}\`).classList.remove('active');
+
+                // Update step indicator
+                document.querySelector(\`[data-step="\${currentStep}"]\`).classList.add('completed');
+                document.querySelector(\`[data-step="\${step}"]\`).classList.add('active');
+
+                // Show next step
+                document.getElementById(\`step\${step}\`).classList.add('active');
+                currentStep = step;
+
+                if (step === 3) {
+                    updateBookingSummary();
+                }
+            }
+        }
+
+        function prevStep(step) {
+            // Hide current step
+            document.getElementById(\`step\${currentStep}\`).classList.remove('active');
+
+            // Update step indicator
+            document.querySelector(\`[data-step="\${currentStep}"]\`).classList.remove('active');
+            document.querySelector(\`[data-step="\${step}"]\`).classList.remove('completed');
+            document.querySelector(\`[data-step="\${step}"]\`).classList.add('active');
+
+            // Show previous step
+            document.getElementById(\`step\${step}\`).classList.add('active');
+            currentStep = step;
+        }
+
+        function validateCurrentStep() {
+            if (currentStep === 1) {
+                const treatment = document.getElementById('treatment').value;
+                const isValid = treatment !== '';
+                const nextBtn = document.getElementById('step1-next');
+                if (nextBtn) nextBtn.disabled = !isValid;
+                return isValid;
+            } else if (currentStep === 2) {
+                const location = document.getElementById('location').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const isValid = location && date && time;
+                const nextBtn = document.getElementById('step2-next');
+                if (nextBtn) nextBtn.disabled = !isValid;
+                return isValid;
+            } else if (currentStep === 3) {
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const isValid = firstName && lastName && phone && email;
+                const completeBtn = document.getElementById('step3-complete');
+                if (completeBtn) completeBtn.disabled = !isValid;
+                return isValid;
+            }
+            return true;
+        }
+
+        function updateTreatmentInfo() {
+            const treatment = document.getElementById('treatment').value;
+            const infoDiv = document.getElementById('treatment-info');
+            const descDiv = document.getElementById('treatment-description');
+            const benefitsDiv = document.getElementById('treatment-benefits');
+
+            const treatments = {
+                hydration: {
+                    desc: "Essential hydration and electrolyte replenishment designed to combat dehydration and restore optimal fluid balance.",
+                    benefits: ["Rapid rehydration", "Electrolyte balance", "Energy restoration", "Improved mental clarity"]
+                },
+                energy: {
+                    desc: "B-complex vitamins and energy-boosting nutrients to enhance mental clarity and physical performance.",
+                    benefits: ["Increased energy levels", "Enhanced mental focus", "Improved mood", "Reduced fatigue"]
+                },
+                immunity: {
+                    desc: "High-dose vitamin C and immune-supporting nutrients to strengthen your body's natural defenses.",
+                    benefits: ["Boosted immune system", "Antioxidant protection", "Faster recovery", "Enhanced wellness"]
+                },
+                recovery: {
+                    desc: "Advanced nutrients for athletic performance and recovery, including amino acids and anti-inflammatory compounds.",
+                    benefits: ["Faster muscle recovery", "Reduced inflammation", "Enhanced performance", "Optimal hydration"]
+                },
+                beauty: {
+                    desc: "Beauty-enhancing nutrients including biotin, glutathione, and vitamin C for skin, hair, and nail health.",
+                    benefits: ["Glowing skin", "Stronger hair and nails", "Anti-aging benefits", "Cellular detoxification"]
+                },
+                nad: {
+                    desc: "Advanced NAD+ therapy for cellular regeneration, mental clarity, and anti-aging benefits.",
+                    benefits: ["Cellular repair", "Mental clarity", "Anti-aging effects", "Energy optimization"]
+                }
+            };
+
+            if (treatment && treatments[treatment] && infoDiv) {
+                if (descDiv) descDiv.textContent = treatments[treatment].desc;
+                if (benefitsDiv) benefitsDiv.innerHTML = treatments[treatment].benefits.map(b => \`<li>\${b}</li>\`).join('');
+                infoDiv.style.display = 'block';
+            } else if (infoDiv) {
+                infoDiv.style.display = 'none';
+            }
+
+            validateCurrentStep();
+        }
+
+        function updateBookingSummary() {
+            const treatment = document.getElementById('treatment');
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            const summaryDiv = document.getElementById('booking-summary');
+            const priceDiv = document.getElementById('total-price');
+
+            if (treatment && treatment.value && summaryDiv) {
+                const treatmentText = treatment.options[treatment.selectedIndex].text;
+                const price = treatmentText.match(/\\\$(\\\d+)/)?.[1] || '0';
+                const discountedPrice = Math.round(parseInt(price) * 0.8);
+
+                summaryDiv.innerHTML = \`
+                    <p><strong>Treatment:</strong> \${treatmentText}</p>
+                    <p><strong>Location:</strong> \${location}</p>
+                    <p><strong>Date:</strong> \${new Date(date).toLocaleDateString()}</p>
+                    <p><strong>Time:</strong> \${time}</p>
+                \`;
+
+                if (priceDiv) priceDiv.textContent = \`$\${discountedPrice}\`;
+            }
+        }
+
+        function completeBooking() {
+            alert('Thank you for your booking! We will contact you shortly to confirm your appointment.');
+            // Here you would typically send the data to your backend
+        }
+
+        // Add event listeners for form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            ['treatment', 'location', 'date', 'time', 'firstName', 'lastName', 'phone', 'email'].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('input', validateCurrentStep);
+                    element.addEventListener('change', validateCurrentStep);
+                }
+            });
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        });
     </script>
 </body>
 </html>`;
