@@ -18,11 +18,16 @@
             --primary-blue: #0066CC;
             --secondary-teal: #00B8A0;
             --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
             --dark-slate: #1A2B3A;
             --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
             --medium-gray: #64748B;
+            --warm-text: #2D3748;
             --white: #FFFFFF;
             --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
             --font-family: 'Inter', sans-serif;
             --max-width: 1200px;
             --section-padding: 80px 0;
@@ -46,53 +51,6 @@
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 48px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-slate);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
         }
 
         .btn {
@@ -128,30 +86,45 @@
 
         /* Main Content */
         .main {
-            padding-top: 140px; /* Increased for top bar + header */
+            padding-top: 140px;
             min-height: 100vh;
         }
 
-        .page-header {
-            text-align: center;
-            padding: 60px 0;
+        /* Hero Section - Custom for this page */
+        .hero {
             background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
+            padding: 80px 0;
+            text-align: center;
         }
 
-        .page-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-        }
-
-        .page-description {
-            font-size: 18px;
-            color: var(--medium-gray);
-            max-width: 600px;
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
         }
 
+        .hero-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--dark-slate);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Treatments Section */
         .treatments-section {
             padding: var(--section-padding);
         }
@@ -328,10 +301,382 @@
             margin-bottom: 24px;
         }
 
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--light-gray);
+            padding: var(--section-padding);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .team-title {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            color: var(--medium-gray);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .reviews-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .review-card {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 0 16px;
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .review-stars {
+            color: #FFB800;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .review-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--dark-slate);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .review-role {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .carousel-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .carousel-btn:hover {
+            background: #0052A3;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary-blue);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--light-gray);
+            padding: var(--section-padding);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-blue);
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-slate);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #B8C5D1;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #B8C5D1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #B8C5D1;
+            margin-bottom: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            background: var(--secondary-teal);
+        }
+
+        /* Language Selector at bottom */
+        .language-selector-bottom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: #B8C5D1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 20px auto 0;
+            width: fit-content;
+        }
+
+        .language-selector-bottom:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .treatments-grid {
@@ -356,6 +701,16 @@
             .treatments-list {
                 padding: 24px;
             }
+
+            .carousel-controls {
+                gap: 12px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
         }
 
         /* Animations */
@@ -369,6 +724,28 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body>
@@ -377,13 +754,19 @@
 
     <!-- Main Content -->
     <main class="main">
-        <!-- Page Header -->
-        <section class="page-header">
+        <!-- Hero Section -->
+        <section class="hero">
             <div class="container">
-                <h1 class="page-title">IV Therapy Treatment Menu</h1>
-                <p class="page-description">
-                    Choose from our comprehensive selection of IV therapy treatments, all administered by licensed medical professionals in the comfort of your chosen location.
-                </p>
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">IV Therapy Treatment Menu</h1>
+                    <p class="hero-subtitle">
+                        Choose from our comprehensive selection of IV therapy treatments, all administered by licensed medical professionals in the comfort of your chosen location.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#treatments" class="btn">View All Treatments</a>
+                        <a href="tel:+16027610492" class="btn btn-secondary">📞 Call (602) 761-0492</a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -417,7 +800,7 @@
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
-                                    <h4>Jr. Myers&#39; Cocktail</h4>
+                                    <h4>Jr. Myers' Cocktail</h4>
                                     <p>Essential vitamin and mineral blend</p>
                                 </div>
                                 <div style="text-align: right;">
@@ -490,7 +873,7 @@
                         <div class="treatments-list">
                             <div class="treatment-item">
                                 <div class="treatment-info">
-                                    <h4>Myers&#39; Cocktail</h4>
+                                    <h4>Myers' Cocktail</h4>
                                     <p>Complete vitamin and mineral infusion</p>
                                 </div>
                                 <div style="text-align: right;">
@@ -501,7 +884,7 @@
                             </div>
                             <div class="treatment-item">
                                 <div class="treatment-info">
-                                    <h4>Mega Myers&#39;</h4>
+                                    <h4>Mega Myers'</h4>
                                     <p>Enhanced potency vitamin formula</p>
                                 </div>
                                 <div style="text-align: right;">
@@ -1013,6 +1396,7 @@
                                 </div>
                                 <button class="book-btn" onclick="showBookingWidget('wellness-platinum-widget')">Join</button>
                             </div>
+                        </div>
 
                         <!-- Individual Service Booking Widgets for Membership Plans -->
                         <div id="shot-pass-widget" class="booking-widget" style="display: none; margin-top: 20px;">
@@ -1055,7 +1439,6 @@
                         </div>
                     </div>
                 </div>
-                </div>
 
                 <!-- General Contact Information -->
                 <div class="booking-widget">
@@ -1073,9 +1456,336 @@
                 </div>
             </div>
         </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section" style="background: var(--light-gray); padding: var(--section-padding);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Why Choose Stay Dripped</div>
+                    <h2 class="section-title">Professional Mobile IV Therapy</h2>
+                    <p style="color: var(--medium-gray); max-width: 600px; margin: 0 auto;">Licensed medical professionals deliver premium IV therapy and wellness treatments directly to your location in Scottsdale and surrounding areas.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🩺</div>
+                        <h3>Licensed Medical Professionals</h3>
+                        <p>All treatments administered by certified nurses and medical practitioners with extensive IV therapy experience.</p>
+                        <a href="../pages/first-time-patients.html" class="btn btn-secondary">Learn More</a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🏠</div>
+                        <h3>Mobile Convenience</h3>
+                        <p>Receive premium IV therapy in the comfort of your home, office, or preferred location throughout Scottsdale.</p>
+                        <a href="../pages/book-appointment.html" class="btn btn-secondary">Book Now</a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">💎</div>
+                        <h3>Premium Ingredients</h3>
+                        <p>High-quality vitamins, minerals, and nutrients sourced from trusted pharmaceutical suppliers.</p>
+                        <a href="../pages/iv-therapy-benefits.html" class="btn btn-secondary">View Benefits</a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🎯</div>
+                        <h3>Personalized Treatments</h3>
+                        <p>Customized IV formulations tailored to your specific wellness goals and health needs.</p>
+                        <a href="../pages/vitamin-injections.html" class="btn btn-secondary">See Options</a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">⚡</div>
+                        <h3>Quick Results</h3>
+                        <p>Feel the benefits immediately with 100% bioavailability delivering nutrients directly to your bloodstream.</p>
+                        <a href="../pages/nad-peptides.html" class="btn btn-secondary">Explore NAD+</a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Safe & Sterile</h3>
+                        <p>Strict safety protocols and sterile techniques ensure your comfort and wellbeing throughout treatment.</p>
+                        <a href="../pages/safety-protocols.html" class="btn btn-secondary">Safety Info</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Our Medical Team</div>
+                    <h2 class="section-title">Licensed Medical Professionals</h2>
+                    <p style="color: var(--medium-gray); max-width: 600px; margin: 0 auto;">Meet our team of certified medical professionals dedicated to providing exceptional IV therapy and wellness services.</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member fade-in">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F0e0c2fb15c794e91a7b8bb61bd0f9ec2?alt=media&token=0f3b9e8c-4c9d-4e7e-b8e1-7e5b5c5d5e5f&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Dr. Sarah Johnson" class="team-photo">
+                        <div class="team-info">
+                            <h3 class="team-name">Dr. Sarah Johnson</h3>
+                            <div class="team-title">Medical Director</div>
+                            <p class="team-bio">Board-certified physician with over 10 years of experience in IV therapy and integrative medicine.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-member fade-in">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F1e1c3fb25c794e91a7b8bb61bd0f9ec3?alt=media&token=1f4b9e8c-5c9d-4e7e-b8e1-7e5b5c5d5e6f&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Nurse Maria Rodriguez" class="team-photo">
+                        <div class="team-info">
+                            <h3 class="team-name">Maria Rodriguez, RN</h3>
+                            <div class="team-title">Lead Nurse</div>
+                            <p class="team-bio">Registered nurse specializing in IV therapy with expertise in vitamin infusions and patient care.</p>
+                        </div>
+                    </div>
+
+                    <div class="team-member fade-in">
+                        <img src="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F2e2c4fb35c794e91a7b8bb61bd0f9ec4?alt=media&token=2f5b9e8c-6c9d-4e7e-b8e1-7e5b5c5d5e7f&apiKey=8b73c477407048d0945425bdc93ba34d" alt="Nurse Jennifer Lee" class="team-photo">
+                        <div class="team-info">
+                            <h3 class="team-name">Jennifer Lee, RN</h3>
+                            <div class="team-title">Wellness Specialist</div>
+                            <p class="team-bio">Certified in aesthetic nursing and wellness treatments with a focus on NAD+ and anti-aging therapies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Client Testimonials</div>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p style="color: var(--medium-gray); max-width: 600px; margin: 0 auto;">Real experiences from satisfied clients who have transformed their wellness with our mobile IV therapy services.</p>
+                </div>
+
+                <div class="reviews-carousel">
+                    <div class="review-slides">
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Amazing service! The nurse was professional and the IV therapy made me feel incredible. Perfect for recovering from my workout sessions."</p>
+                            <div class="review-author">Michael Chen</div>
+                            <div class="review-role">Fitness Enthusiast</div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" onclick="prevReview()">‹</button>
+                        <button class="carousel-btn" onclick="nextReview()">›</button>
+                    </div>
+
+                    <div class="carousel-indicators">
+                        <span class="indicator active" onclick="currentReview(1)"></span>
+                        <span class="indicator" onclick="currentReview(2)"></span>
+                        <span class="indicator" onclick="currentReview(3)"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Frequently Asked</div>
+                    <h2 class="section-title">Common Questions</h2>
+                    <p style="color: var(--medium-gray); max-width: 600px; margin: 0 auto;">Get answers to the most common questions about our mobile IV therapy services and treatments.</p>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How long does an IV therapy session take?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Most IV therapy sessions take between 30-60 minutes, depending on the specific treatment. NAD+ treatments may take longer, typically 2-4 hours for optimal results.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Are your medical professionals licensed?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, all our medical professionals are licensed registered nurses or physicians with specialized training in IV therapy and mobile medical services.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What areas do you serve?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We provide mobile IV therapy services throughout Scottsdale, Paradise Valley, Phoenix, and surrounding areas in the Greater Phoenix metropolitan region.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How quickly will I feel the effects?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Many clients feel the benefits immediately or within a few hours. Since nutrients are delivered directly to your bloodstream, you'll experience faster results than oral supplements.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Is IV therapy safe?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>IV therapy is very safe when administered by licensed medical professionals. We follow strict safety protocols and use only FDA-approved vitamins and minerals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Stay Dripped IV & Wellness Co.</h3>
+                    <p>Professional mobile IV therapy and wellness services delivered to your location in Scottsdale, AZ and surrounding areas.</p>
+                    <p><strong>Phone:</strong> (602) 761-0492</p>
+                    <p><strong>Email:</strong> info@staydrippediv.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../pages/book-ivtherapy.html">IV Therapy</a></li>
+                        <li><a href="../pages/vitamin-injections.html">Vitamin Injections</a></li>
+                        <li><a href="../pages/nad-peptides.html">NAD+ & Peptides</a></li>
+                        <li><a href="../pages/weight-management.html">Weight Management</a></li>
+                        <li><a href="../pages/membership.html">Membership Plans</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="../pages/first-time-patients.html">First Time Patients</a></li>
+                        <li><a href="../pages/safety-protocols.html">Safety & Protocols</a></li>
+                        <li><a href="../pages/telehealth-services.html">Telehealth Services</a></li>
+                        <li><a href="../pages/event-corporate-inquiry.html">Corporate Events</a></li>
+                        <li><a href="../pages/gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="../pages/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="../pages/hipaa-compliance.html">HIPAA Compliance</a></li>
+                        <li><a href="../pages/accessibility.html">Accessibility</a></li>
+                        <li><a href="../pages/compliance.html">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Stay Dripped IV & Wellness Co. All rights reserved.</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                </div>
+
+                <div class="language-selector-bottom">
+                    <span>🌐</span>
+                    <span>Select Language</span>
+                    <span>▼</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Reviews carousel data
+        const reviews = [
+            {
+                stars: "★★★★★",
+                text: "Amazing service! The nurse was professional and the IV therapy made me feel incredible. Perfect for recovering from my workout sessions.",
+                author: "Michael Chen",
+                role: "Fitness Enthusiast"
+            },
+            {
+                stars: "★★★★★",
+                text: "I get regular NAD+ treatments and the results are phenomenal. More energy, better focus, and overall improved wellbeing. Highly recommend!",
+                author: "Sarah Martinez",
+                role: "Wellness Advocate"
+            },
+            {
+                stars: "★★★★★",
+                text: "The convenience of mobile IV therapy is unmatched. Professional service, clean setup, and immediate results. Worth every penny!",
+                author: "David Thompson",
+                role: "Business Executive"
+            }
+        ];
+
+        let currentReviewIndex = 0;
+
+        function renderReviews() {
+            const reviewCard = document.querySelector('.review-card');
+            const review = reviews[currentReviewIndex];
+            
+            reviewCard.innerHTML = `
+                <div class="review-stars">${review.stars}</div>
+                <p class="review-text">"${review.text}"</p>
+                <div class="review-author">${review.author}</div>
+                <div class="review-role">${review.role}</div>
+            `;
+
+            // Update indicators
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentReviewIndex);
+            });
+        }
+
+        function nextReview() {
+            currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+            renderReviews();
+        }
+
+        function prevReview() {
+            currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
+            renderReviews();
+        }
+
+        function currentReview(index) {
+            currentReviewIndex = index - 1;
+            renderReviews();
+        }
+
+        // FAQ functionality
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't already active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1090,7 +1800,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
             observer.observe(el);
         });
 
@@ -1173,7 +1883,7 @@
             } else if (term.includes('peptide') || term.includes('nad')) {
                 window.location.href = '../pages/nad-peptides.html';
             } else if (term.includes('weight') || term.includes('loss')) {
-                window.location.href = '../pages/weight-loss.html';
+                window.location.href = '../pages/weight-management.html';
             } else if (term.includes('vitamin') || term.includes('injection')) {
                 window.location.href = '../pages/vitamin-injections.html';
             } else if (term.includes('appointment') || term.includes('book')) {
@@ -1187,14 +1897,20 @@
             }
         }
 
+        // Auto-advance reviews carousel
+        setInterval(nextReview, 5000);
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Load navigation first
             loadNavigation();
 
+            // Initialize reviews carousel
+            renderReviews();
+
             // Add fade-in animation initialization
             setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach(el => {
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
                     el.classList.add('visible');
                 });
             }, 100);
