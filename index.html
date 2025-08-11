@@ -103,7 +103,79 @@
         .top-bar-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
+        }
+
+        /* Search in Top Bar */
+        .search-container-topbar {
+            position: relative;
+            margin: 0;
+            max-width: 300px;
+            min-width: 250px;
+        }
+
+        .search-input-topbar {
+            width: 100%;
+            padding: 8px 16px 8px 40px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input-topbar:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input-topbar::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-container-topbar .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-container-topbar .search-shortcut {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+        }
+
+        .language-selector-mini {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .language-selector-mini:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .tagline-text {
@@ -1054,6 +1126,154 @@
             border-radius: 50%;
         }
 
+        /* Reviews Section */
+        .reviews-section {
+            padding: var(--section-padding);
+            background: var(--light-gray);
+        }
+
+        .reviews-carousel-container {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .reviews-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+
+        .review-card {
+            min-width: 100%;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.5s ease;
+        }
+
+        .review-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .carousel-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .carousel-btn:hover {
+            background: #0052A3;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background: var(--border-color);
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
+        }
+
+        .review-stars {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .reviewer-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 4px;
+        }
+
+        .reviewer-info p {
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        .reviews-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 32px;
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .google-rating {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .google-logo {
+            height: 32px;
+            width: auto;
+        }
+
+        .rating-stars {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .rating-text {
+            font-size: 14px;
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
         /* Trust/Logo Section */
         .trust-section {
             padding: 60px 0;
@@ -1466,6 +1686,40 @@
             color: var(--white);
         }
 
+        .footer-social {
+            text-align: center;
+            margin: 32px 0;
+            padding: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-social .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-social .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social .social-icon:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -1568,6 +1822,14 @@
             }
 
             .tagline-text {
+                display: none;
+            }
+
+            .search-container-topbar {
+                display: none;
+            }
+
+            .language-selector-mini {
                 display: none;
             }
 
@@ -1823,14 +2085,26 @@
                     FIND A SERVICE LOCATION
                 </a>
                 <div class="top-bar-right">
-                    <span class="tagline-text">MORE THAN WELLNESS</span>
-                    <div class="top-bar-icons">
-                        <button class="icon-btn search-btn" title="Search">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <span class="tagline-text">Premium Mobile IV Therapy & Wellness</span>
+                    <div class="search-container-topbar">
+                        <div class="search-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.35-4.35"></path>
                             </svg>
-                        </button>
+                        </div>
+                        <input type="text" class="search-input-topbar" placeholder="Search services..." id="topbar-search"/>
+                        <div class="search-shortcut">⌘K</div>
+                    </div>
+                    <div class="language-selector-mini">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="m1 12 3-3m4 0 3 3m4 0 3-3"></path>
+                        </svg>
+                        <span>EN</span>
+                    </div>
+                    <div class="top-bar-icons">
                         <a href="https://Staydripped.intakeq.com/booking?clientArea=1" class="icon-btn" title="Client Portal">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -1863,20 +2137,16 @@
                     <a href="#services">Services</a>
                     <div class="dropdown-content services-dropdown">
                         <div class="dropdown-section">
-                            <h4>Basic IV Therapy</h4>
-                            <a href="pages/basic-iv-therapy.html">Basic IV Therapy</a>
-                            <a href="pages/iv-hydration-therapy.html">IV Hydration Therapy</a>
+                            <h4>IV Therapy</h4>
+                            <a href="pages/book-ivtherapy.html">IV Therapy</a>
                             <a href="pages/vitamin-injections.html">Vitamin Injections</a>
                         </div>
                         <div class="dropdown-section">
                             <h4>Advanced Treatments</h4>
                             <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
-                            <a href="pages/peptides.html">Peptide Therapy</a>
-                            <a href="pages/hormone-therapy.html">Hormone Therapy</a>
                         </div>
                         <div class="dropdown-section">
                             <h4>Wellness Programs</h4>
-                            <a href="pages/weight-loss.html">Weight Loss</a>
                             <a href="pages/weight-management.html">Weight Management</a>
                             <a href="pages/sexual-wellness.html">Sexual Wellness</a>
                         </div>
@@ -1884,11 +2154,11 @@
                             <h4>Additional Services</h4>
                             <a href="pages/mobile-testing-kits.html">Mobile Testing</a>
                             <a href="pages/telehealth-services.html">Telehealth</a>
-                            <a href="pages/membership.html">Membership</a>
                         </div>
                     </div>
                 </li>
                 <li><a href="pages/first-time-patients.html">New Patients</a></li>
+                <li><a href="pages/membership.html">Membership</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li class="nav-dropdown">
                     <a href="#">Booking</a>
@@ -2144,7 +2414,7 @@
 
             <div class="team-grid">
                 <div class="team-member fade-in">
-                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F6add584e522d400eb7866ec4b8f7a95e?format=webp&width=600" alt="Stay Dripped medical team providing professional IV therapy service">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Professional registered nurse Sarah Johnson">
                     <div class="team-member-info">
                         <h4>Sarah Johnson, RN</h4>
                         <p>Lead Registered Nurse</p>
@@ -2152,7 +2422,7 @@
                     </div>
                 </div>
                 <div class="team-member fade-in">
-                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F4bfd3fb86d3c4208b13f8e6c6347ea76?format=webp&width=600" alt="Stay Dripped licensed medical professional setting up IV therapy equipment">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Medical Director Dr. Michael Chen">
                     <div class="team-member-info">
                         <h4>Dr. Michael Chen, MD</h4>
                         <p>Medical Director</p>
@@ -2160,7 +2430,7 @@
                     </div>
                 </div>
                 <div class="team-member fade-in">
-                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F9c0dd222fb974c48818b60bf8dfc5474?format=webp&width=600" alt="Stay Dripped healthcare team providing personalized IV therapy consultation">
+                    <img src="https://images.unsplash.com/photo-1594824542478-1fdd78175cc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Senior Clinical Nurse Jennifer Rodriguez">
                     <div class="team-member-info">
                         <h4>Jennifer Rodriguez, RN</h4>
                         <p>Senior Clinical Nurse</p>
@@ -2186,6 +2456,45 @@
                     <span class="badge-icon">📋</span>
                     <span>Background Checked</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews Carousel Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Client Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-description">
+                    See why clients trust Stay Dripped for their wellness needs
+                </p>
+            </div>
+
+            <div class="reviews-carousel-container">
+                <div class="reviews-carousel" id="reviewsCarousel">
+                    <!-- Reviews will be loaded dynamically -->
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevReview" aria-label="Previous review">❮</button>
+                    <button class="carousel-btn next-btn" id="nextReview" aria-label="Next review">❯</button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+            </div>
+
+            <div class="reviews-footer">
+                <div class="google-rating">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 272 92'%3E%3Cpath fill='%234285F4' d='M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23EA4335' d='M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23FBBC05' d='M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z'/%3E%3Cpath fill='%23EA4335' d='M225 3v65h-9.5V3h9.5z'/%3E%3Cpath fill='%2334A853' d='m262.02 54.48 7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98 19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z'/%3E%3C/svg%3E" alt="Google" class="google-logo">
+                    <div class="rating-info">
+                        <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-text" id="ratingText">5.0 out of 5 stars from reviews</div>
+                    </div>
+                </div>
+                <a href="https://g.page/r/your-business-id/review" target="_blank" class="btn btn-secondary">Write a Review</a>
             </div>
         </div>
     </section>
@@ -2248,80 +2557,7 @@
         </div>
     </section>
 
-    <!-- Focus Shortcut / Search Section -->
-    <section class="focus-shortcut-section">
-        <div class="container">
-            <div class="focus-shortcut">
-                <h3>Focus Shortcut</h3>
-                <div class="search-container">
-                    <div class="search-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </div>
-                    <input type="text" class="search-input" placeholder="Search our services, treatments, and information..." />
-                    <div class="search-shortcut">⌘K</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Social Share Bar -->
-    <section class="social-share-section">
-        <div class="container">
-            <div class="social-share-bar">
-                <h3 class="social-share-title">Social Share Bar</h3>
-                <div class="social-icons">
-                    <a href="#" class="social-icon facebook" aria-label="Share on Facebook">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon twitter" aria-label="Share on Twitter">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon linkedin" aria-label="Share on LinkedIn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon whatsapp" aria-label="Share on WhatsApp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.891 3.488"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon telegram" aria-label="Share on Telegram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon pinterest" aria-label="Share on Pinterest">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.219-5.175 1.219-5.175s-.31-.623-.31-1.543c0-1.446.839-2.525 1.883-2.525.888 0 1.317.664 1.317 1.46 0 .889-.565 2.219-.857 3.449-.244 1.029.516 1.871 1.531 1.871 1.836 0 3.249-1.935 3.249-4.728 0-2.471-1.776-4.198-4.312-4.198-2.94 0-4.666 2.205-4.666 4.485 0 .887.341 1.839.769 2.357.085.101.097.19.072.293-.078.33-.254 1.021-.289 1.164-.046.186-.148.226-.341.136-1.268-.59-2.062-2.447-2.062-3.937 0-3.253 2.365-6.24 6.821-6.24 3.583 0 6.368 2.552 6.368 5.964 0 3.559-2.243 6.423-5.359 6.423-1.048 0-2.037-.546-2.376-1.194l-.646 2.462c-.233.895-.867 2.02-1.292 2.703C9.559 23.738 10.753 24 12.017 24c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Language Selector -->
-    <section class="language-selector-section">
-        <div class="container">
-            <div class="language-selector">
-                <div class="language-dropdown">
-                    <div class="globe-icon"></div>
-                    <span>Select Language</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="6,9 12,15 18,9"></polyline>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Trust / Logo Section -->
     <section class="trust-section">
@@ -2350,56 +2586,6 @@
         </div>
     </section>
 
-    <!-- Learn More Section -->
-    <section class="learn-more-section">
-        <div class="container">
-            <div class="learn-more-header">
-                <div class="learn-more-badge">💡 Empower Innovation!</div>
-                <h2 class="learn-more-title">Want to learn more?</h2>
-                <p class="learn-more-description">
-                    Get answers to common questions about our IV therapy services, treatments, and wellness programs.
-                </p>
-            </div>
-            <div class="learn-more-grid">
-                <div class="learn-more-item">
-                    <h4>
-                        Who exactly is Stay Dripped designed for, and what types of clients benefit the most from it?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-                <div class="learn-more-item">
-                    <h4>
-                        What are the standout features that make Stay Dripped a truly unique and innovative wellness solution?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-                <div class="learn-more-item">
-                    <h4>
-                        Does Stay Dripped fully support popular health monitoring integrations?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-                <div class="learn-more-item">
-                    <h4>
-                        How effectively does Stay Dripped protect my personal health data?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-                <div class="learn-more-item">
-                    <h4>
-                        Is Stay Dripped completely optimized for mobile and in-home service?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-                <div class="learn-more-item">
-                    <h4>
-                        What flexible treatment options does Stay Dripped offer?
-                        <span class="learn-more-arrow">→</span>
-                    </h4>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
@@ -2526,6 +2712,33 @@
                     <a href="pages/accessibility.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Accessibility</a>
                 </div>
             </div>
+
+            <!-- Social Share in Footer -->
+            <div class="footer-social">
+                <div class="social-icons">
+                    <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon linkedin" aria-label="Follow us on LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
             <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved. | Licensed healthcare practice serving Arizona</p>
         </div>
         </div>
@@ -2656,18 +2869,205 @@
             }
         }
 
-        function performSearch() {
-            const searchTerm = document.getElementById('site-search').value.toLowerCase();
-            if (searchTerm.includes('iv') || searchTerm.includes('hydration')) {
+        function performSearch(searchTerm = null) {
+            const term = searchTerm || document.getElementById('site-search')?.value?.toLowerCase() || document.getElementById('topbar-search')?.value?.toLowerCase();
+            if (!term) return;
+
+            if (term.includes('iv') || term.includes('hydration') || term.includes('therapy')) {
                 window.location.href = 'pages/book-ivtherapy.html';
-            } else if (searchTerm.includes('peptide')) {
-                window.location.href = 'pages/peptides.html';
-            } else if (searchTerm.includes('weight') || searchTerm.includes('loss')) {
-                window.location.href = 'pages/weight-loss.html';
-            } else if (searchTerm.includes('hormone')) {
-                window.location.href = 'pages/hormone-therapy.html';
+            } else if (term.includes('peptide') || term.includes('nad')) {
+                window.location.href = 'pages/nad-peptides.html';
+            } else if (term.includes('weight') || term.includes('loss') || term.includes('management')) {
+                window.location.href = 'pages/weight-management.html';
+            } else if (term.includes('vitamin') || term.includes('injection')) {
+                window.location.href = 'pages/vitamin-injections.html';
+            } else if (term.includes('appointment') || term.includes('book')) {
+                window.location.href = 'pages/book-appointment.html';
+            } else if (term.includes('membership')) {
+                window.location.href = 'pages/membership.html';
+            } else if (term.includes('telehealth')) {
+                window.location.href = 'pages/telehealth-services.html';
             } else {
                 alert('No results found. Please try a different search term or browse our services.');
+            }
+        }
+
+        // FAQ functionality
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const toggle = button.querySelector('.faq-toggle');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherToggle = item.querySelector('.faq-toggle');
+                    if (otherAnswer) otherAnswer.style.maxHeight = '0px';
+                    if (otherToggle) otherToggle.textContent = '↓';
+                }
+            });
+
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+
+            if (faqItem.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                toggle.textContent = '↑';
+            } else {
+                answer.style.maxHeight = '0px';
+                toggle.textContent = '↓';
+            }
+        }
+
+        function initializeFAQ() {
+            // Initialize all FAQ answers to be closed
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.maxHeight = '0px';
+                answer.style.overflow = 'hidden';
+                answer.style.transition = 'max-height 0.3s ease';
+            });
+        }
+
+        // Reviews carousel functionality
+        let currentReviewIndex = 0;
+        let reviewsData = [];
+
+        function initializeReviewsCarousel() {
+            // Sample Google Reviews data - In production, this would come from Google Places API
+            reviewsData = [
+                {
+                    author: "Sarah Johnson",
+                    rating: 5,
+                    text: "Amazing service! The nurse was professional and made me feel completely comfortable. I felt so much better after my IV therapy session. Highly recommend!",
+                    date: "2 weeks ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Michael Rodriguez",
+                    rating: 5,
+                    text: "Convenient and professional. They came to my home and the whole process was seamless. The team is knowledgeable and caring. Will definitely book again!",
+                    date: "3 weeks ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Jennifer K.",
+                    rating: 5,
+                    text: "Stay Dripped saved my weekend! I was feeling terrible from dehydration and they came out same day. Felt like a new person afterwards. Excellent service!",
+                    date: "1 month ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "David Martinez",
+                    rating: 5,
+                    text: "Outstanding experience from start to finish. The booking process was simple, and the nurse arrived right on time. Professional, clean, and effective treatment.",
+                    date: "1 month ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                },
+                {
+                    author: "Lisa Thompson",
+                    rating: 5,
+                    text: "I've been using Stay Dripped for months now. Consistent quality, professional staff, and great results every time. Worth every penny!",
+                    date: "2 months ago",
+                    profilePhoto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                }
+            ];
+
+            renderReviews();
+            setupCarouselControls();
+            updateRatingDisplay();
+
+            // Auto-advance carousel every 5 seconds
+            setInterval(nextReview, 5000);
+        }
+
+        function renderReviews() {
+            const carousel = document.getElementById('reviewsCarousel');
+            const dots = document.getElementById('carouselDots');
+
+            if (!carousel || !dots) return;
+
+            carousel.innerHTML = '';
+            dots.innerHTML = '';
+
+            reviewsData.forEach((review, index) => {
+                // Create review card
+                const reviewCard = document.createElement('div');
+                reviewCard.className = `review-card ${index === 0 ? 'active' : ''}`;
+                reviewCard.innerHTML = `
+                    <div class="reviewer-photo">
+                        <img src="${review.profilePhoto}" alt="${review.author}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;">
+                    </div>
+                    <div class="review-stars">
+                        ${'⭐'.repeat(review.rating)}
+                    </div>
+                    <p class="review-text">"${review.text}"</p>
+                    <div class="reviewer-info">
+                        <h4>${review.author}</h4>
+                        <p>Google Review • ${review.date}</p>
+                    </div>
+                `;
+                carousel.appendChild(reviewCard);
+
+                // Create dot
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToReview(index));
+                dots.appendChild(dot);
+            });
+        }
+
+        function setupCarouselControls() {
+            const prevBtn = document.getElementById('prevReview');
+            const nextBtn = document.getElementById('nextReview');
+
+            if (prevBtn) prevBtn.addEventListener('click', prevReview);
+            if (nextBtn) nextBtn.addEventListener('click', nextReview);
+        }
+
+        function goToReview(index) {
+            const cards = document.querySelectorAll('.review-card');
+            const dots = document.querySelectorAll('.dot');
+
+            cards.forEach((card, i) => {
+                card.classList.toggle('active', i === index);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentReviewIndex = index;
+        }
+
+        function nextReview() {
+            const nextIndex = (currentReviewIndex + 1) % reviewsData.length;
+            goToReview(nextIndex);
+        }
+
+        function prevReview() {
+            const prevIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
+            goToReview(prevIndex);
+        }
+
+        function updateRatingDisplay() {
+            // Calculate average rating
+            const totalRating = reviewsData.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = (totalRating / reviewsData.length).toFixed(1);
+            const reviewCount = reviewsData.length;
+
+            // Update rating display
+            const ratingStars = document.getElementById('overallRating');
+            const ratingText = document.getElementById('ratingText');
+
+            if (ratingStars) {
+                const starCount = Math.round(averageRating);
+                ratingStars.textContent = '⭐'.repeat(starCount);
+            }
+
+            if (ratingText) {
+                ratingText.textContent = `${averageRating} out of 5 stars from ${reviewCount}+ reviews`;
             }
         }
 
@@ -2687,6 +3087,32 @@
             if (searchBtn) {
                 searchBtn.addEventListener('click', toggleSearch);
             }
+
+            // Top bar search
+            const topbarSearch = document.getElementById('topbar-search');
+            if (topbarSearch) {
+                topbarSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+
+            // Keyboard shortcut for search (Cmd+K / Ctrl+K)
+            document.addEventListener('keydown', function(e) {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    if (topbarSearch) {
+                        topbarSearch.focus();
+                    }
+                }
+            });
+
+            // FAQ functionality
+            initializeFAQ();
+
+            // Reviews carousel
+            initializeReviewsCarousel();
 
             // Cart functionality (placeholder)
             const cartBtn = document.querySelector('.cart-btn');
