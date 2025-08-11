@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event & Corporate Inquiry | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Event and corporate IV therapy services in Scottsdale, AZ. Professional wellness services for events, corporate retreats, and group bookings.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-slate);
+        }
+
+        .page-description {
+            font-size: 20px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .form-section {
+            padding: var(--section-padding);
+        }
+
+        .inquiry-form {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-slate);
+            text-align: center;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Event & Corporate Inquiry</h1>
+            <p class="page-description">Professional IV therapy services for events, corporate wellness programs, and group bookings in Scottsdale and surrounding areas.</p>
+        </div>
+    </div>
+
+    <section class="form-section">
+        <div class="container">
+            <h2 class="section-title">Submit Your Inquiry</h2>
+            <p class="section-description">Let us know about your event or corporate wellness needs and we'll create a customized proposal for your group.</p>
+            
+            <form class="inquiry-form" action="#" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="inquiryType">Inquiry Type <span class="required">*</span></label>
+                        <select id="inquiryType" name="inquiryType" required>
+                            <option value="">Select Type</option>
+                            <option value="corporate-wellness">Corporate Wellness Program</option>
+                            <option value="private-event">Private Event</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="bachelor-bachelorette">Bachelor/Bachelorette Party</option>
+                            <option value="fitness-event">Fitness/Athletic Event</option>
+                            <option value="conference">Conference/Trade Show</option>
+                            <option value="retreat">Corporate Retreat</option>
+                            <option value="festival">Festival/Public Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eventDate">Preferred Event Date</label>
+                        <input type="date" id="eventDate" name="eventDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestCount">Estimated Guest Count <span class="required">*</span></label>
+                        <select id="guestCount" name="guestCount" required>
+                            <option value="">Select Count</option>
+                            <option value="5-10">5-10 people</option>
+                            <option value="11-25">11-25 people</option>
+                            <option value="26-50">26-50 people</option>
+                            <option value="51-100">51-100 people</option>
+                            <option value="100+">100+ people</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="eventLocation">Event Location/Address</label>
+                        <input type="text" id="eventLocation" name="eventLocation" placeholder="Event venue or address">
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="services">Services Interested In</label>
+                        <textarea id="services" name="services" placeholder="Which IV therapy services are you interested in for your event? (e.g., Hydration therapy, Energy boosters, Recovery treatments, etc.)"></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select Budget Range</option>
+                            <option value="under-1000">Under $1,000</option>
+                            <option value="1000-2500">$1,000 - $2,500</option>
+                            <option value="2500-5000">$2,500 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="10000+">$10,000+</option>
+                            <option value="custom">Custom/Let's Discuss</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="details">Additional Details</label>
+                        <textarea id="details" name="details" placeholder="Please provide any additional information about your event, special requirements, timing preferences, or questions you may have."></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.firstName || !data.lastName || !data.email || !data.phone || !data.inquiryType || !data.guestCount) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // In a real application, you would send this data to your backend
+            console.log('Form submitted:', data);
+            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your event needs.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
