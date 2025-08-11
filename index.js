@@ -111,148 +111,32 @@ const server = http.createServer(async (req, res) => {
   // Serve the main HTML file for all routes
   if (req.method === 'GET') {
     const htmlContent = `<!DOCTYPE html>
-<html dir="ltr" lang="en-US" prefix="og: https://ogp.me/ns#" style="--lqd-mobile-sec-height: 0px; scroll-behavior: smooth;">
-<head itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="profile" href="https://gmpg.org/xfn/11">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Stay Dripped IV & Wellness Co. - #1 Mobile IV Therapy in Scottsdale, AZ">
-    
-    <title>#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.</title>
-    <meta name="description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+
+    <title>Stay Dripped IV & Wellness Co. | Mobile IV Therapy Scottsdale</title>
+    <meta name="description" content="Professional mobile IV therapy in Scottsdale, AZ. Hydration, vitamin infusions, and wellness treatments delivered to your location by licensed medical professionals.">
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="https://staydrippediv.com/">
-    <meta name="generator" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy Specialists">
-    
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Stay Dripped IV & Wellness Co. - Mobile IV Therapy & Wellness">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
-    <meta property="og:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta property="og:title" content="Stay Dripped IV & Wellness Co. | Mobile IV Therapy Scottsdale">
+    <meta property="og:description" content="Professional mobile IV therapy in Scottsdale, AZ. Hydration, vitamin infusions, and wellness treatments delivered to your location.">
     <meta property="og:url" content="https://staydrippediv.com/">
     <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Stay Dripped IV & Wellness Co. - Premium Mobile IV Therapy">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.">
-    <meta name="twitter:description" content="Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!">
+    <meta name="twitter:title" content="Stay Dripped IV & Wellness Co. | Mobile IV Therapy Scottsdale">
+    <meta name="twitter:description" content="Professional mobile IV therapy in Scottsdale, AZ. Hydration, vitamin infusions, and wellness treatments delivered to your location.">
     <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
-    
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "BreadcrumbList",
-                "@id": "https://staydrippediv.com/#breadcrumblist",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "@id": "https://staydrippediv.com/#listItem",
-                        "position": 1,
-                        "name": "Home"
-                    }
-                ]
-            },
-            {
-                "@type": "Organization",
-                "@id": "https://staydrippediv.com/#organization",
-                "name": "Stay Dripped IV & Wellness Co.",
-                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
-                "url": "https://staydrippediv.com/",
-                "telephone": "+16027610492",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                    "@id": "https://staydrippediv.com/#organizationLogo",
-                    "width": 1200,
-                    "height": 630
-                },
-                "image": {
-                    "@id": "https://staydrippediv.com/#organizationLogo"
-                },
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Scottsdale",
-                    "addressRegion": "AZ",
-                    "addressCountry": "US"
-                },
-                "areaServed": {
-                    "@type": "Place",
-                    "name": "Scottsdale, Arizona"
-                },
-                "serviceType": ["Mobile IV Therapy", "Hormone Therapy", "Weight Management", "Anti-Aging Treatments"]
-            },
-            {
-                "@type": "WebPage",
-                "@id": "https://staydrippediv.com/#webpage",
-                "url": "https://staydrippediv.com/",
-                "name": "#1 Mobile IV Therapy in Scottsdale, AZ | Stay Dripped IV & Wellness Co.",
-                "description": "Experience top-rated mobile IV therapy in Scottsdale, AZ. From hydration boosts to hangover cures, we bring premium wellness directly to you. Book your session today!",
-                "inLanguage": "en-US",
-                "isPartOf": {
-                    "@id": "https://staydrippediv.com/#website"
-                },
-                "breadcrumb": {
-                    "@id": "https://staydrippediv.com/#breadcrumblist"
-                },
-                "image": {
-                    "@type": "ImageObject",
-                    "url": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                    "@id": "https://staydrippediv.com/#mainImage",
-                    "width": 1200,
-                    "height": 630
-                },
-                "primaryImageOfPage": {
-                    "@id": "https://staydrippediv.com/#mainImage"
-                }
-            },
-            {
-                "@type": "WebSite",
-                "@id": "https://staydrippediv.com/#website",
-                "url": "https://staydrippediv.com/",
-                "name": "Stay Dripped IV & Wellness Co.",
-                "description": "Mobile IV Therapy & Wellness Delivered, Anytime, Anywhere.",
-                "inLanguage": "en-US",
-                "publisher": {
-                    "@id": "https://staydrippediv.com/#organization"
-                }
-            },
-            {
-                "@type": "MedicalBusiness",
-                "@id": "https://staydrippediv.com/#medicalbusiness",
-                "name": "Stay Dripped IV & Wellness Co. - Mobile IV Therapy",
-                "image": "https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d",
-                "telephone": "+16027610492",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Scottsdale",
-                    "addressRegion": "AZ",
-                    "addressCountry": "US"
-                },
-                "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": 33.5027,
-                    "longitude": -111.9261
-                },
-                "url": "https://staydrippediv.com/",
-                "medicalSpecialty": ["IV Therapy", "Hormone Therapy", "Wellness Medicine"],
-                "serviceArea": {
-                    "@type": "Place",
-                    "name": "Scottsdale, Arizona and surrounding areas"
-                }
-            }
-        ]
-    }
-    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* Enhanced CSS Variable System */
@@ -3041,7 +2925,7 @@ const server = http.createServer(async (req, res) => {
                         <ul style="list-style: none; margin: 0; padding: 0;">
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">🧬 The Basic NAD+ IV Drip</li>
                             <li style="padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.1);">⛲ The "Fountain of Youth" NAD+</li>
-                            <li style="padding: 8px 0;">💎 The "Diamond" NAD+ Formula</li>
+                            <li style="padding: 8px 0;">�� The "Diamond" NAD+ Formula</li>
                         </ul>
                     </div>
                     <a href="/book-ivtherapy" class="btn btn-iv-therapy" style="width: 100%; text-align: center; justify-content: center;">Book NAD+ Therapy</a>
