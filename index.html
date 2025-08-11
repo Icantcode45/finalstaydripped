@@ -1132,25 +1132,87 @@
             background: var(--light-gray);
         }
 
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
+        .reviews-carousel-container {
+            position: relative;
             margin-bottom: 48px;
         }
 
-        .review-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        .reviews-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            overflow: hidden;
         }
 
-        .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 102, 204, 0.1);
+        .review-card {
+            min-width: 100%;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.5s ease;
+        }
+
+        .review-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .carousel-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .carousel-btn:hover {
+            background: #0052A3;
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            background: var(--border-color);
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
         }
 
         .review-stars {
