@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vitamin Injections & Shots | Stay Dripped IV & Wellness Co.</title>
-    <meta name="description" content="Professional vitamin injection shots in Scottsdale, AZ. Quick and effective vitamin shots delivered by licensed medical professionals.">
-    
-    <!-- Fonts -->
+    <title>Vitamin Injections | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Quick and efficient vitamin injections in Scottsdale, AZ. Targeted wellness support and energy enhancement with B12, Vitamin D, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root {
             --primary-blue: #0066CC;
             --secondary-teal: #00B8A0;
             --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
             --dark-slate: #1A2B3A;
             --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
             --medium-gray: #64748B;
+            --warm-text: #2D3748;
             --white: #FFFFFF;
             --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
             --font-family: 'Inter', sans-serif;
             --max-width: 1200px;
             --section-padding: 80px 0;
@@ -45,57 +46,30 @@
             padding: 0 20px;
         }
 
-        /* Header */
-        .header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+        .page-header {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 48px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
+        .page-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
             color: var(--dark-slate);
-            font-weight: 500;
-            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-blue);
+        .page-description {
+            font-size: 20px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
         .btn {
             background: var(--primary-blue);
             color: var(--white);
-            padding: 12px 24px;
+            padding: 16px 32px;
             border: none;
             border-radius: 8px;
             font-weight: 600;
@@ -105,6 +79,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            font-size: 16px;
         }
 
         .btn:hover {
@@ -112,699 +87,159 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-        }
-
-        /* Main Content */
-        .main {
-            padding-top: 100px;
-            min-height: 100vh;
-        }
-
-        .page-header {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--light-gray) 0%, rgba(0, 102, 204, 0.05) 100%);
-        }
-
-        .page-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-        }
-
-        .page-description {
-            font-size: 18px;
-            color: var(--medium-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .treatments-section {
+        .services-section {
             padding: var(--section-padding);
         }
 
-        .section-header {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 40px 32px;
             text-align: center;
-            margin-bottom: 64px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .section-subtitle {
-            color: var(--primary-blue);
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.3);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 3vw, 36px);
-            font-weight: 700;
             margin-bottom: 16px;
             color: var(--dark-slate);
         }
 
-        .treatments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            margin-bottom: 80px;
-        }
-
-        .treatment-category {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .treatment-category:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.1);
-            border-color: var(--primary-blue);
-        }
-
-        .category-header {
-            padding: 32px;
-            background: var(--light-gray);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .category-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--dark-slate);
-        }
-
-        .category-subtitle {
-            color: var(--primary-blue);
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .category-description {
+        .service-card p {
             color: var(--medium-gray);
-            margin-top: 12px;
+            margin-bottom: 20px;
         }
 
-        .treatments-list {
-            padding: 32px;
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
         }
 
-        .treatment-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features li {
+            padding: 8px 0;
+            color: var(--medium-gray);
             border-bottom: 1px solid var(--border-color);
-            transition: background-color 0.3s ease;
         }
 
-        .treatment-item:last-child {
+        .features li:last-child {
             border-bottom: none;
         }
 
-        .treatment-item:hover {
-            background-color: var(--light-gray);
-            margin: 0 -32px;
-            padding-left: 32px;
-            padding-right: 32px;
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-slate);
+            text-align: center;
         }
 
-        .treatment-info h4 {
+        .section-description {
             font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--dark-slate);
-        }
-
-        .treatment-info p {
             color: var(--medium-gray);
-            font-size: 14px;
-        }
-
-        .treatment-price {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .treatment-duration {
-            font-size: 12px;
-            color: var(--medium-gray);
-            margin-top: 4px;
-        }
-
-        .book-btn {
-            background: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-left: 16px;
-        }
-
-        .book-btn:hover {
-            background: #0052A3;
-            transform: translateY(-1px);
-        }
-
-        /* Booking Widget */
-        .booking-widget {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 60px 0;
-            transition: all 0.3s ease;
-        }
-
-        .booking-widget[id$="-widget"] {
-            margin: 20px 0;
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
-        }
-
-        .booking-widget[id$="-widget"]:not([style*="display: none"]) {
-            display: block !important;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .widget-header {
+            max-width: 800px;
+            margin: 0 auto 40px;
             text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .widget-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--dark-slate);
-        }
-
-        .widget-description {
-            color: var(--medium-gray);
-            margin-bottom: 24px;
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            padding: var(--section-padding);
-            background: var(--light-gray);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 64px;
-        }
-
-        .benefit-item {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-8px);
-        }
-
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--white);
-            margin: 0 auto 24px;
-        }
-
-        .benefit-item h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--dark-slate);
-        }
-
-        .benefit-item p {
-            color: var(--medium-gray);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .treatments-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .treatment-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .treatment-item:hover {
-                margin: 0;
-                padding: 20px 0;
-            }
-
-            .category-header {
-                padding: 24px;
-            }
-
-            .treatments-list {
-                padding: 24px;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <a href="../index.html" class="logo">
-                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
-            </a>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html#services">Services</a></li>
-                <li><a href="./book-ivtherapy.html">Cocktail Menu</a></li>
-                <li><a href="./peptides.html">Peptides</a></li>
-                <li><a href="#vitamin-injections">Vitamin Injections</a></li>
-                <li><a href="./weight-loss.html">Weight Loss</a></li>
-                <li><a href="./hormone-therapy.html">Hormone Therapy</a></li>
-                <li><a href="./membership.html">Membership</a></li>
-                <li><a href="../index.html#team">Our Team</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-                <li><a href="https://Staydripped.intakeq.com/booking?clientArea=1" target="_blank" class="btn">Client Portal</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Vitamin Injections</h1>
+            <p class="page-description">Quick and efficient vitamin injections for targeted wellness support and energy enhancement. Get the nutrients your body needs in minutes.</p>
+            <a href="../pages/book-appointment.html" class="btn">Book Your Injection</a>
+        </div>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Page Header -->
-        <section class="page-header">
-            <div class="container">
-                <h1 class="page-title">Vitamin Injections & Shots</h1>
-                <p class="page-description">
-                    Quick and effective vitamin injection shots administered by licensed medical professionals for immediate energy and wellness benefits.
-                </p>
-            </div>
-        </section>
-
-        <!-- Treatments Section -->
-        <section id="vitamin-injections" class="treatments-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-subtitle">Vitamin Shots</div>
-                    <h2 class="section-title">Professional Vitamin Injection Treatments</h2>
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Vitamin Injection Services</h2>
+            <p class="section-description">Fast-acting vitamin injections delivered directly to your location for immediate wellness benefits.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>B12 Energy Injection</h3>
+                    <div class="price">$35</div>
+                    <p>Boost your energy levels and mental clarity with our high-dose B12 injection.</p>
+                    <ul class="features">
+                        <li>1000mcg Methylcobalamin B12</li>
+                        <li>Increases energy levels</li>
+                        <li>Improves mental clarity</li>
+                        <li>Supports metabolism</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="treatments-grid">
-                    <!-- Individual Vitamin Shots -->
-                    <div class="treatment-category fade-in">
-                        <div class="category-header">
-                            <h3 class="category-title">Individual Vitamin Shots</h3>
-                            <div class="category-subtitle">Starting at $35</div>
-                            <p class="category-description">Quick and targeted vitamin injections for specific health and wellness goals.</p>
-                        </div>
-                        <div class="treatments-list">
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>B12 Energy Shot</h4>
-                                    <p>Instant energy boost injection for enhanced metabolism and focus</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$35</div>
-                                    <div class="treatment-duration">5-10 min</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('b12-shot-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Vitamin D3 Shot</h4>
-                                    <p>Essential vitamin D supplementation for bone health and immunity</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$45</div>
-                                    <div class="treatment-duration">5-10 min</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('d3-shot-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Biotin Shot</h4>
-                                    <p>Beauty-enhancing injection for healthy hair, skin, and nails</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$40</div>
-                                    <div class="treatment-duration">5-10 min</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('biotin-shot-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Glutathione Shot</h4>
-                                    <p>Master antioxidant for detoxification and cellular protection</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$55</div>
-                                    <div class="treatment-duration">5-10 min</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('glutathione-shot-widget')">Book</button>
-                            </div>
-                        </div>
-
-                        <!-- Individual Vitamin Shots Booking Widgets -->
-                        <div id="b12-shot-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book B12 Energy Shot</h4>
-                                <p class="widget-description">Instant energy boost injection - $35</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=c14d40af-977b-4f6e-9db8-d24c9ad3a35d"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="d3-shot-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Vitamin D3 Shot</h4>
-                                <p class="widget-description">Essential vitamin D supplementation - $45</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=d3-vitamin-shot-service-id"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="biotin-shot-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Biotin Shot</h4>
-                                <p class="widget-description">Beauty-enhancing injection for healthy hair, skin, and nails - $40</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=biotin-shot-service-id"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="glutathione-shot-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Glutathione Shot</h4>
-                                <p class="widget-description">Master antioxidant for detoxification and cellular protection - $55</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=glutathione-shot-service-id"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Vitamin Shot Bundles -->
-                    <div class="treatment-category fade-in">
-                        <div class="category-header">
-                            <h3 class="category-title">Vitamin Shot Bundles</h3>
-                            <div class="category-subtitle">Save 15-25%</div>
-                            <p class="category-description">Combination packages offering multiple vitamin injections for comprehensive wellness support.</p>
-                        </div>
-                        <div class="treatments-list">
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>B12 Power Pack Bundle</h4>
-                                    <p>4 B12 energy shots for extended benefits and enhanced energy levels</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$120</div>
-                                    <div class="treatment-duration">Save $20</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('b12-pack-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Wellness Shot Bundle</h4>
-                                    <p>B12 + Vitamin D3 + Biotin combination for comprehensive wellness</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$89</div>
-                                    <div class="treatment-duration">Save $31</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('wellness-bundle-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Ultimate Antioxidant Bundle</h4>
-                                    <p>Glutathione + Vitamin C + B12 for maximum antioxidant protection</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$129</div>
-                                    <div class="treatment-duration">Save $25</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('antioxidant-bundle-widget')">Book</button>
-                            </div>
-                            <div class="treatment-item">
-                                <div class="treatment-info">
-                                    <h4>Beauty Boost Bundle</h4>
-                                    <p>Biotin + Glutathione + Vitamin C for enhanced beauty and glow</p>
-                                </div>
-                                <div style="text-align: right;">
-                                    <div class="treatment-price">$119</div>
-                                    <div class="treatment-duration">Save $21</div>
-                                </div>
-                                <button class="book-btn" onclick="showBookingWidget('beauty-bundle-widget')">Book</button>
-                            </div>
-                        </div>
-
-                        <!-- Bundle Booking Widgets -->
-                        <div id="b12-pack-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book B12 Power Pack Bundle</h4>
-                                <p class="widget-description">4 B12 energy shots for extended benefits - $120 (Save $20)</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=e7c6a722-e621-46d7-8f96-af2f96848dc4"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="wellness-bundle-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Wellness Shot Bundle</h4>
-                                <p class="widget-description">B12 + Vitamin D3 + Biotin combination - $89 (Save $31)</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=1b14cb7a-8e18-44b3-99a1-ecd3b516e8a6"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="antioxidant-bundle-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Ultimate Antioxidant Bundle</h4>
-                                <p class="widget-description">Glutathione + Vitamin C + B12 for maximum antioxidant protection - $129 (Save $25)</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=antioxidant-bundle-service-id"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-
-                        <div id="beauty-bundle-widget" class="booking-widget" style="display: none; margin-top: 20px;">
-                            <div class="widget-header">
-                                <h4 class="widget-title">Book Beauty Boost Bundle</h4>
-                                <p class="widget-description">Biotin + Glutathione + Vitamin C for enhanced beauty - $119 (Save $21)</p>
-                            </div>
-                            <iframe src="https://Staydripped.intakeq.com/booking?serviceId=beauty-bundle-service-id"
-                                    width="100%"
-                                    height="600"
-                                    frameborder="0"
-                                    style="border-radius: 8px;">
-                            </iframe>
-                        </div>
-                    </div>
+                <div class="service-card">
+                    <h3>Vitamin D3 Boost</h3>
+                    <div class="price">$45</div>
+                    <p>Support your immune system and bone health with our vitamin D3 injection.</p>
+                    <ul class="features">
+                        <li>50,000 IU Vitamin D3</li>
+                        <li>Supports immune function</li>
+                        <li>Promotes bone health</li>
+                        <li>Improves mood</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
                 </div>
 
-                <!-- General Contact Information -->
-                <div class="booking-widget">
-                    <div class="widget-header">
-                        <h3 class="widget-title">Need Help Choosing?</h3>
-                        <p class="widget-description">Our medical professionals are here to help you select the perfect vitamin injection treatment for your needs.</p>
-                    </div>
+                <div class="service-card">
+                    <h3>B-Complex Shot</h3>
+                    <div class="price">$50</div>
+                    <p>Complete B-vitamin complex for energy, metabolism, and nervous system support.</p>
+                    <ul class="features">
+                        <li>B1, B2, B3, B5, B6 Complex</li>
+                        <li>Boosts energy metabolism</li>
+                        <li>Supports nervous system</li>
+                        <li>Improves cognitive function</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                </div>
 
-                    <!-- Contact options -->
-                    <div style="text-align: center; margin-top: 32px;">
-                        <p style="color: var(--medium-gray); margin-bottom: 20px;">Contact us for personalized vitamin injection recommendations</p>
-                        <a href="tel:+16027610492" class="btn" style="margin-right: 16px;">📞 Call (602) 761-0492</a>
-                        <a href="https://Staydripped.intakeq.com/booking" target="_blank" class="btn" style="background: var(--secondary-teal);">General Booking Portal</a>
-                    </div>
+                <div class="service-card">
+                    <h3>Biotin Beauty Shot</h3>
+                    <div class="price">$40</div>
+                    <p>Strengthen your hair, skin, and nails with our high-dose biotin injection.</p>
+                    <ul class="features">
+                        <li>10,000mcg Biotin</li>
+                        <li>Strengthens hair & nails</li>
+                        <li>Improves skin health</li>
+                        <li>Supports cellular energy</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
                 </div>
             </div>
-        </section>
-
-        <!-- Benefits Section -->
-        <section class="benefits-section">
-            <div class="container">
-                <div class="section-header fade-in">
-                    <div class="section-subtitle">Why Choose Vitamin Injections</div>
-                    <h2 class="section-title">Benefits of Vitamin Shot Therapy</h2>
-                </div>
-
-                <div class="benefits-grid">
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">⚡</div>
-                        <h4>Rapid Absorption</h4>
-                        <p>Direct injection bypasses digestive system for 100% bioavailability and immediate results</p>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">🎯</div>
-                        <h4>Targeted Therapy</h4>
-                        <p>Precise dosing of specific vitamins to address individual deficiencies and wellness goals</p>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">⏰</div>
-                        <h4>Quick & Convenient</h4>
-                        <p>5-10 minute treatments that fit into your busy schedule with immediate benefits</p>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">🔬</div>
-                        <h4>Medical Grade</h4>
-                        <p>Pharmaceutical-grade vitamins administered by licensed medical professionals</p>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">💊</div>
-                        <h4>Higher Potency</h4>
-                        <p>More potent than oral supplements with superior absorption and effectiveness</p>
-                    </div>
-
-                    <div class="benefit-item fade-in">
-                        <div class="benefit-icon">🏠</div>
-                        <h4>Mobile Service</h4>
-                        <p>Professional vitamin injections delivered to your location in Scottsdale area</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Show booking widget function
-        function showBookingWidget(widgetId) {
-            // Hide all service booking widgets first (those with IDs ending in '-widget')
-            const allWidgets = document.querySelectorAll('.booking-widget[id$="-widget"]');
-            allWidgets.forEach(widget => {
-                widget.style.display = 'none';
-            });
-
-            // Show the selected widget
-            const selectedWidget = document.getElementById(widgetId);
-            if (selectedWidget) {
-                selectedWidget.style.display = 'block';
-
-                // Scroll to the widget
-                selectedWidget.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-
-                // Highlight the booking widget
-                selectedWidget.style.border = '2px solid var(--primary-blue)';
-                selectedWidget.style.boxShadow = '0 0 20px rgba(0, 102, 204, 0.2)';
-
-                setTimeout(() => {
-                    selectedWidget.style.border = '1px solid var(--border-color)';
-                    selectedWidget.style.boxShadow = 'none';
-                }, 3000);
-            }
-
-            console.log('Showing booking widget:', widgetId);
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add fade-in animation initialization
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, 100);
-        });
-    </script>
+        </div>
+    </section>
 </body>
 </html>
