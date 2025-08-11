@@ -298,8 +298,9 @@ const server = http.createServer(async (req, res) => {
         }
 
         .logo img {
-            height: 48px;
+            height: 42px;
             width: auto;
+            max-width: 200px;
         }
 
         .nav-links {
