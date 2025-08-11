@@ -313,6 +313,55 @@
             box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
         }
 
+        /* Dropdown Sections */
+        .dropdown-section {
+            margin-bottom: 16px;
+            padding: 0 12px;
+        }
+
+        .dropdown-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 102, 204, 0.2);
+        }
+
+        .dropdown-section a {
+            color: var(--dark-slate);
+            padding: 8px 12px;
+            display: block;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            margin: 2px 0;
+            font-weight: 500;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .dropdown-section a:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
+            color: var(--primary-blue);
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+        }
+
+        /* Multi-column dropdown for services */
+        .dropdown-content.services-dropdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            min-width: 500px;
+            padding: 20px;
+        }
+
         .btn {
             background: var(--primary-blue);
             color: var(--white);
