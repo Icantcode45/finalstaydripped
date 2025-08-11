@@ -3255,8 +3255,136 @@
             });
         }
 
+        // Category Navigation Functionality
+        function initializeCategoryNavigation() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetCategory = this.getAttribute('data-category');
+
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show target section with smooth transition
+                    categorySections.forEach(section => {
+                        if (section.getAttribute('data-category') === targetCategory) {
+                            // Hide all sections first
+                            categorySections.forEach(s => {
+                                s.classList.remove('active');
+                                s.style.display = 'none';
+                            });
+
+                            // Show target section with animation
+                            setTimeout(() => {
+                                section.style.display = 'block';
+                                setTimeout(() => {
+                                    section.classList.add('active');
+                                }, 50);
+                            }, 100);
+                        }
+                    });
+
+                    // Smooth scroll to products section
+                    const productsSection = document.getElementById('products');
+                    if (productsSection) {
+                        const navHeight = 100; // Adjust for fixed header
+                        const targetPosition = productsSection.offsetTop - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Product Counter for Category Navigation
+        function updateCategoryCounters() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+
+            categoryButtons.forEach(button => {
+                const category = button.getAttribute('data-category');
+                const section = document.querySelector(`[data-category="${category}"]`);
+
+                if (section && category !== 'featured') {
+                    const productCount = section.querySelectorAll('.product-card').length;
+                    if (productCount > 0) {
+                        button.innerHTML = `${button.textContent.replace(/\(\d+\)/, '')} (${productCount})`;
+                    }
+                }
+            });
+        }
+
+        // Enhanced Search with Category Filtering
+        function filterProductsBySearch(searchTerm) {
+            const allProducts = document.querySelectorAll('.product-card');
+            const searchLower = searchTerm.toLowerCase();
+            let hasResults = false;
+
+            allProducts.forEach(product => {
+                const title = product.querySelector('.product-title').textContent.toLowerCase();
+                const description = product.querySelector('.product-description').textContent.toLowerCase();
+                const category = product.querySelector('.product-category').textContent.toLowerCase();
+
+                const matches = title.includes(searchLower) ||
+                               description.includes(searchLower) ||
+                               category.includes(searchLower);
+
+                if (matches) {
+                    product.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            return hasResults;
+        }
+
+        // Keyboard Navigation for Categories
+        function initializeCategoryKeyboardNav() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+
+            categoryButtons.forEach((button, index) => {
+                button.addEventListener('keydown', function(e) {
+                    let targetIndex = index;
+
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            targetIndex = index > 0 ? index - 1 : categoryButtons.length - 1;
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            targetIndex = index < categoryButtons.length - 1 ? index + 1 : 0;
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            targetIndex = 0;
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            targetIndex = categoryButtons.length - 1;
+                            break;
+                        default:
+                            return;
+                    }
+
+                    categoryButtons[targetIndex].focus();
+                });
+            });
+        }
+
         // Initialize when DOM is ready
-        document.addEventListener('DOMContentLoaded', initializeAccessibility);
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAccessibility();
+            initializeCategoryNavigation();
+            updateCategoryCounters();
+            initializeCategoryKeyboardNav();
+        });
     </script>
 </body>
 </html>
