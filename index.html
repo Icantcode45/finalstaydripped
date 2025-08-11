@@ -1577,49 +1577,6 @@
             observer.observe(el);
         });
 
-        // Set minimum date to today
-        function setMinDate() {
-            const today = new Date().toISOString().split('T')[0];
-            const dateInput = document.getElementById('date');
-            if (dateInput) {
-                dateInput.min = today;
-            }
-        }
-
-        // Book service function
-        function bookService() {
-            const location = document.getElementById('location').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const treatment = document.getElementById('treatment').value;
-            
-            if (!location || !date || !time || !treatment) {
-                alert('Please fill in all fields to book your treatment.');
-                return;
-            }
-            
-            // Redirect to booking page
-            window.location.href = 'pages/book-ivtherapy.html';
-        }
-
-        // Question selection functionality
-        function selectQuestion(element) {
-            // Remove selected class from all cards
-            document.querySelectorAll('.question-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-
-            // Add selected class to clicked card
-            element.classList.add('selected');
-
-            // Auto-scroll to booking form
-            setTimeout(() => {
-                document.querySelector('.progressive-form').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 500);
-        }
 
         // Location finder functionality
         function showLocationFinder() {
