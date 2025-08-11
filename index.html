@@ -155,17 +155,22 @@
 
         /* Header */
         .header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: fixed;
             top: 44px;
             width: 100%;
             z-index: 1000;
-            transition: box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .header.scrolled {
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.08);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 102, 204, 0.2);
         }
 
         .nav {
@@ -179,29 +184,108 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            position: relative;
+            z-index: 2;
         }
 
         .logo img {
             height: 48px;
             width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 32px;
+            gap: 8px;
             align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links li {
+            position: relative;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark-slate);
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: block;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links a:hover {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown Menu Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 200px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 0;
+            margin-top: 8px;
+            z-index: 1001;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+            animation: dropdownFadeIn 0.3s ease;
+        }
+
+        @keyframes dropdownFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-content a {
+            color: var(--dark-slate);
+            padding: 12px 20px;
+            display: block;
+            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin: 0 8px;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 102, 204, 0.1);
             color: var(--primary-blue);
+            transform: translateX(4px);
         }
 
         .btn {
@@ -1206,13 +1290,26 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="pages/book-ivtherapy.html">IV Treatments</a></li>
-                <li><a href="pages/peptides.html">Peptides</a></li>
-                <li><a href="pages/weight-loss.html">Weight Loss</a></li>
-                <li><a href="pages/hormone-therapy.html">Hormone Therapy</a></li>
+                <li class="nav-dropdown">
+                    <a href="#services">Services</a>
+                    <div class="dropdown-content">
+                        <a href="pages/iv-hydration-therapy.html">IV Hydration Therapy</a>
+                        <a href="pages/vitamin-injections.html">Vitamin Injections</a>
+                        <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
+                        <a href="pages/weight-management.html">Weight Management</a>
+                        <a href="pages/hormone-therapy.html">Hormone Therapy</a>
+                        <a href="pages/telehealth-services.html">Telehealth Services</a>
+                        <a href="pages/mobile-testing-kits.html">Mobile Testing Kits</a>
+                    </div>
+                </li>
                 <li><a href="pages/membership.html">Membership</a></li>
-                <li><a href="#team">Our Team</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Inquiries</a>
+                    <div class="dropdown-content">
+                        <a href="pages/event-corporate-inquiry.html">Event & Corporate</a>
+                        <a href="pages/sponsorship-inquiry.html">Sponsorship & Brand Ambassador</a>
+                    </div>
+                </li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
