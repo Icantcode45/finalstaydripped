@@ -121,6 +121,10 @@ const server = http.createServer(async (req, res) => {
     <meta name="description" content="Professional mobile IV therapy in Scottsdale, AZ. Hydration, vitamin infusions, and wellness treatments delivered to your location by licensed medical professionals.">
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="https://staydrippediv.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Fad372a4beb4d4d9eae4ad04be4e56deb?format=webp&width=32">
+    <link rel="apple-touch-icon" href="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Fad372a4beb4d4d9eae4ad04be4e56deb?format=webp&width=180">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
