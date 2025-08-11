@@ -501,12 +501,15 @@ const server = http.createServer(async (req, res) => {
                 <div class="top-bar-right">
                     <span class="tagline-text">MORE THAN WELLNESS</span>
                     <div class="top-bar-icons">
-                        <button class="icon-btn search-btn" title="Search">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.35-4.35"></path>
-                            </svg>
+                        <button class="icon-btn search-btn" title="Chat Support">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Fb887822bbb864f0d9a71c3bf53868eab?format=webp&width=800" alt="Chat" style="width: 20px; height: 20px;" />
                         </button>
+                        <a href="mailto:info@staydrippediv.com" class="icon-btn" title="Email Us">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2F990e393330624b9b99145dd7bb1a1278?format=webp&width=800" alt="Email" style="width: 20px; height: 20px;" />
+                        </a>
+                        <a href="tel:+1-480-555-3747" class="icon-btn" title="Call Us">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff131a68591e943e39d1306f3fb0c773a?format=webp&width=800" alt="Phone" style="width: 20px; height: 20px;" />
+                        </a>
                         <a href="https://Staydripped.intakeq.com/booking?clientArea=1" class="icon-btn" title="Client Portal">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
