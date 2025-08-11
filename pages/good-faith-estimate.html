@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Faith Estimate | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Request a Good Faith Estimate for medical services. Know your costs upfront and understand your billing rights under the No Surprises Act.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+        }
+
+        .page-header .subtitle {
+            color: var(--medium-gray);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .no-surprises-badge {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .info-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--white);
+        }
+
+        .highlight-box {
+            background: #FEF3C7;
+            border: 2px solid var(--warning-amber);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h3 {
+            color: #92400E;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rights-list {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .rights-list h3 {
+            color: var(--dark-slate);
+            margin-bottom: 20px;
+        }
+
+        .rights-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rights-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .rights-list li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .request-form {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: var(--font-family);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .service-option {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .service-option:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.1);
+        }
+
+        .service-option.selected {
+            border-color: var(--primary-blue);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .service-option input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .service-title {
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 4px;
+        }
+
+        .service-price {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .contact-method {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-method h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .contact-method p {
+            color: var(--dark-slate);
+            font-weight: 500;
+        }
+
+        .sample-estimate {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .estimate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .estimate-table th,
+        .estimate-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .estimate-table th {
+            background: var(--primary-blue);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .estimate-table .total-row {
+            font-weight: 700;
+            background: var(--light-gray);
+        }
+
+        .back-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-teal);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header,
+            .info-section,
+            .request-form {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="./compliance.html" class="back-link">← Back to Compliance</a>
+        
+        <div class="page-header">
+            <h1>Good Faith Estimate</h1>
+            <p class="subtitle">Know Your Healthcare Costs Upfront</p>
+            <div class="no-surprises-badge">No Surprises Act Compliant</div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">
+                <div class="section-icon">💰</div>
+                Your Right to a Good Faith Estimate
+            </h2>
+            
+            <p>Under the federal No Surprises Act, you have the right to receive a Good Faith Estimate (GFE) of expected charges for medical services when you're uninsured or not using your insurance.</p>
+
+            <div class="highlight-box">
+                <h3>⚡ Important Information</h3>
+                <p>A Good Faith Estimate shows the costs of items and services that are reasonably expected for your healthcare needs. The estimate is based on information known at the time the estimate was created.</p>
+            </div>
+
+            <div class="rights-list">
+                <h3>Your Rights Under the No Surprises Act</h3>
+                <ul>
+                    <li>Request a written estimate of costs before scheduling any service</li>
+                    <li>Receive estimates within 3 business days for scheduled services</li>
+                    <li>Receive estimates within 1 business day for services scheduled within 3 days</li>
+                    <li>Get an itemized list of expected charges</li>
+                    <li>Dispute bills that are substantially more than your estimate</li>
+                    <li>Use the patient-provider dispute resolution process</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="section-title">
+                <div class="section-icon">⚖️</div>
+                When You Can Dispute a Bill
+            </h2>
+            
+            <p>You can dispute a bill if:</p>
+            <ul style="margin: 16px 0; padding-left: 20px;">
+                <li>The final bill is at least <strong>$400 more</strong> than your Good Faith Estimate</li>
+                <li>You received the Good Faith Estimate at least 3 business days before your service (or 1 business day for urgent scheduling)</li>
+                <li>The services were provided as described in the estimate</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>🛡️ Dispute Process</h3>
+                <p>If your bill qualifies for dispute, you can use the patient-provider dispute resolution process. This is a neutral process to determine the appropriate amount you should pay.</p>
+            </div>
+        </div>
+
+        <!-- Request Form -->
+        <div class="request-form">
+            <h2 class="section-title">
+                <div class="section-icon">📋</div>
+                Request Your Good Faith Estimate
+            </h2>
+            
+            <form id="gfeRequestForm" onsubmit="submitGFERequest(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth *</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferredDate">Preferred Service Date</label>
+                    <input type="date" id="preferredDate" name="preferredDate">
+                </div>
+
+                <div class="form-group">
+                    <label>Select Services for Estimate *</label>
+                    <div class="service-options">
+                        <div class="service-option" onclick="toggleService(this, 'iv-therapy', 149)">
+                            <input type="checkbox" name="services" value="iv-therapy">
+                            <div class="service-title">IV Drip Therapy</div>
+                            <div class="service-price">Starting at $149</div>
+                        </div>
+                        
+                        <div class="service-option" onclick="toggleService(this, 'nad-therapy', 150)">
+                            <input type="checkbox" name="services" value="nad-therapy">
+                            <div class="service-title">NAD+ IV Therapy</div>
+                            <div class="service-price">Starting at $150</div>
+                        </div>
+                        
+                        <div class="service-option" onclick="toggleService(this, 'peptides', 120)">
+                            <input type="checkbox" name="services" value="peptides">
+                            <div class="service-title">Peptide Therapy</div>
+                            <div class="service-price">Starting at $120</div>
+                        </div>
+                        
+                        <div class="service-option" onclick="toggleService(this, 'weight-loss', 175)">
+                            <input type="checkbox" name="services" value="weight-loss">
+                            <div class="service-title">Weight Management</div>
+                            <div class="service-price">Starting at $175</div>
+                        </div>
+                        
+                        <div class="service-option" onclick="toggleService(this, 'hormone-therapy', 200)">
+                            <input type="checkbox" name="services" value="hormone-therapy">
+                            <div class="service-title">Hormone Therapy</div>
+                            <div class="service-price">Starting at $200</div>
+                        </div>
+                        
+                        <div class="service-option" onclick="toggleService(this, 'consultation', 99)">
+                            <input type="checkbox" name="services" value="consultation">
+                            <div class="service-title">Consultation</div>
+                            <div class="service-price">$99</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="insuranceStatus">Insurance Status *</label>
+                    <select id="insuranceStatus" name="insuranceStatus" required>
+                        <option value="">Select insurance status</option>
+                        <option value="uninsured">Uninsured</option>
+                        <option value="not-using-insurance">Have insurance but not using it</option>
+                        <option value="self-pay">Self-pay preference</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information or Specific Questions</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Please describe any specific services you're interested in or questions about pricing..."></textarea>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn">
+                        📄 Request Good Faith Estimate
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Sample Estimate -->
+        <div class="info-section">
+            <h2 class="section-title">
+                <div class="section-icon">📊</div>
+                Sample Good Faith Estimate
+            </h2>
+            
+            <div class="sample-estimate">
+                <h3>Example: IV Hydration Therapy</h3>
+                <p style="margin-bottom: 20px; color: var(--medium-gray);">This is an example of what your Good Faith Estimate might look like:</p>
+                
+                <table class="estimate-table">
+                    <thead>
+                        <tr>
+                            <th>Service Description</th>
+                            <th>CPT Code</th>
+                            <th>Expected Charge</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Initial consultation and assessment</td>
+                            <td>99213</td>
+                            <td>$75</td>
+                        </tr>
+                        <tr>
+                            <td>IV hydration therapy (1 hour)</td>
+                            <td>96365</td>
+                            <td>$120</td>
+                        </tr>
+                        <tr>
+                            <td>B12 vitamin add-on</td>
+                            <td>96372</td>
+                            <td>$35</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile service fee</td>
+                            <td>99605</td>
+                            <td>$50</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total Expected Charges</strong></td>
+                            <td><strong>$280</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p style="font-size: 14px; color: var(--medium-gray); margin-top: 16px;">
+                    <em>This is a sample estimate. Actual costs may vary based on your specific needs and services provided. Your personalized estimate will include all expected charges for your requested services.</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="info-section">
+            <h2 class="section-title">
+                <div class="section-icon">📞</div>
+                How to Request an Estimate
+            </h2>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <h4>📞 Phone</h4>
+                    <p>(480) 418-3678</p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">Monday-Friday 8AM-6PM</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>📧 Email</h4>
+                    <p>billing@staydrippediv.com</p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>📝 Online Form</h4>
+                    <p>Use the form above</p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">Fastest response time</p>
+                </div>
+                
+                <div class="contact-method">
+                    <h4>💬 Patient Portal</h4>
+                    <p><a href="./patient-portal.html" style="color: var(--primary-blue);">Secure messaging</a></p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">For existing patients</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Timeline -->
+        <div class="info-section">
+            <h2 class="section-title">
+                <div class="section-icon">⏰</div>
+                Response Timeline
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: var(--light-gray); padding: 20px; border-radius: 12px; text-align: center;">
+                    <h4 style="color: var(--success-green); margin-bottom: 8px;">Scheduled Services</h4>
+                    <p style="font-size: 24px; font-weight: 700; color: var(--dark-slate);">3 Business Days</p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">Services scheduled 3+ days in advance</p>
+                </div>
+                
+                <div style="background: var(--light-gray); padding: 20px; border-radius: 12px; text-align: center;">
+                    <h4 style="color: var(--warning-amber); margin-bottom: 8px;">Urgent Scheduling</h4>
+                    <p style="font-size: 24px; font-weight: 700; color: var(--dark-slate);">1 Business Day</p>
+                    <p style="font-size: 14px; color: var(--medium-gray);">Services scheduled within 3 days</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); margin-top: 40px;">
+            <p style="color: var(--medium-gray); margin-bottom: 16px;">
+                Questions about Good Faith Estimates or billing?
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="./compliance.html" class="btn-secondary">← Back to Compliance</a>
+                <a href="mailto:billing@staydrippediv.com" class="btn">Contact Billing Team</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleService(element, serviceId, price) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            element.classList.toggle('selected');
+            checkbox.checked = !checkbox.checked;
+        }
+
+        function submitGFERequest(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const selectedServices = Array.from(formData.getAll('services'));
+            
+            if (selectedServices.length === 0) {
+                alert('Please select at least one service for your estimate.');
+                return;
+            }
+            
+            const requestData = {
+                patient: {
+                    firstName: formData.get('firstName'),
+                    lastName: formData.get('lastName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    dateOfBirth: formData.get('dateOfBirth')
+                },
+                requestDetails: {
+                    preferredDate: formData.get('preferredDate'),
+                    services: selectedServices,
+                    insuranceStatus: formData.get('insuranceStatus'),
+                    additionalInfo: formData.get('additionalInfo')
+                },
+                requestType: 'good-faith-estimate',
+                timestamp: new Date().toISOString()
+            };
+            
+            // Submit to server
+            fetch('/api/good-faith-estimate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Your Good Faith Estimate request has been submitted successfully. You will receive your estimate within 1-3 business days via email.');
+                event.target.reset();
+                // Clear selected services
+                document.querySelectorAll('.service-option.selected').forEach(option => {
+                    option.classList.remove('selected');
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request. Please try again or contact us directly at (480) 418-3678.');
+            });
+        }
+    </script>
+</body>
+</html>
