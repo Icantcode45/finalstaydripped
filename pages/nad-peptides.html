@@ -24,6 +24,8 @@
             --font-family: 'Inter', sans-serif;
             --max-width: 1200px;
             --section-padding: 80px 0;
+            --scientific-dark: #2c3e50;
+            --scientific-blue: #34495e;
         }
 
         * {
@@ -46,30 +48,74 @@
             padding: 0 20px;
         }
 
-        .page-header {
-            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-            padding: 120px 0 60px;
+        /* Scientific Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--scientific-dark) 0%, var(--scientific-blue) 100%);
+            padding: 160px 0 120px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .page-title {
-            font-size: clamp(36px, 5vw, 56px);
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(0, 102, 204, 0.3) 0%, transparent 50%), 
+                        radial-gradient(circle at 70% 30%, rgba(0, 184, 160, 0.2) 0%, transparent 50%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 6vw, 72px);
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--dark-slate);
+            margin-bottom: 24px;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .page-description {
-            font-size: 20px;
-            color: var(--medium-gray);
-            max-width: 600px;
+        .hero-subtitle {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
             margin: 0 auto 40px;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
             background: var(--primary-blue);
             color: var(--white);
-            padding: 16px 32px;
+            padding: 18px 36px;
             border: none;
             border-radius: 8px;
             font-weight: 600;
@@ -80,163 +126,438 @@
             align-items: center;
             gap: 8px;
             font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn:hover {
             background: #0052A3;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
         }
 
-        .services-section {
-            padding: var(--section-padding);
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--scientific-dark);
         }
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            padding: 40px 32px;
+        /* Products Section */
+        .products-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .section-header {
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.3);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-        }
-
-        .service-card p {
-            color: var(--medium-gray);
-            margin-bottom: 20px;
-        }
-
-        .price {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-        }
-
-        .features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .features li {
-            padding: 8px 0;
-            color: var(--medium-gray);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .features li:last-child {
-            border-bottom: none;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-size: clamp(32px, 4vw, 48px);
+            font-size: clamp(36px, 4vw, 48px);
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--dark-slate);
-            text-align: center;
         }
 
         .section-description {
             font-size: 18px;
             color: var(--medium-gray);
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--scientific-dark) 0%, var(--scientific-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-content {
+            padding: 32px;
+        }
+
+        .product-category {
+            color: var(--primary-blue);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .product-description {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .product-features li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .product-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-teal);
+            font-weight: 600;
+        }
+
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .product-btn {
+            padding: 12px 24px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .info-card {
             text-align: center;
+            padding: 40px 20px;
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .info-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .info-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="page-header">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
-            <h1 class="page-title">NAD+ & Peptides</h1>
-            <p class="page-description">Advanced anti-aging and cellular repair therapies for optimal health and longevity. Experience the cutting-edge of regenerative medicine.</p>
-            <a href="../pages/book-appointment.html" class="btn">Book Consultation</a>
+            <div class="hero-content">
+                <h1 class="hero-title">NAD+ & Peptide Therapy</h1>
+                <p class="hero-subtitle">Advanced formulations for longevity, cellular repair, and optimal health. Clinically-proven treatments delivered by licensed medical professionals.</p>
+                <div class="hero-cta">
+                    <a href="../pages/book-appointment.html" class="btn">Book Consultation</a>
+                    <a href="#products" class="btn btn-secondary">Browse Treatments</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <section class="services-section">
+    <!-- Products Section -->
+    <section id="products" class="products-section">
         <div class="container">
-            <h2 class="section-title">Advanced Longevity Therapies</h2>
-            <p class="section-description">Cutting-edge treatments designed to optimize cellular function, slow aging, and enhance overall vitality.</p>
+            <div class="section-header">
+                <h2 class="section-title">Advanced Longevity Treatments</h2>
+                <p class="section-description">Our premium NAD+ and peptide therapies are designed to optimize cellular function, enhance longevity, and support your body's natural regenerative processes.</p>
+            </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>NAD+ IV Therapy</h3>
-                    <div class="price">$400</div>
-                    <p>Restore cellular energy and slow the aging process with this powerful coenzyme therapy.</p>
-                    <ul class="features">
-                        <li>250mg-500mg NAD+</li>
-                        <li>Cellular energy restoration</li>
-                        <li>Anti-aging benefits</li>
-                        <li>Mental clarity enhancement</li>
-                        <li>3-4 hour treatment</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Most Popular</div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">NAD+ Therapy</div>
+                        <h3 class="product-title">NAD+ IV Infusion</h3>
+                        <p class="product-description">Restore cellular energy and enhance mental clarity with our premium NAD+ infusion therapy.</p>
+                        <ul class="product-features">
+                            <li>250mg-500mg NAD+ per session</li>
+                            <li>Cellular energy restoration</li>
+                            <li>Enhanced mental clarity</li>
+                            <li>Anti-aging benefits</li>
+                            <li>3-4 hour treatment time</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$400</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Peptide Therapy</h3>
-                    <div class="price">$350</div>
-                    <p>Targeted peptide treatments for specific health goals and regenerative benefits.</p>
-                    <ul class="features">
-                        <li>Custom peptide selection</li>
-                        <li>Growth hormone support</li>
-                        <li>Tissue repair enhancement</li>
-                        <li>Immune system boost</li>
-                        <li>Weekly injections</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <div class="product-category">Peptide Therapy</div>
+                        <h3 class="product-title">BPC-157 Healing Peptide</h3>
+                        <p class="product-description">Accelerate healing and tissue repair with this powerful regenerative peptide.</p>
+                        <ul class="product-features">
+                            <li>Enhanced tissue repair</li>
+                            <li>Gut health optimization</li>
+                            <li>Injury recovery support</li>
+                            <li>Anti-inflammatory properties</li>
+                            <li>Weekly injection protocol</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$350</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Anti-Aging Protocol</h3>
-                    <div class="price">$600</div>
-                    <p>Comprehensive anti-aging treatment combining NAD+ and selected peptides.</p>
-                    <ul class="features">
-                        <li>NAD+ IV therapy</li>
-                        <li>Anti-aging peptides</li>
-                        <li>Antioxidant complex</li>
-                        <li>Vitamin optimization</li>
-                        <li>4-5 hour treatment</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <div class="product-category">Growth Hormone</div>
+                        <h3 class="product-title">Ipamorelin + CJC-1295</h3>
+                        <p class="product-description">Optimize growth hormone production for improved body composition and recovery.</p>
+                        <ul class="product-features">
+                            <li>Natural GH stimulation</li>
+                            <li>Improved sleep quality</li>
+                            <li>Enhanced muscle recovery</li>
+                            <li>Fat loss support</li>
+                            <li>Daily injection protocol</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$450</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="service-card">
-                    <h3>Cellular Repair</h3>
-                    <div class="price">$500</div>
-                    <p>Advanced therapy focused on cellular regeneration and DNA repair mechanisms.</p>
-                    <ul class="features">
-                        <li>High-dose NAD+</li>
-                        <li>DNA repair peptides</li>
-                        <li>Mitochondrial support</li>
-                        <li>Oxidative stress reduction</li>
-                        <li>4-6 hour treatment</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Anti-Aging Protocol</div>
+                        <h3 class="product-title">Longevity Combo Therapy</h3>
+                        <p class="product-description">Comprehensive anti-aging treatment combining NAD+ with selected peptides.</p>
+                        <ul class="product-features">
+                            <li>NAD+ IV + Anti-aging peptides</li>
+                            <li>Cellular rejuvenation</li>
+                            <li>Cognitive enhancement</li>
+                            <li>Metabolic optimization</li>
+                            <li>4-6 hour treatment</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$750</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <div class="product-category">Cognitive Enhancement</div>
+                        <h3 class="product-title">Nootropic Peptide Stack</h3>
+                        <p class="product-description">Enhance cognitive function and mental performance with targeted peptides.</p>
+                        <ul class="product-features">
+                            <li>Enhanced focus & memory</li>
+                            <li>Neuroprotective benefits</li>
+                            <li>Mood stabilization</li>
+                            <li>Mental clarity boost</li>
+                            <li>Customized dosing</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$400</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image"></div>
+                    <div class="product-content">
+                        <div class="product-category">Cellular Repair</div>
+                        <h3 class="product-title">DNA Repair Protocol</h3>
+                        <p class="product-description">Advanced therapy focused on DNA repair and cellular regeneration.</p>
+                        <ul class="product-features">
+                            <li>High-dose NAD+ therapy</li>
+                            <li>DNA repair peptides</li>
+                            <li>Telomere support</li>
+                            <li>Oxidative stress reduction</li>
+                            <li>Extended infusion protocol</li>
+                        </ul>
+                        <div class="product-footer">
+                            <div class="product-price">$650</div>
+                            <a href="../pages/book-appointment.html" class="btn product-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Our NAD+ & Peptide Therapy?</h2>
+                <p class="section-description">We provide the highest quality treatments with medical supervision and personalized protocols.</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🧬</div>
+                    <h3>Medical Grade Quality</h3>
+                    <p>All our NAD+ and peptides are pharmaceutical grade, sourced from licensed compounding pharmacies and administered by medical professionals.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">👨‍⚕️</div>
+                    <h3>Licensed Medical Team</h3>
+                    <p>Our treatments are administered by licensed nurses and supervised by board-certified physicians specialized in regenerative medicine.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">🏠</div>
+                    <h3>Mobile Convenience</h3>
+                    <p>Receive your NAD+ and peptide treatments in the comfort of your home, office, or preferred location throughout Scottsdale.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">📊</div>
+                    <h3>Personalized Protocols</h3>
+                    <p>Each treatment plan is customized based on your health goals, medical history, and biomarker analysis for optimal results.</p>
                 </div>
             </div>
         </div>
