@@ -539,7 +539,149 @@
         }
 
         // Load navigation on page load
-        document.addEventListener('DOMContentLoaded', loadNavigation);
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadNavigation();
+
+        // Enhanced Animation System
+        function initializeEnhancedAnimations() {
+            // Enhanced scroll animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add a small delay for staggered animations
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animation elements
+            const animateElements = document.querySelectorAll(
+                '.animate-on-scroll, .animate-fade-left, .animate-fade-right, .animate-scale'
+            );
+            animateElements.forEach(el => animationObserver.observe(el));
+
+            // Enhanced hover effects for buttons
+            const enhancedButtons = document.querySelectorAll('.btn-enhanced, .btn');
+            enhancedButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(-1px) scale(0.98)';
+                });
+
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+            });
+
+            // Service card enhanced interactions
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.boxShadow = '0 25px 50px rgba(0, 102, 204, 0.15)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '';
+                });
+
+                // Add click ripple effect
+                card.addEventListener('click', function(e) {
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(0, 102, 204, 0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.width = ripple.style.height = '100px';
+                    ripple.style.marginLeft = ripple.style.marginTop = '-50px';
+
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Pulse animation controls
+            const pulseElements = document.querySelectorAll('.pulse-animation');
+            pulseElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    this.style.transform = 'scale(1.1)';
+                });
+
+                element.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                    this.style.transform = '';
+                });
+            });
+
+            // Smooth scrolling for internal links
+            const smoothLinks = document.querySelectorAll('a[href^="#"]');
+            smoothLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animations with stagger
+            const allCards = document.querySelectorAll('.service-card');
+            allCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.8s ease-out';
+
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 150));
+            });
+        }
+
+        // Add ripple animation keyframe dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize animations
+        initializeEnhancedAnimations();
+    });
+</script>
 </body>
 </html>
