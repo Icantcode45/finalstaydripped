@@ -440,6 +440,20 @@
 }
 
 @media (max-width: 768px) {
+    .top-bar {
+        padding: 4px 0;
+        font-size: 12px;
+    }
+
+    .top-bar-content {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .top-bar-right {
+        display: none;
+    }
+
     .nav-links {
         display: none;
     }
@@ -452,8 +466,21 @@
         display: flex;
     }
 
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
     .logo img {
         height: 40px;
+        width: auto;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
     }
 }
 
