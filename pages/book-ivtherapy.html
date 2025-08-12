@@ -1341,11 +1341,14 @@
                 activeWidget = widget;
 
                 // Make the card relative positioned for the dropdown
-                const card = button.closest('.service-card');
-                card.style.position = 'relative';
-
-                // Scroll to the card if needed
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (button) {
+                    const card = button.closest('.service-card');
+                    if (card) {
+                        card.style.position = 'relative';
+                        // Scroll to the card if needed
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
             }
         }
 
