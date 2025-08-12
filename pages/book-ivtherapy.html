@@ -1312,7 +1312,10 @@
         function showBookingWidget(button, serviceId) {
             // Hide any currently active widget first
             if (activeWidget) {
-                hideBookingWidget(activeWidget.querySelector('.close-widget'));
+                const closeBtn = activeWidget.querySelector('.widget-close');
+                if (closeBtn) {
+                    hideBookingWidget(closeBtn);
+                }
             }
 
             const widget = document.getElementById(`widget-${serviceId}`);
