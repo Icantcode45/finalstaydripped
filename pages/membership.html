@@ -314,6 +314,8 @@
             gap: 12px;
             color: var(--dark-slate);
             font-weight: 500;
+            transition: all 0.3s ease;
+            transform: translateX(0);
         }
 
         .plan-features li:last-child {
@@ -325,6 +327,22 @@
             color: var(--secondary-teal);
             font-weight: 700;
             font-size: 18px;
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .plan-card:hover .plan-features li {
+            transform: translateX(5px);
+        }
+
+        .plan-card:hover .plan-features li::before {
+            transform: scale(1.2) rotate(360deg);
+            color: var(--primary-blue);
+        }
+
+        .plan-features li:hover {
+            color: var(--primary-blue);
+            transform: translateX(10px) !important;
         }
 
         .btn {
