@@ -3750,28 +3750,32 @@
             // Initialize stats animation
             initializeStatsAnimation();
 
-            // Simple fade-in animation observer
-            function initializeSimpleAnimations() {
+            // Improved animation observer
+            function initializeAnimations() {
                 const observerOptions = {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
+                    threshold: 0.15,
+                    rootMargin: '0px 0px -30px 0px'
                 };
 
                 const animationObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
+                            entry.target.style.animationPlayState = 'running';
+                            entry.target.classList.add('animated');
                         }
                     });
                 }, observerOptions);
 
-                // Observe fade-in elements
-                const fadeElements = document.querySelectorAll('.fade-in');
-                fadeElements.forEach(el => animationObserver.observe(el));
+                // Observe animated elements
+                const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right');
+                animatedElements.forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                    animationObserver.observe(el);
+                });
             }
 
-            // Initialize simple animations
-            initializeSimpleAnimations();
+            // Initialize animations
+            initializeAnimations();
         });
 
     </script>
