@@ -536,28 +536,51 @@
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 32px;
+            margin-top: 48px;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 32px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            display: block;
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .stat-label {
-            color: var(--medium-gray);
-            font-size: 14px;
-            margin-top: 4px;
+        .stat-text {
+            font-size: clamp(18px, 2.5vw, 24px);
+            line-height: 1.4;
+            color: var(--dark-slate);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .stat-highlight {
+            font-weight: 800;
+            font-size: clamp(20px, 3vw, 28px);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .stat-orange {
+            background: linear-gradient(135deg, var(--accent-orange), #ff8c42);
+        }
+
+        .stat-blue {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+        }
+
+        .stat-teal {
+            background: linear-gradient(135deg, var(--secondary-teal), var(--soft-green));
         }
 
         .hero-image {
