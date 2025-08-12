@@ -1389,13 +1389,65 @@
             // Form submission
             document.getElementById('appointment-form').addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // Here you would typically send the form data to your booking system
-                alert('Thank you for your booking request! We will contact you shortly to confirm your appointment.');
-                
-                // For demo purposes, you could redirect to IntakeQ or your actual booking system
-                // window.location.href = 'https://Staydripped.intakeq.com/booking';
+
+                // Show payment demo with selected service details
+                showPaymentDemo();
             });
+
+            function showPaymentDemo() {
+                // Hide booking form
+                bookingForm.style.display = 'none';
+
+                // Create payment demo section
+                const paymentDemo = createPaymentDemo();
+
+                // Insert payment demo after service details
+                const servicesSection = document.querySelector('.services-section');
+                servicesSection.appendChild(paymentDemo);
+
+                // Scroll to payment demo
+                paymentDemo.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            function createPaymentDemo() {
+                const paymentContainer = document.createElement('div');
+                paymentContainer.className = 'payment-demo-section';
+                paymentContainer.innerHTML = `
+                    <div class="payment-container">
+                        <div class="success-icon">✓</div>
+                        <h2 class="payment-title">Payment Demo</h2>
+                        <p class="payment-description">
+                            This is a demo payment confirmation. Your booking request was successful!
+                        </p>
+
+                        <div class="payment-details">
+                            <div class="detail-row">
+                                <span>Treatment Selected:</span>
+                                <span id="demo-service-name">${selectedService || 'IV Drip Therapy'}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Service Fee:</span>
+                                <span id="demo-service-price">$${selectedPrice || 199}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Travel Fee:</span>
+                                <span>$25</span>
+                            </div>
+                            <div class="detail-row total-row">
+                                <span>Total Amount:</span>
+                                <span id="demo-total-price">$${(selectedPrice || 199) + 25}</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-actions">
+                            <a href="../index.html" class="btn btn-secondary">Return Home</a>
+                            <button onclick="resetForm()" class="btn btn-primary">Book Another</button>
+                        </div>
+                    </div>
+                `;
+
+                return paymentContainer;
+            }
         });
 
         function resetForm() {
