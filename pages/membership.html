@@ -696,7 +696,7 @@
             }
         }
 
-        // Simple fade-in animation observer
+        // Enhanced animation system for membership cards
         document.addEventListener('DOMContentLoaded', function() {
             const observerOptions = {
                 threshold: 0.1,
@@ -713,6 +713,91 @@
 
             const fadeElements = document.querySelectorAll('.fade-in');
             fadeElements.forEach(el => animationObserver.observe(el));
+
+            // Enhanced card interactions
+            const planCards = document.querySelectorAll('.plan-card');
+
+            planCards.forEach(card => {
+                // Add ripple effect on click
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('button')) return; // Don't add ripple if clicking button
+
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: radial-gradient(circle, rgba(0, 102, 204, 0.3), transparent);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.8s ease-out;
+                        pointer-events: none;
+                        z-index: 1;
+                    `;
+
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 800);
+                });
+
+                // Add magnetic effect
+                card.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    const strength = 5;
+                    const moveX = (x / rect.width) * strength;
+                    const moveY = (y / rect.height) * strength;
+
+                    this.style.transform = `translateY(-12px) scale(1.02) rotateX(${moveY}deg) rotateY(${moveX}deg)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+
+                // Staggered feature animation on hover
+                const features = card.querySelectorAll('.plan-features li');
+                card.addEventListener('mouseenter', function() {
+                    features.forEach((feature, index) => {
+                        setTimeout(() => {
+                            feature.style.transform = 'translateX(5px)';
+                        }, index * 50);
+                    });
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    features.forEach((feature) => {
+                        feature.style.transform = 'translateX(0)';
+                    });
+                });
+            });
+
+            // Add CSS animation for ripple effect
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+
+                .plan-card {
+                    perspective: 1000px;
+                }
+            `;
+            document.head.appendChild(style);
         });
 
         // Close dropdowns when clicking outside
