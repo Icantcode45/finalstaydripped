@@ -1137,7 +1137,7 @@
                     </p>
                     <div style="margin-bottom: 16px;">
                         <p style="margin-bottom: 8px;">📞 (602) 761-0492</p>
-                        <p style="margin-bottom: 8px;">✉️ info@staydrippediv.com</p>
+                        <p style="margin-bottom: 8px;">��️ info@staydrippediv.com</p>
                         <p>📍 Scottsdale, AZ</p>
                     </div>
                 </div>
@@ -1392,60 +1392,310 @@
             return intakeQMapping[serviceId] || 'staydripped';
         }
 
-        // Quick View Function
+        // Comprehensive IV Therapy Database
+        const ivTherapyDatabase = {
+            'rehydrate': {
+                name: 'Rehydrate IV Drip',
+                category: 'Hydration Therapy',
+                price: '$125',
+                duration: '30-45 minutes',
+                description: 'Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration. Perfect for combating dehydration from travel, exercise, or daily life.',
+                howItWorks: 'Delivers essential fluids and electrolytes directly into your bloodstream, bypassing the digestive system for immediate hydration and cellular restoration.',
+                ingredients: ['Normal Saline 1000ml', 'Essential Electrolytes', 'Rapid Hydration Formula'],
+                benefits: [
+                    'Immediate hydration',
+                    'Electrolyte balance restoration',
+                    'Energy restoration',
+                    'Improved cellular function',
+                    'Enhanced mental clarity',
+                    'Faster recovery from dehydration'
+                ],
+                idealFor: 'Dehydration, travel recovery, post-exercise, general wellness maintenance',
+                frequency: 'As needed or weekly for maintenance',
+                duration_info: '30-minute treatment',
+                sideEffects: 'Generally well-tolerated. Rare side effects may include mild discomfort at injection site or temporary metallic taste.',
+                contraindications: 'Pregnancy, certain medical conditions - consultation required'
+            },
+            'rehydrate-plus': {
+                name: 'Rehydrate Plus IV Drip',
+                category: 'Enhanced Hydration',
+                price: '$150',
+                duration: '45-60 minutes',
+                description: 'Enhanced hydration with vitamins and minerals for superior wellness support. Combines essential hydration with immune-boosting nutrients.',
+                howItWorks: 'Advanced formula that provides hydration plus essential vitamins and minerals to support overall wellness and immune function.',
+                ingredients: ['Normal Saline 1000ml', 'B-Complex Vitamins', 'Vitamin C', 'Magnesium', 'Enhanced Recovery Blend'],
+                benefits: [
+                    'Complete hydration',
+                    'Immune system support',
+                    'Enhanced recovery',
+                    'Vitamin replenishment',
+                    'Mineral balance',
+                    'Sustained energy boost'
+                ],
+                idealFor: 'Enhanced wellness, immune support, post-illness recovery, travel preparation',
+                frequency: 'Weekly or bi-weekly for optimal wellness',
+                duration_info: '45-minute treatment',
+                sideEffects: 'Well-tolerated. May cause temporary flushing or warmth during infusion.',
+                contraindications: 'Pregnancy, kidney disease, certain medications - medical consultation required'
+            },
+            'jr-myers': {
+                name: 'Jr. Myers\' Cocktail IV Drip',
+                category: 'Foundation Wellness',
+                price: '$175',
+                duration: '45-60 minutes',
+                description: 'Foundational nutrient blend for general wellness and immune support. A balanced combination of essential vitamins and minerals.',
+                howItWorks: 'Delivers a balanced blend of vitamins and minerals directly to cells, supporting energy production, immune function, and overall wellness.',
+                ingredients: ['Vitamin C 500mg', 'B-Complex Vitamins', 'Magnesium', 'Calcium', 'Immune Support Formula'],
+                benefits: [
+                    'Immune system boost',
+                    'Energy enhancement',
+                    'Stress reduction',
+                    'Nutrient replenishment',
+                    'Cellular health support',
+                    'Mood improvement'
+                ],
+                idealFor: 'General wellness, immune support, stress management, chronic fatigue',
+                frequency: 'Weekly to bi-weekly for maintenance',
+                duration_info: '45-minute treatment',
+                sideEffects: 'Generally safe. Rare side effects include temporary discomfort or slight nausea.',
+                contraindications: 'G6PD deficiency, certain kidney conditions - consultation required'
+            },
+            'myers': {
+                name: 'Myers\' Cocktail IV Drip',
+                category: 'Classic Wellness',
+                price: '$200',
+                duration: '60-75 minutes',
+                description: 'The classic Myers\' Cocktail with enhanced vitamin and mineral content for comprehensive wellness support.',
+                howItWorks: 'Original Myers\' formula providing optimal doses of vitamins and minerals for energy, immunity, and overall health.',
+                ingredients: ['Vitamin C 1000mg', 'B-Complex Vitamins', 'B12', 'Magnesium', 'Calcium', 'Zinc'],
+                benefits: [
+                    'Enhanced energy levels',
+                    'Immune system strengthening',
+                    'Stress and anxiety reduction',
+                    'Improved sleep quality',
+                    'Better concentration',
+                    'Overall wellness boost'
+                ],
+                idealFor: 'Chronic fatigue, stress, immune support, general health maintenance',
+                frequency: 'Weekly for therapeutic benefit, monthly for maintenance',
+                duration_info: '60-minute treatment',
+                sideEffects: 'Well-tolerated. May experience warmth or flushing during treatment.',
+                contraindications: 'Kidney disease, heart conditions - medical evaluation required'
+            },
+            'mega-myers': {
+                name: 'Mega Myers\' Cocktail IV Drip',
+                category: 'Premium Wellness',
+                price: '$225',
+                duration: '75-90 minutes',
+                description: 'Enhanced Myers\' Cocktail with maximum vitamin and mineral content for peak wellness and performance.',
+                howItWorks: 'High-dose vitamin and mineral therapy providing maximum therapeutic benefit for energy, immunity, and cellular health.',
+                ingredients: ['Vitamin C 2000mg', 'High-Dose B-Complex', 'B12', 'Magnesium', 'Calcium', 'Zinc', 'Glutathione'],
+                benefits: [
+                    'Maximum energy boost',
+                    'Superior immune support',
+                    'Enhanced mental clarity',
+                    'Stress resilience',
+                    'Cellular detoxification',
+                    'Peak performance support'
+                ],
+                idealFor: 'High-stress lifestyles, peak performance needs, chronic fatigue, immune challenges',
+                frequency: 'Weekly for intensive therapy, bi-weekly for maintenance',
+                duration_info: '75-minute treatment',
+                sideEffects: 'Generally safe. High-dose vitamins may cause temporary flushing or energy surge.',
+                contraindications: 'Kidney disease, certain heart conditions, medication interactions - consultation required'
+            }
+        };
+
+        // Enhanced Quick View Function
         function showQuickView(serviceId) {
-            const serviceNames = {
-                'rehydrate': 'Rehydrate IV Drip',
-                'rehydrate-plus': 'Rehydrate Plus IV Drip',
-                'jr-myers': 'Jr. Myers\' Cocktail IV Drip',
-                'myers': 'Myers\' Cocktail IV Drip',
-                'mega-myers': 'Mega Myers\' Cocktail IV Drip',
-                'hangover': 'Hangover Helper IV Drip',
-                'sun-devil': 'Sun Devil IV Drip',
-                'd-book': 'D-Book IV Drip',
-                'diamond-back': 'Diamond Back IV Drip',
-                'scottsdale': 'Scottsdale IV Drip',
-                'stress-relief': 'Stress Relief IV Drip',
-                'mental-clarity': 'Mental Clarity IV Drip',
-                'anti-inflammatory': 'Anti-Inflammatory IV Drip',
-                'stay-dripped-special': 'Stay Dripped Special IV Drip',
-                'gold': 'Gold IV Drip',
-                'platinum': 'Platinum IV Drip',
-                'arizona': 'Arizona IV Drip',
-                'metabolism': 'Metabolism Boost IV Drip',
-                'basic-nad': 'Basic NAD+ IV Therapy',
-                'fountain-youth': 'Fountain of Youth NAD+ IV',
-                'diamond-nad': 'Diamond NAD+ IV Therapy',
-                'elite-nad': 'Elite NAD+ IV Therapy'
-            };
+            const treatment = ivTherapyDatabase[serviceId];
+            if (!treatment) {
+                alert('Treatment information not available.');
+                return;
+            }
 
-            const serviceName = serviceNames[serviceId] || serviceId;
+            // Remove existing modal if present
+            const existingModal = document.querySelector('.iv-quick-view-modal');
+            if (existingModal) {
+                existingModal.remove();
+            }
 
-            // Create modal overlay
+            // Create comprehensive modal
             const modal = document.createElement('div');
-            modal.className = 'quick-view-modal';
+            modal.className = 'iv-quick-view-modal';
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Quick View - ${serviceName}</h3>
-                        <button class="modal-close" onclick="closeQuickView()">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Detailed information about ${serviceName} treatment:</p>
-                        <ul>
-                            <li>Professional mobile IV therapy service</li>
-                            <li>Licensed medical professionals</li>
-                            <li>Premium ingredients and vitamins</li>
-                            <li>Convenient in-home or office treatments</li>
-                            <li>Customized treatment plans available</li>
-                        </ul>
-                        <div class="modal-actions">
-                            <button class="btn btn-secondary" onclick="closeQuickView()">Close</button>
-                            <button class="btn" onclick="closeQuickView(); showBookingWidget(null, '${serviceId}');">Book Now</button>
+                <div class="quick-view-content">
+                    <button class="quick-view-close" onclick="closeQuickView()">&times;</button>
+                    <div class="quick-view-body">
+                        <div style="max-width: 700px; margin: 0 auto;">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <h2 style="color: var(--dark-slate); margin-bottom: 8px; font-size: 28px;">${treatment.name}</h2>
+                                <div style="background: var(--primary-blue); color: white; padding: 6px 16px; border-radius: 20px; display: inline-block; font-size: 14px; font-weight: 600;">${treatment.category}</div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                                <div style="background: var(--light-gray); padding: 20px; border-radius: 12px; text-align: center;">
+                                    <h4 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 18px;">Price</h4>
+                                    <p style="color: var(--dark-slate); font-size: 24px; font-weight: 700; margin: 0;">${treatment.price}</p>
+                                </div>
+                                <div style="background: var(--light-gray); padding: 20px; border-radius: 12px; text-align: center;">
+                                    <h4 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 18px;">Duration</h4>
+                                    <p style="color: var(--dark-slate); font-size: 16px; font-weight: 600; margin: 0;">${treatment.duration}</p>
+                                </div>
+                            </div>
+
+                            <div style="background: var(--warm-gray); padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+                                <h4 style="color: var(--dark-slate); margin-bottom: 15px; font-size: 18px;">Description</h4>
+                                <p style="color: var(--medium-gray); line-height: 1.7; margin-bottom: 20px;">${treatment.description}</p>
+
+                                <h5 style="color: var(--primary-blue); margin-bottom: 10px; font-size: 16px;">How It Works</h5>
+                                <p style="color: var(--medium-gray); line-height: 1.6; margin-bottom: 20px;">${treatment.howItWorks}</p>
+
+                                <h5 style="color: var(--primary-blue); margin-bottom: 10px; font-size: 16px;">Key Ingredients</h5>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px;">
+                                    ${treatment.ingredients.map(ingredient => `
+                                        <div style="background: var(--light-gray); padding: 8px 12px; border-radius: 6px; font-size: 14px; color: var(--dark-slate);">${ingredient}</div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div style="background: var(--light-gray); padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+                                <h4 style="color: var(--dark-slate); margin-bottom: 15px; font-size: 18px;">Key Benefits</h4>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                    ${treatment.benefits.map(benefit => `
+                                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                            <span style="color: var(--secondary-teal); margin-right: 8px; font-weight: bold;">✓</span>
+                                            <span style="color: var(--medium-gray); font-size: 14px;">${benefit}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div style="background: var(--warm-beige); padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                    <div>
+                                        <h5 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 14px;">Ideal For</h5>
+                                        <p style="color: var(--medium-gray); font-size: 14px; line-height: 1.5; margin: 0;">${treatment.idealFor}</p>
+                                    </div>
+                                    <div>
+                                        <h5 style="color: var(--primary-blue); margin-bottom: 8px; font-size: 14px;">Recommended Frequency</h5>
+                                        <p style="color: var(--medium-gray); font-size: 14px; line-height: 1.5; margin: 0;">${treatment.frequency}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #fef2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                                <h5 style="color: #dc2626; margin-bottom: 8px; font-size: 14px;">Side Effects & Considerations</h5>
+                                <p style="color: #991b1b; font-size: 13px; line-height: 1.5; margin-bottom: 8px;">${treatment.sideEffects}</p>
+                                <p style="color: #991b1b; font-size: 13px; line-height: 1.5; margin: 0;"><strong>Contraindications:</strong> ${treatment.contraindications}</p>
+                            </div>
+
+                            <div style="background: var(--dark-slate); color: white; padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                                <h4 style="color: white; margin-bottom: 15px; font-size: 16px;">Why Choose Mobile IV Therapy?</h4>
+                                <ul style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0; padding-left: 20px;">
+                                    <li>100% bioavailability - nutrients go directly into your bloodstream</li>
+                                    <li>Faster results compared to oral supplements</li>
+                                    <li>Professional administration in the comfort of your location</li>
+                                    <li>Customized treatments based on your specific needs</li>
+                                    <li>Licensed medical professionals ensure safety and efficacy</li>
+                                </ul>
+                            </div>
+
+                            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                                <button onclick="closeQuickView(); showBookingWidget(null, '${serviceId}');" class="btn" style="background: var(--primary-blue); color: white; padding: 15px 30px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer;">Book Treatment</button>
+                                <button onclick="closeQuickView();" class="btn btn-secondary" style="background: transparent; border: 2px solid var(--primary-blue); color: var(--primary-blue); padding: 13px 25px; border-radius: 8px; font-weight: 600; cursor: pointer;">Close</button>
+                                <a href="tel:+1-480-999-9999" class="btn" style="background: var(--secondary-teal); color: white; padding: 13px 25px; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-block;">Call to Consult</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
+
+            document.body.appendChild(modal);
+
+            // Add enhanced modal styles
+            if (!document.querySelector('#iv-quick-view-styles')) {
+                const styles = document.createElement('style');
+                styles.id = 'iv-quick-view-styles';
+                styles.textContent = `
+                    .iv-quick-view-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.85);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        animation: fadeIn 0.3s ease;
+                        padding: 20px;
+                        box-sizing: border-box;
+                    }
+
+                    .quick-view-content {
+                        background: white;
+                        border-radius: 16px;
+                        max-width: 900px;
+                        width: 100%;
+                        max-height: 90vh;
+                        overflow-y: auto;
+                        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+                        position: relative;
+                    }
+
+                    .quick-view-close {
+                        position: sticky;
+                        top: 0;
+                        right: 0;
+                        background: rgba(255, 255, 255, 0.95);
+                        border: none;
+                        font-size: 28px;
+                        cursor: pointer;
+                        color: #64748b;
+                        padding: 15px 20px;
+                        width: 60px;
+                        height: 60px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: auto;
+                        border-radius: 0 16px 0 12px;
+                        z-index: 10;
+                        backdrop-filter: blur(10px);
+                        transition: all 0.2s ease;
+                    }
+
+                    .quick-view-close:hover {
+                        background: rgba(239, 68, 68, 0.1);
+                        color: #ef4444;
+                    }
+
+                    .quick-view-body {
+                        padding: 0 30px 30px 30px;
+                        margin-top: -60px;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    @media (max-width: 768px) {
+                        .iv-quick-view-modal {
+                            padding: 10px;
+                        }
+                        .quick-view-body {
+                            padding: 0 20px 20px 20px;
+                        }
+                        .quick-view-close {
+                            width: 50px;
+                            height: 50px;
+                            font-size: 24px;
+                        }
+                    }
+                `;
+                document.head.appendChild(styles);
+            }
+        }
 
             document.body.appendChild(modal);
 
