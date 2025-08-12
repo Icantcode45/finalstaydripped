@@ -1306,20 +1306,41 @@
         });
 
         // IntakeQ Widget Functions
+        let activeWidget = null;
+        let widgetFrames = new Map();
+
         function showBookingWidget(button, serviceId) {
-            // Hide all other widgets first
-            document.querySelectorAll('.widget-dropdown').forEach(widget => {
-                widget.classList.remove('show');
-            });
-            
+            // Hide any currently active widget first
+            if (activeWidget) {
+                hideBookingWidget(activeWidget.querySelector('.close-widget'));
+            }
+
             const widget = document.getElementById(`widget-${serviceId}`);
             if (widget) {
+                // Check if iframe already exists to prevent duplicates
+                let iframe = widget.querySelector('iframe');
+                if (!iframe) {
+                    // Create iframe only when needed
+                    iframe = document.createElement('iframe');
+                    iframe.src = `https://intakeq.com/booking/${getIntakeQId(serviceId)}`;
+                    iframe.style.width = '100%';
+                    iframe.style.height = '600px';
+                    iframe.style.border = 'none';
+                    iframe.loading = 'lazy';
+
+                    const iframeContainer = widget.querySelector('.iframe-container');
+                    if (iframeContainer) {
+                        iframeContainer.appendChild(iframe);
+                    }
+                }
+
                 widget.classList.add('show');
-                
+                activeWidget = widget;
+
                 // Make the card relative positioned for the dropdown
                 const card = button.closest('.service-card');
                 card.style.position = 'relative';
-                
+
                 // Scroll to the card if needed
                 card.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
@@ -1329,12 +1350,151 @@
             const widget = closeBtn.closest('.widget-dropdown');
             if (widget) {
                 widget.classList.remove('show');
+                // Remove iframe to prevent multiple loading
+                const iframe = widget.querySelector('iframe');
+                if (iframe) {
+                    iframe.remove();
+                }
+                if (activeWidget === widget) {
+                    activeWidget = null;
+                }
             }
         }
 
-        // Quick View Function (placeholder)
-        function showQuickView(serviceId) {
-            alert('Quick View for ' + serviceId + ' - Feature coming soon!');
+        function getIntakeQId(serviceId) {
+            const intakeQMapping = {
+                'rehydrate': 'staydripped',
+                'energize': 'staydripped',
+                'immune-boost': 'staydripped',
+                'detox': 'staydripped',
+                'recovery': 'staydripped',
+                'beauty': 'staydripped',
+                'premium-hydration': 'staydripped',
+                'executive-energy': 'staydripped',
+                'immunity-plus': 'staydripped',
+                'ultimate-detox': 'staydripped',
+                'athletic-recovery': 'staydripped',
+                'anti-aging': 'staydripped',
+                'hangover-cure': 'staydripped',
+                'migraine-relief': 'staydripped',
+                'weight-loss': 'staydripped',
+                'fertility-support': 'staydripped',
+                'nad-therapy': 'staydripped'
+            };
+            return intakeQMapping[serviceId] || 'staydripped';
+        }
+
+        // Quick View Function
+        function showQuickView(serviceName) {
+            // Create modal overlay
+            const modal = document.createElement('div');
+            modal.className = 'quick-view-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Quick View - ${serviceName}</h3>
+                        <button class="modal-close" onclick="closeQuickView()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Detailed information about ${serviceName} treatment:</p>
+                        <ul>
+                            <li>Professional mobile IV therapy service</li>
+                            <li>Licensed medical professionals</li>
+                            <li>Premium ingredients and vitamins</li>
+                            <li>Convenient in-home or office treatments</li>
+                            <li>Customized treatment plans available</li>
+                        </ul>
+                        <div class="modal-actions">
+                            <button class="btn btn-secondary" onclick="closeQuickView()">Close</button>
+                            <button class="btn" onclick="closeQuickView(); document.querySelector('[onclick*=\\'${serviceName}\\']').click();">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Add modal styles if not exists
+            if (!document.querySelector('#quick-view-styles')) {
+                const styles = document.createElement('style');
+                styles.id = 'quick-view-styles';
+                styles.textContent = `
+                    .quick-view-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        animation: fadeIn 0.3s ease;
+                    }
+
+                    .modal-content {
+                        background: white;
+                        border-radius: 12px;
+                        max-width: 600px;
+                        width: 90%;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .modal-header {
+                        padding: 20px;
+                        border-bottom: 1px solid #e2e8f0;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+
+                    .modal-header h3 {
+                        margin: 0;
+                        color: var(--dark-slate);
+                    }
+
+                    .modal-close {
+                        background: none;
+                        border: none;
+                        font-size: 24px;
+                        cursor: pointer;
+                        color: #64748b;
+                        padding: 0;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .modal-body {
+                        padding: 20px;
+                    }
+
+                    .modal-actions {
+                        margin-top: 20px;
+                        display: flex;
+                        gap: 10px;
+                        justify-content: flex-end;
+                    }
+
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(styles);
+            }
+        }
+
+        function closeQuickView() {
+            const modal = document.querySelector('.quick-view-modal');
+            if (modal) {
+                modal.remove();
+            }
         }
 
         // Simple fade-in animation on scroll
