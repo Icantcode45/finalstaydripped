@@ -568,19 +568,48 @@
             font-size: clamp(20px, 3vw, 28px);
             background-clip: text;
             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             color: transparent;
+            display: inline-block;
         }
 
         .stat-orange {
             background: linear-gradient(135deg, var(--accent-orange), #ff8c42);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-blue {
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-teal {
             background: linear-gradient(135deg, var(--secondary-teal), var(--soft-green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fallback for browsers that don't support background-clip: text */
+        @supports not (-webkit-background-clip: text) {
+            .stat-orange {
+                color: var(--accent-orange);
+                background: none;
+            }
+
+            .stat-blue {
+                color: var(--primary-blue);
+                background: none;
+            }
+
+            .stat-teal {
+                color: var(--secondary-teal);
+                background: none;
+            }
         }
 
         .hero-image {
@@ -3238,7 +3267,7 @@
                             <h4>Cave Creek / Carefree</h4>
                             <p>📍 Cave Creek, Carefree, Fountain Hills</p>
                             <p>📞 (602) 761-0492</p>
-                            <p>��� Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
                         </div>
                     </div>
                 </div>
