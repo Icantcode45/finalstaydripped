@@ -5510,8 +5510,20 @@
             });
         }
 
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
+            loadNavigation();
             initializeAccessibility();
             initializeCategoryNavigation();
             updateCategoryCounters();
