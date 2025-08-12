@@ -1306,84 +1306,103 @@
             font-weight: 500;
         }
 
-        /* Trust/Logo Section */
-        .trust-section {
-            padding: 60px 0;
+        /* Partners Section */
+        .partners-section {
+            padding: 100px 0;
+            overflow: hidden;
             background: var(--light-gray);
         }
 
-        .trust-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .trust-badge {
-            display: inline-block;
-            background: var(--accent-orange);
-            color: var(--white);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .trust-title {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 700;
-            color: var(--dark-slate);
-            line-height: 1.2;
-        }
-
-        .trust-highlight {
-            color: var(--accent-orange);
-            position: relative;
-        }
-
-        .trust-highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-orange);
-            border-radius: 2px;
-        }
-
-        .trust-logos {
+        .partners-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 32px;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
-        .trust-logo {
+        .partners-intro {
+            max-width: 400px;
+        }
+
+        .partners-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .partners-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark-slate);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .partner-logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .trust-logo:hover {
+        .partner-logo:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.15);
+            border-color: rgba(0, 102, 204, 0.3);
         }
 
-        .trust-logo-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--dark-slate);
+        .logo-placeholder {
+            width: 80px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--medium-gray), var(--dark-slate));
             border-radius: 8px;
-            position: relative;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .partner-logo:hover .logo-placeholder {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .partners-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .partner-logo {
+                padding: 20px;
+            }
+
+            .logo-placeholder {
+                width: 60px;
+                height: 40px;
+            }
         }
 
         /* FAQ Section */
