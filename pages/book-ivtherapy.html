@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>IV Therapy Services | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Premium mobile IV therapy treatments in Scottsdale, AZ. Hydration, energy, immunity, detox, and custom vitamin infusions delivered to your location.">
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="canonical" href="https://staydrippediv.com/pages/book-ivtherapy.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IV Therapy Services | Stay Dripped IV & Wellness Co.">
+    <meta property="og:description" content="Premium mobile IV therapy treatments in Scottsdale, AZ. Hydration, energy, immunity, detox, and custom vitamin infusions delivered to your location.">
+    <meta property="og:url" content="https://staydrippediv.com/pages/book-ivtherapy.html">
+    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--warm-text);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Padding Fix */
+        .header-spacer {
+            height: 180px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-teal) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: var(--white);
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Treatment Cards */
+        .treatments-section {
+            padding: var(--section-padding);
+            background: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-slate);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .treatments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .treatment-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .treatment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .treatment-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .treatment-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-card:hover .treatment-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .treatment-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-slate);
+        }
+
+        .treatment-description {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .treatment-benefits {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .treatment-benefits li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--warm-text);
+            transition: all 0.3s ease;
+        }
+
+        .treatment-benefits li:hover {
+            transform: translateX(5px);
+            color: var(--primary-blue);
+        }
+
+        .treatment-benefits li::before {
+            content: '✓';
+            color: var(--soft-green);
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(139, 195, 74, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .treatment-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Interactive Features */
+        .floating-elements {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { animation-delay: 0s; }
+        .floating-element:nth-child(2) { animation-delay: 2s; }
+        .floating-element:nth-child(3) { animation-delay: 4s; }
+
+        /* Process Section */
+        .process-section {
+            padding: var(--section-padding);
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .process-step:hover .step-number::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-slate);
+        }
+
+        .step-description {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--section-padding);
+            background: linear-gradient(135deg, var(--dark-slate) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .treatments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <link rel="stylesheet" href="../shared/navigation.css">
+</head>
+<body>
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 10%; left: 10%; font-size: 2rem;">💧</div>
+        <div class="floating-element" style="top: 20%; right: 15%; font-size: 1.5rem;">✨</div>
+        <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 1.8rem;">💪</div>
+    </div>
+
+    <div id="navigation-placeholder"></div>
+    
+    <div class="header-spacer"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Premium IV Therapy Services</h1>
+                <p class="hero-subtitle">Professional mobile IV treatments delivered to your location in Scottsdale, AZ. Boost energy, enhance recovery, and optimize wellness.</p>
+                <div class="hero-cta">
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Treatment</a>
+                    <a href="#treatments" class="btn btn-secondary">View Treatments</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="treatments-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Our IV Therapy Treatments</h2>
+                <p class="section-subtitle">Choose from our comprehensive menu of IV therapy treatments, each designed to address specific wellness goals and optimize your health.</p>
+            </div>
+
+            <div class="treatments-grid">
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(0, 102, 204, 0.1); color: var(--primary-blue);">
+                        💧
+                    </div>
+                    <h3 class="treatment-title">Hydration Boost</h3>
+                    <p class="treatment-description">Rapid rehydration with essential electrolytes to combat dehydration and restore energy levels.</p>
+                    <ul class="treatment-benefits">
+                        <li>Immediate rehydration</li>
+                        <li>Electrolyte balance</li>
+                        <li>Enhanced energy</li>
+                        <li>Mental clarity</li>
+                    </ul>
+                    <div class="treatment-price">$125</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(0, 184, 160, 0.1); color: var(--secondary-teal);">
+                        ⚡
+                    </div>
+                    <h3 class="treatment-title">Energy & Performance</h3>
+                    <p class="treatment-description">B-complex vitamins and amino acids to boost energy, enhance performance, and accelerate recovery.</p>
+                    <ul class="treatment-benefits">
+                        <li>Increased energy levels</li>
+                        <li>Enhanced performance</li>
+                        <li>Faster recovery</li>
+                        <li>Improved metabolism</li>
+                    </ul>
+                    <div class="treatment-price">$175</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(139, 195, 74, 0.1); color: var(--soft-green);">
+                        🛡️
+                    </div>
+                    <h3 class="treatment-title">Immunity Support</h3>
+                    <p class="treatment-description">High-dose vitamin C, zinc, and antioxidants to strengthen your immune system and fight illness.</p>
+                    <ul class="treatment-benefits">
+                        <li>Immune system boost</li>
+                        <li>Antioxidant protection</li>
+                        <li>Illness prevention</li>
+                        <li>Faster healing</li>
+                    </ul>
+                    <div class="treatment-price">$150</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(255, 107, 53, 0.1); color: var(--accent-orange);">
+                        ✨
+                    </div>
+                    <h3 class="treatment-title">Beauty & Anti-Aging</h3>
+                    <p class="treatment-description">Glutathione, biotin, and collagen-supporting nutrients for radiant skin and anti-aging benefits.</p>
+                    <ul class="treatment-benefits">
+                        <li>Glowing skin</li>
+                        <li>Anti-aging effects</li>
+                        <li>Hair & nail health</li>
+                        <li>Cellular repair</li>
+                    </ul>
+                    <div class="treatment-price">$200</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(26, 43, 58, 0.1); color: var(--dark-slate);">
+                        🌿
+                    </div>
+                    <h3 class="treatment-title">Detox & Cleanse</h3>
+                    <p class="treatment-description">Comprehensive detoxification with glutathione and liver-supporting nutrients to eliminate toxins.</p>
+                    <ul class="treatment-benefits">
+                        <li>Liver detoxification</li>
+                        <li>Toxin elimination</li>
+                        <li>Mental clarity</li>
+                        <li>Digestive health</li>
+                    </ul>
+                    <div class="treatment-price">$225</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+
+                <div class="treatment-card animate-on-scroll">
+                    <div class="treatment-icon" style="background: rgba(0, 102, 204, 0.1); color: var(--primary-blue);">
+                        🧠
+                    </div>
+                    <h3 class="treatment-title">Mental Clarity & Focus</h3>
+                    <p class="treatment-description">NAD+ and nootropic nutrients to enhance cognitive function, memory, and mental performance.</p>
+                    <ul class="treatment-benefits">
+                        <li>Enhanced focus</li>
+                        <li>Improved memory</li>
+                        <li>Mental clarity</li>
+                        <li>Neuroprotection</li>
+                    </ul>
+                    <div class="treatment-price">$275</div>
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple, professional, and convenient IV therapy delivered to your location.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Book Online</h3>
+                    <p class="step-description">Choose your treatment and schedule an appointment at your preferred time and location.</p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">We Come to You</h3>
+                    <p class="step-description">Our licensed medical professional arrives at your location with all necessary equipment.</p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Consultation</h3>
+                    <p class="step-description">Brief health assessment and consultation to ensure the treatment is right for you.</p>
+                </div>
+
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Relax & Rejuvenate</h3>
+                    <p class="step-description">Sit back and relax while receiving your customized IV therapy treatment (30-45 minutes).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="cta-title">Ready to Feel Your Best?</h2>
+                <p class="cta-subtitle">Book your mobile IV therapy session today and experience the difference professional wellness treatments can make.</p>
+                <div class="hero-cta">
+                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Treatment</a>
+                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call (480) 999-9999</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Load Navigation
+        fetch('../shared/navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+                
+                // Initialize mobile menu toggle
+                const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                const navLinks = document.querySelector('.nav-links');
+                
+                if (mobileToggle && navLinks) {
+                    mobileToggle.addEventListener('click', function() {
+                        navLinks.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
+                }
+                
+                // Initialize dropdown functionality
+                const dropdowns = document.querySelectorAll('.nav-dropdown');
+                dropdowns.forEach(dropdown => {
+                    const link = dropdown.querySelector('.nav-link');
+                    const content = dropdown.querySelector('.dropdown-content');
+                    
+                    if (link && content) {
+                        dropdown.addEventListener('mouseenter', () => {
+                            content.style.display = 'block';
+                            setTimeout(() => content.classList.add('show'), 10);
+                        });
+                        
+                        dropdown.addEventListener('mouseleave', () => {
+                            content.classList.remove('show');
+                            setTimeout(() => content.style.display = 'none', 300);
+                        });
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading navigation:', error);
+            });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation class
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Interactive card hover effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.treatment-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+                
+                // Add click animation
+                card.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-8px) scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-8px) scale(1.02)';
+                    }, 150);
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', () => {
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            
+            anchors.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Add parallax effect to floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating-element');
+            
+            parallax.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add interactive button effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+                
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(0) scale(0.98)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-2px) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
