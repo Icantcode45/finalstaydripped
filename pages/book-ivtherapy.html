@@ -1350,6 +1350,8 @@
         }
 
         function hideBookingWidget(closeBtn) {
+            if (!closeBtn) return;
+
             const widget = closeBtn.closest('.widget-dropdown');
             if (widget) {
                 widget.classList.remove('show');
