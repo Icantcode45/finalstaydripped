@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const servicesDropdown = document.querySelector('.mobile-services-dropdown');
     const body = document.body;
 
+    // Ensure menu starts closed
+    if (mobileMenu) mobileMenu.classList.remove('active');
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+    body.style.overflow = '';
+
     // Open mobile menu
     function openMobileMenu() {
         mobileMenu.classList.add('active');
