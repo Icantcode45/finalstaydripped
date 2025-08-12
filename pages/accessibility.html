@@ -605,6 +605,20 @@
     </div>
 
     <script>
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
+        // Load navigation on page load
+        document.addEventListener('DOMContentLoaded', loadNavigation);
+
         function submitAccessibilityReport(event) {
             event.preventDefault();
             
