@@ -3177,25 +3177,41 @@
 
     </script>
 
-    <!-- Force close any open menus -->
+    <!-- Simple Mobile Navigation JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Force close any mobile menus that might be stuck open
-            const elements = document.querySelectorAll('.active, .open, .shown, .visible');
-            elements.forEach(el => {
-                el.classList.remove('active', 'open', 'shown', 'visible');
-            });
+        // Simple working mobile navigation
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                if (menu.classList.contains('show')) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+        }
 
-            // Hide any overlay elements
-            const overlays = document.querySelectorAll('.overlay, .modal, .popup, .mobile-menu, .dropdown-content');
-            overlays.forEach(el => {
-                el.style.display = 'none';
-                el.style.visibility = 'hidden';
-                el.style.opacity = '0';
-            });
+        function openMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                menu.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-            // Reset body overflow
-            document.body.style.overflow = '';
+        function closeMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                menu.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile nav when pressing escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileNav();
+            }
         });
     </script>
 
