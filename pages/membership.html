@@ -6,6 +6,7 @@
     <title>VIP Membership Plans | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Join our exclusive VIP membership program and save on premium IV therapy treatments in Phoenix Metro Area. Unlimited access to wellness services with special member pricing and priority booking.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -38,6 +39,7 @@
             line-height: 1.6;
             color: var(--dark-slate);
             background: var(--white);
+            padding-top: 180px;
         }
 
         .container {
@@ -46,11 +48,22 @@
             padding: 0 20px;
         }
 
+        /* Simple Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
         .page-header {
             background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-            padding: 180px 0 80px;
+            padding: 80px 0;
             text-align: center;
-            margin-top: 0;
         }
 
         .page-title {
@@ -98,22 +111,17 @@
         }
 
         .benefit-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            padding: 40px 32px;
+            background: var(--white);
+            padding: 40px 24px;
+            border-radius: 16px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .benefit-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.3);
-            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
         }
 
         .benefit-icon {
@@ -127,18 +135,19 @@
             margin: 0 auto 24px;
             font-size: 32px;
             color: var(--white);
+            font-weight: 700;
         }
 
         .benefit-card h3 {
             font-size: 24px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 16px;
             color: var(--dark-slate);
         }
 
         .benefit-card p {
             color: var(--medium-gray);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .membership-plans {
@@ -149,7 +158,7 @@
         .plans-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            gap: 32px;
             margin-top: 60px;
         }
 
@@ -157,47 +166,43 @@
             background: var(--white);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .plan-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 80px rgba(0, 102, 204, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
         }
 
         .plan-card.featured {
-            border: 3px solid var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
             transform: scale(1.05);
         }
 
         .plan-card.featured::before {
-            content: 'Most Popular';
+            content: 'MOST POPULAR';
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-blue);
+            top: 24px;
+            right: -32px;
+            background: var(--accent-orange);
             color: var(--white);
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 8px 40px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(45deg);
         }
 
         .plan-header {
-            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+            background: var(--warm-beige);
             padding: 40px 32px;
             text-align: center;
         }
 
         .plan-card.featured .plan-header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
-            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .plan-name {
@@ -300,87 +305,42 @@
         }
 
         .btn-featured:hover {
-            background: linear-gradient(135deg, #e55a2b, #ff8c42);
+            background: linear-gradient(135deg, #e55a2b, #ff7b2b);
         }
 
-        .faq-section {
-            padding: var(--section-padding);
-            background: var(--white);
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--white);
+        /* IntakeQ Widget Dropdown */
+        .widget-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        .faq-item:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        .widget-dropdown.show {
+            display: block;
         }
 
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .widget-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             background: none;
             border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-slate);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: var(--light-gray);
-        }
-
-        .faq-toggle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-
-        .faq-item.active .faq-toggle {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 24px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 0 24px 20px;
-        }
-
-        .faq-answer p {
+            font-size: 1.5rem;
+            cursor: pointer;
             color: var(--medium-gray);
-            line-height: 1.6;
         }
 
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .plans-grid {
                 grid-template-columns: 1fr;
@@ -389,19 +349,14 @@
             .plan-card.featured {
                 transform: none;
             }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <div id="navigation-placeholder"></div>
 
     <!-- Page Header -->
-    <div class="page-header">
+    <div class="page-header fade-in">
         <div class="container">
             <h1 class="page-title">VIP Membership Plans</h1>
             <p class="page-description">Join our exclusive membership program and save on premium IV therapy treatments. Enjoy priority booking, special pricing, and unlimited access to wellness services.</p>
@@ -415,25 +370,25 @@
             <p class="section-description">Experience the ultimate in convenience and savings with our VIP membership benefits designed for your wellness journey.</p>
             
             <div class="benefits-grid">
-                <div class="benefit-card">
+                <div class="benefit-card fade-in">
                     <div class="benefit-icon">$</div>
                     <h3>Significant Savings</h3>
                     <p>Save up to 40% on all treatments and services compared to individual pricing. The more you use, the more you save.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in">
                     <div class="benefit-icon">★</div>
                     <h3>Priority Booking</h3>
                     <p>Jump to the front of the line with priority scheduling. Same-day appointments available for members.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in">
                     <div class="benefit-icon">♦</div>
                     <h3>Personalized Care</h3>
                     <p>Dedicated wellness consultations and customized treatment plans tailored to your specific health goals.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in">
                     <div class="benefit-icon">♠</div>
                     <h3>Exclusive Access</h3>
                     <p>First access to new treatments, member-only events, and special promotions throughout the year.</p>
@@ -449,119 +404,114 @@
             <p class="section-description">Select the membership plan that best fits your wellness needs and lifestyle.</p>
             
             <div class="plans-grid">
-                <!-- Essential Plan -->
-                <div class="plan-card">
+                <!-- Shot Pass Plan -->
+                <div class="plan-card fade-in">
                     <div class="plan-header">
-                        <h3 class="plan-name">Essential</h3>
-                        <div class="plan-price">$149</div>
+                        <h3 class="plan-name">Shot Pass</h3>
+                        <div class="plan-price">$99</div>
                         <div class="plan-period">per month</div>
                     </div>
                     <div class="plan-content">
-                        <p class="plan-description">Perfect for those starting their wellness journey with regular IV therapy treatments.</p>
+                        <p class="plan-description">Perfect for those who want regular vitamin shots and energy boosts.</p>
                         <ul class="plan-features">
-                            <li>2 IV therapy sessions per month</li>
-                            <li>Choice of standard IV treatments</li>
+                            <li>4 vitamin injection shots per month</li>
+                            <li>Choice of B12, B-Complex, or Biotin</li>
                             <li>Priority booking</li>
-                            <li>15% off additional services</li>
+                            <li>10% off additional services</li>
                             <li>Free wellness consultation</li>
                             <li>Member support hotline</li>
                         </ul>
-                        <a href="../pages/unified-booking.html" class="btn">Join Essential</a>
+                        <button class="btn" onclick="showBookingWidget(this, 'shot-pass')" style="position: relative;">Join Shot Pass</button>
+                        <div class="widget-dropdown" id="widget-shot-pass">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="08549cfc-d53e-4841-9366-d63b9c22251a"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Premium Plan (Featured) -->
-                <div class="plan-card featured">
+                <!-- Wellness Explorer Plan (Featured) -->
+                <div class="plan-card featured fade-in">
                     <div class="plan-header">
-                        <h3 class="plan-name">Premium</h3>
-                        <div class="plan-price">$279</div>
+                        <h3 class="plan-name">Wellness Explorer</h3>
+                        <div class="plan-price">$199</div>
                         <div class="plan-period">per month</div>
                     </div>
                     <div class="plan-content">
                         <p class="plan-description">Our most popular plan offering comprehensive wellness support with maximum value.</p>
                         <ul class="plan-features">
-                            <li>4 IV therapy sessions per month</li>
-                            <li>All IV treatments included</li>
+                            <li>2 IV therapy sessions per month</li>
+                            <li>4 vitamin injection shots per month</li>
+                            <li>All standard IV treatments included</li>
                             <li>Priority booking & same-day service</li>
-                            <li>25% off additional services</li>
+                            <li>20% off additional services</li>
                             <li>Monthly wellness consultation</li>
-                            <li>Free vitamin injections (2 per month)</li>
                             <li>VIP member support</li>
                             <li>Exclusive member events</li>
                         </ul>
-                        <a href="../pages/unified-booking.html" class="btn btn-featured">Join Premium</a>
+                        <button class="btn btn-featured" onclick="showBookingWidget(this, 'wellness-explorer')" style="position: relative;">Join Wellness Explorer</button>
+                        <div class="widget-dropdown" id="widget-wellness-explorer">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="d7b705fd-04b7-4b2e-bda7-950417d6007d"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Elite Plan -->
-                <div class="plan-card">
+                <!-- Wellness Elite Plan -->
+                <div class="plan-card fade-in">
                     <div class="plan-header">
-                        <h3 class="plan-name">Elite</h3>
-                        <div class="plan-price">$499</div>
+                        <h3 class="plan-name">Wellness Elite</h3>
+                        <div class="plan-price">$349</div>
+                        <div class="plan-period">per month</div>
+                    </div>
+                    <div class="plan-content">
+                        <p class="plan-description">Elite wellness membership with premium treatments and concierge service.</p>
+                        <ul class="plan-features">
+                            <li>4 IV therapy sessions per month</li>
+                            <li>8 vitamin injection shots per month</li>
+                            <li>All premium treatments included</li>
+                            <li>VIP concierge booking service</li>
+                            <li>30% off all additional services</li>
+                            <li>Bi-weekly wellness consultations</li>
+                            <li>Personal wellness coordinator</li>
+                            <li>Exclusive events & retreats</li>
+                        </ul>
+                        <button class="btn" onclick="showBookingWidget(this, 'wellness-elite')" style="position: relative;">Join Wellness Elite</button>
+                        <div class="widget-dropdown" id="widget-wellness-elite">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="1421a50e-d0d0-475f-8713-74b0245bc83f"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Platinum Plan -->
+                <div class="plan-card fade-in">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Wellness Platinum</h3>
+                        <div class="plan-price">$599</div>
                         <div class="plan-period">per month</div>
                     </div>
                     <div class="plan-content">
                         <p class="plan-description">Ultimate wellness membership with unlimited access and premium concierge service.</p>
                         <ul class="plan-features">
                             <li>Unlimited IV therapy sessions</li>
+                            <li>Unlimited vitamin injections</li>
                             <li>All premium treatments included</li>
                             <li>VIP concierge booking service</li>
                             <li>40% off all additional services</li>
                             <li>Weekly wellness consultations</li>
-                            <li>Unlimited vitamin injections</li>
                             <li>Personal wellness coordinator</li>
                             <li>Exclusive events & retreats</li>
                             <li>24/7 emergency service</li>
                         </ul>
-                        <a href="../pages/unified-booking.html" class="btn">Join Elite</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        How does the membership billing work?
-                        <div class="faq-toggle">↓</div>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Memberships are billed monthly on the date you sign up. You can cancel anytime with 30 days notice. Unused sessions roll over for up to 3 months.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Can I change my membership plan?
-                        <div class="faq-toggle">↓</div>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! You can upgrade or downgrade your membership plan at any time. Changes take effect on your next billing cycle.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        What happens to unused sessions?
-                        <div class="faq-toggle">↓</div>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Unused sessions roll over for up to 3 months, giving you flexibility to use your treatments when you need them most.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Are there any additional fees?
-                        <div class="faq-toggle">↓</div>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No hidden fees! Your membership includes all listed services. Travel fees may apply for locations outside our standard service area.</p>
+                        <button class="btn" onclick="showBookingWidget(this, 'wellness-platinum')" style="position: relative;">Join Wellness Platinum</button>
+                        <div class="widget-dropdown" id="widget-wellness-platinum">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="23cd9dbe-9135-42eb-9d37-9281cffda0f8"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -569,57 +519,95 @@
     </section>
 
     <script>
-        // Load shared navigation
-        async function loadNavigation() {
-            try {
-                const response = await fetch('../shared/navigation.html');
-                const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
-            } catch (error) {
+        // Load Navigation
+        fetch('../shared/navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+                initializeNavigation();
+            })
+            .catch(error => {
                 console.error('Error loading navigation:', error);
+            });
+
+        function initializeNavigation() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
             }
-        }
-
-        // FAQ functionality
-        function toggleFaq(button) {
-            const faqItem = button.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const toggle = button.querySelector('.faq-toggle');
-
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
-                    const otherAnswer = item.querySelector('.faq-answer');
-                    const otherToggle = item.querySelector('.faq-toggle');
-                    if (otherAnswer) otherAnswer.style.maxHeight = '0px';
-                    if (otherToggle) otherToggle.textContent = '↓';
+            
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                const content = dropdown.querySelector('.dropdown-content');
+                
+                if (link && content) {
+                    dropdown.addEventListener('mouseenter', () => {
+                        content.style.display = 'block';
+                        setTimeout(() => content.classList.add('show'), 10);
+                    });
+                    
+                    dropdown.addEventListener('mouseleave', () => {
+                        content.classList.remove('show');
+                        setTimeout(() => content.style.display = 'none', 300);
+                    });
                 }
             });
+        }
 
-            // Toggle current FAQ item
-            faqItem.classList.toggle('active');
-
-            if (faqItem.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                toggle.textContent = '↑';
-            } else {
-                answer.style.maxHeight = '0px';
-                toggle.textContent = '↓';
+        // IntakeQ Widget Functions
+        function showBookingWidget(button, serviceId) {
+            document.querySelectorAll('.widget-dropdown').forEach(widget => {
+                widget.classList.remove('show');
+            });
+            
+            const widget = document.getElementById(`widget-${serviceId}`);
+            if (widget) {
+                widget.classList.add('show');
+                const card = button.closest('.plan-card');
+                card.style.position = 'relative';
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
 
-        // Initialize FAQ
-        function initializeFAQ() {
-            document.querySelectorAll('.faq-answer').forEach(answer => {
-                answer.style.maxHeight = '0px';
-            });
+        function hideBookingWidget(closeBtn) {
+            const widget = closeBtn.closest('.widget-dropdown');
+            if (widget) {
+                widget.classList.remove('show');
+            }
         }
 
-        // Load navigation and initialize on page load
+        // Simple fade-in animation observer
         document.addEventListener('DOMContentLoaded', function() {
-            loadNavigation();
-            initializeFAQ();
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => animationObserver.observe(el));
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.plan-card')) {
+                document.querySelectorAll('.widget-dropdown').forEach(widget => {
+                    widget.classList.remove('show');
+                });
+            }
         });
     </script>
 </body>
