@@ -3223,6 +3223,13 @@
                 closeMobileNav();
             }
         });
+
+        // Temporarily open mobile menu to test design
+        setTimeout(function() {
+            if (window.innerWidth <= 768) {
+                openMobileNav();
+            }
+        }, 1000);
     </script>
 
     <!-- Navigation JavaScript -->
