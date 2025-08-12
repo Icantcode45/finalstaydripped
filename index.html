@@ -1193,6 +1193,52 @@
             transform: translateX(0);
         }
 
+        .reviewer-photo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .reviewer-photo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-stars {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            font-style: italic;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reviewer-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 4px;
+        }
+
+        .reviewer-info p {
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
         .carousel-controls {
             display: flex;
             justify-content: center;
