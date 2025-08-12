@@ -454,37 +454,42 @@
         display: none;
     }
 
-    /* Force hide all desktop navigation on mobile */
-    .nav-links,
-    .nav-links li,
-    .nav-links a,
-    .nav-dropdown,
+    /* Emergency fix - completely hide everything except logo and hamburger */
+    .nav-links {
+        display: none !important;
+    }
+
+    .nav-actions {
+        display: none !important;
+    }
+
+    /* Hide all dropdown content */
     .dropdown-content,
-    .services-dropdown,
-    .nav-actions,
-    .nav-actions .btn {
+    .services-dropdown {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
         position: absolute !important;
+        top: -9999px !important;
         left: -9999px !important;
+        z-index: -1 !important;
+    }
+
+    /* Disable all hover effects on mobile */
+    .nav-dropdown:hover .dropdown-content {
+        display: none !important;
     }
 
     .mobile-menu-toggle {
         display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        left: auto !important;
     }
 
     .logo {
         display: flex !important;
         align-items: center;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        left: auto !important;
     }
 
     .logo img {
