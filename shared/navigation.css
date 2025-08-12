@@ -408,8 +408,19 @@
     display: none;
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--dark-slate);
+    transition: all 0.3s ease;
+    border-radius: 1px;
 }
 
 /* Mobile Menu Overlay */
