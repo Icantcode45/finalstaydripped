@@ -41,9 +41,18 @@ document.addEventListener('DOMContentLoaded', function() {
         servicesToggle.classList.toggle('active');
     }
 
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+        if (mobileMenu.classList.contains('active')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+
     // Event listeners
     if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
     }
 
     if (mobileMenuClose) {
