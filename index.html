@@ -3984,6 +3984,194 @@
 
             // Initialize stats animation
             initializeStatsAnimation();
+
+            // Enhanced Animation System
+            function initializeEnhancedAnimations() {
+                // Enhanced scroll animation observer
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const animationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            // Add a small delay for staggered animations
+                            setTimeout(() => {
+                                entry.target.classList.add('animated');
+                            }, index * 100);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all animation elements
+                const animateElements = document.querySelectorAll(
+                    '.animate-on-scroll, .animate-fade-left, .animate-fade-right, .animate-scale'
+                );
+                animateElements.forEach(el => animationObserver.observe(el));
+
+                // Enhanced hover effects for buttons
+                const enhancedButtons = document.querySelectorAll('.btn-enhanced');
+                enhancedButtons.forEach(button => {
+                    button.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-3px) scale(1.02)';
+                    });
+
+                    button.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                    });
+
+                    button.addEventListener('mousedown', function() {
+                        this.style.transform = 'translateY(-1px) scale(0.98)';
+                    });
+
+                    button.addEventListener('mouseup', function() {
+                        this.style.transform = 'translateY(-3px) scale(1.02)';
+                    });
+                });
+
+                // Service card hover effects
+                const serviceItems = document.querySelectorAll('.service-item');
+                serviceItems.forEach(item => {
+                    item.classList.add('hover-lift');
+
+                    item.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-10px)';
+                        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+                    });
+
+                    item.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = '';
+                    });
+                });
+
+                // Parallax effect for floating elements
+                window.addEventListener('scroll', () => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * -0.5;
+                    const floatingElements = document.querySelectorAll('.floating-element');
+
+                    floatingElements.forEach((element, index) => {
+                        const speed = 0.5 + (index * 0.1);
+                        element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+                    });
+                });
+
+                // Interactive stat cards
+                const statCards = document.querySelectorAll('.stat-card');
+                statCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px) scale(1.02)';
+                        this.style.boxShadow = '0 25px 50px rgba(0, 102, 204, 0.15)';
+                    });
+
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0) scale(1)';
+                        this.style.boxShadow = '';
+                    });
+                });
+
+                // Add pulse animation to important elements
+                const pulseElements = document.querySelectorAll('.pulse-animation');
+                pulseElements.forEach(element => {
+                    element.addEventListener('mouseenter', function() {
+                        this.style.animationPlayState = 'paused';
+                        this.style.transform = 'scale(1.1)';
+                    });
+
+                    element.addEventListener('mouseleave', function() {
+                        this.style.animationPlayState = 'running';
+                        this.style.transform = '';
+                    });
+                });
+
+                // Smooth reveal animations for sections
+                const sections = document.querySelectorAll('section');
+                sections.forEach((section, index) => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(30px)';
+                    section.style.transition = 'all 0.8s ease-out';
+
+                    setTimeout(() => {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+
+                // Interactive navigation enhancement
+                const navLinks = document.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => {
+                    link.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-2px)';
+                        this.style.transition = 'all 0.3s ease';
+                    });
+
+                    link.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+                });
+
+                // Enhanced card interactions
+                const cards = document.querySelectorAll('.service-card, .review-card');
+                cards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Add click ripple effect
+                        const ripple = document.createElement('div');
+                        ripple.style.position = 'absolute';
+                        ripple.style.borderRadius = '50%';
+                        ripple.style.background = 'rgba(0, 102, 204, 0.3)';
+                        ripple.style.transform = 'scale(0)';
+                        ripple.style.animation = 'ripple 0.6s linear';
+                        ripple.style.left = '50%';
+                        ripple.style.top = '50%';
+                        ripple.style.width = ripple.style.height = '100px';
+                        ripple.style.marginLeft = ripple.style.marginTop = '-50px';
+
+                        this.style.position = 'relative';
+                        this.appendChild(ripple);
+
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                    });
+                });
+
+                // Add ripple animation keyframe dynamically
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes ripple {
+                        to {
+                            transform: scale(4);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Loading animation for page elements
+            function initializeLoadingAnimations() {
+                const allElements = document.querySelectorAll('*');
+                allElements.forEach((element, index) => {
+                    if (element.children.length === 0 && element.textContent.trim()) {
+                        element.style.opacity = '0';
+                        element.style.transform = 'translateY(20px)';
+                        element.style.transition = 'all 0.6s ease-out';
+
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        }, Math.min(index * 50, 3000));
+                    }
+                });
+            }
+
+            // Initialize all enhanced animations
+            initializeEnhancedAnimations();
+
+            // Delay loading animations slightly to prevent conflict
+            setTimeout(initializeLoadingAnimations, 500);
         });
 
     </script>
