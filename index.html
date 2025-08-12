@@ -2220,52 +2220,22 @@
         </nav>
     </header>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay"></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <button class="mobile-menu-close" aria-label="Close mobile menu">&times;</button>
-
-        <ul class="mobile-nav-links">
-            <li><a href="#home">Home</a></li>
-            <li>
-                <a href="#" class="mobile-services-toggle">Services</a>
-                <div class="mobile-services-dropdown">
-                    <div class="mobile-dropdown-section">
-                        <h4>IV Therapy</h4>
-                        <a href="pages/book-ivtherapy.html">IV Therapy</a>
-                        <a href="pages/vitamin-injections.html">Vitamin Injections</a>
-                    </div>
-                    <div class="mobile-dropdown-section">
-                        <h4>Advanced Treatments</h4>
-                        <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
-                    </div>
-                    <div class="mobile-dropdown-section">
-                        <h4>Wellness Programs</h4>
-                        <a href="pages/weight-management.html">Weight Management</a>
-                        <a href="pages/sexual-wellness.html">Sexual Wellness</a>
-                    </div>
-                    <div class="mobile-dropdown-section">
-                        <h4>Additional Services</h4>
-                        <a href="pages/mobile-testing-kits.html">Mobile Testing</a>
-                        <a href="pages/telehealth-services.html">Telehealth</a>
-                    </div>
-                </div>
-            </li>
-            <li><a href="pages/first-time-patients.html">New Patients</a></li>
-            <li><a href="pages/membership.html">Membership</a></li>
-            <li><a href="#team">Our Team</a></li>
-            <li><a href="pages/book-appointment.html">Book Appointment</a></li>
-            <li><a href="pages/event-corporate-inquiry.html">Events</a></li>
-            <li><a href="pages/compliance.html">Compliance</a></li>
-            <li><a href="#contact">Contact</a></li>
+    <!-- Simple Mobile Navigation -->
+    <div id="mobileNavMenu" class="mobile-nav-menu">
+        <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
+        <ul class="mobile-nav-list">
+            <li><a href="#home" onclick="closeMobileNav()">Home</a></li>
+            <li><a href="pages/book-ivtherapy.html" onclick="closeMobileNav()">Book IV Therapy</a></li>
+            <li><a href="pages/vitamin-injections.html" onclick="closeMobileNav()">Vitamin Injections</a></li>
+            <li><a href="pages/nad-peptides.html" onclick="closeMobileNav()">NAD+ & Peptides</a></li>
+            <li><a href="pages/weight-management.html" onclick="closeMobileNav()">Weight Management</a></li>
+            <li><a href="pages/first-time-patients.html" onclick="closeMobileNav()">New Patients</a></li>
+            <li><a href="pages/membership.html" onclick="closeMobileNav()">Membership</a></li>
+            <li><a href="#team" onclick="closeMobileNav()">Our Team</a></li>
+            <li><a href="#contact" onclick="closeMobileNav()">Contact</a></li>
+            <li><a href="tel:+1-480-999-9999" onclick="closeMobileNav()">Call (480) 999-9999</a></li>
+            <li><a href="pages/book-appointment.html" onclick="closeMobileNav()" style="color: var(--primary-blue); font-weight: 700;">Book Appointment</a></li>
         </ul>
-
-        <div class="mobile-nav-actions">
-            <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call Now</a>
-            <a href="pages/book-appointment.html" class="btn btn-primary">Book Appointment</a>
-        </div>
     </div>
 
     <!-- Hero Section -->
