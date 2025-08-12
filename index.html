@@ -3207,6 +3207,28 @@
 
     </script>
 
+    <!-- Force close any open menus -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force close any mobile menus that might be stuck open
+            const elements = document.querySelectorAll('.active, .open, .shown, .visible');
+            elements.forEach(el => {
+                el.classList.remove('active', 'open', 'shown', 'visible');
+            });
+
+            // Hide any overlay elements
+            const overlays = document.querySelectorAll('.overlay, .modal, .popup, .mobile-menu, .dropdown-content');
+            overlays.forEach(el => {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.opacity = '0';
+            });
+
+            // Reset body overflow
+            document.body.style.overflow = '';
+        });
+    </script>
+
     <!-- Navigation JavaScript -->
     <script src="shared/navigation.js"></script>
 
