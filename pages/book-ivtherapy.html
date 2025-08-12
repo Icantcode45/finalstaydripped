@@ -19,6 +19,7 @@
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
     
     <style>
         :root {
@@ -51,7 +52,7 @@
             line-height: 1.6;
             color: var(--warm-text);
             background-color: var(--white);
-            overflow-x: hidden;
+            padding-top: 180px;
         }
 
         .container {
@@ -60,118 +61,53 @@
             padding: 0 20px;
         }
 
-        /* Header Padding Fix */
-        .header-spacer {
-            height: 180px;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .animate-on-scroll {
+        /* Simple Animation Classes */
+        .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            animation: fadeIn 0.6s ease-out forwards;
         }
 
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
-        /* Hero Section */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section with NAD background image */
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-teal) 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2Fd3f6c7f7f0c44c8bb32e9a3d8b8c7f9e?alt=media') center/cover;
             padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-content {
-            text-align: center;
             color: var(--white);
-            position: relative;
-            z-index: 2;
+            text-align: center;
         }
 
         .hero-title {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out;
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
             margin-bottom: 2rem;
             opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .hero-cta {
-            display: inline-flex;
+            display: flex;
             gap: 1rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* Button Styles */
@@ -182,57 +118,36 @@
             padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
         }
 
         .btn-primary {
             background: var(--accent-orange);
             color: var(--white);
-            transform: translateY(0);
         }
 
         .btn-primary:hover {
             background: #e55a2b;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
             color: var(--white);
             border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
         }
 
-        /* Treatment Cards */
-        .treatments-section {
+        /* Category Navigation */
+        .services-section {
             padding: var(--section-padding);
             background: var(--light-gray);
         }
@@ -256,25 +171,93 @@
             margin: 0 auto;
         }
 
-        .treatments-grid {
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--medium-gray);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Category Sections */
+        .category-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .category-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        /* Service Cards */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .treatment-card {
+        .service-card {
             background: var(--white);
             border-radius: 16px;
             padding: 2rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
-        .treatment-card::before {
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -286,207 +269,134 @@
             transition: transform 0.3s ease;
         }
 
-        .treatment-card:hover::before {
+        .service-card:hover::before {
             transform: scaleX(1);
         }
 
-        .treatment-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        .service-badge {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
 
-        .treatment-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .treatment-card:hover .treatment-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .treatment-title {
+        .service-title {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark-slate);
         }
 
-        .treatment-description {
+        .service-description {
             color: var(--medium-gray);
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
-        .treatment-benefits {
+        .service-features {
             list-style: none;
             margin-bottom: 1.5rem;
         }
 
-        .treatment-benefits li {
+        .service-features li {
             padding: 0.5rem 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             color: var(--warm-text);
-            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            padding-left: 20px;
         }
 
-        .treatment-benefits li:hover {
-            transform: translateX(5px);
-            color: var(--primary-blue);
-        }
-
-        .treatment-benefits li::before {
+        .service-features li:before {
             content: '✓';
-            color: var(--soft-green);
-            font-weight: bold;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(139, 195, 74, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
+            position: absolute;
+            left: 0;
+            color: var(--secondary-teal);
+            font-weight: 600;
         }
 
-        .treatment-price {
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .service-price {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-blue);
-            margin-bottom: 1rem;
         }
 
-        /* Interactive Features */
-        .floating-elements {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) { animation-delay: 0s; }
-        .floating-element:nth-child(2) { animation-delay: 2s; }
-        .floating-element:nth-child(3) { animation-delay: 4s; }
-
-        /* Process Section */
-        .process-section {
-            padding: var(--section-padding);
-            background: var(--white);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
-            color: var(--white);
+        .service-actions {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            gap: 0.5rem;
+            flex-direction: column;
         }
 
-        .step-number::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
+        .btn-book {
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
         }
 
-        .process-step:hover .step-number::before {
-            width: 100px;
-            height: 100px;
+        .btn-book:hover {
+            background: #0052A3;
         }
 
-        .process-step:hover .step-number {
-            transform: scale(1.1);
-        }
-
-        .step-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--dark-slate);
-        }
-
-        .step-description {
+        .btn-info {
+            background: transparent;
             color: var(--medium-gray);
-            line-height: 1.6;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: var(--section-padding);
-            background: linear-gradient(135deg, var(--dark-slate) 0%, var(--primary-blue) 100%);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .btn-info:hover {
+            background: var(--light-gray);
         }
 
-        .cta-section::before {
-            content: '';
+        /* IntakeQ Widget Dropdown */
+        .widget-dropdown {
+            display: none;
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 10s ease-in-out infinite;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem;
+            max-height: 500px;
+            overflow-y: auto;
         }
 
-        .cta-content {
-            position: relative;
-            z-index: 2;
+        .widget-dropdown.show {
+            display: block;
         }
 
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .cta-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .widget-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--medium-gray);
         }
 
         /* Mobile Responsive */
@@ -500,327 +410,620 @@
                 align-items: center;
             }
             
-            .treatments-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .process-steps {
-                grid-template-columns: 1fr;
+            .category-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-actions {
+                flex-direction: column;
             }
         }
-
-        /* Loading Animation */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
-    <link rel="stylesheet" href="../shared/navigation.css">
 </head>
 <body>
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-spinner"></div>
-    </div>
-
-    <div class="floating-elements">
-        <div class="floating-element" style="top: 10%; left: 10%; font-size: 2rem;">💧</div>
-        <div class="floating-element" style="top: 20%; right: 15%; font-size: 1.5rem;">✨</div>
-        <div class="floating-element" style="bottom: 30%; left: 20%; font-size: 1.8rem;">💪</div>
-    </div>
-
     <div id="navigation-placeholder"></div>
-    
-    <div class="header-spacer"></div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section fade-in">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Premium IV Therapy Services</h1>
-                <p class="hero-subtitle">Professional mobile IV treatments delivered to your location in Scottsdale, AZ. Boost energy, enhance recovery, and optimize wellness.</p>
-                <div class="hero-cta">
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Treatment</a>
-                    <a href="#treatments" class="btn btn-secondary">View Treatments</a>
-                </div>
+            <h1 class="hero-title">Premium IV Therapy Services</h1>
+            <p class="hero-subtitle">Professional mobile IV treatments delivered to your location in Scottsdale, AZ</p>
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary">View Services</a>
+                <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call (480) 999-9999</a>
             </div>
         </div>
     </section>
 
-    <!-- Treatments Section -->
-    <section id="treatments" class="treatments-section">
+    <!-- Services Section -->
+    <section id="services" class="services-section">
         <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">Our IV Therapy Treatments</h2>
-                <p class="section-subtitle">Choose from our comprehensive menu of IV therapy treatments, each designed to address specific wellness goals and optimize your health.</p>
+            <div class="section-header fade-in">
+                <h2 class="section-title">Our IV Therapy Menu</h2>
+                <p class="section-subtitle">Choose from our comprehensive selection of IV therapy treatments, each designed to address specific wellness goals.</p>
             </div>
 
-            <div class="treatments-grid">
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(0, 102, 204, 0.1); color: var(--primary-blue);">
-                        💧
-                    </div>
-                    <h3 class="treatment-title">Hydration Boost</h3>
-                    <p class="treatment-description">Rapid rehydration with essential electrolytes to combat dehydration and restore energy levels.</p>
-                    <ul class="treatment-benefits">
-                        <li>Immediate rehydration</li>
-                        <li>Electrolyte balance</li>
-                        <li>Enhanced energy</li>
-                        <li>Mental clarity</li>
-                    </ul>
-                    <div class="treatment-price">$125</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(0, 184, 160, 0.1); color: var(--secondary-teal);">
-                        ⚡
-                    </div>
-                    <h3 class="treatment-title">Energy & Performance</h3>
-                    <p class="treatment-description">B-complex vitamins and amino acids to boost energy, enhance performance, and accelerate recovery.</p>
-                    <ul class="treatment-benefits">
-                        <li>Increased energy levels</li>
-                        <li>Enhanced performance</li>
-                        <li>Faster recovery</li>
-                        <li>Improved metabolism</li>
-                    </ul>
-                    <div class="treatment-price">$175</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(139, 195, 74, 0.1); color: var(--soft-green);">
-                        🛡️
-                    </div>
-                    <h3 class="treatment-title">Immunity Support</h3>
-                    <p class="treatment-description">High-dose vitamin C, zinc, and antioxidants to strengthen your immune system and fight illness.</p>
-                    <ul class="treatment-benefits">
-                        <li>Immune system boost</li>
-                        <li>Antioxidant protection</li>
-                        <li>Illness prevention</li>
-                        <li>Faster healing</li>
-                    </ul>
-                    <div class="treatment-price">$150</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(255, 107, 53, 0.1); color: var(--accent-orange);">
-                        ✨
-                    </div>
-                    <h3 class="treatment-title">Beauty & Anti-Aging</h3>
-                    <p class="treatment-description">Glutathione, biotin, and collagen-supporting nutrients for radiant skin and anti-aging benefits.</p>
-                    <ul class="treatment-benefits">
-                        <li>Glowing skin</li>
-                        <li>Anti-aging effects</li>
-                        <li>Hair & nail health</li>
-                        <li>Cellular repair</li>
-                    </ul>
-                    <div class="treatment-price">$200</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(26, 43, 58, 0.1); color: var(--dark-slate);">
-                        🌿
-                    </div>
-                    <h3 class="treatment-title">Detox & Cleanse</h3>
-                    <p class="treatment-description">Comprehensive detoxification with glutathione and liver-supporting nutrients to eliminate toxins.</p>
-                    <ul class="treatment-benefits">
-                        <li>Liver detoxification</li>
-                        <li>Toxin elimination</li>
-                        <li>Mental clarity</li>
-                        <li>Digestive health</li>
-                    </ul>
-                    <div class="treatment-price">$225</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="treatment-card animate-on-scroll">
-                    <div class="treatment-icon" style="background: rgba(0, 102, 204, 0.1); color: var(--primary-blue);">
-                        🧠
-                    </div>
-                    <h3 class="treatment-title">Mental Clarity & Focus</h3>
-                    <p class="treatment-description">NAD+ and nootropic nutrients to enhance cognitive function, memory, and mental performance.</p>
-                    <ul class="treatment-benefits">
-                        <li>Enhanced focus</li>
-                        <li>Improved memory</li>
-                        <li>Mental clarity</li>
-                        <li>Neuroprotection</li>
-                    </ul>
-                    <div class="treatment-price">$275</div>
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Simple, professional, and convenient IV therapy delivered to your location.</p>
+            <!-- Category Navigation -->
+            <div class="category-nav fade-in">
+                <button class="category-btn active" data-category="basic">Basic IV Therapy</button>
+                <button class="category-btn" data-category="standard">Standard IV Therapy</button>
+                <button class="category-btn" data-category="specialty">Specialty IV Therapy</button>
+                <button class="category-btn" data-category="premium">Premium IV Therapy</button>
+                <button class="category-btn" data-category="nad">NAD+ IV Therapy</button>
             </div>
 
-            <div class="process-steps">
-                <div class="process-step animate-on-scroll">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Book Online</h3>
-                    <p class="step-description">Choose your treatment and schedule an appointment at your preferred time and location.</p>
-                </div>
+            <!-- Basic IV Therapy Category -->
+            <div class="category-section active" data-category="basic">
+                <h3 class="category-title">Basic IV Therapy Treatments</h3>
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Most Popular</div>
+                        <h4 class="service-title">Rehydrate IV Drip</h4>
+                        <p class="service-description">Basic hydration therapy with essential electrolytes for rapid rehydration and energy restoration.</p>
+                        <ul class="service-features">
+                            <li>Normal Saline 1000ml</li>
+                            <li>Essential Electrolytes</li>
+                            <li>Rapid Hydration</li>
+                            <li>Energy Restoration</li>
+                            <li>30-minute treatment</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$125</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'rehydrate')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('rehydrate')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-rehydrate">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="73e00621-4069-486a-9fa8-a5a94a089618"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
 
-                <div class="process-step animate-on-scroll">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">We Come to You</h3>
-                    <p class="step-description">Our licensed medical professional arrives at your location with all necessary equipment.</p>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Consultation</h3>
-                    <p class="step-description">Brief health assessment and consultation to ensure the treatment is right for you.</p>
-                </div>
-
-                <div class="process-step animate-on-scroll">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Relax & Rejuvenate</h3>
-                    <p class="step-description">Sit back and relax while receiving your customized IV therapy treatment (30-45 minutes).</p>
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">Rehydrate Plus IV Drip</h4>
+                        <p class="service-description">Enhanced hydration with vitamins and minerals for superior wellness support.</p>
+                        <ul class="service-features">
+                            <li>Normal Saline 1000ml</li>
+                            <li>B-Complex Vitamins</li>
+                            <li>Vitamin C</li>
+                            <li>Magnesium</li>
+                            <li>Enhanced Recovery</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$150</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'rehydrate-plus')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('rehydrate-plus')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-rehydrate-plus">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="ae66ce7c-fa68-408c-9ab0-a04b287f6b31"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content animate-on-scroll">
-                <h2 class="cta-title">Ready to Feel Your Best?</h2>
-                <p class="cta-subtitle">Book your mobile IV therapy session today and experience the difference professional wellness treatments can make.</p>
-                <div class="hero-cta">
-                    <a href="../pages/unified-booking.html" class="btn btn-primary">Book Treatment</a>
-                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call (480) 999-9999</a>
+            <!-- Standard IV Therapy Category -->
+            <div class="category-section" data-category="standard">
+                <h3 class="category-title">Standard IV Therapy Treatments</h3>
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Recommended</div>
+                        <h4 class="service-title">Jr. Myers' Cocktail IV Drip</h4>
+                        <p class="service-description">Foundational nutrient blend for general wellness and immune support.</p>
+                        <ul class="service-features">
+                            <li>Vitamin C 500mg</li>
+                            <li>B-Complex Vitamins</li>
+                            <li>Magnesium</li>
+                            <li>Calcium</li>
+                            <li>Immune Support</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$175</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'jr-myers')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('jr-myers')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-jr-myers">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="065ab682-3334-403a-9635-ea461e520a6d"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">Myers' Cocktail IV Drip</h4>
+                        <p class="service-description">The classic Myers' formula for comprehensive nutrient support and wellness optimization.</p>
+                        <ul class="service-features">
+                            <li>Vitamin C 1000mg</li>
+                            <li>B-Complex Vitamins</li>
+                            <li>B12 1000mcg</li>
+                            <li>Magnesium</li>
+                            <li>Comprehensive Wellness</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$200</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'myers')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('myers')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-myers">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="c13f904a-a8d0-43b1-bd5f-570387ee77d6"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">Mega Myers' Cocktail IV Drip</h4>
+                        <p class="service-description">Maximum strength Myers' formula for intensive wellness support and recovery.</p>
+                        <ul class="service-features">
+                            <li>High-Dose Vitamin C</li>
+                            <li>B-Complex + B12</li>
+                            <li>Magnesium + Calcium</li>
+                            <li>Zinc + Selenium</li>
+                            <li>Maximum Potency</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$250</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'mega-myers')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('mega-myers')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-mega-myers">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="e14cdb17-a9d1-47cb-90e1-d3050059bcf3"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Hangover Relief</div>
+                        <h4 class="service-title">The Day After Hangover Relief IV Drip</h4>
+                        <p class="service-description">Rapid recovery from hangovers with targeted hydration and detoxification support.</p>
+                        <ul class="service-features">
+                            <li>Rapid Rehydration</li>
+                            <li>Anti-Nausea Medication</li>
+                            <li>B-Vitamins</li>
+                            <li>Electrolyte Balance</li>
+                            <li>Fast Relief</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$175</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'hangover')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('hangover')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-hangover">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="a7d83ea1-cf5e-4865-923e-bfe2232de898"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialty IV Therapy Category -->
+            <div class="category-section" data-category="specialty">
+                <h3 class="category-title">Specialty IV Therapy Treatments</h3>
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Performance</div>
+                        <h4 class="service-title">The "Sun Devil" Energy Booster IV Drip</h4>
+                        <p class="service-description">High-energy formula designed for peak performance and endurance.</p>
+                        <ul class="service-features">
+                            <li>Energy B-Vitamins</li>
+                            <li>Amino Acids</li>
+                            <li>Magnesium</li>
+                            <li>Performance Enhancers</li>
+                            <li>Endurance Support</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$225</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'sun-devil')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('sun-devil')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-sun-devil">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="65854196-73a1-4e68-a6c5-15cc88a5e346"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">The "D-Book" Performance Booster IV Drip</h4>
+                        <p class="service-description">Elite athletic performance formula for professional-level optimization.</p>
+                        <ul class="service-features">
+                            <li>Athletic Performance Blend</li>
+                            <li>Recovery Amino Acids</li>
+                            <li>Electrolyte Optimization</li>
+                            <li>Muscle Recovery</li>
+                            <li>Peak Performance</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$275</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'd-book')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('d-book')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-d-book">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="351c5cac-f576-418f-80d1-b8d6c0a1614f"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Immunity</div>
+                        <h4 class="service-title">The "Diamond-Back" Immune Booster IV Drip</h4>
+                        <p class="service-description">Powerful immune system support with high-dose vitamins and antioxidants.</p>
+                        <ul class="service-features">
+                            <li>High-Dose Vitamin C</li>
+                            <li>Zinc + Selenium</li>
+                            <li>Immune Boosters</li>
+                            <li>Antioxidant Protection</li>
+                            <li>Cold & Flu Defense</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$200</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'diamond-back')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('diamond-back')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-diamond-back">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="d2f9830e-765d-4f50-89b4-b8ed1d9dc16c"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Beauty</div>
+                        <h4 class="service-title">The "Scottsdale" Beauty IV Bag</h4>
+                        <p class="service-description">Beauty and anti-aging formula for radiant skin and enhanced vitality.</p>
+                        <ul class="service-features">
+                            <li>Glutathione (Master Antioxidant)</li>
+                            <li>Biotin for Hair & Nails</li>
+                            <li>Vitamin C for Collagen</li>
+                            <li>Beauty Vitamins</li>
+                            <li>Anti-Aging Support</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$250</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'scottsdale')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('scottsdale')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-scottsdale">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="68503856-7b7c-487a-ac80-9f6e4aabcb08"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium IV Therapy Category -->
+            <div class="category-section" data-category="premium">
+                <h3 class="category-title">Premium IV Therapy Treatments</h3>
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Premium</div>
+                        <h4 class="service-title">The "Gold" Ultimate Hydration & Recovery IV Drip</h4>
+                        <p class="service-description">Premium hydration and recovery formula with advanced nutrient blend.</p>
+                        <ul class="service-features">
+                            <li>Advanced Hydration Formula</li>
+                            <li>Recovery Amino Acids</li>
+                            <li>Premium Vitamins</li>
+                            <li>Electrolyte Optimization</li>
+                            <li>Ultimate Recovery</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$300</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'gold')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('gold')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-gold">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="3519d39a-31ac-4944-80c9-4eb667a13df4"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Platinum</div>
+                        <h4 class="service-title">The "Platinum" Ultimate Hydration & Recovery IV Drip</h4>
+                        <p class="service-description">Our flagship treatment with the most comprehensive nutrient profile available.</p>
+                        <ul class="service-features">
+                            <li>Platinum Formula</li>
+                            <li>Maximum Dose Vitamins</li>
+                            <li>Premium Amino Acids</li>
+                            <li>Elite Recovery Blend</li>
+                            <li>Ultimate Wellness</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$350</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'platinum')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('platinum')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-platinum">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="0c0c56b7-85a4-4e01-9b9c-180bc714fa94"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">The "Arizona" Detox & Cleanse IV Drip</h4>
+                        <p class="service-description">Comprehensive detoxification and liver support for optimal cleansing.</p>
+                        <ul class="service-features">
+                            <li>Liver Detox Support</li>
+                            <li>Glutathione (Master Detoxifier)</li>
+                            <li>B-Complex for Metabolism</li>
+                            <li>Antioxidant Protection</li>
+                            <li>Cellular Cleansing</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$275</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'arizona')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('arizona')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-arizona">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="3fb4cbbb-5e12-447c-a236-869573ef730f"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAD+ IV Therapy Category -->
+            <div class="category-section" data-category="nad">
+                <h3 class="category-title">NAD+ IV Therapy Treatments</h3>
+                <div class="services-grid">
+                    <div class="service-card card-hover">
+                        <h4 class="service-title">The Basic NAD+ IV Drip</h4>
+                        <p class="service-description">Introduction to NAD+ therapy for cellular repair and anti-aging benefits.</p>
+                        <ul class="service-features">
+                            <li>NAD+ 250mg</li>
+                            <li>Cellular Repair</li>
+                            <li>Energy Production</li>
+                            <li>Anti-Aging Support</li>
+                            <li>Cognitive Enhancement</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$450</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'basic-nad')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('basic-nad')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-basic-nad">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="7c8dcca4-35b4-44bd-a242-d1fdc722ddb5"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Anti-Aging</div>
+                        <h4 class="service-title">The "Fountain of Youth" NAD+ IV Drip</h4>
+                        <p class="service-description">Enhanced NAD+ therapy for comprehensive anti-aging and longevity support.</p>
+                        <ul class="service-features">
+                            <li>NAD+ 500mg</li>
+                            <li>Advanced Anti-Aging</li>
+                            <li>Longevity Support</li>
+                            <li>Cellular Regeneration</li>
+                            <li>Mental Clarity</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$650</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'fountain-youth')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('fountain-youth')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-fountain-youth">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="73bbd812-1b77-4e60-a92e-35b64af58379"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Premium NAD+</div>
+                        <h4 class="service-title">The "Diamond" NAD+ IV Drip</h4>
+                        <p class="service-description">High-dose NAD+ therapy for maximum cellular optimization and performance.</p>
+                        <ul class="service-features">
+                            <li>NAD+ 750mg</li>
+                            <li>Maximum Cellular Repair</li>
+                            <li>Peak Performance</li>
+                            <li>Cognitive Enhancement</li>
+                            <li>Ultimate Anti-Aging</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$850</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'diamond-nad')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('diamond-nad')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-diamond-nad">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="1a0e76e3-7548-4039-a737-efe993bfdbfd"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="service-card card-hover">
+                        <div class="service-badge">Elite NAD+</div>
+                        <h4 class="service-title">The "Elite" NAD+ IV Drip</h4>
+                        <p class="service-description">Our most advanced NAD+ therapy for elite performance and longevity.</p>
+                        <ul class="service-features">
+                            <li>NAD+ 1000mg</li>
+                            <li>Elite Performance</li>
+                            <li>Maximum Longevity</li>
+                            <li>Neuroplasticity</li>
+                            <li>Cellular Optimization</li>
+                        </ul>
+                        <div class="service-footer">
+                            <div class="service-price">$1,200</div>
+                            <div class="service-actions">
+                                <button class="btn btn-book" onclick="showBookingWidget(this, 'elite-nad')">Book Now</button>
+                                <button class="btn btn-info" onclick="showQuickView('elite-nad')">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="widget-dropdown" id="widget-elite-nad">
+                            <button class="widget-close" onclick="hideBookingWidget(this)">&times;</button>
+                            <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqServiceId="1af0f33f-361e-42db-8a06-a87f653a5cb1"; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
+                            <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <script>
-        // Page Loader
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('pageLoader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
-
         // Load Navigation
         fetch('../shared/navigation.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navigation-placeholder').innerHTML = data;
-                
-                // Initialize mobile menu toggle
-                const mobileToggle = document.querySelector('.mobile-menu-toggle');
-                const navLinks = document.querySelector('.nav-links');
-                
-                if (mobileToggle && navLinks) {
-                    mobileToggle.addEventListener('click', function() {
-                        navLinks.classList.toggle('active');
-                        this.classList.toggle('active');
-                    });
-                }
-                
-                // Initialize dropdown functionality
-                const dropdowns = document.querySelectorAll('.nav-dropdown');
-                dropdowns.forEach(dropdown => {
-                    const link = dropdown.querySelector('.nav-link');
-                    const content = dropdown.querySelector('.dropdown-content');
-                    
-                    if (link && content) {
-                        dropdown.addEventListener('mouseenter', () => {
-                            content.style.display = 'block';
-                            setTimeout(() => content.classList.add('show'), 10);
-                        });
-                        
-                        dropdown.addEventListener('mouseleave', () => {
-                            content.classList.remove('show');
-                            setTimeout(() => content.style.display = 'none', 300);
-                        });
-                    }
-                });
+                initializeNavigation();
             })
             .catch(error => {
                 console.error('Error loading navigation:', error);
             });
 
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
+        function initializeNavigation() {
+            // Initialize mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            // Initialize dropdown functionality
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                const content = dropdown.querySelector('.dropdown-content');
+                
+                if (link && content) {
+                    dropdown.addEventListener('mouseenter', () => {
+                        content.style.display = 'block';
+                        setTimeout(() => content.classList.add('show'), 10);
+                    });
+                    
+                    dropdown.addEventListener('mouseleave', () => {
+                        content.classList.remove('show');
+                        setTimeout(() => content.style.display = 'none', 300);
+                    });
                 }
             });
-        }, observerOptions);
+        }
 
-        // Observe all elements with animation class
-        document.addEventListener('DOMContentLoaded', () => {
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            animateElements.forEach(el => observer.observe(el));
-        });
-
-        // Interactive card hover effects
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.treatment-card');
+        // Category Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
             
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-                
-                // Add click animation
-                card.addEventListener('click', function() {
-                    this.style.transform = 'translateY(-8px) scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = 'translateY(-8px) scale(1.02)';
-                    }, 150);
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    categorySections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.getAttribute('data-category') === category) {
+                            section.classList.add('active');
+                        }
+                    });
                 });
             });
         });
+
+        // IntakeQ Widget Functions
+        function showBookingWidget(button, serviceId) {
+            // Hide all other widgets first
+            document.querySelectorAll('.widget-dropdown').forEach(widget => {
+                widget.classList.remove('show');
+            });
+            
+            const widget = document.getElementById(`widget-${serviceId}`);
+            if (widget) {
+                widget.classList.add('show');
+                
+                // Make the card relative positioned for the dropdown
+                const card = button.closest('.service-card');
+                card.style.position = 'relative';
+                
+                // Scroll to the card if needed
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function hideBookingWidget(closeBtn) {
+            const widget = closeBtn.closest('.widget-dropdown');
+            if (widget) {
+                widget.classList.remove('show');
+            }
+        }
+
+        // Quick View Function (placeholder)
+        function showQuickView(serviceId) {
+            alert('Quick View for ' + serviceId + ' - Feature coming soon!');
+        }
+
+        // Simple fade-in animation on scroll
+        function observeElements() {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            });
+            
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', observeElements);
 
         // Smooth scrolling for anchor links
         document.addEventListener('DOMContentLoaded', () => {
@@ -840,38 +1043,13 @@
             });
         });
 
-        // Add parallax effect to floating elements
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelectorAll('.floating-element');
-            
-            parallax.forEach((element, index) => {
-                const speed = 0.5 + (index * 0.1);
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-
-        // Add interactive button effects
-        document.addEventListener('DOMContentLoaded', () => {
-            const buttons = document.querySelectorAll('.btn');
-            
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.service-card')) {
+                document.querySelectorAll('.widget-dropdown').forEach(widget => {
+                    widget.classList.remove('show');
                 });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-                
-                button.addEventListener('mousedown', function() {
-                    this.style.transform = 'translateY(0) scale(0.98)';
-                });
-                
-                button.addEventListener('mouseup', function() {
-                    this.style.transform = 'translateY(-2px) scale(1)';
-                });
-            });
+            }
         });
     </script>
 </body>
