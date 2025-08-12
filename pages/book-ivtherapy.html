@@ -1390,7 +1390,34 @@
         }
 
         // Quick View Function
-        function showQuickView(serviceName) {
+        function showQuickView(serviceId) {
+            const serviceNames = {
+                'rehydrate': 'Rehydrate IV Drip',
+                'rehydrate-plus': 'Rehydrate Plus IV Drip',
+                'jr-myers': 'Jr. Myers\' Cocktail IV Drip',
+                'myers': 'Myers\' Cocktail IV Drip',
+                'mega-myers': 'Mega Myers\' Cocktail IV Drip',
+                'hangover': 'Hangover Helper IV Drip',
+                'sun-devil': 'Sun Devil IV Drip',
+                'd-book': 'D-Book IV Drip',
+                'diamond-back': 'Diamond Back IV Drip',
+                'scottsdale': 'Scottsdale IV Drip',
+                'stress-relief': 'Stress Relief IV Drip',
+                'mental-clarity': 'Mental Clarity IV Drip',
+                'anti-inflammatory': 'Anti-Inflammatory IV Drip',
+                'stay-dripped-special': 'Stay Dripped Special IV Drip',
+                'gold': 'Gold IV Drip',
+                'platinum': 'Platinum IV Drip',
+                'arizona': 'Arizona IV Drip',
+                'metabolism': 'Metabolism Boost IV Drip',
+                'basic-nad': 'Basic NAD+ IV Therapy',
+                'fountain-youth': 'Fountain of Youth NAD+ IV',
+                'diamond-nad': 'Diamond NAD+ IV Therapy',
+                'elite-nad': 'Elite NAD+ IV Therapy'
+            };
+
+            const serviceName = serviceNames[serviceId] || serviceId;
+
             // Create modal overlay
             const modal = document.createElement('div');
             modal.className = 'quick-view-modal';
@@ -1411,7 +1438,7 @@
                         </ul>
                         <div class="modal-actions">
                             <button class="btn btn-secondary" onclick="closeQuickView()">Close</button>
-                            <button class="btn" onclick="closeQuickView(); document.querySelector('[onclick*=\\'${serviceName}\\']').click();">Book Now</button>
+                            <button class="btn" onclick="closeQuickView(); showBookingWidget(null, '${serviceId}');">Book Now</button>
                         </div>
                     </div>
                 </div>
