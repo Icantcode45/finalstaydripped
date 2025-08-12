@@ -585,6 +585,8 @@
 
     .top-bar-content {
         gap: 12px;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .header {
