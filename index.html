@@ -3534,22 +3534,20 @@
         }
 
         function updateRatingDisplay() {
-            // Calculate average rating
-            const totalRating = reviewsData.reduce((sum, review) => sum + review.rating, 0);
-            const averageRating = (totalRating / reviewsData.length).toFixed(1);
-            const reviewCount = reviewsData.length;
+            // Display actual Google Reviews stats - 51+ total reviews with 5.0 average
+            const averageRating = '5.0';
+            const actualReviewCount = '51';
 
             // Update rating display
             const ratingStars = document.getElementById('overallRating');
             const ratingText = document.getElementById('ratingText');
 
             if (ratingStars) {
-                const starCount = Math.round(averageRating);
-                ratingStars.textContent = '⭐'.repeat(starCount);
+                ratingStars.textContent = '⭐⭐⭐⭐⭐';
             }
 
             if (ratingText) {
-                ratingText.textContent = `${averageRating} out of 5 stars from ${reviewCount}+ reviews`;
+                ratingText.textContent = `${averageRating} out of 5 stars from ${actualReviewCount}+ reviews`;
             }
         }
 
