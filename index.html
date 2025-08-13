@@ -3559,7 +3559,7 @@
                             <h4>Phoenix Metro Service Area</h4>
                             <p>📍 Greater Phoenix, Scottsdale, Paradise Valley, Tempe, Chandler</p>
                             <p>📞 (602) 761-0492</p>
-                            <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
+                            <p>�� Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
                         </div>
                         <div class="location-item">
                             <h4>Cave Creek / Carefree</h4>
@@ -3757,9 +3757,13 @@
 
             renderReviews();
             setupCarouselControls();
-            setupCarouselEvents();
             updateRatingDisplay();
-            startAutoAdvance();
+
+            // Set up events and auto-advance after a brief delay to ensure DOM is ready
+            setTimeout(() => {
+                setupCarouselEvents();
+                startAutoAdvance();
+            }, 100);
         }
 
         function renderReviews() {
