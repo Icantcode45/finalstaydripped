@@ -1499,6 +1499,92 @@
             });
         });
 
+        // Dropdown Functions
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            const content = dropdown.querySelector('.dropdown-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+
+            // Close other dropdowns
+            document.querySelectorAll('.custom-dropdown').forEach(d => {
+                if (d.id !== dropdownId) {
+                    d.querySelector('.dropdown-content').style.display = 'none';
+                }
+            });
+        }
+
+        function selectDropdownItem(dropdownId, text, value) {
+            const dropdown = document.getElementById(dropdownId);
+            const trigger = dropdown.querySelector('.dropdown-text');
+            const content = dropdown.querySelector('.dropdown-content');
+
+            trigger.textContent = text;
+            content.style.display = 'none';
+
+            // Update selected state
+            dropdown.querySelectorAll('.dropdown-item').forEach(item => item.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            // Apply filter
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.querySelector('#categoryFilter .dropdown-text').textContent;
+            const priceFilter = document.querySelector('#priceFilter .dropdown-text').textContent;
+
+            const services = document.querySelectorAll('.service-card');
+
+            services.forEach(service => {
+                let show = true;
+
+                // Category filter
+                if (categoryFilter !== 'All Categories') {
+                    const serviceCategory = service.getAttribute('data-category');
+                    const filterValue = categoryFilter.toLowerCase().replace(' ', '-');
+                    if (serviceCategory !== filterValue) {
+                        show = false;
+                    }
+                }
+
+                service.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        // Category navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter services
+                    const category = this.getAttribute('data-category');
+                    const services = document.querySelectorAll('.service-card');
+
+                    services.forEach(service => {
+                        if (category === 'all' || service.getAttribute('data-category') === category) {
+                            service.style.display = 'block';
+                        } else {
+                            service.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.custom-dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                }
+            });
+        });
+
         // IntakeQ Widget Functions
         let activeWidget = null;
         let widgetFrames = new Map();
