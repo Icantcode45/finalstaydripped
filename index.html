@@ -1844,8 +1844,8 @@
 
         /* Newsletter Section */
         .newsletter-section {
-            padding: 120px 0;
-            background: linear-gradient(135deg, var(--dark-slate) 0%, #0f1a24 100%);
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--warm-beige) 0%, var(--light-gray) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1857,8 +1857,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(0, 102, 204, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 30%, rgba(0, 184, 160, 0.2) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 70%, rgba(0, 102, 204, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(0, 184, 160, 0.06) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -1867,7 +1867,7 @@
             z-index: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 40px;
             align-items: center;
         }
 
@@ -1876,29 +1876,29 @@
         }
 
         .newsletter-title {
-            font-size: clamp(36px, 5vw, 48px);
+            font-size: clamp(24px, 4vw, 32px);
             font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--white);
+            margin-bottom: 12px;
+            color: var(--dark-slate);
         }
 
         .newsletter-description {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 32px;
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-bottom: 20px;
             line-height: 1.6;
         }
 
         .newsletter-form {
             display: flex;
             gap: 0;
-            margin-bottom: 16px;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
+            margin-bottom: 12px;
+            max-width: 320px;
+            background: var(--white);
+            border-radius: 25px;
             padding: 4px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.1);
+            border: 2px solid var(--border-color);
         }
 
         .email-input-container {
@@ -1907,17 +1907,17 @@
 
         .newsletter-email {
             width: 100%;
-            padding: 16px 24px;
+            padding: 12px 18px;
             background: transparent;
             border: none;
-            border-radius: 50px;
-            color: var(--white);
+            border-radius: 25px;
+            color: var(--dark-slate);
             font-size: 14px;
             outline: none;
         }
 
         .newsletter-email::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--medium-gray);
         }
 
         .submit-btn-container {
@@ -1926,12 +1926,12 @@
 
         .newsletter-btn {
             position: relative;
-            background: linear-gradient(135deg, var(--secondary-teal), var(--soft-green));
-            color: var(--dark-slate);
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
             font-size: 14px;
             cursor: pointer;
             overflow: hidden;
@@ -1944,7 +1944,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--white);
+            background: var(--secondary-teal);
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
@@ -1959,8 +1959,8 @@
         }
 
         .newsletter-disclaimer {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            color: var(--medium-gray);
         }
 
         .stat-cards {
@@ -1970,49 +1970,46 @@
         }
 
         .newsletter-stat-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--white);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 32px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 16px;
             text-align: center;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.08);
         }
 
         .newsletter-stat-card:hover {
             transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: var(--white);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.15);
         }
 
         .stat-number {
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(20px, 4vw, 36px);
             font-weight: 800;
-            color: var(--white);
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--secondary-teal), var(--soft-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-blue);
+            margin-bottom: 6px;
         }
 
         .stat-label {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
+            color: var(--dark-slate);
+            margin-bottom: 6px;
         }
 
         .stat-description {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            color: var(--medium-gray);
             line-height: 1.4;
         }
 
         @media (max-width: 768px) {
             .newsletter-content {
                 grid-template-columns: 1fr;
-                gap: 48px;
+                gap: 24px;
                 text-align: center;
             }
 
