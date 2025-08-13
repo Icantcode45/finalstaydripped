@@ -4210,21 +4210,22 @@
 
     <!-- Cookie Consent Banner -->
     <div class="cookie-consent-banner" id="cookieConsent">
-        <div class="cookie-content">
-            <div class="cookie-pointer"></div>
-            <div class="cookie-info">
-                <div class="cookie-text">
-                    <h3 class="cookie-title">Cookie Policy</h3>
-                    <p class="cookie-description">By clicking "Accept", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and improve our marketing efforts.</p>
-                </div>
-                <div class="cookie-actions">
-                    <a href="../pages/terms-of-use.html" class="cookie-more-btn">
-                        <span>More</span>
-                        <svg class="cookie-arrow" width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M26.0851 7.66792L19.398 14.355L18.5621 13.5192L24.242 7.83927L0.590432 7.84345L0.590431 6.66485L24.242 6.66067L18.98 1.39873L19.8159 0.562843L26.0851 6.83202C26.3159 7.06286 26.3159 7.43708 26.0851 7.66792Z" fill="currentColor"/>
-                        </svg>
-                    </a>
-                    <button class="cookie-accept-btn" onclick="acceptCookies()">Accept</button>
+        <div class="cookie-content-wrapper">
+            <button class="cookie-close-btn" onclick="acceptCookies()" aria-label="Close">
+                <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 6.45616L7.42929 6.38545L1.96352 0.919676C1.96351 0.919673 1.96351 0.919669 1.96351 0.919666C1.75876 0.714984 1.4811 0.6 1.19159 0.6C0.902079 0.6 0.624425 0.71498 0.419676 0.919655C0.419669 0.919662 0.419662 0.919669 0.419655 0.919676M7.5 6.45616L0.419655 0.919676M7.5 6.45616L7.57071 6.38545M7.5 6.45616L7.57071 6.38545M0.419655 0.919676C0.21498 1.12442 0.1 1.40208 0.1 1.69159C0.1 1.9811 0.214984 2.25876 0.419666 2.46351M0.419655 0.919676L0.419666 2.46351M0.419666 2.46351C0.419669 2.46351 0.419673 2.46351 0.419676 2.46352M0.419666 2.46351L0.419676 2.46352M0.419676 2.46352L5.88545 7.92929M0.419676 2.46352L5.88545 7.92929M7.57071 6.38545L13.0365 0.919676C13.0365 0.919673 13.0365 0.919669 13.0365 0.919666C13.2412 0.714984 13.5189 0.6 13.8084 0.6C14.0979 0.6 14.3756 0.71498 14.5803 0.919655C14.785 1.12441 14.9 1.40207 14.9 1.69159C14.9 1.9811 14.785 2.25876 14.5803 2.46351C14.5803 2.46351 14.5803 2.46351 14.5803 2.46352L9.11455 7.92929L9.04384 8L9.11455 8.07071L14.5803 13.5365C14.5803 13.5365 14.5803 13.5365 14.5803 13.5365M7.57071 6.38545L14.5803 13.5365M5.95616 8L5.88545 8.07071L0.419676 13.5365C0.419673 13.5365 0.419669 13.5365 0.419666 13.5365C0.214984 13.7412 0.1 14.0189 0.1 14.3084C0.1 14.5979 0.21498 14.8756 0.419655 15.0803C0.624405 15.285 0.902069 15.4 1.19159 15.4C1.4811 15.4 1.75876 15.285 1.96351 15.0803C1.96351 15.0803 1.96351 15.0803 1.96352 15.0803L7.42929 9.61455L7.5 9.54384L7.57071 9.61455L13.0365 15.0803C13.0365 15.0803 13.0365 15.0803 13.0365 15.0803C13.2412 15.285 13.5189 15.4 13.8084 15.4C14.0979 15.4 14.3756 15.285 14.5803 15.0803C14.5803 15.0803 14.5803 15.0803 14.5803 15.0803M5.95616 8L14.5803 15.0803M5.95616 8L5.88545 7.92929M5.95616 8L5.88545 7.92929M14.5803 15.0803C14.785 14.8756 14.9 14.5979 14.9 14.3084C14.9 14.0189 14.785 13.7412 14.5803 13.5365M14.5803 15.0803L14.5803 13.5365" fill="#222222" stroke="black" stroke-width="1"/>
+                </svg>
+            </button>
+            <div class="cookie-container">
+                <div class="cookie-content-grid">
+                    <div class="cookie-text-section">
+                        <h4 class="cookie-title">Cookie Consent</h4>
+                        <p class="cookie-description">In order to provide you with a more personal user experience, we and our selected third parties use cookies or similar technologies for technical purposes and, with your consent, for "basic interactions & functionalities", "experience enhancement", "measurement" and "targeting & advertising". Denying consent may make related features unavailable. You can freely give, deny, or withdraw your consent at any time. Use the "I accept" button to consent to the use of such technologies.</p>
+                    </div>
+                    <div class="cookie-actions-section">
+                        <button class="cookie-accept-btn" onclick="acceptCookies()">I accept</button>
+                        <a href="../pages/terms-of-use.html" class="cookie-settings-btn">Settings</a>
+                    </div>
                 </div>
             </div>
         </div>
