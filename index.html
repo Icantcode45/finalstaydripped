@@ -3578,7 +3578,7 @@
                         </div>
                         <div class="location-item">
                             <h4>Cave Creek / Carefree</h4>
-                            <p>📍 Cave Creek, Carefree, Fountain Hills</p>
+                            <p>��� Cave Creek, Carefree, Fountain Hills</p>
                             <p>📞 (602) 761-0492</p>
                             <p>⏰ Monday-Friday: 7AM-8PM | Saturday: 8AM-6PM | Sunday: 9AM-5PM</p>
                         </div>
@@ -4137,5 +4137,221 @@
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop" title="Back to Top">↑</a>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-consent-banner" id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-pointer"></div>
+            <div class="cookie-info">
+                <div class="cookie-text">
+                    <h3 class="cookie-title">Cookie Policy</h3>
+                    <p class="cookie-description">By clicking "Accept", you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and improve our marketing efforts.</p>
+                </div>
+                <div class="cookie-actions">
+                    <a href="../pages/terms-of-use.html" class="cookie-more-btn">
+                        <span>More</span>
+                        <svg class="cookie-arrow" width="27" height="15" viewBox="0 0 27 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26.0851 7.66792L19.398 14.355L18.5621 13.5192L24.242 7.83927L0.590432 7.84345L0.590431 6.66485L24.242 6.66067L18.98 1.39873L19.8159 0.562843L26.0851 6.83202C26.3159 7.06286 26.3159 7.43708 26.0851 7.66792Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <button class="cookie-accept-btn" onclick="acceptCookies()">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Cookie Consent Banner Styles */
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 40px 64px 16px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-consent-banner.hidden {
+            opacity: 0;
+            transform: translateY(100%);
+            visibility: hidden;
+        }
+
+        .cookie-content {
+            position: relative;
+            padding: 56px;
+            background: #6b7280;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            pointer-events: auto;
+            max-width: 500px;
+        }
+
+        .cookie-pointer {
+            position: absolute;
+            top: -24px;
+            left: 48px;
+            width: 56px;
+            height: 56px;
+            background: #6b7280;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .cookie-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .cookie-title {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            font-family: var(--font-family);
+        }
+
+        .cookie-description {
+            margin: 0;
+            max-width: 300px;
+            color: #d1d5db;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 120px;
+        }
+
+        .cookie-more-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 16px 32px;
+            margin-right: 8px;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-more-btn:hover {
+            color: #d1d5db;
+        }
+
+        .cookie-arrow {
+            margin-left: 12px;
+            width: 24px;
+            height: 16px;
+        }
+
+        .cookie-accept-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            font-size: 18px;
+            background: transparent;
+            color: white;
+            font-weight: 700;
+            border: 2px solid #d1d5db;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-accept-btn:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .cookie-consent-banner {
+                padding: 16px;
+                left: 0;
+                right: 0;
+            }
+
+            .cookie-content {
+                padding: 32px 24px;
+            }
+
+            .cookie-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .cookie-actions {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .cookie-more-btn {
+                margin-right: 0;
+                padding: 12px 16px;
+                font-size: 16px;
+            }
+
+            .cookie-accept-btn {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+
+            .cookie-pointer {
+                left: 24px;
+                width: 40px;
+                height: 40px;
+                top: -20px;
+            }
+        }
+    </style>
+
+    <script>
+        // Cookie Consent Functionality
+        function initializeCookieConsent() {
+            const cookieBanner = document.getElementById('cookieConsent');
+            const hasAcceptedCookies = localStorage.getItem('cookiesAccepted');
+
+            if (!hasAcceptedCookies) {
+                // Show banner after a short delay
+                setTimeout(() => {
+                    cookieBanner.style.display = 'block';
+                }, 2000);
+            } else {
+                cookieBanner.style.display = 'none';
+            }
+        }
+
+        function acceptCookies() {
+            const cookieBanner = document.getElementById('cookieConsent');
+            localStorage.setItem('cookiesAccepted', 'true');
+
+            cookieBanner.classList.add('hidden');
+
+            // Remove from DOM after animation
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 300);
+
+            // You can add your cookie/analytics initialization here
+            console.log('Cookies accepted - initialize analytics');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCookieConsent();
+        });
+    </script>
+
 </body>
 </html>
