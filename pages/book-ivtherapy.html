@@ -668,6 +668,53 @@
         </div>
     </section>
 
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <span class="filter-label">Filter by Category:</span>
+                <div class="custom-dropdown" id="categoryFilter">
+                    <div class="dropdown-trigger" onclick="toggleDropdown('categoryFilter')">
+                        <span class="dropdown-text">All Categories</span>
+                        <svg class="dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.0837 5.25L7.00033 9.33333L2.91699 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="dropdown-content">
+                        <ul class="dropdown-list">
+                            <li class="dropdown-item selected" onclick="selectDropdownItem('categoryFilter', 'All Categories', 'all')">All Categories</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('categoryFilter', 'Basic Hydration', 'basic')">Basic Hydration</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('categoryFilter', 'Standard Wellness', 'standard')">Standard Wellness</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('categoryFilter', 'Specialty Treatments', 'specialty')">Specialty Treatments</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('categoryFilter', 'Premium Therapies', 'premium')">Premium Therapies</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('categoryFilter', 'NAD+ Therapy', 'nad')">NAD+ Therapy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <span class="filter-label">Sort by Price:</span>
+                <div class="custom-dropdown" id="priceFilter">
+                    <div class="dropdown-trigger" onclick="toggleDropdown('priceFilter')">
+                        <span class="dropdown-text">Any Price</span>
+                        <svg class="dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.0837 5.25L7.00033 9.33333L2.91699 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                    <div class="dropdown-content">
+                        <ul class="dropdown-list">
+                            <li class="dropdown-item selected" onclick="selectDropdownItem('priceFilter', 'Any Price', 'any')">Any Price</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('priceFilter', 'Low to High', 'low-high')">Low to High</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('priceFilter', 'High to Low', 'high-low')">High to Low</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('priceFilter', 'Under $200', 'under-200')">Under $200</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('priceFilter', '$200-$300', '200-300')">$200-$300</li>
+                            <li class="dropdown-item" onclick="selectDropdownItem('priceFilter', 'Over $300', 'over-300')">Over $300</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
