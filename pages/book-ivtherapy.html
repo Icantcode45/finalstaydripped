@@ -1697,7 +1697,12 @@
             }
         }
 
-            document.body.appendChild(modal);
+        function closeQuickView() {
+            const modal = document.querySelector('.iv-quick-view-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
 
             // Add modal styles if not exists
             if (!document.querySelector('#quick-view-styles')) {
