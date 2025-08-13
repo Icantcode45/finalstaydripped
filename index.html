@@ -3822,14 +3822,59 @@
             const prevBtn = document.getElementById('prevReview');
             const nextBtn = document.getElementById('nextReview');
 
-            if (prevBtn) prevBtn.addEventListener('click', prevReview);
-            if (nextBtn) nextBtn.addEventListener('click', nextReview);
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    pauseAutoAdvance();
+                    prevReview();
+                    startAutoAdvance();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    pauseAutoAdvance();
+                    nextReview();
+                    startAutoAdvance();
+                });
+            }
+        }
+
+        function setupCarouselEvents() {
+            const carouselContainer = document.querySelector('.reviews-carousel-container');
+
+            if (carouselContainer) {
+                // Pause on hover
+                carouselContainer.addEventListener('mouseenter', pauseAutoAdvance);
+                carouselContainer.addEventListener('mouseleave', startAutoAdvance);
+
+                // Pause on focus (accessibility)
+                carouselContainer.addEventListener('focusin', pauseAutoAdvance);
+                carouselContainer.addEventListener('focusout', startAutoAdvance);
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.target.closest('.reviews-carousel-container')) {
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        pauseAutoAdvance();
+                        prevReview();
+                        startAutoAdvance();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        pauseAutoAdvance();
+                        nextReview();
+                        startAutoAdvance();
+                    }
+                }
+            });
         }
 
         function goToReview(index) {
             const cards = document.querySelectorAll('.review-card');
             const dots = document.querySelectorAll('.dot');
 
+            // Remove active class from all cards and dots
             cards.forEach((card, i) => {
                 card.classList.toggle('active', i === index);
             });
@@ -3839,6 +3884,7 @@
             });
 
             currentReviewIndex = index;
+            resetProgress();
         }
 
         function nextReview() {
@@ -3849,6 +3895,61 @@
         function prevReview() {
             const prevIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
             goToReview(prevIndex);
+        }
+
+        function startAutoAdvance() {
+            if (autoAdvanceInterval) clearInterval(autoAdvanceInterval);
+            if (progressInterval) clearInterval(progressInterval);
+
+            isPaused = false;
+            startProgress();
+
+            autoAdvanceInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextReview();
+                }
+            }, 6000); // 6 seconds per slide
+        }
+
+        function pauseAutoAdvance() {
+            isPaused = true;
+            if (autoAdvanceInterval) {
+                clearInterval(autoAdvanceInterval);
+                autoAdvanceInterval = null;
+            }
+            if (progressInterval) {
+                clearInterval(progressInterval);
+                progressInterval = null;
+            }
+        }
+
+        function startProgress() {
+            const progressBar = document.getElementById('reviewsProgress');
+            if (!progressBar) return;
+
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'width 6s linear';
+
+            // Small delay to ensure transition works
+            setTimeout(() => {
+                if (!isPaused) {
+                    progressBar.style.width = '100%';
+                }
+            }, 50);
+        }
+
+        function resetProgress() {
+            const progressBar = document.getElementById('reviewsProgress');
+            if (!progressBar) return;
+
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+
+            setTimeout(() => {
+                if (!isPaused) {
+                    startProgress();
+                }
+            }, 100);
         }
 
         function updateRatingDisplay() {
