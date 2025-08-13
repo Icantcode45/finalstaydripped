@@ -1605,16 +1605,15 @@
 
         .reviews-footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 24px;
-            padding: 32px 40px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 24px 32px;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.08);
             position: relative;
             overflow: hidden;
         }
@@ -1638,16 +1637,16 @@
         .google-rating {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
             position: relative;
             z-index: 1;
         }
 
         .google-logo-container {
-            padding: 12px;
+            padding: 8px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .rating-info {
@@ -1657,12 +1656,12 @@
         }
 
         .rating-stars {
-            font-size: 24px;
-            letter-spacing: 2px;
+            font-size: 20px;
+            letter-spacing: 1px;
         }
 
         .rating-text {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--dark-slate);
         }
@@ -1700,14 +1699,15 @@
             }
 
             .reviews-footer {
-                padding: 24px 20px;
+                padding: 20px 16px;
                 flex-direction: column;
                 text-align: center;
             }
 
             .google-rating {
-                flex-direction: column;
-                gap: 16px;
+                flex-direction: row;
+                gap: 12px;
+                justify-content: center;
             }
         }
         }
