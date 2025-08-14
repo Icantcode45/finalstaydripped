@@ -4445,6 +4445,133 @@
         });
     </script>
 
+    <!-- Portal Login Modal -->
+    <div id="portalModal" class="portal-modal" style="display: none;">
+        <div class="portal-modal-content">
+            <div class="portal-modal-header">
+                <h3>Client Portal Login</h3>
+                <p>Access your account to manage appointments, view treatment history, and update your information.</p>
+                <button class="portal-close-btn" onclick="closePortalModal()">&times;</button>
+            </div>
+            <div class="portal-modal-body">
+                <div id="intakeq" style="max-width:720px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .portal-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .portal-modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.3);
+            position: relative;
+        }
+
+        .portal-modal-header {
+            padding: 24px 32px 16px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .portal-modal-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .portal-modal-header p {
+            color: var(--medium-gray);
+            margin: 0;
+        }
+
+        .portal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--medium-gray);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .portal-close-btn:hover {
+            background: var(--light-gray);
+            color: var(--dark-slate);
+        }
+
+        .portal-modal-body {
+            padding: 24px 32px 32px;
+        }
+
+        @media (max-width: 768px) {
+            .portal-modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .portal-modal-header,
+            .portal-modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        function openPortalModal() {
+            const modal = document.getElementById('portalModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePortalModal() {
+            const modal = document.getElementById('portalModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('portalModal');
+            if (event.target === modal) {
+                closePortalModal();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePortalModal();
+            }
+        });
+    </script>
+
     <!-- Good Faith Exam Widget Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script id="qualiphy-script" type="text/javascript" src="https://www.app.qualiphy.me/scripts/quidget_disclosure.js" data-formsrc='https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e' data-timezone='-6' data-examhours='[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]'></script>
