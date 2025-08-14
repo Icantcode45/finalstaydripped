@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-44WEBDZB6F');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,8 +35,30 @@
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="shared/navigation.css">
     
     <style>
+        /* Emergency mobile fix - force hide all dropdowns */
+        @media (max-width: 768px) {
+            .nav-links,
+            .nav-dropdown,
+            .dropdown-content,
+            .services-dropdown,
+            .nav-actions {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+                position: absolute !important;
+                top: -9999px !important;
+                left: -9999px !important;
+                z-index: -1 !important;
+            }
+        }
+
         :root {
             --primary-blue: #0066CC;
             --secondary-teal: #00B8A0;
@@ -2190,9 +2222,41 @@
                 </li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+
+    <!-- Professional Mobile Navigation -->
+    <div id="mobileNavMenu" class="mobile-nav-menu">
+        <button class="mobile-nav-close" onclick="closeMobileNav()">&times;</button>
+
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">Stay Dripped IV & Wellness</div>
+            <div class="mobile-nav-tagline">Mobile IV Therapy • Scottsdale, AZ</div>
+        </div>
+
+        <ul class="mobile-nav-list">
+            <li><a href="#home" onclick="closeMobileNav()">🏠 Home</a></li>
+            <li><a href="pages/book-ivtherapy.html" onclick="closeMobileNav()">💧 IV Therapy</a></li>
+            <li><a href="pages/vitamin-injections.html" onclick="closeMobileNav()">💉 Vitamin Injections</a></li>
+            <li><a href="pages/nad-peptides.html" onclick="closeMobileNav()">🧬 NAD+ & Peptides</a></li>
+            <li><a href="pages/weight-management.html" onclick="closeMobileNav()">⚖️ Weight Management</a></li>
+            <li><a href="pages/first-time-patients.html" onclick="closeMobileNav()">👤 New Patients</a></li>
+            <li><a href="pages/membership.html" onclick="closeMobileNav()">💎 Membership</a></li>
+            <li><a href="#team" onclick="closeMobileNav()">👥 Our Team</a></li>
+            <li><a href="#contact" onclick="closeMobileNav()">📧 Contact</a></li>
+            <li><a href="tel:+1-480-999-9999" onclick="closeMobileNav()">📞 Call (480) 999-9999</a></li>
+            <li><a href="pages/book-appointment.html" onclick="closeMobileNav()" style="color: var(--primary-blue); font-weight: 700;">🗓️ Book Appointment</a></li>
+        </ul>
+
+        <div class="mobile-nav-footer">
+            <p>Licensed Medical Professionals<br>Serving Scottsdale & Phoenix Metro</p>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -3132,6 +3196,47 @@
         });
 
     </script>
+
+    <!-- Simple Mobile Navigation JavaScript -->
+    <script>
+        // Simple working mobile navigation
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                if (menu.classList.contains('show')) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            }
+        }
+
+        function openMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                menu.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileNav() {
+            const menu = document.getElementById('mobileNavMenu');
+            if (menu) {
+                menu.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile nav when pressing escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileNav();
+            }
+        });
+    </script>
+
+    <!-- Navigation JavaScript -->
+    <script src="shared/navigation.js"></script>
 
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top" id="backToTop" title="Back to Top">↑</a>
