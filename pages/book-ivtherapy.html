@@ -1561,10 +1561,20 @@
                     categoryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Filter services
+                    // Filter category sections and services
                     const category = this.getAttribute('data-category');
+                    const categorySections = document.querySelectorAll('.category-section');
                     const services = document.querySelectorAll('.service-card');
 
+                    // Show/hide category sections
+                    categorySections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.getAttribute('data-category') === category) {
+                            section.classList.add('active');
+                        }
+                    });
+
+                    // Also filter individual service cards for dropdown compatibility
                     services.forEach(service => {
                         if (category === 'all' || service.getAttribute('data-category') === category) {
                             service.style.display = 'block';
