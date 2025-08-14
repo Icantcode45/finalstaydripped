@@ -199,8 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close menu when clicking outside
     mobileMenu.addEventListener('click', function(e) {
         if (e.target === mobileMenu) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
         }
     });
 
@@ -230,8 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuItems = document.querySelectorAll('.mobile-menu-item:not(.mobile-dropdown-toggle)');
     mobileMenuItems.forEach(function(item) {
         item.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
         });
     });
 
@@ -239,16 +237,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileDropdownLinks = document.querySelectorAll('.mobile-dropdown-section a');
     mobileDropdownLinks.forEach(function(link) {
         link.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
         });
     });
 
     // Handle escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMobileMenu();
         }
     });
 });
