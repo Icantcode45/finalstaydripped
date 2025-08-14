@@ -215,6 +215,47 @@
             background: rgba(255, 255, 255, 0.15);
         }
 
+        .patient-portal-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 2px solid var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+        }
+
+        .patient-portal-btn:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .patient-portal-btn svg {
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .patient-portal-btn span {
+                display: none;
+            }
+
+            .patient-portal-btn {
+                padding: 10px;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+            }
+        }
+
         .cart-count {
             position: absolute;
             top: -2px;
