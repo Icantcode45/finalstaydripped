@@ -180,16 +180,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
             mobileMenu.classList.add('active');
+            mobileMenuToggle.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scroll
         });
     }
 
     // Close mobile menu
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scroll
+    }
+
     if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = ''; // Re-enable scroll
-        });
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
     }
 
     // Close menu when clicking outside
