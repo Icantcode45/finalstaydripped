@@ -162,8 +162,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const total = urlParams.get('total') || '199';
-            const addons = urlParams.get('addons') || '0';
+            let total = urlParams.get('total');
+            let addons = urlParams.get('addons');
+            
+            // Sanitize and validate as numbers
+            total = Number(total);
+            if (isNaN(total) || total < 0) total = 199;
+            addons = Number(addons);
+            if (isNaN(addons) || addons < 0) addons = 0;
             
             const detailsHTML = `
                 <div class="detail-row">
@@ -172,7 +178,7 @@
                 </div>
                 <div class="detail-row">
                     <span>Add-ons Selected:</span>
-                    <span>${addons} enhancement${addons !== '1' ? 's' : ''}</span>
+                    <span>${addons} enhancement${addons !== 1 ? 's' : ''}</span>
                 </div>
                 <div class="detail-row">
                     <span>Total Amount:</span>
