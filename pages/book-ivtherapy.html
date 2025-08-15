@@ -1720,7 +1720,41 @@
 
         function getIntakeQId(serviceId) {
             const intakeQMapping = {
+                // Basic IV Therapy
                 'rehydrate': 'staydripped',
+                'rehydrate-plus': 'staydripped',
+
+                // Standard IV Therapy
+                'jr-myers': 'staydripped',
+                'myers': 'staydripped',
+                'mega-myers': 'staydripped',
+                'hangover': 'staydripped',
+                'hangover-cure': 'staydripped',
+
+                // Specialty IV Therapy
+                'sun-devil': 'staydripped',
+                'd-book': 'staydripped',
+                'diamond-back': 'staydripped',
+                'scottsdale': 'staydripped',
+                'stress-relief': 'staydripped',
+                'mental-clarity': 'staydripped',
+                'anti-inflammatory': 'staydripped',
+                'stay-dripped-special': 'staydripped',
+
+                // Premium IV Therapy
+                'gold': 'staydripped',
+                'platinum': 'staydripped',
+                'arizona': 'staydripped',
+                'metabolism': 'staydripped',
+
+                // NAD+ IV Therapy
+                'basic-nad': 'staydripped',
+                'fountain-youth': 'staydripped',
+                'diamond-nad': 'staydripped',
+                'elite-nad': 'staydripped',
+                'nad-therapy': 'staydripped',
+
+                // Legacy mappings
                 'energize': 'staydripped',
                 'immune-boost': 'staydripped',
                 'detox': 'staydripped',
@@ -1732,11 +1766,9 @@
                 'ultimate-detox': 'staydripped',
                 'athletic-recovery': 'staydripped',
                 'anti-aging': 'staydripped',
-                'hangover-cure': 'staydripped',
                 'migraine-relief': 'staydripped',
                 'weight-loss': 'staydripped',
-                'fertility-support': 'staydripped',
-                'nad-therapy': 'staydripped'
+                'fertility-support': 'staydripped'
             };
             return intakeQMapping[serviceId] || 'staydripped';
         }
