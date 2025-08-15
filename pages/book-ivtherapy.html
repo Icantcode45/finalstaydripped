@@ -1572,7 +1572,7 @@
             });
         }
 
-        function selectDropdownItem(dropdownId, text, value) {
+        function selectDropdownItem(dropdownId, text, value, element) {
             const dropdown = document.getElementById(dropdownId);
             const trigger = dropdown.querySelector('.dropdown-text');
             const content = dropdown.querySelector('.dropdown-content');
@@ -1582,7 +1582,9 @@
 
             // Update selected state
             dropdown.querySelectorAll('.dropdown-item').forEach(item => item.classList.remove('selected'));
-            event.target.classList.add('selected');
+            if (element) {
+                element.classList.add('selected');
+            }
 
             // Apply filter
             applyFilters();
