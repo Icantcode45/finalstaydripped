@@ -1680,19 +1680,19 @@
             window.open('https://Staydripped.intakeq.com/booking', '_blank');
         }
 
-        // Category Navigation
-        document.addEventListener('DOMContentLoaded', function() {
+        // Category Navigation - Combined and Simplified
+        function initializeCategoryNavigation() {
             const categoryBtns = document.querySelectorAll('.category-btn');
             const categorySections = document.querySelectorAll('.category-section');
-            
+
             categoryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
-                    
+
                     // Update active button
                     categoryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
+
                     // Show corresponding section
                     categorySections.forEach(section => {
                         section.classList.remove('active');
@@ -1702,105 +1702,169 @@
                     });
                 });
             });
-        });
+        }
 
-        // Dropdown Functions
+        // Dropdown Functions - Improved
         function toggleDropdown(dropdownId) {
             const dropdown = document.getElementById(dropdownId);
+            if (!dropdown) return;
+
+            const trigger = dropdown.querySelector('.dropdown-trigger');
             const content = dropdown.querySelector('.dropdown-content');
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+
+            if (!trigger || !content) return;
 
             // Close other dropdowns
             document.querySelectorAll('.custom-dropdown').forEach(d => {
                 if (d.id !== dropdownId) {
-                    d.querySelector('.dropdown-content').style.display = 'none';
+                    const otherTrigger = d.querySelector('.dropdown-trigger');
+                    const otherContent = d.querySelector('.dropdown-content');
+                    if (otherTrigger && otherContent) {
+                        otherTrigger.classList.remove('active');
+                        otherContent.classList.remove('show');
+                    }
                 }
             });
+
+            // Toggle current dropdown
+            trigger.classList.toggle('active');
+            content.classList.toggle('show');
         }
 
         function selectDropdownItem(dropdownId, text, value, element) {
             const dropdown = document.getElementById(dropdownId);
-            const trigger = dropdown.querySelector('.dropdown-text');
-            const content = dropdown.querySelector('.dropdown-content');
+            if (!dropdown) return;
 
-            trigger.textContent = text;
-            content.style.display = 'none';
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            const content = dropdown.querySelector('.dropdown-content');
+            const textElement = dropdown.querySelector('.dropdown-text');
+
+            if (!trigger || !content || !textElement) return;
+
+            // Update text
+            textElement.textContent = text;
 
             // Update selected state
-            dropdown.querySelectorAll('.dropdown-item').forEach(item => item.classList.remove('selected'));
+            dropdown.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('selected');
+            });
             if (element) {
                 element.classList.add('selected');
             }
 
+            // Close dropdown
+            trigger.classList.remove('active');
+            content.classList.remove('show');
+
             // Apply filter
-            applyFilters();
+            applyFilters(dropdownId, value);
         }
 
-        function applyFilters() {
-            const categoryFilter = document.querySelector('#categoryFilter .dropdown-text').textContent;
-            const priceFilter = document.querySelector('#priceFilter .dropdown-text').textContent;
+        function applyFilters(filterType, value) {
+            const categoryFilter = document.querySelector('#categoryFilter .dropdown-text')?.textContent || 'All Categories';
+            const priceFilter = document.querySelector('#priceFilter .dropdown-text')?.textContent || 'Any Price';
 
-            const services = document.querySelectorAll('.service-card');
+            // Apply category filter
+            if (filterType === 'categoryFilter' || categoryFilter !== 'All Categories') {
+                filterByCategory(value || getCategoryValueFromText(categoryFilter));
+            }
 
-            services.forEach(service => {
-                let show = true;
-
-                // Category filter
-                if (categoryFilter !== 'All Categories') {
-                    const serviceCategory = service.getAttribute('data-category');
-                    const filterValue = categoryFilter.toLowerCase().replace(' ', '-');
-                    if (serviceCategory !== filterValue) {
-                        show = false;
-                    }
-                }
-
-                service.style.display = show ? 'block' : 'none';
-            });
+            // Apply price filter
+            if (filterType === 'priceFilter' && priceFilter !== 'Any Price') {
+                filterByPrice(getPriceValueFromText(priceFilter));
+            }
         }
 
-        // Category navigation
-        document.addEventListener('DOMContentLoaded', function() {
+        function getCategoryValueFromText(text) {
+            const mapping = {
+                'All Categories': 'all',
+                'Basic Hydration': 'basic',
+                'Standard Wellness': 'standard',
+                'Specialty Treatments': 'specialty',
+                'Premium Therapies': 'premium',
+                'NAD+ Therapy': 'nad'
+            };
+            return mapping[text] || 'all';
+        }
+
+        function getPriceValueFromText(text) {
+            const mapping = {
+                'Any Price': 'any',
+                'Low to High': 'low-high',
+                'High to Low': 'high-low',
+                'Under $200': 'under-200',
+                '$200-$300': '200-300',
+                'Over $300': 'over-300'
+            };
+            return mapping[text] || 'any';
+        }
+
+        function filterByCategory(category) {
             const categoryBtns = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
 
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active state
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Filter category sections and services
-                    const category = this.getAttribute('data-category');
-                    const categorySections = document.querySelectorAll('.category-section');
-                    const services = document.querySelectorAll('.service-card');
-
-                    // Show/hide category sections
-                    categorySections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.getAttribute('data-category') === category) {
-                            section.classList.add('active');
-                        }
-                    });
-
-                    // Also filter individual service cards for dropdown compatibility
-                    services.forEach(service => {
-                        if (category === 'all' || service.getAttribute('data-category') === category) {
-                            service.style.display = 'block';
-                        } else {
-                            service.style.display = 'none';
-                        }
-                    });
+            if (category === 'all') {
+                // Show first section by default
+                categorySections.forEach((section, index) => {
+                    section.classList.remove('active');
+                    if (index === 0) section.classList.add('active');
                 });
-            });
 
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.custom-dropdown')) {
-                    document.querySelectorAll('.dropdown-content').forEach(content => {
-                        content.style.display = 'none';
-                    });
+                // Reset category buttons
+                categoryBtns.forEach((btn, index) => {
+                    btn.classList.remove('active');
+                    if (index === 0) btn.classList.add('active');
+                });
+            } else {
+                // Show specific category
+                categorySections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.getAttribute('data-category') === category) {
+                        section.classList.add('active');
+                    }
+                });
+
+                // Update category button
+                categoryBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-category') === category) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        function filterByPrice(priceRange) {
+            const serviceCards = document.querySelectorAll('.service-card, .product-card');
+
+            serviceCards.forEach(card => {
+                const priceElement = card.querySelector('.service-price, .product-price');
+                if (!priceElement) return;
+
+                const priceText = priceElement.textContent.replace('$', '').replace(',', '');
+                const price = parseInt(priceText);
+
+                let shouldShow = true;
+
+                switch (priceRange) {
+                    case 'under-200':
+                        shouldShow = price < 200;
+                        break;
+                    case '200-300':
+                        shouldShow = price >= 200 && price <= 300;
+                        break;
+                    case 'over-300':
+                        shouldShow = price > 300;
+                        break;
+                    case 'any':
+                    default:
+                        shouldShow = true;
+                        break;
                 }
+
+                card.style.display = shouldShow ? 'block' : 'none';
             });
-        });
+        }
 
         // IntakeQ Widget Functions
         let activeWidget = null;
