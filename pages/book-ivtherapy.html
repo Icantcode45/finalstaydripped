@@ -2297,137 +2297,24 @@
             }
         }
 
-        // Custom Dropdown Functions
-        function toggleDropdown(dropdownId) {
-            const dropdown = document.getElementById(dropdownId);
-            const trigger = dropdown.querySelector('.dropdown-trigger');
-            const content = dropdown.querySelector('.dropdown-content');
-
-            // Close other dropdowns
-            document.querySelectorAll('.custom-dropdown').forEach(dd => {
-                if (dd.id !== dropdownId) {
-                    dd.querySelector('.dropdown-trigger').classList.remove('active');
-                    dd.querySelector('.dropdown-content').classList.remove('show');
-                }
-            });
-
-            // Toggle current dropdown
-            trigger.classList.toggle('active');
-            content.classList.toggle('show');
-        }
-
-        function selectDropdownItem(dropdownId, text, value) {
-            const dropdown = document.getElementById(dropdownId);
-            const trigger = dropdown.querySelector('.dropdown-trigger');
-            const content = dropdown.querySelector('.dropdown-content');
-            const textElement = dropdown.querySelector('.dropdown-text');
-
-            // Update text
-            textElement.textContent = text;
-
-            // Update selected state
-            dropdown.querySelectorAll('.dropdown-item').forEach(item => {
-                item.classList.remove('selected');
-            });
-            event.target.classList.add('selected');
-
-            // Close dropdown
-            trigger.classList.remove('active');
-            content.classList.remove('show');
-
-            // Apply filter based on selection
-            applyFilter(dropdownId, value);
-        }
-
-        function applyFilter(filterType, value) {
-            // This function would handle the actual filtering logic
-            // For now, we'll just log the filter selection
-            console.log(`Applied ${filterType} filter with value: ${value}`);
-
-            if (filterType === 'categoryFilter') {
-                filterByCategory(value);
-            } else if (filterType === 'priceFilter') {
-                filterByPrice(value);
+        // Error handling for missing elements
+        function safeQuerySelector(selector, context = document) {
+            try {
+                return context.querySelector(selector);
+            } catch (e) {
+                console.warn(`Could not find element: ${selector}`);
+                return null;
             }
         }
 
-        function filterByCategory(category) {
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const categorySections = document.querySelectorAll('.category-section');
-
-            if (category === 'all') {
-                // Show all sections
-                categorySections.forEach(section => {
-                    section.style.display = 'block';
-                });
-                // Reset category buttons
-                categoryBtns.forEach(btn => btn.classList.remove('active'));
-                if (categoryBtns[0]) categoryBtns[0].classList.add('active');
-            } else {
-                // Show specific category
-                categorySections.forEach(section => {
-                    section.style.display = 'none';
-                });
-
-                const targetSection = document.querySelector(`[data-category="${category}"]`);
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                }
-
-                // Update category button
-                categoryBtns.forEach(btn => btn.classList.remove('active'));
-                const targetBtn = document.querySelector(`[data-category="${category}"]`);
-                if (targetBtn) targetBtn.classList.add('active');
+        function safeQuerySelectorAll(selector, context = document) {
+            try {
+                return context.querySelectorAll(selector);
+            } catch (e) {
+                console.warn(`Could not find elements: ${selector}`);
+                return [];
             }
         }
-
-        function filterByPrice(priceRange) {
-            const serviceCards = document.querySelectorAll('.service-card');
-
-            serviceCards.forEach(card => {
-                const priceElement = card.querySelector('.service-price');
-                if (!priceElement) return;
-
-                const priceText = priceElement.textContent.replace('$', '').replace(',', '');
-                const price = parseInt(priceText);
-
-                let shouldShow = true;
-
-                switch (priceRange) {
-                    case 'low-high':
-                        // This would require sorting, which is more complex
-                        break;
-                    case 'high-low':
-                        // This would require sorting, which is more complex
-                        break;
-                    case 'under-200':
-                        shouldShow = price < 200;
-                        break;
-                    case '200-300':
-                        shouldShow = price >= 200 && price <= 300;
-                        break;
-                    case 'over-300':
-                        shouldShow = price > 300;
-                        break;
-                    case 'any':
-                    default:
-                        shouldShow = true;
-                        break;
-                }
-
-                card.style.display = shouldShow ? 'block' : 'none';
-            });
-        }
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.custom-dropdown')) {
-                document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
-                    dropdown.querySelector('.dropdown-trigger').classList.remove('active');
-                    dropdown.querySelector('.dropdown-content').classList.remove('show');
-                });
-            }
-        });
 
             // Add modal styles if not exists
             if (!document.querySelector('#quick-view-styles')) {
