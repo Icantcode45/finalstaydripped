@@ -2379,8 +2379,11 @@
                     console.error('Error loading navigation:', error);
                 });
 
-            // Initialize category navigation
+            // Initialize all page functionality
             initializeCategoryNavigation();
+            initializeSmoothScrolling();
+            initializeClickOutsideHandlers();
+            observeElements();
 
             // Initialize dropdown close on outside click
             document.addEventListener('click', function(event) {
@@ -2396,9 +2399,50 @@
                 }
             });
 
-            // Initialize fade-in animations
-            observeElements();
+            // Ensure category buttons are clickable by adding explicit event listeners
+            setTimeout(() => {
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach(btn => {
+                    // Remove any existing listeners first
+                    btn.removeEventListener('click', handleCategoryClick);
+                    // Add fresh listener
+                    btn.addEventListener('click', handleCategoryClick);
+                });
+
+                const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+                dropdownTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const dropdownId = this.closest('.custom-dropdown').id;
+                        toggleDropdown(dropdownId);
+                    });
+                });
+            }, 100);
         });
+
+        // Dedicated category click handler
+        function handleCategoryClick(event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const category = this.getAttribute('data-category');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
+
+            // Update active button
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show corresponding section
+            categorySections.forEach(section => {
+                section.classList.remove('active');
+                if (section.getAttribute('data-category') === category) {
+                    section.classList.add('active');
+                }
+            });
+
+            console.log(`Switched to category: ${category}`);
+        }
     </script>
 
     <!-- Good Faith Exam Widget Scripts -->
