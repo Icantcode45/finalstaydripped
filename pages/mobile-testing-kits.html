@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mobile Testing Kits | Stay Dripped IV & Wellness Co.</title>
-    <meta name="description" content="Convenient at-home testing kits in Scottsdale, AZ. Comprehensive health monitoring and optimization from the comfort of your home.">
+    <meta name="description" content="Comprehensive at-home testing kits in Scottsdale, AZ. Extensive health monitoring and optimization from the comfort of your home.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -48,8 +49,9 @@
 
         .page-header {
             background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-            padding: 120px 0 60px;
+            padding: 180px 0 60px;
             text-align: center;
+            margin-top: 0;
         }
 
         .page-title {
@@ -91,64 +93,232 @@
             padding: var(--section-padding);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 40px;
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
         }
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.3);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .service-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-        }
-
-        .service-card p {
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
             color: var(--medium-gray);
-            margin-bottom: 20px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
-        .price {
+        .category-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+        }
+
+        .category-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Category Sections */
+        .category-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .category-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-title {
             font-size: 28px;
             font-weight: 700;
+            color: var(--dark-slate);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-teal) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1559757171-f8119e75a5d2?q=80&w=600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-content {
+            padding: 32px;
+        }
+
+        .product-category {
             color: var(--primary-blue);
-            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
         }
 
-        .features {
-            list-style: none;
-            margin-bottom: 30px;
+        .product-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+            line-height: 1.3;
         }
 
-        .features li {
-            padding: 8px 0;
+        .product-description {
             color: var(--medium-gray);
-            border-bottom: 1px solid var(--border-color);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 24px;
         }
 
-        .features li:last-child {
+        .product-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--dark-slate);
+            font-size: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--soft-green);
+            font-weight: 600;
+        }
+
+        .product-features li:last-child {
             border-bottom: none;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .product-price {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .product-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .product-btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
         }
 
         .section-title {
@@ -166,80 +336,681 @@
             margin: 0 auto 40px;
             text-align: center;
         }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .category-nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 20px 20px;
+                margin-bottom: 40px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .category-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-btn {
+                font-size: 13px;
+                padding: 10px 20px;
+                flex-shrink: 0;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+    
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">Mobile Testing Kits</h1>
-            <p class="page-description">Convenient at-home testing kits for comprehensive health monitoring and optimization. Get lab-quality results from the comfort of your home.</p>
+            <p class="page-description">Comprehensive at-home testing kits for complete health monitoring and optimization. Get lab-quality results from the comfort of your home.</p>
             <a href="../pages/book-appointment.html" class="btn">Order Test Kit</a>
         </div>
     </div>
 
     <section class="services-section">
         <div class="container">
-            <h2 class="section-title">At-Home Health Testing</h2>
+            <h2 class="section-title">Comprehensive Health Testing</h2>
             <p class="section-description">Professional-grade testing kits delivered to your door with comprehensive analysis and personalized recommendations.</p>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Hormone Panel Testing</h3>
-                    <div class="price">$299</div>
-                    <p>Comprehensive hormone analysis including thyroid, reproductive, and stress hormones.</p>
-                    <ul class="features">
-                        <li>Complete hormone profile</li>
-                        <li>Thyroid function (TSH, T3, T4)</li>
-                        <li>Reproductive hormones</li>
-                        <li>Cortisol & stress markers</li>
-                        <li>Results in 3-5 days</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Order Kit</a>
-                </div>
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" data-category="allergies">Allergies & Sensitivities</button>
+                <button class="category-btn" data-category="sex-specific">Sex-Specific</button>
+                <button class="category-btn" data-category="general">General Health</button>
+            </div>
 
-                <div class="service-card">
-                    <h3>Vitamin Deficiency Screen</h3>
-                    <div class="price">$199</div>
-                    <p>Essential vitamin and mineral testing to identify deficiencies and optimize supplementation.</p>
-                    <ul class="features">
-                        <li>Vitamin B12 & Folate</li>
-                        <li>Vitamin D3 levels</li>
-                        <li>Iron & B vitamins</li>
-                        <li>Magnesium & zinc</li>
-                        <li>Personalized recommendations</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Order Kit</a>
-                </div>
+            <!-- Allergies & Sensitivities Category -->
+            <div class="category-section active" data-category="allergies">
+                <h3 class="category-title">Allergies & Sensitivities Testing</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Allergies & Sensitivities</div>
+                            <h3 class="product-title">Environmental Allergy Panel</h3>
+                            <p class="product-description">Comprehensive testing for environmental allergens including pollen, dust, mold, and pet dander.</p>
+                            <ul class="product-features">
+                                <li>Common Environmental Allergens</li>
+                                <li>Seasonal Pollen Testing</li>
+                                <li>Indoor Allergen Panel</li>
+                                <li>Detailed Results Report</li>
+                                <li>Treatment Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$299</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="service-card">
-                    <h3>Metabolic Health Panel</h3>
-                    <div class="price">$249</div>
-                    <p>Complete metabolic assessment including blood sugar, cholesterol, and liver function.</p>
-                    <ul class="features">
-                        <li>Glucose & HbA1c</li>
-                        <li>Lipid panel (cholesterol)</li>
-                        <li>Liver function tests</li>
-                        <li>Kidney function markers</li>
-                        <li>Inflammation markers</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Order Kit</a>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Comprehensive</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Allergies & Sensitivities</div>
+                            <h3 class="product-title">Food Sensitivity Panel</h3>
+                            <p class="product-description">Extensive food sensitivity testing to identify trigger foods and optimize your diet.</p>
+                            <ul class="product-features">
+                                <li>200+ Food Items Tested</li>
+                                <li>IgG Sensitivity Reactions</li>
+                                <li>Personalized Elimination Diet</li>
+                                <li>Nutritional Guidance</li>
+                                <li>Follow-up Consultation</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$349</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="service-card">
-                    <h3>Food Sensitivity Testing</h3>
-                    <div class="price">$299</div>
-                    <p>Comprehensive food sensitivity analysis to identify trigger foods and optimize your diet.</p>
-                    <ul class="features">
-                        <li>200+ food items tested</li>
-                        <li>IgG sensitivity reactions</li>
-                        <li>Personalized elimination diet</li>
-                        <li>Nutritional guidance</li>
-                        <li>Follow-up consultation</li>
-                    </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Order Kit</a>
+            <!-- Sex-Specific Category -->
+            <div class="category-section" data-category="sex-specific">
+                <h3 class="category-title">Sex-Specific Health Testing</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Women's Health</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Sex-Specific</div>
+                            <h3 class="product-title">Female Health Panel</h3>
+                            <p class="product-description">Comprehensive women's health testing including hormones, fertility markers, and reproductive health.</p>
+                            <ul class="product-features">
+                                <li>Reproductive Hormone Panel</li>
+                                <li>Fertility Markers</li>
+                                <li>Thyroid Function</li>
+                                <li>PCOS Screening</li>
+                                <li>Menopause Markers</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Men's Health</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Sex-Specific</div>
+                            <h3 class="product-title">Male Health Panel</h3>
+                            <p class="product-description">Complete men's health assessment including testosterone, prostate health, and cardiovascular markers.</p>
+                            <ul class="product-features">
+                                <li>Testosterone & Hormone Panel</li>
+                                <li>Prostate Health Markers</li>
+                                <li>Cardiovascular Risk Assessment</li>
+                                <li>Metabolic Function</li>
+                                <li>Nutritional Status</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Health Category -->
+            <div class="category-section" data-category="general">
+                <h3 class="category-title">General Health Testing</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Essential</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Adrenal & Stress Panel</h3>
+                            <p class="product-description">Comprehensive assessment of adrenal function and stress response markers.</p>
+                            <ul class="product-features">
+                                <li>Cortisol Rhythm Testing</li>
+                                <li>DHEA-S Levels</li>
+                                <li>Stress Response Markers</li>
+                                <li>Adrenal Function Assessment</li>
+                                <li>Recovery Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$279</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Autoimmune Panel</h3>
+                            <p class="product-description">Screening for autoimmune conditions and inflammatory markers.</p>
+                            <ul class="product-features">
+                                <li>Autoantibody Testing</li>
+                                <li>Inflammatory Markers</li>
+                                <li>Immune System Function</li>
+                                <li>Early Detection Screening</li>
+                                <li>Treatment Guidance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$349</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Basic</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Basic Laboratory Markers</h3>
+                            <p class="product-description">Essential blood work including complete blood count and basic metabolic panel.</p>
+                            <ul class="product-features">
+                                <li>Complete Blood Count (CBC)</li>
+                                <li>Basic Metabolic Panel</li>
+                                <li>Lipid Profile</li>
+                                <li>Liver Function Tests</li>
+                                <li>Kidney Function Markers</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$199</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Cardiovascular Health Panel</h3>
+                            <p class="product-description">Comprehensive cardiovascular risk assessment and heart health markers.</p>
+                            <ul class="product-features">
+                                <li>Advanced Lipid Profile</li>
+                                <li>Cardiac Risk Markers</li>
+                                <li>Inflammation Assessment</li>
+                                <li>Blood Pressure Indicators</li>
+                                <li>Risk Stratification</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$329</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Current</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">COVID-19 Testing Panel</h3>
+                            <p class="product-description">Comprehensive COVID-19 testing including PCR, antigen, and antibody tests.</p>
+                            <ul class="product-features">
+                                <li>PCR Testing</li>
+                                <li>Rapid Antigen Test</li>
+                                <li>Antibody Testing</li>
+                                <li>Immunity Assessment</li>
+                                <li>Travel Clearance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$149</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Environmental Toxins Panel</h3>
+                            <p class="product-description">Detection of environmental toxins and heavy metal exposure.</p>
+                            <ul class="product-features">
+                                <li>Heavy Metal Testing</li>
+                                <li>Chemical Exposure Assessment</li>
+                                <li>Pesticide Residue Testing</li>
+                                <li>Detoxification Guidance</li>
+                                <li>Exposure Source Identification</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$379</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Immune System Panel</h3>
+                            <p class="product-description">Comprehensive immune system function assessment and optimization.</p>
+                            <ul class="product-features">
+                                <li>Immune Cell Analysis</li>
+                                <li>Immunoglobulin Levels</li>
+                                <li>Vitamin D Status</li>
+                                <li>Immune Function Markers</li>
+                                <li>Optimization Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$299</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Infection Screening Panel</h3>
+                            <p class="product-description">Comprehensive screening for bacterial, viral, and fungal infections.</p>
+                            <ul class="product-features">
+                                <li>Bacterial Culture Testing</li>
+                                <li>Viral Panel Screening</li>
+                                <li>Fungal Infection Detection</li>
+                                <li>Antibiotic Sensitivity</li>
+                                <li>Treatment Protocols</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$249</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Lyme & Tickborne Disease Panel</h3>
+                            <p class="product-description">Specialized testing for Lyme disease and other tick-borne infections.</p>
+                            <ul class="product-features">
+                                <li>Lyme Disease Testing</li>
+                                <li>Co-infection Screening</li>
+                                <li>Babesia & Bartonella</li>
+                                <li>Early Detection Methods</li>
+                                <li>Treatment Guidance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Medications & Drugs Panel</h3>
+                            <p class="product-description">Drug screening and medication level monitoring for therapeutic optimization.</p>
+                            <ul class="product-features">
+                                <li>Therapeutic Drug Monitoring</li>
+                                <li>Drug Interaction Analysis</li>
+                                <li>Metabolism Assessment</li>
+                                <li>Dosage Optimization</li>
+                                <li>Safety Monitoring</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$199</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Heavy Metals Panel</h3>
+                            <p class="product-description">Comprehensive heavy metal toxicity testing and detoxification guidance.</p>
+                            <ul class="product-features">
+                                <li>Lead, Mercury, Cadmium</li>
+                                <li>Arsenic & Aluminum</li>
+                                <li>Exposure Source Analysis</li>
+                                <li>Detox Protocol Recommendations</li>
+                                <li>Chelation Therapy Guidance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$349</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Metabolic Function Panel</h3>
+                            <p class="product-description">Complete metabolic assessment including blood sugar, insulin, and metabolic markers.</p>
+                            <ul class="product-features">
+                                <li>Glucose & HbA1c</li>
+                                <li>Insulin Resistance Testing</li>
+                                <li>Metabolic Syndrome Markers</li>
+                                <li>Weight Management Insights</li>
+                                <li>Dietary Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$279</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Mold Exposure Panel</h3>
+                            <p class="product-description">Detection of mold exposure and mycotoxin testing for environmental health.</p>
+                            <ul class="product-features">
+                                <li>Mycotoxin Testing</li>
+                                <li>Mold Allergy Assessment</li>
+                                <li>Environmental Exposure</li>
+                                <li>Health Impact Analysis</li>
+                                <li>Remediation Guidance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$329</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Neurological Function Panel</h3>
+                            <p class="product-description">Comprehensive neurological health assessment and brain function markers.</p>
+                            <ul class="product-features">
+                                <li>Neurotransmitter Testing</li>
+                                <li>Brain Health Markers</li>
+                                <li>Cognitive Function Assessment</li>
+                                <li>Neuroinflammation Markers</li>
+                                <li>Optimization Protocols</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Nutrition Assessment Panel</h3>
+                            <p class="product-description">Comprehensive nutritional status evaluation and deficiency screening.</p>
+                            <ul class="product-features">
+                                <li>Vitamin & Mineral Status</li>
+                                <li>Nutritional Deficiencies</li>
+                                <li>Absorption Assessment</li>
+                                <li>Personalized Nutrition Plan</li>
+                                <li>Supplement Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$249</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Oral Health Panel</h3>
+                            <p class="product-description">Comprehensive oral health assessment including bacterial analysis and gum health.</p>
+                            <ul class="product-features">
+                                <li>Oral Bacteria Testing</li>
+                                <li>Gum Disease Markers</li>
+                                <li>pH Balance Assessment</li>
+                                <li>Cavity Risk Analysis</li>
+                                <li>Preventive Care Plan</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$199</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Oxidative Stress Panel</h3>
+                            <p class="product-description">Assessment of cellular damage and antioxidant status for anti-aging optimization.</p>
+                            <ul class="product-features">
+                                <li>Free Radical Damage</li>
+                                <li>Antioxidant Capacity</li>
+                                <li>Cellular Health Markers</li>
+                                <li>Anti-aging Assessment</li>
+                                <li>Supplementation Guidance</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$279</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Pancreatic Function Panel</h3>
+                            <p class="product-description">Comprehensive pancreatic health assessment including enzyme function and diabetes screening.</p>
+                            <ul class="product-features">
+                                <li>Pancreatic Enzyme Testing</li>
+                                <li>Insulin Function Assessment</li>
+                                <li>Diabetes Risk Screening</li>
+                                <li>Digestive Function Analysis</li>
+                                <li>Treatment Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$299</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Pregnancy & Prenatal Care Panel</h3>
+                            <p class="product-description">Comprehensive prenatal testing for mother and baby health optimization.</p>
+                            <ul class="product-features">
+                                <li>Prenatal Vitamin Status</li>
+                                <li>Genetic Screening</li>
+                                <li>Infection Testing</li>
+                                <li>Nutritional Assessment</li>
+                                <li>Risk Assessment</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$349</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Renal Function Panel</h3>
+                            <p class="product-description">Comprehensive kidney function assessment and nephrology markers.</p>
+                            <ul class="product-features">
+                                <li>Kidney Function Tests</li>
+                                <li>Protein & Albumin Levels</li>
+                                <li>Electrolyte Balance</li>
+                                <li>Filtration Rate Assessment</li>
+                                <li>Kidney Health Optimization</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$249</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Sleep Quality Panel</h3>
+                            <p class="product-description">Comprehensive sleep health assessment including hormone and neurotransmitter analysis.</p>
+                            <ul class="product-features">
+                                <li>Sleep Hormone Testing</li>
+                                <li>Cortisol Rhythm Analysis</li>
+                                <li>Neurotransmitter Balance</li>
+                                <li>Sleep Quality Markers</li>
+                                <li>Optimization Protocols</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$329</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Thyroid Function Panel</h3>
+                            <p class="product-description">Complete thyroid health assessment including TSH, T3, T4, and autoimmune markers.</p>
+                            <ul class="product-features">
+                                <li>Complete Thyroid Panel</li>
+                                <li>Thyroid Antibody Testing</li>
+                                <li>Reverse T3 Analysis</li>
+                                <li>Metabolic Rate Assessment</li>
+                                <li>Treatment Optimization</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$299</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">General</div>
+                            <h3 class="product-title">Tumor Markers Panel</h3>
+                            <p class="product-description">Cancer screening and tumor marker testing for early detection and monitoring.</p>
+                            <ul class="product-features">
+                                <li>Cancer Marker Screening</li>
+                                <li>Early Detection Testing</li>
+                                <li>Tumor Progression Monitoring</li>
+                                <li>Risk Assessment</li>
+                                <li>Follow-up Recommendations</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <a href="../pages/book-appointment.html" class="btn product-btn">Order Kit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
+        // Category navigation functionality
+        function initCategoryNavigation() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetCategory = button.getAttribute('data-category');
+
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Update active section
+                    categorySections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.getAttribute('data-category') === targetCategory) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Load navigation and initialize functionality on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadNavigation();
+            initCategoryNavigation();
+        });
+    </script>
 </body>
 </html>

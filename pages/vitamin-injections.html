@@ -6,6 +6,20 @@
     <title>Vitamin Injections | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Quick and efficient vitamin injections in Scottsdale, AZ. Targeted wellness support and energy enhancement with B12, Vitamin D, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MQJPLG5GPW');
+    </script>
+
+    <!-- Good Faith Exam Widget Stylesheet -->
+    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -48,8 +62,9 @@
 
         .page-header {
             background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-            padding: 120px 0 60px;
+            padding: 180px 0 60px;
             text-align: center;
+            margin-top: 0;
         }
 
         .page-title {
@@ -166,27 +181,203 @@
             margin: 0 auto 40px;
             text-align: center;
         }
+
+        /* Enhanced Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Enhanced Interactive Elements */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-fade-left.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-fade-right.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-scale.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Interactive Hover Effects */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .hover-glow {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hover-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-teal));
+            opacity: 0;
+            filter: blur(20px);
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .hover-glow:hover::before {
+            opacity: 0.7;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Enhanced Button Effects */
+        .btn-enhanced {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-enhanced:hover::before {
+            left: 100%;
+        }
+
+        .btn-enhanced:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Staggered Animation Classes */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <div class="page-header">
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+    <div class="page-header fade-in">
         <div class="container">
-            <h1 class="page-title">Vitamin Injections</h1>
-            <p class="page-description">Quick and efficient vitamin injections for targeted wellness support and energy enhancement. Get the nutrients your body needs in minutes.</p>
-            <a href="../pages/book-appointment.html" class="btn">Book Your Injection</a>
+            <h1 class="page-title fade-in">Vitamin Injections</h1>
+            <p class="page-description fade-in">Quick and efficient vitamin injections for targeted wellness support and energy enhancement. Get the nutrients your body needs in minutes.</p>
+            <a href="../pages/unified-booking.html" class="btn">Book Your Injection</a>
         </div>
     </div>
 
     <section class="services-section">
         <div class="container">
-            <h2 class="section-title">Our Vitamin Injection Services</h2>
-            <p class="section-description">Fast-acting vitamin injections delivered directly to your location for immediate wellness benefits.</p>
+            <h2 class="section-title fade-in">Our Vitamin Injection Services</h2>
+            <p class="section-description fade-in">Fast-acting vitamin injections delivered directly to your location for immediate wellness benefits.</p>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>B12 Energy Injection</h3>
-                    <div class="price">$35</div>
-                    <p>Boost your energy levels and mental clarity with our high-dose B12 injection.</p>
+                <div class="service-card card-hover">
+                    <h3>Vitamin B12 Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Energy-boosting methylcobalamin B12 for mental clarity and vitality.</p>
                     <ul class="features">
                         <li>1000mcg Methylcobalamin B12</li>
                         <li>Increases energy levels</li>
@@ -194,41 +385,111 @@
                         <li>Supports metabolism</li>
                         <li>5-minute treatment</li>
                     </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="service-card">
-                    <h3>Vitamin D3 Boost</h3>
-                    <div class="price">$45</div>
-                    <p>Support your immune system and bone health with our vitamin D3 injection.</p>
+                <div class="service-card card-hover">
+                    <h3>Vitamin D3 Injection</h3>
+                    <div class="price">$28 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$30</span></div>
+                    <p>High-dose vitamin D3 for immune support and bone health.</p>
                     <ul class="features">
                         <li>50,000 IU Vitamin D3</li>
                         <li>Supports immune function</li>
                         <li>Promotes bone health</li>
-                        <li>Improves mood</li>
+                        <li>Improves mood regulation</li>
                         <li>5-minute treatment</li>
                     </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="service-card">
-                    <h3>B-Complex Shot</h3>
-                    <div class="price">$50</div>
-                    <p>Complete B-vitamin complex for energy, metabolism, and nervous system support.</p>
+                <div class="service-card card-hover">
+                    <h3>Vitamin C Injection</h3>
+                    <div class="price">$23 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$25</span></div>
+                    <p>Powerful antioxidant support for immune system and collagen production.</p>
                     <ul class="features">
-                        <li>B1, B2, B3, B5, B6 Complex</li>
-                        <li>Boosts energy metabolism</li>
-                        <li>Supports nervous system</li>
-                        <li>Improves cognitive function</li>
+                        <li>1000mg Ascorbic Acid</li>
+                        <li>Powerful antioxidant protection</li>
+                        <li>Supports immune system</li>
+                        <li>Promotes collagen synthesis</li>
                         <li>5-minute treatment</li>
                     </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="service-card">
-                    <h3>Biotin Beauty Shot</h3>
-                    <div class="price">$40</div>
-                    <p>Strengthen your hair, skin, and nails with our high-dose biotin injection.</p>
+                <div class="service-card card-hover">
+                    <h3>Magnesium Injection</h3>
+                    <div class="price">$18 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$20</span></div>
+                    <p>Essential mineral for muscle relaxation and nerve function support.</p>
+                    <ul class="features">
+                        <li>200mg Magnesium Sulfate</li>
+                        <li>Muscle relaxation</li>
+                        <li>Nerve function support</li>
+                        <li>Reduces muscle cramps</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Glutathione Injection</h3>
+                    <div class="price">$48 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$50</span></div>
+                    <p>Master antioxidant for detoxification and radiant skin health.</p>
+                    <ul class="features">
+                        <li>600mg Glutathione</li>
+                        <li>Master antioxidant</li>
+                        <li>Supports detoxification</li>
+                        <li>Promotes skin health</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Myers' Cocktail Injection</h3>
+                    <div class="price">$170 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$180</span></div>
+                    <p>Comprehensive vitamin and mineral blend for complete wellness support.</p>
+                    <ul class="features">
+                        <li>Vitamin C, B-Complex, B12</li>
+                        <li>Magnesium & Calcium</li>
+                        <li>Comprehensive wellness support</li>
+                        <li>Enhanced energy & immunity</li>
+                        <li>15-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Tri-Amino Blend Injection</h3>
+                    <div class="price">$33 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$35</span></div>
+                    <p>Essential amino acids for muscle recovery and athletic performance.</p>
+                    <ul class="features">
+                        <li>L-Arginine, L-Ornithine, L-Lysine</li>
+                        <li>Muscle recovery support</li>
+                        <li>Enhanced athletic performance</li>
+                        <li>Improved protein synthesis</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Zinc Injection</h3>
+                    <div class="price">$8 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$10</span></div>
+                    <p>Essential mineral for immune support and wound healing.</p>
+                    <ul class="features">
+                        <li>5mg Zinc Sulfate</li>
+                        <li>Immune system support</li>
+                        <li>Wound healing acceleration</li>
+                        <li>Antioxidant properties</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Biotin Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Beauty vitamin for stronger hair, skin, and nail health.</p>
                     <ul class="features">
                         <li>10,000mcg Biotin</li>
                         <li>Strengthens hair & nails</li>
@@ -236,10 +497,288 @@
                         <li>Supports cellular energy</li>
                         <li>5-minute treatment</li>
                     </ul>
-                    <a href="../pages/book-appointment.html" class="btn">Book Now</a>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>L-Carnitine Injection</h3>
+                    <div class="price">$38 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$40</span></div>
+                    <p>Fat metabolism booster for weight management and energy enhancement.</p>
+                    <ul class="features">
+                        <li>500mg L-Carnitine</li>
+                        <li>Supports fat metabolism</li>
+                        <li>Enhances energy production</li>
+                        <li>Aids in weight management</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Vitamin Injection Bundles Section -->
+    <section class="bundles-section" style="padding: 80px 0; background: var(--light-gray);">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 20px; font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--dark-slate);">Vitamin Injection Bundles</h2>
+            <p class="section-description" style="text-align: center; font-size: 18px; color: var(--medium-gray); max-width: 800px; margin: 0 auto 40px;">Save more with our carefully crafted vitamin injection bundles designed for optimal wellness outcomes.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Energy Boost Bundle</h3>
+                    <div class="price">$120 <span style="font-size: 16px; color: var(--medium-gray); text-decoration: line-through;">$140</span></div>
+                    <p>B12 + B-Complex injections for maximum energy and cognitive enhancement.</p>
+                    <ul class="features">
+                        <li>B12 Energy Injection</li>
+                        <li>B-Complex Shot</li>
+                        <li>Personalized consultation</li>
+                        <li>Save $20 vs individual</li>
+                        <li>Valid for 3 months</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Bundle</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>Beauty & Wellness Bundle</h3>
+                    <div class="price">$110 <span style="font-size: 16px; color: var(--medium-gray); text-decoration: line-through;">$125</span></div>
+                    <p>Biotin + Vitamin D3 for beauty enhancement and immune support.</p>
+                    <ul class="features">
+                        <li>Biotin Beauty Shot</li>
+                        <li>Vitamin D3 Boost</li>
+                        <li>Skin health assessment</li>
+                        <li>Save $15 vs individual</li>
+                        <li>Valid for 3 months</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Bundle</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>Complete Wellness Bundle</h3>
+                    <div class="price">$180 <span style="font-size: 16px; color: var(--medium-gray); text-decoration: line-through;">$210</span></div>
+                    <p>All four premium vitamin injections for comprehensive wellness support.</p>
+                    <ul class="features">
+                        <li>All 4 vitamin injections</li>
+                        <li>Comprehensive wellness plan</li>
+                        <li>Priority scheduling</li>
+                        <li>Save $30 vs individual</li>
+                        <li>Valid for 6 months</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Bundle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Options Section -->
+    <section class="membership-section" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 20px; font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--dark-slate);">Vitamin Injection Memberships</h2>
+            <p class="section-description" style="text-align: center; font-size: 18px; color: var(--medium-gray); max-width: 800px; margin: 0 auto 40px;">Join our membership program for exclusive benefits and significant savings on regular vitamin injection treatments.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Monthly Wellness</h3>
+                    <div class="price">$99/month</div>
+                    <p>Perfect for maintaining consistent energy and wellness levels throughout the month.</p>
+                    <ul class="features">
+                        <li>2 vitamin injections per month</li>
+                        <li>Choice of any injection type</li>
+                        <li>Priority booking</li>
+                        <li>20% off additional services</li>
+                        <li>Free consultation included</li>
+                    </ul>
+                    <a href="../pages/membership.html" class="btn">Join Membership</a>
+                </div>
+
+                <div class="service-card" style="border: 2px solid var(--primary-blue); background: rgba(0, 102, 204, 0.05);">
+                    <h3>Quarterly Optimizer</h3>
+                    <div class="price">$259/quarter <span style="font-size: 14px; color: var(--primary-blue);">Most Popular</span></div>
+                    <p>Comprehensive quarterly wellness program with maximum savings and benefits.</p>
+                    <ul class="features">
+                        <li>6 vitamin injections per quarter</li>
+                        <li>Mix and match any types</li>
+                        <li>VIP priority scheduling</li>
+                        <li>30% off all additional services</li>
+                        <li>Quarterly wellness assessment</li>
+                        <li>Free home delivery upgrades</li>
+                    </ul>
+                    <a href="../pages/membership.html" class="btn">Join Membership</a>
+                </div>
+
+                <div class="service-card">
+                    <h3>Annual Elite</h3>
+                    <div class="price">$899/year</div>
+                    <p>Ultimate wellness membership with maximum benefits and exclusive VIP treatment.</p>
+                    <ul class="features">
+                        <li>24 vitamin injections per year</li>
+                        <li>All injection types included</li>
+                        <li>VIP concierge service</li>
+                        <li>50% off all other services</li>
+                        <li>Bi-annual health assessments</li>
+                        <li>Exclusive member events</li>
+                    </ul>
+                    <a href="../pages/membership.html" class="btn">Join Membership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
+        // Load navigation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        loadNavigation();
+
+        // Enhanced Animation System
+        function initializeEnhancedAnimations() {
+            // Enhanced scroll animation observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add a small delay for staggered animations
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animation elements
+            const animateElements = document.querySelectorAll(
+                '.animate-on-scroll, .animate-fade-left, .animate-fade-right, .animate-scale'
+            );
+            animateElements.forEach(el => animationObserver.observe(el));
+
+            // Enhanced hover effects for buttons
+            const enhancedButtons = document.querySelectorAll('.btn-enhanced, .btn');
+            enhancedButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'translateY(-1px) scale(0.98)';
+                });
+
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+            });
+
+            // Service card enhanced interactions
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.boxShadow = '0 25px 50px rgba(0, 102, 204, 0.15)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '';
+                });
+
+                // Add click ripple effect
+                card.addEventListener('click', function(e) {
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(0, 102, 204, 0.3)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.width = ripple.style.height = '100px';
+                    ripple.style.marginLeft = ripple.style.marginTop = '-50px';
+
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Pulse animation controls
+            const pulseElements = document.querySelectorAll('.pulse-animation');
+            pulseElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    this.style.transform = 'scale(1.1)';
+                });
+
+                element.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                    this.style.transform = '';
+                });
+            });
+
+            // Smooth scrolling for internal links
+            const smoothLinks = document.querySelectorAll('a[href^="#"]');
+            smoothLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animations with stagger
+            const allCards = document.querySelectorAll('.service-card');
+            allCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.8s ease-out';
+
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 150));
+            });
+        }
+
+        // Add ripple animation keyframe dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize animations
+        initializeEnhancedAnimations();
+    });
+</script>
 </body>
 </html>
