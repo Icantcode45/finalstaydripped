@@ -2327,17 +2327,14 @@
                     }
                 });
             });
-            
+
             elements.forEach(el => observer.observe(el));
         }
 
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', observeElements);
-
         // Smooth scrolling for anchor links
-        document.addEventListener('DOMContentLoaded', () => {
+        function initializeSmoothScrolling() {
             const anchors = document.querySelectorAll('a[href^="#"]');
-            
+
             anchors.forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2350,30 +2347,24 @@
                     }
                 });
             });
-        });
+        }
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.service-card')) {
-                document.querySelectorAll('.widget-dropdown').forEach(widget => {
-                    widget.classList.remove('show');
-                });
-            }
-        });
-
-        // Click outside to close widgets
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.service-card')) {
-                document.querySelectorAll('.widget-dropdown').forEach(widget => {
-                    widget.classList.remove('show');
-                    const iframe = widget.querySelector('iframe');
-                    if (iframe) iframe.remove();
-                });
-                if (activeWidget) {
-                    activeWidget = null;
+        // Close widgets when clicking outside
+        function initializeClickOutsideHandlers() {
+            document.addEventListener('click', function(event) {
+                // Close booking widgets when clicking outside service cards
+                if (!event.target.closest('.service-card')) {
+                    document.querySelectorAll('.widget-dropdown').forEach(widget => {
+                        widget.classList.remove('show');
+                        const iframe = widget.querySelector('iframe');
+                        if (iframe) iframe.remove();
+                    });
+                    if (activeWidget) {
+                        activeWidget = null;
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // Initialize page functions
         document.addEventListener('DOMContentLoaded', function() {
