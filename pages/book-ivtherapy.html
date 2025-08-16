@@ -1635,33 +1635,42 @@
             // Initialize mobile menu toggle
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-            
+
             if (mobileToggle && navLinks) {
                 mobileToggle.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
                     this.classList.toggle('active');
                 });
             }
-<<<<<<< HEAD
-            
+
             // Initialize dropdown functionality
             const dropdowns = document.querySelectorAll('.nav-dropdown');
             dropdowns.forEach(dropdown => {
                 const link = dropdown.querySelector('.nav-link');
                 const content = dropdown.querySelector('.dropdown-content');
-                
+
                 if (link && content) {
                     dropdown.addEventListener('mouseenter', () => {
                         content.style.display = 'block';
                         setTimeout(() => content.classList.add('show'), 10);
                     });
-                    
+
                     dropdown.addEventListener('mouseleave', () => {
                         content.classList.remove('show');
                         setTimeout(() => content.style.display = 'none', 300);
-=======
+                    });
+                }
+            });
 
-            console.log('Showing booking widget:', widgetId);
+            // Add search functionality
+            const topbarSearch = document.getElementById('topbar-search');
+            if (topbarSearch) {
+                topbarSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
         }
 
         // Book treatment function (legacy support)
@@ -1669,31 +1678,6 @@
             console.log('Booking treatment:', treatmentId);
             // For backward compatibility, redirect to general booking
             window.open('https://Staydripped.intakeq.com/booking', '_blank');
-        }
-
-        // Load shared navigation
-        async function loadNavigation() {
-            try {
-                const response = await fetch('../shared/navigation.html');
-                const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
-
-                // Load navigation JavaScript
-                const script = document.createElement('script');
-                script.src = '../shared/navigation.js';
-                document.head.appendChild(script);
-
-                // Add search functionality
-                const topbarSearch = document.getElementById('topbar-search');
-                if (topbarSearch) {
-                    topbarSearch.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter') {
-                            performSearch();
-                        }
->>>>>>> origin/main
-                    });
-                }
-            });
         }
 
         // Category Navigation
