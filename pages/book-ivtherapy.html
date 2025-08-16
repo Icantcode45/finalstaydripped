@@ -2582,6 +2582,26 @@
                 .catch(error => {
                     console.error('Error loading navigation:', error);
                 });
+
+            // Initialize category navigation
+            initializeCategoryNavigation();
+
+            // Initialize dropdown close on outside click
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.custom-dropdown')) {
+                    document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+                        const trigger = dropdown.querySelector('.dropdown-trigger');
+                        const content = dropdown.querySelector('.dropdown-content');
+                        if (trigger && content) {
+                            trigger.classList.remove('active');
+                            content.classList.remove('show');
+                        }
+                    });
+                }
+            });
+
+            // Initialize fade-in animations
+            observeElements();
         });
     </script>
 
