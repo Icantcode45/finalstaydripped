@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-44WEBDZB6F');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
     <title>Book Appointment | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Schedule your mobile IV therapy appointment with real-time availability. Professional treatments delivered to your location in Scottsdale, AZ.">
-    <meta name="robots" content="max-image-preview:large">
-    <link rel="canonical" href="https://staydrippediv.com/pages/book-appointment.html">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Book Appointment | Stay Dripped IV & Wellness Co.">
-    <meta property="og:description" content="Schedule your mobile IV therapy appointment. Professional treatments delivered to your location in Scottsdale, AZ.">
-    <meta property="og:url" content="https://staydrippediv.com/pages/book-appointment.html">
-    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Book Appointment | Stay Dripped IV & Wellness Co.">
-    <meta name="twitter:description" content="Schedule your mobile IV therapy appointment. Professional treatments delivered to your location in Scottsdale, AZ.">
-    <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
     
     <style>
         :root {
@@ -57,7 +54,8 @@
             font-size: 16px;
             line-height: 1.6;
             color: var(--dark-slate);
-            background: var(--white);
+            background: var(--light-gray);
+            padding-top: 120px;
         }
 
         .container {
@@ -66,388 +64,53 @@
             padding: 0 20px;
         }
 
-        /* Top Bar */
-        .top-bar {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 8px 0;
-            font-size: 14px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1001;
+        .main-content {
+            padding: 40px 0;
         }
 
-        .top-bar-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .location-finder-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            transition: opacity 0.3s ease;
-        }
-
-        .location-finder-btn:hover {
-            opacity: 0.8;
-        }
-
-        .top-bar-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* Search in Top Bar */
-        .search-container-topbar {
-            position: relative;
-            margin: 0;
-            max-width: 300px;
-            min-width: 250px;
-        }
-
-        .search-input-topbar {
-            width: 100%;
-            padding: 8px 16px 8px 40px;
-            font-size: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--white);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .search-input-topbar:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.25);
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: var(--white);
+            padding: 40px 20px;
+            border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .search-input-topbar::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-container-topbar .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .search-container-topbar .search-shortcut {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 600;
-        }
-
-        .language-selector-mini {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .language-selector-mini:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .top-bar-icons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
-            position: relative;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background: var(--accent-orange);
-            color: var(--white);
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            position: fixed;
-            top: 44px;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .header.scrolled {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 20px rgba(26, 43, 58, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 102, 204, 0.2);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo img {
-            height: 48px;
-            width: auto;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 50px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links li {
-            position: relative;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-slate);
-            font-weight: 600;
-            font-size: 14px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            display: block;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-links a:hover {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .nav-links a:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        /* Dropdown Menu Styles */
-        .nav-dropdown {
-            position: relative;
-        }
-
-        .nav-dropdown > a {
-            position: relative;
-        }
-
-        .nav-dropdown > a::after {
-            content: ' ▼';
-            font-size: 10px;
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-dropdown:hover > a::after {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: calc(100% + 5px);
-            left: 50%;
-            transform: translateX(-50%);
-            min-width: 280px;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(25px);
-            border-radius: 12px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 16px 0;
-            z-index: 1001;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Create a bridge area to prevent dropdown from closing */
-        .nav-dropdown::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            height: 15px;
-            background: transparent;
-            z-index: 1000;
-        }
-
-        .dropdown-content a {
-            color: var(--dark-slate);
-            padding: 14px 24px;
-            display: block;
-            transition: all 0.2s ease;
-            border-radius: 8px;
-            margin: 2px 12px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .dropdown-content a:hover {
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
-            color: var(--primary-blue);
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
-        }
-
-        /* Dropdown Sections */
-        .dropdown-section {
-            margin-bottom: 16px;
-            padding: 0 12px;
-        }
-
-        .dropdown-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .dropdown-section h4 {
-            font-size: 14px;
+        .page-title {
+            font-size: 36px;
             font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 8px;
-            padding: 8px 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid rgba(0, 102, 204, 0.2);
-        }
-
-        .dropdown-section a {
             color: var(--dark-slate);
-            padding: 8px 12px;
-            display: block;
-            transition: all 0.2s ease;
-            border-radius: 6px;
-            margin: 2px 0;
-            font-weight: 500;
-            white-space: nowrap;
-            font-size: 14px;
+            margin-bottom: 16px;
         }
 
-        .dropdown-section a:hover {
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
-            color: var(--primary-blue);
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto 32px auto;
         }
 
-        /* Multi-column dropdown for services */
-        .dropdown-content.services-dropdown {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            min-width: 500px;
-            padding: 20px;
-        }
-
-        .nav-actions {
+        .quick-actions {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
             background: var(--primary-blue);
             color: var(--white);
-            padding: 12px 24px;
+            padding: 16px 32px;
             border: none;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 16px;
         }
 
         .btn:hover {
@@ -466,677 +129,25 @@
             color: var(--white);
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 164px 0 80px;
-            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .hero-tagline {
-            margin-bottom: 32px;
-        }
-
-        .tagline-highlight {
-            display: inline-block;
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(36px, 5vw, 60px);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--dark-slate);
-        }
-
-        .hero-text p {
-            font-size: 20px;
-            color: var(--medium-gray);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 48px;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--medium-gray);
-            font-size: 14px;
-            margin-top: 4px;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(26, 43, 58, 0.15);
-        }
-
-        /* Services Section */
-        .services {
-            padding: var(--section-padding);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
-
-        .section-subtitle {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-            letter-spacing: -0.5px;
-        }
-
-        .section-description {
-            font-size: 18px;
-            color: var(--medium-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 32px;
-            margin-bottom: 40px;
-        }
-
-        .service-card-enhanced {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 184, 160, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .service-card-enhanced:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.3);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .service-card-enhanced:hover::before {
-            opacity: 1;
-        }
-
-        .service-content {
-            padding: 40px 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-content h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--dark-slate);
-        }
-
-        .service-content p {
-            color: var(--medium-gray);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .service-btn {
-            width: 100%;
-            justify-content: center;
-            margin-top: 24px;
-        }
-
-        /* Team Section */
-        .team {
-            padding: var(--section-padding);
-            background: linear-gradient(135deg, #f8fafc 0%, rgba(0, 102, 204, 0.04) 100%);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 64px;
-        }
-
-        .team-member {
+        .booking-container {
             background: var(--white);
             border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateY(-8px);
-        }
-
-        .team-member img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .team-member-info {
-            padding: 24px;
-            text-align: center;
-        }
-
-        .team-member h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--dark-slate);
-        }
-
-        .team-member p {
-            color: var(--medium-gray);
-            margin-bottom: 8px;
-        }
-
-        .credentials {
-            font-size: 14px;
-            color: var(--primary-blue);
-            font-weight: 500;
-            background: rgba(0, 102, 204, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .team-certifications {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 48px;
-            flex-wrap: wrap;
-        }
-
-        .certification-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--white);
-            padding: 12px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            font-weight: 600;
-            color: var(--dark-slate);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .badge-icon {
-            font-size: 18px;
-        }
-
-        /* Reviews Section */
-        .reviews-section {
-            padding: var(--section-padding);
-            background: var(--light-gray);
-        }
-
-        .reviews-carousel-container {
-            position: relative;
-            margin-bottom: 48px;
-        }
-
-        .reviews-carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-            overflow: hidden;
-        }
-
-        .review-card {
-            min-width: 100%;
-            background: var(--white);
             padding: 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            opacity: 0;
-            transform: translateX(100px);
-            transition: all 0.5s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .review-card.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .review-stars {
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        .review-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--medium-gray);
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .reviewer-info h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-slate);
-            margin-bottom: 4px;
-        }
-
-        .reviewer-info p {
-            font-size: 14px;
-            color: var(--medium-gray);
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin: 32px 0;
-        }
-
-        .carousel-btn {
-            background: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
-
-        .carousel-btn:hover {
-            background: #0052A3;
-            transform: scale(1.1);
-        }
-
-        .carousel-btn:disabled {
-            background: var(--border-color);
-            cursor: not-allowed;
-            transform: scale(1);
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: var(--primary-blue);
-            transform: scale(1.2);
-        }
-
-        .reviews-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding: 32px;
-            background: var(--white);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .google-rating {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .google-logo {
-            height: 32px;
-            width: auto;
-        }
-
-        .rating-stars {
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .rating-text {
-            font-size: 14px;
-            color: var(--medium-gray);
-            font-weight: 500;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: var(--section-padding);
-            background: var(--white);
-        }
-
-        .faq-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .faq-badge {
-            display: inline-block;
-            background: var(--accent-orange);
-            color: var(--white);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .faq-title {
-            font-size: clamp(28px, 4vw, 42px);
-            font-weight: 700;
-            color: var(--dark-slate);
-            line-height: 1.2;
-        }
-
-        .faq-highlight {
-            color: var(--accent-orange);
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .faq-question {
-            padding: 20px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
+        .booking-widget {
             width: 100%;
-            text-align: left;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark-slate);
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: var(--light-gray);
-        }
-
-        .faq-toggle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-
-        .faq-item.active .faq-toggle {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 24px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            padding: 0 24px 20px;
-        }
-
-        .faq-answer p {
-            color: var(--medium-gray);
-            line-height: 1.6;
-        }
-
-        .faq-cta {
-            text-align: center;
-            margin-top: 48px;
-            padding: 32px;
-            background: var(--light-gray);
-            border-radius: 16px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .faq-cta h4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark-slate);
-            margin-bottom: 8px;
-        }
-
-        .faq-cta p {
-            color: var(--medium-gray);
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, var(--dark-slate) 0%, #0f1a24 100%);
-            color: var(--white);
-            padding: 60px 0 20px;
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 32px;
-        }
-
-        .footer h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer li {
-            margin-bottom: 12px;
-        }
-
-        .footer a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--white);
-        }
-
-        .footer-social {
-            text-align: center;
-            margin: 32px 0;
-            padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-social .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-social .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .footer-social .social-icon:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .search-container-topbar {
-                display: none;
-            }
-            
-            .language-selector-mini {
-                display: none;
-            }
-            
-            .dropdown-content.services-dropdown {
-                min-width: 400px;
-            }
+            height: 800px;
+            border: none;
+            border-radius: 12px;
         }
 
         @media (max-width: 768px) {
-            .top-bar {
-                padding: 6px 0;
+            body {
+                padding-top: 100px;
             }
+<<<<<<< HEAD
             
             .top-bar-content {
                 flex-direction: column;
@@ -1419,35 +430,45 @@
                 text-align: center;
             }
         }
+=======
+>>>>>>> refs/remotes/origin/main
 
-        @media (max-width: 480px) {
-            .location-finder-btn span {
-                display: none;
+            .page-title {
+                font-size: 28px;
             }
-            
-            .top-bar-icons {
-                gap: 8px;
+
+            .booking-container {
+                padding: 20px;
             }
-            
-            .nav-actions .btn-secondary {
-                display: none;
+
+            .booking-widget {
+                height: 600px;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
     </style>
 </head>
-
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
+    <!-- Navigation Placeholder -->
+    <div id="navigation-placeholder"></div>
+
+    <main class="main-content">
         <div class="container">
-            <div class="top-bar-content">
-                <a href="#location-finder" class="location-finder-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <span>Service Areas: Scottsdale, Paradise Valley, Phoenix Metro</span>
-                </a>
+            <div class="page-header">
+                <h1 class="page-title">Book Your Appointment</h1>
+                <p class="page-subtitle">Schedule your mobile wellness treatment with our easy online booking system. We serve Scottsdale, Paradise Valley, and the greater Phoenix area.</p>
                 
+<<<<<<< HEAD
                 <div class="top-bar-right">
                     <span class="tagline-text">Premium Mobile IV Therapy & Wellness</span>
                     <div class="search-container-topbar">
@@ -1912,237 +933,55 @@
             <div class="footer-social">
                 <div class="social-icons">
                     <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook">
+=======
+                <div class="quick-actions">
+                    <a href="unified-booking.html" class="btn">
+>>>>>>> refs/remotes/origin/main
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v10z"/>
                         </svg>
+                        Browse All Services
                     </a>
-                    <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter">
+                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                         </svg>
-                    </a>
-                    <a href="#" class="social-icon linkedin" aria-label="Follow us on LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
+                        Call (480) 999-9999
                     </a>
                 </div>
             </div>
-            
-            <p>&copy; 2025 Stay Dripped IV & Wellness Co. All rights reserved. | Licensed healthcare practice serving Arizona</p>
+
+            <div class="booking-container">
+                <iframe 
+                    src="https://Staydripped.intakeq.com/booking" 
+                    class="booking-widget"
+                    title="Book Appointment">
+                </iframe>
+            </div>
         </div>
-    </footer>
+    </main>
 
     <script>
-        // FAQ functionality
-        function toggleFaq(button) {
-            const faqItem = button.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const toggle = button.querySelector('.faq-toggle');
-            
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
-                    const otherAnswer = item.querySelector('.faq-answer');
-                    const otherToggle = item.querySelector('.faq-toggle');
-                    if (otherAnswer) otherAnswer.style.maxHeight = '0px';
-                    if (otherToggle) otherToggle.textContent = '↓';
-                }
-            });
-            
-            // Toggle current FAQ item
-            faqItem.classList.toggle('active');
-            
-            if (faqItem.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                toggle.textContent = '↑';
-            } else {
-                answer.style.maxHeight = '0px';
-                toggle.textContent = '↓';
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+
+                // Load navigation JavaScript
+                const script = document.createElement('script');
+                script.src = '../shared/navigation.js';
+                document.head.appendChild(script);
+
+            } catch (error) {
+                console.error('Error loading navigation:', error);
             }
         }
 
-        function initializeFAQ() {
-            // Initialize all FAQ answers to be closed
-            document.querySelectorAll('.faq-answer').forEach(answer => {
-                answer.style.maxHeight = '0px';
-                answer.style.overflow = 'hidden';
-                answer.style.transition = 'max-height 0.3s ease';
-            });
-        }
-
-        // Reviews carousel functionality
-        let currentReviewIndex = 0;
-        let reviewsData = [];
-
-        function initializeReviewsCarousel() {
-            // Sample Google Reviews data - In production, this would come from Google Places API
-            reviewsData = [
-                {
-                    author: "Sarah Johnson",
-                    rating: 5,
-                    text: "Amazing service! The nurse was professional and made me feel completely comfortable. I felt so much better after my IV therapy session. Highly recommend!",
-                    date: "2 weeks ago",
-                    profilePhoto: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                    author: "Michael Rodriguez",
-                    rating: 5,
-                    text: "Convenient and professional. They came to my home and the whole process was seamless. The team is knowledgeable and caring. Will definitely book again!",
-                    date: "3 weeks ago",
-                    profilePhoto: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                    author: "Jennifer K.",
-                    rating: 5,
-                    text: "Stay Dripped saved my weekend! I was feeling terrible from dehydration and they came out same day. Felt like a new person afterwards. Excellent service!",
-                    date: "1 month ago",
-                    profilePhoto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                    author: "David Martinez",
-                    rating: 5,
-                    text: "Outstanding experience from start to finish. The booking process was simple, and the nurse arrived right on time. Professional, clean, and effective treatment.",
-                    date: "1 month ago",
-                    profilePhoto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
-                },
-                {
-                    author: "Lisa Thompson",
-                    rating: 5,
-                    text: "I've been using Stay Dripped for months now. Consistent quality, professional staff, and great results every time. Worth every penny!",
-                    date: "2 months ago",
-                    profilePhoto: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
-                }
-            ];
-
-            renderReviews();
-            setupCarouselControls();
-            updateRatingDisplay();
-            
-            // Auto-advance carousel every 5 seconds
-            setInterval(nextReview, 5000);
-        }
-
-        function renderReviews() {
-            const carousel = document.getElementById('reviewsCarousel');
-            const dots = document.getElementById('carouselDots');
-            
-            if (!carousel || !dots) return;
-
-            carousel.innerHTML = '';
-            dots.innerHTML = '';
-
-            reviewsData.forEach((review, index) => {
-                // Create review card
-                const reviewCard = document.createElement('div');
-                reviewCard.className = `review-card ${index === 0 ? 'active' : ''}`;
-                reviewCard.innerHTML = `
-                    <div class="reviewer-photo">
-                        <img src="${review.profilePhoto}" alt="${review.author}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 16px;">
-                    </div>
-                    <div class="review-stars">
-                        ${'⭐'.repeat(review.rating)}
-                    </div>
-                    <p class="review-text">"${review.text}"</p>
-                    <div class="reviewer-info">
-                        <h4>${review.author}</h4>
-                        <p>Google Review • ${review.date}</p>
-                    </div>
-                `;
-                carousel.appendChild(reviewCard);
-
-                // Create dot
-                const dot = document.createElement('div');
-                dot.className = `dot ${index === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => goToReview(index));
-                dots.appendChild(dot);
-            });
-        }
-
-        function setupCarouselControls() {
-            const prevBtn = document.getElementById('prevReview');
-            const nextBtn = document.getElementById('nextReview');
-
-            if (prevBtn) prevBtn.addEventListener('click', prevReview);
-            if (nextBtn) nextBtn.addEventListener('click', nextReview);
-        }
-
-        function goToReview(index) {
-            const cards = document.querySelectorAll('.review-card');
-            const dots = document.querySelectorAll('.dot');
-
-            cards.forEach((card, i) => {
-                card.classList.toggle('active', i === index);
-            });
-
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-
-            currentReviewIndex = index;
-        }
-
-        function nextReview() {
-            const nextIndex = (currentReviewIndex + 1) % reviewsData.length;
-            goToReview(nextIndex);
-        }
-
-        function prevReview() {
-            const prevIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
-            goToReview(prevIndex);
-        }
-
-        function updateRatingDisplay() {
-            // Calculate average rating
-            const totalRating = reviewsData.reduce((sum, review) => sum + review.rating, 0);
-            const averageRating = (totalRating / reviewsData.length).toFixed(1);
-            const reviewCount = reviewsData.length;
-
-            // Update rating display
-            const ratingStars = document.getElementById('overallRating');
-            const ratingText = document.getElementById('ratingText');
-
-            if (ratingStars) {
-                const starCount = Math.round(averageRating);
-                ratingStars.textContent = '⭐'.repeat(starCount);
-            }
-
-            if (ratingText) {
-                ratingText.textContent = `${averageRating} out of 5 stars from ${reviewCount}+ reviews`;
-            }
-        }
-
-        function performSearch() {
-            const term = document.getElementById('topbar-search')?.value?.toLowerCase();
-            if (!term) return;
-            
-            if (term.includes('iv') || term.includes('hydration') || term.includes('therapy')) {
-                window.location.href = 'book-ivtherapy.html';
-            } else if (term.includes('peptide') || term.includes('nad')) {
-                window.location.href = 'nad-peptides.html';
-            } else if (term.includes('weight') || term.includes('loss') || term.includes('management')) {
-                window.location.href = 'weight-management.html';
-            } else if (term.includes('vitamin') || term.includes('injection')) {
-                window.location.href = 'vitamin-injections.html';
-            } else if (term.includes('appointment') || term.includes('book')) {
-                window.location.href = 'book-appointment.html';
-            } else if (term.includes('membership')) {
-                window.location.href = 'membership.html';
-            } else if (term.includes('telehealth')) {
-                window.location.href = 'telehealth-services.html';
-            } else {
-                alert('No results found. Please try a different search term or browse our services.');
-            }
-        }
-
-        // Add event listeners
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
             // FAQ functionality
             initializeFAQ();
 
@@ -2263,6 +1102,9 @@
                     closeMobileMenu();
                 }
             });
+=======
+            loadNavigation();
+>>>>>>> refs/remotes/origin/main
         });
     </script>
 </body>
