@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Give the gift of wellness with Stay Dripped IV & Wellness Co. gift cards. Perfect for IV therapy, wellness treatments, and health packages in Scottsdale, AZ.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
+            padding-top: 140px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(255, 107, 53, 0.1) 100%);
+            padding: var(--section-padding);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--dark-slate);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+
+        .btn {
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #E55A2B;
+            transform: translateY(-2px);
+        }
+
+        /* Gift Card Section */
+        .gift-cards {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-subtitle {
+            color: var(--accent-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gift-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .gift-card {
+            background: linear-gradient(135deg, var(--accent-orange), #E55A2B);
+            border-radius: 20px;
+            padding: 32px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3);
+        }
+
+        .gift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .gift-card:hover::before {
+            right: 100%;
+        }
+
+        .gift-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .gift-card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gift-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .gift-card-amount {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .gift-card p {
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .gift-card-btn {
+            background: var(--white);
+            color: var(--accent-orange);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .gift-card-btn:hover {
+            background: var(--light-gray);
+            color: var(--accent-orange);
+        }
+
+        /* Custom Amount Section */
+        .custom-amount {
+            background: var(--light-gray);
+            padding: var(--section-padding);
+        }
+
+        .custom-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 48px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+        }
+
+        .amount-input {
+            position: relative;
+        }
+
+        .amount-input::before {
+            content: '$';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--medium-gray);
+        }
+
+        .amount-input input {
+            padding-left: 32px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: var(--section-padding);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .step-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .step-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .gift-card-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .custom-form {
+                padding: 32px 24px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be loaded here -->
+    <div id="navigation-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Gift the Power of Wellness</h1>
+                <p>Share the gift of health and vitality with Stay Dripped IV & Wellness Co. gift cards. Perfect for birthdays, holidays, or any special occasion.</p>
+                <a href="#gift-cards" class="btn">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F787e6466b506406d9977d2dd1274aaf6?format=webp&width=800" alt="Gift Card" style="width: 20px; height: 20px;">
+                    Shop Gift Cards
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Cards Section -->
+    <section id="gift-cards" class="gift-cards">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Gift Options</div>
+                <h2 class="section-title">Choose Your Gift Amount</h2>
+                <p class="section-description">
+                    Select from our popular gift card amounts or create a custom gift card for any amount.
+                </p>
+            </div>
+            <div class="gift-card-grid">
+                <div class="gift-card">
+                    <div class="gift-card-content">
+                        <div class="gift-card-icon">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F787e6466b506406d9977d2dd1274aaf6?format=webp&width=800" alt="Gift Card" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Starter Package</h3>
+                        <div class="gift-card-amount">$150</div>
+                        <p>Perfect for a single IV therapy session or vitamin injection treatment.</p>
+                        <a href="../pages/book-appointment.html" class="btn gift-card-btn">Purchase Gift Card</a>
+                    </div>
+                </div>
+                <div class="gift-card">
+                    <div class="gift-card-content">
+                        <div class="gift-card-icon">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F787e6466b506406d9977d2dd1274aaf6?format=webp&width=800" alt="Gift Card" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Wellness Package</h3>
+                        <div class="gift-card-amount">$300</div>
+                        <p>Ideal for multiple treatments or premium IV therapy packages.</p>
+                        <a href="../pages/book-appointment.html" class="btn gift-card-btn">Purchase Gift Card</a>
+                    </div>
+                </div>
+                <div class="gift-card">
+                    <div class="gift-card-content">
+                        <div class="gift-card-icon">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F787e6466b506406d9977d2dd1274aaf6?format=webp&width=800" alt="Gift Card" style="width: 40px; height: 40px;">
+                        </div>
+                        <h3>Ultimate Experience</h3>
+                        <div class="gift-card-amount">$500</div>
+                        <p>The complete wellness experience with advanced treatments and NAD+ therapy.</p>
+                        <a href="../pages/book-appointment.html" class="btn gift-card-btn">Purchase Gift Card</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Amount Section -->
+    <section class="custom-amount">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Custom Amount</div>
+                <h2 class="section-title">Create Your Perfect Gift</h2>
+                <p class="section-description">
+                    Choose any amount and personalize your gift card with a special message.
+                </p>
+            </div>
+            <div class="custom-form">
+                <form>
+                    <div class="form-group">
+                        <label for="amount">Gift Card Amount</label>
+                        <div class="amount-input">
+                            <input type="number" id="amount" name="amount" min="25" max="1000" placeholder="Enter amount" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name">Recipient Name</label>
+                        <input type="text" id="recipient-name" name="recipient-name" placeholder="Enter recipient's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-email">Recipient Email</label>
+                        <input type="email" id="recipient-email" name="recipient-email" placeholder="Enter recipient's email">
+                    </div>
+                    <div class="form-group">
+                        <label for="sender-name">Your Name</label>
+                        <input type="text" id="sender-name" name="sender-name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Personal Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Write a personal message for the recipient..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-date">Delivery Date</label>
+                        <input type="date" id="delivery-date" name="delivery-date">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F787e6466b506406d9977d2dd1274aaf6?format=webp&width=800" alt="Purchase" style="width: 20px; height: 20px;">
+                        Create Custom Gift Card
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Simple Process</div>
+                <h2 class="section-title">How Gift Cards Work</h2>
+                <p class="section-description">
+                    Giving the gift of wellness is easy with our streamlined gift card process.
+                </p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Choose Amount</h3>
+                    <p>Select from our preset amounts or create a custom gift card with your preferred value.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Personalize</h3>
+                    <p>Add recipient details and a personal message to make your gift extra special.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Deliver</h3>
+                    <p>Gift cards are delivered digitally via email on your chosen date, ready to use immediately.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Book & Enjoy</h3>
+                    <p>Recipients can easily book their treatments online or by phone using their gift card code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Load navigation
+        fetch('../shared/navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (header && window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else if (header) {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gift card form submitted! In a real implementation, this would process the payment and send the gift card.');
+        });
+    </script>
+</body>
+</html>
