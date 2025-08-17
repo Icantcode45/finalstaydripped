@@ -497,6 +497,11 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navigation-placeholder').innerHTML = data;
+
+                // Load navigation JavaScript after HTML is loaded
+                const script = document.createElement('script');
+                script.src = '../shared/navigation.js';
+                document.head.appendChild(script);
             })
             .catch(error => console.error('Error loading navigation:', error));
 
