@@ -452,29 +452,7 @@
         </div>
     </section>
 
-    <script>
-        // Load navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-
-                // Load navigation JavaScript after HTML is loaded
-                const script = document.createElement('script');
-                script.src = '../shared/navigation.js';
-                document.head.appendChild(script);
-            })
-            .catch(error => console.error('Error loading navigation:', error));
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (header && window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else if (header) {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>
+    <!-- Navigation Loader -->
+    <script src="../shared/navigation-loader.js"></script>
 </body>
 </html>
