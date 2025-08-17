@@ -3188,10 +3188,10 @@
         const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
         // Open mobile menu
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', function() {
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
                 mobileMenu.classList.add('active');
-                mobileMenuBtn.classList.add('active');
+                mobileMenuToggle.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent scroll
             });
         }
