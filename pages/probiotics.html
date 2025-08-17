@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probiotics & Gut Health | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Professional probiotic therapy and gut health treatments in Scottsdale, AZ. Improve your digestive health and overall wellness with our specialized probiotic infusions.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--white);
+            padding-top: 140px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(139, 195, 74, 0.1) 100%);
+            padding: var(--section-padding);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--dark-slate);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+
+        .btn {
+            background: var(--soft-green);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: #7CB342;
+            transform: translateY(-2px);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: var(--section-padding);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-subtitle {
+            color: var(--soft-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(139, 195, 74, 0.15);
+            border-color: var(--soft-green);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--soft-green), #7CB342);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .benefit-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        /* Treatment Options */
+        .treatments {
+            padding: var(--section-padding);
+            background: var(--light-gray);
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .treatment-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(139, 195, 74, 0.15);
+            border-color: var(--soft-green);
+        }
+
+        .treatment-header {
+            background: linear-gradient(135deg, var(--soft-green), #7CB342);
+            color: var(--white);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .treatment-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .treatment-price {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .treatment-duration {
+            opacity: 0.9;
+        }
+
+        .treatment-content {
+            padding: 32px 24px;
+        }
+
+        .treatment-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .treatment-features li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .treatment-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: var(--soft-green);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .treatment-btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--soft-green), #7CB342);
+            color: var(--white);
+            padding: var(--section-padding);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--soft-green);
+        }
+
+        .btn-white:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .benefits-grid,
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be loaded here -->
+    <div id="navigation-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Probiotics & Gut Health Therapy</h1>
+                <p>Restore your digestive health and boost your immune system with our advanced probiotic IV infusions and gut health treatments designed to optimize your microbiome.</p>
+                <a href="../pages/book-appointment.html" class="btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                    Book Probiotic Treatment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Gut Health Benefits</div>
+                <h2 class="section-title">Why Probiotics Matter</h2>
+                <p class="section-description">
+                    Your gut health is the foundation of overall wellness. Our probiotic treatments support digestive health, immune function, and mental clarity.
+                </p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Digestive Health</h3>
+                    <p>Improve digestion, reduce bloating, and enhance nutrient absorption with targeted probiotic strains that restore your gut microbiome balance.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 1L9 9l-8 3 8 3 3 8 3-8 8-3-8-3-3-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Immune Support</h3>
+                    <p>Strengthen your immune system naturally as 70% of your immune system is located in your gut. Boost your body's defense mechanisms.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Mental Clarity</h3>
+                    <p>Experience the gut-brain connection firsthand. Improved gut health leads to better mood, mental clarity, and cognitive function.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Options -->
+    <section class="treatments">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Treatment Options</div>
+                <h2 class="section-title">Probiotic Therapy Plans</h2>
+                <p class="section-description">
+                    Choose from our specialized probiotic treatment options designed to target specific health goals and optimize your gut microbiome.
+                </p>
+            </div>
+            <div class="treatment-grid">
+                <div class="treatment-card">
+                    <div class="treatment-header">
+                        <h3>Digestive Reset</h3>
+                        <div class="treatment-price">$199</div>
+                        <div class="treatment-duration">Single Treatment • 45 minutes</div>
+                    </div>
+                    <div class="treatment-content">
+                        <ul class="treatment-features">
+                            <li>Multi-strain probiotic infusion</li>
+                            <li>Digestive enzyme support</li>
+                            <li>Anti-inflammatory compounds</li>
+                            <li>Gut barrier repair nutrients</li>
+                            <li>Comprehensive health assessment</li>
+                        </ul>
+                        <a href="../pages/book-appointment.html" class="btn treatment-btn">Book Treatment</a>
+                    </div>
+                </div>
+                <div class="treatment-card">
+                    <div class="treatment-header">
+                        <h3>Immune Boost Protocol</h3>
+                        <div class="treatment-price">$249</div>
+                        <div class="treatment-duration">Single Treatment • 60 minutes</div>
+                    </div>
+                    <div class="treatment-content">
+                        <ul class="treatment-features">
+                            <li>Immune-specific probiotic strains</li>
+                            <li>High-dose Vitamin C & D</li>
+                            <li>Zinc and selenium support</li>
+                            <li>Antioxidant complex</li>
+                            <li>Follow-up consultation included</li>
+                        </ul>
+                        <a href="../pages/book-appointment.html" class="btn treatment-btn">Book Treatment</a>
+                    </div>
+                </div>
+                <div class="treatment-card">
+                    <div class="treatment-header">
+                        <h3>Gut Health Package</h3>
+                        <div class="treatment-price">$599</div>
+                        <div class="treatment-duration">3 Treatments • Monthly</div>
+                    </div>
+                    <div class="treatment-content">
+                        <ul class="treatment-features">
+                            <li>Comprehensive gut microbiome analysis</li>
+                            <li>Personalized probiotic protocol</li>
+                            <li>3 targeted IV treatments</li>
+                            <li>Nutritional counseling</li>
+                            <li>Progress tracking & adjustments</li>
+                        </ul>
+                        <a href="../pages/book-appointment.html" class="btn treatment-btn">Book Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Gut Health?</h2>
+            <p>Take the first step towards optimal digestive wellness with our professional probiotic therapy treatments.</p>
+            <a href="../pages/book-appointment.html" class="btn btn-white">
+                Schedule Consultation
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 13l4 4L19 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Load navigation
+        fetch('../shared/navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (header && window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else if (header) {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
