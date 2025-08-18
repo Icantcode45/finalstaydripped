@@ -6,20 +6,10 @@
     <title>Vitamin Injections | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Quick and efficient vitamin injections in Scottsdale, AZ. Targeted wellness support and energy enhancement with B12, Vitamin D, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared Navigation CSS -->
     <link rel="stylesheet" href="../shared/navigation.css">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MQJPLG5GPW');
-    </script>
-
-    <!-- Good Faith Exam Widget Stylesheet -->
-    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -358,9 +348,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Placeholder -->
     <div id="navigation-placeholder"></div>
-    <div class="page-header fade-in">
+
+    <div class="page-header">
         <div class="container">
             <h1 class="page-title fade-in">Vitamin Injections</h1>
             <p class="page-description fade-in">Quick and efficient vitamin injections for targeted wellness support and energy enhancement. Get the nutrients your body needs in minutes.</p>
@@ -623,162 +614,7 @@
         </div>
     </section>
 
-    <script>
-        // Load shared navigation
-        async function loadNavigation() {
-            try {
-                const response = await fetch('../shared/navigation.html');
-                const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
-            } catch (error) {
-                console.error('Error loading navigation:', error);
-            }
-        }
-
-        // Load navigation on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        loadNavigation();
-
-        // Enhanced Animation System
-        function initializeEnhancedAnimations() {
-            // Enhanced scroll animation observer
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const animationObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Add a small delay for staggered animations
-                        setTimeout(() => {
-                            entry.target.classList.add('animated');
-                        }, index * 100);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all animation elements
-            const animateElements = document.querySelectorAll(
-                '.animate-on-scroll, .animate-fade-left, .animate-fade-right, .animate-scale'
-            );
-            animateElements.forEach(el => animationObserver.observe(el));
-
-            // Enhanced hover effects for buttons
-            const enhancedButtons = document.querySelectorAll('.btn-enhanced, .btn');
-            enhancedButtons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px) scale(1.02)';
-                    this.style.transition = 'all 0.3s ease';
-                });
-
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
-
-                button.addEventListener('mousedown', function() {
-                    this.style.transform = 'translateY(-1px) scale(0.98)';
-                });
-
-                button.addEventListener('mouseup', function() {
-                    this.style.transform = 'translateY(-3px) scale(1.02)';
-                });
-            });
-
-            // Service card enhanced interactions
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                    this.style.boxShadow = '0 25px 50px rgba(0, 102, 204, 0.15)';
-                    this.style.transition = 'all 0.3s ease';
-                });
-
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                    this.style.boxShadow = '';
-                });
-
-                // Add click ripple effect
-                card.addEventListener('click', function(e) {
-                    const ripple = document.createElement('div');
-                    ripple.style.position = 'absolute';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.background = 'rgba(0, 102, 204, 0.3)';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'ripple 0.6s linear';
-                    ripple.style.left = '50%';
-                    ripple.style.top = '50%';
-                    ripple.style.width = ripple.style.height = '100px';
-                    ripple.style.marginLeft = ripple.style.marginTop = '-50px';
-
-                    this.style.position = 'relative';
-                    this.appendChild(ripple);
-
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Pulse animation controls
-            const pulseElements = document.querySelectorAll('.pulse-animation');
-            pulseElements.forEach(element => {
-                element.addEventListener('mouseenter', function() {
-                    this.style.animationPlayState = 'paused';
-                    this.style.transform = 'scale(1.1)';
-                });
-
-                element.addEventListener('mouseleave', function() {
-                    this.style.animationPlayState = 'running';
-                    this.style.transform = '';
-                });
-            });
-
-            // Smooth scrolling for internal links
-            const smoothLinks = document.querySelectorAll('a[href^="#"]');
-            smoothLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Add loading animations with stagger
-            const allCards = document.querySelectorAll('.service-card');
-            allCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.8s ease-out';
-
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 500 + (index * 150));
-            });
-        }
-
-        // Add ripple animation keyframe dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize animations
-        initializeEnhancedAnimations();
-    });
-</script>
+    <!-- Navigation Loader Script -->
+    <script src="../shared/navigation-loader.js"></script>           
 </body>
 </html>
