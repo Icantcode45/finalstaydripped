@@ -6,6 +6,7 @@
     <title>Telehealth Services | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Virtual consultations and telehealth services in Scottsdale, AZ. Remote healthcare from licensed medical professionals.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -48,8 +49,9 @@
 
         .page-header {
             background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
-            padding: 120px 0 60px;
+            padding: 180px 0 60px;
             text-align: center;
+            margin-top: 0;
         }
 
         .page-title {
@@ -169,6 +171,8 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
     <div class="page-header">
         <div class="container">
             <h1 class="page-title">Telehealth Services</h1>
@@ -241,5 +245,21 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
+        // Load navigation on page load
+        document.addEventListener('DOMContentLoaded', loadNavigation);
+    </script>
 </body>
 </html>

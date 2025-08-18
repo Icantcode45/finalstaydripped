@@ -6,6 +6,7 @@
     <title>Accessibility Statement | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Our commitment to web accessibility and compliance with ADA and WCAG 2.1 AA guidelines for all users.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/navigation.css">
     
     <style>
         :root {
@@ -298,6 +299,8 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <div class="container">
@@ -522,7 +525,7 @@
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0;">
                         <div>
                             <h4>📞 Phone</h4>
-                            <p>(480) 418-3678</p>
+                            <p>(602) 688-9825</p>
                             <p style="font-size: 14px; color: var(--medium-gray);">Monday-Friday 8AM-6PM</p>
                         </div>
                         
@@ -602,6 +605,20 @@
     </div>
 
     <script>
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+
+        // Load navigation on page load
+        document.addEventListener('DOMContentLoaded', loadNavigation);
+
         function submitAccessibilityReport(event) {
             event.preventDefault();
             
@@ -637,7 +654,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('There was an error submitting your report. Please try again or contact us directly at accessibility@staydrippediv.com or (480) 418-3678.');
+                alert('There was an error submitting your report. Please try again or contact us directly at accessibility@staydrippediv.com or (602) 688-9825.');
             });
         }
 
