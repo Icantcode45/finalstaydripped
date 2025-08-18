@@ -231,6 +231,111 @@
         }
 
         .treatment-features {
+=======
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--scientific-dark) 0%, var(--scientific-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?q=80&w=600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-content {
+            padding: 32px;
+        }
+
+        .product-category {
+            color: var(--primary-blue);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-slate);
+        }
+
+        .product-description {
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .product-features {
             list-style: none;
             margin-bottom: 32px;
         }
@@ -454,5 +559,237 @@
 
     <!-- Navigation Loader -->
     <script src="../shared/navigation-loader.js"></script>
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Premium Probiotic Supplements</h2>
+                <p class="section-description">Our carefully curated selection of probiotic supplements supports digestive health, immune function, and overall wellness. Each product is sourced from reputable manufacturers and designed for specific health needs.</p>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" data-category="featured">Featured</button>
+                <button class="category-btn" data-category="general-health">General Health</button>
+                <button class="category-btn" data-category="womens-health">Women's Health</button>
+                <button class="category-btn" data-category="mens-health">Men's Health</button>
+                <button class="category-btn" data-category="kids-family">Kids & Family</button>
+                <button class="category-btn" data-category="specialized">Specialized Formulas</button>
+                <button class="category-btn" data-category="high-potency">High Potency</button>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="category-section active" data-category="featured">
+                <h3 class="category-title">Most Popular Probiotics</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Most Popular</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">General Health</div>
+                            <h3 class="product-title">Probiotic-10 25 Billion</h3>
+                            <p class="product-description">Comprehensive blend of 10 probiotic strains with 25 billion CFU per serving for optimal digestive health.</p>
+                            <ul class="product-features">
+                                <li>10 probiotic strains</li>
+                                <li>25 billion CFU per capsule</li>
+                                <li>Supports digestive health</li>
+                                <li>Immune system support</li>
+                                <li>50 capsules (NOW Foods)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$29.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">High Potency</div>
+                            <h3 class="product-title">Probiotic-10 100 Billion</h3>
+                            <p class="product-description">Ultra-high potency probiotic formula with 100 billion CFU for intensive digestive support.</p>
+                            <ul class="product-features">
+                                <li>100 billion CFU per capsule</li>
+                                <li>10 probiotic strains</li>
+                                <li>Maximum potency formula</li>
+                                <li>Intensive digestive support</li>
+                                <li>30 capsules (Protocol for Life)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$48.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">Premium</div>
+                            <h3 class="product-title">Ther-Biotic Complete</h3>
+                            <p class="product-description">Professional-strength multi-strain probiotic formula from Klaire Labs for comprehensive digestive support.</p>
+                            <ul class="product-features">
+                                <li>Multi-strain formula</li>
+                                <li>Professional strength</li>
+                                <li>Comprehensive support</li>
+                                <li>Third-party tested</li>
+                                <li>60 capsules (Klaire Labs)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$52.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <div class="product-badge">Premium</div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Weight Management</div>
+                            <h3 class="product-title">UltraFlora Healthy Weight</h3>
+                            <p class="product-description">Specialized probiotic formula with Akkermansia for weight management and metabolic health.</p>
+                            <ul class="product-features">
+                                <li>Contains Akkermansia</li>
+                                <li>Weight management support</li>
+                                <li>Metabolic health</li>
+                                <li>Clinically studied strains</li>
+                                <li>30 capsules (Metagenics)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$69.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">Women's Health</div>
+                            <h3 class="product-title">Ultimate Flora Women's Care</h3>
+                            <p class="product-description">Specially formulated probiotic blend designed to support women's digestive and vaginal health.</p>
+                            <ul class="product-features">
+                                <li>Women-specific strains</li>
+                                <li>Digestive support</li>
+                                <li>Vaginal health</li>
+                                <li>Immune support</li>
+                                <li>30 capsules (Renew Life)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$39.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image"></div>
+                        <div class="product-content">
+                            <div class="product-category">Kids Health</div>
+                            <h3 class="product-title">Culturelle Kids Probiotics</h3>
+                            <p class="product-description">Gentle probiotic formula specifically designed for children's developing digestive systems.</p>
+                            <ul class="product-features">
+                                <li>Child-friendly formula</li>
+                                <li>Lactobacillus GG</li>
+                                <li>Supports immune health</li>
+                                <li>Easy to swallow</li>
+                                <li>30 capsules (Culturelle)</li>
+                            </ul>
+                            <div class="product-footer">
+                                <div class="product-price">$25.99</div>
+                                <a href="../pages/unified-booking.html" class="btn product-btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Health Section -->
+            <div class="category-section" data-category="general-health">
+                <h3 class="category-title">General Health Probiotics</h3>
+                <div class="products-grid">
+                    <!-- General health products will be populated here -->
+                </div>
+            </div>
+
+            <!-- Additional sections for other categories will be added similarly -->
+        </div>
+    </section>
+
+    <script>
+        // Load Navigation
+        fetch('../shared/navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+                initializeNavigation();
+            })
+            .catch(error => {
+                console.error('Error loading navigation:', error);
+            });
+
+        function initializeNavigation() {
+            // Initialize mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileToggle && navLinks) {
+                mobileToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        }
+
+        // Category Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    categorySections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.getAttribute('data-category') === category) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', () => {
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            
+            anchors.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Good Faith Exam Widget Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script id="qualiphy-script" type="text/javascript" src="https://www.app.qualiphy.me/scripts/quidget_disclosure.js" data-formsrc='https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e' data-timezone='-6' data-examhours='[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]'></script>
 </body>
 </html>
