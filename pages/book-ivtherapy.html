@@ -1800,7 +1800,7 @@
                 const priceElement = card.querySelector('.service-price, .product-price');
                 if (!priceElement) return;
 
-                const priceText = priceElement.textContent.replace('$', '').replace(',', '');
+                const priceText = priceElement.textContent.replace(/\$/g, '').replace(',', '');
                 const price = parseInt(priceText);
 
                 let shouldShow = true;
