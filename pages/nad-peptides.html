@@ -1200,13 +1200,46 @@
             }
         }
 
-        /* New Pricing Template Styles */
-        .pricing-section {
-            margin: 80px 0;
-            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 102, 204, 0.08) 100%);
-            border-radius: 24px;
-            overflow: hidden;
-        }
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo" loading="eager">
+                </a>
+
+                <ul class="nav-links">
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link">Services</a>
+                        <div class="dropdown-content services-dropdown">
+                            <div class="dropdown-section">
+                                <h4>IV Therapy</h4>
+                                <a href="../pages/book-ivtherapy.html">IV Therapy</a>
+                                <a href="../pages/vitamin-injections.html">Vitamin Injections</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Advanced Treatments</h4>
+                                <a href="../pages/nad-peptides.html">NAD+ & Peptides</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Wellness Programs</h4>
+                                <a href="../pages/weight-management.html">Weight Management</a>
+                                <a href="../pages/sexual-wellness.html">Sexual Wellness</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Additional Services</h4>
+                                <a href="../pages/mobile-testing-kits.html">Mobile Testing</a>
+                                <a href="../pages/telehealth-services.html">Telehealth</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../pages/first-time-patients.html" class="nav-link">New Patients</a></li>
+                    <li><a href="../pages/membership.html" class="nav-link">Membership</a></li>
+                    <li><a href="../index.html#team" class="nav-link">Our Team</a></li>
+                    <li><a href="../pages/event-corporate-inquiry.html" class="nav-link">Events</a></li>
+                    <li><a href="../pages/compliance.html" class="nav-link">Compliance</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
 
         .pricing-container {
             padding: 40px 32px;
@@ -1217,208 +1250,82 @@
             margin: 20px;
         }
 
-        .pricing-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
 
-        .pricing-intro-content {
-            max-width: 480px;
-        }
+            <!-- Mobile Menu Dropdown -->
+            <div class="mobile-menu" id="mobile-menu">
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-header">
+                        <a href="../index.html" class="mobile-menu-logo">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo">
+                        </a>
+                        <button class="mobile-menu-close" aria-label="Close mobile menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                        </button>
+                    </div>
 
-        .pricing-title {
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 800;
-            color: var(--dark-slate);
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
+                    <nav class="mobile-menu-nav">
+                        <div class="mobile-menu-section">
+                            <button class="mobile-menu-item mobile-dropdown-toggle" data-target="services-mobile">
+                                <span>Services</span>
+                                <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content" id="services-mobile">
+                                <div class="mobile-dropdown-section">
+                                    <h4>IV Therapy</h4>
+                                    <a href="../pages/book-ivtherapy.html">IV Therapy</a>
+                                    <a href="../pages/vitamin-injections.html">Vitamin Injections</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Advanced Treatments</h4>
+                                    <a href="../pages/nad-peptides.html">NAD+ & Peptides</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Wellness Programs</h4>
+                                    <a href="../pages/weight-management.html">Weight Management</a>
+                                    <a href="../pages/sexual-wellness.html">Sexual Wellness</a>
+                                    <a href="../pages/probiotics.html">Probiotics & Gut Health</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Additional Services</h4>
+                                    <a href="../pages/mobile-testing-kits.html">Mobile Testing</a>
+                                    <a href="../pages/telehealth-services.html">Telehealth</a>
+                                </div>
+                            </div>
+                        </div>
 
-        .pricing-description {
-            font-size: 16px;
-            color: var(--medium-gray);
-            font-weight: 500;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
+                        <a href="../pages/first-time-patients.html" class="mobile-menu-item">New Patients</a>
+                        <a href="../pages/membership.html" class="mobile-menu-item">Membership</a>
+                        <a href="../index.html#team" class="mobile-menu-item">Our Team</a>
+                        <a href="../pages/event-corporate-inquiry.html" class="mobile-menu-item">Events</a>
+                        <a href="../pages/gift-cards.html" class="mobile-menu-item">Gift Cards</a>
+                        <a href="../pages/compliance.html" class="mobile-menu-item">Compliance</a>
+                        <a href="../index.html#contact" class="mobile-menu-item">Contact</a>
+                    </nav>
 
-        .trust-indicators {
-            margin-bottom: 32px;
-        }
-
-        .trust-text {
-            font-size: 14px;
-            color: var(--medium-gray);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-
-        .rating-stars {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 8px;
-        }
-
-        .rating-text {
-            font-size: 16px;
-            color: var(--medium-gray);
-            font-weight: 500;
-        }
-
-        .rating-number {
-            color: var(--dark-slate);
-            font-weight: 700;
-        }
-
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
-            border-color: rgba(0, 102, 204, 0.3);
-        }
-
-        .featured-card {
-            border: 2px solid var(--primary-blue);
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.1);
-        }
-
-        .pricing-card-content {
-            padding: 32px 24px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .pricing-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--primary-blue);
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 20px;
-            margin-bottom: 24px;
-            width: fit-content;
-        }
-
-        .pricing-card-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--dark-slate);
-            margin-bottom: 8px;
-        }
-
-        .pricing-card-subtitle {
-            font-size: 14px;
-            color: var(--medium-gray);
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .pricing-features {
-            margin-bottom: 32px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            margin-bottom: 8px;
-        }
-
-        .feature-item svg {
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            color: var(--dark-slate);
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .pricing-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 16px 24px;
-            background: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary-blue);
-        }
-
-        .pricing-btn:hover {
-            background: transparent;
-            color: var(--primary-blue);
-            transform: translateY(-2px);
-        }
-
-        .pricing-btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
-            border: 2px solid transparent;
-        }
-
-        .pricing-btn-primary:hover {
-            background: linear-gradient(135deg, var(--secondary-teal), var(--primary-blue));
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .pricing-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-container {
-                margin: 10px;
-                padding: 24px 20px;
-            }
-
-            .pricing-intro-content {
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <div id="navigation-placeholder"></div>
+                    <div class="mobile-menu-actions">
+                        <a href="tel:+1-480-999-9999" class="mobile-btn mobile-btn-secondary">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F87c674f2834845aa9d4108c24cca538a?format=webp&width=800" alt="Phone" style="width: 18px; height: 18px;">
+                            Call Now
+                        </a>
+                        <a href="../pages/book-appointment.html" class="mobile-btn mobile-btn-primary">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fa759c61b68aa4add9c65c77c443410ab?format=webp&width=800" alt="Book Appointment" style="width: 18px; height: 18px;">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -5553,5 +5460,8 @@
             initializeCategoryKeyboardNav();
         });
     </script>
+
+    <!-- Navigation JavaScript -->
+    <script src="../shared/navigation.js"></script>
 </body>
 </html>

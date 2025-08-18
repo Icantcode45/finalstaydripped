@@ -147,6 +147,291 @@
             body {
                 padding-top: 100px;
             }
+<<<<<<< HEAD
+            
+            .top-bar-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .header {
+                top: 60px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-actions {
+                gap: 8px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 8px;
+                position: relative;
+                z-index: 10000;
+            }
+
+            .mobile-menu-toggle span {
+                width: 24px;
+                height: 3px;
+                background: var(--dark-slate);
+                border-radius: 2px;
+                transition: all 0.3s ease;
+                transform-origin: center;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .mobile-menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            /* Mobile Menu */
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                z-index: 9999;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(100%);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
+
+            .mobile-menu-content {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+                max-width: 400px;
+                height: 100%;
+                background: var(--white);
+                box-shadow: -8px 0 32px rgba(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: column;
+                transform: translateX(100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .mobile-menu.active .mobile-menu-content {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                border-bottom: 1px solid var(--border-color);
+                background: var(--light-gray);
+            }
+
+            .mobile-menu-logo img {
+                height: 32px;
+                width: auto;
+            }
+
+            .mobile-menu-close {
+                background: none;
+                border: none;
+                color: var(--dark-slate);
+                cursor: pointer;
+                padding: 8px;
+                border-radius: 6px;
+                transition: background-color 0.3s ease;
+            }
+
+            .mobile-menu-close:hover {
+                background: var(--border-color);
+            }
+
+            .mobile-menu-nav {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+            }
+
+            .mobile-menu-section {
+                margin-bottom: 8px;
+            }
+
+            .mobile-menu-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 16px 0;
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--dark-slate);
+                text-decoration: none;
+                border-bottom: 1px solid var(--border-color);
+                transition: color 0.3s ease;
+            }
+
+            .mobile-menu-item:hover {
+                color: var(--primary-blue);
+            }
+
+            .mobile-dropdown-toggle {
+                background: none;
+                border: none;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .mobile-dropdown-arrow {
+                transition: transform 0.3s ease;
+            }
+
+            .mobile-dropdown-toggle.active .mobile-dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .mobile-dropdown-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                background: var(--light-gray);
+                margin-top: 8px;
+                border-radius: 8px;
+            }
+
+            .mobile-dropdown-content.active {
+                max-height: 500px;
+            }
+
+            .mobile-dropdown-section {
+                padding: 16px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .mobile-dropdown-section:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-dropdown-section h4 {
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--primary-blue);
+                margin-bottom: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .mobile-dropdown-section a {
+                display: block;
+                padding: 8px 0;
+                color: var(--medium-gray);
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+            .mobile-dropdown-section a:hover {
+                color: var(--primary-blue);
+            }
+
+            .mobile-menu-actions {
+                padding: 20px;
+                border-top: 1px solid var(--border-color);
+                background: var(--light-gray);
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .mobile-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 14px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+                text-decoration: none;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-btn-primary {
+                background: var(--primary-blue);
+                color: var(--white);
+            }
+
+            .mobile-btn-primary:hover {
+                background: #0052A3;
+                transform: translateY(-2px);
+            }
+
+            .mobile-btn-secondary {
+                background: transparent;
+                color: var(--primary-blue);
+                border: 2px solid var(--primary-blue);
+            }
+
+            .mobile-btn-secondary:hover {
+                background: var(--primary-blue);
+                color: var(--white);
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .btn {
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+=======
+>>>>>>> refs/remotes/origin/main
 
             .page-title {
                 font-size: 28px;
@@ -183,8 +468,475 @@
                 <h1 class="page-title">Book Your Appointment</h1>
                 <p class="page-subtitle">Schedule your mobile wellness treatment with our easy online booking system. We serve Scottsdale, Paradise Valley, and the greater Phoenix area.</p>
                 
+<<<<<<< HEAD
+                <div class="top-bar-right">
+                    <span class="tagline-text">Premium Mobile IV Therapy & Wellness</span>
+                    <div class="search-container-topbar">
+                        <div class="search-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <input type="text" class="search-input-topbar" placeholder="Search services..." id="topbar-search"/>
+                        <div class="search-shortcut">⌘K</div>
+                    </div>
+                    <div class="language-selector-mini">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="m1 12 3-3m4 0 3 3m4 0 3-3"></path>
+                        </svg>
+                        <span>EN</span>
+                    </div>
+                    <div class="top-bar-icons">
+                        <a href="tel:+1-480-999-9999" class="icon-btn" aria-label="Call us">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
+                        <a href="book-appointment.html" class="icon-btn" aria-label="Book appointment">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                            </svg>
+                        </a>
+                        <a href="../index.html" class="icon-btn" aria-label="Shopping cart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo" loading="eager">
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#services">Services</a>
+                        <div class="dropdown-content services-dropdown">
+                            <div class="dropdown-section">
+                                <h4>IV Therapy</h4>
+                                <a href="book-ivtherapy.html">IV Therapy</a>
+                                <a href="vitamin-injections.html">Vitamin Injections</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Advanced Treatments</h4>
+                                <a href="nad-peptides.html">NAD+ & Peptides</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Wellness Programs</h4>
+                                <a href="weight-management.html">Weight Management</a>
+                                <a href="sexual-wellness.html">Sexual Wellness</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Additional Services</h4>
+                                <a href="mobile-testing-kits.html">Mobile Testing</a>
+                                <a href="telehealth-services.html">Telehealth</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="first-time-patients.html">New Patients</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="../index.html#team">Our Team</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#">Booking</a>
+                        <div class="dropdown-content">
+                            <a href="book-appointment.html">Book Appointment</a>
+                            <a href="book-ivtherapy.html">Book IV Therapy</a>
+                            <a href="../intakeq-appointments.html">Patient Intake</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Inquiries</a>
+                        <div class="dropdown-content">
+                            <a href="event-corporate-inquiry.html">Event Inquiries</a>
+                            <a href="sponsorship-inquiry.html">Sponsorship</a>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#">Legal & Info</a>
+                        <div class="dropdown-content">
+                            <a href="compliance.html">Compliance</a>
+                            <a href="privacy-practices.html">Privacy</a>
+                            <a href="telehealth-consent.html">Telehealth</a>
+                            <a href="good-faith-estimate.html">Pricing</a>
+                            <a href="terms-of-use.html">Terms</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call Now</a>
+                    <a href="book-appointment.html" class="btn btn-primary">Book Appointment</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Dropdown -->
+            <div class="mobile-menu" id="mobile-menu">
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-header">
+                        <a href="../index.html" class="mobile-menu-logo">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fa91df9ca26494f4eb4ef0b1095a8ee96?format=webp&width=400" alt="Stay Dripped IV & Wellness Co. Logo">
+                        </a>
+                        <button class="mobile-menu-close" aria-label="Close mobile menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <nav class="mobile-menu-nav">
+                        <div class="mobile-menu-section">
+                            <button class="mobile-menu-item mobile-dropdown-toggle" data-target="services-mobile">
+                                <span>Services</span>
+                                <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content" id="services-mobile">
+                                <div class="mobile-dropdown-section">
+                                    <h4>IV Therapy</h4>
+                                    <a href="book-ivtherapy.html">IV Therapy</a>
+                                    <a href="vitamin-injections.html">Vitamin Injections</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Advanced Treatments</h4>
+                                    <a href="nad-peptides.html">NAD+ & Peptides</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Wellness Programs</h4>
+                                    <a href="weight-management.html">Weight Management</a>
+                                    <a href="sexual-wellness.html">Sexual Wellness</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Additional Services</h4>
+                                    <a href="mobile-testing-kits.html">Mobile Testing</a>
+                                    <a href="telehealth-services.html">Telehealth</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="first-time-patients.html" class="mobile-menu-item">New Patients</a>
+                        <a href="membership.html" class="mobile-menu-item">Membership</a>
+                        <a href="../index.html#team" class="mobile-menu-item">Our Team</a>
+                        <a href="event-corporate-inquiry.html" class="mobile-menu-item">Events</a>
+                        <a href="compliance.html" class="mobile-menu-item">Compliance</a>
+                        <a href="../index.html#contact" class="mobile-menu-item">Contact</a>
+                    </nav>
+
+                    <div class="mobile-menu-actions">
+                        <a href="tel:+1-480-999-9999" class="mobile-btn mobile-btn-secondary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            Call Now
+                        </a>
+                        <a href="book-appointment.html" class="mobile-btn mobile-btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                            </svg>
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-tagline">
+                        <span class="tagline-highlight">BOOK YOUR APPOINTMENT</span>
+                        <h1>Schedule Your Mobile IV Therapy</h1>
+                        <p>Professional IV therapy treatments delivered directly to your location in Scottsdale, AZ. Our licensed medical professionals bring the clinic to you.</p>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#booking-form" class="btn">Start Booking</a>
+                        <a href="../index.html#services" class="btn-secondary">View Services</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Treatments Delivered</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24hr</span>
+                            <span class="stat-label">Response Time</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5★</span>
+                            <span class="stat-label">Client Rating</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Professional IV therapy booking process">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Our Services</div>
+                <h2 class="section-title">Select Your Treatment</h2>
+                <p class="section-description">
+                    Choose from our comprehensive menu of IV therapy treatments and wellness services
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card-enhanced">
+                    <div class="service-content">
+                        <h3>Hydration Plus</h3>
+                        <p>Essential electrolytes and fluids for optimal hydration and energy</p>
+                        <a href="book-ivtherapy.html" class="btn service-btn">Book Treatment - $149</a>
+                    </div>
+                </div>
+                
+                <div class="service-card-enhanced">
+                    <div class="service-content">
+                        <h3>Energy Boost</h3>
+                        <p>B-complex vitamins and nutrients for sustained energy and mental clarity</p>
+                        <a href="book-ivtherapy.html" class="btn service-btn">Book Treatment - $199</a>
+                    </div>
+                </div>
+                
+                <div class="service-card-enhanced">
+                    <div class="service-content">
+                        <h3>Immunity Support</h3>
+                        <p>Vitamin C, zinc, and immune-boosting nutrients to strengthen your defenses</p>
+                        <a href="book-ivtherapy.html" class="btn service-btn">Book Treatment - $225</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Our Team</div>
+                <h2 class="section-title">Licensed Medical Professionals</h2>
+                <p class="section-description">
+                    Our experienced team of nurses, physicians, and healthcare professionals is dedicated to providing safe, effective, and personalized IV therapy treatments.
+                </p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional registered nurse Sarah Johnson">
+                    <div class="team-member-info">
+                        <h4>Sarah Johnson, RN</h4>
+                        <p>Lead Registered Nurse</p>
+                        <div class="credentials">10+ years emergency medicine experience</div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medical Director Dr. Michael Chen">
+                    <div class="team-member-info">
+                        <h4>Dr. Michael Chen, MD</h4>
+                        <p>Medical Director</p>
+                        <div class="credentials">Board certified in Internal Medicine</div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1594824542478-1fdd78175cc4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Senior Clinical Nurse Jennifer Rodriguez">
+                    <div class="team-member-info">
+                        <h4>Jennifer Rodriguez, RN</h4>
+                        <p>Senior Clinical Nurse</p>
+                        <div class="credentials">Certified in IV therapy and wellness</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-certifications">
+                <div class="certification-badge">
+                    <span class="badge-icon">🏥</span>
+                    <span>State Licensed</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">✅</span>
+                    <span>HIPAA Certified</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Insured & Bonded</span>
+                </div>
+                <div class="certification-badge">
+                    <span class="badge-icon">📋</span>
+                    <span>Background Checked</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews Carousel Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Client Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-description">
+                    See why clients trust Stay Dripped for their wellness needs
+                </p>
+            </div>
+            
+            <div class="reviews-carousel-container">
+                <div class="reviews-carousel" id="reviewsCarousel">
+                    <!-- Reviews will be loaded dynamically -->
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevReview" aria-label="Previous review">❮</button>
+                    <button class="carousel-btn next-btn" id="nextReview" aria-label="Next review">❯</button>
+                </div>
+                
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be generated dynamically -->
+                </div>
+            </div>
+            
+            <div class="reviews-footer">
+                <div class="google-rating">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 272 92'%3E%3Cpath fill='%234285F4' d='M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23EA4335' d='M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23FBBC05' d='M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z'/%3E%3Cpath fill='%23EA4335' d='M225 3v65h-9.5V3h9.5z'/%3E%3Cpath fill='%2334A853' d='m262.02 54.48 7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98 19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z'/%3E%3C/svg%3E" alt="Google" class="google-logo">
+                    <div class="rating-info">
+                        <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
+                        <div class="rating-text" id="ratingText">5.0 out of 5 stars from reviews</div>
+                    </div>
+                </div>
+                <a href="https://g.page/r/your-business-id/review" target="_blank" class="btn btn-secondary">Write a Review</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-header">
+                <div class="faq-badge">💡 FAQ</div>
+                <h2 class="faq-title">
+                    Frequently Asked <span class="faq-highlight">Questions</span>
+                </h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I schedule an appointment?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can schedule an appointment through our online booking system, call us directly at (480) 999-9999, or use our mobile app. We offer same-day appointments when available.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What should I expect during my appointment?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our licensed nurse will arrive at your location with all necessary equipment. The process typically takes 45-60 minutes and includes a health consultation, IV insertion, and monitoring throughout the treatment.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can I cancel or reschedule my appointment?
+                        <div class="faq-toggle">↓</div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel or reschedule up to 24 hours before your appointment without penalty. For cancellations within 24 hours, a fee may apply.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-cta">
+                <h4>Still have questions? Get connected to our support team.</h4>
+                <p>Our medical professionals are here to help answer any specific questions about treatments or scheduling.</p>
+                <a href="tel:+1-480-999-9999" class="btn">Contact us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>Stay Dripped IV & Wellness Co.</h4>
+                    <p style="margin-bottom: 20px; line-height: 1.7; opacity: 0.8;">
+                        Professional mobile IV therapy and wellness treatments delivered by licensed medical professionals throughout Scottsdale, Arizona.
+                    </p>
+                    <div style="margin-bottom: 16px;">
+                        <p style="margin-bottom: 8px;">📞 (602) 761-0492</p>
+                        <p style="margin-bottom: 8px;">✉️ info@staydrippediv.com</p>
+                        <p>📍 Scottsdale, AZ</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="book-ivtherapy.html">IV Therapy</a></li>
+                        <li><a href="vitamin-injections.html">Vitamin Injections</a></li>
+                        <li><a href="nad-peptides.html">NAD+ & Peptides</a></li>
+                        <li><a href="weight-management.html">Weight Management</a></li>
+                        <li><a href="sexual-wellness.html">Sexual Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../index.html#team">Our Team</a></li>
+                        <li><a href="first-time-patients.html">New Patients</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="event-corporate-inquiry.html">Corporate Events</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Legal & Support</h4>
+                    <ul>
+                        <li><a href="compliance.html">Compliance</a></li>
+                        <li><a href="privacy-practices.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-use.html">Terms of Use</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                        <li><a href="good-faith-estimate.html">Good Faith Estimate</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <div class="social-icons">
+                    <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook">
+=======
                 <div class="quick-actions">
                     <a href="unified-booking.html" class="btn">
+>>>>>>> refs/remotes/origin/main
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v10z"/>
                         </svg>
@@ -229,7 +981,130 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
+            // FAQ functionality
+            initializeFAQ();
+
+            // Reviews carousel
+            initializeReviewsCarousel();
+
+            // Top bar search
+            const topbarSearch = document.getElementById('topbar-search');
+            if (topbarSearch) {
+                topbarSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+
+            // Keyboard shortcut for search (Cmd+K / Ctrl+K)
+            document.addEventListener('keydown', function(e) {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    if (topbarSearch) {
+                        topbarSearch.focus();
+                    }
+                }
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Functionality
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+            // Open mobile menu
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    mobileMenuToggle.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Close mobile menu function
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Close mobile menu
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function(e) {
+                    if (e.target === mobileMenu) {
+                        closeMobileMenu();
+                    }
+                });
+            }
+
+            // Handle dropdown toggles
+            mobileDropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function() {
+                    const targetId = toggle.getAttribute('data-target');
+                    const dropdown = document.getElementById(targetId);
+
+                    if (dropdown) {
+                        // Toggle active state
+                        toggle.classList.toggle('active');
+                        dropdown.classList.toggle('active');
+
+                        // Close other dropdowns
+                        mobileDropdownToggles.forEach(function(otherToggle) {
+                            if (otherToggle !== toggle) {
+                                const otherTargetId = otherToggle.getAttribute('data-target');
+                                const otherDropdown = document.getElementById(otherTargetId);
+                                if (otherDropdown) {
+                                    otherToggle.classList.remove('active');
+                                    otherDropdown.classList.remove('active');
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Close menu when clicking on menu items (except dropdowns)
+            const mobileMenuItems = document.querySelectorAll('.mobile-menu-item:not(.mobile-dropdown-toggle)');
+            mobileMenuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+
+            // Close menu when clicking on dropdown links
+            const mobileDropdownLinks = document.querySelectorAll('.mobile-dropdown-section a');
+            mobileDropdownLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+=======
             loadNavigation();
+>>>>>>> refs/remotes/origin/main
         });
     </script>
 </body>
