@@ -147,7 +147,6 @@
             body {
                 padding-top: 100px;
             }
-<<<<<<< HEAD
             
             .top-bar-content {
                 flex-direction: column;
@@ -430,8 +429,7 @@
                 text-align: center;
             }
         }
-=======
->>>>>>> refs/remotes/origin/main
+        refs/remotes/origin/main
 
             .page-title {
                 font-size: 28px;
@@ -461,14 +459,11 @@
 <body>
     <!-- Navigation Placeholder -->
     <div id="navigation-placeholder"></div>
-
     <main class="main-content">
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">Book Your Appointment</h1>
                 <p class="page-subtitle">Schedule your mobile wellness treatment with our easy online booking system. We serve Scottsdale, Paradise Valley, and the greater Phoenix area.</p>
-                
-<<<<<<< HEAD
                 <div class="top-bar-right">
                     <span class="tagline-text">Premium Mobile IV Therapy & Wellness</span>
                     <div class="search-container-topbar">
@@ -579,7 +574,7 @@
                 </ul>
                 
                 <div class="nav-actions">
-                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">Call Now</a>
+                    <a href="tel:+1-602-688-9825" class="btn btn-secondary">Call Now</a>
                     <a href="book-appointment.html" class="btn btn-primary">Book Appointment</a>
                 </div>
 
@@ -644,7 +639,7 @@
                     </nav>
 
                     <div class="mobile-menu-actions">
-                        <a href="tel:+1-480-999-9999" class="mobile-btn mobile-btn-secondary">
+                        <a href="tel:+1-602-688-9825" class="mobile-btn mobile-btn-secondary">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg>
@@ -736,6 +731,195 @@
             </div>
         </div>
     </section>
+                 
+<head>
+    <title>Payment | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Secure payment processing for your IV therapy treatment.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --medium-gray: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .payment-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(26, 43, 58, 0.1);
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            color: var(--white);
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .page-description {
+            font-size: 16px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+        }
+
+        .payment-details {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            padding-top: 16px;
+            margin-top: 8px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="container">
+        <div class="payment-container">
+            <div class="success-icon">✓</div>
+            <h1 class="page-title">Payment Demo</h1>
+            <p class="page-description">
+                This is a demo payment page. Your checkout was successful!
+            </p>
+            
+            <div class="payment-details" id="paymentDetails">
+                <!-- Will be populated with checkout data -->
+            </div>
+            
+            <div>
+                <a href="../index.html" class="btn">Return Home</a>
+                <a href="./book-appointment.html" class="btn-secondary">Book Another</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let total = urlParams.get('total');
+            let addons = urlParams.get('addons');
+            
+            // Sanitize and validate as numbers
+            total = Number(total);
+            if (isNaN(total) || total < 0) total = 199;
+            addons = Number(addons);
+            if (isNaN(addons) || addons < 0) addons = 0;
+            
+            const detailsHTML = `
+                <div class="detail-row">
+                    <span>Treatment Selected:</span>
+                    <span>IV Drip Therapy</span>
+                </div>
+                <div class="detail-row">
+                    <span>Add-ons Selected:</span>
+                    <span>${addons} enhancement${addons !== 1 ? 's' : ''}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Total Amount:</span>
+                    <span style="color: var(--primary-blue);">$${total}</span>
+                </div>
+            `;
+            
+            document.getElementById('paymentDetails').innerHTML = detailsHTML;
+        });
+    </script>
+</body>
 
     <!-- Team Section -->
     <section id="team" class="team">
@@ -758,38 +942,38 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medical Director Dr. Michael Chen">
+                    <img src="" alt="Medical Director Dr. Jabari Reeves">
                     <div class="team-member-info">
-                        <h4>Dr. Michael Chen, MD</h4>
+                        <h4>Dr. Jabari Reeves, MD</h4>
                         <p>Medical Director</p>
-                        <div class="credentials">Board certified in Internal Medicine</div>
+                        <div class="credentials">Board certified in Emergency Medicine</div>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1594824542478-1fdd78175cc4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Senior Clinical Nurse Jennifer Rodriguez">
+                    <img src="" alt="Senior Clinical Nurse Jennifer Rodriguez">
                     <div class="team-member-info">
-                        <h4>Jennifer Rodriguez, RN</h4>
-                        <p>Senior Clinical Nurse</p>
-                        <div class="credentials">Certified in IV therapy and wellness</div>
+                        <h4>Olivia Capranica, RN</h4>
+                        <p>Senior Clinical Head Nurse</p>
+                        <div class="credentials">Certified in IV therapy and wellness, Botox & Juvaderm Cerification</div>
                     </div>
                 </div>
             </div>
 
             <div class="team-certifications">
                 <div class="certification-badge">
-                    <span class="badge-icon">🏥</span>
+                    <span class="badge-icon"></span>
                     <span>State Licensed</span>
                 </div>
                 <div class="certification-badge">
-                    <span class="badge-icon">✅</span>
+                    <span class="badge-icon"></span>
                     <span>HIPAA Certified</span>
                 </div>
                 <div class="certification-badge">
-                    <span class="badge-icon">🛡️</span>
+                    <span class="badge-icon"></span>
                     <span>Insured & Bonded</span>
                 </div>
                 <div class="certification-badge">
-                    <span class="badge-icon">📋</span>
+                    <span class="badge-icon"></span>
                     <span>Background Checked</span>
                 </div>
             </div>
@@ -807,24 +991,16 @@
                 </p>
             </div>
             
-            <div class="reviews-carousel-container">
-                <div class="reviews-carousel" id="reviewsCarousel">
-                    <!-- Reviews will be loaded dynamically -->
-                </div>
-                
+                    
                 <div class="carousel-controls">
                     <button class="carousel-btn prev-btn" id="prevReview" aria-label="Previous review">❮</button>
                     <button class="carousel-btn next-btn" id="nextReview" aria-label="Next review">❯</button>
                 </div>
                 
-                <div class="carousel-dots" id="carouselDots">
-                    <!-- Dots will be generated dynamically -->
-                </div>
-            </div>
             
             <div class="reviews-footer">
                 <div class="google-rating">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 272 92'%3E%3Cpath fill='%234285F4' d='M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23EA4335' d='M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z'/%3E%3Cpath fill='%23FBBC05' d='M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z'/%3E%3Cpath fill='%23EA4335' d='M225 3v65h-9.5V3h9.5z'/%3E%3Cpath fill='%2334A853' d='m262.02 54.48 7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98 19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z'/%3E%3C/svg%3E" alt="Google" class="google-logo">
+                    <img src="alt="Google" class="google-logo">
                     <div class="rating-info">
                         <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
                         <div class="rating-text" id="ratingText">5.0 out of 5 stars from reviews</div>
@@ -933,20 +1109,18 @@
             <div class="footer-social">
                 <div class="social-icons">
                     <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook">
-=======
                 <div class="quick-actions">
                     <a href="unified-booking.html" class="btn">
->>>>>>> refs/remotes/origin/main
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v10z"/>
                         </svg>
                         Browse All Services
                     </a>
-                    <a href="tel:+1-480-999-9999" class="btn btn-secondary">
+                    <a href="tel:+1-602-688-9825" class="btn btn-secondary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                         </svg>
-                        Call (480) 999-9999
+                        Call (602) 688-9825
                     </a>
                 </div>
             </div>
@@ -959,7 +1133,7 @@
                 </iframe>
             </div>
         </div>
-    </main>
+        </div>
 
     <script>
         // Load shared navigation
@@ -980,8 +1154,7 @@
         }
 
         // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-<<<<<<< HEAD
+        document.addEventListener('DOMContentLoaded', function() 
             // FAQ functionality
             initializeFAQ();
 
@@ -1102,9 +1275,8 @@
                     closeMobileMenu();
                 }
             });
-=======
             loadNavigation();
->>>>>>> refs/remotes/origin/main
+        refs/remotes/origin/main
         });
     </script>
 </body>
