@@ -180,10 +180,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Click-based dropdown system for service categories
-    const servicesDropdownContent = document.querySelector('.services-dropdown');
-    if (servicesDropdownContent) {
-        const sections = servicesDropdownContent.querySelectorAll('.dropdown-section');
+    // Click-based dropdown system for service and product categories
+    function initializeDropdownSystem(dropdownSelector) {
+        const dropdownContent = document.querySelector(dropdownSelector);
+        if (!dropdownContent) return;
+
+        const sections = dropdownContent.querySelectorAll('.dropdown-section');
         let activeSection = null;
 
         sections.forEach(function(section) {
@@ -288,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close active section when clicking outside
         document.addEventListener('click', function(e) {
-            if (activeSection && !servicesDropdownContent.contains(e.target)) {
+            if (activeSection && !dropdownContent.contains(e.target)) {
                 hideLinks(activeSection);
                 activeSection.querySelector('h4').classList.remove('active');
                 activeSection = null;
@@ -296,9 +298,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Close active section when dropdown closes
-        const servicesDropdownContainer = document.querySelector('.nav-dropdown');
-        if (servicesDropdownContainer) {
-            servicesDropdownContainer.addEventListener('mouseleave', function() {
+        const dropdownContainer = dropdownContent.closest('.nav-dropdown');
+        if (dropdownContainer) {
+            dropdownContainer.addEventListener('mouseleave', function() {
                 setTimeout(() => {
                     if (activeSection) {
                         hideLinks(activeSection);
@@ -309,4 +311,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Initialize both dropdown systems
+    initializeDropdownSystem('.services-dropdown');
+    initializeDropdownSystem('.products-dropdown');
 });
