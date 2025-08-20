@@ -544,7 +544,8 @@
 }
 
 /* Additional bridge for horizontal submenu connection */
-.services-dropdown .dropdown-section::after {
+.services-dropdown .dropdown-section::after,
+.products-dropdown .dropdown-section::after {
     content: '';
     position: absolute;
     top: -20px;
@@ -739,7 +740,8 @@
 }
 
 /* Add subtle icon before text */
-.services-dropdown .dropdown-section .services-horizontal-submenu a::after {
+.services-dropdown .dropdown-section .services-horizontal-submenu a::after,
+.products-dropdown .dropdown-section .services-horizontal-submenu a::after {
     content: '→';
     position: absolute;
     right: 20px;
@@ -801,7 +803,8 @@
     z-index: -1;
 }
 
-.services-dropdown .dropdown-section > a::after {
+.services-dropdown .dropdown-section > a::after,
+.products-dropdown .dropdown-section > a::after {
     content: '→';
     position: absolute;
     right: 20px;
@@ -818,7 +821,8 @@
     left: 100%;
 }
 
-.services-dropdown .dropdown-section > a:hover::after {
+.services-dropdown .dropdown-section > a:hover::after,
+.products-dropdown .dropdown-section > a:hover::after {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
 }
