@@ -614,7 +614,45 @@
         </div>
     </section>
 
+    <!-- Cart System -->
+    <script src="../shared/cart.js"></script>
+
+    <!-- IntakeQ Integration -->
+    <script src="../shared/intakeq-integration.js"></script>
+
     <!-- Optimized Navigation Loader -->
-    <script src="../shared/navigation-loader-optimized.js"></script>           
+    <script src="../shared/navigation-loader-optimized.js"></script>
+
+    <script>
+        // Convert all service selection buttons to Add to Cart buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent?.trim();
+                const priceText = card.querySelector('.service-price')?.textContent;
+                const price = priceText?.match(/\$(\d+)/)?.[1];
+                const description = card.querySelector('p')?.textContent?.trim();
+
+                if (title && price) {
+                    // Create Add to Cart button
+                    const addButton = document.createElement('button');
+                    addButton.className = 'btn add-to-cart';
+                    addButton.textContent = `Add to Cart - $${price}`;
+                    addButton.setAttribute('data-name', title);
+                    addButton.setAttribute('data-price', price);
+                    addButton.setAttribute('data-category', 'Vitamin Injections');
+                    addButton.setAttribute('data-description', description?.substring(0, 100) || '');
+
+                    // Find existing button and replace or add new one
+                    const existingButton = card.querySelector('.btn');
+                    if (existingButton) {
+                        existingButton.parentNode.replaceChild(addButton, existingButton);
+                    } else {
+                        card.appendChild(addButton);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
