@@ -289,16 +289,32 @@
     transform: translateX(-50%) translateY(0);
 }
 
-/* Create a bridge area to prevent dropdown from closing */
+/* Keep dropdown visible with extended hover area and delay */
+.dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Create a larger bridge area to prevent dropdown from closing */
 .nav-dropdown::before {
     content: '';
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    height: 15px;
+    left: -20px;
+    right: -20px;
+    height: 20px;
     background: transparent;
     z-index: 1000;
+}
+
+/* Add transition delay to prevent immediate closing */
+.dropdown-content {
+    transition-delay: 0s;
+}
+
+.nav-dropdown:not(:hover) .dropdown-content {
+    transition-delay: 300ms;
 }
 
 .dropdown-content a {
@@ -451,9 +467,24 @@
     letter-spacing: 0.3px;
 }
 
-/* Show links in horizontal submenu on hover */
+/* Show links in horizontal submenu on hover with persistent visibility */
 .services-dropdown .dropdown-section:hover a {
     display: block;
+}
+
+/* Keep submenu links visible when hovering over any part of the submenu area */
+.services-dropdown .dropdown-section:hover a,
+.services-dropdown .dropdown-section a:hover ~ a {
+    display: block;
+}
+
+/* Maintain visibility when hovering between elements */
+.services-dropdown .dropdown-section:hover {
+    pointer-events: all;
+}
+
+.services-dropdown .dropdown-section a {
+    pointer-events: auto;
 }
 
 /* Enhanced horizontal sub-menu container */
@@ -462,16 +493,29 @@
     overflow: visible;
 }
 
-/* Bridge area for smooth hovering */
+/* Extended bridge area for smooth hovering between sections and submenus */
 .services-dropdown .dropdown-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: -15px;
-    width: 25px;
-    height: 100%;
+    top: -10px;
+    right: -30px;
+    width: 50px;
+    height: calc(100% + 20px);
     background: transparent;
     z-index: 1001;
+}
+
+/* Additional bridge for horizontal submenu connection */
+.services-dropdown .dropdown-section::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    width: 370px;
+    height: 400px;
+    background: transparent;
+    z-index: 1002;
+    pointer-events: none;
 }
 
 /* Create horizontal submenu container dynamically */
@@ -479,7 +523,7 @@
     position: relative;
 }
 
-/* Enhanced horizontal positioning with luxury styling */
+/* Enhanced horizontal positioning with luxury styling and extended hover area */
 .services-dropdown .dropdown-section:hover {
     overflow: visible;
 }
@@ -506,6 +550,11 @@
     border: 1px solid rgba(255, 255, 255, 0.7);
     z-index: 1003;
     animation: luxurySubmenuSlideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Keep submenu visible when hovering over the submenu items */
+.services-dropdown .dropdown-section a:hover {
+    display: block !important;
 }
 
 /* Elegant vertical stacking with improved spacing */
