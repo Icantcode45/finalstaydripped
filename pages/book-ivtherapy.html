@@ -1567,17 +1567,6 @@
     </footer>
 
     <script>
-        // Load Navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-                initializeNavigation();
-            })
-            .catch(error => {
-                console.error('Error loading navigation:', error);
-            });
-
         function initializeNavigation() {
             // Initialize mobile menu toggle
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
