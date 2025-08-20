@@ -4537,10 +4537,40 @@
                 }
             }
 
-            // Initialize stats animation
-            setTimeout(() => {
-                initializeStatsAnimation();
-            }, 100);
+            // Initialize stats animation with better error handling
+            function initStatsWithDebugging() {
+                console.log('Initializing stats animation...');
+                const statsSection = document.querySelector('.stats-section');
+                const counters = document.querySelectorAll('.counter');
+
+                console.log('Stats section found:', statsSection);
+                console.log('Counters found:', counters.length);
+
+                if (statsSection && counters.length > 0) {
+                    initializeStatsAnimation();
+                    // Force trigger animation for debugging
+                    setTimeout(() => {
+                        console.log('Force triggering animation...');
+                        counters.forEach(counter => {
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            console.log('Animating counter with target:', target);
+                            const timer = setInterval(() => {
+                                const current = parseInt(counter.textContent) || 0;
+                                const increment = Math.ceil(target / 100);
+                                const newValue = Math.min(current + increment, target);
+                                counter.textContent = newValue.toLocaleString();
+                                if (newValue >= target) {
+                                    clearInterval(timer);
+                                }
+                            }, 20);
+                        });
+                    }, 1000);
+                } else {
+                    console.error('Stats section or counters not found');
+                }
+            }
+
+            setTimeout(initStatsWithDebugging, 500);
 
             // Improved animation observer
             function initializeAnimations() {
