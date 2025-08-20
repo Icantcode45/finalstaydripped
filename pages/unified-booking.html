@@ -688,6 +688,17 @@
     // =========================
     // CHECKOUT / SUCCESS DEMO
     // =========================
+    // Escape HTML meta-characters to prevent XSS
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/\//g, '&#x2F;');
+    }
+
     function buildSuccessDetails(overrides){
       // Supports URL param overrides for backwards compatibility
       const params = new URLSearchParams(location.search);
@@ -703,7 +714,7 @@
       const addons = addonsParam > 0 ? addonsParam : (overrides?.addons ?? 0);
 
       const html = `
-        <div class="detail-row"><span>Treatment Selected:</span><span>${name}</span></div>
+        <div class="detail-row"><span>Treatment Selected:</span><span>${escapeHTML(name)}</span></div>
         ${addons ? `<div class="detail-row"><span>Add‑ons Selected:</span><span>${addons} enhancement${addons!==1?'s':''}</span></div>` : ''}
         <div class="detail-row"><span>Service Fee:</span><span>${money(price)}</span></div>
         <div class="detail-row"><span>Travel Fee:</span><span>${money(travel)}</span></div>
