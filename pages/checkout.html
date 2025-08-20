@@ -837,9 +837,89 @@
             return subtotal + shipping + tax;
         }
 
+        // Helper functions for appointment data
+        function getAppointmentData() {
+            return JSON.parse(localStorage.getItem('appointmentData') || '{}');
+        }
+
+        function getAppointmentSection() {
+            const appointmentData = getAppointmentData();
+
+            if (!appointmentData.appointmentDate) {
+                return '';
+            }
+
+            return `
+                <div class="form-section">
+                    <h2 class="section-title">Appointment Details</h2>
+                    <div style="background: rgba(0, 102, 204, 0.05); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                            <div>
+                                <strong>Date:</strong><br>
+                                ${new Date(appointmentData.appointmentDate).toLocaleDateString()}
+                            </div>
+                            <div>
+                                <strong>Time:</strong><br>
+                                ${appointmentData.appointmentTime || 'TBD'}
+                            </div>
+                            <div>
+                                <strong>Location Type:</strong><br>
+                                ${appointmentData.serviceLocation || 'TBD'}
+                            </div>
+                        </div>
+                        ${appointmentData.specialInstructions ? `
+                            <div style="margin-top: 16px;">
+                                <strong>Special Instructions:</strong><br>
+                                ${appointmentData.specialInstructions}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function getAddressTitle() {
+            const appointmentData = getAppointmentData();
+            return appointmentData.appointmentDate ? 'Service Address' : 'Shipping Address';
+        }
+
+        function prefillContactInfo() {
+            const appointmentData = getAppointmentData();
+
+            if (appointmentData.contactName) {
+                const nameParts = appointmentData.contactName.split(' ');
+                const firstNameInput = document.getElementById('first-name');
+                const lastNameInput = document.getElementById('last-name');
+
+                if (firstNameInput && nameParts[0]) {
+                    firstNameInput.value = nameParts[0];
+                }
+                if (lastNameInput && nameParts.length > 1) {
+                    lastNameInput.value = nameParts.slice(1).join(' ');
+                }
+            }
+
+            if (appointmentData.contactPhone) {
+                const phoneInput = document.getElementById('phone');
+                if (phoneInput) {
+                    phoneInput.value = appointmentData.contactPhone;
+                }
+            }
+
+            if (appointmentData.serviceAddress) {
+                const addressInput = document.getElementById('address');
+                if (addressInput) {
+                    addressInput.value = appointmentData.serviceAddress;
+                }
+            }
+        }
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             renderCheckout();
+
+            // Prefill contact info from appointment data
+            setTimeout(prefillContactInfo, 100);
         });
     </script>
 </body>
