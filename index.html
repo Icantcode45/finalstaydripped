@@ -4553,11 +4553,26 @@
 
         // Add event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize StayDripped utilities
+            if (window.StayDrippedUtils) {
+                window.StayDrippedUtils.setDebugMode(false); // Set to true for debugging
+                window.StayDrippedUtils.logger.info('StayDripped Utils integrated with homepage');
+            }
+
             // Location finder
             const locationBtn = document.querySelector('.location-finder-btn');
             if (locationBtn) {
                 locationBtn.addEventListener('click', function(e) {
                     e.preventDefault();
+
+                    // Track location finder click with enhanced analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'location_finder_click', {
+                            'page_location': window.location.href,
+                            'timestamp': window.StayDrippedUtils?.getCurrentTimeFormatted?.() || new Date().toISOString()
+                        });
+                    }
+
                     showLocationFinder();
                 });
             }
