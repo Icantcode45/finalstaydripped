@@ -188,7 +188,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         sections.forEach(function(section) {
             const header = section.querySelector('h4');
-            const links = section.querySelectorAll('a');
+            const submenu = section.querySelector('.services-horizontal-submenu');
+            const links = submenu ? submenu.querySelectorAll('a') : [];
 
             if (header) {
                 // Add click event to category headers
