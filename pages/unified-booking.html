@@ -853,17 +853,24 @@
             document.querySelectorAll('.service-card-enhanced .btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     const serviceTitle = this.closest('.service-card-enhanced').querySelector('h3').textContent;
-                    
-                    // Google Analytics tracking
+
+                    // Enhanced Google Analytics tracking with utils
                     if (typeof gtag !== 'undefined') {
                         gtag('event', 'service_selection', {
                             'service_name': serviceTitle,
                             'page_location': window.location.href,
-                            'value': 1
+                            'value': 1,
+                            'timestamp': window.StayDrippedUtils?.getCurrentTimeFormatted?.() || new Date().toISOString(),
+                            'session_id': window.StayDrippedUtils?.generateUUID?.() || 'unknown'
                         });
                     }
 
-                    console.log('Service selected:', serviceTitle);
+                    // Log with utils if available
+                    if (window.StayDrippedUtils) {
+                        window.StayDrippedUtils.logger.info('Service selected:', serviceTitle);
+                    } else {
+                        console.log('Service selected:', serviceTitle);
+                    }
                 });
             });
 
