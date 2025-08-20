@@ -26,14 +26,17 @@
             .then(html => {
                 // Fix relative paths in the navigation HTML based on current location
                 let fixedHtml = html;
-                
+
                 if (isInPagesFolder) {
                     // We're in a pages subfolder, paths in navigation.html are already correct (../)
                     fixedHtml = html;
                 } else {
-                    // We're in root, need to add pages/ prefix to page links
+                    // We're in root, need to fix paths for root-level access
                     fixedHtml = html.replace(/href="\.\.\/pages\//g, 'href="pages/');
                     fixedHtml = fixedHtml.replace(/href="\.\.\/index\.html/g, 'href="index.html');
+                    fixedHtml = fixedHtml.replace(/href="\.\.\/"/g, 'href="/"');
+                    // Fix any remaining ../ references that should be root-relative
+                    fixedHtml = fixedHtml.replace(/href="\.\.\/([^"]+)"/g, 'href="$1"');
                 }
                 
                 placeholder.innerHTML = fixedHtml;
