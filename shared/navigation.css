@@ -367,6 +367,15 @@
     padding: 20px;
 }
 
+/* Supplements dropdown styling */
+.dropdown-content.supplements-dropdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    min-width: 400px;
+    padding: 20px;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
