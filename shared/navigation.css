@@ -584,23 +584,9 @@
     top: 256px;
 }
 
-/* Luxury animation with sophisticated easing */
-@keyframes luxurySubmenuSlideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-25px) translateY(8px) scale(0.92) rotateY(-5deg);
-        filter: blur(2px);
-    }
-    60% {
-        opacity: 0.8;
-        transform: translateX(2px) translateY(-1px) scale(1.02) rotateY(0deg);
-        filter: blur(0px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0) translateY(0) scale(1) rotateY(0deg);
-        filter: blur(0px);
-    }
+/* Smooth transitions for click-activated links */
+.services-dropdown .dropdown-section a {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* Floating animation for enhanced visual appeal */
@@ -613,10 +599,9 @@
     }
 }
 
-.services-dropdown .dropdown-section:hover a {
-    animation: luxurySubmenuSlideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards,
-               float 3s ease-in-out infinite;
-    animation-delay: var(--stagger-delay, 0s), 1s;
+.services-dropdown .dropdown-section a[style*="block"] {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 1s;
 }
 
 /* Premium link hover effects with gradient magic */
