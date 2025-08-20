@@ -478,6 +478,12 @@
     pointer-events: auto;
 }
 
+/* Also hide direct links for inline navigation structure */
+.services-dropdown .dropdown-section > a {
+    display: none;
+    pointer-events: auto;
+}
+
 /* Active state for clicked headers */
 .services-dropdown .dropdown-section h4.active {
     background: linear-gradient(
