@@ -96,6 +96,8 @@
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Top Bar */
@@ -833,9 +835,10 @@
         }
 
         .stat-icon img {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             transition: transform 0.3s ease;
+            object-fit: contain;
         }
 
         .stat-card:hover .stat-icon img {
@@ -1126,9 +1129,10 @@
         }
 
         .service-icon img {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             transition: transform 0.3s ease;
+            object-fit: contain;
         }
 
         .service-card-enhanced:hover .service-icon img {
@@ -3443,7 +3447,7 @@
 
             <div class="team-certifications fade-in">
                 <div class="certification-badge">
-                    <span class="badge-icon">🏥</span>
+                    <span class="badge-icon">���</span>
                     <span>State Licensed</span>
                 </div>
                 <div class="certification-badge">
