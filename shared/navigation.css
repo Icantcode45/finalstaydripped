@@ -281,6 +281,14 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Special positioning for services mega menu */
+.dropdown-content.services-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 800px;
+    max-width: 1000px;
+}
+
 .nav-dropdown:hover .dropdown-content {
     display: block;
     opacity: 1;
@@ -332,11 +340,20 @@
     font-size: 14px;
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     padding: 8px 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-bottom: 2px solid rgba(0, 102, 204, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+.services-dropdown .dropdown-section h4 {
+    font-size: 13px;
+    padding: 6px 8px;
+    margin-bottom: 16px;
+    white-space: nowrap;
 }
 
 .dropdown-section a {
@@ -351,6 +368,15 @@
     font-size: 14px;
 }
 
+.services-dropdown .dropdown-section a {
+    font-size: 13px;
+    padding: 6px 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .dropdown-section a:hover {
     background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 160, 0.05));
     color: var(--primary-blue);
@@ -361,10 +387,13 @@
 /* Multi-column dropdown for services */
 .dropdown-content.services-dropdown {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    min-width: 500px;
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    min-width: 800px;
+    max-width: 1000px;
+    padding: 24px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .nav-actions {
@@ -705,9 +734,17 @@
     .search-container-topbar {
         display: none;
     }
-    
+
     .dropdown-content.services-dropdown {
-        min-width: 400px;
+        min-width: 600px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .dropdown-content.services-dropdown {
+        min-width: 500px;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
