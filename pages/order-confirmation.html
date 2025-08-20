@@ -414,34 +414,88 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Generate order number
-            const orderNumber = 'SD-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            // Get order data from localStorage
+            const orderData = JSON.parse(localStorage.getItem('orderData') || '{}');
+
+            // Generate or use stored order number
+            const orderNumber = orderData.orderId || 'SD-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
             document.getElementById('order-number').textContent = 'Order #' + orderNumber;
-            
-            // Set current date
-            const orderDate = new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
+
+            // Set order date
+            const orderDate = orderData.orderDate ?
+                new Date(orderData.orderDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) :
+                new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
             document.getElementById('order-date').textContent = orderDate;
-            
+
             // Calculate delivery date (3-5 business days from now)
             const deliveryDate = new Date();
             deliveryDate.setDate(deliveryDate.getDate() + 5);
-            const deliveryDateStr = deliveryDate.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+            const deliveryDateStr = deliveryDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             });
             document.getElementById('delivery-date').textContent = deliveryDateStr;
-            
+
+            // Display order details if available
+            if (orderData.items && orderData.items.length > 0) {
+                const detailsSection = document.querySelector('.order-details');
+                if (detailsSection) {
+                    const itemsHtml = `
+                        <div style="margin-top: 32px; padding: 24px; background: rgba(0, 102, 204, 0.05); border-radius: 12px; border: 1px solid rgba(0, 102, 204, 0.1);">
+                            <h3 style="margin-bottom: 16px; color: var(--primary-blue);">Order Items</h3>
+                            ${orderData.items.map(item => `
+                                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(0, 102, 204, 0.1);">
+                                    <div>
+                                        <strong>${item.name}</strong><br>
+                                        <small>Quantity: ${item.quantity}</small>
+                                    </div>
+                                    <div style="font-weight: 600;">$${(item.price * item.quantity).toFixed(2)}</div>
+                                </div>
+                            `).join('')}
+                            <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(0, 102, 204, 0.2);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span>Subtotal:</span>
+                                    <span>$${orderData.subtotal.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span>Tax:</span>
+                                    <span>$${orderData.tax.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span>Travel Fee:</span>
+                                    <span>${orderData.shipping === 0 ? 'FREE' : '$' + orderData.shipping.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; color: var(--primary-blue);">
+                                    <span>Total:</span>
+                                    <span>$${orderData.total.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    detailsSection.insertAdjacentHTML('beforeend', itemsHtml);
+                }
+            }
+
             // Update cart count to 0 since order is complete
             const cartBadge = document.querySelector('.cart-count');
             if (cartBadge) {
                 cartBadge.textContent = '0';
                 cartBadge.style.display = 'none';
             }
+
+            // Clear order data after displaying (but keep for a bit in case of refresh)
+            setTimeout(() => {
+                localStorage.removeItem('orderData');
+            }, 30000); // Keep for 30 seconds
         });
     </script>
 </body>
