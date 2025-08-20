@@ -11,16 +11,15 @@
   </script>
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <title>BOOK NOW | Stay Dripped IV & Wellness Co.</title>
-  <meta name="description" content="Book any of our premium mobile IV therapy, NAD+, peptide, vitamin injection, weight management, telehealth, and mobile testing services in Scottsdale, AZ.">
+  <title>Book & Checkout | Stay Dripped IV & Wellness Co.</title>
+  <meta name="description" content="Select your service, schedule, and complete checkout for mobile IV therapy, NAD+, peptides, vitamin injections, weight programs, telehealth, and mobile testing in Scottsdale AZ.">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Shared Navigation CSS -->
+  <!-- Shared Navigation CSS (optional external) -->
   <link rel="stylesheet" href="../shared/navigation.css">
 
   <style>
@@ -28,253 +27,231 @@
       --primary-blue:#0066CC;
       --secondary-teal:#00B8A0;
       --accent-orange:#FF6B35;
-      --warm-beige:#F5F1EB;
-      --soft-green:#8BC34A;
       --dark-slate:#1A2B3A;
       --light-gray:#F8FAFC;
       --warm-gray:#F7F5F3;
       --medium-gray:#64748B;
-      --warm-text:#2D3748;
       --white:#FFFFFF;
       --border-color:#E2E8F0;
       --soft-border:#F0EDE8;
-      --font-family:'Inter', sans-serif;
+      --soft-green:#10B981;
+      --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       --max-width:1200px;
-      --section-padding:80px 0;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:var(--font-family);
-      font-size:16px;line-height:1.6;color:var(--dark-slate);
-      background:var(--light-gray);
-      padding-top:120px;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--dark-slate);background:var(--light-gray);padding-top:120px}
     .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
     .main-content{padding:40px 0}
 
     /* Page Header */
-    .page-header{ text-align:center; margin-bottom:40px; background:var(--white); padding:40px 20px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,.1); }
-    .page-title{ font-size:36px; font-weight:700; color:var(--dark-slate); margin-bottom:12px; }
-    .page-subtitle{ font-size:18px; color:var(--medium-gray); max-width:800px; margin:0 auto; }
+    .page-header{background:#fff;border-radius:16px;padding:32px 20px;box-shadow:0 4px 20px rgba(0,0,0,.08);text-align:center;margin-bottom:24px}
+    .page-title{font-size:36px;font-weight:800;margin-bottom:8px}
+    .page-subtitle{color:var(--medium-gray);max-width:850px;margin:0 auto}
 
-    /* Grid of quick entry services (top) */
-    .service-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px; margin:40px 0; }
-    .service-card{ background:var(--white); border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,.08); text-align:center; transition:.3s; border:2px solid transparent; }
-    .service-card:hover{ transform:translateY(-6px); border-color:var(--primary-blue); box-shadow:0 12px 30px rgba(0,102,204,.15); }
-    .service-icon{ font-size:42px; margin-bottom:14px; display:block; }
-    .service-title{ font-size:22px; font-weight:700; margin-bottom:8px; }
-    .service-description{ color:var(--medium-gray); margin-bottom:16px; }
-    .service-price{ font-weight:700; color:var(--primary-blue); margin-bottom:20px; }
+    /* Quick service cards */
+    .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:24px 0 6px}
+    .service-card{background:#fff;border:1px solid var(--border-color);border-radius:16px;padding:22px;text-align:center;transition:.25s;border-left:4px solid transparent}
+    .service-card:hover{transform:translateY(-4px);border-left-color:var(--primary-blue);box-shadow:0 10px 24px rgba(0,102,204,.12)}
+    .service-icon{font-size:38px;margin-bottom:10px}
+    .service-title{font-size:20px;font-weight:700}
+    .service-description{color:var(--medium-gray);font-size:14px;margin:6px 0 8px}
+    .service-price{font-weight:700;color:var(--primary-blue);margin-bottom:12px}
 
     /* Buttons */
-    .btn{ background:var(--primary-blue); color:var(--white); padding:12px 20px; border:none; border-radius:10px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:.3s; cursor:pointer; }
-    .btn:hover{ background:#0052A3; transform:translateY(-2px); }
-    .btn-secondary{ background:transparent; color:var(--primary-blue); border:2px solid var(--primary-blue); }
-    .btn-secondary:hover{ background:var(--primary-blue); color:var(--white); }
-    .btn-large{ padding:16px 32px; font-size:18px; }
+    .btn{background:var(--primary-blue);color:#fff;border:none;border-radius:10px;padding:11px 18px;font-weight:700;display:inline-flex;gap:8px;align-items:center;cursor:pointer;text-decoration:none;transition:.25s}
+    .btn:hover{background:#0052A3;transform:translateY(-2px)}
+    .btn-secondary{background:transparent;color:var(--primary-blue);border:2px solid var(--primary-blue)}
+    .btn-secondary:hover{background:var(--primary-blue);color:#fff}
+    .btn-large{padding:14px 24px;font-size:18px}
+    .btn-ghost{background:transparent;color:var(--dark-slate);border:1px dashed var(--border-color)}
 
-    /* Contact CTA */
-    .contact-section{ background:var(--primary-blue); color:var(--white); padding:36px; border-radius:16px; text-align:center; margin-top:16px; }
-    .contact-section h3{ font-size:26px; margin-bottom:8px; }
-    .contact-section p{ opacity:.95; margin-bottom:22px; }
-    .contact-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .contact-btn{
-      background:var(--white);
-      color:var(--primary-blue);
-      padding:14px 22px;
-      border:none; border-radius:10px;
-      font-weight:600; text-decoration:none;
-      display:inline-flex; align-items:center; gap:8px; transition:.3s; font-size:16px;
-    }
-    .contact-btn:hover{ background:var(--light-gray); transform:translateY(-2px); }
-
-    /* Service selector (detailed, with options) */
-    .service-selector .section-header{ text-align:center; margin:40px 0 20px; }
-    .section-title{ font-size:28px; margin-bottom:6px; }
-    .service-categories{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; }
-    .service-category{ background:var(--white); border:1px solid var(--border-color); border-radius:12px; text-align:center; padding:18px; cursor:pointer; transition:.25s; }
-    .service-category:hover{ border-color:var(--primary-blue); transform:translateY(-2px); }
-    .service-category.active{ outline:3px solid rgba(0,102,204,.15); border-color:var(--primary-blue); }
-    .service-details{ display:none; margin-top:16px; }
-    .service-details.active{ display:block; }
-    .service-options{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-top:10px; }
-    .service-option{ background:var(--white); border:1px solid var(--border-color); border-radius:12px; padding:14px; cursor:pointer; transition:.2s; }
-    .service-option:hover{ border-color:var(--primary-blue); }
-    .service-option.selected{ border-color:var(--primary-blue); background:#EEF6FF; }
-    .option-name{ font-weight:700; }
-    .option-description{ color:var(--medium-gray); font-size:14px; margin:6px 0; }
-    .option-price{ color:var(--primary-blue); font-weight:700; }
+    /* Selector */
+    .section-header{text-align:center;margin:28px 0 12px}
+    .section-title{font-size:28px;font-weight:800}
+    .service-categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .service-category{background:#fff;border:1px solid var(--border-color);border-radius:12px;padding:14px;cursor:pointer;text-align:center;transition:.2s}
+    .service-category:hover{border-color:var(--primary-blue)}
+    .service-category.active{outline:3px solid rgba(0,102,204,.15);border-color:var(--primary-blue)}
+    .service-details{display:none;margin-top:12px}
+    .service-details.active{display:block}
+    .service-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .service-option{background:#fff;border:1px solid var(--border-color);border-radius:12px;padding:12px;cursor:pointer;transition:.2s}
+    .service-option:hover{border-color:var(--primary-blue)}
+    .service-option.selected{border-color:var(--primary-blue);background:#EEF6FF}
+    .option-name{font-weight:800}
+    .option-description{color:var(--medium-gray);font-size:14px;margin:6px 0}
+    .option-price{color:var(--primary-blue);font-weight:800}
 
     /* Booking form */
-    .booking-form-section{ display:none; background:var(--white); border-radius:16px; padding:24px; margin-top:24px; border:1px solid var(--border-color); }
-    .booking-form-section.active{ display:block; }
-    .form-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
-    .form-group{ display:flex; flex-direction:column; gap:6px; }
-    .form-group label{ font-weight:600; font-size:14px; }
-    .form-group input, .form-group select, .form-group textarea{ border:1px solid var(--border-color); border-radius:8px; padding:10px; font:inherit; background:#fff; }
-    .form-group textarea{ min-height:100px; resize:vertical; }
-    .payment-summary{ margin-top:16px; border:1px dashed var(--border-color); padding:16px; border-radius:12px; background:var(--warm-gray); }
-    .payment-summary h4{ margin-bottom:8px; }
-    .summary-item{ display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--soft-border); }
-    .summary-item:last-child{ border-bottom:none; }
-    .summary-total span:last-child{ color:var(--primary-blue); font-weight:800; }
-    .action-buttons{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .booking-form-section{display:none;background:#fff;border:1px solid var(--border-color);border-radius:16px;padding:22px;margin-top:16px}
+    .booking-form-section.active{display:block}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    label{font-weight:700;font-size:14px}
+    input,select,textarea{border:1px solid var(--border-color);border-radius:8px;padding:10px;font:inherit;background:#fff}
+    textarea{min-height:100px;resize:vertical}
+    .payment-summary{margin-top:12px;border:1px dashed var(--border-color);border-radius:12px;background:var(--warm-gray);padding:14px}
+    .payment-summary h4{margin-bottom:8px}
+    .summary-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--soft-border)}
+    .summary-item:last-child{border-bottom:none}
+    .summary-total span:last-child{color:var(--primary-blue);font-weight:900}
+    .action-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 
-    /* Payment demo */
-    .payment-demo-section{ margin:40px 0; display:flex; justify-content:center; }
-    .payment-container{ background:#fff; border-radius:16px; padding:36px; box-shadow:0 8px 32px rgba(26,43,58,.1); text-align:center; max-width:640px; width:100%; border:1px solid var(--border-color); }
-    .success-icon{ width:80px; height:80px; background:var(--soft-green); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:40px; color:#fff; font-weight:bold; }
-    .payment-title{ font-size:26px; font-weight:800; margin-bottom:8px; }
-    .payment-description{ color:var(--medium-gray); margin-bottom:18px; }
-    .payment-details{ background:var(--light-gray); border-radius:12px; padding:18px; margin-bottom:18px; text-align:left; }
-    .detail-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-color); }
-    .detail-row:last-child{ border-bottom:none; }
-    .total-row{ font-weight:800; border-top:2px solid var(--border-color); margin-top:6px; padding-top:10px; }
-    .total-row span:last-child{ color:var(--primary-blue); }
+    /* Success / Payment demo panel */
+    .hidden{display:none!important}
+    .success-wrap{display:none;justify-content:center;margin:28px 0}
+    .success-wrap.active{display:flex}
+    .payment-container{max-width:680px;width:100%;background:#fff;border:1px solid var(--border-color);border-radius:16px;padding:32px;box-shadow:0 8px 32px rgba(26,43,58,.08);text-align:center}
+    .success-icon{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--soft-green);color:#fff;font-size:40px;margin:0 auto 14px}
+    .payment-details{background:var(--light-gray);border-radius:12px;padding:18px;margin:16px 0;text-align:left}
+    .detail-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border-color)}
+    .detail-row:last-child{border-bottom:none}
+    .total-row{font-weight:900;border-top:2px solid var(--border-color);padding-top:10px;margin-top:6px}
+    .total-row span:last-child{color:var(--primary-blue)}
+
+    /* Contact CTA */
+    .contact-section{background:var(--primary-blue);color:#fff;border-radius:16px;padding:26px;text-align:center;margin-top:18px}
+    .contact-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .contact-btn{background:#fff;color:var(--primary-blue);border:none;border-radius:10px;padding:12px 18px;font-weight:700;text-decoration:none;display:inline-flex;gap:8px;align-items:center;transition:.25s}
+    .contact-btn:hover{background:var(--light-gray);transform:translateY(-2px)}
 
     /* Footer */
-    .footer{ background:var(--dark-slate); color:#fff; padding:60px 0 30px; margin-top:40px; }
-    .footer-content{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:24px; margin-bottom:12px; }
-    .footer-section h3{ font-size:18px; font-weight:700; margin-bottom:10px; }
-    .footer-section p, .footer-section li{ color:#B8C5D1; margin-bottom:6px; }
-    .footer-section ul{ list-style:none; }
-    .footer-section a{ color:#B8C5D1; text-decoration:none; }
-    .footer-section a:hover{ color:#fff; text-decoration:underline; }
-    .footer-bottom{ display:flex; justify-content:space-between; align-items:center; gap:12px; border-top:1px solid rgba(255,255,255,.1); padding-top:16px; flex-wrap:wrap; }
-    .social-links{ display:flex; gap:10px; }
+    .footer{background:var(--dark-slate);color:#fff;margin-top:40px}
+    .footer .container{padding:40px 20px}
+    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-bottom:14px}
+    .footer-section h3{font-size:18px;margin-bottom:8px}
+    .footer-section p,.footer-section li{color:#B8C5D1}
+    .footer-section a{color:#B8C5D1;text-decoration:none}
+    .footer-section a:hover{color:#fff;text-decoration:underline}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+    .social-links{display:flex;gap:10px}
 
     /* Responsive */
     @media (max-width:768px){
-      body{ padding-top:100px; }
-      .page-title{ font-size:28px; }
-      .form-grid{ grid-template-columns:1fr; }
-      .btn{ width:100%; justify-content:center; }
-      .contact-btn{ width:100%; max-width:320px; justify-content:center; }
+      body{padding-top:100px}
+      .page-title{font-size:28px}
+      .form-grid{grid-template-columns:1fr}
+      .btn{width:100%;justify-content:center}
+      .contact-btn{width:100%;max-width:320px;justify-content:center}
     }
   </style>
 </head>
-
 <body>
-  <!-- Navigation Placeholder (loaded dynamically) -->
+  <!-- Dynamic Navigation Placeholder -->
   <div id="navigation-placeholder"></div>
 
   <main class="main-content">
     <div class="container">
+      <!-- Header -->
       <div class="page-header">
-        <h1 class="page-title">Book Your Treatment</h1>
+        <h1 class="page-title">Book Your Appointment</h1>
         <p class="page-subtitle">
-          Choose from our complete range of mobile IV therapy, NAD+, peptides, vitamin injections, weight management, telehealth, and mobile testing services. All treatments delivered by licensed medical professionals to your location in Scottsdale, Paradise Valley, and Phoenix Metro.
+          Schedule mobile IV therapy & wellness with our easy online system. We serve Scottsdale, Paradise Valley, and greater Phoenix.
         </p>
       </div>
 
-      <!-- Quick service grid (links to detail selector below for convenience) -->
+      <!-- Quick Services -->
       <div class="service-grid" aria-label="Quick services">
         <div class="service-card" data-jump="iv-therapy">
-          <span class="service-icon">💧</span>
-          <h3 class="service-title">IV Therapy</h3>
-          <p class="service-description">Hydration, vitamin infusions, and specialized IV treatments.</p>
+          <div class="service-icon">💧</div>
+          <div class="service-title">IV Therapy</div>
+          <div class="service-description">Hydration & vitamin infusions</div>
           <div class="service-price">Starting at $149</div>
           <button class="btn" type="button">Choose IV Therapy</button>
         </div>
         <div class="service-card" data-jump="vitamin-shots">
-          <span class="service-icon">💊</span>
-          <h3 class="service-title">Vitamin Injections</h3>
-          <p class="service-description">Fast B12, D3, and blend shots for energy & wellness.</p>
+          <div class="service-icon">💊</div>
+          <div class="service-title">Vitamin Injections</div>
+          <div class="service-description">B12, D3, B‑Complex</div>
           <div class="service-price">Starting at $35</div>
           <button class="btn" type="button">Choose Injections</button>
         </div>
         <div class="service-card" data-jump="nad-peptides">
-          <span class="service-icon">🧬</span>
-          <h3 class="service-title">NAD+ & Peptides</h3>
-          <p class="service-description">Advanced anti-aging & performance therapies.</p>
+          <div class="service-icon">🧬</div>
+          <div class="service-title">NAD+ & Peptides</div>
+          <div class="service-description">Advanced cellular support</div>
           <div class="service-price">Starting at $399</div>
-          <button class="btn" type="button">Choose NAD+ / Peptides</button>
+          <button class="btn" type="button">Choose NAD+/Peptides</button>
         </div>
         <div class="service-card" data-jump="weight-management">
-          <span class="service-icon">⚖️</span>
-          <h3 class="service-title">Weight Management</h3>
-          <p class="service-description">GLP‑1 programs with ongoing support.</p>
+          <div class="service-icon">⚖️</div>
+          <div class="service-title">Weight Management</div>
+          <div class="service-description">GLP‑1 programs</div>
           <div class="service-price">Starting at $299</div>
           <button class="btn" type="button">Choose Program</button>
         </div>
         <div class="service-card" data-jump="telehealth">
-          <span class="service-icon">💻</span>
-          <h3 class="service-title">Telehealth</h3>
-          <p class="service-description">Virtual consultations & follow-ups.</p>
+          <div class="service-icon">💻</div>
+          <div class="service-title">Telehealth</div>
+          <div class="service-description">Virtual consults</div>
           <div class="service-price">Starting at $75</div>
           <button class="btn" type="button">Choose Telehealth</button>
         </div>
         <div class="service-card" data-jump="mobile-testing">
-          <span class="service-icon">🔬</span>
-          <h3 class="service-title">Mobile Testing</h3>
-          <p class="service-description">Lab work & screenings at your location.</p>
+          <div class="service-icon">🔬</div>
+          <div class="service-title">Mobile Testing</div>
+          <div class="service-description">Lab work & screening</div>
           <div class="service-price">Starting at $149</div>
           <button class="btn" type="button">Choose Testing</button>
         </div>
       </div>
 
-      <!-- Detailed selector -->
-      <section class="service-selector" id="service-selector">
+      <!-- Service Selector -->
+      <section id="service-selector" aria-label="Select your service">
         <div class="section-header">
           <h2 class="section-title">Select Your Service</h2>
-          <p style="color:var(--medium-gray); max-width:600px; margin:0 auto;">
-            Choose the category that fits your goals. All services available for mobile delivery across the Scottsdale area.
+          <p style="color:var(--medium-gray);max-width:660px;margin:0 auto">
+            Pick a category, then choose a specific option to unlock the booking form & live summary.
           </p>
         </div>
 
-        <div class="service-categories" role="tablist" aria-label="Service categories">
+        <div class="service-categories" role="tablist">
           <div class="service-category" data-service="iv-therapy" role="tab" tabindex="0">
-            <span class="service-icon">💧</span>
+            <div class="service-icon">💧</div>
             <h3>IV Therapy</h3>
-            <p>Hydration, vitamins, and specialized formulations</p>
+            <p>Hydration + vitamins</p>
             <div class="service-price">From $149</div>
           </div>
-
           <div class="service-category" data-service="nad-peptides" role="tab" tabindex="0">
-            <span class="service-icon">🧬</span>
+            <div class="service-icon">🧬</div>
             <h3>NAD+ & Peptides</h3>
-            <p>Advanced anti-aging and cellular support</p>
+            <p>Cellular support</p>
             <div class="service-price">From $399</div>
           </div>
-
           <div class="service-category" data-service="vitamin-shots" role="tab" tabindex="0">
-            <span class="service-icon">💉</span>
-            <h3>Vitamin Injections</h3>
-            <p>Quick shots for energy & wellness</p>
+            <div class="service-icon">💉</div>
+            <h3>Vitamin Shots</h3>
+            <p>Energy & immune</p>
             <div class="service-price">From $35</div>
           </div>
-
           <div class="service-category" data-service="weight-management" role="tab" tabindex="0">
-            <span class="service-icon">⚖️</span>
-            <h3>Weight Management</h3>
-            <p>GLP‑1 medications & support</p>
+            <div class="service-icon">⚖️</div>
+            <h3>Weight Mgmt</h3>
+            <p>GLP‑1 programs</p>
             <div class="service-price">From $299</div>
           </div>
-
           <div class="service-category" data-service="telehealth" role="tab" tabindex="0">
-            <span class="service-icon">📱</span>
+            <div class="service-icon">📱</div>
             <h3>Telehealth</h3>
-            <p>Virtual consults and guidance</p>
+            <p>Virtual care</p>
             <div class="service-price">From $75</div>
           </div>
-
           <div class="service-category" data-service="mobile-testing" role="tab" tabindex="0">
-            <span class="service-icon">🔬</span>
+            <div class="service-icon">🔬</div>
             <h3>Mobile Testing</h3>
-            <p>Health screenings at your location</p>
+            <p>At your location</p>
             <div class="service-price">From $149</div>
           </div>
-
           <div class="service-category" data-service="membership" role="tab" tabindex="0">
-            <span class="service-icon">⭐</span>
+            <div class="service-icon">⭐</div>
             <h3>Membership</h3>
-            <p>Save with monthly plans</p>
+            <p>Monthly savings</p>
             <div class="service-price">From $99/mo</div>
           </div>
         </div>
 
-        <!-- Details per category -->
-        <div id="iv-therapy-details" class="service-details" aria-live="polite">
+        <!-- Detail Blocks -->
+        <div id="iv-therapy-details" class="service-details">
           <h3>IV Therapy Options</h3>
           <div class="service-options">
             <div class="service-option" data-price="149" data-name="Rehydrate IV Drip">
@@ -284,27 +261,27 @@
             </div>
             <div class="service-option" data-price="199" data-name="Jr. Myers' Cocktail">
               <div class="option-name">Jr. Myers' Cocktail</div>
-              <div class="option-description">Essential vitamin & mineral blend</div>
+              <div class="option-description">Vitamin & mineral essentials</div>
               <div class="option-price">$199</div>
             </div>
             <div class="service-option" data-price="249" data-name="Myers' Cocktail">
               <div class="option-name">Myers' Cocktail</div>
-              <div class="option-description">Complete vitamin and mineral infusion</div>
+              <div class="option-description">Comprehensive infusion</div>
               <div class="option-price">$249</div>
             </div>
             <div class="service-option" data-price="299" data-name="Mega Myers'">
               <div class="option-name">Mega Myers'</div>
-              <div class="option-description">Enhanced potency vitamin formula</div>
+              <div class="option-description">Enhanced potency</div>
               <div class="option-price">$299</div>
             </div>
             <div class="service-option" data-price="399" data-name="Gold Ultimate Recovery">
               <div class="option-name">Gold Ultimate Recovery</div>
-              <div class="option-description">Premium recovery, finest ingredients</div>
+              <div class="option-description">Premium recovery blend</div>
               <div class="option-price">$399</div>
             </div>
             <div class="service-option" data-price="499" data-name="Platinum Premium">
               <div class="option-name">Platinum Premium</div>
-              <div class="option-description">Elite comprehensive wellness formula</div>
+              <div class="option-description">Elite wellness formula</div>
               <div class="option-price">$499</div>
             </div>
           </div>
@@ -315,22 +292,22 @@
           <div class="service-options">
             <div class="service-option" data-price="399" data-name="Basic NAD+ IV">
               <div class="option-name">Basic NAD+ IV</div>
-              <div class="option-description">Intro to NAD+ therapy (250mg)</div>
+              <div class="option-description">Intro NAD+ (250mg)</div>
               <div class="option-price">$399</div>
             </div>
             <div class="service-option" data-price="599" data-name="Fountain of Youth NAD+">
               <div class="option-name">Fountain of Youth NAD+</div>
-              <div class="option-description">Enhanced anti-aging (500mg)</div>
+              <div class="option-description">Anti-aging (500mg)</div>
               <div class="option-price">$599</div>
             </div>
             <div class="service-option" data-price="120" data-name="BPC-157 Healing Peptide">
               <div class="option-name">BPC-157 Healing Peptide</div>
-              <div class="option-description">Tissue repair & gut health</div>
+              <div class="option-description">Tissue & gut support</div>
               <div class="option-price">$120</div>
             </div>
             <div class="service-option" data-price="180" data-name="Ipamorelin + CJC-1295">
               <div class="option-name">Ipamorelin + CJC-1295</div>
-              <div class="option-description">Growth hormone optimization</div>
+              <div class="option-description">GH optimization</div>
               <div class="option-price">$180</div>
             </div>
           </div>
@@ -341,7 +318,7 @@
           <div class="service-options">
             <div class="service-option" data-price="35" data-name="B12 Energy Shot">
               <div class="option-name">B12 Energy Shot</div>
-              <div class="option-description">1000mcg instant energy boost</div>
+              <div class="option-description">1000mcg boost</div>
               <div class="option-price">$35</div>
             </div>
             <div class="service-option" data-price="45" data-name="Vitamin D3 Boost">
@@ -349,14 +326,14 @@
               <div class="option-description">50,000 IU immune support</div>
               <div class="option-price">$45</div>
             </div>
-            <div class="service-option" data-price="50" data-name="B-Complex Shot">
-              <div class="option-name">B-Complex Shot</div>
-              <div class="option-description">Complete B-vitamin blend</div>
+            <div class="service-option" data-price="50" data-name="B‑Complex Shot">
+              <div class="option-name">B‑Complex Shot</div>
+              <div class="option-description">Complete B vitamins</div>
               <div class="option-price">$50</div>
             </div>
             <div class="service-option" data-price="120" data-name="B12 Power Pack Bundle">
               <div class="option-name">B12 Power Pack Bundle</div>
-              <div class="option-description">4 B12 shots for extended benefits</div>
+              <div class="option-description">4x B12 shots</div>
               <div class="option-price">$120</div>
             </div>
           </div>
@@ -367,17 +344,17 @@
           <div class="service-options">
             <div class="service-option" data-price="299" data-name="Semaglutide Program">
               <div class="option-name">Semaglutide Program</div>
-              <div class="option-description">Weekly GLP‑1 injections with coaching</div>
+              <div class="option-description">Weekly GLP‑1 + coaching</div>
               <div class="option-price">$299/month</div>
             </div>
             <div class="service-option" data-price="350" data-name="Tirzepatide Program">
               <div class="option-name">Tirzepatide Program</div>
-              <div class="option-description">Advanced dual-action weight loss</div>
+              <div class="option-description">Dual action weight loss</div>
               <div class="option-price">$350/month</div>
             </div>
             <div class="service-option" data-price="199" data-name="Metabolic Package">
               <div class="option-name">Metabolic Package</div>
-              <div class="option-description">Fat-burning IV with supplements</div>
+              <div class="option-description">Fat‑burning IV + supps</div>
               <div class="option-price">$199</div>
             </div>
           </div>
@@ -388,17 +365,17 @@
           <div class="service-options">
             <div class="service-option" data-price="150" data-name="Initial Consultation">
               <div class="option-name">Initial Consultation</div>
-              <div class="option-description">Comprehensive health assessment</div>
+              <div class="option-description">Comprehensive assessment</div>
               <div class="option-price">$150</div>
             </div>
-            <div class="service-option" data-price="75" data-name="Follow-up Visit">
-              <div class="option-name">Follow-up Visit</div>
-              <div class="option-description">Progress review and adjustments</div>
+            <div class="service-option" data-price="75" data-name="Follow‑up Visit">
+              <div class="option-name">Follow‑up Visit</div>
+              <div class="option-description">Progress review</div>
               <div class="option-price">$75</div>
             </div>
             <div class="service-option" data-price="100" data-name="Prescription Consultation">
               <div class="option-name">Prescription Consultation</div>
-              <div class="option-description">Medication review & management</div>
+              <div class="option-description">Medication review</div>
               <div class="option-price">$100</div>
             </div>
           </div>
@@ -409,7 +386,7 @@
           <div class="service-options">
             <div class="service-option" data-price="199" data-name="Basic Wellness Panel">
               <div class="option-name">Basic Wellness Panel</div>
-              <div class="option-description">CBC, CMP basics</div>
+              <div class="option-description">CBC, CMP</div>
               <div class="option-price">$199</div>
             </div>
             <div class="service-option" data-price="299" data-name="Comprehensive Health Screen">
@@ -419,7 +396,7 @@
             </div>
             <div class="service-option" data-price="149" data-name="STD Testing">
               <div class="option-name">STD Testing</div>
-              <div class="option-description">Discreet, comprehensive screening</div>
+              <div class="option-description">Discreet & comprehensive</div>
               <div class="option-price">$149</div>
             </div>
           </div>
@@ -440,7 +417,7 @@
             </div>
             <div class="service-option" data-price="799" data-name="Wellness Platinum">
               <div class="option-name">Wellness Platinum</div>
-              <div class="option-description">Unlimited treatments + priority</div>
+              <div class="option-description">Unlimited + priority booking</div>
               <div class="option-price">$799/month</div>
             </div>
           </div>
@@ -481,11 +458,11 @@
                   <option>5:00 PM</option><option>6:00 PM</option>
                 </select>
               </div>
-              <div class="form-group" style="grid-column:1 / -1;">
+              <div class="form-group" style="grid-column:1/-1">
                 <label for="address">Service Address *</label>
-                <textarea id="address" name="address" placeholder="Full address where you'd like the service performed" required></textarea>
+                <textarea id="address" name="address" required placeholder="Full address where you'd like the service performed"></textarea>
               </div>
-              <div class="form-group" style="grid-column:1 / -1;">
+              <div class="form-group" style="grid-column:1/-1">
                 <label for="special-requests">Special Requests or Medical History</label>
                 <textarea id="special-requests" name="special-requests" placeholder="Allergies, conditions, or special requests"></textarea>
               </div>
@@ -493,47 +470,54 @@
 
             <div class="payment-summary" aria-live="polite">
               <h4>Booking Summary</h4>
-              <div class="summary-item">
-                <span>Selected Service:</span>
-                <span id="selected-service-name">No service selected</span>
-              </div>
-              <div class="summary-item">
-                <span>Service Fee:</span>
-                <span id="selected-service-price">$0</span>
-              </div>
-              <div class="summary-item">
-                <span>Travel Fee:</span>
-                <span>$25</span>
-              </div>
-              <div class="summary-item summary-total">
-                <span>Total:</span>
-                <span id="total-price">$25</span>
-              </div>
+              <div class="summary-item"><span>Selected Service:</span><span id="selected-service-name">No service selected</span></div>
+              <div class="summary-item"><span>Service Fee:</span><span id="selected-service-price">$0</span></div>
+              <div class="summary-item"><span>Travel Fee:</span><span>$25</span></div>
+              <div class="summary-item summary-total"><span>Total:</span><span id="total-price">$25</span></div>
             </div>
 
             <div class="action-buttons">
               <button type="button" class="btn btn-secondary" id="reset-btn">Start Over</button>
-              <button type="submit" class="btn btn-large">Book Appointment</button>
+              <button type="submit" class="btn btn-large">Book & Checkout</button>
+              <a href="https://Staydripped.intakeq.com/booking" target="_blank" rel="noopener" class="btn btn-ghost">Open Full Booking Widget</a>
             </div>
           </form>
         </div>
       </section>
 
+      <!-- Success/Payment Demo Panel -->
+      <section class="success-wrap" id="success-wrap" aria-live="polite">
+        <div class="payment-container">
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h2 class="page-title" style="font-size:28px;margin-bottom:6px">Payment Demo</h2>
+          <p class="page-subtitle" style="color:var(--medium-gray);max-width:600px;margin:0 auto 12px">
+            This is a demo confirmation. Your booking request was captured successfully!
+          </p>
+          <div class="payment-details" id="payment-details">
+            <!-- populated via JS -->
+          </div>
+          <div class="action-buttons" style="justify-content:center">
+            <a href="../index.html" class="btn btn-secondary">Return Home</a>
+            <button type="button" class="btn" id="book-another">Book Another</button>
+          </div>
+        </div>
+      </section>
+
       <!-- Help CTA -->
       <div class="contact-section" aria-label="Need help">
-        <h3>Need Help Choosing?</h3>
-        <p>Our medical team will help you select the perfect treatment for your goals.</p>
+        <h3 style="margin-bottom:6px">Need Help Choosing?</h3>
+        <p style="opacity:.95;margin-bottom:14px">Our medical team will help you select the perfect treatment for your goals.</p>
         <div class="contact-buttons">
           <a href="tel:+1-602-688-9825" class="contact-btn" aria-label="Call us">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             Call (602) 688‑9825
           </a>
           <a href="mailto:info@staydrippediv.com" class="contact-btn" aria-label="Email us">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             Email Us
           </a>
           <a href="https://Staydripped.intakeq.com/booking" target="_blank" rel="noopener" class="contact-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.9 3 3 3.9 3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
             Direct Booking
           </a>
         </div>
@@ -547,8 +531,8 @@
       <div class="footer-content">
         <div class="footer-section">
           <h3>Stay Dripped IV & Wellness Co.</h3>
-          <p>Premium mobile IV therapy and wellness services delivered to your location in Scottsdale and surrounding areas.</p>
-          <p><strong>Phone:</strong> (602) 688-9825</p>
+          <p>Premium mobile IV therapy and wellness services delivered throughout Scottsdale and nearby areas.</p>
+          <p><strong>Phone:</strong> (602) 688‑9825</p>
           <p><strong>Email:</strong> info@staydrippediv.com</p>
         </div>
         <div class="footer-section">
@@ -605,273 +589,203 @@
   </footer>
 
   <script>
-    // ---------------------
-    // Navigation loader
-    // ---------------------
+    // =========================
+    // NAV & SHARED JS LOADER
+    // =========================
     async function loadNavigation(){
       try{
-        const resp = await fetch('../shared/navigation.html',{cache:'no-cache'});
-        if(!resp.ok) throw new Error('Failed nav fetch');
-        const html = await resp.text();
-        document.getElementById('navigation-placeholder').innerHTML = html;
-
-        // Load shared nav JS (if present)
-        const script = document.createElement('script');
-        script.src = '../shared/navigation.js';
-        script.defer = true;
-        document.head.appendChild(script);
-      }catch(err){
-        console.error('Error loading navigation:', err);
-      }
+        const res = await fetch('../shared/navigation.html',{cache:'no-cache'});
+        if(res.ok){
+          const html = await res.text();
+          document.getElementById('navigation-placeholder').innerHTML = html;
+          const script = document.createElement('script');
+          script.src = '../shared/navigation.js'; script.defer = true;
+          document.head.appendChild(script);
+        }
+      }catch(e){ console.warn('Navigation not loaded:', e); }
     }
 
-    // ---------------------
-    // Simple search stub (topbar shortcut)
-    // ---------------------
+    // =========================
+    // FAQ & Reviews (safe stubs)
+    // =========================
+    function initializeFAQ(){
+      document.querySelectorAll('.faq-question')?.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const ans = btn.parentElement.querySelector('.faq-answer');
+          const tog = btn.querySelector('.faq-toggle');
+          const open = ans && ans.style.display === 'block';
+          if(ans){ ans.style.display = open ? 'none' : 'block'; }
+          if(tog){ tog.textContent = open ? '↓' : '↑'; }
+        });
+      });
+    }
+    function initializeReviewsCarousel(){
+      const prev = document.getElementById('prevReview');
+      const next = document.getElementById('nextReview');
+      if(prev) prev.addEventListener('click',()=>{ /* attach when reviews exist */ });
+      if(next) next.addEventListener('click',()=>{ /* attach when reviews exist */ });
+    }
     function performSearch(){
       const input = document.getElementById('topbar-search');
-      if(!input) return;
-      const q = input.value.trim();
-      if(!q) return;
-      // Redirect to site search page if you have one:
+      if(!input) return; const q = input.value.trim(); if(!q) return;
       window.location.href = `../search.html?q=${encodeURIComponent(q)}`;
     }
 
-    // ---------------------
-    // FAQ + Reviews stubs (no external deps)
-    // ---------------------
-    function initializeFAQ(){
-      // Works with .faq-question -> toggles nextElementSibling (.faq-answer)
-      document.querySelectorAll('.faq-question').forEach(btn=>{
-        btn.addEventListener('click',()=>toggleFaq(btn));
-      });
-    }
-    function toggleFaq(button){
-      const answer = button.parentElement.querySelector('.faq-answer');
-      const toggle = button.querySelector('.faq-toggle');
-      const open = answer && answer.style.display === 'block';
-      if(answer){
-        answer.style.display = open ? 'none' : 'block';
-        if(toggle) toggle.textContent = open ? '↓' : '↑';
-      }
-    }
-    function initializeReviewsCarousel(){
-      // Minimal placeholder to avoid console errors when buttons exist
-      const prev = document.getElementById('prevReview');
-      const next = document.getElementById('nextReview');
-      const container = document.querySelector('.reviews-track'); // if you add one later
-      let index = 0;
-      function update(){ /* no-op placeholder */ }
-      if(prev) prev.addEventListener('click',()=>{ index=Math.max(0,index-1); update(); });
-      if(next) next.addEventListener('click',()=>{ index=index+1; update(); });
-    }
-
-    // ---------------------
-    // Service selector logic
-    // ---------------------
+    // =========================
+    // BOOKING/SELECTION LOGIC
+    // =========================
     let selectedServiceName = null;
     let selectedServicePrice = 0;
+    const TRAVEL_FEE = 25;
 
-    function money(n){ return `$${Number(n).toFixed(0)}`; }
+    const money = n => `$${Number(n).toFixed(0)}`;
 
     function updateSummary(){
-      const travelFee = 25;
-      const nameEl = document.getElementById('selected-service-name');
-      const priceEl = document.getElementById('selected-service-price');
-      const totalEl = document.getElementById('total-price');
-
-      nameEl.textContent = selectedServiceName || 'No service selected';
-      priceEl.textContent = money(selectedServicePrice || 0);
-      totalEl.textContent = money((selectedServicePrice || 0) + travelFee);
+      document.getElementById('selected-service-name').textContent = selectedServiceName || 'No service selected';
+      document.getElementById('selected-service-price').textContent = money(selectedServicePrice || 0);
+      document.getElementById('total-price').textContent = money((selectedServicePrice || 0) + TRAVEL_FEE);
     }
 
-    function showDetailsFor(key){
-      // category chips state
-      document.querySelectorAll('.service-category').forEach(c=>{
-        c.classList.toggle('active', c.dataset.service === key);
-      });
-      // details blocks
-      document.querySelectorAll('.service-details').forEach(d=>{
-        d.classList.toggle('active', d.id === `${key}-details`);
-      });
-      // reveal form when a category is chosen (after option pick)
+    function showCategory(key){
+      document.querySelectorAll('.service-category').forEach(c=>c.classList.toggle('active', c.dataset.service===key));
+      document.querySelectorAll('.service-details').forEach(d=>d.classList.toggle('active', d.id === `${key}-details`));
       document.getElementById('booking-form').classList.remove('active');
-      // clear selected options UI
       document.querySelectorAll('.service-option').forEach(o=>o.classList.remove('selected'));
-      selectedServiceName = null;
-      selectedServicePrice = 0;
-      updateSummary();
+      selectedServiceName = null; selectedServicePrice = 0; updateSummary();
     }
 
     function attachServiceHandlers(){
-      // category tiles
+      // Category chips
       document.querySelectorAll('.service-category').forEach(tile=>{
         const key = tile.dataset.service;
-        const open = ()=>showDetailsFor(key);
+        const open = ()=>showCategory(key);
         tile.addEventListener('click', open);
-        tile.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); open(); } });
+        tile.addEventListener('keypress', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); }});
       });
-      // quick cards at top that jump to categories
+      // Quick cards jump
       document.querySelectorAll('.service-card[data-jump]').forEach(card=>{
         const key = card.getAttribute('data-jump');
         card.querySelector('.btn')?.addEventListener('click', ()=>{
-          document.getElementById('service-selector').scrollIntoView({behavior:'smooth', block:'start'});
-          showDetailsFor(key);
+          document.getElementById('service-selector').scrollIntoView({behavior:'smooth'});
+          showCategory(key);
         });
       });
-      // options
+      // Option select
       document.querySelectorAll('.service-details').forEach(block=>{
-        block.addEventListener('click', (e)=>{
-          const opt = e.target.closest('.service-option');
-          if(!opt) return;
+        block.addEventListener('click', e=>{
+          const opt = e.target.closest('.service-option'); if(!opt) return;
           block.querySelectorAll('.service-option').forEach(o=>o.classList.remove('selected'));
           opt.classList.add('selected');
           selectedServiceName = opt.dataset.name || 'Selected Service';
           selectedServicePrice = Number(opt.dataset.price || 0);
           updateSummary();
           document.getElementById('booking-form').classList.add('active');
-          document.getElementById('appointment-form').scrollIntoView({behavior:'smooth', block:'start'});
+          document.getElementById('appointment-form').scrollIntoView({behavior:'smooth'});
         });
       });
     }
 
-    // ---------------------
-    // Booking form + Payment demo
-    // ---------------------
-    function createPaymentDemo(){
-      const amount = (selectedServicePrice || 0) + 25;
-      const wrapper = document.createElement('div');
-      wrapper.className = 'payment-demo-section';
-      wrapper.innerHTML = `
-        <div class="payment-container" role="status" aria-live="polite">
-          <div class="success-icon" aria-hidden="true">✓</div>
-          <h2 class="payment-title">Payment Demo</h2>
-          <p class="payment-description">This is a demo confirmation. Your booking request was captured successfully.</p>
-          <div class="payment-details">
-            <div class="detail-row"><span>Treatment Selected:</span><span id="demo-service-name">${selectedServiceName || 'IV Drip Therapy'}</span></div>
-            <div class="detail-row"><span>Service Fee:</span><span id="demo-service-price">${money(selectedServicePrice || 199)}</span></div>
-            <div class="detail-row"><span>Travel Fee:</span><span>$25</span></div>
-            <div class="detail-row total-row"><span>Total Amount:</span><span id="demo-total-price">${money(amount)}</span></div>
-          </div>
-          <div class="demo-actions">
-            <a href="../index.html" class="btn btn-secondary">Return Home</a>
-            <button type="button" class="btn" id="book-another">Book Another</button>
-          </div>
-        </div>`;
-      // attach handler
-      setTimeout(()=>{
-        const btn = wrapper.querySelector('#book-another');
-        if(btn){ btn.addEventListener('click', resetForm); }
-      },0);
-      return wrapper;
+    // =========================
+    // CHECKOUT / SUCCESS DEMO
+    // =========================
+    function buildSuccessDetails(overrides){
+      // Supports URL param overrides for backwards compatibility
+      const params = new URLSearchParams(location.search);
+      let totalParam = Number(params.get('total'));
+      let addonsParam = Number(params.get('addons'));
+      if(isNaN(totalParam)) totalParam = null;
+      if(isNaN(addonsParam)) addonsParam = 0;
+
+      const name = overrides?.name || selectedServiceName || 'IV Drip Therapy';
+      const price = overrides?.price ?? selectedServicePrice || 199;
+      const travel = TRAVEL_FEE;
+      const total = overrides?.total ?? (totalParam ?? (price + travel));
+      const addons = addonsParam > 0 ? addonsParam : (overrides?.addons ?? 0);
+
+      const html = `
+        <div class="detail-row"><span>Treatment Selected:</span><span>${name}</span></div>
+        ${addons ? `<div class="detail-row"><span>Add‑ons Selected:</span><span>${addons} enhancement${addons!==1?'s':''}</span></div>` : ''}
+        <div class="detail-row"><span>Service Fee:</span><span>${money(price)}</span></div>
+        <div class="detail-row"><span>Travel Fee:</span><span>${money(travel)}</span></div>
+        <div class="detail-row total-row"><span>Total Amount:</span><span style="color:var(--primary-blue)">${money(total)}</span></div>
+      `;
+      document.getElementById('payment-details').innerHTML = html;
     }
 
-    function showPaymentDemo(){
-      // Hide booking form
-      const bookingFormBlock = document.getElementById('booking-form');
-      if(bookingFormBlock){ bookingFormBlock.style.display = 'none'; }
-      // Insert demo
-      const afterBlock = document.querySelector('#membership-details') || document.querySelector('.service-selector');
-      const demo = createPaymentDemo();
-      afterBlock.parentNode.insertBefore(demo, afterBlock.nextSibling);
-      demo.scrollIntoView({behavior:'smooth'});
+    function showSuccess(){
+      document.getElementById('success-wrap').classList.add('active');
+      document.querySelector('.main-content .container').scrollIntoView({behavior:'smooth',block:'start'});
+      buildSuccessDetails();
     }
 
     function resetForm(){
-      // Remove any existing payment demo
-      document.querySelectorAll('.payment-demo-section').forEach(el=>el.remove());
+      // Remove success view
+      document.getElementById('success-wrap').classList.remove('active');
       // Reset selections
       document.querySelectorAll('.service-category').forEach(c=>c.classList.remove('active'));
       document.querySelectorAll('.service-details').forEach(d=>d.classList.remove('active'));
       document.querySelectorAll('.service-option').forEach(o=>o.classList.remove('selected'));
-      // Reset form and UI
-      const formBlock = document.getElementById('booking-form');
-      if(formBlock){ formBlock.classList.remove('active'); formBlock.style.display = ''; }
-      const form = document.getElementById('appointment-form');
-      if(form){ form.reset(); }
       selectedServiceName = null; selectedServicePrice = 0; updateSummary();
-      window.scrollTo({top:0, behavior:'smooth'});
+      // Reset form
+      document.getElementById('booking-form').classList.remove('active');
+      document.getElementById('appointment-form').reset();
+      window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    // ---------------------
-    // Mobile menu helpers (if provided by shared navigation)
-    // ---------------------
-    function wireMobileMenu(){
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      const closeBtn = document.querySelector('.mobile-menu-close');
-      const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-
-      function closeMenu(){
-        if(menu) menu.classList.remove('active');
-        if(toggle) toggle.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      if(toggle){
-        toggle.addEventListener('click', ()=>{
-          if(menu){ menu.classList.add('active'); }
-          toggle.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        });
-      }
-      if(closeBtn){ closeBtn.addEventListener('click', closeMenu); }
-      if(menu){
-        menu.addEventListener('click', (e)=>{ if(e.target === menu) closeMenu(); });
-      }
-      dropdownToggles.forEach(t=>{
-        t.addEventListener('click', ()=>{
-          const id = t.getAttribute('data-target');
-          const dd = id ? document.getElementById(id) : null;
-          t.classList.toggle('active');
-          if(dd){ dd.classList.toggle('active'); }
-          // close others
-          dropdownToggles.forEach(o=>{
-            if(o!==t){
-              o.classList.remove('active');
-              const oid = o.getAttribute('data-target');
-              const odd = oid ? document.getElementById(oid) : null;
-              if(odd){ odd.classList.remove('active'); }
-            }
-          });
-        });
-      });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && menu && menu.classList.contains('active')) closeMenu(); });
-    }
-
-    // ---------------------
-    // DOM Ready
-    // ---------------------
+    // =========================
+    // INIT
+    // =========================
     document.addEventListener('DOMContentLoaded', ()=>{
-      loadNavigation().then(()=>wireMobileMenu()).catch(()=>{});
-      attachServiceHandlers();
+      loadNavigation();
       initializeFAQ();
       initializeReviewsCarousel();
+      attachServiceHandlers();
       updateSummary();
 
-      // topbar search (supports Cmd/Ctrl+K)
+      // If page is opened with ?total or #success, show success panel (backwards compat)
+      if(location.hash === '#success' || new URLSearchParams(location.search).has('total')){
+        document.getElementById('success-wrap').classList.add('active');
+        buildSuccessDetails();
+      }
+
+      // Submit handler
+      const form = document.getElementById('appointment-form');
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        if(!selectedServiceName){
+          alert('Please select a service option first.');
+          return;
+        }
+        // Minimal client-side check
+        const required = ['first-name','last-name','phone','email','date','time','address'];
+        for(const id of required){
+          const el = document.getElementById(id);
+          if(!el || !el.value.trim()){
+            el?.focus();
+            alert('Please complete all required fields.');
+            return;
+          }
+        }
+        showSuccess();
+        gtag('event','purchase', {
+          currency: 'USD',
+          value: (selectedServicePrice||0) + TRAVEL_FEE,
+          items: [{item_name:selectedServiceName, price:selectedServicePrice||0}]
+        });
+      });
+
+      // Reset
+      document.getElementById('reset-btn').addEventListener('click', resetForm);
+      document.getElementById('book-another').addEventListener('click', resetForm);
+
+      // Topbar search shortcut (if present in loaded nav)
       const topbarSearch = document.getElementById('topbar-search');
       if(topbarSearch){
-        topbarSearch.addEventListener('keypress', (e)=>{ if(e.key==='Enter'){ performSearch(); }});
-        document.addEventListener('keydown', (e)=>{
+        topbarSearch.addEventListener('keypress', e=>{ if(e.key==='Enter') performSearch(); });
+        document.addEventListener('keydown', e=>{
           if((e.metaKey || e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); topbarSearch.focus(); }
         });
       }
-
-      // form submit -> payment demo
-      const form = document.getElementById('appointment-form');
-      if(form){
-        form.addEventListener('submit',(e)=>{
-          e.preventDefault();
-          // basic client-side validation
-          if(!selectedServiceName){
-            alert('Please select a service option first.');
-            return;
-          }
-          showPaymentDemo();
-        });
-      }
-      // reset button
-      document.getElementById('reset-btn')?.addEventListener('click', resetForm);
     });
   </script>
 </body>
