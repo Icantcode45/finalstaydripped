@@ -22,18 +22,22 @@
         // Load navigation HTML
         fetch(navPath)
             .then(response => {
+                console.log('Navigation fetch response:', response.status, response.ok);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.text();
             })
             .then(html => {
+                console.log('Navigation HTML loaded, length:', html.length);
+
                 // Fix relative paths in the navigation HTML based on current location
                 let fixedHtml = html;
 
                 if (isInPagesFolder) {
                     // We're in a pages subfolder, paths in navigation.html are already correct (../)
                     fixedHtml = html;
+                    console.log('Using paths for pages folder');
                 } else {
                     // We're in root, need to fix paths for root-level access
                     fixedHtml = html.replace(/href="\.\.\/pages\//g, 'href="pages/');
@@ -41,16 +45,18 @@
                     fixedHtml = fixedHtml.replace(/href="\.\.\/"/g, 'href="/"');
                     // Fix any remaining ../ references that should be root-relative
                     fixedHtml = fixedHtml.replace(/href="\.\.\/([^"]+)"/g, 'href="$1"');
+                    console.log('Fixed paths for root access');
                 }
-                
+
                 placeholder.innerHTML = fixedHtml;
-                
+                console.log('Navigation HTML inserted into placeholder');
+
                 // Load navigation JavaScript after HTML is inserted
                 loadNavigationScript();
             })
             .catch(error => {
                 console.error('Error loading navigation:', error);
-                placeholder.innerHTML = '<div style="background: #f00; color: #fff; padding: 10px;">Navigation failed to load</div>';
+                placeholder.innerHTML = '<div style="background: #f00; color: #fff; padding: 10px;">Navigation failed to load: ' + error.message + '</div>';
             });
     }
     
