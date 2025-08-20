@@ -357,10 +357,13 @@ class StayDrippedCart {
     initializeAddToCartButtons() {
         document.querySelectorAll('.add-to-cart, .btn[href*="book"], .btn[data-service]').forEach(button => {
             if (!button.hasAttribute('data-cart-initialized')) {
+                console.log('Initializing cart button:', button.textContent, button.className);
                 button.setAttribute('data-cart-initialized', 'true');
                 button.addEventListener('click', (e) => this.handleAddToCart(e));
             }
         });
+
+        console.log('Cart buttons initialized. Total buttons found:', document.querySelectorAll('.add-to-cart').length);
     }
 
     // Handle add to cart button clicks
