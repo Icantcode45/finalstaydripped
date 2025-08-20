@@ -960,27 +960,31 @@
                 observer.observe(element);
             });
 
-            // Cart summary functionality
+            // Cart summary functionality - Show only when items are added
             function updateCartSummary() {
                 const cartSection = document.getElementById('cart-summary-section');
+
+                if (!window.stayDrippedCart) return;
+
+                const items = window.stayDrippedCart.getItems();
+
+                // Only show cart summary if items are actually added
+                if (items.length === 0) {
+                    cartSection.style.display = 'none';
+                    return;
+                }
+
+                // If we have items, show the cart summary
                 const itemsContainer = document.getElementById('cart-summary-items');
                 const subtotalEl = document.getElementById('cart-subtotal');
                 const taxEl = document.getElementById('cart-tax');
                 const shippingEl = document.getElementById('cart-shipping');
                 const totalEl = document.getElementById('cart-final-total');
 
-                if (!window.stayDrippedCart) return;
-
-                const items = window.stayDrippedCart.getItems();
                 const subtotal = window.stayDrippedCart.getSubtotal();
                 const tax = subtotal * 0.08;
                 const shipping = subtotal >= 100 ? 0 : 9.99;
                 const total = subtotal + tax + shipping;
-
-                if (items.length === 0) {
-                    cartSection.style.display = 'none';
-                    return;
-                }
 
                 cartSection.style.display = 'block';
 
