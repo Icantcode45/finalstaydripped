@@ -891,6 +891,57 @@
                 observer.observe(element);
             });
 
+            // Cart summary functionality
+            function updateCartSummary() {
+                const cartSection = document.getElementById('cart-summary-section');
+                const itemsContainer = document.getElementById('cart-summary-items');
+                const subtotalEl = document.getElementById('cart-subtotal');
+                const taxEl = document.getElementById('cart-tax');
+                const shippingEl = document.getElementById('cart-shipping');
+                const totalEl = document.getElementById('cart-final-total');
+
+                if (!window.stayDrippedCart) return;
+
+                const items = window.stayDrippedCart.getItems();
+                const subtotal = window.stayDrippedCart.getSubtotal();
+                const tax = subtotal * 0.08;
+                const shipping = subtotal >= 100 ? 0 : 9.99;
+                const total = subtotal + tax + shipping;
+
+                if (items.length === 0) {
+                    cartSection.style.display = 'none';
+                    return;
+                }
+
+                cartSection.style.display = 'block';
+
+                // Render items
+                itemsContainer.innerHTML = items.map(item => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border-color);">
+                        <div>
+                            <h4 style="margin: 0 0 4px 0; font-size: 16px; color: var(--dark-slate);">${item.name}</h4>
+                            <p style="margin: 0; font-size: 14px; color: var(--medium-gray);">Quantity: ${item.quantity}</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 16px; font-weight: 600; color: var(--dark-slate);">$${(item.price * item.quantity).toFixed(2)}</div>
+                            <div style="font-size: 12px; color: var(--medium-gray);">$${item.price.toFixed(2)} each</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Update totals
+                subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+                taxEl.textContent = `$${tax.toFixed(2)}`;
+                shippingEl.textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+                totalEl.textContent = `$${total.toFixed(2)}`;
+            }
+
+            // Listen for cart updates
+            if (window.stayDrippedCart) {
+                window.stayDrippedCart.addListener(updateCartSummary);
+                updateCartSummary(); // Initial update
+            }
+
             // Service selection tracking
             document.querySelectorAll('.service-card-enhanced .btn').forEach(button => {
                 button.addEventListener('click', function(e) {
@@ -913,6 +964,9 @@
                     } else {
                         console.log('Service selected:', serviceTitle);
                     }
+
+                    // Update cart summary after service selection
+                    setTimeout(updateCartSummary, 100);
                 });
             });
 
