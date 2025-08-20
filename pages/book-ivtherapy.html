@@ -1602,20 +1602,6 @@
     </footer>
 
     <script>
-<<<<<<< HEAD
-=======
-        // Load Navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-                initializeNavigation();
-            })
-            .catch(error => {
-                console.error('Error loading navigation:', error);
-            });
-
->>>>>>> refs/remotes/origin/main
         function initializeNavigation() {
             // Initialize mobile menu toggle
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
