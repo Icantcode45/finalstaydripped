@@ -468,8 +468,13 @@
 }
 
 /* Hide links by default - they will be shown via JavaScript on click */
-.services-dropdown .dropdown-section a {
+.services-dropdown .dropdown-section .services-horizontal-submenu {
     display: none;
+    pointer-events: auto;
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a {
+    display: block;
     pointer-events: auto;
 }
 
