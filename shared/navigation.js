@@ -229,23 +229,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Helper functions to show/hide links
         function showLinks(section) {
             const submenu = section.querySelector('.services-horizontal-submenu');
+
             if (submenu) {
+                // Shared navigation structure with submenu container
                 submenu.style.display = 'block';
                 submenu.style.opacity = '0';
                 submenu.style.transform = 'translateX(-20px)';
 
-                // Animate submenu container
                 setTimeout(() => {
                     submenu.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
                     submenu.style.opacity = '1';
                     submenu.style.transform = 'translateX(0)';
                 }, 50);
+            } else {
+                // Inline navigation structure with direct links
+                const links = section.querySelectorAll('a');
+                links.forEach(function(link, index) {
+                    link.style.display = 'block';
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(-20px)';
+
+                    // Staggered animation
+                    setTimeout(() => {
+                        link.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                        link.style.opacity = '1';
+                        link.style.transform = 'translateX(0)';
+                    }, index * 50 + 50);
+                });
             }
         }
 
         function hideLinks(section) {
             const submenu = section.querySelector('.services-horizontal-submenu');
+
             if (submenu) {
+                // Shared navigation structure with submenu container
                 submenu.style.transition = 'all 0.2s ease';
                 submenu.style.opacity = '0';
                 submenu.style.transform = 'translateX(-10px)';
@@ -253,6 +271,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     submenu.style.display = 'none';
                 }, 200);
+            } else {
+                // Inline navigation structure with direct links
+                const links = section.querySelectorAll('a');
+                links.forEach(function(link) {
+                    link.style.transition = 'all 0.2s ease';
+                    link.style.opacity = '0';
+                    link.style.transform = 'translateX(-10px)';
+
+                    setTimeout(() => {
+                        link.style.display = 'none';
+                    }, 200);
+                });
             }
         }
 
