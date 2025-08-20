@@ -4541,40 +4541,68 @@
                 }
             }
 
-            // Initialize stats animation with better error handling
-            function initStatsWithDebugging() {
-                console.log('Initializing stats animation...');
+            // Fixed Stats Animation and Counter
+            function initializeStatsAnimation() {
                 const statsSection = document.querySelector('.stats-section');
+                const statCards = document.querySelectorAll('.stats-section .stat-card');
                 const counters = document.querySelectorAll('.counter');
+                let hasAnimated = false;
 
-                console.log('Stats section found:', statsSection);
-                console.log('Counters found:', counters.length);
+                function animateCounter(counter) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
 
-                if (statsSection && counters.length > 0) {
-                    initializeStatsAnimation();
-                    // Force trigger animation for debugging
-                    setTimeout(() => {
-                        console.log('Force triggering animation...');
-                        counters.forEach(counter => {
-                            const target = parseInt(counter.getAttribute('data-target'));
-                            console.log('Animating counter with target:', target);
-                            const timer = setInterval(() => {
-                                const current = parseInt(counter.textContent) || 0;
-                                const increment = Math.ceil(target / 100);
-                                const newValue = Math.min(current + increment, target);
-                                counter.textContent = newValue.toLocaleString();
-                                if (newValue >= target) {
-                                    clearInterval(timer);
-                                }
-                            }, 20);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }, 16);
+                }
+
+                function checkStatsVisibility() {
+                    if (hasAnimated || !statsSection) return;
+
+                    const rect = statsSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+
+                    if (isVisible) {
+                        hasAnimated = true;
+
+                        // Animate stat cards
+                        statCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 200);
                         });
-                    }, 1000);
-                } else {
-                    console.error('Stats section or counters not found');
+
+                        // Animate counters
+                        setTimeout(() => {
+                            counters.forEach(counter => {
+                                animateCounter(counter);
+                            });
+                        }, 600);
+                    }
+                }
+
+                // Set up scroll listener and initial check
+                if (statsSection) {
+                    window.addEventListener('scroll', checkStatsVisibility);
+                    // Check immediately in case already visible
+                    setTimeout(checkStatsVisibility, 100);
                 }
             }
 
-            setTimeout(initStatsWithDebugging, 500);
+            // Initialize the stats animation when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeStatsAnimation);
+            } else {
+                initializeStatsAnimation();
+            }
 
             // Improved animation observer
             function initializeAnimations() {
