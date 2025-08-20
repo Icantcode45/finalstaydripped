@@ -927,7 +927,11 @@
         // Error handling for navigation and widgets
         window.addEventListener('error', function(e) {
             if (e.target.src && (e.target.src.includes('navigation') || e.target.src.includes('intakeq'))) {
-                console.warn('Resource failed to load:', e.target.src);
+                if (window.StayDrippedUtils) {
+                    window.StayDrippedUtils.handleError(e, 'Resource failed to load');
+                } else {
+                    console.warn('Resource failed to load:', e.target.src);
+                }
             }
         });
 
