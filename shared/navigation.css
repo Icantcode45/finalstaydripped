@@ -567,25 +567,21 @@
     z-index: 1003;
 }
 
-/* Elegant vertical stacking with improved spacing */
-.services-dropdown .dropdown-section:hover a:nth-child(2) {
+/* Elegant vertical stacking for visible submenu links */
+.services-dropdown .dropdown-section a[style*="block"]:nth-child(2) {
     top: 64px;
-    animation-delay: 0.05s;
 }
 
-.services-dropdown .dropdown-section:hover a:nth-child(3) {
+.services-dropdown .dropdown-section a[style*="block"]:nth-child(3) {
     top: 128px;
-    animation-delay: 0.1s;
 }
 
-.services-dropdown .dropdown-section:hover a:nth-child(4) {
+.services-dropdown .dropdown-section a[style*="block"]:nth-child(4) {
     top: 192px;
-    animation-delay: 0.15s;
 }
 
-.services-dropdown .dropdown-section:hover a:nth-child(5) {
+.services-dropdown .dropdown-section a[style*="block"]:nth-child(5) {
     top: 256px;
-    animation-delay: 0.2s;
 }
 
 /* Luxury animation with sophisticated easing */
