@@ -491,11 +491,20 @@
         </div>
     </div>
 
+    <!-- Cart System -->
+    <script src="../shared/cart.js"></script>
+
     <!-- Optimized Navigation Loader -->
     <script src="../shared/navigation-loader-optimized.js"></script>
-    
+
     <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Load cart from new cart system if available, fallback to old format
+        let cart = [];
+        if (window.stayDrippedCart) {
+            cart = window.stayDrippedCart.getItems();
+        } else {
+            cart = JSON.parse(localStorage.getItem('cart')) || JSON.parse(localStorage.getItem('staydripped_cart')) || [];
+        }
         
         function renderCheckout() {
             const container = document.getElementById('checkout-container');
