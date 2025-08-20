@@ -770,15 +770,35 @@
         }
 
         function processOrder(data) {
+            // Store order data for confirmation page
+            const orderData = {
+                orderId: 'SD-' + Date.now(),
+                items: cart,
+                customerInfo: data,
+                subtotal: cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+                tax: cart.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.08,
+                shipping: cart.reduce((total, item) => total + (item.price * item.quantity), 0) >= 100 ? 0 : 9.99,
+                total: calculateTotal(),
+                orderDate: new Date().toISOString()
+            };
+
+            localStorage.setItem('orderData', JSON.stringify(orderData));
+
             // Clear cart
             localStorage.removeItem('cart');
+            localStorage.removeItem('staydripped_cart');
             cart = [];
-            
+
+            // Clear global cart if available
+            if (window.stayDrippedCart) {
+                window.stayDrippedCart.clear();
+            }
+
             // Show success message
             const successMsg = document.getElementById('success-message');
             successMsg.innerHTML = 'Order placed successfully! You will receive a confirmation email shortly.';
             successMsg.style.display = 'block';
-            
+
             // Redirect to success page after a delay
             setTimeout(() => {
                 window.location.href = 'order-confirmation.html';
