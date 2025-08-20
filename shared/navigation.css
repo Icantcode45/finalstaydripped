@@ -531,7 +531,8 @@
 }
 
 /* Extended bridge area for smooth hovering between sections and submenus */
-.services-dropdown .dropdown-section::before {
+.services-dropdown .dropdown-section::before,
+.products-dropdown .dropdown-section::before {
     content: '';
     position: absolute;
     top: -10px;
@@ -718,7 +719,8 @@
 }
 
 /* Premium link hover effects with gradient magic */
-.services-dropdown .dropdown-section .services-horizontal-submenu a::before {
+.services-dropdown .dropdown-section .services-horizontal-submenu a::before,
+.products-dropdown .dropdown-section .services-horizontal-submenu a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -780,7 +782,8 @@
 }
 
 /* Add hover effects with gradient and icon for direct links */
-.services-dropdown .dropdown-section > a::before {
+.services-dropdown .dropdown-section > a::before,
+.products-dropdown .dropdown-section > a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -810,7 +813,8 @@
     font-weight: 600;
 }
 
-.services-dropdown .dropdown-section > a:hover::before {
+.services-dropdown .dropdown-section > a:hover::before,
+.products-dropdown .dropdown-section > a:hover::before {
     left: 100%;
 }
 
