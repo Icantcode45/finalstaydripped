@@ -2336,8 +2336,37 @@
             });
         }
 
+        // Convert all Book Now buttons to Add to Cart buttons
+        function convertBookingButtons() {
+            const bookButtons = document.querySelectorAll('.btn.product-btn');
+            bookButtons.forEach(button => {
+                if (button.textContent === 'Book Now' && !button.classList.contains('add-to-cart')) {
+                    const productCard = button.closest('.product-card');
+                    const title = productCard.querySelector('.product-title')?.textContent?.trim();
+                    const priceElement = productCard.querySelector('.product-price');
+                    const price = priceElement?.textContent?.replace('$', '')?.trim();
+                    const category = productCard.querySelector('.product-category')?.textContent?.trim();
+
+                    if (title && price) {
+                        // Convert to button and add cart functionality
+                        const newButton = document.createElement('button');
+                        newButton.className = button.className + ' add-to-cart';
+                        newButton.textContent = `Add to Cart - $${price}`;
+                        newButton.setAttribute('data-name', title);
+                        newButton.setAttribute('data-price', price);
+                        newButton.setAttribute('data-category', category || 'IV Therapy');
+
+                        button.parentNode.replaceChild(newButton, button);
+                    }
+                }
+            });
+        }
+
         // Initialize page functions
         document.addEventListener('DOMContentLoaded', function() {
+            // Convert booking buttons to cart buttons
+            convertBookingButtons();
+
             // Initialize all page functionality
             initializeCategoryNavigation();
             initializeSmoothScrolling();
