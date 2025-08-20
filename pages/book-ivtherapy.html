@@ -2371,6 +2371,13 @@
             // Convert booking buttons to cart buttons
             convertBookingButtons();
 
+            // Reinitialize cart buttons after conversion
+            if (window.stayDrippedCart) {
+                setTimeout(() => {
+                    window.stayDrippedCart.initializeAddToCartButtons();
+                }, 100);
+            }
+
             // Initialize all page functionality
             initializeCategoryNavigation();
             initializeSmoothScrolling();
