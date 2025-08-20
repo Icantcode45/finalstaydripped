@@ -1102,8 +1102,24 @@
             opacity: 1;
         }
 
+        .service-icon {
+            padding: 32px 32px 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-icon img {
+            width: 48px;
+            height: 48px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-enhanced:hover .service-icon img {
+            transform: scale(1.1);
+        }
+
         .service-content {
-            padding: 40px 32px;
+            padding: 20px 32px 40px 32px;
             position: relative;
             z-index: 1;
         }
