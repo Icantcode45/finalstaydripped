@@ -2304,17 +2304,6 @@
 
         // Initialize page functions
         document.addEventListener('DOMContentLoaded', function() {
-            // Load navigation first
-            fetch('../shared/navigation.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navigation-placeholder').innerHTML = data;
-                    initializeNavigation();
-                })
-                .catch(error => {
-                    console.error('Error loading navigation:', error);
-                });
-
             // Initialize all page functionality
             initializeCategoryNavigation();
             initializeSmoothScrolling();
