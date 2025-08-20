@@ -5448,11 +5448,30 @@
         // Load shared navigation
         async function loadNavigation() {
             try {
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (!placeholder) {
+                    console.warn('Navigation placeholder element not found');
+                    return;
+                }
+
                 const response = await fetch('../shared/navigation.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+                placeholder.innerHTML = navigationHtml;
+
+                // Initialize navigation functionality after loading
+                if (typeof initializeNavigation === 'function') {
+                    initializeNavigation();
+                }
             } catch (error) {
                 console.error('Error loading navigation:', error);
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (placeholder) {
+                    placeholder.innerHTML = '<div style="background: #f8f9fa; padding: 10px; text-align: center; color: #6c757d;">Navigation temporarily unavailable</div>';
+                }
             }
         }
 
