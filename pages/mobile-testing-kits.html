@@ -1044,6 +1044,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadNavigation();
             initCategoryNavigation();
+            // Populate All category on initial load since it's the default active
+            populateAllCategory();
         });
     </script>
 </body>
