@@ -2729,21 +2729,31 @@
             font-size: clamp(18px, 4vw, 24px);
             font-weight: 700;
             margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .promo-banner p {
             font-size: 16px;
-            opacity: 0.9;
+            opacity: 0.95;
             margin: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .discount-code {
-            background: rgba(255,255,255,0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-weight: 700;
             display: inline-block;
             margin: 0 8px;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 107, 53, 0.6); }
         }
 
 
