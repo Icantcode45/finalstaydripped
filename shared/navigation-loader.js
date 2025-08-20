@@ -52,11 +52,25 @@
         if (window.navigationLoaded) {
             return;
         }
-        
+
         const currentPath = window.location.pathname;
         const isInPagesFolder = currentPath.includes('/pages/');
         const scriptPath = isInPagesFolder ? '../shared/navigation.js' : 'shared/navigation.js';
-        
+        const utilsPath = isInPagesFolder ? '../shared/staydripped-utils.js' : 'shared/staydripped-utils.js';
+
+        // Load utilities first
+        const utilsScript = document.createElement('script');
+        utilsScript.src = utilsPath;
+        utilsScript.type = 'module';
+        utilsScript.onload = function() {
+            console.log('StayDripped utilities loaded successfully');
+        };
+        utilsScript.onerror = function() {
+            console.error('Failed to load StayDripped utilities');
+        };
+        document.head.appendChild(utilsScript);
+
+        // Then load navigation script
         const script = document.createElement('script');
         script.src = scriptPath;
         script.onload = function() {
