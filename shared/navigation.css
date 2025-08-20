@@ -467,24 +467,39 @@
     letter-spacing: 0.3px;
 }
 
-/* Show links in horizontal submenu on hover with persistent visibility */
-.services-dropdown .dropdown-section:hover a {
-    display: block;
+/* Hide links by default - they will be shown via JavaScript on click */
+.services-dropdown .dropdown-section a {
+    display: none;
+    pointer-events: auto;
 }
 
-/* Keep submenu links visible when hovering over any part of the submenu area */
-.services-dropdown .dropdown-section:hover a,
-.services-dropdown .dropdown-section a:hover ~ a {
-    display: block;
+/* Active state for clicked headers */
+.services-dropdown .dropdown-section h4.active {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.15) 0%,
+        rgba(0, 184, 160, 0.12) 50%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    color: var(--primary-blue);
+    transform: translateX(6px) translateY(-1px);
+    box-shadow:
+        0 8px 25px rgba(0, 102, 204, 0.18),
+        0 4px 12px rgba(0, 184, 160, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(0, 102, 204, 0.3);
+}
+
+.services-dropdown .dropdown-section h4.active::after {
+    opacity: 1;
+    transform: translateX(6px) scale(1.15) rotate(90deg);
+    color: var(--secondary-teal);
+    text-shadow: 0 2px 4px rgba(0, 184, 160, 0.3);
 }
 
 /* Maintain visibility when hovering between elements */
-.services-dropdown .dropdown-section:hover {
+.services-dropdown .dropdown-section {
     pointer-events: all;
-}
-
-.services-dropdown .dropdown-section a {
-    pointer-events: auto;
 }
 
 /* Enhanced horizontal sub-menu container */
@@ -523,12 +538,13 @@
     position: relative;
 }
 
-/* Enhanced horizontal positioning with luxury styling and extended hover area */
-.services-dropdown .dropdown-section:hover {
+/* Enhanced horizontal positioning for click-activated submenus */
+.services-dropdown .dropdown-section {
     overflow: visible;
 }
 
-.services-dropdown .dropdown-section:hover a {
+/* Style for visible submenu links (controlled by JavaScript) */
+.services-dropdown .dropdown-section a[style*="block"] {
     position: absolute;
     top: -8px;
     left: calc(100% + 20px);
@@ -549,12 +565,6 @@
         inset 0 0 0 1px rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.7);
     z-index: 1003;
-    animation: luxurySubmenuSlideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-/* Keep submenu visible when hovering over the submenu items */
-.services-dropdown .dropdown-section a:hover {
-    display: block !important;
 }
 
 /* Elegant vertical stacking with improved spacing */
