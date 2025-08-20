@@ -765,7 +765,8 @@
 }
 
 /* Hover effects for direct links in inline structure */
-.services-dropdown .dropdown-section > a:hover {
+.services-dropdown .dropdown-section > a:hover,
+.products-dropdown .dropdown-section > a:hover {
     color: var(--primary-blue) !important;
     transform: translateX(8px) translateY(-2px) scale(1.03);
     box-shadow:
