@@ -607,6 +607,57 @@
     letter-spacing: 0.3px;
 }
 
+/* Style for direct links in inline navigation structure */
+.services-dropdown .dropdown-section > a[style*="block"] {
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 20px);
+    min-width: 320px;
+    color: var(--dark-slate);
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 250, 252, 0.95) 100%
+    );
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.12),
+        0 12px 30px rgba(0, 102, 204, 0.08),
+        0 6px 16px rgba(0, 184, 160, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    z-index: 1003;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Vertical stacking for direct links in inline structure */
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(2) {
+    top: 64px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(3) {
+    top: 128px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(4) {
+    top: 192px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(5) {
+    top: 256px;
+}
+
 /* Vertical stacking for multiple submenus */
 .services-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"] {
     top: 64px;
