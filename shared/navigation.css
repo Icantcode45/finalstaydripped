@@ -601,25 +601,25 @@
     letter-spacing: 0.3px;
 }
 
-/* Elegant vertical stacking for visible submenu links */
-.services-dropdown .dropdown-section a[style*="block"]:nth-child(2) {
+/* Vertical stacking for multiple submenus */
+.services-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"] {
     top: 64px;
 }
 
-.services-dropdown .dropdown-section a[style*="block"]:nth-child(3) {
+.services-dropdown .dropdown-section:nth-child(3) .services-horizontal-submenu[style*="block"] {
     top: 128px;
 }
 
-.services-dropdown .dropdown-section a[style*="block"]:nth-child(4) {
+.services-dropdown .dropdown-section:nth-child(4) .services-horizontal-submenu[style*="block"] {
     top: 192px;
 }
 
-.services-dropdown .dropdown-section a[style*="block"]:nth-child(5) {
+.services-dropdown .dropdown-section:nth-child(5) .services-horizontal-submenu[style*="block"] {
     top: 256px;
 }
 
-/* Smooth transitions for click-activated links */
-.services-dropdown .dropdown-section a {
+/* Smooth transitions for click-activated submenus */
+.services-dropdown .dropdown-section .services-horizontal-submenu {
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -633,13 +633,13 @@
     }
 }
 
-.services-dropdown .dropdown-section a[style*="block"] {
+.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
     animation: float 3s ease-in-out infinite;
     animation-delay: 1s;
 }
 
 /* Premium link hover effects with gradient magic */
-.services-dropdown .dropdown-section a::before {
+.services-dropdown .dropdown-section .services-horizontal-submenu a::before {
     content: '';
     position: absolute;
     top: 0;
@@ -658,7 +658,7 @@
 }
 
 /* Add subtle icon before text */
-.services-dropdown .dropdown-section a::after {
+.services-dropdown .dropdown-section .services-horizontal-submenu a::after {
     content: '→';
     position: absolute;
     right: 20px;
@@ -670,7 +670,16 @@
     font-weight: 600;
 }
 
-.services-dropdown .dropdown-section a:hover {
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover::before {
+    left: 100%;
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover {
     color: var(--primary-blue) !important;
     transform: translateX(8px) translateY(-2px) scale(1.03);
     box-shadow:
@@ -686,15 +695,6 @@
     );
     font-weight: 600;
     letter-spacing: 0.5px;
-}
-
-.services-dropdown .dropdown-section a:hover::before {
-    left: 100%;
-}
-
-.services-dropdown .dropdown-section a:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
 }
 
 /* Enhanced staggered animations with CSS custom properties */
@@ -716,7 +716,7 @@
 }
 
 /* Active state enhancement */
-.services-dropdown .dropdown-section a:active {
+.services-dropdown .dropdown-section .services-horizontal-submenu a:active {
     transform: translateX(4px) scale(0.98);
     transition-duration: 0.1s;
 }
