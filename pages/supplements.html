@@ -935,6 +935,13 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize StayDripped utilities if available
+            if (window.StayDrippedUtils) {
+                // Enable debug mode for supplements page
+                window.StayDrippedUtils.setDebugMode(false); // Set to true for debugging
+                window.StayDrippedUtils.logger.info('StayDripped Utils integrated with supplements page');
+            }
+
             // Initialize animations
             const observerOptions = {
                 threshold: 0.1,
@@ -954,15 +961,21 @@
                 observer.observe(element);
             });
 
-            // Track page view
+            // Track page view with enhanced analytics
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'page_view', {
                     'page_title': 'Supplements',
-                    'page_location': window.location.href
+                    'page_location': window.location.href,
+                    'timestamp': window.StayDrippedUtils?.getCurrentTimeFormatted?.() || new Date().toISOString()
                 });
             }
 
-            console.log('Supplements page loaded successfully');
+            // Log page initialization with utils
+            if (window.StayDrippedUtils) {
+                window.StayDrippedUtils.logger.info('Supplements page loaded successfully with StayDripped Utils');
+            } else {
+                console.log('Supplements page loaded successfully');
+            }
         });
 
         // Keyboard shortcuts
