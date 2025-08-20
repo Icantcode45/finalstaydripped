@@ -2371,11 +2371,14 @@
             // Convert booking buttons to cart buttons
             convertBookingButtons();
 
-            // Reinitialize cart buttons after conversion
+            // Ensure cart system is available and initialize buttons
             if (window.stayDrippedCart) {
                 setTimeout(() => {
                     window.stayDrippedCart.reinitializeButtons();
+                    console.log('Cart system initialized successfully');
                 }, 100);
+            } else {
+                console.warn('Cart system not available');
             }
 
             // Initialize all page functionality
