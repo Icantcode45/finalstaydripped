@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
     <script>
@@ -36,6 +37,22 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MQJPLG5GPW');
+    </script>
+
+    <!-- Good Faith Exam Widget Stylesheet -->
+    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+
+    <!-- IntakeQ Portal Login Widget Script -->
+    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqClientArea=true; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
@@ -830,6 +847,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+<<<<<<< HEAD
             display: flex;
             align-items: center;
             gap: 16px;
@@ -862,6 +880,21 @@
             transition: left 0.6s ease;
         }
 
+=======
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+>>>>>>> refs/remotes/origin/main
         .stat-card:hover::before {
             left: 100%;
         }
@@ -3152,10 +3185,243 @@
             transform: scale(1.05) translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
         }
+<<<<<<< HEAD
+=======
+    <!-- Responsive Fix CSS -->
+    <link rel="stylesheet" href="responsive-fix.css">
+>>>>>>> refs/remotes/origin/main
     </style>
 </head>
 <body>
-    <!-- Promotional Banner -->
+
+<<<<<<< HEAD
+    <!-- Navigation Placeholder -->
+    <div id="navigation-placeholder"></div>
+
+
+    <!-- Hero Section -->
+=======
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <a href="#location" class="location-finder-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    FIND A SERVICE LOCATION
+                </a>
+                <div class="top-bar-right">
+                    <span class="tagline-text">Premium Mobile IV Therapy & Wellness</span>
+                    <div class="search-container-topbar">
+                        <div class="search-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <input type="text" class="search-input-topbar" placeholder="Search services..." id="topbar-search"/>
+                        <div class="search-shortcut">⌘K</div>
+                    </div>
+                    <div class="language-selector-mini">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="m1 12 3-3m4 0 3 3m4 0 3-3"></path>
+                        </svg>
+                        <span>EN</span>
+                    </div>
+                    <div class="top-bar-icons">
+                        <button class="patient-portal-btn" onclick="openPortalModal()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span>Patient Portal</span>
+                        </button>
+                        <button class="icon-btn cart-btn" title="Treatment Cart">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co." />
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#services">Services</a>
+                    <div class="dropdown-content services-dropdown">
+                        <div class="dropdown-section">
+                            <h4>IV Therapy</h4>
+                            <a href="pages/book-ivtherapy.html">IV Therapy Services</a>
+                            <a href="pages/vitamin-injections.html">Vitamin Injections</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Advanced Treatments</h4>
+                            <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Wellness Programs</h4>
+                            <a href="pages/weight-management.html">Weight Management</a>
+                            <a href="pages/sexual-wellness.html">Sexual Wellness</a>
+                        </div>
+                        <div class="dropdown-section">
+                            <h4>Additional Services</h4>
+                            <a href="pages/mobile-testing-kits.html">Mobile Testing</a>
+                            <a href="pages/telehealth-services.html">Telehealth</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="pages/unified-booking.html">Booking</a></li>
+                <li><a href="pages/first-time-patients.html">New Patients</a></li>
+                <li><a href="pages/membership.html">Membership</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="pages/event-corporate-inquiry.html">Events</a></li>
+                <li><a href="pages/compliance.html">Compliance</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <a href="index.html" class="mobile-menu-logo">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo">
+                    </a>
+                    <button class="mobile-menu-close" aria-label="Close mobile menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <nav class="mobile-menu-nav">
+                    <div class="mobile-menu-section">
+                        <button class="mobile-menu-item mobile-dropdown-toggle" data-target="services-mobile">
+                            <span>Services</span>
+                            <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content" id="services-mobile">
+                            <div class="mobile-dropdown-section">
+                                <h4>IV Therapy</h4>
+                                <a href="pages/book-ivtherapy.html">IV Therapy</a>
+                                <a href="pages/vitamin-injections.html">Vitamin Injections</a>
+                            </div>
+                            <div class="mobile-dropdown-section">
+                                <h4>Advanced Treatments</h4>
+                                <a href="pages/nad-peptides.html">NAD+ & Peptides</a>
+                            </div>
+                            <div class="mobile-dropdown-section">
+                                <h4>Wellness Programs</h4>
+                                <a href="pages/weight-management.html">Weight Management</a>
+                                <a href="pages/sexual-wellness.html">Sexual Wellness</a>
+                            </div>
+                            <div class="mobile-dropdown-section">
+                                <h4>Additional Services</h4>
+                                <a href="pages/mobile-testing-kits.html">Mobile Testing</a>
+                                <a href="pages/telehealth-services.html">Telehealth</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="pages/first-time-patients.html" class="mobile-menu-item">New Patients</a>
+                    <a href="pages/membership.html" class="mobile-menu-item">Membership</a>
+                    <a href="#team" class="mobile-menu-item">Our Team</a>
+
+                    <div class="mobile-menu-section">
+                        <button class="mobile-menu-item mobile-dropdown-toggle" data-target="booking-mobile">
+                            <span>Booking</span>
+                            <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content" id="booking-mobile">
+                            <div class="mobile-dropdown-section">
+                                <h4>Appointments</h4>
+                                <a href="pages/book-appointment.html">Book Appointment</a>
+                                <a href="intakeq-appointments.html">Patient Intake</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu-section">
+                        <button class="mobile-menu-item mobile-dropdown-toggle" data-target="inquiries-mobile">
+                            <span>Inquiries</span>
+                            <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content" id="inquiries-mobile">
+                            <div class="mobile-dropdown-section">
+                                <h4>Business Services</h4>
+                                <a href="pages/event-corporate-inquiry.html">Event & Corporate</a>
+                                <a href="pages/sponsorship-inquiry.html">Sponsorship & Partners</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mobile-menu-section">
+                        <button class="mobile-menu-item mobile-dropdown-toggle" data-target="legal-mobile">
+                            <span>Legal & Info</span>
+                            <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-dropdown-content" id="legal-mobile">
+                            <div class="mobile-dropdown-section">
+                                <h4>Legal Documents</h4>
+                                <a href="pages/compliance.html">Compliance</a>
+                                <a href="pages/privacy-practices.html">Privacy Practices</a>
+                                <a href="pages/terms-of-use.html">Terms of Use</a>
+                                <a href="pages/telehealth-consent.html">Telehealth Consent</a>
+                                <a href="pages/good-faith-estimate.html">Good Faith Estimate</a>
+                                <a href="pages/accessibility.html">Accessibility</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="mobile-menu-item">Contact</a>
+                </nav>
+
+                <div class="mobile-menu-actions">
+                    <a href="tel:+1-602-688-9825" class="mobile-btn mobile-btn-secondary">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F87c674f2834845aa9d4108c24cca538a?format=webp&width=800" alt="Phone" style="width: 18px; height: 18px;">
+                        Call Now
+                    </a>
+                    <a href="pages/book-appointment.html" class="mobile-btn mobile-btn-primary">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fa759c61b68aa4add9c65c77c443410ab?format=webp&width=800" alt="Book Appointment" style="width: 18px; height: 18px;">
+                        Book Appointment
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+     <!-- Promotional Banner -->
     <div class="promo-banner">
         <div class="container">
             <div class="promo-content">
@@ -3164,12 +3430,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Navigation Placeholder -->
-    <div id="navigation-placeholder"></div>
-
-
-    <!-- Hero Section -->
+>>>>>>> refs/remotes/origin/main
     <section id="home" class="hero" data-builder-block="hero">
         <div class="container">
             <div class="hero-content">
@@ -3182,7 +3443,11 @@
                     </div>
                     <div class="hero-cta fade-in delay-4" data-builder-block="cta-buttons">
                         <a href="pages/book-ivtherapy.html" class="btn btn-hover btn-large" data-builder-link="book-treatment">Book Treatment</a>
+<<<<<<< HEAD
                         <a href="#services" class="btn-secondary btn-hover btn-large" data-builder-link="learn-more">Learn More</a>
+=======
+                        <a href="#services" class="btn-secondary btn-hover btn-small" data-builder-link="learn-more">Learn More</a>
+>>>>>>> refs/remotes/origin/main
 
                         <!-- Good Faith Exam Widget -->
                         <div id="main-qualiphy-widget" style="margin-top: 16px;">
@@ -3209,9 +3474,12 @@
         <div class="container">
             <div class="hero-stats">
                 <div class="stat-card fade-in delay-1 card-hover">
+<<<<<<< HEAD
                     <div class="stat-icon">
                         <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F51ab2a384dfe42cd9f91ea89c8394358?format=webp&width=800" alt="Thumbs Up" style="width: 40px; height: 40px;">
                     </div>
+=======
+>>>>>>> refs/remotes/origin/main
                     <p class="stat-text">
                         <span>More than </span>
                         <span class="stat-highlight stat-orange counter" data-target="10000">0</span>
@@ -3219,9 +3487,12 @@
                     </p>
                 </div>
                 <div class="stat-card fade-in delay-2 card-hover">
+<<<<<<< HEAD
                     <div class="stat-icon">
                         <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F99530b33904a43099db4f3ab02618f9b?format=webp&width=800" alt="Medal" style="width: 40px; height: 40px;">
                     </div>
+=======
+>>>>>>> refs/remotes/origin/main
                     <p class="stat-text">
                         <span>Achieved </span>
                         <span class="stat-highlight stat-blue">5.0★</span>
@@ -3229,9 +3500,12 @@
                     </p>
                 </div>
                 <div class="stat-card fade-in delay-3 card-hover">
+<<<<<<< HEAD
                     <div class="stat-icon">
                         <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb4aa191134a2478f839c78a880c23d4d?format=webp&width=800" alt="Clock" style="width: 40px; height: 40px;">
                     </div>
+=======
+>>>>>>> refs/remotes/origin/main
                     <p class="stat-text">
                         <span>Providing </span>
                         <span class="stat-highlight stat-teal">24/7</span>
@@ -3255,6 +3529,7 @@
 
             <div class="services-grid">
                 <div class="service-card-enhanced fade-in" data-builder-block="service-hydration">
+<<<<<<< HEAD
                     <div class="service-icon">
                         <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F7c2c0f0a34cd4237a1650a66b84144c3?format=webp&width=800" alt="Hydration" style="width: 48px; height: 48px;">
                     </div>
@@ -3266,6 +3541,17 @@
                             <li>Electrolyte Plus</li>
                             <li>Recovery Hydration</li>
                             <li>Athletic Hydration</li>
+=======
+                    <div class="service-content">
+                        <h3 data-builder-text="hydration-title">IV Hydration Therapy</h3>
+                        <p data-builder-text="hydration-description">Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
+                        <ul class="treatment-list" data-builder-list="hydration-treatments">
+                            <li>Basic Rehydration IV Treatments</li>
+                            <li>Standard IV Treatments</li>
+                            <li>Specialty IV Treatments</li>
+                            <li>Premium IV Treatments</li>
+                            <li>NAD+ IV Treatments</li>
+>>>>>>> refs/remotes/origin/main
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn" data-builder-link="hydration-book">Book Treatment</a>
                     </div>
@@ -3280,9 +3566,9 @@
                         <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
                         <ul class="treatment-list">
                             <li>B12 Energy Boost</li>
-                            <li>Myers' Cocktail</li>
-                            <li>Mega Myers'</li>
-                            <li>Executive Wellness</li>
+                            <li>The Sundevil Energy Booster</li>
+                            <li>Peptide Therapy</li>
+                            <li>Specialized Wellness Health Plans</li>
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
@@ -3296,10 +3582,10 @@
                         <h3>Immune Support</h3>
                         <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
                         <ul class="treatment-list">
-                            <li>Immune Boost IV</li>
-                            <li>Vitamin C Mega Dose</li>
-                            <li>Zinc & Glutathione</li>
-                            <li>Cold & Flu Recovery</li>
+                            <li>The Diamondback Immune Boost IV</li>
+                            <li>Vitamin C Double Dose Injection</li>
+                            <li>Glutathione</li>
+                            <li>Tri-Immune Boost Injection</li>
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
@@ -3313,9 +3599,9 @@
                         <h3>Recovery & Performance</h3>
                         <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
                         <ul class="treatment-list">
-                            <li>Hangover Recovery</li>
-                            <li>Athletic Performance</li>
-                            <li>Post-Workout Recovery</li>
+                            <li>The Day-After Hangover IV</li>
+                            <li>The D-Book Performance Boost IV</li>
+                            <li>BCP-157 Peptide</li>
                             <li>NAD+ Therapy</li>
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
@@ -3330,10 +3616,10 @@
                         <h3>Beauty & Anti-Aging</h3>
                         <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
                         <ul class="treatment-list">
-                            <li>Beauty Glow IV</li>
-                            <li>Anti-Aging Formula</li>
-                            <li>Skin Brightening</li>
-                            <li>Hair & Nail Support</li>
+                            <li>The Fountain of Youth NAD+ IV</li>
+                            <li>NAD+ Injections</li>
+                            <li>GHK-Cu Skin Rejuvenating Peptide</li>
+                            <li>Biotin Injections</li>
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn">Book Treatment</a>
                     </div>
@@ -3349,7 +3635,7 @@
                         <ul class="treatment-list">
                             <li>Virtual Consultations</li>
                             <li>Follow-up Care</li>
-                            <li>Prescription Management</li>
+                            <li>Prescription Managementl</li>
                             <li>Health Coaching</li>
                         </ul>
                         <a href="pages/telehealth-services.html" class="btn service-btn">Schedule Consultation</a>
@@ -3362,12 +3648,13 @@
                     </div>
                     <div class="service-content">
                         <h3>Mobile Testing Kits</h3>
-                        <p>Convenient at-home testing kits for comprehensive health monitoring and optimization.</p>
+                        <p>Convenient at-home testing kits brought to your doorstep for comprehensive health monitoring and optimization at the comfort of your own home.</p>
                         <ul class="treatment-list">
                             <li>Hormone Panel Testing</li>
                             <li>Vitamin Deficiency Screen</li>
                             <li>Metabolic Health Panel</li>
                             <li>Food Sensitivity Testing</li>
+                            <li>Fully Persoanlized Panel</li>
                         </ul>
                         <a href="pages/mobile-testing-kits.html" class="btn service-btn">Order Kit</a>
                     </div>
@@ -3375,7 +3662,7 @@
             </div>
 
             <div class="services-summary fade-in">
-                <p>Our most popular IV therapy treatments delivered directly to you in Scottsdale, AZ. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
+                <p>The #1 IV therapy Company in Scootsdale, AZ brings it IV treatments delivered directly to you. Each treatment is customized by our medical team and administered by licensed professionals in the comfort of your chosen location.</p>
             </div>
         </div>
     </section>
@@ -3387,7 +3674,7 @@
                 <div class="section-subtitle">How We Serve</div>
                 <h2 class="section-title">Mobile IV Therapy Your Way</h2>
                 <p class="section-description">
-                    Professional IV therapy delivered to your preferred location with luxury comfort and medical excellence.
+                    Professional IV therapy delivered to your preferred location with luxury comfort and excellent medical standards.
                 </p>
             </div>
 
@@ -3463,20 +3750,20 @@
                 <div class="team-member fade-in">
                     <img src="https://images.unsplash.com/photo-1594824542478-1fdd78175cc4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Senior Clinical Nurse Jennifer Rodriguez">
                     <div class="team-member-info">
-                        <h4>Jennifer Rodriguez, RN</h4>
-                        <p>Senior Clinical Nurse</p>
-                        <div class="credentials">Certified in IV therapy and wellness</div>
+                        <h4>Olivia Capranica, NP,RN</h4>
+                        <p>Senior Team Lead Nurse</p>
+                        <div class="credentials">Certified in IV therapy & Botox/Juvaderm Treatments</div>
                     </div>
                 </div>
             </div>
 
             <div class="team-certifications fade-in">
                 <div class="certification-badge">
-                    <span class="badge-icon">🏥</span>
+                    <span class="badge-icon"></span>
                     <span>State Licensed</span>
                 </div>
                 <div class="certification-badge">
-                    <span class="badge-icon">✅</span>
+                    <span class="badge-icon"></span>
                     <span>HIPAA Certified</span>
                 </div>
                 <div class="certification-badge">
@@ -3484,7 +3771,7 @@
                     <span>Insured & Bonded</span>
                 </div>
                 <div class="certification-badge">
-                    <span class="badge-icon">📋</span>
+                    <span class="badge-icon"></span>
                     <span>Background Checked</span>
                 </div>
             </div>
@@ -3502,6 +3789,7 @@
                 </p>
             </div>
 
+<<<<<<< HEAD
             <div class="reviews-carousel-container">
                 <div class="reviews-carousel" id="reviewsCarousel">
                     <div class="review-card active">
@@ -3548,6 +3836,9 @@
                             </g>
                         </svg>
                     </div>
+=======
+            
+>>>>>>> refs/remotes/origin/main
                     <div class="rating-info">
                         <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
                         <div class="rating-text" id="ratingText">5.0 out of 5 stars from 51+ reviews</div>
@@ -3577,9 +3868,9 @@
                             <li>Phoenix Metro Area</li>
                             <li>Scottsdale</li>
                             <li>Paradise Valley</li>
-                            <li>North Phoenix</li>
-                            <li>Cave Creek</li>
-                            <li>Carefree</li>
+                            <li>Peoria</li>
+                            <li>Queen Creek</li>
+                            <li>Gilbert</li>
                             <li>Fountain Hills</li>
                             <li>Tempe</li>
                             <li>Chandler</li>
@@ -3587,7 +3878,7 @@
                     </div>
 
                     <div class="info-card fade-in">
-                        <h3>🏠 Service Locations</h3>
+                        <h3>Service Locations</h3>
                         <ul>
                             <li>Private Residences</li>
                             <li>Hotels & Resorts</li>
@@ -3598,10 +3889,14 @@
                     </div>
 
                     <div class="info-card fade-in">
+<<<<<<< HEAD
                         <h3><img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb4aa191134a2478f839c78a880c23d4d?format=webp&width=800" alt="Clock" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">Hours</h3>
+=======
+                        <h3>Hours</h3>
+>>>>>>> refs/remotes/origin/main
                         <ul>
-                            <li>Monday - Friday: 7:00 AM - 8:00 PM</li>
-                            <li>Saturday: 8:00 AM - 6:00 PM</li>
+                            <li>Monday - Friday: 8:00 AM - 8:00 PM</li>
+                            <li>Saturday: 8:00 AM - 9:00 PM</li>
                             <li>Sunday: 9:00 AM - 5:00 PM</li>
                             <li>Emergency Services Available</li>
                         </ul>
@@ -4541,6 +4836,7 @@
                 }
             }
 
+<<<<<<< HEAD
             // Fixed Stats Animation and Counter
             function initializeStatsAnimation() {
                 const statsSection = document.querySelector('.stats-section');
@@ -4603,6 +4899,10 @@
             } else {
                 initializeStatsAnimation();
             }
+=======
+            // Initialize stats animation
+            initializeStatsAnimation();
+>>>>>>> refs/remotes/origin/main
 
             // Improved animation observer
             function initializeAnimations() {
@@ -4631,6 +4931,7 @@
             // Initialize animations
             initializeAnimations();
         });
+    <script src="animation-fix.js"></script>
 
     </script>
 
@@ -4987,6 +5288,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script id="qualiphy-script" type="text/javascript" src="https://www.app.qualiphy.me/scripts/quidget_disclosure.js" data-formsrc='https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e' data-timezone='-6' data-examhours='[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]'></script>
 
+<<<<<<< HEAD
     <!-- Cart System -->
     <script src="shared/cart.js"></script>
 
@@ -4995,5 +5297,7 @@
 
     <!-- Optimized Navigation Loader -->
     <script src="shared/navigation-loader-optimized.js"></script>
+=======
+>>>>>>> refs/remotes/origin/main
 </body>
 </html>

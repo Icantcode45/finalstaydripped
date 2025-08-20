@@ -34,11 +34,15 @@
     <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
 
     <!-- Fonts -->
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <!-- Navigation CSS -->
     <link rel="stylesheet" href="../shared/navigation.css">
+=======
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+>>>>>>> refs/remotes/origin/main
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
@@ -52,6 +56,12 @@
 
     <!-- Good Faith Exam Widget Stylesheet -->
     <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+<<<<<<< HEAD
+=======
+    <!-- Navigation Styles -->
+    <link rel="stylesheet" href="../responsive-fix.css">
+    <link rel="stylesheet" href="../shared/navigation.css">
+>>>>>>> refs/remotes/origin/main
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -1206,6 +1216,7 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <!-- Navigation Placeholder -->
     <div id="navigation-placeholder"></div>
 
@@ -1337,6 +1348,11 @@
             </div>
         </div>
     </header>
+=======
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+
+>>>>>>> refs/remotes/origin/main
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -5479,6 +5495,7 @@
             });
         }
 
+<<<<<<< HEAD
         // This will be handled by the navigation-loader-optimized.js
 
         // Convert all Book Now buttons to Add to Cart buttons
@@ -5505,13 +5522,47 @@
                     }
                 }
             });
+=======
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (!placeholder) {
+                    console.warn('Navigation placeholder element not found');
+                    return;
+                }
+
+                const response = await fetch('../shared/navigation.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const navigationHtml = await response.text();
+                placeholder.innerHTML = navigationHtml;
+
+                // Initialize navigation functionality after loading
+                if (typeof initializeNavigation === 'function') {
+                    initializeNavigation();
+                }
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (placeholder) {
+                    placeholder.innerHTML = '<div style="background: #f8f9fa; padding: 10px; text-align: center; color: #6c757d;">Navigation temporarily unavailable</div>';
+                }
+            }
+>>>>>>> refs/remotes/origin/main
         }
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
             // Convert booking buttons to cart buttons
             convertBookingButtons();
 
+=======
+            loadNavigation();
+>>>>>>> refs/remotes/origin/main
             initializeAccessibility();
             initializeCategoryNavigation();
             updateCategoryCounters();
