@@ -133,6 +133,20 @@ html, body {
     .google-reviews-widget a {
         word-break: break-all;
         overflow-wrap: break-word;
+        max-width: 100%;
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    /* Force all links to not extend beyond container */
+    a[href*="google.com"] {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
     }
     
     /* Hide desktop-only elements that might cause overflow */
