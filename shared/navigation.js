@@ -189,7 +189,11 @@ document.addEventListener('DOMContentLoaded', function() {
         sections.forEach(function(section) {
             const header = section.querySelector('h4');
             const submenu = section.querySelector('.services-horizontal-submenu');
-            const links = submenu ? submenu.querySelectorAll('a') : [];
+
+            // Handle both structures: direct links or submenu container
+            const links = submenu ?
+                submenu.querySelectorAll('a') :
+                section.querySelectorAll('a'); // Direct children for inline structure
 
             if (header) {
                 // Add click event to category headers
