@@ -355,15 +355,23 @@ class StayDrippedCart {
 
     // Initialize add-to-cart buttons
     initializeAddToCartButtons() {
-        document.querySelectorAll('.add-to-cart, .btn[href*="book"], .btn[data-service]').forEach(button => {
+        const buttons = document.querySelectorAll('.add-to-cart, .btn[href*="book"], .btn[data-service]');
+
+        buttons.forEach(button => {
             if (!button.hasAttribute('data-cart-initialized')) {
-                console.log('Initializing cart button:', button.textContent, button.className);
+                console.log('Initializing cart button:', button.textContent?.substring(0, 30), button.className);
                 button.setAttribute('data-cart-initialized', 'true');
                 button.addEventListener('click', (e) => this.handleAddToCart(e));
             }
         });
 
-        console.log('Cart buttons initialized. Total buttons found:', document.querySelectorAll('.add-to-cart').length);
+        console.log('Cart buttons initialized. Total buttons found:', buttons.length);
+        console.log('Add-to-cart buttons specifically:', document.querySelectorAll('.add-to-cart').length);
+    }
+
+    // Public method to reinitialize buttons (useful after dynamic content changes)
+    reinitializeButtons() {
+        this.initializeAddToCartButtons();
     }
 
     // Handle add to cart button clicks
