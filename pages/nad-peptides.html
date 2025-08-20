@@ -3370,7 +3370,7 @@
                     <div class="rating-score">4.9</div>
                     <div class="rating-stars">
                         <span class="star filled">★</span>
-                        <span class="star filled">���</span>
+                        <span class="star filled">����</span>
                         <span class="star filled">★</span>
                         <span class="star filled">★</span>
                         <span class="star filled">★</span>
@@ -5445,16 +5445,7 @@
             });
         }
 
-        // Load shared navigation
-        async function loadNavigation() {
-            try {
-                const response = await fetch('../shared/navigation.html');
-                const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
-            } catch (error) {
-                console.error('Error loading navigation:', error);
-            }
-        }
+        // This will be handled by the navigation-loader-optimized.js
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
