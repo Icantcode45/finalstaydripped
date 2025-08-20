@@ -1083,6 +1083,91 @@
                 });
             });
 
+            // Appointment scheduler functions
+            window.showAppointmentScheduler = function() {
+                const modal = document.getElementById('appointment-modal');
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+
+                    // Set minimum date to tomorrow
+                    const dateInput = modal.querySelector('input[name="appointmentDate"]');
+                    if (dateInput) {
+                        const tomorrow = new Date();
+                        tomorrow.setDate(tomorrow.getDate() + 1);
+                        dateInput.min = tomorrow.toISOString().split('T')[0];
+                    }
+                }
+            };
+
+            window.hideAppointmentScheduler = function() {
+                const modal = document.getElementById('appointment-modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            };
+
+            // Handle appointment form submission
+            const appointmentForm = document.getElementById('appointment-form');
+            if (appointmentForm) {
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(e.target);
+                    const appointmentData = Object.fromEntries(formData.entries());
+
+                    // Store appointment data for checkout
+                    localStorage.setItem('appointmentData', JSON.stringify(appointmentData));
+
+                    // Close modal and proceed to checkout
+                    hideAppointmentScheduler();
+
+                    // Show confirmation and proceed
+                    if (confirm('Appointment scheduled! Proceed to checkout to complete your booking?')) {
+                        if (window.stayDrippedCart) {
+                            window.stayDrippedCart.goToCheckout();
+                        }
+                    }
+                });
+            }
+
+            // Close modal when clicking outside
+            const appointmentModal = document.getElementById('appointment-modal');
+            if (appointmentModal) {
+                appointmentModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        hideAppointmentScheduler();
+                    }
+                });
+            }
+
+            // Enhanced service customization
+            document.querySelectorAll('.service-card-enhanced').forEach(card => {
+                const addButton = card.querySelector('.add-to-cart');
+                if (addButton) {
+                    // Add customization options
+                    addButton.addEventListener('click', function(e) {
+                        const serviceName = card.querySelector('h3').textContent;
+
+                        // Show quick customization options for certain services
+                        if (serviceName.includes('IV Therapy')) {
+                            setTimeout(() => {
+                                const customization = confirm('Would you like to add vitamin boosters to your IV therapy? (+$25)');
+                                if (customization && window.stayDrippedCart) {
+                                    window.stayDrippedCart.addItem({
+                                        id: 'iv-booster',
+                                        name: 'Vitamin Booster Add-on',
+                                        price: 25,
+                                        category: 'Add-on'
+                                    });
+                                }
+                            }, 500);
+                        }
+                    });
+                }
+            });
+
             // Performance monitoring
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'page_view', {
