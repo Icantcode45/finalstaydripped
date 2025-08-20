@@ -1269,12 +1269,14 @@
         min-width: auto;
     }
 
-    .services-dropdown .dropdown-section h4::after {
+    .services-dropdown .dropdown-section h4::after,
+    .products-dropdown .dropdown-section h4::after {
         content: '▼';
         transform: none;
     }
 
-    .services-dropdown .dropdown-section:hover h4::after {
+    .services-dropdown .dropdown-section:hover h4::after,
+    .products-dropdown .dropdown-section:hover h4::after {
         transform: none;
     }
 
