@@ -3447,7 +3447,7 @@
 
             <div class="team-certifications fade-in">
                 <div class="certification-badge">
-                    <span class="badge-icon">���</span>
+                    <span class="badge-icon">🏥</span>
                     <span>State Licensed</span>
                 </div>
                 <div class="certification-badge">
@@ -4513,7 +4513,9 @@
             }
 
             // Initialize stats animation
-            initializeStatsAnimation();
+            setTimeout(() => {
+                initializeStatsAnimation();
+            }, 100);
 
             // Improved animation observer
             function initializeAnimations() {
