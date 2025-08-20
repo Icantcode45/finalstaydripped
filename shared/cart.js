@@ -381,29 +381,15 @@ class StayDrippedCart {
         const button = event.target.closest('button, a');
         const card = button.closest('.service-card, .service-card-enhanced, .product-card');
 
-        console.log('Add to cart clicked:', {
-            button: button,
-            card: card,
-            buttonClass: button?.className,
-            buttonText: button?.textContent
-        });
-
-        if (!card) {
-            console.warn('No card found for add to cart button');
-            return;
-        }
+        if (!card) return;
 
         // Extract item details from the card
         const item = this.extractItemFromCard(card, button);
-
-        console.log('Extracted item:', item);
 
         if (item) {
             this.addItem(item);
             this.showAddedNotification(button, item);
             this.showCart();
-        } else {
-            console.error('Failed to extract item from card');
         }
     }
 
