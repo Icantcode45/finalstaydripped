@@ -761,6 +761,38 @@
         </div>
     </section>
 
+    <!-- Cart Summary Section -->
+    <section class="cart-summary-section" id="cart-summary-section" style="background: var(--warm-beige); padding: 60px 0; display: none;">
+        <div class="container">
+            <div class="cart-summary-container" style="background: var(--white); border-radius: 16px; padding: 40px; border: 1px solid var(--border-color); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+                <h3 style="font-size: 28px; font-weight: 700; color: var(--dark-slate); margin-bottom: 24px; text-align: center;">Your Selected Services</h3>
+                <div id="cart-summary-items" style="margin-bottom: 32px;"></div>
+                <div class="cart-summary-total" style="border-top: 2px solid var(--border-color); padding-top: 20px; margin-bottom: 32px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Tax (8%):</span>
+                        <span id="cart-tax">$0.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Travel Fee:</span>
+                        <span id="cart-shipping">$9.99</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: 700; color: var(--primary-blue); border-top: 1px solid var(--border-color); padding-top: 12px;">
+                        <span>Total:</span>
+                        <span id="cart-final-total">$0.00</span>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <button class="btn btn-secondary" onclick="stayDrippedCart.hideCart()">Continue Shopping</button>
+                    <button class="btn" onclick="stayDrippedCart.goToCheckout()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="container">
