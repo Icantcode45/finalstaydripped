@@ -2340,21 +2340,25 @@
         function convertBookingButtons() {
             const bookButtons = document.querySelectorAll('.btn.product-btn');
             bookButtons.forEach(button => {
-                if (button.textContent === 'Book Now' && !button.classList.contains('add-to-cart')) {
+                if ((button.textContent === 'Book Now' || button.href) && !button.classList.contains('add-to-cart')) {
                     const productCard = button.closest('.product-card');
-                    const title = productCard.querySelector('.product-title')?.textContent?.trim();
+                    const title = productCard.querySelector('.product-title, h3')?.textContent?.trim();
                     const priceElement = productCard.querySelector('.product-price');
                     const price = priceElement?.textContent?.replace('$', '')?.trim();
                     const category = productCard.querySelector('.product-category')?.textContent?.trim();
+                    const description = productCard.querySelector('.product-description, p')?.textContent?.trim();
 
                     if (title && price) {
                         // Convert to button and add cart functionality
                         const newButton = document.createElement('button');
-                        newButton.className = button.className + ' add-to-cart';
+                        newButton.className = button.className.replace('product-btn', 'product-btn add-to-cart');
                         newButton.textContent = `Add to Cart - $${price}`;
                         newButton.setAttribute('data-name', title);
                         newButton.setAttribute('data-price', price);
                         newButton.setAttribute('data-category', category || 'IV Therapy');
+                        if (description) {
+                            newButton.setAttribute('data-description', description.substring(0, 100));
+                        }
 
                         button.parentNode.replaceChild(newButton, button);
                     }
