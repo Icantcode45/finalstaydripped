@@ -823,6 +823,23 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            flex-shrink: 0;
+        }
+
+        .stat-icon img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon img {
+            transform: scale(1.1);
         }
 
         .stat-card::before {
