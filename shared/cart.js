@@ -384,15 +384,37 @@ class StayDrippedCart {
 
     // Extract item details from service card
     extractItemFromCard(card, button) {
-        const title = card.querySelector('h3, h2, .service-title')?.textContent?.trim();
-        const priceText = card.querySelector('.service-price, .price, [class*="price"]')?.textContent;
-        const description = card.querySelector('p, .description, .service-description')?.textContent?.trim();
-        
-        if (!title) return null;
+        // First check if button has data attributes (preferred method)
+        let title = button.getAttribute('data-name');
+        let price = button.getAttribute('data-price');
+        let category = button.getAttribute('data-category');
+        let description = button.getAttribute('data-description');
 
-        // Extract price from text like "Starting at $149" or "$149"
-        const priceMatch = priceText?.match(/\$?(\d+(?:\.\d{2})?)/);
-        const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+        // Fall back to extracting from card if data attributes aren't available
+        if (!title) {
+            title = card.querySelector('h3, h2, .service-title, .product-title')?.textContent?.trim();
+        }
+
+        if (!price) {
+            const priceText = card.querySelector('.service-price, .price, .product-price, [class*="price"]')?.textContent;
+            const priceMatch = priceText?.match(/\$?(\d+(?:\.\d{2})?)/);
+            price = priceMatch ? parseFloat(priceMatch[1]) : 0;
+        } else {
+            price = parseFloat(price);
+        }
+
+        if (!description) {
+            description = card.querySelector('p, .description, .service-description, .product-description')?.textContent?.trim();
+        }
+
+        if (!category) {
+            category = this.getItemCategory(card);
+        }
+
+        if (!title) {
+            console.warn('Could not extract item title from card or button');
+            return null;
+        }
 
         // Generate unique ID from title
         const id = title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
@@ -402,7 +424,7 @@ class StayDrippedCart {
             name: title,
             price,
             description: description?.substring(0, 100) + (description?.length > 100 ? '...' : ''),
-            category: this.getItemCategory(card),
+            category: category || 'Service',
             image: card.querySelector('img')?.src || ''
         };
     }
