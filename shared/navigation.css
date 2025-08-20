@@ -347,7 +347,8 @@
 }
 
 /* Premium service category headers with luxury styling */
-.services-dropdown .dropdown-section h4 {
+.services-dropdown .dropdown-section h4,
+.products-dropdown .dropdown-section h4 {
     font-size: 15px;
     font-weight: 600;
     color: var(--dark-slate);
@@ -378,7 +379,8 @@
 }
 
 /* Luxury hover effects with shimmer animation */
-.services-dropdown .dropdown-section h4::before {
+.services-dropdown .dropdown-section h4::before,
+.products-dropdown .dropdown-section h4::before {
     content: '';
     position: absolute;
     top: 0;
@@ -398,7 +400,8 @@
 }
 
 /* Elegant arrow with sophisticated styling */
-.services-dropdown .dropdown-section h4::after {
+.services-dropdown .dropdown-section h4::after,
+.products-dropdown .dropdown-section h4::after {
     content: '▷';
     font-size: 12px;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -468,24 +471,28 @@
 }
 
 /* Hide links by default - they will be shown via JavaScript on click */
-.services-dropdown .dropdown-section .services-horizontal-submenu {
+.services-dropdown .dropdown-section .services-horizontal-submenu,
+.products-dropdown .dropdown-section .services-horizontal-submenu {
     display: none;
     pointer-events: auto;
 }
 
-.services-dropdown .dropdown-section .services-horizontal-submenu a {
+.services-dropdown .dropdown-section .services-horizontal-submenu a,
+.products-dropdown .dropdown-section .services-horizontal-submenu a {
     display: block;
     pointer-events: auto;
 }
 
 /* Also hide direct links for inline navigation structure */
-.services-dropdown .dropdown-section > a {
+.services-dropdown .dropdown-section > a,
+.products-dropdown .dropdown-section > a {
     display: none;
     pointer-events: auto;
 }
 
 /* Active state for clicked headers */
-.services-dropdown .dropdown-section h4.active {
+.services-dropdown .dropdown-section h4.active,
+.products-dropdown .dropdown-section h4.active {
     background: linear-gradient(
         135deg,
         rgba(0, 102, 204, 0.15) 0%,
@@ -501,7 +508,8 @@
     border-color: rgba(0, 102, 204, 0.3);
 }
 
-.services-dropdown .dropdown-section h4.active::after {
+.services-dropdown .dropdown-section h4.active::after,
+.products-dropdown .dropdown-section h4.active::after {
     opacity: 1;
     transform: translateX(6px) scale(1.15) rotate(90deg);
     color: var(--secondary-teal);
