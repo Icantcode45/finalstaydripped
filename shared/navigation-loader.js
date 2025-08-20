@@ -7,13 +7,17 @@
         const currentPath = window.location.pathname;
         const isInPagesFolder = currentPath.includes('/pages/');
         const navPath = isInPagesFolder ? '../shared/navigation.html' : 'shared/navigation.html';
-        
+
+        console.log('Loading navigation:', { currentPath, isInPagesFolder, navPath });
+
         // Find navigation placeholder
         const placeholder = document.getElementById('navigation-placeholder');
         if (!placeholder) {
             console.warn('Navigation placeholder not found');
             return;
         }
+
+        console.log('Navigation placeholder found:', placeholder);
         
         // Load navigation HTML
         fetch(navPath)
