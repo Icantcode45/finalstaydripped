@@ -138,23 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enhanced dropdown hover management for better UX
-    const dropdowns = document.querySelectorAll('.nav-dropdown');
-    let hideTimeouts = new Map();
-
-    dropdowns.forEach(function(dropdown) {
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
+    // Enhanced dropdown hover management for services dropdown
+    const servicesDropdown = document.querySelector('.nav-dropdown');
+    if (servicesDropdown) {
+        const dropdownContent = servicesDropdown.querySelector('.dropdown-content');
 
         if (dropdownContent) {
             // Show dropdown on hover
-            dropdown.addEventListener('mouseenter', function() {
-                // Clear any pending hide timeout
-                if (hideTimeouts.has(dropdown)) {
-                    clearTimeout(hideTimeouts.get(dropdown));
-                    hideTimeouts.delete(dropdown);
-                }
-
-                // Show dropdown immediately
+            servicesDropdown.addEventListener('mouseenter', function() {
                 dropdownContent.style.display = 'block';
                 setTimeout(() => {
                     dropdownContent.style.opacity = '1';
@@ -162,9 +153,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 10);
             });
 
-            // Set timeout to hide dropdown when mouse leaves
-            dropdown.addEventListener('mouseleave', function() {
-                const timeout = setTimeout(() => {
+            // Hide dropdown when mouse leaves both trigger and content
+            let hideTimeout;
+            function scheduleHide() {
+                hideTimeout = setTimeout(() => {
                     dropdownContent.style.opacity = '0';
                     dropdownContent.style.visibility = 'hidden';
                     setTimeout(() => {
@@ -172,117 +164,114 @@ document.addEventListener('DOMContentLoaded', function() {
                             dropdownContent.style.display = 'none';
                         }
                     }, 300);
-                    hideTimeouts.delete(dropdown);
-                }, 200); // 200ms delay before hiding
+                }, 300);
+            }
 
-                hideTimeouts.set(dropdown, timeout);
-            });
-
-            // Cancel hide timeout when hovering over dropdown content
-            dropdownContent.addEventListener('mouseenter', function() {
-                if (hideTimeouts.has(dropdown)) {
-                    clearTimeout(hideTimeouts.get(dropdown));
-                    hideTimeouts.delete(dropdown);
+            function cancelHide() {
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
                 }
-            });
+            }
 
-            // Set hide timeout when leaving dropdown content
-            dropdownContent.addEventListener('mouseleave', function() {
-                const timeout = setTimeout(() => {
-                    dropdownContent.style.opacity = '0';
-                    dropdownContent.style.visibility = 'hidden';
-                    setTimeout(() => {
-                        if (dropdownContent.style.opacity === '0') {
-                            dropdownContent.style.display = 'none';
-                        }
-                    }, 300);
-                    hideTimeouts.delete(dropdown);
-                }, 200);
-
-                hideTimeouts.set(dropdown, timeout);
-            });
+            servicesDropdown.addEventListener('mouseleave', scheduleHide);
+            dropdownContent.addEventListener('mouseenter', cancelHide);
+            dropdownContent.addEventListener('mouseleave', scheduleHide);
         }
-    });
+    }
 
-    // Enhanced hover management for services dropdown sections
-    const servicesDropdown = document.querySelector('.services-dropdown');
-    if (servicesDropdown) {
-        const sections = servicesDropdown.querySelectorAll('.dropdown-section');
-        let sectionHideTimeouts = new Map();
+    // Click-based dropdown system for service categories
+    const servicesDropdownContent = document.querySelector('.services-dropdown');
+    if (servicesDropdownContent) {
+        const sections = servicesDropdownContent.querySelectorAll('.dropdown-section');
+        let activeSection = null;
 
         sections.forEach(function(section) {
+            const header = section.querySelector('h4');
             const links = section.querySelectorAll('a');
 
-            // Show submenu on section hover
-            section.addEventListener('mouseenter', function() {
-                // Clear any pending hide timeout for this section
-                if (sectionHideTimeouts.has(section)) {
-                    clearTimeout(sectionHideTimeouts.get(section));
-                    sectionHideTimeouts.delete(section);
-                }
+            if (header) {
+                // Add click event to category headers
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                // Show links
-                links.forEach(function(link) {
-                    link.style.display = 'block';
-                });
-            });
-
-            // Set timeout to hide submenu when mouse leaves section
-            section.addEventListener('mouseleave', function(e) {
-                // Check if mouse is moving to a submenu link
-                const relatedTarget = e.relatedTarget;
-                if (relatedTarget && section.contains(relatedTarget)) {
-                    return; // Don't hide if moving within the section
-                }
-
-                const timeout = setTimeout(() => {
-                    links.forEach(function(link) {
-                        if (!link.matches(':hover')) {
-                            link.style.display = 'none';
-                        }
-                    });
-                    sectionHideTimeouts.delete(section);
-                }, 300); // 300ms delay for submenu
-
-                sectionHideTimeouts.set(section, timeout);
-            });
-
-            // Keep submenu visible when hovering over links
-            links.forEach(function(link) {
-                link.addEventListener('mouseenter', function() {
-                    if (sectionHideTimeouts.has(section)) {
-                        clearTimeout(sectionHideTimeouts.get(section));
-                        sectionHideTimeouts.delete(section);
+                    // If this section is already active, close it
+                    if (activeSection === section) {
+                        hideLinks(section);
+                        activeSection = null;
+                        header.classList.remove('active');
+                        return;
                     }
 
-                    // Ensure all links in this section remain visible
-                    links.forEach(function(otherLink) {
-                        otherLink.style.display = 'block';
-                    });
-                });
-
-                link.addEventListener('mouseleave', function(e) {
-                    // Only hide if mouse is not over the section
-                    const rect = section.getBoundingClientRect();
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
-
-                    if (mouseX < rect.left || mouseX > rect.right ||
-                        mouseY < rect.top || mouseY > rect.bottom) {
-
-                        const timeout = setTimeout(() => {
-                            links.forEach(function(otherLink) {
-                                if (!otherLink.matches(':hover') && !section.matches(':hover')) {
-                                    otherLink.style.display = 'none';
-                                }
-                            });
-                            sectionHideTimeouts.delete(section);
-                        }, 200);
-
-                        sectionHideTimeouts.set(section, timeout);
+                    // Hide any currently active section
+                    if (activeSection) {
+                        hideLinks(activeSection);
+                        activeSection.querySelector('h4').classList.remove('active');
                     }
+
+                    // Show this section's links
+                    showLinks(section);
+                    activeSection = section;
+                    header.classList.add('active');
                 });
-            });
+
+                // Make header look clickable
+                header.style.cursor = 'pointer';
+            }
         });
+
+        // Helper functions to show/hide links
+        function showLinks(section) {
+            const links = section.querySelectorAll('a');
+            links.forEach(function(link, index) {
+                link.style.display = 'block';
+                link.style.opacity = '0';
+                link.style.transform = 'translateX(-20px)';
+
+                // Staggered animation
+                setTimeout(() => {
+                    link.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateX(0)';
+                }, index * 50);
+            });
+        }
+
+        function hideLinks(section) {
+            const links = section.querySelectorAll('a');
+            links.forEach(function(link) {
+                link.style.transition = 'all 0.2s ease';
+                link.style.opacity = '0';
+                link.style.transform = 'translateX(-10px)';
+
+                setTimeout(() => {
+                    link.style.display = 'none';
+                }, 200);
+            });
+        }
+
+        // Close active section when clicking outside
+        document.addEventListener('click', function(e) {
+            if (activeSection && !servicesDropdownContent.contains(e.target)) {
+                hideLinks(activeSection);
+                activeSection.querySelector('h4').classList.remove('active');
+                activeSection = null;
+            }
+        });
+
+        // Close active section when dropdown closes
+        const servicesDropdownContainer = document.querySelector('.nav-dropdown');
+        if (servicesDropdownContainer) {
+            servicesDropdownContainer.addEventListener('mouseleave', function() {
+                setTimeout(() => {
+                    if (activeSection) {
+                        hideLinks(activeSection);
+                        activeSection.querySelector('h4').classList.remove('active');
+                        activeSection = null;
+                    }
+                }, 500);
+            });
+        }
     }
 });
