@@ -359,14 +359,10 @@ class StayDrippedCart {
 
         buttons.forEach(button => {
             if (!button.hasAttribute('data-cart-initialized')) {
-                console.log('Initializing cart button:', button.textContent?.substring(0, 30), button.className);
                 button.setAttribute('data-cart-initialized', 'true');
                 button.addEventListener('click', (e) => this.handleAddToCart(e));
             }
         });
-
-        console.log('Cart buttons initialized. Total buttons found:', buttons.length);
-        console.log('Add-to-cart buttons specifically:', document.querySelectorAll('.add-to-cart').length);
     }
 
     // Public method to reinitialize buttons (useful after dynamic content changes)
