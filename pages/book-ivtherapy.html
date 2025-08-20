@@ -837,20 +837,8 @@
     <!-- Navigation -->
     <div id="navigation-placeholder"></div>
 
-    <script>
-        // Load navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navigation-placeholder').innerHTML = html;
-
-                // Load navigation JavaScript
-                const script = document.createElement('script');
-                script.src = '../shared/navigation.js';
-                document.head.appendChild(script);
-            })
-            .catch(error => console.error('Error loading navigation:', error));
-    </script>
+    <!-- Optimized Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
 
     <!-- Hero Section -->
     <section class="hero-section fade-in">
