@@ -566,7 +566,8 @@
 }
 
 /* Style for visible submenu containers (controlled by JavaScript) */
-.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
     position: absolute;
     top: -8px;
     left: calc(100% + 20px);
@@ -670,20 +671,29 @@
 }
 
 /* Vertical stacking for multiple submenus */
-.services-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"] {
     top: 64px;
 }
 
-.services-dropdown .dropdown-section:nth-child(3) .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section:nth-child(3) .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section:nth-child(3) .services-horizontal-submenu[style*="block"] {
     top: 128px;
 }
 
-.services-dropdown .dropdown-section:nth-child(4) .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section:nth-child(4) .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section:nth-child(4) .services-horizontal-submenu[style*="block"] {
     top: 192px;
 }
 
-.services-dropdown .dropdown-section:nth-child(5) .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section:nth-child(5) .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section:nth-child(5) .services-horizontal-submenu[style*="block"] {
     top: 256px;
+}
+
+.services-dropdown .dropdown-section:nth-child(6) .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section:nth-child(6) .services-horizontal-submenu[style*="block"] {
+    top: 320px;
 }
 
 /* Smooth transitions for click-activated submenus */
@@ -701,7 +711,8 @@
     }
 }
 
-.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
+.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"],
+.products-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
     animation: float 3s ease-in-out infinite;
     animation-delay: 1s;
 }
