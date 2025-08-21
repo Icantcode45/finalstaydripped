@@ -880,7 +880,7 @@
 
 /* Premium services dropdown container */
 .dropdown-content.services-dropdown {
-    display: block;
+    display: none;
     min-width: 240px;
     max-width: 300px;
     padding: 16px 0;
