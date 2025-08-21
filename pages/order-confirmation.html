@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Order Confirmation | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Thank you for your order! Your supplements and test kits are being processed.">
+    <link rel="canonical" href="https://staydrippediv.com/pages/order-confirmation.html">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 800px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+            padding-top: 132px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .confirmation-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--soft-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            color: var(--white);
+            font-size: 36px;
+        }
+
+        .confirmation-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+        }
+
+        .confirmation-subtitle {
+            font-size: 18px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .order-details {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .order-number {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .next-steps {
+            background: rgba(0, 102, 204, 0.05);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .next-steps h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .steps-list {
+            list-style: none;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text {
+            color: var(--dark-slate);
+            line-height: 1.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .contact-info {
+            background: var(--warm-beige);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .contact-info h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--medium-gray);
+        }
+
+        .contact-item strong {
+            color: var(--dark-slate);
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-card {
+                padding: 32px 24px;
+            }
+
+            .confirmation-title {
+                font-size: 24px;
+            }
+
+            .confirmation-subtitle {
+                font-size: 16px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Celebration animation */
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon {
+            animation: celebrate 0.6s ease-out;
+        }
+
+        .floating-particles {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-particles::before {
+            content: '🎉';
+            position: absolute;
+            top: -20px;
+            left: 10%;
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .floating-particles::after {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            right: 10%;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-30px) rotate(180deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Load Navigation -->
+    <div id="navigation-placeholder"></div>
+
+    <div class="container">
+        <div class="confirmation-card floating-particles">
+            <div class="success-icon">✓</div>
+            
+            <h1 class="confirmation-title">Order Confirmed!</h1>
+            <p class="confirmation-subtitle">
+                Thank you for your order! We're excited to support your wellness journey with our premium supplements and test kits.
+            </p>
+
+            <div class="order-details">
+                <div class="order-number" id="order-number">
+                    Order #SD-2024-001</div>
+                
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Order Date</div>
+                        <div class="detail-value" id="order-date">
+                            January 15, 2024
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Estimated Delivery</div>
+                        <div class="detail-value" id="delivery-date">
+                            3-5 Business Days
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Email Confirmation</div>
+                        <div class="detail-value">
+                            Sent ✓
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h3>What Happens Next?</h3>
+                <ul class="steps-list">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div class="step-text">You'll receive an email confirmation with your order details</div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div class="step-text">We'll prepare and ship your supplements within 1-2 business days</div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div class="step-text">Test kits will include easy-to-follow collection instructions</div>
+                    </li>
+                    <li>
+                        <div class="step-number">4</div>
+                        <div class="step-text">Results will be available in your patient portal within 5-7 days</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="action-buttons">
+                <a href="supplements-testkits.html" class="btn">Continue Shopping</a>
+                <a href="../index.html" class="btn btn-secondary">Return Home</a>
+            </div>
+
+            <div class="contact-info">
+                <h4>Need Help?</h4>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span><strong>Email:</strong> orders@staydrippediv.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span><strong>Phone:</strong> (602) 688-9825</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💬</span>
+                        <span><strong>Hours:</strong> Mon-Fri 9AM-6PM MST</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optimized Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get order data from localStorage
+            const orderData = JSON.parse(localStorage.getItem('orderData') || '{}');
+
+            // Generate or use stored order number
+            const orderNumber = orderData.orderId || 'SD-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            document.getElementById('order-number').textContent = 'Order #' + orderNumber;
+
+            // Set order date
+            const orderDate = orderData.orderDate ?
+                new Date(orderData.orderDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) :
+                new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            document.getElementById('order-date').textContent = orderDate;
+
+            // Calculate delivery date (3-5 business days from now)
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 5);
+            const deliveryDateStr = deliveryDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('delivery-date').textContent = deliveryDateStr;
+
+            // Display order details if available
+            if (orderData.items && orderData.items.length > 0) {
+                const detailsSection = document.querySelector('.order-details');
+                if (detailsSection) {
+                    const itemsHtml = `
+                        <div style="margin-top: 32px; padding: 24px; background: rgba(0, 102, 204, 0.05); border-radius: 12px; border: 1px solid rgba(0, 102, 204, 0.1);">
+                            <h3 style="margin-bottom: 16px; color: var(--primary-blue);">Order Items</h3>
+                            ${orderData.items.map(item => `
+                                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(0, 102, 204, 0.1);">
+                                    <div>
+                                        <strong>${item.name}</strong><br>
+                                        <small>Quantity: ${item.quantity}</small>
+                                    </div>
+                                    <div style="font-weight: 600;">$${(item.price * item.quantity).toFixed(2)}</div>
+                                </div>
+                            `).join('')}
+                            <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid rgba(0, 102, 204, 0.2);">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span>Subtotal:</span>
+                                    <span>$${orderData.subtotal.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span>Tax:</span>
+                                    <span>$${orderData.tax.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span>Travel Fee:</span>
+                                    <span>${orderData.shipping === 0 ? 'FREE' : '$' + orderData.shipping.toFixed(2)}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; color: var(--primary-blue);">
+                                    <span>Total:</span>
+                                    <span>$${orderData.total.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    detailsSection.insertAdjacentHTML('beforeend', itemsHtml);
+                }
+            }
+
+            // Update cart count to 0 since order is complete
+            const cartBadge = document.querySelector('.cart-count');
+            if (cartBadge) {
+                cartBadge.textContent = '0';
+                cartBadge.style.display = 'none';
+            }
+
+            // Clear order data after displaying (but keep for a bit in case of refresh)
+            setTimeout(() => {
+                localStorage.removeItem('orderData');
+            }, 30000); // Keep for 30 seconds
+        });
+    </script>
+</body>
+</html>

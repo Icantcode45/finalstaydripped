@@ -34,6 +34,11 @@
     <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
 
     <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
@@ -48,6 +53,9 @@
 
     <!-- Good Faith Exam Widget Stylesheet -->
     <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+    <!-- Navigation Styles -->
+    <link rel="stylesheet" href="../responsive-fix.css">
+    <link rel="stylesheet" href="../shared/navigation.css">
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -1199,6 +1207,11 @@
                 justify-content: center;
             }
         }
+    </style>
+</head>
+<body>
+    <!-- Navigation Placeholder -->
+    <div id="navigation-placeholder"></div>
 
     <!-- Header -->
     <header class="header" id="header">
@@ -1241,14 +1254,16 @@
                     <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
 
-        .pricing-container {
-            padding: 40px 32px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            margin: 20px;
-        }
+                <div class="nav-actions">
+                    <a href="tel:+1-602-688-9825" class="btn btn-secondary">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F87c674f2834845aa9d4108c24cca538a?format=webp&width=800" alt="Phone" style="width: 18px; height: 18px; object-fit: contain; display: block; margin: 0 auto;">
+                        Call Now
+                    </a>
+                    <a href="book-appointment.html" class="btn btn-book-now">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fa759c61b68aa4add9c65c77c443410ab?format=webp&width=800" alt="Book Appointment" style="width: 18px; height: 18px; object-fit: contain; display: block; margin: 0 auto;">
+                        Book Appointment
+                    </a>
+                </div>
 
                 <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" onclick="toggleMobileNav()">
                     <span></span>
@@ -1326,6 +1341,9 @@
             </div>
         </div>
     </header>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -3377,6 +3395,34 @@
             <div class="reviews-actions">
                 <a href="https://wanderlog.com/place/details/13453687#PlaceRatingsAndReviewsSection__id" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View All Reviews</a>
                 <a href="https://share.google/IS2IppThdkxiqV0MO" target="_blank" rel="noopener noreferrer" class="btn">Write a Review</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Booking Section -->
+    <section style="background: linear-gradient(135deg, #F5F1EB 0%, rgba(0, 184, 160, 0.08) 100%); padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin-bottom: 16px; color: #1A2B3A;">Book Your NAD+ & Peptide Therapy</h2>
+                <p style="font-size: 18px; color: #64748B; max-width: 600px; margin: 0 auto;">
+                    Schedule your advanced anti-aging and cellular repair treatments online. Choose from our comprehensive menu of NAD+ IV therapy and peptide treatments.
+                </p>
+            </div>
+
+            <div style="background: white; border-radius: 16px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid #E2E8F0;">
+                <div id="intakeq" style="max-width: 720px; width: 100%; margin: 0 auto;"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 32px;">
+                <p style="color: #64748B; margin-bottom: 16px;">Need help choosing the right treatment?</p>
+                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <a href="tel:+1-602-688-9825" style="background: #0066CC; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        📞 Call (602) 688-9825
+                    </a>
+                    <a href="sms:+1-602-688-9825" style="background: #00B8A0; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        💬 Text Us
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -5440,19 +5486,67 @@
             });
         }
 
+        // This will be handled by the navigation-loader-optimized.js
+
+        // Convert all Book Now buttons to Add to Cart buttons
+        function convertBookingButtons() {
+            const bookButtons = document.querySelectorAll('.btn.product-btn');
+            bookButtons.forEach(button => {
+                if (button.textContent === 'Book Now' && !button.classList.contains('add-to-cart')) {
+                    const productCard = button.closest('.product-card');
+                    const title = productCard.querySelector('.product-title')?.textContent?.trim();
+                    const priceElement = productCard.querySelector('.product-price');
+                    const price = priceElement?.textContent?.replace('$', '')?.trim();
+                    const category = productCard.querySelector('.product-category')?.textContent?.trim();
+
+                    if (title && price) {
+                        // Convert to button and add cart functionality
+                        const newButton = document.createElement('button');
+                        newButton.className = button.className + ' add-to-cart';
+                        newButton.textContent = `Add to Cart - $${price}`;
+                        newButton.setAttribute('data-name', title);
+                        newButton.setAttribute('data-price', price);
+                        newButton.setAttribute('data-category', category || 'NAD+ & Peptides');
+
+                        button.parentNode.replaceChild(newButton, button);
+                    }
+                }
+            });
         // Load shared navigation
         async function loadNavigation() {
             try {
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (!placeholder) {
+                    console.warn('Navigation placeholder element not found');
+                    return;
+                }
+
                 const response = await fetch('../shared/navigation.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
                 const navigationHtml = await response.text();
-                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+                placeholder.innerHTML = navigationHtml;
+
+                // Initialize navigation functionality after loading
+                if (typeof initializeNavigation === 'function') {
+                    initializeNavigation();
+                }
             } catch (error) {
                 console.error('Error loading navigation:', error);
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (placeholder) {
+                    placeholder.innerHTML = '<div style="background: #f8f9fa; padding: 10px; text-align: center; color: #6c757d;">Navigation temporarily unavailable</div>';
+                }
             }
         }
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
+            // Convert booking buttons to cart buttons
+            convertBookingButtons();
+
             loadNavigation();
             initializeAccessibility();
             initializeCategoryNavigation();
@@ -5461,7 +5555,13 @@
         });
     </script>
 
-    <!-- Navigation JavaScript -->
-    <script src="../shared/navigation.js"></script>
+    <!-- Cart System -->
+    <script src="../shared/cart.js"></script>
+
+    <!-- IntakeQ Integration -->
+    <script src="../shared/intakeq-integration.js"></script>
+
+    <!-- Optimized Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
 </body>
 </html>

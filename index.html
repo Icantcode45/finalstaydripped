@@ -35,7 +35,24 @@
     <meta name="twitter:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MQJPLG5GPW');
+    </script>
+
+    <!-- Good Faith Exam Widget Stylesheet -->
+    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+
+    <!-- IntakeQ Portal Login Widget Script -->
+    <script>(function (c) {window.intakeq="68460f36bc104b6aa9da43e0";window.intakeqClientArea=true; var i = c.createElement("script");i.type = "text/javascript";i.async = true;i.src = "https://intakeq.com/js/widget.min.js?1";document.head.appendChild(i);})(document);</script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
@@ -57,24 +74,7 @@
     <link rel="stylesheet" href="shared/navigation.css">
     
     <style>
-        /* Emergency mobile fix - force hide all dropdowns */
-        @media (max-width: 768px) {
-            .nav-links,
-            .nav-dropdown,
-            .dropdown-content,
-            .services-dropdown,
-            .nav-actions {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                height: 0 !important;
-                overflow: hidden !important;
-                position: absolute !important;
-                top: -9999px !important;
-                left: -9999px !important;
-                z-index: -1 !important;
-            }
-        }
+        /* Mobile navigation handled by navigation.css */
 
         :root {
             --primary-blue: #0066CC;
@@ -107,12 +107,19 @@
             line-height: 1.6;
             color: var(--dark-slate);
             background: var(--white);
+            margin: 0;
+            padding: 0;
+            padding-top: 200px; /* Account for promo banner + top bar + header */
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Top Bar */
@@ -122,9 +129,9 @@
             padding: 12px 0;
             font-size: 14px;
             position: fixed;
-            top: 0;
+            top: 64px; /* Position below promo banner */
             width: 100%;
-            z-index: 1001;
+            z-index: 1002;
         }
 
         .top-bar-content {
@@ -322,7 +329,7 @@
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: fixed;
-            top: 52px;
+            top: 116px; /* Account for promo banner (64px) + top bar (52px) */
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
@@ -840,6 +847,38 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            flex-shrink: 0;
+        }
+
+        .stat-icon img {
+            width: 36px;
+            height: 36px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+            display: block;
+        }
+
+        .stat-card:hover .stat-icon img {
+            transform: scale(1.1);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
         }
 
         .stat-card::before {
@@ -1119,8 +1158,28 @@
             opacity: 1;
         }
 
+        .service-icon {
+            padding: 24px 32px 16px 32px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .service-icon img {
+            width: 56px;
+            height: 56px;
+            transition: transform 0.3s ease;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .service-card-enhanced:hover .service-icon img {
+            transform: scale(1.1);
+        }
+
         .service-content {
-            padding: 40px 32px;
+            padding: 20px 32px 40px 32px;
             position: relative;
             z-index: 1;
         }
@@ -2669,8 +2728,14 @@
             color: var(--white);
             text-align: center;
             padding: 16px 0;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1003;
             overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .promo-banner::before {
@@ -2698,21 +2763,31 @@
             font-size: clamp(18px, 4vw, 24px);
             font-weight: 700;
             margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .promo-banner p {
             font-size: 16px;
-            opacity: 0.9;
+            opacity: 0.95;
             margin: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .discount-code {
-            background: rgba(255,255,255,0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-weight: 700;
             display: inline-block;
             margin: 0 8px;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 107, 53, 0.6); }
         }
 
 
@@ -2774,7 +2849,7 @@
             }
 
             .header {
-                top: 68px;
+                top: 132px; /* Mobile: promo banner (64px) + top bar (68px) */
             }
 
             .nav-links {
@@ -3107,10 +3182,17 @@
             transform: scale(1.05) translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
         }
+    <!-- Responsive Fix CSS -->
+    <link rel="stylesheet" href="responsive-fix.css">
     </style>
 </head>
 <body>
 
+    <!-- Navigation Placeholder -->
+    <div id="navigation-placeholder"></div>
+
+
+    <!-- Hero Section -->
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
@@ -3352,6 +3434,7 @@
                     </div>
                     <div class="hero-cta fade-in delay-4" data-builder-block="cta-buttons">
                         <a href="pages/book-ivtherapy.html" class="btn btn-hover btn-large" data-builder-link="book-treatment">Book Treatment</a>
+                        <a href="#services" class="btn-secondary btn-hover btn-large" data-builder-link="learn-more">Learn More</a>
                         <a href="#services" class="btn-secondary btn-hover btn-small" data-builder-link="learn-more">Learn More</a>
 
                         <!-- Good Faith Exam Widget -->
@@ -3379,6 +3462,9 @@
         <div class="container">
             <div class="hero-stats">
                 <div class="stat-card fade-in delay-1 card-hover">
+                    <div class="stat-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F51ab2a384dfe42cd9f91ea89c8394358?format=webp&width=800" alt="Thumbs Up" style="width: 40px; height: 40px;">
+                    </div>
                     <p class="stat-text">
                         <span>More than </span>
                         <span class="stat-highlight stat-orange counter" data-target="10000">0</span>
@@ -3386,6 +3472,9 @@
                     </p>
                 </div>
                 <div class="stat-card fade-in delay-2 card-hover">
+                    <div class="stat-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F99530b33904a43099db4f3ab02618f9b?format=webp&width=800" alt="Medal" style="width: 40px; height: 40px;">
+                    </div>
                     <p class="stat-text">
                         <span>Achieved </span>
                         <span class="stat-highlight stat-blue">5.0★</span>
@@ -3393,6 +3482,9 @@
                     </p>
                 </div>
                 <div class="stat-card fade-in delay-3 card-hover">
+                    <div class="stat-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb4aa191134a2478f839c78a880c23d4d?format=webp&width=800" alt="Clock" style="width: 40px; height: 40px;">
+                    </div>
                     <p class="stat-text">
                         <span>Providing </span>
                         <span class="stat-highlight stat-teal">24/7</span>
@@ -3416,6 +3508,17 @@
 
             <div class="services-grid">
                 <div class="service-card-enhanced fade-in" data-builder-block="service-hydration">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F7c2c0f0a34cd4237a1650a66b84144c3?format=webp&width=800" alt="Hydration" style="width: 48px; height: 48px;">
+                    </div>
+                    <div class="service-content">
+                        <h3 data-builder-text="hydration-title">Hydration Therapy</h3>
+                        <p data-builder-text="hydration-description">Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
+                        <ul class="treatment-list" data-builder-list="hydration-treatments">
+                            <li>Basic Hydration IV</li>
+                            <li>Electrolyte Plus</li>
+                            <li>Recovery Hydration</li>
+                            <li>Athletic Hydration</li>
                     <div class="service-content">
                         <h3 data-builder-text="hydration-title">IV Hydration Therapy</h3>
                         <p data-builder-text="hydration-description">Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
@@ -3431,6 +3534,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F3da3cc5b74104600acecbf3ff9259dd4?format=webp&width=800" alt="Energy" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Energy & Wellness</h3>
                         <p>Vitamin B complex and energy-boosting nutrients to enhance mental clarity and physical performance.</p>
@@ -3445,6 +3551,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F57a372ed89f44b9496ef92638e9fd5e4?format=webp&width=800" alt="Immune Shield" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Immune Support</h3>
                         <p>High-dose vitamin C and immune-boosting nutrients to strengthen your body's natural defenses.</p>
@@ -3459,6 +3568,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F7a6e5d9a97c14eae805e01eb305f2e8a?format=webp&width=800" alt="Performance Target" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Recovery & Performance</h3>
                         <p>Advanced formulas for athletic recovery, hangover relief, and performance optimization.</p>
@@ -3473,6 +3585,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Beauty Star" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Beauty & Anti-Aging</h3>
                         <p>Antioxidants, collagen support, and beauty-enhancing nutrients for healthy skin and vitality.</p>
@@ -3487,6 +3602,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F81d659a9296e4440ae615ba976ef0008?format=webp&width=800" alt="Telehealth Computer" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Telehealth Services</h3>
                         <p>Virtual consultations and ongoing care management from the comfort of your home.</p>
@@ -3501,6 +3619,9 @@
                 </div>
 
                 <div class="service-card-enhanced fade-in">
+                    <div class="service-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F634164728fd64da1bd86ba9b243054c2?format=webp&width=800" alt="Testing Kit Folder" style="width: 48px; height: 48px;">
+                    </div>
                     <div class="service-content">
                         <h3>Mobile Testing Kits</h3>
                         <p>Convenient at-home testing kits brought to your doorstep for comprehensive health monitoring and optimization at the comfort of your own home.</p>
@@ -3644,6 +3765,52 @@
                 </p>
             </div>
 
+            <div class="reviews-carousel-container">
+                <div class="reviews-carousel" id="reviewsCarousel">
+                    <div class="review-card active">
+                        <div class="reviewer-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face" alt="Amanda Rodriguez" loading="lazy">
+                        </div>
+                        <div class="review-stars">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px;">
+                        </div>
+                        <p class="review-text">"Absolutely incredible service! The nurse was professional, punctual, and made the whole experience comfortable. I felt rejuvenated immediately after the IV drip."</p>
+                        <div class="reviewer-info">
+                            <h4>Amanda Rodriguez</h4>
+                            <p>Google Review • 1 week ago • Myers' Cocktail</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevReview" aria-label="Previous review">❮</button>
+                    <button class="carousel-btn next-btn" id="nextReview" aria-label="Next review">❯</button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="reviews-footer">
+                <div class="google-rating">
+                    <div class="google-logo-container">
+                        <svg width="92" height="30" viewBox="0 0 272 92" class="google-logo">
+                            <g fill="none" fill-rule="evenodd">
+                                <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                                <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+                                <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
+                                <path fill="#EA4335" d="M225 3v65h-9.5V3h9.5z"/>
+                                <path fill="#34A853" d="m262.02 54.48 7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98 19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+                            </g>
+                        </svg>
+                    </div>
             
                     <div class="rating-info">
                         <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
@@ -3695,6 +3862,7 @@
                     </div>
 
                     <div class="info-card fade-in">
+                        <h3><img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fb4aa191134a2478f839c78a880c23d4d?format=webp&width=800" alt="Clock" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;">Hours</h3>
                         <h3>Hours</h3>
                         <ul>
                             <li>Monday - Friday: 8:00 AM - 8:00 PM</li>
@@ -3849,9 +4017,9 @@
                         Stay Dripped IV & Wellness - #1 Wellness Company In Arizona. Premium mobile IV therapy and wellness treatments delivered by licensed medical professionals throughout Scottsdale, Arizona.
                     </p>
                     <div style="margin-bottom: 16px;">
-                        <p style="margin-bottom: 8px;"><img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F87c674f2834845aa9d4108c24cca538a?format=webp&width=800" alt="Phone" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> (602) 761-0492</p>
-                        <p style="margin-bottom: 8px;"><img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fb44cd9a0c5684cbebd5177e264d326a9?format=webp&width=800" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> info@staydrippediv.com</p>
-                        <p><img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Ffe1ff452f02a4266a8ae4f8cb202ce45?format=webp&width=800" alt="Location" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Scottsdale, AZ</p>
+                        <p style="margin-bottom: 8px;"><img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fbae85ea7a53340689fac18198ef90b88?format=webp&width=800" alt="Phone" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> (602) 761-0492</p>
+                        <p style="margin-bottom: 8px;"><img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Ffaf99322a7364f71a8b51328ac45cb0e?format=webp&width=800" alt="Email" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> info@staydrippediv.com</p>
+                        <p><img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fa52869d25aef4d099632c7359000a084?format=webp&width=800" alt="Location" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Scottsdale, AZ</p>
                     </div>
                 </div>
                 <div>
@@ -4512,11 +4680,26 @@
 
         // Add event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize StayDripped utilities
+            if (window.StayDrippedUtils) {
+                window.StayDrippedUtils.setDebugMode(false); // Set to true for debugging
+                window.StayDrippedUtils.logger.info('StayDripped Utils integrated with homepage');
+            }
+
             // Location finder
             const locationBtn = document.querySelector('.location-finder-btn');
             if (locationBtn) {
                 locationBtn.addEventListener('click', function(e) {
                     e.preventDefault();
+
+                    // Track location finder click with enhanced analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'location_finder_click', {
+                            'page_location': window.location.href,
+                            'timestamp': window.StayDrippedUtils?.getCurrentTimeFormatted?.() || new Date().toISOString()
+                        });
+                    }
+
                     showLocationFinder();
                 });
             }
@@ -4623,6 +4806,68 @@
                 }
             }
 
+            // Fixed Stats Animation and Counter
+            function initializeStatsAnimation() {
+                const statsSection = document.querySelector('.stats-section');
+                const statCards = document.querySelectorAll('.stats-section .stat-card');
+                const counters = document.querySelectorAll('.counter');
+                let hasAnimated = false;
+
+                function animateCounter(counter) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }, 16);
+                }
+
+                function checkStatsVisibility() {
+                    if (hasAnimated || !statsSection) return;
+
+                    const rect = statsSection.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+
+                    if (isVisible) {
+                        hasAnimated = true;
+
+                        // Animate stat cards
+                        statCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 200);
+                        });
+
+                        // Animate counters
+                        setTimeout(() => {
+                            counters.forEach(counter => {
+                                animateCounter(counter);
+                            });
+                        }, 600);
+                    }
+                }
+
+                // Set up scroll listener and initial check
+                if (statsSection) {
+                    window.addEventListener('scroll', checkStatsVisibility);
+                    // Check immediately in case already visible
+                    setTimeout(checkStatsVisibility, 100);
+                }
+            }
+
+            // Initialize the stats animation when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeStatsAnimation);
+            } else {
+                initializeStatsAnimation();
+            }
             // Initialize stats animation
             initializeStatsAnimation();
 
@@ -4653,6 +4898,7 @@
             // Initialize animations
             initializeAnimations();
         });
+    <script src="animation-fix.js"></script>
 
     </script>
 
@@ -5009,5 +5255,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script id="qualiphy-script" type="text/javascript" src="https://www.app.qualiphy.me/scripts/quidget_disclosure.js" data-formsrc='https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e' data-timezone='-6' data-examhours='[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]'></script>
 
+    <!-- Cart System -->
+    <script src="shared/cart.js"></script>
+
+    <!-- IntakeQ Integration -->
+    <script src="shared/intakeq-integration.js"></script>
+
+    <!-- Optimized Navigation Loader -->
+    <script src="shared/navigation-loader-optimized.js"></script>
 </body>
 </html>
