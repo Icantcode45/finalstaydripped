@@ -453,6 +453,13 @@
         </div>
     </section>
 
+<<<<<<< HEAD
+    <!-- Optimized Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
+=======
+    <!-- Navigation Loader -->
+    <script src="../shared/navigation-loader.js"></script>
+>>>>>>> refs/remotes/origin/main
     <!-- Products Section -->
     <section id="products" class="products-section">
         <div class="container">
@@ -682,5 +689,37 @@
         });
     </script>
 
+<<<<<<< HEAD
+    <!-- Good Faith Exam Widget Scripts - Deferred for performance -->
+    <script>
+        // Defer loading of heavy external scripts until page is loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                // Load moment.js
+                var momentScript = document.createElement('script');
+                momentScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js';
+                momentScript.async = true;
+                document.head.appendChild(momentScript);
+
+                // Load Qualiphy widget after moment.js
+                momentScript.onload = function() {
+                    var qualiphyScript = document.createElement('script');
+                    qualiphyScript.id = 'qualiphy-script';
+                    qualiphyScript.type = 'text/javascript';
+                    qualiphyScript.src = 'https://www.app.qualiphy.me/scripts/quidget_disclosure.js';
+                    qualiphyScript.setAttribute('data-formsrc', 'https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e');
+                    qualiphyScript.setAttribute('data-timezone', '-6');
+                    qualiphyScript.setAttribute('data-examhours', '[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]');
+                    qualiphyScript.async = true;
+                    document.head.appendChild(qualiphyScript);
+                };
+            }, 1000); // Delay by 1 second to prioritize critical content
+        });
+    </script>
+=======
+    <!-- Good Faith Exam Widget Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script id="qualiphy-script" type="text/javascript" src="https://www.app.qualiphy.me/scripts/quidget_disclosure.js" data-formsrc='https://www.app.qualiphy.me/qualiphy-widget?clinic=Stay Dripped Mobile IV LLC&clinicId=3454&first_name=&last_name=&email=&phone_number=&gender=&exams=selectable&tele_state_required=true&token=25f1c2618e146d725e934313417e918418a5068e' data-timezone='-6' data-examhours='[{"SUN":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"MON":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"TUE":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"WED":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"THU":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"FRI":{"FROM":"00:00","TO":"23:59","isDaySelected":true}},{"SAT":{"FROM":"00:00","TO":"23:59","isDaySelected":true}}]'></script>
+>>>>>>> refs/remotes/origin/main
 </body>
 </html>
