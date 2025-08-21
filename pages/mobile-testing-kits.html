@@ -389,17 +389,13 @@
             
             <!-- Category Navigation -->
             <div class="category-nav">
-<<<<<<< HEAD
                 <button class="category-btn active" data-category="all">All Categories</button>
-=======
                 <button class="category-btn active" data-category="all">All</button>
->>>>>>> refs/remotes/origin/main
                 <button class="category-btn" data-category="allergies">Allergies & Sensitivities</button>
                 <button class="category-btn" data-category="sex-specific">Sex-Specific</button>
                 <button class="category-btn" data-category="general">General Health</button>
             </div>
 
-<<<<<<< HEAD
             <!-- All Categories Section -->
             <div class="category-section active" data-category="all">
                 <h3 class="category-title">All Testing Kits</h3>
@@ -459,7 +455,6 @@
                 </div>
             </div>
 
-=======
             <!-- All Category -->
             <div class="category-section active" data-category="all">
                 <h3 class="category-title">All Testing Kits</h3>
@@ -640,7 +635,6 @@
                 </div>
             </div>
 
->>>>>>> refs/remotes/origin/main
             <!-- Sex-Specific Category -->
             <div class="category-section" data-category="sex-specific">
                 <h3 class="category-title">Sex-Specific Health Testing</h3>
@@ -1179,7 +1173,6 @@
             }
         }
 
-<<<<<<< HEAD
         // Populate All category with all products
         function populateAllCategory() {
             const allProductsGrid = document.getElementById('all-products');
@@ -1199,8 +1192,6 @@
             });
         }
 
-=======
->>>>>>> refs/remotes/origin/main
         // Category navigation functionality
         function initCategoryNavigation() {
             const categoryButtons = document.querySelectorAll('.category-btn');
@@ -1221,14 +1212,11 @@
                             section.classList.add('active');
                         }
                     });
-<<<<<<< HEAD
 
                     // If "All" category is selected, populate it
                     if (targetCategory === 'all') {
                         populateAllCategory();
                     }
-=======
->>>>>>> refs/remotes/origin/main
                 });
             });
         }
@@ -1237,11 +1225,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadNavigation();
             initCategoryNavigation();
-<<<<<<< HEAD
             // Populate All category on initial load since it's the default active
             populateAllCategory();
-=======
->>>>>>> refs/remotes/origin/main
         });
     </script>
 </body>
