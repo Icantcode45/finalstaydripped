@@ -138,14 +138,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enhanced dropdown hover management for services dropdown
-    const servicesDropdown = document.querySelector('.nav-dropdown');
-    if (servicesDropdown) {
-        const dropdownContent = servicesDropdown.querySelector('.dropdown-content');
+    // Enhanced dropdown hover management for all dropdowns
+    const allDropdowns = document.querySelectorAll('.nav-dropdown');
+    allDropdowns.forEach(function(dropdown) {
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
 
         if (dropdownContent) {
+            let hideTimeout;
+
             // Show dropdown on hover
-            servicesDropdown.addEventListener('mouseenter', function() {
+            dropdown.addEventListener('mouseenter', function() {
+                // Clear any pending hide timeout
+                if (hideTimeout) {
+                    clearTimeout(hideTimeout);
+                    hideTimeout = null;
+                }
+
                 dropdownContent.style.display = 'block';
                 setTimeout(() => {
                     dropdownContent.style.opacity = '1';
@@ -154,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // Hide dropdown when mouse leaves both trigger and content
-            let hideTimeout;
             function scheduleHide() {
                 hideTimeout = setTimeout(() => {
                     dropdownContent.style.opacity = '0';
@@ -174,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            servicesDropdown.addEventListener('mouseleave', scheduleHide);
+            dropdown.addEventListener('mouseleave', scheduleHide);
             dropdownContent.addEventListener('mouseenter', cancelHide);
             dropdownContent.addEventListener('mouseleave', scheduleHide);
         }
-    }
+    });
 
     // Click-based dropdown system for service and product categories
     function initializeDropdownSystem(dropdownSelector) {
