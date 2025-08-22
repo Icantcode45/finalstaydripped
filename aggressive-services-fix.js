@@ -54,17 +54,18 @@
                     servicesGrid.appendChild(card);
                 }
                 
-                // Apply compact styling
+                // Apply balanced readable styling
                 card.style.cssText = `
-                    padding: 16px !important;
+                    padding: 24px !important;
                     margin: 0 !important;
                     height: auto !important;
-                    max-height: 300px !important;
-                    overflow: hidden !important;
-                    border-radius: 12px !important;
+                    min-height: 280px !important;
+                    max-height: 320px !important;
+                    border-radius: 16px !important;
                     background: white !important;
                     border: 1px solid #e2e8f0 !important;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
                 `;
                 
                 // Fix content inside cards
