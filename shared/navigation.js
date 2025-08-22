@@ -259,4 +259,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Homepage fixes applied');
     }
+
+    // Initialize cart functionality
+    const cartIcon = document.querySelector('a[aria-label="Shopping cart"]');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Check if cart system exists
+            if (window.StayDrippedCart) {
+                // Toggle cart display or navigate to checkout
+                window.location.href = '/pages/checkout.html';
+            } else {
+                // Fallback for basic cart functionality
+                alert('Cart functionality: Please call (602) 688-9825 to place an order or visit our booking page.');
+                window.location.href = '/pages/book-appointment.html';
+            }
+        });
+    }
+
+    // Initialize phone icon functionality
+    const phoneIcon = document.querySelector('a[aria-label="Call us"]');
+    if (phoneIcon) {
+        phoneIcon.addEventListener('click', function(e) {
+            // Allow default behavior (tel: link) but also track the click
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_call_click', {
+                    'phone_number': '+1-602-688-9825',
+                    'source': 'navigation_icon'
+                });
+            }
+        });
+    }
+
+    // Update cart count if cart system is available
+    function updateCartCount() {
+        const cartCountElement = document.querySelector('.cart-count');
+        if (cartCountElement && window.StayDrippedCart) {
+            const cart = new window.StayDrippedCart();
+            const itemCount = cart.getTotalItems();
+            cartCountElement.textContent = itemCount || '0';
+            cartCountElement.style.display = itemCount > 0 ? 'flex' : 'none';
+        }
+    }
+
+    // Initialize cart count on page load
+    setTimeout(updateCartCount, 500);
+
+    // Listen for cart updates
+    window.addEventListener('cartUpdated', updateCartCount);
 });
