@@ -1,55 +1,100 @@
-/* EMERGENCY SERVICES LAYOUT FIX - HIGHEST PRIORITY */
+/* BALANCED SERVICES LAYOUT FIX - READABLE BUT COMPACT */
 .services-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 15px !important;
-    margin: 20px 0 !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 24px !important;
+    margin: 32px 0 !important;
     padding: 0 !important;
 }
 
 .service-card-enhanced {
-    padding: 12px !important;
+    padding: 24px !important;
     margin: 0 !important;
-    height: 200px !important;
-    max-height: 200px !important;
-    overflow: hidden !important;
+    height: auto !important;
+    min-height: 280px !important;
+    max-height: 320px !important;
     background: white !important;
-    border: 1px solid #ddd !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
+.service-card-enhanced:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Hide long treatment lists but keep short descriptions */
 .treatment-list {
     display: none !important;
 }
 
+.service-icon {
+    padding: 12px 0 16px 0 !important;
+    text-align: center !important;
+}
+
+.service-content {
+    padding: 0 !important;
+}
+
 .service-card-enhanced h3 {
-    font-size: 14px !important;
-    margin-bottom: 4px !important;
-    line-height: 1.2 !important;
+    font-size: 20px !important;
+    margin-bottom: 12px !important;
+    line-height: 1.3 !important;
+    color: #1a2b3a !important;
+    font-weight: 600 !important;
 }
 
 .service-card-enhanced p {
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-    margin-bottom: 6px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+    color: #64748b !important;
 }
 
-.service-btn {
-    padding: 3px 6px !important;
-    font-size: 10px !important;
+.service-btn, .btn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    background: #0066cc !important;
+    color: white !important;
+    text-decoration: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: background 0.3s ease !important;
+}
+
+.service-btn:hover, .btn:hover {
+    background: #0052a3 !important;
 }
 
 @media (max-width: 768px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
+        gap: 16px !important;
     }
 
     .service-card-enhanced {
-        height: 150px !important;
-        max-height: 150px !important;
-        padding: 8px !important;
+        min-height: 240px !important;
+        max-height: 280px !important;
+        padding: 20px !important;
+    }
+
+    .service-card-enhanced h3 {
+        font-size: 18px !important;
+    }
+
+    .service-card-enhanced p {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
     }
 }
 
