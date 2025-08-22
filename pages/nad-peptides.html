@@ -53,9 +53,12 @@
 
     <!-- Good Faith Exam Widget Stylesheet -->
     <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+<<<<<<< HEAD
+=======
     <!-- Navigation Styles -->
     <link rel="stylesheet" href="../responsive-fix.css">
     <link rel="stylesheet" href="../shared/navigation.css">
+>>>>>>> refs/remotes/origin/main
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -1207,6 +1210,135 @@
                 justify-content: center;
             }
         }
+<<<<<<< HEAD
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo" loading="eager">
+                </a>
+
+                <ul class="nav-links">
+                    <li class="nav-dropdown">
+                        <a href="#" class="nav-link">Services</a>
+                        <div class="dropdown-content services-dropdown">
+                            <div class="dropdown-section">
+                                <h4>IV Therapy</h4>
+                                <a href="../pages/book-ivtherapy.html">IV Therapy</a>
+                                <a href="../pages/vitamin-injections.html">Vitamin Injections</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Advanced Treatments</h4>
+                                <a href="../pages/nad-peptides.html">NAD+ & Peptides</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Wellness Programs</h4>
+                                <a href="../pages/weight-management.html">Weight Management</a>
+                                <a href="../pages/sexual-wellness.html">Sexual Wellness</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Additional Services</h4>
+                                <a href="../pages/mobile-testing-kits.html">Mobile Testing</a>
+                                <a href="../pages/telehealth-services.html">Telehealth</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="../pages/first-time-patients.html" class="nav-link">New Patients</a></li>
+                    <li><a href="../pages/membership.html" class="nav-link">Membership</a></li>
+                    <li><a href="../index.html#team" class="nav-link">Our Team</a></li>
+                    <li><a href="../pages/event-corporate-inquiry.html" class="nav-link">Events</a></li>
+                    <li><a href="../pages/compliance.html" class="nav-link">Compliance</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+        .pricing-container {
+            padding: 40px 32px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 20px;
+        }
+
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Dropdown -->
+            <div class="mobile-menu" id="mobile-menu">
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-header">
+                        <a href="../index.html" class="mobile-menu-logo">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F1268a8aa36364ef795a07a801a639f41%2Ff74b8d31183c4e73ad423862ef65b827?format=webp&width=800" alt="Stay Dripped IV & Wellness Co. Logo">
+                        </a>
+                        <button class="mobile-menu-close" aria-label="Close mobile menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <nav class="mobile-menu-nav">
+                        <div class="mobile-menu-section">
+                            <button class="mobile-menu-item mobile-dropdown-toggle" data-target="services-mobile">
+                                <span>Services</span>
+                                <svg class="mobile-dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content" id="services-mobile">
+                                <div class="mobile-dropdown-section">
+                                    <h4>IV Therapy</h4>
+                                    <a href="../pages/book-ivtherapy.html">IV Therapy</a>
+                                    <a href="../pages/vitamin-injections.html">Vitamin Injections</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Advanced Treatments</h4>
+                                    <a href="../pages/nad-peptides.html">NAD+ & Peptides</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Wellness Programs</h4>
+                                    <a href="../pages/weight-management.html">Weight Management</a>
+                                    <a href="../pages/sexual-wellness.html">Sexual Wellness</a>
+                                    <a href="../pages/probiotics.html">Probiotics & Gut Health</a>
+                                </div>
+                                <div class="mobile-dropdown-section">
+                                    <h4>Additional Services</h4>
+                                    <a href="../pages/mobile-testing-kits.html">Mobile Testing</a>
+                                    <a href="../pages/telehealth-services.html">Telehealth</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="../pages/first-time-patients.html" class="mobile-menu-item">New Patients</a>
+                        <a href="../pages/membership.html" class="mobile-menu-item">Membership</a>
+                        <a href="../index.html#team" class="mobile-menu-item">Our Team</a>
+                        <a href="../pages/event-corporate-inquiry.html" class="mobile-menu-item">Events</a>
+                        <a href="../pages/gift-cards.html" class="mobile-menu-item">Gift Cards</a>
+                        <a href="../pages/compliance.html" class="mobile-menu-item">Compliance</a>
+                        <a href="../index.html#contact" class="mobile-menu-item">Contact</a>
+                    </nav>
+
+                    <div class="mobile-menu-actions">
+                        <a href="tel:+1-480-999-9999" class="mobile-btn mobile-btn-secondary">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2F87c674f2834845aa9d4108c24cca538a?format=webp&width=800" alt="Phone" style="width: 18px; height: 18px;">
+                            Call Now
+                        </a>
+                        <a href="../pages/book-appointment.html" class="mobile-btn mobile-btn-primary">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2F337c720945064b44af05129952e6433b%2Fa759c61b68aa4add9c65c77c443410ab?format=webp&width=800" alt="Book Appointment" style="width: 18px; height: 18px;">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+=======
     </style>
 </head>
 <body>
@@ -1344,6 +1476,7 @@
     <!-- Navigation -->
     <div id="navigation-placeholder"></div>
 
+>>>>>>> refs/remotes/origin/main
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -5515,6 +5648,13 @@
         // Load shared navigation
         async function loadNavigation() {
             try {
+<<<<<<< HEAD
+                const response = await fetch('../shared/navigation.html');
+                const navigationHtml = await response.text();
+                document.getElementById('navigation-placeholder').innerHTML = navigationHtml;
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+=======
                 const placeholder = document.getElementById('navigation-placeholder');
                 if (!placeholder) {
                     console.warn('Navigation placeholder element not found');
@@ -5539,6 +5679,7 @@
                 if (placeholder) {
                     placeholder.innerHTML = '<div style="background: #f8f9fa; padding: 10px; text-align: center; color: #6c757d;">Navigation temporarily unavailable</div>';
                 }
+>>>>>>> refs/remotes/origin/main
             }
         }
 
