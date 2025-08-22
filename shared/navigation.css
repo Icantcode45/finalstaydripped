@@ -810,3 +810,31 @@
         padding-top: 40px !important;
     }
 }
+
+/* Fix duplicate navigation - hide hardcoded nav when placeholder exists */
+#navigation-placeholder ~ header.header {
+    display: none !important;
+}
+
+/* Ensure promo banner is at the very top */
+.promo-banner {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1004 !important;
+}
+
+/* Adjust body padding to account for promo banner */
+body {
+    padding-top: 64px !important;
+}
+
+/* Adjust navigation placeholder positioning */
+#navigation-placeholder .top-bar {
+    top: 64px !important;
+}
+
+#navigation-placeholder .header {
+    top: 116px !important;
+}
