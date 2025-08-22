@@ -835,12 +835,14 @@ body {
     top: 52px !important;
 }
 
-/* Additional fixes for service cards layout */
-.services-grid {
+/* Additional fixes for service cards layout - Strong specificity */
+section .services-grid,
+.services .services-grid,
+div.services-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 20px !important;
-    margin-bottom: 30px !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 18px !important;
+    margin-bottom: 25px !important;
 }
 
 .service-card-enhanced {
