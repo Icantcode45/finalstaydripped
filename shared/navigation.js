@@ -1,18 +1,18 @@
 // Fix navigation duplication by removing hardcoded navigation content
 function removeHardcodedNavigation() {
     console.log('Checking for navigation duplication...');
-
+    
     // Remove any hardcoded top-bar that's not inside navigation-placeholder
     const navigationPlaceholder = document.getElementById('navigation-placeholder');
     if (!navigationPlaceholder) {
         console.warn('Navigation placeholder not found');
         return;
     }
-
+    
     // Find and remove any top-bar or header elements that are siblings of the placeholder
     const allTopBars = document.querySelectorAll('.top-bar');
     const allHeaders = document.querySelectorAll('header.header');
-
+    
     allTopBars.forEach((topBar, index) => {
         // Only remove if it's NOT inside the navigation placeholder
         if (!navigationPlaceholder.contains(topBar)) {
@@ -20,7 +20,7 @@ function removeHardcodedNavigation() {
             topBar.remove();
         }
     });
-
+    
     allHeaders.forEach((header, index) => {
         // Only remove if it's NOT inside the navigation placeholder
         if (!navigationPlaceholder.contains(header)) {
@@ -28,18 +28,18 @@ function removeHardcodedNavigation() {
             header.remove();
         }
     });
-
+    
     console.log('Navigation duplication cleanup completed');
 }
 
 // Mobile Menu Functionality
-// Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation duplication first
     removeHardcodedNavigation();
-
+    
     // Run again after a short delay to catch any dynamically added content
     setTimeout(removeHardcodedNavigation, 500);
+
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
@@ -177,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-<<<<<<< HEAD
     // Homepage fixes for all reported issues
     if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
         console.log('Applying homepage fixes...');
@@ -392,15 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Listen for cart updates
     window.addEventListener('cartUpdated', updateCartCount);
 
-    // Load aggressive services fix script
-    if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-        const script = document.createElement('script');
-        script.src = 'aggressive-services-fix.js';
-        script.onload = () => console.log('Aggressive services fix loaded');
-        script.onerror = () => console.log('Failed to load aggressive services fix');
-        document.head.appendChild(script);
-    }
-=======
     // Enhanced dropdown hover management for all dropdowns
     const allDropdowns = document.querySelectorAll('.nav-dropdown');
     allDropdowns.forEach(function(dropdown) {
@@ -450,140 +440,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Click-based dropdown system for service and product categories
-    function initializeDropdownSystem(dropdownSelector) {
-        const dropdownContent = document.querySelector(dropdownSelector);
-        if (!dropdownContent) return;
-
-        const sections = dropdownContent.querySelectorAll('.dropdown-section');
-        let activeSection = null;
-
-        sections.forEach(function(section) {
-            const header = section.querySelector('h4');
-            const submenu = section.querySelector('.services-horizontal-submenu');
-
-            // Handle both structures: direct links or submenu container
-            const links = submenu ?
-                submenu.querySelectorAll('a') :
-                section.querySelectorAll('a'); // Direct children for inline structure
-
-            if (header) {
-                // Add click event to category headers
-                header.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    // If this section is already active, close it
-                    if (activeSection === section) {
-                        hideLinks(section);
-                        activeSection = null;
-                        header.classList.remove('active');
-                        return;
-                    }
-
-                    // Hide any currently active section
-                    if (activeSection) {
-                        hideLinks(activeSection);
-                        activeSection.querySelector('h4').classList.remove('active');
-                    }
-
-                    // Show this section's links
-                    showLinks(section);
-                    activeSection = section;
-                    header.classList.add('active');
-                });
-
-                // Make header look clickable
-                header.style.cursor = 'pointer';
-            }
-        });
-
-        // Helper functions to show/hide links
-        function showLinks(section) {
-            const submenu = section.querySelector('.services-horizontal-submenu');
-
-            if (submenu) {
-                // Shared navigation structure with submenu container
-                submenu.style.display = 'block';
-                submenu.style.opacity = '0';
-                submenu.style.transform = 'translateX(-20px)';
-
-                setTimeout(() => {
-                    submenu.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                    submenu.style.opacity = '1';
-                    submenu.style.transform = 'translateX(0)';
-                }, 50);
-            } else {
-                // Inline navigation structure with direct links
-                const links = section.querySelectorAll('a');
-                links.forEach(function(link, index) {
-                    link.style.display = 'block';
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateX(-20px)';
-
-                    // Staggered animation
-                    setTimeout(() => {
-                        link.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                        link.style.opacity = '1';
-                        link.style.transform = 'translateX(0)';
-                    }, index * 50 + 50);
-                });
-            }
-        }
-
-        function hideLinks(section) {
-            const submenu = section.querySelector('.services-horizontal-submenu');
-
-            if (submenu) {
-                // Shared navigation structure with submenu container
-                submenu.style.transition = 'all 0.2s ease';
-                submenu.style.opacity = '0';
-                submenu.style.transform = 'translateX(-10px)';
-
-                setTimeout(() => {
-                    submenu.style.display = 'none';
-                }, 200);
-            } else {
-                // Inline navigation structure with direct links
-                const links = section.querySelectorAll('a');
-                links.forEach(function(link) {
-                    link.style.transition = 'all 0.2s ease';
-                    link.style.opacity = '0';
-                    link.style.transform = 'translateX(-10px)';
-
-                    setTimeout(() => {
-                        link.style.display = 'none';
-                    }, 200);
-                });
-            }
-        }
-
-        // Close active section when clicking outside
-        document.addEventListener('click', function(e) {
-            if (activeSection && !dropdownContent.contains(e.target)) {
-                hideLinks(activeSection);
-                activeSection.querySelector('h4').classList.remove('active');
-                activeSection = null;
-            }
-        });
-
-        // Close active section when dropdown closes
-        const dropdownContainer = dropdownContent.closest('.nav-dropdown');
-        if (dropdownContainer) {
-            dropdownContainer.addEventListener('mouseleave', function() {
-                setTimeout(() => {
-                    if (activeSection) {
-                        hideLinks(activeSection);
-                        activeSection.querySelector('h4').classList.remove('active');
-                        activeSection = null;
-                    }
-                }, 500);
-            });
-        }
+    // Load aggressive services fix script
+    if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+        const script = document.createElement('script');
+        script.src = 'aggressive-services-fix.js';
+        script.onload = () => console.log('Aggressive services fix loaded');
+        script.onerror = () => console.log('Failed to load aggressive services fix');
+        document.head.appendChild(script);
     }
-
-    // Initialize both dropdown systems
-    initializeDropdownSystem('.services-dropdown');
-    initializeDropdownSystem('.products-dropdown');
->>>>>>> refs/remotes/origin/main
 });
