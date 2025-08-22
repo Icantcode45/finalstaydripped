@@ -1,5 +1,44 @@
+// Fix navigation duplication by removing hardcoded navigation content
+function removeHardcodedNavigation() {
+    console.log('Checking for navigation duplication...');
+
+    // Remove any hardcoded top-bar that's not inside navigation-placeholder
+    const navigationPlaceholder = document.getElementById('navigation-placeholder');
+    if (!navigationPlaceholder) {
+        console.warn('Navigation placeholder not found');
+        return;
+    }
+
+    // Find and remove any top-bar or header elements that are siblings of the placeholder
+    const allTopBars = document.querySelectorAll('.top-bar');
+    const allHeaders = document.querySelectorAll('header.header');
+
+    allTopBars.forEach((topBar, index) => {
+        // Only remove if it's NOT inside the navigation placeholder
+        if (!navigationPlaceholder.contains(topBar)) {
+            console.log(`Removing duplicate top-bar ${index + 1}`);
+            topBar.remove();
+        }
+    });
+
+    allHeaders.forEach((header, index) => {
+        // Only remove if it's NOT inside the navigation placeholder
+        if (!navigationPlaceholder.contains(header)) {
+            console.log(`Removing duplicate header ${index + 1}`);
+            header.remove();
+        }
+    });
+
+    console.log('Navigation duplication cleanup completed');
+}
+
 // Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Fix navigation duplication first
+    removeHardcodedNavigation();
+
+    // Run again after a short delay to catch any dynamically added content
+    setTimeout(removeHardcodedNavigation, 500);
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuClose = document.querySelector('.mobile-menu-close');
