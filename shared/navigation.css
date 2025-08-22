@@ -839,11 +839,30 @@ body {
     top: 116px !important;
 }
 
-/* Inject homepage fixes script */
-body::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    background: url('data:text/javascript;base64,') no-repeat;
+/* Additional fixes for service cards layout */
+.services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 24px !important;
+    margin-bottom: 40px !important;
+}
+
+.service-card-enhanced {
+    padding: 24px !important;
+    height: auto !important;
+    min-height: unset !important;
+}
+
+.service-content {
+    padding: 16px 24px 24px 24px !important;
+}
+
+.service-content p {
+    margin-bottom: 16px !important;
+    line-height: 1.5 !important;
+}
+
+.service-btn {
+    margin-top: 16px !important;
+    padding: 10px 20px !important;
 }
