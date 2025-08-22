@@ -281,6 +281,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
 .nav-dropdown:hover .dropdown-content {
     display: block;
     opacity: 1;
@@ -288,16 +289,32 @@
     transform: translateX(-50%) translateY(0);
 }
 
-/* Create a bridge area to prevent dropdown from closing */
+/* Keep dropdown visible with extended hover area and delay */
+.dropdown-content:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Create a larger bridge area to prevent dropdown from closing */
 .nav-dropdown::before {
     content: '';
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    height: 15px;
+    left: -20px;
+    right: -20px;
+    height: 20px;
     background: transparent;
     z-index: 1000;
+}
+
+/* Add transition delay to prevent immediate closing */
+.dropdown-content {
+    transition-delay: 0s;
+}
+
+.nav-dropdown:not(:hover) .dropdown-content {
+    transition-delay: 300ms;
 }
 
 .dropdown-content a {
@@ -320,35 +337,504 @@
 
 /* Dropdown Sections */
 .dropdown-section {
-    margin-bottom: 16px;
-    padding: 0 12px;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
 }
 
 .dropdown-section:last-child {
     margin-bottom: 0;
 }
 
-.dropdown-section h4 {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 8px;
-    padding: 8px 12px;
-    text-transform: uppercase;
+/* Premium service category headers with luxury styling */
+.services-dropdown .dropdown-section h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark-slate);
+    margin: 0;
+    padding: 16px 24px;
+    text-transform: none;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid rgba(0, 102, 204, 0.2);
+    border-bottom: none;
+    text-align: left;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    margin: 4px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.8) 100%);
+    border: 1px solid rgba(0, 102, 204, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    overflow: hidden;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 102, 204, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.dropdown-section a {
+/* Luxury hover effects with shimmer animation */
+.services-dropdown .dropdown-section h4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 102, 204, 0.1) 25%,
+        rgba(0, 184, 160, 0.15) 50%,
+        rgba(255, 107, 53, 0.1) 75%,
+        transparent 100%
+    );
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+/* Elegant arrow with sophisticated styling */
+.services-dropdown .dropdown-section h4::after {
+    content: '▷';
+    font-size: 12px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.6;
+    color: var(--primary-blue);
+    transform: translateX(0) scale(1);
+    text-shadow: 0 1px 2px rgba(0, 102, 204, 0.2);
+    font-weight: 400;
+}
+
+/* Hover state for category headers (lighter than active state) */
+.services-dropdown .dropdown-section h4:hover:not(.active) {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.08) 0%,
+        rgba(0, 184, 160, 0.06) 50%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    color: var(--primary-blue);
+    transform: translateX(2px) translateY(-1px);
+    box-shadow:
+        0 4px 15px rgba(0, 102, 204, 0.1),
+        0 2px 8px rgba(0, 184, 160, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(0, 102, 204, 0.2);
+}
+
+.services-dropdown .dropdown-section h4:hover::before {
+    left: 100%;
+}
+
+.services-dropdown .dropdown-section h4:hover:not(.active)::after {
+    opacity: 0.8;
+    transform: translateX(3px) scale(1.05);
+    color: var(--primary-blue);
+    text-shadow: 0 1px 2px rgba(0, 102, 204, 0.2);
+}
+
+/* Luxury submenu links with premium styling */
+.services-dropdown .dropdown-section a {
+    display: none;
     color: var(--dark-slate);
-    padding: 8px 12px;
-    display: block;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-    margin: 2px 0;
-    font-weight: 500;
-    white-space: nowrap;
+    padding: 16px 24px;
     font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    margin: 6px 16px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(248, 250, 252, 0.9) 100%
+    );
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 102, 204, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Hide links by default - they will be shown via JavaScript on click */
+.services-dropdown .dropdown-section .services-horizontal-submenu {
+    display: none;
+    pointer-events: auto;
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a {
+    display: block;
+    pointer-events: auto;
+}
+
+/* Also hide direct links for inline navigation structure */
+.services-dropdown .dropdown-section > a {
+    display: none;
+    pointer-events: auto;
+}
+
+/* Active state for clicked headers */
+.services-dropdown .dropdown-section h4.active {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.15) 0%,
+        rgba(0, 184, 160, 0.12) 50%,
+        rgba(255, 255, 255, 0.95) 100%
+    );
+    color: var(--primary-blue);
+    transform: translateX(6px) translateY(-1px);
+    box-shadow:
+        0 8px 25px rgba(0, 102, 204, 0.18),
+        0 4px 12px rgba(0, 184, 160, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(0, 102, 204, 0.3);
+}
+
+.services-dropdown .dropdown-section h4.active::after {
+    opacity: 1;
+    transform: translateX(6px) scale(1.15) rotate(90deg);
+    color: var(--secondary-teal);
+    text-shadow: 0 2px 4px rgba(0, 184, 160, 0.3);
+}
+
+/* Maintain visibility when hovering between elements */
+.services-dropdown .dropdown-section {
+    pointer-events: all;
+}
+
+/* Enhanced horizontal sub-menu container */
+.services-dropdown .dropdown-section {
+    position: relative;
+    overflow: visible;
+}
+
+/* Extended bridge area for smooth hovering between sections and submenus */
+.services-dropdown .dropdown-section::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -30px;
+    width: 50px;
+    height: calc(100% + 20px);
+    background: transparent;
+    z-index: 1001;
+}
+
+/* Additional bridge for horizontal submenu connection */
+.services-dropdown .dropdown-section::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    width: 370px;
+    height: 400px;
+    background: transparent;
+    z-index: 1002;
+    pointer-events: none;
+}
+
+/* Create horizontal submenu container dynamically */
+.services-dropdown .dropdown-section {
+    position: relative;
+}
+
+/* Enhanced horizontal positioning for click-activated submenus */
+.services-dropdown .dropdown-section {
+    overflow: visible;
+}
+
+/* Style for visible submenu containers (controlled by JavaScript) */
+.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 20px);
+    min-width: 320px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 250, 252, 0.95) 100%
+    );
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 16px;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.12),
+        0 12px 30px rgba(0, 102, 204, 0.08),
+        0 6px 16px rgba(0, 184, 160, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    z-index: 1003;
+}
+
+/* Individual links within the submenu */
+.services-dropdown .dropdown-section .services-horizontal-submenu a {
+    color: var(--dark-slate);
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    margin: 6px 16px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(248, 250, 252, 0.9) 100%
+    );
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 102, 204, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Style for direct links in inline navigation structure */
+.services-dropdown .dropdown-section > a[style*="block"] {
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 20px);
+    min-width: 320px;
+    color: var(--dark-slate);
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 250, 252, 0.95) 100%
+    );
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.12),
+        0 12px 30px rgba(0, 102, 204, 0.08),
+        0 6px 16px rgba(0, 184, 160, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    z-index: 1003;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+/* Vertical stacking for direct links in inline structure */
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(2) {
+    top: 64px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(3) {
+    top: 128px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(4) {
+    top: 192px;
+}
+
+.services-dropdown .dropdown-section > a[style*="block"]:nth-child(5) {
+    top: 256px;
+}
+
+/* Vertical stacking for multiple submenus */
+.services-dropdown .dropdown-section:nth-child(2) .services-horizontal-submenu[style*="block"] {
+    top: 64px;
+}
+
+.services-dropdown .dropdown-section:nth-child(3) .services-horizontal-submenu[style*="block"] {
+    top: 128px;
+}
+
+.services-dropdown .dropdown-section:nth-child(4) .services-horizontal-submenu[style*="block"] {
+    top: 192px;
+}
+
+.services-dropdown .dropdown-section:nth-child(5) .services-horizontal-submenu[style*="block"] {
+    top: 256px;
+}
+
+/* Smooth transitions for click-activated submenus */
+.services-dropdown .dropdown-section .services-horizontal-submenu {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Floating animation for enhanced visual appeal */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu[style*="block"] {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+/* Premium link hover effects with gradient magic */
+.services-dropdown .dropdown-section .services-horizontal-submenu a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.12) 0%,
+        rgba(0, 184, 160, 0.1) 25%,
+        rgba(255, 107, 53, 0.08) 75%,
+        rgba(0, 102, 204, 0.12) 100%
+    );
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+/* Add subtle icon before text */
+.services-dropdown .dropdown-section .services-horizontal-submenu a::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    color: var(--secondary-teal);
+    font-weight: 600;
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover::before {
+    left: 100%;
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Hover effects for direct links in inline structure */
+.services-dropdown .dropdown-section > a:hover {
+    color: var(--primary-blue) !important;
+    transform: translateX(8px) translateY(-2px) scale(1.03);
+    box-shadow:
+        0 12px 35px rgba(0, 102, 204, 0.15),
+        0 6px 20px rgba(0, 184, 160, 0.1),
+        0 3px 12px rgba(255, 107, 53, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(0, 102, 204, 0.2);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(248, 250, 252, 0.98) 100%
+    );
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Add hover effects with gradient and icon for direct links */
+.services-dropdown .dropdown-section > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.12) 0%,
+        rgba(0, 184, 160, 0.1) 25%,
+        rgba(255, 107, 53, 0.08) 75%,
+        rgba(0, 102, 204, 0.12) 100%
+    );
+    transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.services-dropdown .dropdown-section > a::after {
+    content: '→';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    color: var(--secondary-teal);
+    font-weight: 600;
+}
+
+.services-dropdown .dropdown-section > a:hover::before {
+    left: 100%;
+}
+
+.services-dropdown .dropdown-section > a:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.services-dropdown .dropdown-section .services-horizontal-submenu a:hover {
+    color: var(--primary-blue) !important;
+    transform: translateX(8px) translateY(-2px) scale(1.03);
+    box-shadow:
+        0 12px 35px rgba(0, 102, 204, 0.15),
+        0 6px 20px rgba(0, 184, 160, 0.1),
+        0 3px 12px rgba(255, 107, 53, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border-color: rgba(0, 102, 204, 0.2);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(248, 250, 252, 0.98) 100%
+    );
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Enhanced staggered animations with CSS custom properties */
+.services-dropdown .dropdown-section a:nth-child(2) {
+    --stagger-delay: 0.05s;
+    transition-delay: 0.05s;
+}
+.services-dropdown .dropdown-section a:nth-child(3) {
+    --stagger-delay: 0.1s;
+    transition-delay: 0.1s;
+}
+.services-dropdown .dropdown-section a:nth-child(4) {
+    --stagger-delay: 0.15s;
+    transition-delay: 0.15s;
+}
+.services-dropdown .dropdown-section a:nth-child(5) {
+    --stagger-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+
+/* Active state enhancement */
+.services-dropdown .dropdown-section .services-horizontal-submenu a:active {
+    transform: translateX(4px) scale(0.98);
+    transition-duration: 0.1s;
 }
 
 .dropdown-section a:hover {
@@ -358,13 +844,24 @@
     box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
 }
 
-/* Multi-column dropdown for services */
+/* Premium services dropdown container */
 .dropdown-content.services-dropdown {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    min-width: 500px;
-    padding: 20px;
+    display: block;
+    min-width: 240px;
+    max-width: 300px;
+    padding: 16px 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(248, 250, 252, 0.95) 100%
+    );
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        0 8px 25px rgba(0, 102, 204, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .nav-actions {
@@ -705,9 +1202,55 @@
     .search-container-topbar {
         display: none;
     }
-    
+
     .dropdown-content.services-dropdown {
-        min-width: 400px;
+        min-width: 240px;
+        max-width: 280px;
+        overflow: visible;
+    }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 900px) {
+    .services-dropdown .dropdown-section:hover a {
+        left: -280px;
+        min-width: 260px;
+    }
+
+    .services-dropdown .dropdown-section::before {
+        left: -15px;
+        right: auto;
+        width: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-dropdown .dropdown-section:hover a {
+        position: static;
+        display: block !important;
+        transform: none;
+        margin: 4px 12px;
+        animation: none;
+        background: rgba(0, 102, 204, 0.05);
+        border-radius: 6px;
+        backdrop-filter: none;
+        box-shadow: none;
+        min-width: auto;
+    }
+
+    .services-dropdown .dropdown-section h4::after {
+        content: '▼';
+        transform: none;
+    }
+
+    .services-dropdown .dropdown-section:hover h4::after {
+        transform: none;
+    }
+
+    .services-dropdown .dropdown-section:hover a:nth-child(2),
+    .services-dropdown .dropdown-section:hover a:nth-child(3),
+    .services-dropdown .dropdown-section:hover a:nth-child(4) {
+        top: auto;
     }
 }
 

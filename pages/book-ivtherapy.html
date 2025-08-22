@@ -280,6 +280,7 @@
             overflow: hidden;
         }
 
+<<<<<<< HEAD
         .service-card::before {
             content: '';
             position: absolute;
@@ -314,6 +315,61 @@
             color: var(--dark-slate);
         }
 
+=======
+        .service-image {
+            width: 100%;
+            height: 200px;
+            margin: -2rem -2rem 1.5rem -2rem;
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-badge {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-slate);
+        }
+
+>>>>>>> refs/remotes/origin/main
         .service-description {
             color: var(--medium-gray);
             margin-bottom: 1.5rem;
@@ -1261,6 +1317,12 @@
                 <h3 class="category-title">Premium IV Therapy Treatments</h3>
                 <div class="services-grid">
                     <div class="service-card card-hover" data-category="premium">
+<<<<<<< HEAD
+=======
+                        <div class="service-image">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F875feacdadfa4574817a53553d6e0f1a?format=webp&width=800" alt="Gold IV Therapy Bag" loading="lazy">
+                        </div>
+>>>>>>> refs/remotes/origin/main
                         <div class="service-badge">Premium</div>
                         <h4 class="service-title">The "Gold" Ultimate Hydration & Recovery IV Drip</h4>
                         <p class="service-description">Premium hydration and recovery formula with advanced nutrient blend.</p>
@@ -1286,6 +1348,12 @@
                     </div>
 
                     <div class="service-card card-hover" data-category="premium">
+<<<<<<< HEAD
+=======
+                        <div class="service-image">
+                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F90d92423921d4e31a350ec5ae3b76ba0?format=webp&width=800" alt="Platinum IV Therapy Bag" loading="lazy">
+                        </div>
+>>>>>>> refs/remotes/origin/main
                         <div class="service-badge">Platinum</div>
                         <h4 class="service-title">The "Platinum" Ultimate Hydration & Recovery IV Drip</h4>
                         <p class="service-description">Our flagship treatment with the most comprehensive nutrient profile available.</p>
@@ -1800,7 +1868,11 @@
                 const priceElement = card.querySelector('.service-price, .product-price');
                 if (!priceElement) return;
 
+<<<<<<< HEAD
                 const priceText = priceElement.textContent.replace(/\$/g, '').replace(',', '');
+=======
+                const priceText = priceElement.textContent.replace('$', '').replace(',', '');
+>>>>>>> refs/remotes/origin/main
                 const price = parseInt(priceText);
 
                 let shouldShow = true;
