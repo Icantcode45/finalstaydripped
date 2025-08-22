@@ -150,18 +150,65 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 100);
 
-        // Fix duplicate "Learn More" buttons
+        // Fix duplicate "Learn More" buttons more aggressively
         setTimeout(() => {
             const learnMoreButtons = document.querySelectorAll('a[data-builder-link="learn-more"]');
+            console.log('Found Learn More buttons:', learnMoreButtons.length);
+
             if (learnMoreButtons.length > 1) {
-                learnMoreButtons.forEach(btn => {
-                    if (btn.classList.contains('btn-small')) {
-                        console.log('Removing duplicate Learn More button');
-                        btn.remove();
-                    }
-                });
+                // Remove all but the first one
+                for (let i = 1; i < learnMoreButtons.length; i++) {
+                    console.log('Removing duplicate Learn More button', i);
+                    learnMoreButtons[i].remove();
+                }
             }
         }, 500);
+
+        // Force services grid layout fix
+        setTimeout(() => {
+            const servicesGrids = document.querySelectorAll('.services-grid');
+            servicesGrids.forEach(grid => {
+                grid.style.display = 'grid';
+                grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(250px, 1fr))';
+                grid.style.gap = '18px';
+                grid.style.marginBottom = '25px';
+                console.log('Applied compact layout to services grid');
+            });
+
+            // Make service cards more compact
+            const serviceCards = document.querySelectorAll('.service-card-enhanced');
+            serviceCards.forEach(card => {
+                card.style.padding = '16px';
+                card.style.maxHeight = '350px';
+
+                const content = card.querySelector('.service-content');
+                if (content) {
+                    content.style.padding = '12px 16px 16px 16px';
+                }
+
+                const title = card.querySelector('h3');
+                if (title) {
+                    title.style.fontSize = '18px';
+                    title.style.marginBottom = '8px';
+                }
+
+                const description = card.querySelector('p');
+                if (description) {
+                    description.style.fontSize = '13px';
+                    description.style.lineHeight = '1.4';
+                    description.style.marginBottom = '10px';
+                }
+
+                const button = card.querySelector('.btn, .service-btn');
+                if (button) {
+                    button.style.padding = '6px 12px';
+                    button.style.fontSize = '13px';
+                    button.style.marginTop = '8px';
+                }
+            });
+
+            console.log('Applied compact styling to service cards');
+        }, 800);
 
         // Fix stats animations
         let statsAnimated = false;
