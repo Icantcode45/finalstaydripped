@@ -354,4 +354,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Listen for cart updates
     window.addEventListener('cartUpdated', updateCartCount);
+
+    // Load aggressive services fix script
+    if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
+        const script = document.createElement('script');
+        script.src = 'aggressive-services-fix.js';
+        script.onload = () => console.log('Aggressive services fix loaded');
+        script.onerror = () => console.log('Failed to load aggressive services fix');
+        document.head.appendChild(script);
+    }
 });
