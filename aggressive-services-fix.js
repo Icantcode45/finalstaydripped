@@ -30,12 +30,12 @@
             }
         }
         
-        // Force compact grid layout with very specific CSS
+        // Force balanced grid layout with readable cards
         servicesGrid.style.cssText = `
             display: grid !important;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-            gap: 15px !important;
-            margin: 20px 0 !important;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+            gap: 24px !important;
+            margin: 32px 0 !important;
             padding: 0 !important;
         `;
         
