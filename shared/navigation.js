@@ -270,21 +270,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (reviewsContainer) {
                 console.log('Replacing Google Reviews carousel with Elfsight widget');
 
-                const elfsightWidget = document.createElement('div');
-                elfsightWidget.innerHTML = `
-                    <div style="text-align: center; margin-bottom: 32px;">
-                        <h3 style="font-size: 32px; font-weight: 700; color: var(--dark-slate); margin-bottom: 16px;">
-                            What Our Clients Say
-                        </h3>
-                        <p style="font-size: 18px; color: var(--medium-gray); max-width: 600px; margin: 0 auto;">
-                            Real reviews from our satisfied clients who've experienced the benefits of our wellness treatments.
-                        </p>
-                    </div>
+                // Replace entire reviews section with just the Elfsight widget
+                reviewsContainer.innerHTML = `
+                    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
                     <div class="elfsight-app-0b06184e-88ba-488f-9d5e-789f8787d167" data-elfsight-app-lazy></div>
                 `;
 
-                reviewsContainer.innerHTML = '';
-                reviewsContainer.appendChild(elfsightWidget);
+                // Also replace the reviews-footer if it exists
+                const reviewsFooter = document.querySelector('.reviews-footer');
+                if (reviewsFooter) {
+                    reviewsFooter.remove();
+                }
 
                 // Load Elfsight script if not already loaded
                 if (!document.querySelector('script[src*="elfsightcdn.com"]')) {
