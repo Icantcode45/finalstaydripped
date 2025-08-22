@@ -6,19 +6,9 @@
     <title>Vitamin Injections | Stay Dripped IV & Wellness Co.</title>
     <meta name="description" content="Quick and efficient vitamin injections in Scottsdale, AZ. Targeted wellness support and energy enhancement with B12, Vitamin D, and more.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared Navigation CSS -->
     <link rel="stylesheet" href="../shared/navigation.css">
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MQJPLG5GPW');
-    </script>
-
-    <!-- Good Faith Exam Widget Stylesheet -->
-    <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
 
     <style>
         :root {
@@ -152,7 +142,7 @@
 
         .membership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 32px;
         }
 
@@ -209,10 +199,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Placeholder -->
     <div id="navigation-placeholder"></div>
 
-    <div class="page-header fade-in">
+    <div class="page-header">
         <div class="container">
             <h1 class="page-title">Vitamin Injections</h1>
             <p class="page-subtitle">Quick and efficient vitamin shots for targeted wellness support and energy enhancement</p>
@@ -222,25 +212,144 @@
     <section class="services-section">
         <div class="container">
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>B12 Energy Shot</h3>
-                    <p>Boost energy levels and mental clarity with vitamin B12 injection for enhanced focus and vitality.</p>
-                    <div class="service-price">$35</div>
-                    <button class="btn add-to-cart" data-name="B12 Energy Shot" data-price="35" data-category="Vitamin Injections">Add to Cart - $35</button>
+                <div class="service-card card-hover">
+                    <h3>Vitamin B12 Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Energy-boosting methylcobalamin B12 for mental clarity and vitality.</p>
+                    <ul class="features">
+                        <li>1000mcg Methylcobalamin B12</li>
+                        <li>Increases energy levels</li>
+                        <li>Improves mental clarity</li>
+                        <li>Supports metabolism</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="service-card">
-                    <h3>Vitamin D Shot</h3>
-                    <p>Support immune function and bone health with high-dose vitamin D injection.</p>
-                    <div class="service-price">$40</div>
-                    <button class="btn add-to-cart" data-name="Vitamin D Shot" data-price="40" data-category="Vitamin Injections">Add to Cart - $40</button>
+                <div class="service-card card-hover">
+                    <h3>Vitamin D3 Injection</h3>
+                    <div class="price">$28 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$30</span></div>
+                    <p>High-dose vitamin D3 for immune support and bone health.</p>
+                    <ul class="features">
+                        <li>50,000 IU Vitamin D3</li>
+                        <li>Supports immune function</li>
+                        <li>Promotes bone health</li>
+                        <li>Improves mood regulation</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
-                <div class="service-card">
-                    <h3>Fat Burning Shot</h3>
-                    <p>Lipotropic injection to support metabolism and weight management goals.</p>
-                    <div class="service-price">$45</div>
-                    <button class="btn add-to-cart" data-name="Fat Burning Shot" data-price="45" data-category="Vitamin Injections">Add to Cart - $45</button>
+                <div class="service-card card-hover">
+                    <h3>Vitamin C Injection</h3>
+                    <div class="price">$23 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$25</span></div>
+                    <p>Powerful antioxidant support for immune system and collagen production.</p>
+                    <ul class="features">
+                        <li>1000mg Ascorbic Acid</li>
+                        <li>Powerful antioxidant protection</li>
+                        <li>Supports immune system</li>
+                        <li>Promotes collagen synthesis</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Magnesium Injection</h3>
+                    <div class="price">$18 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$20</span></div>
+                    <p>Essential mineral for muscle relaxation and nerve function support.</p>
+                    <ul class="features">
+                        <li>200mg Magnesium Sulfate</li>
+                        <li>Muscle relaxation</li>
+                        <li>Nerve function support</li>
+                        <li>Reduces muscle cramps</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Glutathione Injection</h3>
+                    <div class="price">$48 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$50</span></div>
+                    <p>Master antioxidant for detoxification and radiant skin health.</p>
+                    <ul class="features">
+                        <li>600mg Glutathione</li>
+                        <li>Master antioxidant</li>
+                        <li>Supports detoxification</li>
+                        <li>Promotes skin health</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Myers' Cocktail Injection</h3>
+                    <div class="price">$170 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$180</span></div>
+                    <p>Comprehensive vitamin and mineral blend for complete wellness support.</p>
+                    <ul class="features">
+                        <li>Vitamin C, B-Complex, B12</li>
+                        <li>Magnesium & Calcium</li>
+                        <li>Comprehensive wellness support</li>
+                        <li>Enhanced energy & immunity</li>
+                        <li>15-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Tri-Amino Blend Injection</h3>
+                    <div class="price">$33 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$35</span></div>
+                    <p>Essential amino acids for muscle recovery and athletic performance.</p>
+                    <ul class="features">
+                        <li>L-Arginine, L-Ornithine, L-Lysine</li>
+                        <li>Muscle recovery support</li>
+                        <li>Enhanced athletic performance</li>
+                        <li>Improved protein synthesis</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Zinc Injection</h3>
+                    <div class="price">$8 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$10</span></div>
+                    <p>Essential mineral for immune support and wound healing.</p>
+                    <ul class="features">
+                        <li>5mg Zinc Sulfate</li>
+                        <li>Immune system support</li>
+                        <li>Wound healing acceleration</li>
+                        <li>Antioxidant properties</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>Biotin Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Beauty vitamin for stronger hair, skin, and nail health.</p>
+                    <ul class="features">
+                        <li>10,000mcg Biotin</li>
+                        <li>Strengthens hair & nails</li>
+                        <li>Improves skin health</li>
+                        <li>Supports cellular energy</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <h3>L-Carnitine Injection</h3>
+                    <div class="price">$38 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$40</span></div>
+                    <p>Fat metabolism booster for weight management and energy enhancement.</p>
+                    <ul class="features">
+                        <li>500mg L-Carnitine</li>
+                        <li>Supports fat metabolism</li>
+                        <li>Enhances energy production</li>
+                        <li>Aids in weight management</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
                 </div>
 
                 <div class="service-card">
@@ -316,33 +425,8 @@
         </div>
     </section>
 
-    <!-- Online Booking Section -->
-    <section style="background: linear-gradient(135deg, #F5F1EB 0%, rgba(0, 184, 160, 0.08) 100%); padding: 80px 0;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 48px;">
-                <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin-bottom: 16px; color: #1A2B3A;">Book Your Vitamin Injection</h2>
-                <p style="font-size: 18px; color: #64748B; max-width: 600px; margin: 0 auto;">
-                    Schedule your quick and efficient vitamin injection treatment online. Choose from our menu of targeted vitamin shots for immediate wellness support.
-                </p>
-            </div>
-            
-            <div style="background: white; border-radius: 16px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid #E2E8F0;">
-                <div id="intakeq" style="max-width: 720px; width: 100%; margin: 0 auto;"></div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 32px;">
-                <p style="color: #64748B; margin-bottom: 16px;">Need help choosing the right vitamin shot?</p>
-                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <a href="tel:+1-602-688-9825" style="background: #0066CC; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
-                        📞 Call (602) 688-9825
-                    </a>
-                    <a href="sms:+1-602-688-9825" style="background: #00B8A0; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
-                        💬 Text Us
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Navigation Loader Script -->
+    <script src="../shared/navigation-loader.js"></script>           
 
     <!-- Cart System -->
     <script src="../shared/cart.js"></script>
@@ -381,8 +465,13 @@
                         card.appendChild(addButton);
                     }
                 }
-            });
-        });
-    </script>           
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize animations
+        initializeEnhancedAnimations();
+    });
+</script>
 </body>
 </html>

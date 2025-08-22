@@ -1,0 +1,11 @@
+/* Fix promo banner overlap by reducing hero section padding */
+.hero {
+    padding: 40px 0 80px !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 40px 0 80px !important;
+    }
+}

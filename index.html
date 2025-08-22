@@ -3182,8 +3182,6 @@
             transform: scale(1.05) translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
         }
-    <!-- Responsive Fix CSS -->
-    <link rel="stylesheet" href="responsive-fix.css">
     </style>
 </head>
 <body>
@@ -3413,15 +3411,6 @@
 
 
     <!-- Hero Section -->
-     <!-- Promotional Banner -->
-    <div class="promo-banner">
-        <div class="container">
-            <div class="promo-content">
-                <h2>Get started today and enjoy <span class="discount-code">20% off</span> your first treatment.</h2>
-                <p>Your discount will automatically be applied at checkout.</p>
-            </div>
-        </div>
-    </div>
     <section id="home" class="hero" data-builder-block="hero">
         <div class="container">
             <div class="hero-content">
@@ -3435,7 +3424,6 @@
                     <div class="hero-cta fade-in delay-4" data-builder-block="cta-buttons">
                         <a href="pages/book-ivtherapy.html" class="btn btn-hover btn-large" data-builder-link="book-treatment">Book Treatment</a>
                         <a href="#services" class="btn-secondary btn-hover btn-large" data-builder-link="learn-more">Learn More</a>
-                        <a href="#services" class="btn-secondary btn-hover btn-small" data-builder-link="learn-more">Learn More</a>
 
                         <!-- Good Faith Exam Widget -->
                         <div id="main-qualiphy-widget" style="margin-top: 16px;">
@@ -3520,14 +3508,13 @@
                             <li>Recovery Hydration</li>
                             <li>Athletic Hydration</li>
                     <div class="service-content">
-                        <h3 data-builder-text="hydration-title">IV Hydration Therapy</h3>
+                        <h3 data-builder-text="hydration-title">Hydration Therapy</h3>
                         <p data-builder-text="hydration-description">Essential hydration and electrolyte replenishment for optimal cellular function and energy restoration.</p>
                         <ul class="treatment-list" data-builder-list="hydration-treatments">
-                            <li>Basic Rehydration IV Treatments</li>
-                            <li>Standard IV Treatments</li>
-                            <li>Specialty IV Treatments</li>
-                            <li>Premium IV Treatments</li>
-                            <li>NAD+ IV Treatments</li>
+                            <li>Basic Hydration IV</li>
+                            <li>Electrolyte Plus</li>
+                            <li>Recovery Hydration</li>
+                            <li>Athletic Hydration</li>
                         </ul>
                         <a href="pages/book-ivtherapy.html" class="btn service-btn" data-builder-link="hydration-book">Book Treatment</a>
                     </div>
@@ -3764,63 +3751,6 @@
                     See why clients trust Stay Dripped for their wellness needs
                 </p>
             </div>
-
-            <div class="reviews-carousel-container">
-                <div class="reviews-carousel" id="reviewsCarousel">
-                    <div class="review-card active">
-                        <div class="reviewer-photo">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face" alt="Amanda Rodriguez" loading="lazy">
-                        </div>
-                        <div class="review-stars">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px; margin-right: 2px;">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2Fd355e9ea4b474531807836c95fdce446?format=webp&width=800" alt="Star" style="width: 16px; height: 16px;">
-                        </div>
-                        <p class="review-text">"Absolutely incredible service! The nurse was professional, punctual, and made the whole experience comfortable. I felt rejuvenated immediately after the IV drip."</p>
-                        <div class="reviewer-info">
-                            <h4>Amanda Rodriguez</h4>
-                            <p>Google Review • 1 week ago • Myers' Cocktail</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-controls">
-                    <button class="carousel-btn prev-btn" id="prevReview" aria-label="Previous review">❮</button>
-                    <button class="carousel-btn next-btn" id="nextReview" aria-label="Next review">❯</button>
-                </div>
-
-                <div class="carousel-dots" id="carouselDots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-            </div>
-
-            <div class="reviews-footer">
-                <div class="google-rating">
-                    <div class="google-logo-container">
-                        <svg width="92" height="30" viewBox="0 0 272 92" class="google-logo">
-                            <g fill="none" fill-rule="evenodd">
-                                <path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                <path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                                <path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
-                                <path fill="#EA4335" d="M225 3v65h-9.5V3h9.5z"/>
-                                <path fill="#34A853" d="m262.02 54.48 7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98 19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
-                            </g>
-                        </svg>
-                    </div>
-            
-                    <div class="rating-info">
-                        <div class="rating-stars" id="overallRating">⭐⭐⭐⭐⭐</div>
-                        <div class="rating-text" id="ratingText">5.0 out of 5 stars from 51+ reviews</div>
-                    </div>
-                </div>
-                <a href="https://www.google.com/search?q=stay+dripped+iv&sca_esv=0de3656c54fa3244&source=hp&ei=v9-aaKDYEOPNkPIPyeHToQw&iflsig=AOw8s4IAAAAAaJrtzynfK4eSU1mJ5JEBYnLjazCREc-8&ved=0ahUKEwjgs_GE04SPAxXjJkQIHcnwNMQQ4dUDCBo&uact=5&oq=stay+dripped+iv&gs_lp=Egdnd3Mtd2l6Ig9zdGF5IGRyaXBwZWQgaXYyBRAAGIAEMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yAhAmMgsQABiABBiGAxiKBTIIEAAYogQYiQUyBRAAGO8FMgUQABjvBUiyDVChAVjQC3AAeACQAQCYAYoIoAHUFKoBCzAuMS41LTEuMS4xuAEDyAEA-AEBmAIEoALmFMICBRAuGIAEmAMAkgcLMC4xLjQtMS4wLjKgB84asgcLMC4xLjQtMS4wLjK4B-YUwgcFMC4yLjLIBw4&sclient=gws-wiz#mpd=~13485496478245849927/customers/reviews" target="_blank" class="btn btn-secondary">Write a Review</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Location Section -->
     <section id="location" class="location">
