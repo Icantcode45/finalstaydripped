@@ -163,22 +163,23 @@
             const card = document.createElement('div');
             card.className = 'service-card-enhanced';
             card.style.cssText = `
-                padding: 16px !important;
+                padding: 24px !important;
                 margin: 0 !important;
                 height: auto !important;
-                max-height: 200px !important;
-                border-radius: 12px !important;
+                min-height: 280px !important;
+                max-height: 320px !important;
+                border-radius: 16px !important;
                 background: white !important;
                 border: 1px solid #e2e8f0 !important;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
                 cursor: pointer !important;
-                transition: transform 0.2s ease !important;
+                transition: transform 0.3s ease, box-shadow 0.3s ease !important;
             `;
-            
+
             card.innerHTML = `
-                <h3 style="font-size: 16px; margin-bottom: 6px; line-height: 1.3; color: #1a2b3a;">${service.title}</h3>
-                <p style="font-size: 12px; line-height: 1.3; margin-bottom: 8px; color: #64748b;">${service.description}</p>
-                <a href="${service.link}" style="padding: 4px 8px; font-size: 11px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; display: inline-block;">Book Now</a>
+                <h3 style="font-size: 20px; margin-bottom: 12px; line-height: 1.3; color: #1a2b3a; font-weight: 600;">${service.title}</h3>
+                <p style="font-size: 14px; line-height: 1.5; margin-bottom: 16px; color: #64748b;">${service.description}</p>
+                <a href="${service.link}" style="padding: 12px 20px; font-size: 14px; font-weight: 600; background: #0066cc; color: white; text-decoration: none; border-radius: 8px; display: inline-block; transition: background 0.3s ease;">Book Now</a>
             `;
             
             card.addEventListener('mouseenter', () => {
