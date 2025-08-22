@@ -1,6 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-44WEBDZB6F');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book Your Treatment | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Complete booking system for mobile IV therapy, supplements, testing, and wellness services in Scottsdale, AZ.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+        }
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
   <script>
@@ -22,6 +61,14 @@
   <!-- Shared Navigation CSS (optional external) -->
   <link rel="stylesheet" href="../shared/navigation.css">
 
+        body {
+            font-family: var(--font-family);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-slate);
+            background: var(--light-gray);
+            padding-top: 140px;
+        }
   <style>
     :root{
       --primary-blue:#0066CC;
@@ -48,6 +95,632 @@
     .page-title{font-size:36px;font-weight:800;margin-bottom:8px}
     .page-subtitle{color:var(--medium-gray);max-width:850px;margin:0 auto}
 
+        /* Progress Indicator */
+        .progress-container {
+            background: var(--white);
+            padding: 20px 0;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--border-color);
+            color: var(--medium-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-circle {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .progress-step.completed .step-circle {
+            background: var(--soft-green);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--medium-gray);
+            text-align: center;
+        }
+
+        .progress-step.active .step-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .progress-line {
+            height: 2px;
+            width: 60px;
+            background: var(--border-color);
+            margin-top: 20px;
+        }
+
+        .progress-line.completed {
+            background: var(--soft-green);
+        }
+
+        /* Main Content */
+        .booking-main {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            min-height: 600px;
+        }
+
+        .step-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .step-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+        }
+
+        .step-subtitle {
+            font-size: 16px;
+            color: var(--medium-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Selection */
+        .service-category {
+            margin-bottom: 32px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .service-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+        }
+
+        .service-card.selected {
+            border-color: var(--primary-blue);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .service-card .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .service-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .selected-indicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: var(--soft-green);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 12px;
+        }
+
+        .service-card.selected .selected-indicator {
+            display: flex;
+        }
+
+        /* Form Styles */
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .required {
+            color: var(--accent-orange);
+        }
+
+        /* Schedule Selection */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .calendar-container {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .calendar-nav:hover {
+            background: var(--light-gray);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover {
+            background: var(--light-gray);
+        }
+
+        .calendar-day.selected {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .calendar-day.disabled {
+            color: var(--border-color);
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .time-slots h4 {
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .time-slot {
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary-blue);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .time-slot.selected {
+            border-color: var(--primary-blue);
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .time-slot.unavailable {
+            background: var(--light-gray);
+            color: var(--medium-gray);
+            cursor: not-allowed;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .payment-method {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-blue);
+            background: rgba(0, 102, 204, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .payment-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .order-summary h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--primary-blue);
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn:disabled {
+            background: var(--medium-gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-full {
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        /* Confirmation */
+        .confirmation-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--soft-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--white);
+            font-size: 40px;
+        }
+
+        .confirmation-details {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Loading States */
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error States */
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: #c33;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .booking-main {
+                padding: 24px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .time-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .progress-indicator {
+                gap: 12px;
+            }
+
+            .progress-line {
+                width: 30px;
+            }
+
+            .step-label {
+                font-size: 10px;
+            }
+        }
+
+        /* Hide steps */
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
     /* Quick service cards */
     .service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:24px 0 6px}
     .service-card{background:#fff;border:1px solid var(--border-color);border-radius:16px;padding:22px;text-align:center;transition:.25s;border-left:4px solid transparent}
@@ -140,6 +813,795 @@
   <!-- Dynamic Navigation Placeholder -->
   <div id="navigation-placeholder"></div>
 
+    <main class="container">
+        <!-- Progress Indicator -->
+        <div class="progress-container">
+            <div class="progress-indicator">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Select Service</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Book Time</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Your Info</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-circle">4</div>
+                    <div class="step-label">Payment</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="5">
+                    <div class="step-circle">5</div>
+                    <div class="step-label">Confirm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Booking Content -->
+        <div class="booking-main">
+            <!-- Step 1: Service Selection -->
+            <div class="step active" id="step-1">
+                <div class="step-header">
+                    <h1 class="step-title">Choose Your Service</h1>
+                    <p class="step-subtitle">Select from our comprehensive range of mobile wellness treatments delivered to your location.</p>
+                </div>
+
+                <!-- IV Therapy Services -->
+                <div class="service-category">
+                    <h2 class="category-title">IV Therapy & Injections</h2>
+                    <div class="service-grid">
+                        <div class="service-card" data-service="hydration" data-price="149">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">💧</div>
+                            <h3>Hydration Plus</h3>
+                            <p>Essential electrolytes and fluids for optimal hydration and energy boost.</p>
+                            <div class="service-price">$149</div>
+                        </div>
+                        <div class="service-card" data-service="energy" data-price="199">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">⚡</div>
+                            <h3>Energy Boost</h3>
+                            <p>B-complex vitamins and nutrients for sustained energy and mental clarity.</p>
+                            <div class="service-price">$199</div>
+                        </div>
+                        <div class="service-card" data-service="immunity" data-price="225">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">🛡️</div>
+                            <h3>Immunity Support</h3>
+                            <p>Vitamin C, zinc, and immune-boosting nutrients to strengthen defenses.</p>
+                            <div class="service-price">$225</div>
+                        </div>
+                        <div class="service-card" data-service="recovery" data-price="275">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">🏃</div>
+                            <h3>Athletic Recovery</h3>
+                            <p>Amino acids and nutrients for muscle recovery and performance.</p>
+                            <div class="service-price">$275</div>
+                        </div>
+                        <div class="service-card" data-service="nad" data-price="350">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">🧬</div>
+                            <h3>NAD+ Therapy</h3>
+                            <p>Advanced anti-aging and cellular repair therapy for longevity.</p>
+                            <div class="service-price">$350</div>
+                        </div>
+                        <div class="service-card" data-service="vitamins" data-price="35">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">💉</div>
+                            <h3>Vitamin Injections</h3>
+                            <p>Quick B12, vitamin D, and fat-burning shots for targeted wellness.</p>
+                            <div class="service-price">$35</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wellness Programs -->
+                <div class="service-category">
+                    <h2 class="category-title">Wellness Programs</h2>
+                    <div class="service-grid">
+                        <div class="service-card" data-service="weight" data-price="199">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">⚖️</div>
+                            <h3>Weight Management</h3>
+                            <p>Comprehensive weight loss program with GLP-1 medications and support.</p>
+                            <div class="service-price">$199</div>
+                        </div>
+                        <div class="service-card" data-service="sexual" data-price="125">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">❤️</div>
+                            <h3>Sexual Wellness</h3>
+                            <p>Discreet treatments for enhanced intimacy and sexual health.</p>
+                            <div class="service-price">$125</div>
+                        </div>
+                        <div class="service-card" data-service="testing" data-price="99">
+                            <div class="selected-indicator">✓</div>
+                            <div class="service-icon">🧪</div>
+                            <h3>Mobile Testing</h3>
+                            <p>Comprehensive health testing and lab work in your home or office.</p>
+                            <div class="service-price">$99</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-full" onclick="nextStep()" id="continue-step-1" disabled>Continue to Scheduling</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Schedule Selection -->
+            <div class="step" id="step-2">
+                <div class="step-header">
+                    <h1 class="step-title">Choose Date & Time</h1>
+                    <p class="step-subtitle">Select your preferred appointment date and time. We offer flexible scheduling to fit your busy lifestyle.</p>
+                </div>
+
+                <div class="schedule-grid">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousMonth()">‹</button>
+                            <h3 id="calendar-month">March 2024</h3>
+                            <button class="calendar-nav" onclick="nextMonth()">›</button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Calendar days will be generated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="time-slots">
+                        <h4>Available Times</h4>
+                        <div class="time-grid" id="time-grid">
+                            <div class="time-slot" data-time="9:00 AM">9:00 AM</div>
+                            <div class="time-slot" data-time="10:00 AM">10:00 AM</div>
+                            <div class="time-slot" data-time="11:00 AM">11:00 AM</div>
+                            <div class="time-slot" data-time="12:00 PM">12:00 PM</div>
+                            <div class="time-slot" data-time="1:00 PM">1:00 PM</div>
+                            <div class="time-slot" data-time="2:00 PM">2:00 PM</div>
+                            <div class="time-slot" data-time="3:00 PM">3:00 PM</div>
+                            <div class="time-slot" data-time="4:00 PM">4:00 PM</div>
+                            <div class="time-slot" data-time="5:00 PM">5:00 PM</div>
+                            <div class="time-slot" data-time="6:00 PM">6:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="previousStep()">Back</button>
+                    <button class="btn" onclick="nextStep()" id="continue-step-2" disabled>Continue to Details</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Contact Information -->
+            <div class="step" id="step-3">
+                <div class="step-header">
+                    <h1 class="step-title">Your Information</h1>
+                    <p class="step-subtitle">We need some basic information to provide you with the best possible care and service.</p>
+                </div>
+
+                <form id="contact-form">
+                    <div class="form-section">
+                        <h3>Contact Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="first-name">First Name <span class="required">*</span></label>
+                                <input type="text" id="first-name" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name <span class="required">*</span></label>
+                                <input type="text" id="last-name" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Service Location</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="address">Street Address <span class="required">*</span></label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" value="Scottsdale" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State <span class="required">*</span></label>
+                                <select id="state" name="state" required>
+                                    <option value="AZ" selected>Arizona</option>
+                                    <option value="CA">California</option>
+                                    <option value="NV">Nevada</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP Code <span class="required">*</span></label>
+                                <input type="text" id="zip" name="zip" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Special Requests</h3>
+                        <div class="form-group full-width">
+                            <label for="notes">Additional Notes (Optional)</label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Any special requests, allergies, or additional information..."></textarea>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="previousStep()">Back</button>
+                    <button class="btn" onclick="nextStep()" id="continue-step-3" disabled>Continue to Payment</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Payment -->
+            <div class="step" id="step-4">
+                <div class="step-header">
+                    <h1 class="step-title">Payment Information</h1>
+                    <p class="step-subtitle">Secure payment processing to complete your booking. Your payment information is encrypted and protected.</p>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="order-items">
+                        <!-- Order items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method selected" data-method="card">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-label">Credit Card</div>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <div class="payment-icon">🅿️</div>
+                            <div class="payment-label">PayPal</div>
+                        </div>
+                        <div class="payment-method" data-method="apple">
+                            <div class="payment-icon">🍎</div>
+                            <div class="payment-label">Apple Pay</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="payment-form">
+                    <div class="form-section" id="card-details">
+                        <h3>Card Details</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="card-number">Card Number <span class="required">*</span></label>
+                                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date <span class="required">*</span></label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV <span class="required">*</span></label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="card-name">Name on Card <span class="required">*</span></label>
+                                <input type="text" id="card-name" name="cardName" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="error-message" id="payment-error"></div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="previousStep()">Back</button>
+                    <button class="btn" onclick="processPayment()" id="complete-booking">Complete Booking</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Confirmation -->
+            <div class="step" id="step-5">
+                <div class="step-header">
+                    <div class="confirmation-icon">✓</div>
+                    <h1 class="step-title">Booking Confirmed!</h1>
+                    <p class="step-subtitle">Your appointment has been successfully scheduled. You'll receive a confirmation email shortly.</p>
+                </div>
+
+                <div class="confirmation-details" id="confirmation-details">
+                    <!-- Confirmation details will be populated by JavaScript -->
+                </div>
+
+                <div class="button-group">
+                    <a href="../index.html" class="btn btn-secondary">Return Home</a>
+                    <button class="btn" onclick="bookAnother()">Book Another Service</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Load Navigation JavaScript -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
+
+    <script>
+        // Booking state
+        let currentStep = 1;
+        let selectedService = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let paymentMethod = 'card';
+        let bookingData = {};
+
+        // Initialize booking system
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeServiceSelection();
+            initializeCalendar();
+            initializeFormValidation();
+            initializePaymentMethods();
+        });
+
+        // Service Selection
+        function initializeServiceSelection() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove previous selection
+                    serviceCards.forEach(c => c.classList.remove('selected'));
+                    
+                    // Select current card
+                    this.classList.add('selected');
+                    selectedService = {
+                        id: this.dataset.service,
+                        name: this.querySelector('h3').textContent,
+                        price: parseFloat(this.dataset.price)
+                    };
+                    
+                    // Enable continue button
+                    document.getElementById('continue-step-1').disabled = false;
+                    
+                    // Track selection
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'service_selection', {
+                            'service_name': selectedService.name,
+                            'service_price': selectedService.price
+                        });
+                    }
+                });
+            });
+        }
+
+        // Calendar functionality
+        function initializeCalendar() {
+            const today = new Date();
+            let currentMonth = today.getMonth();
+            let currentYear = today.getFullYear();
+            
+            function generateCalendar(month, year) {
+                const monthNames = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
+                
+                document.getElementById('calendar-month').textContent = `${monthNames[month]} ${year}`;
+                
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const calendarGrid = document.getElementById('calendar-grid');
+                
+                calendarGrid.innerHTML = '';
+                
+                // Day headers
+                const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                dayHeaders.forEach(day => {
+                    const header = document.createElement('div');
+                    header.textContent = day;
+                    header.style.fontWeight = 'bold';
+                    header.style.fontSize = '12px';
+                    header.style.color = 'var(--medium-gray)';
+                    header.style.textAlign = 'center';
+                    header.style.padding = '8px 0';
+                    calendarGrid.appendChild(header);
+                });
+                
+                // Empty cells for days before month starts
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    calendarGrid.appendChild(emptyDay);
+                }
+                
+                // Days of the month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.textContent = day;
+                    
+                    const dayDate = new Date(year, month, day);
+                    const isToday = dayDate.toDateString() === today.toDateString();
+                    const isPast = dayDate < today;
+                    
+                    if (isPast) {
+                        dayElement.classList.add('disabled');
+                    } else {
+                        dayElement.addEventListener('click', function() {
+                            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                            this.classList.add('selected');
+                            selectedDate = new Date(year, month, day);
+                            updateTimeSlots();
+                            checkStep2Complete();
+                        });
+                    }
+                    
+                    if (isToday) {
+                        dayElement.style.border = '2px solid var(--primary-blue)';
+                    }
+                    
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+            
+            window.previousMonth = () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+            };
+            
+            window.nextMonth = () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+            };
+            
+            generateCalendar(currentMonth, currentYear);
+        }
+
+        function updateTimeSlots() {
+            const timeSlots = document.querySelectorAll('.time-slot');
+            timeSlots.forEach(slot => {
+                slot.classList.remove('selected', 'unavailable');
+                slot.addEventListener('click', function() {
+                    timeSlots.forEach(s => s.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedTime = this.dataset.time;
+                    checkStep2Complete();
+                });
+            });
+        }
+
+        function checkStep2Complete() {
+            const continueBtn = document.getElementById('continue-step-2');
+            continueBtn.disabled = !(selectedDate && selectedTime);
+        }
+
+        // Form validation
+        function initializeFormValidation() {
+            const form = document.getElementById('contact-form');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            
+            inputs.forEach(input => {
+                input.addEventListener('input', validateStep3);
+                input.addEventListener('blur', validateStep3);
+            });
+        }
+
+        function validateStep3() {
+            const form = document.getElementById('contact-form');
+            const formData = new FormData(form);
+            const continueBtn = document.getElementById('continue-step-3');
+            
+            let isValid = true;
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state', 'zip'];
+            
+            requiredFields.forEach(field => {
+                const value = formData.get(field);
+                const input = form.querySelector(`[name="${field}"]`);
+                
+                if (!value || value.trim() === '') {
+                    input.closest('.form-group').classList.add('error');
+                    isValid = false;
+                } else {
+                    input.closest('.form-group').classList.remove('error');
+                }
+            });
+            
+            // Email validation
+            const email = formData.get('email');
+            if (email && !isValidEmail(email)) {
+                form.querySelector('[name="email"]').closest('.form-group').classList.add('error');
+                isValid = false;
+            }
+            
+            continueBtn.disabled = !isValid;
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Payment methods
+        function initializePaymentMethods() {
+            const methods = document.querySelectorAll('.payment-method');
+            
+            methods.forEach(method => {
+                method.addEventListener('click', function() {
+                    methods.forEach(m => m.classList.remove('selected'));
+                    this.classList.add('selected');
+                    paymentMethod = this.dataset.method;
+                    
+                    const cardDetails = document.getElementById('card-details');
+                    if (paymentMethod === 'card') {
+                        cardDetails.style.display = 'block';
+                    } else {
+                        cardDetails.style.display = 'none';
+                    }
+                });
+            });
+
+            // Card input formatting
+            const cardNumber = document.getElementById('card-number');
+            const expiry = document.getElementById('expiry');
+            const cvv = document.getElementById('cvv');
+
+            if (cardNumber) {
+                cardNumber.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    if (formattedValue.length > 19) formattedValue = formattedValue.substring(0, 19);
+                    e.target.value = formattedValue;
+                });
+            }
+
+            if (expiry) {
+                expiry.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+
+            if (cvv) {
+                cvv.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+                });
+            }
+        }
+
+        // Step navigation
+        function nextStep() {
+            if (currentStep < 5) {
+                // Save current step data
+                saveStepData();
+                
+                // Update progress
+                updateProgress(currentStep + 1);
+                
+                // Show next step
+                document.querySelector(`.step.active`).classList.remove('active');
+                document.getElementById(`step-${currentStep + 1}`).classList.add('active');
+                
+                currentStep++;
+                
+                // Update order summary if on payment step
+                if (currentStep === 4) {
+                    updateOrderSummary();
+                }
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                updateProgress(currentStep - 1);
+                document.querySelector(`.step.active`).classList.remove('active');
+                document.getElementById(`step-${currentStep - 1}`).classList.add('active');
+                currentStep--;
+            }
+        }
+
+        function updateProgress(step) {
+            const steps = document.querySelectorAll('.progress-step');
+            const lines = document.querySelectorAll('.progress-line');
+            
+            steps.forEach((stepEl, index) => {
+                stepEl.classList.remove('active', 'completed');
+                if (index + 1 === step) {
+                    stepEl.classList.add('active');
+                } else if (index + 1 < step) {
+                    stepEl.classList.add('completed');
+                }
+            });
+            
+            lines.forEach((line, index) => {
+                line.classList.remove('completed');
+                if (index + 1 < step) {
+                    line.classList.add('completed');
+                }
+            });
+        }
+
+        function saveStepData() {
+            switch(currentStep) {
+                case 1:
+                    bookingData.service = selectedService;
+                    break;
+                case 2:
+                    bookingData.date = selectedDate;
+                    bookingData.time = selectedTime;
+                    break;
+                case 3:
+                    const form = document.getElementById('contact-form');
+                    const formData = new FormData(form);
+                    bookingData.contact = Object.fromEntries(formData.entries());
+                    break;
+            }
+        }
+
+        function updateOrderSummary() {
+            const orderItems = document.getElementById('order-items');
+            const subtotal = selectedService.price;
+            const serviceFee = 25;
+            const total = subtotal + serviceFee;
+            
+            orderItems.innerHTML = `
+                <div class="summary-item">
+                    <span>${selectedService.name}</span>
+                    <span>$${selectedService.price.toFixed(2)}</span>
+                </div>
+                <div class="summary-item">
+                    <span>Service Fee</span>
+                    <span>$${serviceFee.toFixed(2)}</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total</span>
+                    <span>$${total.toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        // Payment processing
+        function processPayment() {
+            const btn = document.getElementById('complete-booking');
+            const errorDiv = document.getElementById('payment-error');
+            
+            btn.classList.add('loading');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+            errorDiv.style.display = 'none';
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                if (paymentMethod === 'card') {
+                    const form = document.getElementById('payment-form');
+                    const formData = new FormData(form);
+                    
+                    // Basic validation
+                    if (!formData.get('cardNumber') || !formData.get('expiry') || !formData.get('cvv') || !formData.get('cardName')) {
+                        errorDiv.textContent = 'Please fill in all card details.';
+                        errorDiv.style.display = 'block';
+                        resetPaymentButton();
+                        return;
+                    }
+                }
+                
+                // Save payment data
+                bookingData.payment = {
+                    method: paymentMethod,
+                    total: selectedService.price + 25
+                };
+                
+                // Generate confirmation
+                generateConfirmation();
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'purchase', {
+                        'transaction_id': generateOrderId(),
+                        'value': bookingData.payment.total,
+                        'currency': 'USD',
+                        'items': [{
+                            'item_id': selectedService.id,
+                            'item_name': selectedService.name,
+                            'price': selectedService.price,
+                            'quantity': 1
+                        }]
+                    });
+                }
+                
+                // Go to confirmation
+                nextStep();
+                
+            }, 2000);
+        }
+
+        function resetPaymentButton() {
+            const btn = document.getElementById('complete-booking');
+            btn.classList.remove('loading');
+            btn.disabled = false;
+            btn.textContent = 'Complete Booking';
+        }
+
+        function generateConfirmation() {
+            const confirmationDiv = document.getElementById('confirmation-details');
+            const orderId = generateOrderId();
+            const appointmentDate = selectedDate.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            confirmationDiv.innerHTML = `
+                <div class="detail-row">
+                    <span>Order ID:</span>
+                    <span><strong>${orderId}</strong></span>
+                </div>
+                <div class="detail-row">
+                    <span>Service:</span>
+                    <span>${selectedService.name}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Date & Time:</span>
+                    <span>${appointmentDate} at ${selectedTime}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Location:</span>
+                    <span>${bookingData.contact.address}, ${bookingData.contact.city}, ${bookingData.contact.state}</span>
+                </div>
+                <div class="detail-row">
+                    <span>Total Paid:</span>
+                    <span><strong>$${bookingData.payment.total.toFixed(2)}</strong></span>
+                </div>
+            `;
+        }
+
+        function generateOrderId() {
+            return 'SD-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        }
+
+        function bookAnother() {
+            // Reset booking state
+            currentStep = 1;
+            selectedService = null;
+            selectedDate = null;
+            selectedTime = null;
+            paymentMethod = 'card';
+            bookingData = {};
+            
+            // Reset UI
+            document.querySelectorAll('.service-card').forEach(card => card.classList.remove('selected'));
+            document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            document.getElementById('contact-form').reset();
+            document.getElementById('payment-form').reset();
+            
+            // Reset progress
+            updateProgress(1);
+            document.querySelector('.step.active').classList.remove('active');
+            document.getElementById('step-1').classList.add('active');
+            
+            // Disable continue buttons
+            document.getElementById('continue-step-1').disabled = true;
+            document.getElementById('continue-step-2').disabled = true;
+            document.getElementById('continue-step-3').disabled = true;
+        }
+    </script>
   <main class="main-content">
     <div class="container">
       <!-- Header -->
@@ -589,9 +2051,7 @@
   </footer>
 
   <script>
-    // =========================
     // NAV & SHARED JS LOADER
-    // =========================
     async function loadNavigation(){
       try{
         const res = await fetch('../shared/navigation.html',{cache:'no-cache'});
@@ -605,9 +2065,7 @@
       }catch(e){ console.warn('Navigation not loaded:', e); }
     }
 
-    // =========================
     // FAQ & Reviews (safe stubs)
-    // =========================
     function initializeFAQ(){
       document.querySelectorAll('.faq-question')?.forEach(btn=>{
         btn.addEventListener('click',()=>{
@@ -631,9 +2089,7 @@
       window.location.href = `../search.html?q=${encodeURIComponent(q)}`;
     }
 
-    // =========================
     // BOOKING/SELECTION LOGIC
-    // =========================
     let selectedServiceName = null;
     let selectedServicePrice = 0;
     const TRAVEL_FEE = 25;
@@ -685,9 +2141,7 @@
       });
     }
 
-    // =========================
     // CHECKOUT / SUCCESS DEMO
-    // =========================
     // Escape HTML meta-characters to prevent XSS
     function escapeHTML(str) {
       return String(str)
@@ -743,9 +2197,7 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    // =========================
     // INIT
-    // =========================
     document.addEventListener('DOMContentLoaded', ()=>{
       loadNavigation();
       initializeFAQ();

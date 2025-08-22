@@ -56,9 +56,12 @@
                     // We're in a pages subfolder, paths in navigation.html are already correct (../)
                     fixedHtml = html;
                 } else {
-                    // We're in root, need to add pages/ prefix to page links
+                    // We're in root, need to fix paths for root-level access
                     fixedHtml = html.replace(/href="\.\.\/pages\//g, 'href="pages/');
                     fixedHtml = fixedHtml.replace(/href="\.\.\/index\.html/g, 'href="index.html');
+                    fixedHtml = fixedHtml.replace(/href="\.\.\/"/g, 'href="/"');
+                    // Fix any remaining ../ references that should be root-relative
+                    fixedHtml = fixedHtml.replace(/href="\.\.\/([^"]+)"/g, 'href="$1"');
                 }
 
                 placeholder.innerHTML = fixedHtml;
@@ -84,19 +87,34 @@
             const currentPath = window.location.pathname;
             const isInPagesFolder = currentPath.includes('/pages/');
             const scriptPath = isInPagesFolder ? '../shared/navigation.js' : 'shared/navigation.js';
+            const utilsPath = isInPagesFolder ? '../shared/staydripped-utils.js' : 'shared/staydripped-utils.js';
 
-            const script = document.createElement('script');
-            script.src = scriptPath;
-            script.onload = function() {
-                window.navigationLoaded = true;
-                console.log('Navigation script loaded successfully');
-                resolve();
+            // Load utilities first
+            const utilsScript = document.createElement('script');
+            utilsScript.src = utilsPath;
+            utilsScript.type = 'module';
+            utilsScript.onload = function() {
+                console.log('StayDripped utilities loaded successfully');
+                
+                // Then load navigation script
+                const script = document.createElement('script');
+                script.src = scriptPath;
+                script.onload = function() {
+                    window.navigationLoaded = true;
+                    console.log('Navigation script loaded successfully');
+                    resolve();
+                };
+                script.onerror = function() {
+                    console.error('Failed to load navigation script');
+                    reject(new Error('Failed to load navigation script'));
+                };
+                document.head.appendChild(script);
             };
-            script.onerror = function() {
-                console.error('Failed to load navigation script');
-                reject(new Error('Failed to load navigation script'));
+            utilsScript.onerror = function() {
+                console.error('Failed to load StayDripped utilities');
+                reject(new Error('Failed to load StayDripped utilities'));
             };
-            document.head.appendChild(script);
+            document.head.appendChild(utilsScript);
         });
     }
 

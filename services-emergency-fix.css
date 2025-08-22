@@ -1,0 +1,66 @@
+/* EMERGENCY SERVICES LAYOUT FIX - APPLIES IMMEDIATELY */
+
+/* Hide the broken vertical layout completely */
+.services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15px !important;
+    margin: 20px 0 !important;
+    padding: 0 !important;
+}
+
+/* Force service cards to be compact */
+.service-card-enhanced {
+    padding: 12px !important;
+    margin: 0 !important;
+    height: 200px !important;
+    max-height: 200px !important;
+    overflow: hidden !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Hide long lists that break layout */
+.treatment-list {
+    display: none !important;
+}
+
+/* Compact text */
+.service-card-enhanced h3 {
+    font-size: 14px !important;
+    margin-bottom: 4px !important;
+    line-height: 1.2 !important;
+}
+
+.service-card-enhanced p {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+}
+
+.service-btn {
+    padding: 3px 6px !important;
+    font-size: 10px !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+    
+    .service-card-enhanced {
+        height: 150px !important;
+        max-height: 150px !important;
+        padding: 8px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+}

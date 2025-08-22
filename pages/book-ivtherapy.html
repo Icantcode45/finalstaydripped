@@ -280,7 +280,6 @@
             overflow: hidden;
         }
 
-<<<<<<< HEAD
         .service-card::before {
             content: '';
             position: absolute;
@@ -314,62 +313,6 @@
             margin-bottom: 1rem;
             color: var(--dark-slate);
         }
-
-=======
-        .service-image {
-            width: 100%;
-            height: 200px;
-            margin: -2rem -2rem 1.5rem -2rem;
-            overflow: hidden;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover .service-image img {
-            transform: scale(1.05);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-badge {
-            background: var(--primary-blue);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark-slate);
-        }
-
->>>>>>> refs/remotes/origin/main
         .service-description {
             color: var(--medium-gray);
             margin-bottom: 1.5rem;
@@ -488,6 +431,10 @@
         .product-image {
             height: 220px;
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-teal) 100%);
+            background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F1bb3a1ef45384ef3907b8f30baeec5a4?format=webp&width=800');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
             position: relative;
             overflow: hidden;
         }
@@ -893,20 +840,14 @@
     <!-- Navigation -->
     <div id="navigation-placeholder"></div>
 
-    <script>
-        // Load navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navigation-placeholder').innerHTML = html;
+    <!-- Cart System -->
+    <script src="../shared/cart.js"></script>
 
-                // Load navigation JavaScript
-                const script = document.createElement('script');
-                script.src = '../shared/navigation.js';
-                document.head.appendChild(script);
-            })
-            .catch(error => console.error('Error loading navigation:', error));
-    </script>
+    <!-- IntakeQ Integration -->
+    <script src="../shared/intakeq-integration.js"></script>
+
+    <!-- Optimized Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
 
     <!-- Hero Section -->
     <section class="hero-section fade-in">
@@ -1019,7 +960,7 @@
                             </ul>
                             <div class="product-footer">
                                 <div class="product-price">$125</div>
-                                <a href="../pages/unified-booking.html" class="btn product-btn">Book Now</a>
+                                <button class="btn product-btn add-to-cart" data-name="Rehydrate IV Drip" data-price="125" data-category="Basic Hydration">Add to Cart - $125</button>
                             </div>
                         </div>
                     </div>
@@ -1039,7 +980,7 @@
                             </ul>
                             <div class="product-footer">
                                 <div class="product-price">$150</div>
-                                <a href="../pages/unified-booking.html" class="btn product-btn">Book Now</a>
+                                <button class="btn product-btn add-to-cart" data-name="Rehydrate Plus IV Drip" data-price="150" data-category="Enhanced Hydration">Add to Cart - $150</button>
                             </div>
                         </div>
                     </div>
@@ -1317,12 +1258,6 @@
                 <h3 class="category-title">Premium IV Therapy Treatments</h3>
                 <div class="services-grid">
                     <div class="service-card card-hover" data-category="premium">
-<<<<<<< HEAD
-=======
-                        <div class="service-image">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F875feacdadfa4574817a53553d6e0f1a?format=webp&width=800" alt="Gold IV Therapy Bag" loading="lazy">
-                        </div>
->>>>>>> refs/remotes/origin/main
                         <div class="service-badge">Premium</div>
                         <h4 class="service-title">The "Gold" Ultimate Hydration & Recovery IV Drip</h4>
                         <p class="service-description">Premium hydration and recovery formula with advanced nutrient blend.</p>
@@ -1348,12 +1283,6 @@
                     </div>
 
                     <div class="service-card card-hover" data-category="premium">
-<<<<<<< HEAD
-=======
-                        <div class="service-image">
-                            <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F90d92423921d4e31a350ec5ae3b76ba0?format=webp&width=800" alt="Platinum IV Therapy Bag" loading="lazy">
-                        </div>
->>>>>>> refs/remotes/origin/main
                         <div class="service-badge">Platinum</div>
                         <h4 class="service-title">The "Platinum" Ultimate Hydration & Recovery IV Drip</h4>
                         <p class="service-description">Our flagship treatment with the most comprehensive nutrient profile available.</p>
@@ -1535,6 +1464,34 @@
         </div>
     </section>
 
+    <!-- Online Booking Section -->
+    <section style="background: linear-gradient(135deg, #F5F1EB 0%, rgba(0, 184, 160, 0.08) 100%); padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2 style="font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin-bottom: 16px; color: #1A2B3A;">Book Your IV Therapy</h2>
+                <p style="font-size: 18px; color: #64748B; max-width: 600px; margin: 0 auto;">
+                    Schedule your mobile IV therapy treatment online. Choose from our comprehensive menu of IV treatments and enjoy the convenience of in-home service.
+                </p>
+            </div>
+
+            <div style="background: white; border-radius: 16px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid #E2E8F0;">
+                <div id="intakeq" style="max-width: 720px; width: 100%; margin: 0 auto;"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 32px;">
+                <p style="color: #64748B; margin-bottom: 16px;">Need help choosing the right treatment?</p>
+                <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+                    <a href="tel:+1-602-688-9825" style="background: #0066CC; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        📞 Call (602) 688-9825
+                    </a>
+                    <a href="sms:+1-602-688-9825" style="background: #00B8A0; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                        💬 Text Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
@@ -1647,17 +1604,6 @@
     </footer>
 
     <script>
-        // Load Navigation
-        fetch('../shared/navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-                initializeNavigation();
-            })
-            .catch(error => {
-                console.error('Error loading navigation:', error);
-            });
-
         function initializeNavigation() {
             // Initialize mobile menu toggle
             const mobileToggle = document.querySelector('.mobile-menu-toggle');
@@ -1868,11 +1814,7 @@
                 const priceElement = card.querySelector('.service-price, .product-price');
                 if (!priceElement) return;
 
-<<<<<<< HEAD
-                const priceText = priceElement.textContent.replace(/\$/g, '').replace(',', '');
-=======
                 const priceText = priceElement.textContent.replace('$', '').replace(',', '');
->>>>>>> refs/remotes/origin/main
                 const price = parseInt(priceText);
 
                 let shouldShow = true;
@@ -2397,18 +2339,50 @@
             });
         }
 
+        // Convert all Book Now buttons to Add to Cart buttons
+        function convertBookingButtons() {
+            const bookButtons = document.querySelectorAll('.btn.product-btn');
+            bookButtons.forEach(button => {
+                if ((button.textContent === 'Book Now' || button.href) && !button.classList.contains('add-to-cart')) {
+                    const productCard = button.closest('.product-card');
+                    const title = productCard.querySelector('.product-title, h3')?.textContent?.trim();
+                    const priceElement = productCard.querySelector('.product-price');
+                    const price = priceElement?.textContent?.replace('$', '')?.trim();
+                    const category = productCard.querySelector('.product-category')?.textContent?.trim();
+                    const description = productCard.querySelector('.product-description, p')?.textContent?.trim();
+
+                    if (title && price) {
+                        // Convert to button and add cart functionality
+                        const newButton = document.createElement('button');
+                        newButton.className = button.className.replace('product-btn', 'product-btn add-to-cart');
+                        newButton.textContent = `Add to Cart - $${price}`;
+                        newButton.setAttribute('data-name', title);
+                        newButton.setAttribute('data-price', price);
+                        newButton.setAttribute('data-category', category || 'IV Therapy');
+                        if (description) {
+                            newButton.setAttribute('data-description', description.substring(0, 100));
+                        }
+
+                        button.parentNode.replaceChild(newButton, button);
+                    }
+                }
+            });
+        }
+
         // Initialize page functions
         document.addEventListener('DOMContentLoaded', function() {
-            // Load navigation first
-            fetch('../shared/navigation.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navigation-placeholder').innerHTML = data;
-                    initializeNavigation();
-                })
-                .catch(error => {
-                    console.error('Error loading navigation:', error);
-                });
+            // Convert booking buttons to cart buttons
+            convertBookingButtons();
+
+            // Ensure cart system is available and initialize buttons
+            if (window.stayDrippedCart) {
+                setTimeout(() => {
+                    window.stayDrippedCart.reinitializeButtons();
+                    console.log('Cart system initialized successfully');
+                }, 100);
+            } else {
+                console.warn('Cart system not available');
+            }
 
             // Initialize all page functionality
             initializeCategoryNavigation();
