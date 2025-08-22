@@ -92,12 +92,71 @@
         }
 
         .service-card {
+<<<<<<< HEAD
             background: var(--white);
             border-radius: 16px;
             padding: 32px;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
+=======
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F1bb3a1ef45384ef3907b8f30baeec5a4?format=webp&width=800');
+            background-size: 60px 60px;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover .service-image::before {
+            opacity: 1;
+>>>>>>> refs/remotes/origin/main
         }
 
         .service-card:hover {
@@ -222,6 +281,7 @@
     <section class="services-section">
         <div class="container">
             <div class="services-grid">
+<<<<<<< HEAD
                 <div class="service-card">
                     <h3>B12 Energy Shot</h3>
                     <p>Boost energy levels and mental clarity with vitamin B12 injection for enhanced focus and vitality.</p>
@@ -262,6 +322,176 @@
                     <p>Master antioxidant injection for detoxification and skin brightening benefits.</p>
                     <div class="service-price">$55</div>
                     <button class="btn add-to-cart" data-name="Glutathione Shot" data-price="55" data-category="Vitamin Injections">Add to Cart - $55</button>
+=======
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="B12 Vitamin Vial" loading="lazy">
+                    </div>
+                    <h3>Vitamin B12 Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Energy-boosting methylcobalamin B12 for mental clarity and vitality.</p>
+                    <ul class="features">
+                        <li>1000mcg Methylcobalamin B12</li>
+                        <li>Increases energy levels</li>
+                        <li>Improves mental clarity</li>
+                        <li>Supports metabolism</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="D3 Vitamin Vial" loading="lazy">
+                    </div>
+                    <h3>Vitamin D3 Injection</h3>
+                    <div class="price">$28 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$30</span></div>
+                    <p>High-dose vitamin D3 for immune support and bone health.</p>
+                    <ul class="features">
+                        <li>50,000 IU Vitamin D3</li>
+                        <li>Supports immune function</li>
+                        <li>Promotes bone health</li>
+                        <li>Improves mood regulation</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Vitamin C Vial" loading="lazy">
+                    </div>
+                    <h3>Vitamin C Injection</h3>
+                    <div class="price">$23 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$25</span></div>
+                    <p>Powerful antioxidant support for immune system and collagen production.</p>
+                    <ul class="features">
+                        <li>1000mg Ascorbic Acid</li>
+                        <li>Powerful antioxidant protection</li>
+                        <li>Supports immune system</li>
+                        <li>Promotes collagen synthesis</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Magnesium Vial" loading="lazy">
+                    </div>
+                    <h3>Magnesium Injection</h3>
+                    <div class="price">$18 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$20</span></div>
+                    <p>Essential mineral for muscle relaxation and nerve function support.</p>
+                    <ul class="features">
+                        <li>200mg Magnesium Sulfate</li>
+                        <li>Muscle relaxation</li>
+                        <li>Nerve function support</li>
+                        <li>Reduces muscle cramps</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Glutathione Vial" loading="lazy">
+                    </div>
+                    <h3>Glutathione Injection</h3>
+                    <div class="price">$48 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$50</span></div>
+                    <p>Master antioxidant for detoxification and radiant skin health.</p>
+                    <ul class="features">
+                        <li>600mg Glutathione</li>
+                        <li>Master antioxidant</li>
+                        <li>Supports detoxification</li>
+                        <li>Promotes skin health</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Myers Cocktail Vial" loading="lazy">
+                    </div>
+                    <h3>Myers' Cocktail Injection</h3>
+                    <div class="price">$170 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$180</span></div>
+                    <p>Comprehensive vitamin and mineral blend for complete wellness support.</p>
+                    <ul class="features">
+                        <li>Vitamin C, B-Complex, B12</li>
+                        <li>Magnesium & Calcium</li>
+                        <li>Comprehensive wellness support</li>
+                        <li>Enhanced energy & immunity</li>
+                        <li>15-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Amino Acid Vial" loading="lazy">
+                    </div>
+                    <h3>Tri-Amino Blend Injection</h3>
+                    <div class="price">$33 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$35</span></div>
+                    <p>Essential amino acids for muscle recovery and athletic performance.</p>
+                    <ul class="features">
+                        <li>L-Arginine, L-Ornithine, L-Lysine</li>
+                        <li>Muscle recovery support</li>
+                        <li>Enhanced athletic performance</li>
+                        <li>Improved protein synthesis</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Zinc Vial" loading="lazy">
+                    </div>
+                    <h3>Zinc Injection</h3>
+                    <div class="price">$8 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$10</span></div>
+                    <p>Essential mineral for immune support and wound healing.</p>
+                    <ul class="features">
+                        <li>5mg Zinc Sulfate</li>
+                        <li>Immune system support</li>
+                        <li>Wound healing acceleration</li>
+                        <li>Antioxidant properties</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="Biotin Vial" loading="lazy">
+                    </div>
+                    <h3>Biotin Injection</h3>
+                    <div class="price">$13 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$15</span></div>
+                    <p>Beauty vitamin for stronger hair, skin, and nail health.</p>
+                    <ul class="features">
+                        <li>10,000mcg Biotin</li>
+                        <li>Strengthens hair & nails</li>
+                        <li>Improves skin health</li>
+                        <li>Supports cellular energy</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+                </div>
+
+                <div class="service-card card-hover">
+                    <div class="service-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F46b08cf5f6684b119bf09c1ef5e7db04?format=webp&width=100" alt="L-Carnitine Vial" loading="lazy">
+                    </div>
+                    <h3>L-Carnitine Injection</h3>
+                    <div class="price">$38 <span style="font-size: 14px; color: var(--medium-gray); text-decoration: line-through;">$40</span></div>
+                    <p>Fat metabolism booster for weight management and energy enhancement.</p>
+                    <ul class="features">
+                        <li>500mg L-Carnitine</li>
+                        <li>Supports fat metabolism</li>
+                        <li>Enhances energy production</li>
+                        <li>Aids in weight management</li>
+                        <li>5-minute treatment</li>
+                    </ul>
+                    <a href="../pages/unified-booking.html" class="btn">Book Now</a>
+>>>>>>> refs/remotes/origin/main
                 </div>
             </div>
         </div>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Supplements | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Premium professional-grade supplements for optimal health and wellness. Curated by our medical professionals.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Besley:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="../shared/navigation.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0066CC;
+            --secondary-teal: #00B8A0;
+            --accent-orange: #FF6B35;
+            --warm-beige: #F5F1EB;
+            --soft-green: #8BC34A;
+            --dark-slate: #1A2B3A;
+            --light-gray: #F8FAFC;
+            --warm-gray: #F7F5F3;
+            --medium-gray: #64748B;
+            --warm-text: #2D3748;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --soft-border: #F0EDE8;
+            --font-family: 'Inter', sans-serif;
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--warm-text);
+            margin: 0;
+            padding: 0;
+            background: var(--light-gray);
+            padding-top: 140px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Products Header */
+        .products-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .products-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Besley', serif;
+        }
+
+        .products-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Product Categories Filter */
+        .product-filter {
+            background: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 120px;
+            z-index: 100;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .filter-categories {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-category {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 12px 16px;
+            background: var(--light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .filter-category:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .filter-category.active {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .filter-arrow {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-category:hover .filter-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Navigation Controls */
+        .filter-navigation {
+            display: flex;
+            gap: 4px;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .nav-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Popular Products Section */
+        .popular-products {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Besley', serif;
+            font-size: 2rem;
+            color: var(--dark-slate);
+            margin: 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--light-gray), var(--warm-gray));
+            background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F1bb3a1ef45384ef3907b8f30baeec5a4?format=webp&width=800');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        .product-info {
+            padding: 24px;
+        }
+
+        .product-category {
+            color: var(--primary-blue);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            color: var(--medium-gray);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-btn:hover {
+            background: var(--secondary-teal);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .products-header h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+            
+            .filter-categories {
+                justify-content: center;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be loaded here -->
+    <div id="navigation-placeholder"></div>
+
+    <!-- Products Header -->
+    <section class="products-header">
+        <div class="container">
+            <h1>Professional Supplements</h1>
+            <p>Premium, professional-grade supplements curated by our medical team for optimal health and wellness outcomes.</p>
+        </div>
+    </section>
+
+    <!-- Product Filter -->
+    <section class="product-filter">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-categories">
+                    <div class="filter-category active">
+                        <span>Supplements</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                    <div class="filter-category">
+                        <span>Vitamins & minerals</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                    <div class="filter-category">
+                        <span>Health conditions</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                    <div class="filter-category">
+                        <span>Sports nutrition</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                    <div class="filter-category">
+                        <span>Personal care</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                    <div class="filter-category">
+                        <span>Brands</span>
+                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="filter-navigation">
+                    <button class="nav-btn" aria-label="Previous">
+                        <svg class="nav-icon" viewBox="0 0 320 512" fill="currentColor">
+                            <path d="M15 239c-9.4 9.4-9.4 24.6 0 33.9L207 465c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L65.9 256 241 81c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L15 239z"/>
+                        </svg>
+                    </button>
+                    <button class="nav-btn" aria-label="Next">
+                        <svg class="nav-icon" viewBox="0 0 320 512" fill="currentColor">
+                            <path d="M305 239c9.4 9.4 9.4 24.6 0 33.9L113 465c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l175-175L79 81c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L305 239z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Products -->
+    <section class="popular-products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular products</h2>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Supplements</div>
+                        <h3 class="product-name">Premium Multivitamin Complex</h3>
+                        <p class="product-description">Complete daily nutrition with essential vitamins and minerals for optimal health.</p>
+                        <div class="product-price">$49.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Vitamins & Minerals</div>
+                        <h3 class="product-name">Vitamin D3 + K2</h3>
+                        <p class="product-description">High-potency vitamin D3 with K2 for bone health and immune support.</p>
+                        <div class="product-price">$34.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Sports Nutrition</div>
+                        <h3 class="product-name">Performance Recovery</h3>
+                        <p class="product-description">Advanced recovery formula with amino acids and electrolytes.</p>
+                        <div class="product-price">$59.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Health Conditions</div>
+                        <h3 class="product-name">Immune Support Complex</h3>
+                        <p class="product-description">Powerful immune system support with vitamin C, zinc, and elderberry.</p>
+                        <div class="product-price">$44.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Personal Care</div>
+                        <h3 class="product-name">Collagen Beauty Formula</h3>
+                        <p class="product-description">Premium collagen peptides for skin, hair, and nail health.</p>
+                        <div class="product-price">$69.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">Product Image</div>
+                    <div class="product-info">
+                        <div class="product-category">Supplements</div>
+                        <h3 class="product-name">Omega-3 Ultra</h3>
+                        <p class="product-description">High-purity fish oil with EPA and DHA for heart and brain health.</p>
+                        <div class="product-price">$39.99</div>
+                        <button class="product-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation System -->
+    <script src="../shared/navigation-loader.js"></script>
+    
+    <script>
+        // Product filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterCategories = document.querySelectorAll('.filter-category');
+            
+            filterCategories.forEach(category => {
+                category.addEventListener('click', function() {
+                    // Remove active class from all categories
+                    filterCategories.forEach(cat => cat.classList.remove('active'));
+                    
+                    // Add active class to clicked category
+                    this.classList.add('active');
+                    
+                    // Here you would filter products based on the selected category
+                    console.log('Filtering by:', this.querySelector('span').textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
