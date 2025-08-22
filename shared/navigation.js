@@ -141,6 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
         console.log('Applying homepage fixes...');
 
+        // Remove promo banner completely
+        setTimeout(() => {
+            const promoBanner = document.querySelector('.promo-banner');
+            if (promoBanner) {
+                promoBanner.remove();
+                console.log('Promo banner removed');
+            }
+        }, 100);
+
         // Fix duplicate "Learn More" buttons
         setTimeout(() => {
             const learnMoreButtons = document.querySelectorAll('a[data-builder-link="learn-more"]');
