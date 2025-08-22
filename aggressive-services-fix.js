@@ -183,11 +183,13 @@
             `;
             
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-2px)';
+                card.style.transform = 'translateY(-4px)';
+                card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
             });
             
             servicesGrid.appendChild(card);
