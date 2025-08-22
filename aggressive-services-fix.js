@@ -79,38 +79,44 @@
                 const title = card.querySelector('h3');
                 if (title) {
                     title.style.cssText = `
-                        font-size: 16px !important;
-                        margin-bottom: 6px !important;
+                        font-size: 20px !important;
+                        margin-bottom: 12px !important;
                         line-height: 1.3 !important;
+                        color: #1a2b3a !important;
+                        font-weight: 600 !important;
                     `;
                 }
-                
+
                 const description = card.querySelector('p');
                 if (description) {
                     description.style.cssText = `
-                        font-size: 12px !important;
-                        line-height: 1.3 !important;
-                        margin-bottom: 8px !important;
-                        overflow: hidden !important;
-                        display: -webkit-box !important;
-                        -webkit-line-clamp: 2 !important;
-                        -webkit-box-orient: vertical !important;
+                        font-size: 14px !important;
+                        line-height: 1.5 !important;
+                        margin-bottom: 16px !important;
+                        color: #64748b !important;
                     `;
                 }
-                
+
                 const lists = card.querySelectorAll('ul, ol');
                 lists.forEach(list => {
                     list.style.cssText = `
                         display: none !important;
                     `;
                 });
-                
+
                 const buttons = card.querySelectorAll('.btn, .service-btn, button, a[class*="btn"]');
                 buttons.forEach(btn => {
                     btn.style.cssText = `
-                        padding: 4px 8px !important;
-                        font-size: 11px !important;
-                        margin-top: 6px !important;
+                        padding: 12px 20px !important;
+                        font-size: 14px !important;
+                        font-weight: 600 !important;
+                        border-radius: 8px !important;
+                        background: #0066cc !important;
+                        color: white !important;
+                        text-decoration: none !important;
+                        border: none !important;
+                        cursor: pointer !important;
+                        transition: background 0.3s ease !important;
                     `;
                 });
             });
