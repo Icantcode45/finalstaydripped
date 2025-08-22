@@ -39,6 +39,7 @@
 
     <!-- Navigation CSS -->
     <link rel="stylesheet" href="../shared/navigation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MQJPLG5GPW"></script>
@@ -52,6 +53,9 @@
 
     <!-- Good Faith Exam Widget Stylesheet -->
     <link rel="stylesheet" href="https://firebasestorage.googleapis.com/v0/b/qualiphy-web-d918b.appspot.com/o/style-v4.css?alt=media&token=34735782-16e8-4a2f-9eaa-426d65af48b2" />
+    <!-- Navigation Styles -->
+    <link rel="stylesheet" href="../responsive-fix.css">
+    <link rel="stylesheet" href="../shared/navigation.css">
     <style>
         :root {
             --primary-blue: #0066CC;
@@ -1337,6 +1341,9 @@
             </div>
         </div>
     </header>
+    <!-- Navigation -->
+    <div id="navigation-placeholder"></div>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -5505,13 +5512,41 @@
                     }
                 }
             });
+        // Load shared navigation
+        async function loadNavigation() {
+            try {
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (!placeholder) {
+                    console.warn('Navigation placeholder element not found');
+                    return;
+                }
+
+                const response = await fetch('../shared/navigation.html');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const navigationHtml = await response.text();
+                placeholder.innerHTML = navigationHtml;
+
+                // Initialize navigation functionality after loading
+                if (typeof initializeNavigation === 'function') {
+                    initializeNavigation();
+                }
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+                const placeholder = document.getElementById('navigation-placeholder');
+                if (placeholder) {
+                    placeholder.innerHTML = '<div style="background: #f8f9fa; padding: 10px; text-align: center; color: #6c757d;">Navigation temporarily unavailable</div>';
+                }
+            }
         }
 
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             // Convert booking buttons to cart buttons
             convertBookingButtons();
-
+            initializeNavigation();
             initializeAccessibility();
             initializeCategoryNavigation();
             updateCategoryCounters();
