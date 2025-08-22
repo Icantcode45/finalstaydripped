@@ -838,3 +838,12 @@ body {
 #navigation-placeholder .header {
     top: 116px !important;
 }
+
+/* Inject homepage fixes script */
+body::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: url('data:text/javascript;base64,') no-repeat;
+}
