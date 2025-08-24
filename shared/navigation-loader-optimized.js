@@ -1,27 +1,43 @@
-// Optimized Navigation Loader - Faster loading with async strategies
+// Enhanced Navigation Loader V2 - Robust navigation loading system
 (function() {
     'use strict';
-    
-    // Cache for loaded resources
+
+    // Configuration
+    const CONFIG = {
+        navigationHtmlPath: '/shared/navigation.html',
+        navigationCssPath: '/shared/navigation-enhanced.css',
+        navigationJsPath: '/shared/navigation-enhanced.js',
+        utilsJsPath: '/shared/staydripped-utils.js',
+        maxRetries: 3,
+        retryDelay: 1000,
+        timeout: 10000
+    };
+
+    // Cache and state management
     const cache = {
         navigationHtml: null,
-        scriptsLoaded: new Set()
+        cssLoaded: false,
+        scriptsLoaded: new Set(),
+        loadPromises: new Map()
     };
-    
-    function preloadResources() {
-        // Preload navigation HTML
-        if (!cache.navigationHtml) {
-            const currentPath = window.location.pathname;
-            const isInPagesFolder = currentPath.includes('/pages/');
-            const navPath = isInPagesFolder ? '../shared/navigation.html' : 'shared/navigation.html';
-            
-            fetch(navPath)
-                .then(response => response.text())
-                .then(html => {
-                    cache.navigationHtml = html;
-                })
-                .catch(error => console.warn('Navigation preload failed:', error));
+
+    // Utility functions
+    function getAbsolutePath(relativePath) {
+        // Convert relative path to absolute path based on current location
+        const base = window.location.origin;
+        const currentPath = window.location.pathname;
+
+        // Handle paths that start with /
+        if (relativePath.startsWith('/')) {
+            return base + relativePath;
         }
+
+        // For pages in subdirectories, adjust the path
+        if (currentPath.includes('/pages/')) {
+            return base + '/' + relativePath;
+        }
+
+        return base + '/' + relativePath;
     }
     
     function loadNavigationFast() {
