@@ -5,8 +5,8 @@
     // Configuration
     const CONFIG = {
         navigationHtmlPath: '/shared/navigation.html',
-        navigationCssPath: '/shared/navigation-enhanced.css', 
-        navigationJsPath: '/shared/navigation-enhanced.js',
+        navigationCssPath: '/shared/navigation.css',
+        navigationJsPath: '/shared/navigation.js',
         utilsJsPath: '/shared/staydripped-utils.js',
         maxRetries: 3,
         retryDelay: 1000,
