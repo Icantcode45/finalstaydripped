@@ -215,35 +215,59 @@
         return promise;
     }
     
-    // Fix relative URLs in HTML content
+    // Fix relative URLs in HTML content based on current page location
     function fixRelativeUrls(html) {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
-        
+
+        const currentPath = window.location.pathname;
+        const isInPagesFolder = currentPath.includes('/pages/');
+
         // Fix href attributes
         const links = tempDiv.querySelectorAll('a[href]');
         links.forEach(link => {
             const href = link.getAttribute('href');
-            if (href && href.startsWith('../')) {
-                // Convert ../pages/ to pages/
-                link.setAttribute('href', href.replace('../', ''));
-            } else if (href && href.startsWith('./')) {
-                // Convert ./pages/ to pages/
-                link.setAttribute('href', href.replace('./', ''));
+            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
+                // Handle relative paths correctly
+                if (href.startsWith('../')) {
+                    // Already has ../ prefix, don't modify if we're in pages folder
+                    if (!isInPagesFolder) {
+                        link.setAttribute('href', href.replace('../', ''));
+                    }
+                } else if (href.startsWith('./')) {
+                    // Convert ./pages/ to pages/ or ../pages/ based on location
+                    if (isInPagesFolder) {
+                        link.setAttribute('href', href.replace('./', '../'));
+                    } else {
+                        link.setAttribute('href', href.replace('./', ''));
+                    }
+                } else if (href.startsWith('pages/')) {
+                    // If we're in pages folder, add ../ prefix
+                    if (isInPagesFolder) {
+                        link.setAttribute('href', '../' + href);
+                    }
+                    // If we're in root, leave as is
+                }
             }
         });
-        
-        // Fix src attributes for images
+
+        // Fix src attributes for images (these are already absolute CDN URLs, so no changes needed)
         const images = tempDiv.querySelectorAll('img[src]');
         images.forEach(img => {
             const src = img.getAttribute('src');
             if (src && src.startsWith('../')) {
-                img.setAttribute('src', src.replace('../', ''));
+                if (!isInPagesFolder) {
+                    img.setAttribute('src', src.replace('../', ''));
+                }
             } else if (src && src.startsWith('./')) {
-                img.setAttribute('src', src.replace('./', ''));
+                if (isInPagesFolder) {
+                    img.setAttribute('src', src.replace('./', '../'));
+                } else {
+                    img.setAttribute('src', src.replace('./', ''));
+                }
             }
         });
-        
+
         return tempDiv.innerHTML;
     }
     
