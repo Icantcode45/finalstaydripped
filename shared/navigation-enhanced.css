@@ -24,6 +24,32 @@
     --nav-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Telehealth specific styling */
+.nav-link[href*="telehealth"] {
+    color: var(--nav-secondary-teal);
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link[href*="telehealth"]:hover {
+    color: var(--nav-primary-blue);
+}
+
+.nav-link[href*="telehealth"]::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--nav-secondary-teal);
+    transition: width 0.3s ease;
+}
+
+.nav-link[href*="telehealth"]:hover::after {
+    width: 100%;
+}
+
 /* Reset and Base Styles */
 #navigation-placeholder {
     position: relative;
