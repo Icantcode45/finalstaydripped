@@ -432,6 +432,68 @@ body {
     border-color: rgba(0, 102, 204, 0.2);
 }
 
+/* New Navigation Categories */
+.nav-expansion[data-category="patient-resources"] .expansion-link {
+    color: var(--nav-soft-green);
+}
+
+.nav-expansion[data-category="patient-resources"] .expansion-link:hover {
+    background-color: rgba(139, 195, 74, 0.1);
+    color: var(--nav-dark-slate);
+}
+
+.nav-expansion[data-category="events-corporate"] .expansion-link {
+    color: var(--nav-accent-orange);
+}
+
+.nav-expansion[data-category="events-corporate"] .expansion-link:hover {
+    background-color: rgba(255, 107, 53, 0.1);
+    color: var(--nav-dark-slate);
+}
+
+/* Improved visual hierarchy for new dropdowns */
+.service-category-btn[data-category="patient-resources"] {
+    position: relative;
+}
+
+.service-category-btn[data-category="patient-resources"]::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nav-soft-green), var(--nav-secondary-teal));
+    transition: width 0.3s ease;
+}
+
+.service-category-btn[data-category="patient-resources"]:hover::after,
+.service-category-btn[data-category="patient-resources"].expanded::after {
+    width: 80%;
+}
+
+.service-category-btn[data-category="events-corporate"] {
+    position: relative;
+}
+
+.service-category-btn[data-category="events-corporate"]::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nav-accent-orange), var(--nav-primary-blue));
+    transition: width 0.3s ease;
+}
+
+.service-category-btn[data-category="events-corporate"]:hover::after,
+.service-category-btn[data-category="events-corporate"].expanded::after {
+    width: 80%;
+}
+
 /* Navigation Actions */
 .nav-actions {
     display: flex;
