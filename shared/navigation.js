@@ -274,6 +274,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Handle new navigation categories
+    const newCategories = ['patient-resources', 'events-corporate'];
+    newCategories.forEach(function(category) {
+        const button = document.querySelector(`[data-category="${category}"]`);
+        const expansion = document.querySelector(`.nav-expansion[data-category="${category}"]`);
+
+        if (button && expansion) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isExpanded = expansion.classList.contains('expanded');
+
+                // Close all other expansions
+                document.querySelectorAll('.nav-expansion').forEach(exp => exp.classList.remove('expanded'));
+                document.querySelectorAll('.service-category-btn').forEach(btn => btn.classList.remove('expanded'));
+
+                // Toggle current expansion
+                if (!isExpanded) {
+                    expansion.classList.add('expanded');
+                    button.classList.add('expanded');
+                }
+            });
+        }
+    });
+
     // Close menu when clicking on menu items (except dropdowns)
     const mobileMenuItems = document.querySelectorAll('.mobile-menu-item:not(.mobile-dropdown-toggle)');
     mobileMenuItems.forEach(function(item) {
