@@ -293,6 +293,106 @@
             display: flex;
         }
 
+        /* Complete Service Dropdown */
+        .complete-service-selector {
+            background: var(--light-gray);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .dropdown-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .dropdown-subtitle {
+            font-size: 16px;
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+        }
+
+        .service-dropdown {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        .service-select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            background: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 48px;
+        }
+
+        .service-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .service-select option {
+            padding: 12px;
+            font-weight: 500;
+        }
+
+        .service-select optgroup {
+            font-weight: 700;
+            color: var(--dark-slate);
+        }
+
+        .dropdown-cart-action {
+            margin-top: 16px;
+        }
+
+        .selected-service-info {
+            display: none;
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .selected-service-info.show {
+            display: block;
+        }
+
+        .selected-service-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 8px;
+        }
+
+        .selected-service-description {
+            font-size: 14px;
+            color: var(--medium-gray);
+            margin-bottom: 12px;
+        }
+
+        .selected-service-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
         /* Service Options */
         .service-options {
             display: none;
@@ -692,6 +792,87 @@
                     <p class="step-subtitle">Select from our comprehensive range of mobile wellness treatments delivered directly to your location in Scottsdale and surrounding areas.</p>
                 </div>
 
+                <!-- Complete Service Dropdown -->
+                <div class="complete-service-selector">
+                    <h2 class="dropdown-title">Quick Service Selection</h2>
+                    <p class="dropdown-subtitle">Select any service directly and add to cart, or browse categories below</p>
+
+                    <div class="service-dropdown">
+                        <select class="service-select" id="complete-service-dropdown">
+                            <option value="">Select a service...</option>
+                            <optgroup label="💧 IV Therapy">
+                                <option value="iv-therapy|hydration-plus|Hydration Plus|149|Essential electrolytes and fluids for optimal hydration">Hydration Plus - $149</option>
+                                <option value="iv-therapy|energy-boost|Energy Boost IV|199|B-complex vitamins and nutrients for sustained energy">Energy Boost IV - $199</option>
+                                <option value="iv-therapy|immunity-support|Immunity Support|225|Vitamin C, zinc, and immune-boosting nutrients">Immunity Support - $225</option>
+                                <option value="iv-therapy|athletic-recovery|Athletic Recovery|275|Amino acids and nutrients for muscle recovery">Athletic Recovery - $275</option>
+                                <option value="iv-therapy|myers-cocktail|Myers' Cocktail|250|Complete vitamin and mineral infusion">Myers' Cocktail - $250</option>
+                                <option value="iv-therapy|hangover-relief|Hangover Relief|199|Rapid recovery from dehydration and toxins">Hangover Relief - $199</option>
+                            </optgroup>
+                            <optgroup label="🧬 NAD+ & Peptides">
+                                <option value="nad-peptides|basic-nad|Basic NAD+ (250mg)|350|Introduction to NAD+ therapy for cellular repair">Basic NAD+ (250mg) - $350</option>
+                                <option value="nad-peptides|premium-nad|Premium NAD+ (500mg)|550|Enhanced anti-aging and cellular optimization">Premium NAD+ (500mg) - $550</option>
+                                <option value="nad-peptides|bpc-157|BPC-157 Healing Peptide|120|Tissue repair and gut health optimization">BPC-157 Healing Peptide - $120</option>
+                                <option value="nad-peptides|growth-peptides|Growth Hormone Peptides|180|Ipamorelin + CJC-1295 for optimization">Growth Hormone Peptides - $180</option>
+                            </optgroup>
+                            <optgroup label="💉 Vitamin Injections">
+                                <option value="vitamin-shots|b12-shot|B12 Energy Shot|35|1000mcg instant energy boost">B12 Energy Shot - $35</option>
+                                <option value="vitamin-shots|vitamin-d|Vitamin D3 Boost|45|50,000 IU immune support">Vitamin D3 Boost - $45</option>
+                                <option value="vitamin-shots|b-complex|B-Complex Shot|50|Complete B-vitamin blend">B-Complex Shot - $50</option>
+                                <option value="vitamin-shots|fat-burner|Fat Burner Shot|65|Lipotropic blend for metabolism">Fat Burner Shot - $65</option>
+                                <option value="vitamin-shots|b12-package|B12 4-Pack|120|Four B12 shots for extended benefits">B12 4-Pack - $120</option>
+                            </optgroup>
+                            <optgroup label="⚖️ Weight Management">
+                                <option value="weight-management|semaglutide|Semaglutide Program|199|Weekly GLP-1 injections with coaching">Semaglutide Program - $199</option>
+                                <option value="weight-management|tirzepatide|Tirzepatide Program|299|Advanced dual-action weight loss">Tirzepatide Program - $299</option>
+                                <option value="weight-management|metabolic-iv|Metabolic IV Package|175|Fat-burning IV with supplements">Metabolic IV Package - $175</option>
+                                <option value="weight-management|consultation|Weight Loss Consultation|150|Comprehensive assessment and plan">Weight Loss Consultation - $150</option>
+                            </optgroup>
+                            <optgroup label="❤️ Sexual Wellness">
+                                <option value="hormone-therapy|testosterone|Testosterone Therapy|125|Hormone optimization for men">Testosterone Therapy - $125</option>
+                                <option value="hormone-therapy|bioidentical|Bioidentical Hormones|150|Natural hormone replacement">Bioidentical Hormones - $150</option>
+                                <option value="hormone-therapy|sexual-enhancement|Sexual Enhancement|125|Treatments for enhanced performance">Sexual Enhancement - $125</option>
+                                <option value="hormone-therapy|consultation|Hormone Consultation|100|Comprehensive hormone assessment">Hormone Consultation - $100</option>
+                            </optgroup>
+                            <optgroup label="🔬 Mobile Testing">
+                                <option value="mobile-testing|basic-panel|Basic Wellness Panel|99|Complete blood count and metabolic panel">Basic Wellness Panel - $99</option>
+                                <option value="mobile-testing|comprehensive|Comprehensive Health Screen|199|Extended lab work including hormones">Comprehensive Health Screen - $199</option>
+                                <option value="mobile-testing|std-testing|STD Testing|149|Discreet and comprehensive screening">STD Testing - $149</option>
+                                <option value="mobile-testing|hormone-panel|Hormone Panel|175|Complete hormone level assessment">Hormone Panel - $175</option>
+                            </optgroup>
+                            <optgroup label="⭐ Membership Plans">
+                                <option value="membership|shot-pass|Monthly Shot Pass|99|Unlimited vitamin shots per month">Monthly Shot Pass - $99/month</option>
+                                <option value="membership|wellness-explorer|Wellness Explorer|399|2 IV treatments + unlimited shots monthly">Wellness Explorer - $399/month</option>
+                                <option value="membership|platinum|Wellness Platinum|799|Unlimited treatments + priority booking">Wellness Platinum - $799/month</option>
+                                <option value="membership|corporate|Corporate Package|1299|Team wellness programs and events">Corporate Package - $1299/month</option>
+                            </optgroup>
+                            <optgroup label="📱 Telehealth">
+                                <option value="telehealth|initial-consult|Initial Consultation|150|Comprehensive health assessment">Initial Consultation - $150</option>
+                                <option value="telehealth|follow-up|Follow-up Visit|75|Progress review and adjustments">Follow-up Visit - $75</option>
+                                <option value="telehealth|prescription|Prescription Management|100|Medication review and management">Prescription Management - $100</option>
+                                <option value="telehealth|wellness-plan|Wellness Planning|125|Personalized wellness strategy">Wellness Planning - $125</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="selected-service-info" id="selected-service-info">
+                        <div class="selected-service-name" id="selected-service-name"></div>
+                        <div class="selected-service-description" id="selected-service-description"></div>
+                        <div class="selected-service-price" id="selected-service-price"></div>
+                    </div>
+
+                    <div class="dropdown-cart-action">
+                        <button class="btn btn-large" onclick="addDropdownServiceToCart()" id="dropdown-add-to-cart" disabled>
+                            🛒 Add Selected Service to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- OR Separator -->
+                <div style="text-align: center; margin: 32px 0; color: var(--medium-gray); font-weight: 600; position: relative;">
+                    <div style="height: 1px; background: var(--border-color); margin: 16px 0;"></div>
+                    <span style="background: var(--light-gray); padding: 0 24px; font-size: 14px;">OR Browse by Category</span>
+                </div>
+
                 <!-- Main Service Categories -->
                 <div class="service-categories">
                     <div class="service-category" data-service="iv-therapy" data-intakeq-category="standard-iv">
@@ -922,6 +1103,7 @@
             init() {
                 this.bindEvents();
                 this.trackPageView();
+                this.dropdownSelection = null;
             }
 
             bindEvents() {
@@ -936,6 +1118,12 @@
                         this.selectOption(e.target.closest('.option-card'));
                     }
                 });
+
+                // Dropdown selection
+                const dropdown = document.getElementById('complete-service-dropdown');
+                if (dropdown) {
+                    dropdown.addEventListener('change', (e) => this.handleDropdownSelection(e.target));
+                }
             }
 
             selectService(categoryElement) {
@@ -1055,6 +1243,93 @@
                 } else {
                     addToCartBtn.disabled = true;
                     bookNowBtn.disabled = true;
+                }
+            }
+
+            // Handle dropdown service selection
+            handleDropdownSelection(selectElement) {
+                const value = selectElement.value;
+                if (!value) {
+                    document.getElementById('selected-service-info').classList.remove('show');
+                    document.getElementById('dropdown-add-to-cart').disabled = true;
+                    return;
+                }
+
+                const [category, serviceId, serviceName, price, description] = value.split('|');
+
+                // Update selected service info display
+                document.getElementById('selected-service-name').textContent = serviceName;
+                document.getElementById('selected-service-description').textContent = description;
+                document.getElementById('selected-service-price').textContent = `$${price}`;
+                document.getElementById('selected-service-info').classList.add('show');
+                document.getElementById('dropdown-add-to-cart').disabled = false;
+
+                // Store selection for cart
+                this.dropdownSelection = {
+                    category: category,
+                    id: serviceId,
+                    name: serviceName,
+                    price: parseFloat(price),
+                    description: description
+                };
+
+                // Track selection
+                this.trackEvent('dropdown_service_selected', {
+                    service_category: category,
+                    service_id: serviceId,
+                    service_name: serviceName,
+                    service_price: parseFloat(price)
+                });
+            }
+
+            // Add dropdown selected service to cart
+            addDropdownServiceToCart() {
+                if (!this.dropdownSelection) {
+                    this.showError('Please select a service from the dropdown first.');
+                    return;
+                }
+
+                try {
+                    const cartItem = {
+                        id: `${this.dropdownSelection.category}-${this.dropdownSelection.id}`,
+                        name: this.dropdownSelection.name,
+                        price: this.dropdownSelection.price,
+                        category: this.dropdownSelection.category,
+                        description: this.dropdownSelection.description
+                    };
+
+                    // Add to cart using the global cart system
+                    if (window.stayDrippedCart) {
+                        window.stayDrippedCart.addItem(cartItem);
+                        this.showSuccess(`${this.dropdownSelection.name} added to cart successfully!`);
+
+                        // Track cart addition
+                        this.trackEvent('add_to_cart_dropdown', {
+                            item_id: cartItem.id,
+                            item_name: cartItem.name,
+                            item_category: cartItem.category,
+                            price: cartItem.price
+                        });
+
+                        // Reset dropdown selection
+                        document.getElementById('complete-service-dropdown').value = '';
+                        document.getElementById('selected-service-info').classList.remove('show');
+                        document.getElementById('dropdown-add-to-cart').disabled = true;
+                        this.dropdownSelection = null;
+
+                        // Show cart widget
+                        setTimeout(() => {
+                            if (window.stayDrippedCart.showCart) {
+                                window.stayDrippedCart.showCart();
+                            }
+                        }, 1000);
+                    } else {
+                        console.warn('Cart system not available');
+                        this.showError('Cart system is currently unavailable. Please try booking directly.');
+                    }
+                } catch (error) {
+                    console.error('Error adding dropdown item to cart:', error);
+                    this.showError('Failed to add item to cart. Please try again.');
                 }
             }
 
