@@ -186,18 +186,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run again after a short delay to catch any dynamically added content
     setTimeout(removeHardcodedNavigation, 500);
 
-    // Initialize expandable navigation multiple times to ensure it works
+    // Initialize expandable navigation
     initializeExpandableNavigation();
 
-    // Try again after a short delay
+    // Try again after a delay if buttons aren't found initially
     setTimeout(() => {
-        initializeExpandableNavigation();
-    }, 1000);
-
-    // And once more after everything loads
-    setTimeout(() => {
-        initializeExpandableNavigation();
-    }, 3000);
+        if (!window.navigationInitialized) {
+            initializeExpandableNavigation();
+        }
+    }, 2000);
 
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
