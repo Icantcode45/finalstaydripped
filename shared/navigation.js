@@ -32,13 +32,53 @@ function removeHardcodedNavigation() {
     console.log('Navigation duplication cleanup completed');
 }
 
+// Horizontal Expandable Navigation Functionality
+function initializeExpandableNavigation() {
+    const serviceButtons = document.querySelectorAll('.service-category-btn');
+    const expansions = document.querySelectorAll('.nav-expansion');
+
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const category = this.getAttribute('data-category');
+            const expansion = document.querySelector(`.nav-expansion[data-category="${category}"]`);
+            const isCurrentlyExpanded = this.classList.contains('expanded');
+
+            // Close all expansions and remove expanded state from all buttons
+            serviceButtons.forEach(btn => btn.classList.remove('expanded'));
+            expansions.forEach(exp => exp.classList.remove('expanded'));
+
+            // If this wasn't expanded, expand it
+            if (!isCurrentlyExpanded) {
+                this.classList.add('expanded');
+                if (expansion) {
+                    expansion.classList.add('expanded');
+                }
+            }
+        });
+    });
+
+    // Close expansions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-expandable')) {
+            serviceButtons.forEach(btn => btn.classList.remove('expanded'));
+            expansions.forEach(exp => exp.classList.remove('expanded'));
+        }
+    });
+}
+
 // Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation duplication first
     removeHardcodedNavigation();
-    
+
     // Run again after a short delay to catch any dynamically added content
     setTimeout(removeHardcodedNavigation, 500);
+
+    // Initialize expandable navigation
+    initializeExpandableNavigation();
 
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
