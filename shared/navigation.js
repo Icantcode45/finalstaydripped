@@ -32,13 +32,169 @@ function removeHardcodedNavigation() {
     console.log('Navigation duplication cleanup completed');
 }
 
+// Horizontal Expandable Navigation Functionality
+function initializeExpandableNavigation() {
+    // Prevent duplicate initialization
+    if (window.navigationInitialized) {
+        console.log('Navigation already initialized, skipping...');
+        return;
+    }
+
+    console.log('Initializing expandable navigation...');
+
+    const serviceButtons = document.querySelectorAll('.service-category-btn');
+    const expansions = document.querySelectorAll('.nav-expansion');
+
+    console.log('Found service buttons:', serviceButtons.length);
+    console.log('Found expansions:', expansions.length);
+
+    if (serviceButtons.length === 0) {
+        console.warn('No service category buttons found');
+        return;
+    }
+
+    // Remove any existing event listeners by cloning buttons
+    serviceButtons.forEach((button, index) => {
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+
+        newButton.addEventListener('click', function(e) {
+            console.log('Service button clicked:', this.getAttribute('data-category'));
+            e.preventDefault();
+            e.stopPropagation();
+
+            const category = this.getAttribute('data-category');
+            const expansion = document.querySelector(`.nav-expansion[data-category="${category}"]`);
+            const isCurrentlyExpanded = this.classList.contains('expanded');
+
+            console.log('Category:', category, 'Expansion found:', !!expansion, 'Currently expanded:', isCurrentlyExpanded);
+
+            // Get fresh references after cloning
+            const allButtons = document.querySelectorAll('.service-category-btn');
+            const allExpansions = document.querySelectorAll('.nav-expansion');
+
+            // Close all expansions and remove expanded state from all buttons
+            allButtons.forEach(btn => btn.classList.remove('expanded'));
+            allExpansions.forEach(exp => exp.classList.remove('expanded'));
+
+            // If this wasn't expanded, expand it
+            if (!isCurrentlyExpanded) {
+                this.classList.add('expanded');
+                if (expansion) {
+                    expansion.classList.add('expanded');
+                    console.log('Expansion opened for:', category);
+                } else {
+                    console.warn('No expansion found for category:', category);
+                }
+            }
+        });
+    });
+
+    // Close expansions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-expandable')) {
+            const allButtons = document.querySelectorAll('.service-category-btn');
+            const allExpansions = document.querySelectorAll('.nav-expansion');
+            allButtons.forEach(btn => btn.classList.remove('expanded'));
+            allExpansions.forEach(exp => exp.classList.remove('expanded'));
+        }
+    }, { once: false });
+
+    console.log('Expandable navigation initialized successfully');
+    window.navigationInitialized = true;
+}
+
+// Listen for navigation loaded event and re-initialize
+window.addEventListener('navigationLoaded', function(event) {
+    if (event.detail.success) {
+        console.log('Navigation loaded, initializing expandable functionality...');
+        // Reset initialization flag
+        window.navigationInitialized = false;
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            initializeExpandableNavigation();
+        }, 100);
+    }
+});
+
+// Use MutationObserver to watch for navigation changes (prevent duplicate declaration)
+if (!window.navigationObserver) {
+    window.navigationObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                // Check if any added nodes contain service category buttons
+                for (let node of mutation.addedNodes) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const buttons = node.querySelectorAll ? node.querySelectorAll('.service-category-btn') : [];
+                        if (buttons.length > 0 || node.classList?.contains('service-category-btn')) {
+                            console.log('Navigation buttons detected, reinitializing...');
+                            setTimeout(() => {
+                                initializeExpandableNavigation();
+                            }, 50);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    // Start observing the document for navigation changes
+    window.navigationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
+// Global test function for debugging
+window.testNavigation = function() {
+    console.log('=== Navigation Test ===');
+    const buttons = document.querySelectorAll('.service-category-btn');
+    const expansions = document.querySelectorAll('.nav-expansion');
+
+    console.log('Service buttons found:', buttons.length);
+    console.log('Expansions found:', expansions.length);
+
+    buttons.forEach((btn, index) => {
+        console.log(`Button ${index + 1}:`, {
+            category: btn.getAttribute('data-category'),
+            text: btn.textContent.trim(),
+            hasClickListener: btn.onclick !== null
+        });
+    });
+
+    if (buttons.length > 0) {
+        console.log('Attempting to click first button...');
+        buttons[0].click();
+    }
+
+    return { buttons: buttons.length, expansions: expansions.length };
+};
+
+// Force initialization on any page load
+window.forceNavInit = function() {
+    console.log('Force initializing navigation...');
+    window.navigationInitialized = false;
+    initializeExpandableNavigation();
+};
+
 // Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation duplication first
     removeHardcodedNavigation();
-    
+
     // Run again after a short delay to catch any dynamically added content
     setTimeout(removeHardcodedNavigation, 500);
+
+    // Initialize expandable navigation
+    initializeExpandableNavigation();
+
+    // Try again after a delay if buttons aren't found initially
+    setTimeout(() => {
+        if (!window.navigationInitialized) {
+            initializeExpandableNavigation();
+        }
+    }, 2000);
 
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -116,6 +272,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+
+    // Handle new navigation categories
+    const newCategories = ['patient-resources', 'events-corporate'];
+    newCategories.forEach(function(category) {
+        const button = document.querySelector(`[data-category="${category}"]`);
+        const expansion = document.querySelector(`.nav-expansion[data-category="${category}"]`);
+
+        if (button && expansion) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isExpanded = expansion.classList.contains('expanded');
+
+                // Close all other expansions
+                document.querySelectorAll('.nav-expansion').forEach(exp => exp.classList.remove('expanded'));
+                document.querySelectorAll('.service-category-btn').forEach(btn => btn.classList.remove('expanded'));
+
+                // Toggle current expansion
+                if (!isExpanded) {
+                    expansion.classList.add('expanded');
+                    button.classList.add('expanded');
+                }
+            });
+        }
     });
 
     // Close menu when clicking on menu items (except dropdowns)
