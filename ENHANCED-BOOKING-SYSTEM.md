@@ -159,7 +159,9 @@ The system is fully responsive with:
 ### Analytics Events Tracked:
 - `service_category_selected`
 - `service_option_selected`
+- `dropdown_service_selected` (NEW!)
 - `add_to_cart`
+- `add_to_cart_dropdown` (NEW!)
 - `booking_attempt`
 - `page_view`
 
