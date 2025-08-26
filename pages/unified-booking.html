@@ -826,56 +826,250 @@
                     <div class="service-dropdown">
                         <select class="service-select" id="complete-service-dropdown">
                             <option value="">Select a service...</option>
-                            <optgroup label="💧 IV Therapy">
-                                <option value="iv-therapy|hydration-plus|Hydration Plus|149|Essential electrolytes and fluids for optimal hydration">Hydration Plus - $149</option>
-                                <option value="iv-therapy|energy-boost|Energy Boost IV|199|B-complex vitamins and nutrients for sustained energy">Energy Boost IV - $199</option>
-                                <option value="iv-therapy|immunity-support|Immunity Support|225|Vitamin C, zinc, and immune-boosting nutrients">Immunity Support - $225</option>
-                                <option value="iv-therapy|athletic-recovery|Athletic Recovery|275|Amino acids and nutrients for muscle recovery">Athletic Recovery - $275</option>
-                                <option value="iv-therapy|myers-cocktail|Myers' Cocktail|250|Complete vitamin and mineral infusion">Myers' Cocktail - $250</option>
-                                <option value="iv-therapy|hangover-relief|Hangover Relief|199|Rapid recovery from dehydration and toxins">Hangover Relief - $199</option>
+
+                            <!-- BASIC IV THERAPY -->
+                            <optgroup label="💧 Basic IV Therapy">
+                                <option value="iv-therapy|rehydrate|Rehydrate IV Drip|125|Basic hydration therapy with essential electrolytes">Rehydrate IV Drip - $125</option>
+                                <option value="iv-therapy|rehydrate-plus|Rehydrate Plus IV Drip|150|Enhanced hydration with vitamins/minerals">Rehydrate Plus IV Drip - $150</option>
                             </optgroup>
-                            <optgroup label="🧬 NAD+ & Peptides">
-                                <option value="nad-peptides|basic-nad|Basic NAD+ (250mg)|350|Introduction to NAD+ therapy for cellular repair">Basic NAD+ (250mg) - $350</option>
-                                <option value="nad-peptides|premium-nad|Premium NAD+ (500mg)|550|Enhanced anti-aging and cellular optimization">Premium NAD+ (500mg) - $550</option>
-                                <option value="nad-peptides|bpc-157|BPC-157 Healing Peptide|120|Tissue repair and gut health optimization">BPC-157 Healing Peptide - $120</option>
-                                <option value="nad-peptides|growth-peptides|Growth Hormone Peptides|180|Ipamorelin + CJC-1295 for optimization">Growth Hormone Peptides - $180</option>
+
+                            <!-- STANDARD IV THERAPY -->
+                            <optgroup label="💧 Standard IV Therapy">
+                                <option value="iv-therapy|jr-myers|Jr. Myers' Cocktail IV Drip|175|Foundational nutrient blend for general wellness">Jr. Myers' Cocktail IV Drip - $175</option>
+                                <option value="iv-therapy|myers|Myers' Cocktail IV Drip|200|Classic Myers' formula for comprehensive wellness">Myers' Cocktail IV Drip - $200</option>
+                                <option value="iv-therapy|mega-myers|Mega Myers' Cocktail IV Drip|250|Maximum strength Myers' formula">Mega Myers' Cocktail IV Drip - $250</option>
+                                <option value="iv-therapy|hangover|The Day After Hangover Relief IV Drip|175|Rapid hangover recovery with anti-nausea">The Day After Hangover Relief IV Drip - $175</option>
                             </optgroup>
-                            <optgroup label="💉 Vitamin Injections">
-                                <option value="vitamin-shots|b12-shot|B12 Energy Shot|35|1000mcg instant energy boost">B12 Energy Shot - $35</option>
-                                <option value="vitamin-shots|vitamin-d|Vitamin D3 Boost|45|50,000 IU immune support">Vitamin D3 Boost - $45</option>
-                                <option value="vitamin-shots|b-complex|B-Complex Shot|50|Complete B-vitamin blend">B-Complex Shot - $50</option>
-                                <option value="vitamin-shots|fat-burner|Fat Burner Shot|65|Lipotropic blend for metabolism">Fat Burner Shot - $65</option>
-                                <option value="vitamin-shots|b12-package|B12 4-Pack|120|Four B12 shots for extended benefits">B12 4-Pack - $120</option>
+
+                            <!-- SPECIALTY IV THERAPY -->
+                            <optgroup label="💧 Specialty IV Therapy">
+                                <option value="iv-therapy|sun-devil|The Sun Devil Energy Booster IV Drip|225|High-energy formula for performance">The "Sun Devil" Energy Booster IV Drip - $225</option>
+                                <option value="iv-therapy|d-book|The D-Book Performance Booster IV Drip|275|Elite athletic performance blend">The "D-Book" Performance Booster IV Drip - $275</option>
+                                <option value="iv-therapy|diamond-back|The Diamond-Back Immune Booster IV Drip|200|Immune support with high-dose vitamins">The "Diamond-Back" Immune Booster IV Drip - $200</option>
+                                <option value="iv-therapy|scottsdale|The Scottsdale Beauty IV Bag|250|Beauty/anti-aging with glutathione and biotin">The "Scottsdale" Beauty IV Bag - $250</option>
+                                <option value="iv-therapy|stress-relief|The Stress Relief IV Drip|200|Calming formula for stress reduction">The Stress Relief IV Drip - $200</option>
+                                <option value="iv-therapy|mental-clarity|The Mental Clarity IV Drip|225|Cognitive enhancement with nootropic nutrients">The Mental Clarity IV Drip - $225</option>
+                                <option value="iv-therapy|anti-inflammatory|The Anti-Inflammatory IV Drip|275|Anti-inflammatory formula with curcumin">The Anti-Inflammatory IV Drip - $275</option>
+                                <option value="iv-therapy|stay-dripped|The Stay Dripped Special IV Drip|325|Signature comprehensive vitamin formula">The Stay Dripped Special IV Drip - $325</option>
                             </optgroup>
-                            <optgroup label="⚖️ Weight Management">
-                                <option value="weight-management|semaglutide|Semaglutide Program|199|Weekly GLP-1 injections with coaching">Semaglutide Program - $199</option>
-                                <option value="weight-management|tirzepatide|Tirzepatide Program|299|Advanced dual-action weight loss">Tirzepatide Program - $299</option>
-                                <option value="weight-management|metabolic-iv|Metabolic IV Package|175|Fat-burning IV with supplements">Metabolic IV Package - $175</option>
-                                <option value="weight-management|consultation|Weight Loss Consultation|150|Comprehensive assessment and plan">Weight Loss Consultation - $150</option>
+
+                            <!-- PREMIUM IV THERAPY -->
+                            <optgroup label="💧 Premium IV Therapy">
+                                <option value="iv-therapy|gold|The Gold Ultimate Hydration & Recovery IV Drip|300|Premium hydration and recovery formula">The "Gold" Ultimate Hydration & Recovery IV Drip - $300</option>
+                                <option value="iv-therapy|platinum|The Platinum Ultimate Hydration & Recovery IV Drip|350|Elite hydration and recovery treatment">The "Platinum" Ultimate Hydration & Recovery IV Drip - $350</option>
+                                <option value="iv-therapy|arizona|The Arizona Detox & Cleanse IV Drip|275|Complete detox and cleanse formula">The "Arizona" Detox & Cleanse IV Drip - $275</option>
+                                <option value="iv-therapy|metabolism|Metabolism Booster IV Drip|225|Metabolic enhancement for weight management">Metabolism Booster IV Drip - $225</option>
                             </optgroup>
-                            <optgroup label="❤️ Sexual Wellness">
-                                <option value="hormone-therapy|testosterone|Testosterone Therapy|125|Hormone optimization for men">Testosterone Therapy - $125</option>
-                                <option value="hormone-therapy|bioidentical|Bioidentical Hormones|150|Natural hormone replacement">Bioidentical Hormones - $150</option>
-                                <option value="hormone-therapy|sexual-enhancement|Sexual Enhancement|125|Treatments for enhanced performance">Sexual Enhancement - $125</option>
-                                <option value="hormone-therapy|consultation|Hormone Consultation|100|Comprehensive hormone assessment">Hormone Consultation - $100</option>
+
+                            <!-- NAD+ IV THERAPY -->
+                            <optgroup label="🧬 NAD+ IV Therapy">
+                                <option value="nad-therapy|basic|Basic NAD+ IV Drip|450|Introduction NAD+ for cellular repair (250mg)">Basic NAD+ IV Drip - $450</option>
+                                <option value="nad-therapy|fountain|Fountain of Youth NAD+ IV Drip|650|Enhanced anti-aging NAD+ formula">Fountain of Youth NAD+ IV Drip - $650</option>
+                                <option value="nad-therapy|diamond|Diamond NAD+ IV Drip|850|Premium NAD+ therapy experience">Diamond NAD+ IV Drip - $850</option>
+                                <option value="nad-therapy|elite|Elite NAD+ IV Drip|1200|Ultimate NAD+ treatment protocol">Elite NAD+ IV Drip - $1200</option>
+                                <option value="nad-therapy|nad-infusion|NAD+ IV Infusion|150|Restore cellular energy (250-500mg per session)">NAD+ IV Infusion - $150</option>
+                                <option value="nad-therapy|dna-repair|DNA Repair Protocol|200|High-dose NAD+ with DNA repair peptides">DNA Repair Protocol - $200</option>
+                                <option value="nad-therapy|longevity|Longevity Combo Therapy|250|NAD+ IV with anti-aging peptides">Longevity Combo Therapy - $250</option>
                             </optgroup>
-                            <optgroup label="🔬 Mobile Testing">
-                                <option value="mobile-testing|basic-panel|Basic Wellness Panel|99|Complete blood count and metabolic panel">Basic Wellness Panel - $99</option>
-                                <option value="mobile-testing|comprehensive|Comprehensive Health Screen|199|Extended lab work including hormones">Comprehensive Health Screen - $199</option>
-                                <option value="mobile-testing|std-testing|STD Testing|149|Discreet and comprehensive screening">STD Testing - $149</option>
-                                <option value="mobile-testing|hormone-panel|Hormone Panel|175|Complete hormone level assessment">Hormone Panel - $175</option>
+
+                            <!-- HEALING & RECOVERY PEPTIDES -->
+                            <optgroup label="🧬 Healing & Recovery Peptides">
+                                <option value="peptides|bpc-157|BPC-157 (Healing Peptide)|120|Tissue repair and gut health optimization">BPC-157 (Healing Peptide) - $120</option>
+                                <option value="peptides|tb-500|TB-500 (Thymosin β4)|130|Tissue repair and wound healing">TB-500 (Thymosin β4) - $130</option>
+                                <option value="peptides|ghk-cu|GHK-Cu (Copper Peptide)|100|Skin regeneration and anti-aging">GHK-Cu (Copper Peptide) - $100</option>
                             </optgroup>
-                            <optgroup label="⭐ Membership Plans">
-                                <option value="membership|shot-pass|Monthly Shot Pass|99|Unlimited vitamin shots per month">Monthly Shot Pass - $99/month</option>
-                                <option value="membership|wellness-explorer|Wellness Explorer|399|2 IV treatments + unlimited shots monthly">Wellness Explorer - $399/month</option>
-                                <option value="membership|platinum|Wellness Platinum|799|Unlimited treatments + priority booking">Wellness Platinum - $799/month</option>
-                                <option value="membership|corporate|Corporate Package|1299|Team wellness programs and events">Corporate Package - $1299/month</option>
+
+                            <!-- IMMUNE & PERFORMANCE PEPTIDES -->
+                            <optgroup label="🧬 Immune & Performance Peptides">
+                                <option value="peptides|thymosin|Thymosin Alpha-1|140|Immune modulation and support">Thymosin Alpha-1 - $140</option>
+                                <option value="peptides|follistatin|Follistatin-344|250|Myostatin inhibitor for muscle growth">Follistatin-344 - $250</option>
+                                <option value="peptides|pt-141|PT-141 (Bremelanotide)|75|Libido and sexual function enhancement">PT-141 (Bremelanotide) - $75</option>
+                                <option value="peptides|dsip|DSIP (Deep Sleep Peptide)|85|Improves deep sleep quality">DSIP (Deep Sleep Peptide) - $85</option>
                             </optgroup>
-                            <optgroup label="📱 Telehealth">
-                                <option value="telehealth|initial-consult|Initial Consultation|150|Comprehensive health assessment">Initial Consultation - $150</option>
-                                <option value="telehealth|follow-up|Follow-up Visit|75|Progress review and adjustments">Follow-up Visit - $75</option>
-                                <option value="telehealth|prescription|Prescription Management|100|Medication review and management">Prescription Management - $100</option>
-                                <option value="telehealth|wellness-plan|Wellness Planning|125|Personalized wellness strategy">Wellness Planning - $125</option>
+
+                            <!-- COGNITIVE PEPTIDES -->
+                            <optgroup label="🧬 Cognitive Enhancement Peptides">
+                                <option value="peptides|cerebrolysin|Cerebrolysin|200|Neuroprotective peptide complex for cognition">Cerebrolysin - $200</option>
+                                <option value="peptides|nootropic-stack|Nootropic Peptide Stack|160|Cognitive enhancement peptide combinations">Nootropic Peptide Stack - $160</option>
+                                <option value="peptides|semax|N-Acetyl Semax Amidate|145|Nootropic peptide (intranasal)">N-Acetyl Semax Amidate - $145</option>
+                                <option value="peptides|selank|Selank|115|Anxiolytic/nootropic peptide (intranasal)">Selank - $115</option>
+                            </optgroup>
+
+                            <!-- ANTI-AGING PEPTIDES -->
+                            <optgroup label="🧬 Anti-Aging Peptides">
+                                <option value="peptides|humanin|Humanin|155|Mitochondrial peptide for cardiovascular support">Humanin - $155</option>
+                                <option value="peptides|mots-c|MOTS-c|125|Mitochondrial-derived peptide for metabolism">MOTS-c - $125</option>
+                                <option value="peptides|aod-9604|AOD-9604|95|Fat-burning peptide fragment">AOD-9604 - $95</option>
+                                <option value="peptides|aicar|AICAR|185|AMPK activator for endurance">AICAR - $185</option>
+                            </optgroup>
+
+                            <!-- GROWTH FACTOR PEPTIDES -->
+                            <optgroup label="🧬 Growth Factor Peptides">
+                                <option value="peptides|igf-1-lr3|IGF-1 LR3|175|Long-acting IGF-1 for muscle growth">IGF-1 LR3 - $175</option>
+                                <option value="peptides|igf-1-des|IGF-1 DES|165|Short-acting IGF-1 variant">IGF-1 DES - $165</option>
+                                <option value="peptides|mgf|MGF|145|Muscle growth factor">MGF - $145</option>
+                                <option value="peptides|peg-mgf|PEG-MGF|155|PEG-modified muscle growth factor">PEG-MGF - $155</option>
+                            </optgroup>
+
+                            <!-- GROWTH HORMONE PEPTIDES -->
+                            <optgroup label="🧬 Growth Hormone Peptides">
+                                <option value="peptides|ghrp-6|GHRP-6|110|Growth hormone releasing peptide">GHRP-6 - $110</option>
+                                <option value="peptides|ghrp-2|GHRP-2|125|Enhanced growth hormone releasing peptide">GHRP-2 - $125</option>
+                                <option value="peptides|hexarelin|Hexarelin|150|Potent growth hormone secretagogue">Hexarelin - $150</option>
+                                <option value="peptides|sermorelin|Sermorelin|135|Growth hormone releasing hormone analog">Sermorelin - $135</option>
+                                <option value="peptides|cjc-1295|CJC-1295 with DAC|165|Long-acting growth hormone releasing hormone">CJC-1295 with DAC - $165</option>
+                                <option value="peptides|mod-grf|MOD GRF 1-29|115|Modified growth hormone releasing factor">MOD GRF 1-29 - $115</option>
+                                <option value="peptides|hgh-frag|HGH Fragment 176-191|90|Fat-burning growth hormone fragment">HGH Fragment 176-191 - $90</option>
+                            </optgroup>
+
+                            <!-- SPECIALTY PEPTIDES -->
+                            <optgroup label="🧬 Specialty Peptides">
+                                <option value="peptides|melanotan-ii|Melanotan II (MT-2)|80|Tanning peptide with appetite effects">Melanotan II (MT-2) - $80</option>
+                                <option value="peptides|melanotan-i|Melanotan I|90|Enhanced tanning peptide">Melanotan I - $90</option>
+                                <option value="peptides|pnc-27|PNC-27|225|Membrane-active research peptide">PNC-27 - $225</option>
+                                <option value="peptides|ll-37|LL-37 (CAP-18)|135|Antimicrobial peptide">LL-37 (CAP-18) - $135</option>
+                                <option value="peptides|kpv|KPV (Lys-Pro-Val)|105|Anti-inflammatory peptide for gut health">KPV (Lys-Pro-Val) - $105</option>
+                                <option value="peptides|blend|Peptide Blend Complex|210|Multi-peptide customized combination">Peptide Blend Complex - $210</option>
+                            </optgroup>
+
+                            <!-- VITAMIN INJECTIONS -->
+                            <optgroup label="💉 Individual Vitamin Injections">
+                                <option value="vitamin-shots|b12|Vitamin B12 Injection|13|Methylcobalamin 1000mcg for energy">Vitamin B12 Injection - $13</option>
+                                <option value="vitamin-shots|d3|Vitamin D3 Injection|28|50,000 IU for immune and bone health">Vitamin D3 Injection - $28</option>
+                                <option value="vitamin-shots|c|Vitamin C Injection|23|1000mg antioxidant and immune support">Vitamin C Injection - $23</option>
+                                <option value="vitamin-shots|magnesium|Magnesium Injection|18|200mg magnesium sulfate for muscle relaxation">Magnesium Injection - $18</option>
+                                <option value="vitamin-shots|glutathione|Glutathione Injection|48|600mg for detox and skin health">Glutathione Injection - $48</option>
+                                <option value="vitamin-shots|myers-injection|Myers' Cocktail Injection|170|Comprehensive vitamin/mineral injection">Myers' Cocktail Injection - $170</option>
+                                <option value="vitamin-shots|tri-amino|Tri-Amino Blend Injection|33|L-Arginine, L-Ornithine, L-Lysine for recovery">Tri-Amino Blend Injection - $33</option>
+                                <option value="vitamin-shots|zinc|Zinc Injection|8|5mg zinc sulfate for immune support">Zinc Injection - $8</option>
+                                <option value="vitamin-shots|biotin|Biotin Injection|13|10,000mcg for hair, skin, and nails">Biotin Injection - $13</option>
+                                <option value="vitamin-shots|l-carnitine|L-Carnitine Injection|38|500mg for fat metabolism">L-Carnitine Injection - $38</option>
+                            </optgroup>
+
+                            <!-- SPECIALTY SHOTS -->
+                            <optgroup label="💉 Specialty Shots">
+                                <option value="vitamin-shots|immune-booster|Immune Booster Shot|50|Comprehensive immune support blend">Immune Booster Shot - $50</option>
+                                <option value="vitamin-shots|biotin-beauty|Biotin Beauty Shot|35|Beauty-focused biotin blend">Biotin Beauty Shot - $35</option>
+                                <option value="vitamin-shots|glutathione-shot|Glutathione Shot|55|Enhanced glutathione formulation">Glutathione Shot - $55</option>
+                            </optgroup>
+
+                            <!-- WEIGHT MANAGEMENT -->
+                            <optgroup label="⚖️ Weight Management Programs">
+                                <option value="weight-management|semaglutide|Semaglutide (Ozempic) Program|350|FDA-approved GLP-1 medication (monthly)">Semaglutide (Ozempic) Program - $350/month</option>
+                                <option value="weight-management|tirzepatide|Tirzepatide (Mounjaro) Program|450|Dual-action weight loss medication (monthly)">Tirzepatide (Mounjaro) Program - $450/month</option>
+                                <option value="weight-management|lipotropic|Lipotropic Injections|75|MIC + B12 metabolism boosters (weekly)">Lipotropic Injections - $75/week</option>
+                                <option value="weight-management|metabolic-support|Metabolic Support IV|200|L-carnitine, B-complex, ALA minerals">Metabolic Support IV - $200</option>
+                            </optgroup>
+
+                            <!-- SEXUAL WELLNESS -->
+                            <optgroup label="❤️ Sexual Wellness IVs">
+                                <option value="sexual-wellness|vitality|Vitality Boost IV|185|Energy and stamina support">Vitality Boost IV - $185</option>
+                                <option value="sexual-wellness|performance|Performance Enhancement IV|225|Physical performance and endurance">Performance Enhancement IV - $225</option>
+                                <option value="sexual-wellness|hormone-balance|Hormone Balance IV|195|Hormone production and balance support">Hormone Balance IV - $195</option>
+                                <option value="sexual-wellness|wellness-optimization|Wellness Optimization IV|275|Comprehensive vitality complex">Wellness Optimization IV - $275</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - HORMONE -->
+                            <optgroup label="🔬 Hormone Testing">
+                                <option value="mobile-testing|hormone-comprehensive|Comprehensive Hormone Panel|299|Complete hormone analysis">Comprehensive Hormone Panel - $299</option>
+                                <option value="mobile-testing|womens-hormone|Women's Hormone Balance|249|Female hormone optimization panel">Women's Hormone Balance - $249</option>
+                                <option value="mobile-testing|mens-hormone|Men's Hormone Optimization|249|Male hormone optimization panel">Men's Hormone Optimization - $249</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - WELLNESS -->
+                            <optgroup label="🔬 Wellness & Nutrition Testing">
+                                <option value="mobile-testing|vitamin-mineral|Complete Vitamin & Mineral Panel|199|Comprehensive nutritional analysis">Complete Vitamin & Mineral Panel - $199</option>
+                                <option value="mobile-testing|antioxidant|Antioxidant & Inflammation|179|Oxidative stress assessment">Antioxidant & Inflammation - $179</option>
+                                <option value="mobile-testing|nutrition|Nutrition Assessment Panel|249|Complete nutritional status">Nutrition Assessment Panel - $249</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - CARDIOVASCULAR -->
+                            <optgroup label="🔬 Cardiovascular Testing">
+                                <option value="mobile-testing|lipid|Advanced Lipid Panel|229|Comprehensive cardiovascular risk">Advanced Lipid Panel - $229</option>
+                                <option value="mobile-testing|heart-disease|Heart Disease Risk Assessment|199|Cardiac risk evaluation">Heart Disease Risk Assessment - $199</option>
+                                <option value="mobile-testing|cardiovascular|Cardiovascular Health Panel|329|Complete heart health assessment">Cardiovascular Health Panel - $329</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - METABOLISM -->
+                            <optgroup label="🔬 Metabolism & Weight Testing">
+                                <option value="mobile-testing|metabolic|Metabolic Health Panel|249|Complete metabolic assessment">Metabolic Health Panel - $249</option>
+                                <option value="mobile-testing|diabetes|Diabetes Risk Assessment|149|Diabetes screening and prevention">Diabetes Risk Assessment - $149</option>
+                                <option value="mobile-testing|metabolic-function|Metabolic Function Panel|279|Advanced metabolic analysis">Metabolic Function Panel - $279</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - GUT HEALTH -->
+                            <optgroup label="🔬 Gut Health Testing">
+                                <option value="mobile-testing|microbiome|Comprehensive Microbiome Analysis|299|Complete gut microbiome assessment">Comprehensive Microbiome Analysis - $299</option>
+                                <option value="mobile-testing|sibo|SIBO & Digestive Health|199|Small intestinal bacterial overgrowth">SIBO & Digestive Health - $199</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - TOXINS -->
+                            <optgroup label="🔬 Toxins & Heavy Metals Testing">
+                                <option value="mobile-testing|heavy-metals|Heavy Metals Panel|199|Toxic metal exposure assessment">Heavy Metals Panel - $199</option>
+                                <option value="mobile-testing|environmental|Environmental Toxins|249|Environmental exposure analysis">Environmental Toxins - $249</option>
+                                <option value="mobile-testing|environmental-panel|Environmental Toxins Panel|379|Comprehensive environmental assessment">Environmental Toxins Panel - $379</option>
+                                <option value="mobile-testing|mold|Mold Exposure Panel|329|Mold and mycotoxin testing">Mold Exposure Panel - $329</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - IMMUNE -->
+                            <optgroup label="🔬 Immune System Testing">
+                                <option value="mobile-testing|immune|Comprehensive Immune Panel|279|Complete immune system analysis">Comprehensive Immune Panel - $279</option>
+                                <option value="mobile-testing|autoimmune|Autoimmune Disease Screening|199|Autoimmune condition screening">Autoimmune Disease Screening - $199</option>
+                                <option value="mobile-testing|autoimmune-panel|Autoimmune Panel|349|Advanced autoimmune assessment">Autoimmune Panel - $349</option>
+                                <option value="mobile-testing|immune-system|Immune System Panel|299|Immune function evaluation">Immune System Panel - $299</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - ALLERGIES -->
+                            <optgroup label="🔬 Allergies & Sensitivities Testing">
+                                <option value="mobile-testing|environmental-allergy|Environmental Allergy Panel|299|Environmental allergen testing">Environmental Allergy Panel - $299</option>
+                                <option value="mobile-testing|food-sensitivity|Food Sensitivity Panel|349|Food sensitivity and intolerance">Food Sensitivity Panel - $349</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - SEX-SPECIFIC -->
+                            <optgroup label="🔬 Sex-Specific Testing">
+                                <option value="mobile-testing|female|Female Health Panel|399|Comprehensive women's health">Female Health Panel - $399</option>
+                                <option value="mobile-testing|male|Male Health Panel|399|Comprehensive men's health">Male Health Panel - $399</option>
+                                <option value="mobile-testing|pregnancy|Pregnancy & Prenatal Care Panel|349|Prenatal and pregnancy health">Pregnancy & Prenatal Care Panel - $349</option>
+                            </optgroup>
+
+                            <!-- MOBILE TESTING - GENERAL -->
+                            <optgroup label="🔬 General Health Testing">
+                                <option value="mobile-testing|basic|Basic Laboratory Markers|199|Essential health markers">Basic Laboratory Markers - $199</option>
+                                <option value="mobile-testing|adrenal|Adrenal & Stress Panel|279|Stress and adrenal function">Adrenal & Stress Panel - $279</option>
+                                <option value="mobile-testing|covid|COVID-19 Testing Panel|149|COVID-19 screening and testing">COVID-19 Testing Panel - $149</option>
+                                <option value="mobile-testing|infection|Infection Screening Panel|249|Infectious disease screening">Infection Screening Panel - $249</option>
+                                <option value="mobile-testing|lyme|Lyme & Tickborne Disease Panel|399|Lyme disease and co-infections">Lyme & Tickborne Disease Panel - $399</option>
+                                <option value="mobile-testing|medications|Medications & Drugs Panel|199|Drug screening and metabolism">Medications & Drugs Panel - $199</option>
+                                <option value="mobile-testing|oral|Oral Health Panel|199|Oral health and periodontal">Oral Health Panel - $199</option>
+                                <option value="mobile-testing|oxidative|Oxidative Stress Panel|279|Oxidative stress and antioxidants">Oxidative Stress Panel - $279</option>
+                                <option value="mobile-testing|pancreatic|Pancreatic Function Panel|299|Pancreatic health assessment">Pancreatic Function Panel - $299</option>
+                                <option value="mobile-testing|renal|Renal Function Panel|249|Kidney function evaluation">Renal Function Panel - $249</option>
+                                <option value="mobile-testing|sleep|Sleep Quality Panel|329|Sleep disorder assessment">Sleep Quality Panel - $329</option>
+                                <option value="mobile-testing|thyroid|Thyroid Function Panel|299|Complete thyroid evaluation">Thyroid Function Panel - $299</option>
+                                <option value="mobile-testing|tumor|Tumor Markers Panel|399|Cancer screening markers">Tumor Markers Panel - $399</option>
+                            </optgroup>
+
+                            <!-- MEMBERSHIP PLANS -->
+                            <optgroup label="⭐ Monthly Membership Plans">
+                                <option value="membership|shot-pass|Shot Pass|99|4 vitamin injection shots per month">Shot Pass - $99/month</option>
+                                <option value="membership|wellness-explorer|Wellness Explorer|199|2 IV therapy sessions + 4 vitamin shots monthly">Wellness Explorer - $199/month</option>
+                                <option value="membership|wellness-elite|Wellness Elite|349|4 IV sessions + 8 vitamin shots monthly">Wellness Elite - $349/month</option>
+                                <option value="membership|wellness-platinum|Wellness Platinum|599|Unlimited IV therapy and injections">Wellness Platinum - $599/month</option>
+                            </optgroup>
+
+                            <!-- VITAMIN INJECTION MEMBERSHIPS -->
+                            <optgroup label="⭐ Vitamin Injection Memberships">
+                                <option value="membership|basic-plan|Basic Plan|199|6 injections per year + 20% off additional (yearly)">Basic Plan - $199/year</option>
+                                <option value="membership|premium-plan|Premium Plan|399|12 injections per year + 30% off additional (yearly)">Premium Plan - $399/year</option>
+                                <option value="membership|elite-plan|Elite Plan|899|24 injections per year + 50% off other services (yearly)">Elite Plan - $899/year</option>
+                            </optgroup>
+
+                            <!-- TELEHEALTH SERVICES -->
+                            <optgroup label="📱 Telehealth Consultations">
+                                <option value="telehealth|virtual|Virtual Consultations|150|60-minute medical consultations via video">Virtual Consultations - $150</option>
+                                <option value="telehealth|follow-up|Follow-up Care|75|30-minute monitoring and adjustment sessions">Follow-up Care - $75</option>
+                                <option value="telehealth|prescription|Prescription Management|50|Medication reviews and refills">Prescription Management - $50</option>
+                                <option value="telehealth|health-coaching|Health Coaching|100|Lifestyle coaching and nutrition planning">Health Coaching - $100</option>
                             </optgroup>
                         </select>
                     </div>
@@ -942,7 +1136,7 @@
                     </div>
 
                     <div class="service-category" data-service="mobile-testing" data-intakeq-category="basic-iv">
-                        <div class="selection-indicator">✓</div>
+                        <div class="selection-indicator">��</div>
                         <div class="service-icon">🔬</div>
                         <h3 class="service-name">Mobile Testing</h3>
                         <p class="service-description">Comprehensive health testing and lab work at your location</p>
