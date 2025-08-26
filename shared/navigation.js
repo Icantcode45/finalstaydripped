@@ -108,32 +108,34 @@ window.addEventListener('navigationLoaded', function(event) {
     }
 });
 
-// Also use MutationObserver to watch for navigation changes
-const navigationObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-            // Check if any added nodes contain service category buttons
-            for (let node of mutation.addedNodes) {
-                if (node.nodeType === Node.ELEMENT_NODE) {
-                    const buttons = node.querySelectorAll ? node.querySelectorAll('.service-category-btn') : [];
-                    if (buttons.length > 0 || node.classList?.contains('service-category-btn')) {
-                        console.log('Navigation buttons detected, reinitializing...');
-                        setTimeout(() => {
-                            initializeExpandableNavigation();
-                        }, 50);
-                        break;
+// Use MutationObserver to watch for navigation changes (prevent duplicate declaration)
+if (!window.navigationObserver) {
+    window.navigationObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                // Check if any added nodes contain service category buttons
+                for (let node of mutation.addedNodes) {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const buttons = node.querySelectorAll ? node.querySelectorAll('.service-category-btn') : [];
+                        if (buttons.length > 0 || node.classList?.contains('service-category-btn')) {
+                            console.log('Navigation buttons detected, reinitializing...');
+                            setTimeout(() => {
+                                initializeExpandableNavigation();
+                            }, 50);
+                            break;
+                        }
                     }
                 }
             }
-        }
+        });
     });
-});
 
-// Start observing the document for navigation changes
-navigationObserver.observe(document.body, {
-    childList: true,
-    subtree: true
-});
+    // Start observing the document for navigation changes
+    window.navigationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
 
 // Global test function for debugging
 window.testNavigation = function() {
