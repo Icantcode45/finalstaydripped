@@ -174,6 +174,7 @@ window.testNavigation = function() {
 // Force initialization on any page load
 window.forceNavInit = function() {
     console.log('Force initializing navigation...');
+    window.navigationInitialized = false;
     initializeExpandableNavigation();
 };
 
