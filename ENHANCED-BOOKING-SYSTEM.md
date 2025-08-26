@@ -24,15 +24,60 @@ The enhanced unified booking page has been completely rebuilt and optimized with
 - ✅ **Loading States**: Professional loading animations and feedback
 - ✅ **Success/Error Messages**: Clear user feedback throughout the process
 
-### 3. **Service Categories & Pricing**
-- ✅ **IV Therapy**: 6 different IV options ($149-$275)
-- ✅ **NAD+ & Peptides**: Advanced anti-aging treatments ($120-$550)
-- ✅ **Vitamin Injections**: Quick shots and packages ($35-$120)
-- ✅ **Weight Management**: GLP-1 programs and support ($150-$299)
-- ✅ **Sexual Wellness**: Discreet hormone therapy ($100-$150)
-- ✅ **Mobile Testing**: Comprehensive health testing ($99-$199)
-- ✅ **Membership Plans**: Unlimited treatment plans ($99-$799)
-- ✅ **Telehealth**: Virtual consultations ($75-$150)
+### 3. **Complete Service Catalog (All Available in Dropdown)**
+
+#### 💧 **IV Therapy (6 Services)**
+- Hydration Plus - $149
+- Energy Boost IV - $199
+- Immunity Support - $225
+- Athletic Recovery - $275
+- Myers' Cocktail - $250
+- Hangover Relief - $199
+
+#### 🧬 **NAD+ & Peptides (4 Services)**
+- Basic NAD+ (250mg) - $350
+- Premium NAD+ (500mg) - $550
+- BPC-157 Healing Peptide - $120
+- Growth Hormone Peptides - $180
+
+#### 💉 **Vitamin Injections (5 Services)**
+- B12 Energy Shot - $35
+- Vitamin D3 Boost - $45
+- B-Complex Shot - $50
+- Fat Burner Shot - $65
+- B12 4-Pack - $120
+
+#### ⚖️ **Weight Management (4 Services)**
+- Semaglutide Program - $199
+- Tirzepatide Program - $299
+- Metabolic IV Package - $175
+- Weight Loss Consultation - $150
+
+#### ❤️ **Sexual Wellness (4 Services)**
+- Testosterone Therapy - $125
+- Bioidentical Hormones - $150
+- Sexual Enhancement - $125
+- Hormone Consultation - $100
+
+#### 🔬 **Mobile Testing (4 Services)**
+- Basic Wellness Panel - $99
+- Comprehensive Health Screen - $199
+- STD Testing - $149
+- Hormone Panel - $175
+
+#### ⭐ **Membership Plans (4 Services)**
+- Monthly Shot Pass - $99/month
+- Wellness Explorer - $399/month
+- Wellness Platinum - $799/month
+- Corporate Package - $1299/month
+
+#### 📱 **Telehealth (4 Services)**
+- Initial Consultation - $150
+- Follow-up Visit - $75
+- Prescription Management - $100
+- Wellness Planning - $125
+
+**Total: 35 Individual Services Available in Dropdown**
 
 ### 4. **Technical Features**
 - ✅ **Real-time Cart Updates**: Items persist across sessions
