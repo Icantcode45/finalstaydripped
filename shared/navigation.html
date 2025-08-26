@@ -217,3 +217,104 @@
         </div>
     </div>
 </header>
+
+<!-- Instant Navigation JavaScript - Loaded Immediately -->
+<script>
+console.log('Navigation HTML loaded, initializing instant JS...');
+
+// Immediate navigation setup function
+function initNavigationNow() {
+    console.log('Setting up navigation immediately...');
+
+    // Setup dropdown functionality
+    const buttons = document.querySelectorAll('.service-category-btn');
+    const expansions = document.querySelectorAll('.nav-expansion');
+
+    console.log('Found buttons:', buttons.length, 'expansions:', expansions.length);
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const category = this.getAttribute('data-category');
+            const expansion = document.querySelector('.nav-expansion[data-category="' + category + '"]');
+            const isExpanded = this.classList.contains('expanded');
+
+            console.log('Button clicked:', category, 'isExpanded:', isExpanded);
+
+            // Close all first
+            buttons.forEach(function(btn) { btn.classList.remove('expanded'); });
+            expansions.forEach(function(exp) { exp.classList.remove('expanded'); });
+
+            // Open if not expanded
+            if (!isExpanded && expansion) {
+                this.classList.add('expanded');
+                expansion.classList.add('expanded');
+                console.log('Opened:', category);
+            }
+        });
+    });
+
+    // Setup mobile menu
+    window.toggleMobileNav = function() {
+        const menu = document.getElementById('mobile-menu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+
+        if (menu) {
+            const isActive = menu.classList.contains('active');
+
+            if (isActive) {
+                menu.classList.remove('active');
+                toggle?.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                menu.classList.add('active');
+                toggle?.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    };
+
+    // Mobile menu close
+    const mobileClose = document.querySelector('.mobile-menu-close');
+    if (mobileClose) {
+        mobileClose.addEventListener('click', function() {
+            document.getElementById('mobile-menu')?.classList.remove('active');
+            document.querySelector('.mobile-menu-toggle')?.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Mobile dropdowns
+    const mobileDropdowns = document.querySelectorAll('.mobile-dropdown-toggle');
+    mobileDropdowns.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const dropdown = document.getElementById(targetId);
+
+            if (dropdown) {
+                this.classList.toggle('active');
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav-expandable')) {
+            buttons.forEach(function(btn) { btn.classList.remove('expanded'); });
+            expansions.forEach(function(exp) { exp.classList.remove('expanded'); });
+        }
+    });
+
+    console.log('Navigation setup completed immediately!');
+}
+
+// Run immediately
+setTimeout(initNavigationNow, 10);
+
+// Also run after a small delay to ensure everything is ready
+setTimeout(initNavigationNow, 100);
+setTimeout(initNavigationNow, 500);
+</script>
