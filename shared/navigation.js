@@ -34,6 +34,12 @@ function removeHardcodedNavigation() {
 
 // Horizontal Expandable Navigation Functionality
 function initializeExpandableNavigation() {
+    // Prevent duplicate initialization
+    if (window.navigationInitialized) {
+        console.log('Navigation already initialized, skipping...');
+        return;
+    }
+
     console.log('Initializing expandable navigation...');
 
     const serviceButtons = document.querySelectorAll('.service-category-btn');
@@ -95,12 +101,15 @@ function initializeExpandableNavigation() {
     }, { once: false });
 
     console.log('Expandable navigation initialized successfully');
+    window.navigationInitialized = true;
 }
 
 // Listen for navigation loaded event and re-initialize
 window.addEventListener('navigationLoaded', function(event) {
     if (event.detail.success) {
         console.log('Navigation loaded, initializing expandable functionality...');
+        // Reset initialization flag
+        window.navigationInitialized = false;
         // Small delay to ensure DOM is ready
         setTimeout(() => {
             initializeExpandableNavigation();
