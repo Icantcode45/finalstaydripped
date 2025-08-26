@@ -57,12 +57,20 @@ The enhanced unified booking page has been completely rebuilt and optimized with
 ## 🚀 How to Use the Enhanced Booking System
 
 ### For Users:
+
+#### Option 1: Quick Service Selection (NEW!)
 1. **Visit** `/pages/unified-booking.html`
-2. **Select Service Category** (IV Therapy, NAD+, etc.)
-3. **Choose Specific Option** (if available)
-4. **Add to Cart** OR **Book Now Directly**
-5. **Complete IntakeQ Booking** (real appointment system)
-6. **Receive Confirmation** (email and text reminders)
+2. **Use the comprehensive dropdown** at the top to select any service directly
+3. **View service details** (name, description, pricing)
+4. **Add directly to cart** with one click
+5. **Continue shopping** or proceed to checkout
+
+#### Option 2: Category-Based Selection
+1. **Browse service categories** (IV Therapy, NAD+, etc.)
+2. **Choose specific option** from category
+3. **Add to Cart** OR **Book Now Directly**
+4. **Complete IntakeQ Booking** (real appointment system)
+5. **Receive Confirmation** (email and text reminders)
 
 ### For Developers:
 ```javascript
