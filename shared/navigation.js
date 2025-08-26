@@ -1,4 +1,4 @@
-// Navigation Core Functionality
+// Navigation Core Functionality - Fixed Version
 (function() {
     'use strict';
 
@@ -40,31 +40,43 @@
     }
 
     function initializeMobileMenu() {
+        log('Initializing mobile menu...');
+        
         mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         mobileMenu = document.getElementById('mobile-menu');
         mobileMenuClose = document.querySelector('.mobile-menu-close');
 
-        if (!mobileMenu || !mobileMenuToggle) {
-            log('Mobile menu elements not found');
+        if (!mobileMenu) {
+            log('Mobile menu element not found');
+            return false;
+        }
+
+        if (!mobileMenuToggle) {
+            log('Mobile menu toggle button not found');
             return false;
         }
 
         // Mobile menu toggle function
         window.toggleMobileNav = function() {
-            if (mobileMenu) {
-                const isActive = mobileMenu.classList.contains('active');
-                
-                if (isActive) {
-                    mobileMenu.classList.remove('active');
-                    if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-                    document.body.style.overflow = '';
-                } else {
-                    mobileMenu.classList.add('active');
-                    if (mobileMenuToggle) mobileMenuToggle.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
-                
-                log(`Mobile menu ${isActive ? 'closed' : 'opened'}`);
+            log('Toggle mobile nav called');
+            
+            if (!mobileMenu) {
+                log('Mobile menu not available');
+                return;
+            }
+
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                mobileMenu.classList.remove('active');
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                log('Mobile menu closed');
+            } else {
+                mobileMenu.classList.add('active');
+                if (mobileMenuToggle) mobileMenuToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                log('Mobile menu opened');
             }
         };
 
@@ -80,17 +92,25 @@
             log('Mobile menu closed');
         }
 
-        // Event listeners
+        // Event listeners for mobile menu toggle
         if (mobileMenuToggle) {
+            // Remove any existing listeners
+            mobileMenuToggle.removeAttribute('onclick');
+            
             mobileMenuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                log('Mobile menu toggle clicked');
                 window.toggleMobileNav();
             });
+            
+            log('Mobile menu toggle event listener added');
         }
 
         if (mobileMenuClose) {
             mobileMenuClose.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 closeMobileMenu();
             });
         }
@@ -106,9 +126,13 @@
 
         // Handle mobile dropdown toggles
         const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
-        mobileDropdownToggles.forEach(function(toggle) {
+        log(`Found ${mobileDropdownToggles.length} mobile dropdown toggles`);
+        
+        mobileDropdownToggles.forEach(function(toggle, index) {
             toggle.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
+                
                 const targetId = toggle.getAttribute('data-target');
                 const dropdown = document.getElementById(targetId);
 
@@ -162,6 +186,8 @@
     }
 
     function initializeDesktopDropdowns() {
+        log('Initializing desktop dropdowns...');
+        
         const dropdowns = document.querySelectorAll('.nav-dropdown');
         
         if (dropdowns.length === 0) {
@@ -169,53 +195,72 @@
             return;
         }
 
-        dropdowns.forEach(function(dropdown) {
+        dropdowns.forEach(function(dropdown, index) {
             const dropdownContent = dropdown.querySelector('.dropdown-content');
             
             if (!dropdownContent) {
-                log('Dropdown content not found for dropdown');
+                log(`Dropdown content not found for dropdown ${index}`);
                 return;
             }
 
             let hideTimeout;
+            let isHovering = false;
 
             // Show dropdown on hover
             dropdown.addEventListener('mouseenter', function() {
+                log(`Showing dropdown ${index}`);
+                isHovering = true;
+                
                 if (hideTimeout) {
                     clearTimeout(hideTimeout);
                     hideTimeout = null;
                 }
 
+                // Reset and show
                 dropdownContent.style.display = 'block';
+                dropdownContent.style.opacity = '0';
+                dropdownContent.style.visibility = 'visible';
+                
+                // Trigger animation
                 setTimeout(() => {
                     dropdownContent.style.opacity = '1';
-                    dropdownContent.style.visibility = 'visible';
                 }, 10);
             });
 
             // Hide dropdown with delay
             function scheduleHide() {
                 hideTimeout = setTimeout(() => {
-                    dropdownContent.style.opacity = '0';
-                    dropdownContent.style.visibility = 'hidden';
-                    setTimeout(() => {
-                        if (dropdownContent.style.opacity === '0') {
-                            dropdownContent.style.display = 'none';
-                        }
-                    }, 300);
-                }, 200);
+                    if (!isHovering) {
+                        log(`Hiding dropdown ${index}`);
+                        dropdownContent.style.opacity = '0';
+                        dropdownContent.style.visibility = 'hidden';
+                        setTimeout(() => {
+                            if (dropdownContent.style.opacity === '0') {
+                                dropdownContent.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+                }, 150);
             }
 
             function cancelHide() {
+                isHovering = true;
                 if (hideTimeout) {
                     clearTimeout(hideTimeout);
                     hideTimeout = null;
                 }
             }
 
-            dropdown.addEventListener('mouseleave', scheduleHide);
+            dropdown.addEventListener('mouseleave', function() {
+                isHovering = false;
+                scheduleHide();
+            });
+            
             dropdownContent.addEventListener('mouseenter', cancelHide);
-            dropdownContent.addEventListener('mouseleave', scheduleHide);
+            dropdownContent.addEventListener('mouseleave', function() {
+                isHovering = false;
+                scheduleHide();
+            });
         });
 
         // Close dropdowns when clicking outside
@@ -368,23 +413,26 @@
         // Remove any hardcoded navigation first
         removeHardcodedNavigation();
 
-        // Initialize components
-        const mobileSuccess = initializeMobileMenu();
-        initializeDesktopDropdowns();
-        initializeHeaderScrollEffect();
-        initializeSearchFunctionality();
-        initializeCartIcon();
-        initializePhoneIcon();
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            // Initialize components
+            const mobileSuccess = initializeMobileMenu();
+            initializeDesktopDropdowns();
+            initializeHeaderScrollEffect();
+            initializeSearchFunctionality();
+            initializeCartIcon();
+            initializePhoneIcon();
 
-        if (mobileSuccess) {
-            isInitialized = true;
-            log('Navigation initialization completed successfully');
-            
-            // Dispatch ready event
-            window.dispatchEvent(new CustomEvent('navigationReady'));
-        } else {
-            log('Navigation initialization failed - mobile menu elements not found');
-        }
+            if (mobileSuccess) {
+                isInitialized = true;
+                log('✅ Navigation initialization completed successfully');
+                
+                // Dispatch ready event
+                window.dispatchEvent(new CustomEvent('navigationReady'));
+            } else {
+                log('❌ Navigation initialization failed - mobile menu elements not found');
+            }
+        }, 100);
     }
 
     // Auto-initialize when DOM is ready
@@ -393,21 +441,29 @@
             document.addEventListener('DOMContentLoaded', initializeNavigation);
         } else {
             // Small delay to ensure navigation HTML is injected
-            setTimeout(initializeNavigation, 100);
+            setTimeout(initializeNavigation, 200);
         }
     }
 
     // Listen for navigation loaded event from loader
     window.addEventListener('navigationLoaded', function() {
         log('Navigation HTML loaded, initializing functionality...');
-        setTimeout(initializeNavigation, 50);
+        setTimeout(initializeNavigation, 100);
     });
 
-    // Expose functions globally
+    // Expose functions globally for debugging
     window.initializeNavigation = initializeNavigation;
+    window.debugNavigation = function() {
+        log('=== Navigation Debug Info ===');
+        log('Mobile menu toggle:', !!document.querySelector('.mobile-menu-toggle'));
+        log('Mobile menu:', !!document.getElementById('mobile-menu'));
+        log('Desktop dropdowns:', document.querySelectorAll('.nav-dropdown').length);
+        log('Navigation initialized:', isInitialized);
+        log('toggleMobileNav function:', typeof window.toggleMobileNav);
+    };
 
     // Start auto-initialization
     autoInit();
 
-    log('Navigation script loaded');
+    log('Navigation script loaded and ready');
 })();
