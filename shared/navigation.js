@@ -135,6 +135,37 @@ navigationObserver.observe(document.body, {
     subtree: true
 });
 
+// Global test function for debugging
+window.testNavigation = function() {
+    console.log('=== Navigation Test ===');
+    const buttons = document.querySelectorAll('.service-category-btn');
+    const expansions = document.querySelectorAll('.nav-expansion');
+
+    console.log('Service buttons found:', buttons.length);
+    console.log('Expansions found:', expansions.length);
+
+    buttons.forEach((btn, index) => {
+        console.log(`Button ${index + 1}:`, {
+            category: btn.getAttribute('data-category'),
+            text: btn.textContent.trim(),
+            hasClickListener: btn.onclick !== null
+        });
+    });
+
+    if (buttons.length > 0) {
+        console.log('Attempting to click first button...');
+        buttons[0].click();
+    }
+
+    return { buttons: buttons.length, expansions: expansions.length };
+};
+
+// Force initialization on any page load
+window.forceNavInit = function() {
+    console.log('Force initializing navigation...');
+    initializeExpandableNavigation();
+};
+
 // Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation duplication first
@@ -143,8 +174,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run again after a short delay to catch any dynamically added content
     setTimeout(removeHardcodedNavigation, 500);
 
-    // Initialize expandable navigation
+    // Initialize expandable navigation multiple times to ensure it works
     initializeExpandableNavigation();
+
+    // Try again after a short delay
+    setTimeout(() => {
+        initializeExpandableNavigation();
+    }, 1000);
+
+    // And once more after everything loads
+    setTimeout(() => {
+        initializeExpandableNavigation();
+    }, 3000);
 
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
