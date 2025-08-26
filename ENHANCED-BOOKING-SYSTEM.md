@@ -18,6 +18,8 @@ The enhanced unified booking page has been completely rebuilt and optimized with
 - ✅ **Multi-Step Flow**: Clean 3-step booking process (Service Selection → Booking → Confirmation)
 - ✅ **Progress Indicator**: Visual progress tracking with step indicators
 - ✅ **Service Categories**: Complete service catalog with proper pricing
+- ✅ **Universal Dropdown**: Single dropdown with ALL 35+ services for instant selection
+- ✅ **Direct Cart Addition**: Add any service directly to cart without category navigation
 - ✅ **Mobile Responsive**: Fully optimized for all device sizes
 - ✅ **Loading States**: Professional loading animations and feedback
 - ✅ **Success/Error Messages**: Clear user feedback throughout the process
