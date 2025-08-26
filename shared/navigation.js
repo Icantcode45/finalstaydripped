@@ -34,11 +34,26 @@ function removeHardcodedNavigation() {
 
 // Horizontal Expandable Navigation Functionality
 function initializeExpandableNavigation() {
+    console.log('Initializing expandable navigation...');
+
     const serviceButtons = document.querySelectorAll('.service-category-btn');
     const expansions = document.querySelectorAll('.nav-expansion');
 
-    serviceButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+    console.log('Found service buttons:', serviceButtons.length);
+    console.log('Found expansions:', expansions.length);
+
+    if (serviceButtons.length === 0) {
+        console.warn('No service category buttons found');
+        return;
+    }
+
+    // Remove any existing event listeners by cloning buttons
+    serviceButtons.forEach((button, index) => {
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+
+        newButton.addEventListener('click', function(e) {
+            console.log('Service button clicked:', this.getAttribute('data-category'));
             e.preventDefault();
             e.stopPropagation();
 
@@ -46,15 +61,24 @@ function initializeExpandableNavigation() {
             const expansion = document.querySelector(`.nav-expansion[data-category="${category}"]`);
             const isCurrentlyExpanded = this.classList.contains('expanded');
 
+            console.log('Category:', category, 'Expansion found:', !!expansion, 'Currently expanded:', isCurrentlyExpanded);
+
+            // Get fresh references after cloning
+            const allButtons = document.querySelectorAll('.service-category-btn');
+            const allExpansions = document.querySelectorAll('.nav-expansion');
+
             // Close all expansions and remove expanded state from all buttons
-            serviceButtons.forEach(btn => btn.classList.remove('expanded'));
-            expansions.forEach(exp => exp.classList.remove('expanded'));
+            allButtons.forEach(btn => btn.classList.remove('expanded'));
+            allExpansions.forEach(exp => exp.classList.remove('expanded'));
 
             // If this wasn't expanded, expand it
             if (!isCurrentlyExpanded) {
                 this.classList.add('expanded');
                 if (expansion) {
                     expansion.classList.add('expanded');
+                    console.log('Expansion opened for:', category);
+                } else {
+                    console.warn('No expansion found for category:', category);
                 }
             }
         });
@@ -63,10 +87,14 @@ function initializeExpandableNavigation() {
     // Close expansions when clicking outside
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.nav-expandable')) {
-            serviceButtons.forEach(btn => btn.classList.remove('expanded'));
-            expansions.forEach(exp => exp.classList.remove('expanded'));
+            const allButtons = document.querySelectorAll('.service-category-btn');
+            const allExpansions = document.querySelectorAll('.nav-expansion');
+            allButtons.forEach(btn => btn.classList.remove('expanded'));
+            allExpansions.forEach(exp => exp.classList.remove('expanded'));
         }
-    });
+    }, { once: false });
+
+    console.log('Expandable navigation initialized successfully');
 }
 
 // Listen for navigation loaded event and re-initialize
