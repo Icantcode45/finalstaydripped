@@ -1152,8 +1152,33 @@
     display: none;
     background: none;
     border: none;
-    font-size: 24px;
     cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    position: relative;
+    z-index: 10000;
+}
+
+.mobile-menu-toggle span {
+    width: 24px;
+    height: 3px;
+    background: var(--dark-slate);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* Mobile Menu */
@@ -1170,12 +1195,14 @@
     visibility: hidden;
     transform: translateX(100%);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
 .mobile-menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+    pointer-events: all;
 }
 
 .mobile-menu-content {
