@@ -69,6 +69,17 @@ function initializeExpandableNavigation() {
     });
 }
 
+// Listen for navigation loaded event and re-initialize
+window.addEventListener('navigationLoaded', function(event) {
+    if (event.detail.success) {
+        console.log('Navigation loaded, initializing expandable functionality...');
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+            initializeExpandableNavigation();
+        }, 100);
+    }
+});
+
 // Mobile Menu Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation duplication first
