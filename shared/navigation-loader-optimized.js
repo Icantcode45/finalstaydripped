@@ -336,11 +336,52 @@
             // Load JavaScript files
             try {
                 await Promise.allSettled([
-                    loadScript(CONFIG.utilsJsPath, true),
-                    loadScript(CONFIG.navigationJsPath)
+                    loadScript('/shared/navigation-instant.js')
                 ]);
+                console.log('Navigation instant JS loaded successfully');
             } catch (jsError) {
-                console.warn('Some navigation scripts failed to load:', jsError);
+                console.warn('Navigation script failed to load:', jsError);
+
+                // Fallback: inject the navigation JS directly
+                const script = document.createElement('script');
+                script.textContent = `
+                    console.log('Loading fallback navigation JS...');
+                    setTimeout(function() {
+                        const buttons = document.querySelectorAll('.service-category-btn');
+                        buttons.forEach(function(button) {
+                            button.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                const category = this.getAttribute('data-category');
+                                const expansion = document.querySelector('.nav-expansion[data-category="' + category + '"]');
+                                const isExpanded = this.classList.contains('expanded');
+
+                                document.querySelectorAll('.service-category-btn').forEach(function(btn) {
+                                    btn.classList.remove('expanded');
+                                });
+                                document.querySelectorAll('.nav-expansion').forEach(function(exp) {
+                                    exp.classList.remove('expanded');
+                                });
+
+                                if (!isExpanded && expansion) {
+                                    this.classList.add('expanded');
+                                    expansion.classList.add('expanded');
+                                }
+                            });
+                        });
+
+                        window.toggleMobileNav = function() {
+                            const menu = document.getElementById('mobile-menu');
+                            const toggle = document.querySelector('.mobile-menu-toggle');
+                            if (menu) {
+                                menu.classList.toggle('active');
+                                toggle?.classList.toggle('active');
+                            }
+                        };
+
+                        console.log('Fallback navigation setup completed');
+                    }, 100);
+                `;
+                document.head.appendChild(script);
             }
             
             // Mark as loaded
