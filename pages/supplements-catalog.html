@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-44WEBDZB6F');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Supplements | Stay Dripped IV & Wellness Co.</title>
-    <meta name="description" content="Premium professional-grade supplements for optimal health and wellness. Curated by our medical professionals.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Supplements & Test Kits | Stay Dripped IV & Wellness Co.</title>
+    <meta name="description" content="Premium supplements, probiotics, and comprehensive test kits for optimal health. Professional-grade products curated by our medical team.">
+    <link rel="canonical" href="https://staydrippediv.com/pages/supplements-catalog.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Supplements & Test Kits | Stay Dripped IV & Wellness Co.">
+    <meta property="og:description" content="Premium supplements, probiotics, and comprehensive test kits for optimal health. Professional-grade products curated by our medical team.">
+    <meta property="og:url" content="https://staydrippediv.com/pages/supplements-catalog.html">
+    <meta property="og:image" content="https://cdn.builder.io/o/assets%2F8b73c477407048d0945425bdc93ba34d%2F8c310cc2e156430ab69fb00c617ff790?alt=media&token=bf089e67-ece4-4858-9e69-9acf5a132296&apiKey=8b73c477407048d0945425bdc93ba34d">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Besley:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     
     <!-- Navigation CSS -->
     <link rel="stylesheet" href="../shared/navigation.css">
@@ -30,16 +49,21 @@
             --soft-border: #F0EDE8;
             --font-family: 'Inter', sans-serif;
             --max-width: 1200px;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: var(--font-family);
             line-height: 1.6;
             color: var(--warm-text);
-            margin: 0;
-            padding: 0;
-            background: var(--light-gray);
-            padding-top: 140px;
+            background-color: var(--white);
+            padding-top: 180px;
         }
 
         .container {
@@ -48,416 +72,1609 @@
             padding: 0 20px;
         }
 
-        /* Products Header */
-        .products-header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
-            color: var(--white);
-            padding: 60px 0;
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, rgba(0, 184, 160, 0.08) 100%);
+            padding: var(--section-padding);
+            margin-bottom: 80px;
+        }
+
+        .hero-content {
             text-align: center;
         }
 
-        .products-header h1 {
-            font-size: 3rem;
+        .tagline-highlight {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
             font-weight: 700;
+            letter-spacing: 1px;
             margin-bottom: 20px;
-            font-family: 'Besley', serif;
+            text-transform: uppercase;
         }
 
-        .products-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .hero-title {
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            color: var(--dark-slate);
+        }
+
+        .company-subtitle {
+            font-size: 18px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: var(--medium-gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .badge {
+            font-size: 12px;
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--primary-blue);
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--medium-gray);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+        }
+
+        .category-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Category Sections */
+        .category-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .category-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark-slate);
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--medium-gray);
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Product Categories Filter */
-        .product-filter {
-            background: var(--white);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 120px;
-            z-index: 100;
-        }
-
-        .filter-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .filter-categories {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .filter-category {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            padding: 12px 16px;
-            background: var(--light-gray);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .filter-category:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
-        }
-
-        .filter-category.active {
-            background: var(--primary-blue);
-            color: var(--white);
-        }
-
-        .filter-arrow {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease;
-        }
-
-        .filter-category:hover .filter-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Navigation Controls */
-        .filter-navigation {
-            display: flex;
-            gap: 4px;
-        }
-
-        .nav-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border-color);
-            background: var(--white);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-        }
-
-        .nav-icon {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* Popular Products Section */
-        .popular-products {
-            padding: 60px 0;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-family: 'Besley', serif;
-            font-size: 2rem;
-            color: var(--dark-slate);
-            margin: 0;
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            min-height: 400px;
         }
 
         .product-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--light-gray), var(--warm-gray));
-            background-image: url('https://cdn.builder.io/api/v1/image/assets%2Fd86ad443e90f49f6824eddb927a8e06f%2F1bb3a1ef45384ef3907b8f30baeec5a4?format=webp&width=800');
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+            background: linear-gradient(180deg, rgba(253, 247, 255, 0.8), rgba(242, 251, 255, 0.8));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--medium-gray);
-            font-size: 14px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 320px;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .product-info {
-            padding: 24px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .product-category {
-            color: var(--primary-blue);
-            font-size: 12px;
+        .product-brand {
+            color: var(--medium-gray);
             font-weight: 600;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
 
-        .product-name {
-            font-size: 18px;
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .product-pills {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            background: var(--light-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 8px 12px;
+            color: var(--dark-slate);
+            font-weight: 500;
+        }
+
+        .product-benefits {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .product-benefits li {
+            padding: 8px 0;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .product-benefits li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-teal);
+            border-radius: 50%;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #0052A3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .product-note {
+            font-size: 13px;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+
+        /* Test Kit Specific Styles */
+        .test-kit-features {
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .test-kit-features h4 {
+            font-size: 16px;
             font-weight: 600;
             color: var(--dark-slate);
             margin-bottom: 12px;
         }
 
-        .product-description {
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
             color: var(--medium-gray);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 16px;
         }
 
-        .product-price {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .product-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-blue);
+        .feature-icon {
+            width: 16px;
+            height: 16px;
+            background: var(--secondary-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* Fullscript Integration */
+        .fullscript-catalog {
+            margin-top: 60px;
+            padding: 60px 0;
+            background: var(--light-gray);
+        }
+
+        .fullscript-catalog h3 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-slate);
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .fullscript-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        /* Cart Widget */
+        .cart-widget {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            min-width: 300px;
+            max-width: 90vw;
+            z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .product-btn:hover {
-            background: var(--secondary-teal);
-            transform: translateY(-2px);
+        .cart-widget.hidden {
+            display: none;
         }
 
-        @media (max-width: 768px) {
-            .products-header h1 {
-                font-size: 2rem;
+        .cart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-header h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--medium-gray);
+            padding: 4px;
+        }
+
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info h5 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-slate);
+            margin-bottom: 4px;
+        }
+
+        .cart-item-details {
+            font-size: 12px;
+            color: var(--medium-gray);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            background: var(--light-gray);
+            border: none;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-slate);
+        }
+
+        .qty-btn:hover {
+            background: var(--border-color);
+        }
+
+        .qty-input {
+            width: 40px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            background: var(--white);
+            height: 32px;
+        }
+
+        .cart-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cart-total {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-slate);
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 980px) {
+            body {
+                padding-top: 140px;
             }
-            
-            .filter-container {
+
+            .product-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                min-height: 280px;
+            }
+
+            .cart-widget {
+                right: 16px;
+                bottom: 16px;
+                min-width: calc(100vw - 32px);
+            }
+
+            .category-nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 20px 20px;
+                margin-bottom: 40px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .category-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-btn {
+                font-size: 13px;
+                padding: 10px 20px;
+                flex-shrink: 0;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-actions {
                 flex-direction: column;
-                gap: 16px;
-                align-items: stretch;
             }
-            
-            .filter-categories {
-                justify-content: center;
+
+            .btn {
+                width: 100%;
             }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
+
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* Disclaimer */
+        .disclaimer {
+            margin-top: 60px;
+            padding: 32px;
+            background: var(--warm-beige);
+            border-radius: 16px;
+            font-size: 12px;
+            color: var(--medium-gray);
+            line-height: 1.6;
         }
     </style>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "url": "https://staydrippediv.com/pages/supplements-catalog.html",
+        "itemListElement": [
+            {
+                "@type": "Product",
+                "position": 1,
+                "name": "MegaSporeBiotic",
+                "brand": {"@type": "Organization", "name": "Microbiome Labs"},
+                "description": "All-spore, antioxidant-producing probiotic designed to survive stomach acid and support digestive health.",
+                "image": "https://i.imgur.com/Nm2H0uP.png",
+                "sku": "MSB-60",
+                "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "USD",
+                    "price": "59.00",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://staydrippediv.com/pages/supplements-catalog.html#megasporebiotic"
+                }
+            },
+            {
+                "@type": "Product",
+                "position": 2,
+                "name": "O.N.E. Multivitamin",
+                "brand": {"@type": "Organization", "name": "Pure Encapsulations"},
+                "description": "Once-daily multivitamin with sustained-release CoQ10 and methylated B vitamins for comprehensive micronutrient support.",
+                "image": "https://i.imgur.com/BmZq3b0.png",
+                "sku": "PE-ONE-60",
+                "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "USD",
+                    "price": "43.00",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://staydrippediv.com/pages/supplements-catalog.html#one-multivitamin"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <!-- Navigation will be loaded here -->
+    <!-- Load Navigation -->
     <div id="navigation-placeholder"></div>
 
-    <!-- Products Header -->
-    <section class="products-header">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
-            <h1>Professional Supplements</h1>
-            <p>Premium, professional-grade supplements curated by our medical team for optimal health and wellness outcomes.</p>
-        </div>
-    </section>
-
-    <!-- Product Filter -->
-    <section class="product-filter">
-        <div class="container">
-            <div class="filter-container">
-                <div class="filter-categories">
-                    <div class="filter-category active">
-                        <span>Supplements</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                    <div class="filter-category">
-                        <span>Vitamins & minerals</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                    <div class="filter-category">
-                        <span>Health conditions</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                    <div class="filter-category">
-                        <span>Sports nutrition</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                    <div class="filter-category">
-                        <span>Personal care</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                    <div class="filter-category">
-                        <span>Brands</span>
-                        <svg class="filter-arrow" viewBox="0 0 448 512" fill="currentColor">
-                            <path d="M241 369c-9.4 9.4-24.6 9.4-33.9 0L47 209c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 369z"/>
-                        </svg>
-                    </div>
-                </div>
+            <div class="hero-content">
+                <div class="tagline-highlight fade-in">Professional Grade</div>
+                <h1 class="hero-title fade-in delay-1">Complete Health Solutions</h1>
+                <p class="company-subtitle fade-in delay-2">Stay Dripped IV & Wellness Co.</p>
+                <p class="hero-description fade-in delay-3">Comprehensive collection of physician-trusted supplements, probiotics, gut health solutions, and professional testing kits. Everything you need to optimize your health journey with medical-grade quality and practitioner guidance.</p>
                 
-                <div class="filter-navigation">
-                    <button class="nav-btn" aria-label="Previous">
-                        <svg class="nav-icon" viewBox="0 0 320 512" fill="currentColor">
-                            <path d="M15 239c-9.4 9.4-9.4 24.6 0 33.9L207 465c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L65.9 256 241 81c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L15 239z"/>
-                        </svg>
-                    </button>
-                    <button class="nav-btn" aria-label="Next">
-                        <svg class="nav-icon" viewBox="0 0 320 512" fill="currentColor">
-                            <path d="M305 239c9.4 9.4 9.4 24.6 0 33.9L113 465c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l175-175L79 81c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L305 239z"/>
-                        </svg>
-                    </button>
+                <div class="badges">
+                    <span class="badge">Professional-grade</span>
+                    <span class="badge">3rd-party tested</span>
+                    <span class="badge">Medical supervision</span>
+                    <span class="badge">HSA/FSA eligible*</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Popular Products -->
-    <section class="popular-products">
+    <!-- Category Navigation -->
+    <div class="container">
+        <div class="category-nav">
+            <button class="category-btn active" data-category="featured">Featured Products</button>
+            <button class="category-btn" data-category="supplements">All Supplements</button>
+            <button class="category-btn" data-category="probiotics">Probiotics & Gut Health</button>
+            <button class="category-btn" data-category="test-kits">Test Kits & Panels</button>
+            <button class="category-btn" data-category="vitamins">Vitamins & Minerals</button>
+            <button class="category-btn" data-category="specialty">Specialty Formulas</button>
+        </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    <section class="category-section active" data-category="featured">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Popular products</h2>
+                <div class="section-subtitle">Physician-Trusted</div>
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-description">Our most popular supplements and testing kits, hand-selected by our medical team for exceptional quality and results.</p>
             </div>
-            
+
             <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Supplements</div>
-                        <h3 class="product-name">Premium Multivitamin Complex</h3>
-                        <p class="product-description">Complete daily nutrition with essential vitamins and minerals for optimal health.</p>
-                        <div class="product-price">$49.99</div>
-                        <button class="product-btn">Add to Cart</button>
+                <!-- MegaSporeBiotic -->
+                <article class="product-card fade-in" id="megasporebiotic" data-sku="MSB-60" data-name="MegaSporeBiotic" data-price="59" data-brand="Microbiome Labs">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <img src="https://i.imgur.com/Nm2H0uP.png" alt="Microbiome Labs MegaSporeBiotic 60 capsules bottle" width="320" height="320" loading="lazy">
+                            <div class="product-badge">Clinically Studied</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Microbiome Labs</p>
+                                <h3 class="product-title">MegaSporeBiotic™</h3>
+                                <div class="product-price">$59.00</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">1-2 caps daily with food</span>
+                                    <span class="pill">Spore-based</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Clinically studied spore-forming strains designed to survive stomach acid</li>
+                                    <li>Supports digestion, microbiome diversity, and immune health</li>
+                                    <li>Well-tolerated with gradual dosing protocol</li>
+                                    <li>Antioxidant-producing beneficial bacteria</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript?sku=MSB-60" target="_blank" rel="noopener">Order via Fullscript</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Tip: Start with 1 capsule every other day for the first week, then increase as tolerated.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Vitamins & Minerals</div>
-                        <h3 class="product-name">Vitamin D3 + K2</h3>
-                        <p class="product-description">High-potency vitamin D3 with K2 for bone health and immune support.</p>
-                        <div class="product-price">$34.99</div>
-                        <button class="product-btn">Add to Cart</button>
+                </article>
+
+                <!-- O.N.E. Multivitamin -->
+                <article class="product-card fade-in delay-1" id="one-multivitamin" data-sku="PE-ONE-60" data-name="O.N.E. Multivitamin" data-price="43" data-brand="Pure Encapsulations">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <img src="https://i.imgur.com/BmZq3b0.png" alt="Pure Encapsulations O.N.E. Multivitamin 60 capsules bottle" width="320" height="320" loading="lazy">
+                            <div class="product-badge">Once Daily</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Pure Encapsulations</p>
+                                <h3 class="product-title">O.N.E.™ Multivitamin</h3>
+                                <div class="product-price">$43.00</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">1 cap daily with meal</span>
+                                    <span class="pill">With CoQ10 & methyl-B</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Once-daily comprehensive micronutrient formula</li>
+                                    <li>Methylated B-vitamins for enhanced bioavailability</li>
+                                    <li>Zinc and selenium for immune support</li>
+                                    <li>Hypoallergenic, gluten-free, non-GMO formula</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript?sku=PE-ONE-60" target="_blank" rel="noopener">Order via Fullscript</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">If sensitive to B-vitamins, consider taking earlier in the day.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
+                </article>
+
+                <!-- Comprehensive Health Panel -->
                 <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Sports Nutrition</div>
-                        <h3 class="product-name">Performance Recovery</h3>
-                        <p class="product-description">Advanced recovery formula with amino acids and electrolytes.</p>
-                        <div class="product-price">$59.99</div>
-                        <button class="product-btn">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Health Conditions</div>
-                        <h3 class="product-name">Immune Support Complex</h3>
-                        <p class="product-description">Powerful immune system support with vitamin C, zinc, and elderberry.</p>
-                        <div class="product-price">$44.99</div>
-                        <button class="product-btn">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Personal Care</div>
-                        <h3 class="product-name">Collagen Beauty Formula</h3>
-                        <p class="product-description">Premium collagen peptides for skin, hair, and nail health.</p>
-                        <div class="product-price">$69.99</div>
-                        <button class="product-btn">Add to Cart</button>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">Product Image</div>
-                    <div class="product-info">
-                        <div class="product-category">Supplements</div>
-                        <h3 class="product-name">Omega-3 Ultra</h3>
-                        <p class="product-description">High-purity fish oil with EPA and DHA for heart and brain health.</p>
-                        <div class="product-price">$39.99</div>
-                        <button class="product-btn">Add to Cart</button>
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Best Value</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Health Screening</p>
+                                <h3 class="product-title">Comprehensive Health Panel</h3>
+                                <div class="product-price">$299.99</div>
+                                
+                                <div class="test-kit-features">
+                                    <h4>What's Included:</h4>
+                                    <div class="feature-grid">
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Complete Blood Count</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Metabolic Panel</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Lipid Profile</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Vitamin D & B12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Order Test Kit</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">At-home collection kit with detailed analysis and recommendations.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Navigation System -->
-    <script src="../shared/navigation-loader.js"></script>
+    <!-- All Supplements Section -->
+    <section class="category-section" data-category="supplements">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Complete Collection</div>
+                <h2 class="section-title">All Supplements</h2>
+                <p class="section-description">Browse our complete collection of premium supplements for every health goal.</p>
+            </div>
+
+            <!-- Fullscript Supplement Catalog -->
+            <div class="fullscript-catalog">
+                <h3>Stay Dripped Supplement Catalog</h3>
+                <div class="fullscript-grid">
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"71457","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"71734","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"71557","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72393","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72491","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"90588","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72486","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"73157","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72518","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72374","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72478","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72254","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72433","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"76482","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"73156","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72429","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"73159","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"82752","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72278","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72612","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72572","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72425","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"93944","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72436","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72454","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72617","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72234","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72414","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"75886","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"72442","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"94378","store_slug":"staydripped","return":"product_card"}'></script>
+                    <script src="https://us.fullscript.com/oembed/embed.js" data-fs='{"product_id":"77630","store_slug":"staydripped","return":"product_card"}'></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Probiotics & Gut Health Section -->
+    <section class="category-section" data-category="probiotics">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Digestive Wellness</div>
+                <h2 class="section-title">Probiotics & Gut Health</h2>
+                <p class="section-description">Restore and optimize your digestive health with our advanced probiotic formulations and gut health support products.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Probiotic Treatment Options -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">IV Therapy</p>
+                                <h3 class="product-title">Probiotic IV Infusion</h3>
+                                <div class="product-price">$199</div>
+                                
+                                <ul class="product-benefits">
+                                    <li>Multi-strain probiotic infusion</li>
+                                    <li>Digestive enzyme support</li>
+                                    <li>Anti-inflammatory compounds</li>
+                                    <li>Gut barrier repair nutrients</li>
+                                    <li>45-minute treatment</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Book Treatment</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">Professional IV probiotic therapy for optimal gut health restoration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 50 Billion CFU Probiotics -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">High Potency</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Supplements</p>
+                                <h3 class="product-title">50 Billion CFU Probiotics</h3>
+                                <div class="product-price">$59.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">15 strains</span>
+                                    <span class="pill">Shelf-stable</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Supports digestive health</li>
+                                    <li>Boosts immune function</li>
+                                    <li>15 diverse strains</li>
+                                    <li>Shelf-stable formula</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Multi-strain probiotic formula for optimal digestive health and immune support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gut Health Package -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Complete Package</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Treatment Package</p>
+                                <h3 class="product-title">Gut Health Optimization</h3>
+                                <div class="product-price">$599</div>
+                                
+                                <ul class="product-benefits">
+                                    <li>Comprehensive gut microbiome analysis</li>
+                                    <li>Personalized probiotic protocol</li>
+                                    <li>3 targeted IV treatments</li>
+                                    <li>Nutritional counseling</li>
+                                    <li>Progress tracking & adjustments</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Book Package</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">3-month comprehensive gut health transformation program.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Kits & Panels Section -->
+    <section class="category-section" data-category="test-kits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Comprehensive Testing</div>
+                <h2 class="section-title">Test Kits & Health Panels</h2>
+                <p class="section-description">Professional-grade testing kits for comprehensive health monitoring and optimization from the comfort of your home.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Hormone Panel -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Comprehensive</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Hormone Health</p>
+                                <h3 class="product-title">Complete Hormone Panel</h3>
+                                <div class="product-price">$249.99</div>
+                                
+                                <div class="test-kit-features">
+                                    <h4>What's Included:</h4>
+                                    <div class="feature-grid">
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Testosterone</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Estrogen & Progesterone</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Thyroid (TSH, T3, T4)</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Cortisol & DHEA-S</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Order Test</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">Saliva & blood collection with comprehensive analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Sensitivity Panel -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Popular</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Digestive Health</p>
+                                <h3 class="product-title">Food Sensitivity Panel</h3>
+                                <div class="product-price">$189.99</div>
+                                
+                                <div class="test-kit-features">
+                                    <h4>What's Included:</h4>
+                                    <div class="feature-grid">
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>96 Common Foods</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>IgG4 Antibodies</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Detailed Report</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Elimination Guide</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Order Test</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">Finger prick collection kit with personalized recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Micronutrient Analysis -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Advanced</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Nutritional Status</p>
+                                <h3 class="product-title">Micronutrient Analysis</h3>
+                                <div class="product-price">$349.99</div>
+                                
+                                <div class="test-kit-features">
+                                    <h4>What's Included:</h4>
+                                    <div class="feature-grid">
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>33 Vitamins & Minerals</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Antioxidant Function</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Metabolic Analysis</span>
+                                        </div>
+                                        <div class="feature-item">
+                                            <div class="feature-icon">✓</div>
+                                            <span>Personalized Recommendations</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="../pages/book-appointment.html">Order Test</a>
+                                    <button class="btn btn-secondary">Learn More</button>
+                                </div>
+                                <p class="product-note">Blood draw required - mobile collection available.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vitamins & Minerals Section -->
+    <section class="category-section" data-category="vitamins">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Essential Nutrients</div>
+                <h2 class="section-title">Vitamins & Minerals</h2>
+                <p class="section-description">High-quality vitamins and minerals to support optimal health and fill nutritional gaps in your diet.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Vitamin D3 + K2 -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Best Seller</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Vitamins</p>
+                                <h3 class="product-title">Vitamin D3 + K2 Complex</h3>
+                                <div class="product-price">$39.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">5000 IU D3</span>
+                                    <span class="pill">100 mcg K2</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Supports immune system function</li>
+                                    <li>Promotes bone health</li>
+                                    <li>Enhances calcium absorption</li>
+                                    <li>Third-party tested for purity</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">High-potency vitamin D3 with K2 for optimal calcium absorption.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Magnesium Complex -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Minerals</p>
+                                <h3 class="product-title">Magnesium Glycinate Complex</h3>
+                                <div class="product-price">$29.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">120 capsules</span>
+                                    <span class="pill">Chelated form</span>
+                                    <span class="pill">Easy absorption</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Promotes restful sleep</li>
+                                    <li>Supports muscle function</li>
+                                    <li>Helps manage stress</li>
+                                    <li>Gentle on stomach</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Highly bioavailable magnesium for muscle relaxation and sleep support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active B-Complex -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Vitamins</p>
+                                <h3 class="product-title">Active B-Complex Plus</h3>
+                                <div class="product-price">$34.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">90 capsules</span>
+                                    <span class="pill">Methylated forms</span>
+                                    <span class="pill">Energy support</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Supports energy production</li>
+                                    <li>Enhances mental clarity</li>
+                                    <li>Methylated forms for better absorption</li>
+                                    <li>Supports nervous system health</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Complete B-vitamin complex with methylated forms for enhanced energy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialty Formulas Section -->
+    <section class="category-section" data-category="specialty">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Advanced Formulations</div>
+                <h2 class="section-title">Specialty Formulas</h2>
+                <p class="section-description">Specialized supplement formulations for targeted health goals and unique nutritional needs.</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Curcumin -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Anti-Inflammatory</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Herbal</p>
+                                <h3 class="product-title">Curcumin with Bioperine</h3>
+                                <div class="product-price">$44.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">95% curcuminoids</span>
+                                    <span class="pill">Enhanced absorption</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Powerful anti-inflammatory effects</li>
+                                    <li>Enhanced with Bioperine for absorption</li>
+                                    <li>Supports joint health</li>
+                                    <li>Antioxidant properties</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">High-potency turmeric extract with enhanced bioavailability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Omega-3 -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Essential Fatty Acids</p>
+                                <h3 class="product-title">Triple Strength Omega-3</h3>
+                                <div class="product-price">$49.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">90 softgels</span>
+                                    <span class="pill">High EPA/DHA</span>
+                                    <span class="pill">Molecularly distilled</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Supports heart health</li>
+                                    <li>Promotes brain function</li>
+                                    <li>Reduces inflammation</li>
+                                    <li>Third-party tested for purity</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Premium fish oil with high EPA and DHA content for optimal health.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAD+ Precursor -->
+                <div class="product-card">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <div class="product-badge">Anti-Aging</div>
+                        </div>
+                        <div class="product-info">
+                            <div>
+                                <p class="product-brand">Longevity</p>
+                                <h3 class="product-title">NAD+ Precursor Complex</h3>
+                                <div class="product-price">$89.99</div>
+                                
+                                <div class="product-pills">
+                                    <span class="pill">60 capsules</span>
+                                    <span class="pill">NMN + NR</span>
+                                    <span class="pill">Cellular support</span>
+                                </div>
+
+                                <ul class="product-benefits">
+                                    <li>Supports cellular energy production</li>
+                                    <li>Promotes healthy aging</li>
+                                    <li>Enhances DNA repair</li>
+                                    <li>Supports cognitive function</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="product-actions">
+                                    <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Order Now</a>
+                                    <button class="btn btn-secondary add-to-cart" type="button">Add to Cart</button>
+                                </div>
+                                <p class="product-note">Advanced anti-aging formula for cellular health and longevity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section -->
+    <section class="container">
+        <div class="section-header">
+            <div class="section-subtitle">How It Works</div>
+            <h2 class="section-title">Simple Ordering Process</h2>
+            <p class="section-description">Getting your supplements and test results has never been easier.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 60px;">
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <div style="width: 60px; height: 60px; background: var(--primary-blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px;">1</div>
+                <h3 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 12px;">Choose Your Products</h3>
+                <p style="color: var(--medium-gray); line-height: 1.6;">Browse our curated selection of supplements and test kits designed for optimal health.</p>
+            </div>
+
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <div style="width: 60px; height: 60px; background: var(--primary-blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px;">2</div>
+                <h3 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 12px;">Place Your Order</h3>
+                <p style="color: var(--medium-gray); line-height: 1.6;">Complete your secure checkout through our Fullscript partner portal or schedule a consultation.</p>
+            </div>
+
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <div style="width: 60px; height: 60px; background: var(--primary-blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px;">3</div>
+                <h3 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 12px;">Receive & Use</h3>
+                <p style="color: var(--medium-gray); line-height: 1.6;">Start your wellness routine or follow simple test kit collection instructions.</p>
+            </div>
+
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <div style="width: 60px; height: 60px; background: var(--primary-blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin: 0 auto 20px;">4</div>
+                <h3 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 12px;">Get Results & Support</h3>
+                <p style="color: var(--medium-gray); line-height: 1.6;">Receive detailed results with personalized recommendations from our medical team.</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <h4 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 16px;">How Ordering Works</h4>
+                <ol style="margin: 0; padding-left: 20px; color: var(--dark-slate);">
+                    <li style="margin: 8px 0;">Click "Order via Fullscript" on your chosen supplement</li>
+                    <li style="margin: 8px 0;">Create or log in to your secure Fullscript account</li>
+                    <li style="margin: 8px 0;">Complete checkout for fast, direct shipping from the manufacturer</li>
+                    <li style="margin: 8px 0;">Set up auto-ship for convenient monthly delivery (optional)</li>
+                </ol>
+            </div>
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <h4 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 16px;">Questions?</h4>
+                <p style="margin: 0; color: var(--medium-gray);">Our medical team is here to help with dosing recommendations and supplement selection.</p>
+                <p style="margin-top: 16px;">
+                    Text us at <a href="sms:+16026889825" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">(602) 688-9825</a><br>
+                    Call <a href="tel:+16026889825" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">(602) 688-9825</a><br>
+                    Email <a href="mailto:info@staydrippediv.com" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">info@staydrippediv.com</a>
+                </p>
+            </div>
+            <div style="background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);">
+                <h4 style="font-size: 20px; font-weight: 600; color: var(--dark-slate); margin-bottom: 16px;">Why These Products?</h4>
+                <p style="margin: 0; color: var(--medium-gray);">Our medical team selected these specific products based on clinical evidence, bioavailability, and manufacturing standards. These supplements complement our IV therapy treatments and support daily wellness maintenance.</p>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Important Information:</strong> *HSA/FSA eligibility varies by plan. These statements have not been evaluated by the FDA. Supplements are not intended to diagnose, treat, cure, or prevent any disease. Test kits are for informational purposes only and do not replace professional medical advice. Consult your healthcare professional if pregnant, nursing, taking medication, or with a medical condition. Products available through our Fullscript partner portal with practitioner oversight.
+        </div>
+    </section>
+
+    <!-- Mini Cart Widget -->
+    <aside class="cart-widget hidden" id="cart-widget" aria-live="polite">
+        <div class="cart-header">
+            <h4>Your Cart</h4>
+            <button class="cart-close" aria-label="Close cart" onclick="toggleCart(false)">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+            <a class="btn" href="https://staydrippediv.com/fullscript" target="_blank" rel="noopener">Checkout on Fullscript</a>
+        </div>
+    </aside>
+
+    <!-- Navigation Loader -->
+    <script src="../shared/navigation-loader-optimized.js"></script>
     
     <script>
-        // Product filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterCategories = document.querySelectorAll('.filter-category');
-            
-            filterCategories.forEach(category => {
-                category.addEventListener('click', function() {
-                    // Remove active class from all categories
-                    filterCategories.forEach(cat => cat.classList.remove('active'));
-                    
-                    // Add active class to clicked category
-                    this.classList.add('active');
-                    
-                    // Here you would filter products based on the selected category
-                    console.log('Filtering by:', this.querySelector('span').textContent);
-                });
+        // Category switching functionality
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.category-section').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const categoryId = button.getAttribute('data-category');
+                const targetSection = document.querySelector(`[data-category="${categoryId}"]`);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
             });
+        });
+
+        // Simple cart functionality
+        const cartWidget = document.getElementById('cart-widget');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cart = new Map();
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, sku) => {
+                total += item.price * item.qty;
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h5>${item.name}</h5>
+                        <div class="cart-item-details">${sku} • $${item.price.toFixed(2)} each</div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="updateQty('${sku}', -1)">−</button>
+                        <input class="qty-input" value="${item.qty}" readonly>
+                        <button class="qty-btn" onclick="updateQty('${sku}', 1)">+</button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = total.toFixed(2);
+            cartWidget.classList.toggle('hidden', cart.size === 0);
+        }
+
+        function updateQty(sku, delta) {
+            const item = cart.get(sku);
+            if (!item) return;
+            
+            item.qty = Math.max(0, item.qty + delta);
+            if (item.qty === 0) {
+                cart.delete(sku);
+            }
+            renderCart();
+        }
+
+        function toggleCart(show) {
+            cartWidget.classList.toggle('hidden', !show);
+        }
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                const sku = productCard.dataset.sku || this.dataset.sku || 'GENERIC';
+                const name = productCard.dataset.name || this.dataset.name || this.closest('.product-info').querySelector('.product-title').textContent;
+                const price = parseFloat(productCard.dataset.price || this.dataset.price || '0');
+                
+                const existing = cart.get(sku);
+                cart.set(sku, {
+                    name: name,
+                    price: price,
+                    qty: (existing?.qty || 0) + 1
+                });
+                
+                renderCart();
+                toggleCart(true);
+                
+                // Analytics tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'add_to_cart', {
+                        'currency': 'USD',
+                        'value': price,
+                        'items': [{
+                            'item_id': sku,
+                            'item_name': name,
+                            'price': price,
+                            'quantity': 1
+                        }]
+                    });
+                }
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                element.style.animationPlayState = 'paused';
+                observer.observe(element);
+            });
+
+            // Track page view with enhanced analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    'page_title': 'Supplements & Test Kits',
+                    'page_location': window.location.href
+                });
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+                e.preventDefault();
+                toggleCart(cartWidget.classList.contains('hidden'));
+            }
         });
     </script>
 </body>
