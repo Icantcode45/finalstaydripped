@@ -403,6 +403,7 @@ body {
     font-size: 15px;
     font-weight: 600;
     color: var(--nav-dark-slate);
+    margin: 0;
     padding: 16px 24px;
     text-transform: none;
     letter-spacing: 0.5px;
