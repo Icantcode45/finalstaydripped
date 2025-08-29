@@ -410,7 +410,6 @@
 
 .product-name {
     color: var(--text-color);
-    display: flow-root;
     font-size: 20px;
     font-weight: 600;
     line-height: 26px;
