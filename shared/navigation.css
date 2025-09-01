@@ -540,9 +540,6 @@ body {
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
-    flex-direction: column;
-    gap: 4px;
-    padding: 8px;
     background: none;
     border: none;
     cursor: pointer;
