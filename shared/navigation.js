@@ -123,6 +123,7 @@
                 }
             });
         }
+    }
 
         // Handle mobile dropdown toggles
         const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
@@ -226,6 +227,7 @@
                     dropdownContent.style.opacity = '1';
                 }, 10);
             });
+        });
 
             // Hide dropdown with delay
             function scheduleHide() {

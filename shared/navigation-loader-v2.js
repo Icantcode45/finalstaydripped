@@ -1,11 +1,11 @@
-// Enhanced Navigation Loader V2 - Robust navigation loading system
+// Consolidated Navigation Loader V2 - Robust navigation loading system
 (function() {
     'use strict';
     
     // Configuration
     const CONFIG = {
         navigationHtmlPath: '/shared/navigation.html',
-        navigationCssPath: '/shared/navigation.css',
+        navigationCssPath: '/shared/navigation-core.css', 
         navigationJsPath: '/shared/navigation.js',
         utilsJsPath: '/shared/staydripped-utils.js',
         maxRetries: 3,
@@ -150,7 +150,7 @@
         if (cache.cssLoaded) return Promise.resolve();
         
         return new Promise((resolve, reject) => {
-            const existingLink = document.querySelector('link[href*="navigation-enhanced.css"], link[href*="navigation-core.css"], link[href*="navigation.css"]');
+            const existingLink = document.querySelector('link[href*="navigation-core.css"]');
             if (existingLink) {
                 cache.cssLoaded = true;
                 resolve();
@@ -215,59 +215,35 @@
         return promise;
     }
     
-    // Fix relative URLs in HTML content based on current page location
+    // Fix relative URLs in HTML content
     function fixRelativeUrls(html) {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
-
-        const currentPath = window.location.pathname;
-        const isInPagesFolder = currentPath.includes('/pages/');
-
+        
         // Fix href attributes
         const links = tempDiv.querySelectorAll('a[href]');
         links.forEach(link => {
             const href = link.getAttribute('href');
-            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('tel:') && !href.startsWith('mailto:')) {
-                // Handle relative paths correctly
-                if (href.startsWith('../')) {
-                    // Already has ../ prefix, don't modify if we're in pages folder
-                    if (!isInPagesFolder) {
-                        link.setAttribute('href', href.replace('../', ''));
-                    }
-                } else if (href.startsWith('./')) {
-                    // Convert ./pages/ to pages/ or ../pages/ based on location
-                    if (isInPagesFolder) {
-                        link.setAttribute('href', href.replace('./', '../'));
-                    } else {
-                        link.setAttribute('href', href.replace('./', ''));
-                    }
-                } else if (href.startsWith('pages/')) {
-                    // If we're in pages folder, add ../ prefix
-                    if (isInPagesFolder) {
-                        link.setAttribute('href', '../' + href);
-                    }
-                    // If we're in root, leave as is
-                }
+            if (href && href.startsWith('../')) {
+                // Convert ../pages/ to pages/
+                link.setAttribute('href', href.replace('../', ''));
+            } else if (href && href.startsWith('./')) {
+                // Convert ./pages/ to pages/
+                link.setAttribute('href', href.replace('./', ''));
             }
         });
-
-        // Fix src attributes for images (these are already absolute CDN URLs, so no changes needed)
+        
+        // Fix src attributes for images
         const images = tempDiv.querySelectorAll('img[src]');
         images.forEach(img => {
             const src = img.getAttribute('src');
             if (src && src.startsWith('../')) {
-                if (!isInPagesFolder) {
-                    img.setAttribute('src', src.replace('../', ''));
-                }
+                img.setAttribute('src', src.replace('../', ''));
             } else if (src && src.startsWith('./')) {
-                if (isInPagesFolder) {
-                    img.setAttribute('src', src.replace('./', '../'));
-                } else {
-                    img.setAttribute('src', src.replace('./', ''));
-                }
+                img.setAttribute('src', src.replace('./', ''));
             }
         });
-
+        
         return tempDiv.innerHTML;
     }
     
@@ -336,52 +312,11 @@
             // Load JavaScript files
             try {
                 await Promise.allSettled([
-                    loadScript('/shared/navigation-instant.js')
+                    loadScript(CONFIG.utilsJsPath, true),
+                    loadScript(CONFIG.navigationJsPath)
                 ]);
-                console.log('Navigation instant JS loaded successfully');
             } catch (jsError) {
-                console.warn('Navigation script failed to load:', jsError);
-
-                // Fallback: inject the navigation JS directly
-                const script = document.createElement('script');
-                script.textContent = `
-                    console.log('Loading fallback navigation JS...');
-                    setTimeout(function() {
-                        const buttons = document.querySelectorAll('.service-category-btn');
-                        buttons.forEach(function(button) {
-                            button.addEventListener('click', function(e) {
-                                e.preventDefault();
-                                const category = this.getAttribute('data-category');
-                                const expansion = document.querySelector('.nav-expansion[data-category="' + category + '"]');
-                                const isExpanded = this.classList.contains('expanded');
-
-                                document.querySelectorAll('.service-category-btn').forEach(function(btn) {
-                                    btn.classList.remove('expanded');
-                                });
-                                document.querySelectorAll('.nav-expansion').forEach(function(exp) {
-                                    exp.classList.remove('expanded');
-                                });
-
-                                if (!isExpanded && expansion) {
-                                    this.classList.add('expanded');
-                                    expansion.classList.add('expanded');
-                                }
-                            });
-                        });
-
-                        window.toggleMobileNav = function() {
-                            const menu = document.getElementById('mobile-menu');
-                            const toggle = document.querySelector('.mobile-menu-toggle');
-                            if (menu) {
-                                menu.classList.toggle('active');
-                                toggle?.classList.toggle('active');
-                            }
-                        };
-
-                        console.log('Fallback navigation setup completed');
-                    }, 100);
-                `;
-                document.head.appendChild(script);
+                console.warn('Some navigation scripts failed to load:', jsError);
             }
             
             // Mark as loaded

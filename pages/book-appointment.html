@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-44WEBDZB6F"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-44WEBDZB6F');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-44WEBDZB6F');
     </script>
 
     <meta charset="UTF-8">
@@ -144,7 +144,6 @@
             color: var(--primary-blue);
             font-weight: 600;
         }
-
         .progress-line {
             width: 60px;
             height: 2px;
@@ -200,14 +199,14 @@
             border: 2px solid var(--border-color);
             border-radius: 12px;
             padding: 24px;
-            cursor: pointer;
+            border: 2px solid transparent;
             transition: all 0.3s ease;
             text-align: center;
         }
 
         .service-category:hover {
             border-color: var(--primary-blue);
-            background: rgba(0, 102, 204, 0.05);
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 184, 160, 0.05) 100%);
         }
 
         .service-category.selected {
@@ -282,6 +281,7 @@
             color: var(--white);
             padding: 12px 24px;
             border: none;
+            padding: 12px 24px;
             border-radius: 8px;
             font-weight: 600;
             font-size: 16px;
@@ -470,6 +470,17 @@
                         <p>Advanced anti-aging and cellular regeneration treatments</p>
                         <div class="price">Starting at $300</div>
                     </div>
+                    <h3 class="service-title">IV Therapy</h3>
+                    <p class="service-description">Premium IV hydration and vitamin infusions delivered to your location by licensed medical professionals.</p>
+                    <div class="service-price">Starting at $150</div>
+                    <ul class="service-features">
+                        <li>Hydration & Recovery</li>
+                        <li>Vitamin & Mineral Infusions</li>
+                        <li>Immune Support</li>
+                        <li>Energy & Performance</li>
+                    </ul>
+                    <button class="btn">Select IV Therapy</button>
+                </div>
 
                     <div class="service-category" data-service="sexual-wellness">
                         <h3>Sexual Wellness</h3>
@@ -481,7 +492,17 @@
                         <h3>Mobile Testing</h3>
                         <p>Comprehensive lab work and health assessments at your location</p>
                         <div class="price">Starting at $100</div>
-                    </div>
+</div>
+                    <h3 class="service-title">Weight Management</h3>
+                    <p class="service-description">Comprehensive weight loss programs including medications, peptides, and coaching.</p>
+                    <div class="service-price">Starting at $250</div>
+                    <ul class="service-features">
+                        <li>GLP-1 Medications</li>
+                        <li>Peptide Therapy</li>
+                        <li>Nutrition Coaching</li>
+                        <li>Body Composition Analysis</li>
+                    </ul>
+                    <button class="btn">Select Weight Management</button>
                 </div>
 
                 <div class="navigation-buttons">

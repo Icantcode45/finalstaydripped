@@ -1,5 +1,5 @@
-<!-- Navigation Core CSS -->
-<link rel="stylesheet" href="shared/navigation-core.css">
+<!-- Enhanced Navigation CSS -->
+<link rel="stylesheet" href="navigation.css">
 
 <!-- Top Bar -->
 <div class="top-bar">
@@ -66,17 +66,10 @@
                             <a href="../pages/telehealth-services.html">Telehealth</a>
                             <a href="../pages/event-corporate-inquiry.html">Corporate Events</a>
                         </div>
-                    </div>
+</div>
                 </li>
-                <li><a href="../pages/unified-booking.html" class="nav-link">Booking</a></li>
-                <li><a href="../pages/supplements-catalog.html" class="nav-link">Supplements</a></li>
-                <li><a href="../pages/first-time-patients.html" class="nav-link">New Patients</a></li>
-                <li><a href="../pages/membership.html" class="nav-link">Membership</a></li>
-                <li><a href="../index.html#team" class="nav-link">Our Team</a></li>
-                <li><a href="../pages/event-corporate-inquiry.html" class="nav-link">Events</a></li>
-                <li><a href="../pages/gift-cards.html" class="nav-link">Gift Cards</a></li>
-                <li><a href="../pages/compliance.html" class="nav-link">Compliance</a></li>
-                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="#team" class="nav-link">Our Team</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             
             <div class="nav-actions">
@@ -148,14 +141,8 @@
                         </div>
                     </div>
 
-                    <a href="../pages/supplements-catalog.html" class="mobile-menu-item">Supplements</a>
-                    <a href="../pages/first-time-patients.html" class="mobile-menu-item">New Patients</a>
-                    <a href="../pages/membership.html" class="mobile-menu-item">Membership</a>
-                    <a href="../index.html#team" class="mobile-menu-item">Our Team</a>
-                    <a href="../pages/event-corporate-inquiry.html" class="mobile-menu-item">Events</a>
-                    <a href="../pages/gift-cards.html" class="mobile-menu-item">Gift Cards</a>
-                    <a href="../pages/compliance.html" class="mobile-menu-item">Compliance</a>
-                    <a href="../index.html#contact" class="mobile-menu-item">Contact</a>
+                    <a href="#team" class="mobile-menu-item">Our Team</a>
+                    <a href="#contact" class="mobile-menu-item">Contact</a>
                 </nav>
 
                 <div class="mobile-menu-actions">
@@ -172,3 +159,268 @@
         </div>
     </div>
 </header>
+
+<!-- BULLETPROOF UNIVERSAL NAVIGATION JAVASCRIPT -->
+<script>
+(function() {
+    'use strict';
+    
+    console.log('🚀 UNIVERSAL Navigation JS starting...');
+    
+    // Universal navigation setup that works on ANY page
+    function universalNavigationSetup() {
+        console.log('⚡ Setting up universal navigation...');
+        
+        let setupAttempts = 0;
+        const maxAttempts = 10;
+        
+        function setupNavigation() {
+            setupAttempts++;
+            console.log(`📋 Navigation setup attempt ${setupAttempts}/${maxAttempts}`);
+            
+            // Get all navigation elements
+            const serviceButtons = document.querySelectorAll('.service-category-btn');
+            const expansions = document.querySelectorAll('.nav-expansion');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileClose = document.querySelector('.mobile-menu-close');
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown-toggle');
+            
+            console.log(`🔍 Found: ${serviceButtons.length} buttons, ${expansions.length} expansions, mobile: ${!!mobileToggle}`);
+            
+            if (serviceButtons.length === 0 && setupAttempts < maxAttempts) {
+                console.log(`⏰ No buttons found, retrying in 200ms...`);
+                setTimeout(setupNavigation, 200);
+                return;
+            }
+            
+            // 1. DESKTOP DROPDOWN FUNCTIONALITY
+            serviceButtons.forEach(function(button, index) {
+                console.log(`🔘 Setting up button ${index + 1}: ${button.getAttribute('data-category')}`);
+                
+                // Remove any existing listeners by cloning
+                const newButton = button.cloneNode(true);
+                button.parentNode.replaceChild(newButton, button);
+                
+                newButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const category = this.getAttribute('data-category');
+                    const expansion = document.querySelector('.nav-expansion[data-category="' + category + '"]');
+                    const isExpanded = this.classList.contains('expanded');
+                    
+                    console.log(`🎯 Clicked: ${category}, expanded: ${isExpanded}`);
+                    
+                    // Close all expansions first
+                    document.querySelectorAll('.service-category-btn').forEach(function(btn) {
+                        btn.classList.remove('expanded');
+                    });
+                    document.querySelectorAll('.nav-expansion').forEach(function(exp) {
+                        exp.classList.remove('expanded');
+                    });
+                    
+                    // Open current if not expanded
+                    if (!isExpanded && expansion) {
+                        this.classList.add('expanded');
+                        expansion.classList.add('expanded');
+                        console.log(`✅ Opened: ${category}`);
+                    }
+                });
+            });
+            
+            // 2. MOBILE MENU FUNCTIONALITY
+            window.toggleMobileNav = function() {
+                console.log('📱 Toggling mobile menu...');
+                
+                if (mobileMenu) {
+                    const isActive = mobileMenu.classList.contains('active');
+                    
+                    if (isActive) {
+                        mobileMenu.classList.remove('active');
+                        mobileToggle?.classList.remove('active');
+                        document.body.style.overflow = '';
+                        console.log('📱 Mobile menu closed');
+                    } else {
+                        mobileMenu.classList.add('active');
+                        mobileToggle?.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        console.log('📱 Mobile menu opened');
+                    }
+                }
+            };
+            
+            // Mobile close button
+            if (mobileClose) {
+                mobileClose.addEventListener('click', function() {
+                    console.log('❌ Mobile menu close clicked');
+                    mobileMenu?.classList.remove('active');
+                    mobileToggle?.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            
+            // 3. MOBILE DROPDOWN FUNCTIONALITY
+            mobileDropdowns.forEach(function(toggle) {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const dropdown = document.getElementById(targetId);
+                    
+                    if (dropdown) {
+                        const isActive = this.classList.contains('active');
+                        
+                        // Close all other dropdowns
+                        mobileDropdowns.forEach(function(otherToggle) {
+                            if (otherToggle !== toggle) {
+                                otherToggle.classList.remove('active');
+                                const otherId = otherToggle.getAttribute('data-target');
+                                const otherDropdown = document.getElementById(otherId);
+                                if (otherDropdown) {
+                                    otherDropdown.classList.remove('active');
+                                }
+                            }
+                        });
+                        
+                        // Toggle current
+                        if (isActive) {
+                            this.classList.remove('active');
+                            dropdown.classList.remove('active');
+                        } else {
+                            this.classList.add('active');
+                            dropdown.classList.add('active');
+                        }
+                        
+                        console.log(`📂 Mobile dropdown ${targetId}: ${!isActive ? 'opened' : 'closed'}`);
+                    }
+                });
+            });
+            
+            // 4. CLOSE DROPDOWNS ON OUTSIDE CLICK
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-expandable')) {
+                    document.querySelectorAll('.service-category-btn').forEach(function(btn) {
+                        btn.classList.remove('expanded');
+                    });
+                    document.querySelectorAll('.nav-expansion').forEach(function(exp) {
+                        exp.classList.remove('expanded');
+                    });
+                }
+            });
+            
+            // 5. HEADER SCROLL EFFECT
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            // 6. SEARCH FUNCTIONALITY
+            const searchInput = document.getElementById('topbar-search');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const query = e.target.value.trim();
+                        if (query) {
+                            console.log('🔍 Search:', query);
+                        }
+                    }
+                });
+                
+                // Keyboard shortcut
+                document.addEventListener('keydown', function(e) {
+                    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                        e.preventDefault();
+                        searchInput.focus();
+                    }
+                });
+            }
+            
+            // 7. ESCAPE KEY TO CLOSE MOBILE MENU
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                    window.toggleMobileNav();
+                }
+            });
+            
+            console.log('🎉 Universal navigation setup COMPLETED!');
+        }
+        
+        // Start setup immediately
+        setupNavigation();
+    }
+    
+    // Initialize universally - multiple triggers to ensure it works
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', universalNavigationSetup);
+    } else {
+        universalNavigationSetup();
+    }
+    
+    // Also setup when navigation is loaded
+    window.addEventListener('navigationLoaded', function() {
+        console.log('🔄 Navigation loaded event received');
+        setTimeout(universalNavigationSetup, 50);
+    });
+    
+    // Mutation observer for dynamic content
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+                const hasNavigationContent = Array.from(mutation.addedNodes).some(function(node) {
+                    return node.nodeType === Node.ELEMENT_NODE && 
+                           (node.querySelector && node.querySelector('.service-category-btn') || 
+                            node.classList && node.classList.contains('service-category-btn'));
+                });
+                
+                if (hasNavigationContent) {
+                    console.log('🔍 Navigation content detected, setting up...');
+                    setTimeout(universalNavigationSetup, 50);
+                }
+            }
+        });
+    });
+    
+    // Start observing when ready
+    if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true });
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+    }
+    
+    // Global debug function
+    window.debugNavigation = function() {
+        console.log('=== 🐛 NAVIGATION DEBUG ===');
+        const buttons = document.querySelectorAll('.service-category-btn');
+        const expansions = document.querySelectorAll('.nav-expansion');
+        const mobile = document.querySelector('.mobile-menu-toggle');
+        
+        console.log('🔘 Buttons:', buttons.length);
+        console.log('📂 Expansions:', expansions.length);
+        console.log('📱 Mobile toggle:', !!mobile);
+        
+        buttons.forEach(function(btn, i) {
+            console.log(`Button ${i + 1}:`, {
+                category: btn.getAttribute('data-category'),
+                text: btn.textContent.trim(),
+                hasListeners: !!btn.onclick
+            });
+        });
+        
+        return {
+            buttons: buttons.length,
+            expansions: expansions.length,
+            mobile: !!mobile,
+            working: buttons.length > 0 && expansions.length > 0
+        };
+    };
+    
+    console.log('🚀 Universal Navigation JS loaded and ready!');
+})();
+</script>
