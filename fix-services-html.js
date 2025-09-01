@@ -1,8 +1,7 @@
-// Animation fixes and services HTML structure repair for the website
+// Fix for broken HTML structure in services section
+(function() {
+    'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
-
-    // Fix for broken HTML structure in services section
     function fixServicesSection() {
         console.log('🔧 Fixing services section HTML structure...');
 
@@ -27,7 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Get the parent service content div
             const parentServiceContent = firstServiceCard.querySelector('.service-content');
-
+            
+            // Get the correct HTML from the nested div
+            const correctHTML = nestedServiceContent.innerHTML;
+            
             // Replace the parent content with the correct structure
             parentServiceContent.innerHTML = `
                 <h3 data-builder-text="hydration-title">Hydration Therapy</h3>
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Additional cleanup: remove any orphaned or duplicate content
         const allServiceCards = servicesSection.querySelectorAll('.service-card-enhanced');
         allServiceCards.forEach((card, index) => {
+            // Check for any unclosed ul tags or malformed structure
             const serviceContent = card.querySelector('.service-content');
             if (serviceContent) {
                 // Fix any unclosed ul tags by ensuring proper structure
@@ -61,72 +64,55 @@ document.addEventListener('DOMContentLoaded', function() {
                         div.remove();
                     });
                 });
+            }
+        });
 
+        // Ensure all service cards have proper structure
+        allServiceCards.forEach((card, index) => {
+            const serviceContent = card.querySelector('.service-content');
+            if (serviceContent) {
                 // Ensure there's only one h3, one p, one ul, and one link
-                const elements = {
-                    h3: serviceContent.querySelectorAll('h3'),
-                    p: serviceContent.querySelectorAll('p'),
-                    ul: serviceContent.querySelectorAll('ul.treatment-list'),
-                    button: serviceContent.querySelectorAll('.btn.service-btn')
-                };
+                const h3s = serviceContent.querySelectorAll('h3');
+                const paragraphs = serviceContent.querySelectorAll('p');
+                const lists = serviceContent.querySelectorAll('ul.treatment-list');
+                const buttons = serviceContent.querySelectorAll('.btn.service-btn');
 
-                // Remove duplicate elements
-                Object.entries(elements).forEach(([type, nodeList]) => {
-                    if (nodeList.length > 1) {
-                        for (let i = 1; i < nodeList.length; i++) {
-                            nodeList[i].remove();
-                        }
+                // Remove duplicate elements if they exist
+                if (h3s.length > 1) {
+                    for (let i = 1; i < h3s.length; i++) {
+                        h3s[i].remove();
                     }
-                });
+                }
+                if (paragraphs.length > 1) {
+                    for (let i = 1; i < paragraphs.length; i++) {
+                        paragraphs[i].remove();
+                    }
+                }
+                if (lists.length > 1) {
+                    for (let i = 1; i < lists.length; i++) {
+                        lists[i].remove();
+                    }
+                }
+                if (buttons.length > 1) {
+                    for (let i = 1; i < buttons.length; i++) {
+                        buttons[i].remove();
+                    }
+                }
             }
         });
 
         console.log(`✅ Services section cleanup complete - processed ${allServiceCards.length} service cards`);
     }
 
-    // Run the services fix first
-    fixServicesSection();
-    // Improved animation observer
-    function initializeAnimations() {
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -30px 0px'
-        };
-
-        const animationObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        // Observe animated elements
-        const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right');
-        animatedElements.forEach(el => {
-            // Only pause animations for elements not currently visible
-            const rect = el.getBoundingClientRect();
-            if (rect.top > window.innerHeight || rect.bottom < 0) {
-                el.style.animationPlayState = 'paused';
-            } else {
-                // Element is visible, let animation run
-                el.style.animationPlayState = 'running';
-                el.classList.add('animated');
-            }
-            animationObserver.observe(el);
-        });
-        
-        // Force run animations for hero section elements immediately
-        setTimeout(() => {
-            const heroElements = document.querySelectorAll('.hero .fade-in, .hero .slide-left, .hero .slide-right');
-            heroElements.forEach(el => {
-                el.style.animationPlayState = 'running';
-                el.classList.add('animated');
-            });
-        }, 100);
+    // Run the fix when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fixServicesSection);
+    } else {
+        fixServicesSection();
     }
 
-    // Initialize animations
-    initializeAnimations();
-});
+    // Also run after a short delay to catch any dynamic content
+    setTimeout(fixServicesSection, 500);
+
+    console.log('🚀 Services HTML fix script loaded');
+})();
