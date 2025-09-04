@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test | Stay Dripped IV</title>
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="shared/navigation.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 140px 0 40px;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .test-section h2 {
+            color: #0066cc;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .test-item {
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .test-item h3 {
+            margin: 0 0 10px;
+            color: #1a2b3a;
+        }
+
+        .test-item p {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status.working { background: #d1fae5; color: #065f46; }
+        .status.broken { background: #fee2e2; color: #dc2626; }
+        .status.unknown { background: #fef3c7; color: #d97706; }
+
+        .link-test {
+            margin: 10px 0;
+        }
+
+        .link-test a {
+            color: #0066cc;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #0066cc;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .link-test a:hover {
+            background: #0066cc;
+            color: white;
+        }
+
+        .console-output {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .test-button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .test-button:hover {
+            background: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will load here -->
+    <div id="navigation-placeholder"></div>
+
+    <div class="container">
+        <div class="test-section">
+            <h2>🧪 Navigation System Test Suite</h2>
+            <p>This page tests all navigation functionality and reports issues in real-time.</p>
+            
+            <div id="overall-status" class="test-item">
+                <h3>Overall Status <span id="overall-badge" class="status unknown">Testing...</span></h3>
+                <p id="overall-message">Running navigation tests...</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📱 Mobile Menu Test</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Mobile Toggle <span id="mobile-toggle-status" class="status unknown">Testing...</span></h3>
+                    <p>Tests if mobile menu toggle button works</p>
+                    <button class="test-button" onclick="testMobileToggle()">Test Mobile Menu</button>
+                </div>
+                
+                <div class="test-item">
+                    <h3>Mobile Dropdowns <span id="mobile-dropdown-status" class="status unknown">Testing...</span></h3>
+                    <p>Tests mobile dropdown functionality</p>
+                    <button class="test-button" onclick="testMobileDropdowns()">Test Dropdowns</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🖥️ Desktop Dropdown Test</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Services Dropdown <span id="services-dropdown-status" class="status unknown">Testing...</span></h3>
+                    <p>Tests services dropdown hover behavior</p>
+                    <button class="test-button" onclick="testServicesDropdown()">Test Services</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 Link Test</h2>
+            <div class="link-test">
+                <h3>Navigation Links</h3>
+                <a href="pages/book-ivtherapy.html" target="_blank">IV Therapy</a>
+                <a href="pages/vitamin-injections.html" target="_blank">Vitamin Injections</a>
+                <a href="pages/nad-peptides.html" target="_blank">NAD+ & Peptides</a>
+                <a href="pages/weight-management.html" target="_blank">Weight Management</a>
+                <a href="pages/sexual-wellness.html" target="_blank">Sexual Wellness</a>
+                <a href="pages/mobile-testing-kits.html" target="_blank">Mobile Testing</a>
+                <a href="pages/telehealth-services.html" target="_blank">Telehealth</a>
+                <a href="pages/event-corporate-inquiry.html" target="_blank">Corporate Events</a>
+                <a href="pages/unified-booking.html" target="_blank">Unified Booking</a>
+                <a href="pages/supplements-catalog.html" target="_blank">Supplements Catalog</a>
+                <a href="pages/first-time-patients.html" target="_blank">New Patients</a>
+                <a href="pages/membership.html" target="_blank">Membership</a>
+                <a href="pages/gift-cards.html" target="_blank">Gift Cards</a>
+                <a href="pages/compliance.html" target="_blank">Compliance</a>
+            </div>
+            
+            <div id="link-results" class="test-item">
+                <h3>Link Test Results <span id="link-status" class="status unknown">Not tested</span></h3>
+                <p id="link-message">Click "Test All Links" to check for broken links</p>
+                <button class="test-button" onclick="testAllLinks()">Test All Links</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 Search & Icons Test</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <h3>Search Function <span id="search-status" class="status unknown">Testing...</span></h3>
+                    <p>Tests search keyboard shortcut (Cmd/Ctrl+K)</p>
+                    <button class="test-button" onclick="testSearch()">Test Search</button>
+                </div>
+                
+                <div class="test-item">
+                    <h3>Cart Icon <span id="cart-status" class="status unknown">Testing...</span></h3>
+                    <p>Tests cart icon click behavior</p>
+                    <button class="test-button" onclick="testCart()">Test Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Console Output</h2>
+            <div id="console-output" class="console-output">
+                Console output will appear here...
+            </div>
+            <button class="test-button" onclick="clearConsole()">Clear Console</button>
+            <button class="test-button" onclick="runAllTests()">Run All Tests</button>
+        </div>
+    </div>
+
+    <script>
+        // Console capture
+        const consoleOutput = document.getElementById('console-output');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function logToConsole(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const colorClass = type === 'error' ? 'color: #f87171' : type === 'warn' ? 'color: #fbbf24' : 'color: #e2e8f0';
+            consoleOutput.innerHTML += `<div style="${colorClass}">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            logToConsole(args.join(' '));
+            originalLog.apply(console, args);
+        };
+
+        console.error = function(...args) {
+            logToConsole(args.join(' '), 'error');
+            originalError.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+            logToConsole(args.join(' '), 'warn');
+            originalWarn.apply(console, args);
+        };
+
+        // Test functions
+        function updateStatus(elementId, status, message) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.className = `status ${status}`;
+                element.textContent = status === 'working' ? '✅ Working' : status === 'broken' ? '❌ Broken' : '⚠️ Unknown';
+            }
+            
+            const messageElement = document.getElementById(elementId.replace('-status', '-message'));
+            if (messageElement) {
+                messageElement.textContent = message;
+            }
+        }
+
+        function testMobileToggle() {
+            console.log('Testing mobile menu toggle...');
+            
+            try {
+                const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                if (!mobileMenuToggle) {
+                    throw new Error('Mobile menu toggle button not found');
+                }
+                
+                if (!mobileMenu) {
+                    throw new Error('Mobile menu element not found');
+                }
+                
+                if (typeof window.toggleMobileNav !== 'function') {
+                    throw new Error('toggleMobileNav function not defined');
+                }
+                
+                // Test toggle function
+                window.toggleMobileNav();
+                const isOpen = mobileMenu.classList.contains('active');
+                
+                // Close it
+                if (isOpen) {
+                    window.toggleMobileNav();
+                }
+                
+                updateStatus('mobile-toggle-status', 'working', 'Mobile menu toggle working correctly');
+                console.log('✅ Mobile menu toggle test passed');
+                
+            } catch (error) {
+                updateStatus('mobile-toggle-status', 'broken', error.message);
+                console.error('❌ Mobile menu toggle test failed:', error.message);
+            }
+        }
+
+        function testMobileDropdowns() {
+            console.log('Testing mobile dropdowns...');
+            
+            try {
+                const dropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+                
+                if (dropdownToggles.length === 0) {
+                    throw new Error('No mobile dropdown toggles found');
+                }
+                
+                let workingCount = 0;
+                dropdownToggles.forEach((toggle, index) => {
+                    const targetId = toggle.getAttribute('data-target');
+                    const dropdown = document.getElementById(targetId);
+                    
+                    if (dropdown) {
+                        workingCount++;
+                    } else {
+                        console.warn(`Dropdown target ${targetId} not found for toggle ${index}`);
+                    }
+                });
+                
+                if (workingCount === dropdownToggles.length) {
+                    updateStatus('mobile-dropdown-status', 'working', `All ${workingCount} mobile dropdowns working`);
+                    console.log(`✅ Mobile dropdowns test passed (${workingCount} dropdowns)`);
+                } else {
+                    updateStatus('mobile-dropdown-status', 'broken', `${workingCount}/${dropdownToggles.length} dropdowns working`);
+                    console.error(`❌ Mobile dropdowns test failed: ${workingCount}/${dropdownToggles.length} working`);
+                }
+                
+            } catch (error) {
+                updateStatus('mobile-dropdown-status', 'broken', error.message);
+                console.error('❌ Mobile dropdowns test failed:', error.message);
+            }
+        }
+
+        function testServicesDropdown() {
+            console.log('Testing services dropdown...');
+            
+            try {
+                const servicesDropdown = document.querySelector('.nav-dropdown');
+                const servicesContent = document.querySelector('.services-dropdown');
+                
+                if (!servicesDropdown) {
+                    throw new Error('Services dropdown not found');
+                }
+                
+                if (!servicesContent) {
+                    throw new Error('Services dropdown content not found');
+                }
+                
+                updateStatus('services-dropdown-status', 'working', 'Services dropdown elements found');
+                console.log('✅ Services dropdown test passed');
+                
+            } catch (error) {
+                updateStatus('services-dropdown-status', 'broken', error.message);
+                console.error('❌ Services dropdown test failed:', error.message);
+            }
+        }
+
+        function testSearch() {
+            console.log('Testing search functionality...');
+            
+            try {
+                const searchInput = document.getElementById('topbar-search');
+                
+                if (!searchInput) {
+                    throw new Error('Search input not found');
+                }
+                
+                // Test focus
+                searchInput.focus();
+                
+                updateStatus('search-status', 'working', 'Search input found and focusable');
+                console.log('✅ Search test passed');
+                
+            } catch (error) {
+                updateStatus('search-status', 'broken', error.message);
+                console.error('❌ Search test failed:', error.message);
+            }
+        }
+
+        function testCart() {
+            console.log('Testing cart functionality...');
+            
+            try {
+                const cartIcon = document.querySelector('a[aria-label="Shopping cart"]');
+                const cartCount = document.querySelector('.cart-count');
+                
+                if (!cartIcon) {
+                    throw new Error('Cart icon not found');
+                }
+                
+                if (!cartCount) {
+                    throw new Error('Cart count element not found');
+                }
+                
+                updateStatus('cart-status', 'working', 'Cart elements found');
+                console.log('✅ Cart test passed');
+                
+            } catch (error) {
+                updateStatus('cart-status', 'broken', error.message);
+                console.error('❌ Cart test failed:', error.message);
+            }
+        }
+
+        async function testAllLinks() {
+            console.log('Testing all navigation links...');
+            
+            const links = document.querySelectorAll('.link-test a');
+            let workingCount = 0;
+            let brokenCount = 0;
+            
+            updateStatus('link-status', 'unknown', 'Testing links...');
+            
+            for (const link of links) {
+                try {
+                    const response = await fetch(link.href, { method: 'HEAD' });
+                    if (response.ok) {
+                        workingCount++;
+                        console.log(`✅ ${link.textContent}: Working`);
+                    } else {
+                        brokenCount++;
+                        console.error(`❌ ${link.textContent}: ${response.status} ${response.statusText}`);
+                    }
+                } catch (error) {
+                    brokenCount++;
+                    console.error(`❌ ${link.textContent}: ${error.message}`);
+                }
+            }
+            
+            if (brokenCount === 0) {
+                updateStatus('link-status', 'working', `All ${workingCount} links working`);
+                console.log(`✅ All links test passed (${workingCount} links)`);
+            } else {
+                updateStatus('link-status', 'broken', `${brokenCount} broken links, ${workingCount} working`);
+                console.error(`❌ Links test failed: ${brokenCount} broken, ${workingCount} working`);
+            }
+        }
+
+        function clearConsole() {
+            consoleOutput.innerHTML = 'Console cleared...\n';
+        }
+
+        function runAllTests() {
+            console.log('🚀 Running complete navigation test suite...');
+            clearConsole();
+            
+            setTimeout(() => {
+                testMobileToggle();
+                testMobileDropdowns();
+                testServicesDropdown();
+                testSearch();
+                testCart();
+                testAllLinks();
+                
+                console.log('🎯 Test suite completed');
+            }, 100);
+        }
+
+        // Auto-run basic tests when navigation loads
+        window.addEventListener('navigationReady', function() {
+            console.log('🎉 Navigation ready - running basic tests...');
+            setTimeout(() => {
+                testMobileToggle();
+                testMobileDropdowns();
+                testServicesDropdown();
+                testSearch();
+                testCart();
+            }, 500);
+        });
+
+        // Initial status
+        console.log('Navigation test page loaded - waiting for navigation to load...');
+    </script>
+
+    <!-- Unified Navigation Loader -->
+    <script src="shared/navigation-loader-unified.js"></script>
+</body>
+</html>

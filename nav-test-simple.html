@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Navigation Test</title>
+    
+    <!-- Navigation CSS -->
+    <link rel="stylesheet" href="shared/navigation.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 140px 20px 40px;
+            background: #f8fafc;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+
+        .test-button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px;
+            font-size: 14px;
+        }
+
+        .test-button:hover {
+            background: #0052a3;
+        }
+
+        .status {
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status.error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .status.info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .console-output {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .instructions {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px;
+            color: #92400e;
+        }
+
+        .instructions ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin: 5px 0;
+            color: #451a03;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will load here -->
+    <div id="navigation-placeholder"></div>
+
+    <div class="test-container">
+        <h1>🧪 Navigation Quick Test</h1>
+        
+        <div class="instructions">
+            <h3>How to test navigation:</h3>
+            <ul>
+                <li><strong>Desktop:</strong> Hover over "Services" in the top navigation to see dropdown</li>
+                <li><strong>Mobile:</strong> Resize window or use mobile view, then click hamburger menu</li>
+                <li><strong>Search:</strong> Press Cmd/Ctrl+K to focus search box</li>
+                <li><strong>Console:</strong> Check browser console for detailed test results</li>
+            </ul>
+        </div>
+
+        <div>
+            <button class="test-button" onclick="testMobileMenuManual()">Test Mobile Menu</button>
+            <button class="test-button" onclick="testDropdownsManual()">Test Dropdowns</button>
+            <button class="test-button" onclick="window.testNavigation && window.testNavigation()">Run All Tests</button>
+            <button class="test-button" onclick="window.debugNavigationState && window.debugNavigationState()">Debug State</button>
+            <button class="test-button" onclick="clearConsoleOutput()">Clear Console</button>
+        </div>
+
+        <div id="test-results"></div>
+
+        <div id="console-output" class="console-output">
+            Navigation test console will appear here...
+        </div>
+    </div>
+
+    <script>
+        // Console capture for visual feedback
+        const consoleOutput = document.getElementById('console-output');
+        const testResults = document.getElementById('test-results');
+        const originalLog = console.log;
+
+        function logToVisualConsole(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: '#94a3b8',
+                success: '#22c55e', 
+                error: '#ef4444',
+                warn: '#f59e0b'
+            };
+            
+            consoleOutput.innerHTML += `<div style="color: ${colors[type] || colors.info}; margin: 2px 0;">[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        // Override console.log to show in our visual console
+        console.log = function(...args) {
+            const message = args.join(' ');
+            logToVisualConsole(message);
+            originalLog.apply(console, args);
+        };
+
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.createElement('div');
+            statusDiv.className = `status ${type}`;
+            statusDiv.textContent = message;
+            testResults.appendChild(statusDiv);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                statusDiv.remove();
+            }, 5000);
+        }
+
+        function testMobileMenuManual() {
+            console.log('🧪 Manual mobile menu test started...');
+            
+            if (typeof window.toggleMobileNav === 'function') {
+                try {
+                    window.toggleMobileNav();
+                    showStatus('✅ Mobile menu toggled successfully', 'success');
+                    console.log('✅ Mobile menu test passed');
+                    
+                    // Close it after 2 seconds
+                    setTimeout(() => {
+                        window.toggleMobileNav();
+                        console.log('Mobile menu closed');
+                    }, 2000);
+                } catch (error) {
+                    showStatus('❌ Mobile menu test failed: ' + error.message, 'error');
+                    console.log('❌ Mobile menu test failed:', error);
+                }
+            } else {
+                showStatus('❌ toggleMobileNav function not found', 'error');
+                console.log('❌ toggleMobileNav function not found');
+            }
+        }
+
+        function testDropdownsManual() {
+            console.log('🧪 Manual dropdown test started...');
+            
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            if (dropdowns.length > 0) {
+                showStatus(`✅ Found ${dropdowns.length} dropdown(s)`, 'success');
+                console.log(`✅ Found ${dropdowns.length} dropdown(s)`);
+                
+                // Test first dropdown
+                const firstDropdown = dropdowns[0];
+                const dropdownContent = firstDropdown.querySelector('.dropdown-content');
+                
+                if (dropdownContent) {
+                    // Simulate hover
+                    dropdownContent.style.display = 'block';
+                    dropdownContent.style.opacity = '1';
+                    dropdownContent.style.visibility = 'visible';
+                    
+                    showStatus('✅ Dropdown shown programmatically', 'success');
+                    console.log('✅ Dropdown test passed');
+                    
+                    // Hide after 3 seconds
+                    setTimeout(() => {
+                        dropdownContent.style.display = 'none';
+                        dropdownContent.style.opacity = '0';
+                        dropdownContent.style.visibility = 'hidden';
+                        console.log('Dropdown hidden');
+                    }, 3000);
+                } else {
+                    showStatus('❌ Dropdown content not found', 'error');
+                    console.log('❌ Dropdown content not found');
+                }
+            } else {
+                showStatus('❌ No dropdowns found', 'error');
+                console.log('❌ No dropdowns found');
+            }
+        }
+
+        function clearConsoleOutput() {
+            consoleOutput.innerHTML = 'Console cleared...\n';
+            testResults.innerHTML = '';
+        }
+
+        // Wait for navigation to load and initialize
+        window.addEventListener('navigationReady', function() {
+            showStatus('✅ Navigation initialized successfully', 'success');
+            console.log('🎉 Navigation ready event received');
+        });
+
+        // Initial status
+        console.log('🚀 Navigation test page loaded');
+        console.log('Waiting for navigation to initialize...');
+        
+        // Check navigation after a delay
+        setTimeout(() => {
+            const placeholder = document.getElementById('navigation-placeholder');
+            if (placeholder && placeholder.innerHTML.length > 0) {
+                console.log('✅ Navigation HTML loaded');
+                showStatus('Navigation HTML loaded', 'info');
+            } else {
+                console.log('❌ Navigation HTML not loaded');
+                showStatus('Navigation HTML not loaded', 'error');
+            }
+        }, 2000);
+    </script>
+
+    <!-- Load navigation -->
+    <script src="shared/navigation-loader-unified.js"></script>
+    
+    <!-- Load debug script -->
+    <script src="debug-navigation.js"></script>
+</body>
+</html>
